@@ -18,4 +18,5 @@
 52_check_perms_lstat
 53_disable_addons
 55_options_traceback
+56_fix_de_broken_links
 99_js_templates
