@@ -71,6 +71,10 @@ DEFAULT_URL_HOST   = 'thunderchild.aszi.sztaki.hu'
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
 #-------------------------------------------------------------
+# The default language for this server.
+DEFAULT_SERVER_LANGUAGE='en'
+
+#-------------------------------------------------------------
 # Iirc this was used in pre 2.1, leave it for now
 USE_ENVELOPE_SENDER    = 0              # Still used?
 

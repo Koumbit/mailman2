@@ -7,6 +7,8 @@ mailman (2.1.4-4) UNRELEASED; urgency=medium
     (bsb, closes: #242945).
   * Fix Woody FTBFS, reported and solution provided by Andreas Barth
     <aba@not.so.argh.org>, (by GCS, closes: #243209).
+  * Ask for the language used by Mailman from the enabled languages
+    (by GCS, closes: #224319).
 
  -- Siggy Brentrup <bsb@debian.org>  Sat, 10 Apr 2004 12:46:59 +0200
 
