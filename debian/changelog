@@ -12,6 +12,13 @@ mailman (2.1.5-2) unstable; urgency=high
   * Fix Russian newlist template, mailman-owner is siteowner now
     (closes: #260816); remove CAN-2004-0412 dpatch, as this is now
     included upstream; enable french_archtocentry dpatch (closes: #262349).
+  * Updated debconf translations:
+    - Czech by Miroslav Kure (closes: #273840);
+    - French by Philippe Batailler (closes: #269637);
+    - German by Jens Nachtigall (closes: #274392);
+    - Also a big thanks to Denis Barbier who spot that two strings were not
+      marked as translatable and did the preliminary work with the
+      translations!
 
  -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
 

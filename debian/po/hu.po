@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.4-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-18 19:27+0200\n"
+"POT-Creation-Date: 2004-10-06 22:06+0000\n"
 "PO-Revision-Date: 2004-02-20 20:06+0100\n"
 "Last-Translator: László 'GCS' Böszörményi <gcs@lsc.hu>\n"
 "Language-Team: \n"
@@ -279,3 +279,34 @@ msgstr ""
 "A lista létrehozásához futtassa a \"newlist mailman\" parancsot, és kövesse "
 "a képernyõn megjelenõ utasításokat. A lista létrehozása után el kell "
 "indítania a mailman-t a \"/etc/init.d/mailman start\" paracs kiadásával."
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid "Which language should be the default for Mailman?"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid "Old queue files present"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid ""
+"The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
+"for the upgrade work properly.  Please either flush the queue (by way of "
+"mailmanctl start, then stopping it and redoing the upgrade when it is "
+"finished) or remove those files.  Note that removing the files will lose "
+"some emails sent to lists."
+msgstr ""

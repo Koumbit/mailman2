@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maiman 2.1.4-3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-18 19:27+0200\n"
+"POT-Creation-Date: 2004-10-06 22:06+0000\n"
 "PO-Revision-Date: 2004-04-09 22:10+0200\n"
 "Last-Translator: Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>\n"
 "Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -283,3 +283,34 @@ msgstr ""
 "Para crear la lista, ejecute «newlist mailman» y siga las instrucciones que "
 "aparecerán en pantalla. Posteriormente deberá reiniciar mailman, ejecutando "
 "«/etc/init.d/mailman start»."
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid "Which language should be the default for Mailman?"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid "Old queue files present"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid ""
+"The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
+"for the upgrade work properly.  Please either flush the queue (by way of "
+"mailmanctl start, then stopping it and redoing the upgrade when it is "
+"finished) or remove those files.  Note that removing the files will lose "
+"some emails sent to lists."
+msgstr ""
