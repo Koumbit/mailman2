@@ -80,6 +80,7 @@ EX_SOFTWARE = 70    # internal software error
 EX_TEMPFAIL = 75    # temporary failure
 
 import sys, os
+sys.path.append("/usr/lib/mailman/bin")
 import paths
 
 from Mailman import mm_cfg
