@@ -8,7 +8,8 @@ mailman (2.1.4-3) UNRELEASED; urgency=low
   * Purge all mailman files _in_ucf_database_ on package purge (bsb).
   * Make 'leftover' notice stand out (bsb).
   * Added helper debconf template mailman/used_languages to avoid
-    duplicate scanning on preconfigure/setup (bsb).
+    duplicate scanning on preconfigure/setup, while at it make config more
+    robust (bsb, closes: #241021).
   * Remove bashism from debian/config (by GCS, closes: #240643).
   * Mention mm_cfg.MTA=None in README.EXIM (closes: #240295), also fix
     pathes to reflect Debian choices (bsb).
@@ -16,7 +17,7 @@ mailman (2.1.4-3) UNRELEASED; urgency=low
     at it regroup options and add comments (bsb).
   * Incorparate enhancements to postfix-to-mailman.py (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 02:15:16 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 14:50:22 +0200
 
 mailman (2.1.4-2) unstable; urgency=low
 
