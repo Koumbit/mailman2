@@ -1,0 +1,54 @@
+#! /bin/sh -e
+## 90_can-2004-0412.dpatch by Siggy Brentrup <bsb@debian.org>
+##
+## $URL$
+## $Id$
+##
+## DP: Mandrake security patch for CAN-2004-0412.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Commands/cmd_password.py mailman-2.1.4/Mailman/Commands/cmd_password.py
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Commands/cmd_password.py	2002-05-02 04:54:46.000000000 +0200
++++ mailman-2.1.4/Mailman/Commands/cmd_password.py	2004-05-29 14:32:27.000000000 +0200
+@@ -1,4 +1,4 @@
+-# Copyright (C) 2002 by the Free Software Foundation, Inc.
++# Copyright (C) 2002-2004 by the Free Software Foundation, Inc.
+ #
+ # This program is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License
+@@ -49,6 +49,8 @@
+         if mlist.isMember(address):
+             password = mlist.getMemberPassword(address)
+             res.results.append(_('Your password is: %(password)s'))
++            # Prohibit multiple password retrievals.
++            return STOP
+         else:
+             listname = mlist.real_name
+             res.results.append(
+@@ -62,6 +64,8 @@
+         if mlist.isMember(address):
+             password = mlist.getMemberPassword(address)
+             res.results.append(_('Your password is: %(password)s'))
++            # Prohibit multiple password retrievals.
++            return STOP
+         else:
+             listname = mlist.real_name
+             res.results.append(
