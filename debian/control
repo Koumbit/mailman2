@@ -8,11 +8,11 @@ Standards-Version: 3.6.1
 
 Package: mailman
 Architecture: all
-Depends: mailman-bin (= ${Source-Version}), python (>= 2.3), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), ucf (>= 1.0.0), pwgen
+Depends: mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), python (>= 2.3), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), ucf (>= 1.05), pwgen
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
-Recommends: mailman-i18n (= ${Source-Version}), base-passwd (>= 1.3.0)
+Recommends: base-passwd (>= 1.3.0)
 Suggests: mailman-doc (= ${Source-Version}), mailman-spamassassin | mailman-spamprobe, mailman-savannah, mailman-clamav
-Description: Powerful, web-based mailing list manager
+Description: powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,
  Mailman gives each mailing list a web page, and allows users to
@@ -34,22 +34,35 @@ Architecture: any
 Depends: ${shlibs:Depends}, mailman (= ${Source-Version})
 Conflicts: mailman (<= 2.1.4-4)
 Replaces: mailman (<= 2.1.4-4)
-Description: Setgid wrappers for mailman.
- Architecture dependent setgid-wrappers required for running mailman.
- because is implemented in Python.
+Description: setgid wrappers required for running mailman
+ The kernel allowing only native compiled code to be installed setgid,
+ theses wrappers invoke workers implemented in Python after validating
+ arguments.
 
 Package: mailman-i18n
 Architecture: all
-Depends: mailman (= ${Source-Version}), ucf (>= 1.0.0), debconf (>= 1.4.16)
-Conflicts: mailman (<= 2.1.4-4)
-Replaces: mailman (<= 2.1.4-4)
+Depends: mailman (= ${Source-Version}), ucf (>= 1.05), debconf (>= 1.4.16)
+Conflicts: mailman (<= 2.1.4-4), mailman-en
+Replaces: mailman (<= 2.1.4-4), mailman-en
 Suggests: python2.3-korean-codecs, python-japanese-codecs
-Description: Powerful, web-based mailing list manager (internationalization)
- Message translations plus language specific templates for mailman.
+Description: language specific parts of mailman (international)
+ Message translations plus international templates for web pages and
+ automatically generated emails.
+
+Package: mailman-en
+Architecture: all
+Depends: mailman (= ${Source-Version}), ucf (>= 1.05), debconf (>= 1.4.16)
+Conflicts: mailman (<= 2.1.4-4), mailman-i18n
+Replaces: mailman (<= 2.1.4-4), mailman-i18n
+Description: language specific parts of mailman (english only)
+ English templates for web-pages and automatically generated emails.
+ .
+ This package is provided for the benefit of sites that don't need
+ internationalization.
 
 Package: mailman-doc
 Architecture: all
 Conflicts: mailman (<= 2.1.4-4)
-Description: Powerful, web-based mailing list manager (Documentation)
+Description: powerful, web-based mailing list manager (Documentation)
  Documentation and examples for mailman.
 
