@@ -78,4 +78,3 @@ _Description: Unsupported languages used
  all mailing lists use only english, then dpkg-reconfigue ${package}
  disabling all languages but english.
 
- 
