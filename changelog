@@ -31,14 +31,11 @@ mailman (2.1.4-2) unstable; urgency=low
     /usr/lib/mailman/bin/postfix-to-mailman.py (bsb).
   * Cleaned up README.Debian removing obsolete mailman-owner alias and
     adding a section on using postfix-to-mailman.py (bsb).
-  * Applied patch supplied by Marc Haber <mh+debian-bugs@zugschlus.de> to
-    simplify backporting to woody (cf. XX_po-debconf_hack.dpatch)
-    (bsb, closes: #223348).
   * Fix path problems, found by Nathan Stratton Treadway <nathanst@ontko.com>
     (by GCS, closes: #235835, #236473)
   * Added missing manpages withlist.8 and list_admins.8 (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Wed, 24 Mar 2004 23:24:23 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Wed, 24 Mar 2004 23:48:15 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 
