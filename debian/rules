@@ -137,7 +137,7 @@ binary-arch:	checkroot build
 	chown -R root.root debian/mailman
 	chown -R root.list \
 		debian/mailman/{etc/$(package),var/lib/$(package),usr/lib/{$(package),cgi-bin/$(package)}}
-	chown list.list debian/mailman/var/{lock/mailman,lib/mailman/qfiles}
+	chown list.list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}
 	chown root.list debian/mailman/var/log/mailman
 	find debian/mailman/var/lib/$(package) -type d | xargs chmod 2775
 
@@ -190,11 +190,13 @@ binary-arch:	checkroot build
 	echo 'if [ "$$1" = "configure" ]; then'>> debian/mailman.postinst.ucf
 	for dir in $$(for f in $$(cat debian/ucffiles); do dirname "$$f" ; done | sort | uniq); do echo -e "\tmkdir -p $$dir" >> debian/mailman.postinst.ucf ; done
 
+	echo -e "\techo -n 'Checking/installing config files (this takes time)': " >> debian/mailman.postinst.ucf
 	for f in `cat debian/ucffiles`; do \
-		echo -e "\techo Checking/installing config file $$f" >> debian/mailman.postinst.ucf ; \
+		echo -e "\techo -n ." >> debian/mailman.postinst.ucf ; \
 		echo -e "\tucf `echo $$f | sed s,/etc/mailman,/usr/share/mailman,` $$f < /dev/tty > /dev/tty" >> debian/mailman.postinst.ucf ; \
 	done
 	echo 'fi' >> debian/mailman.postinst.ucf
+	echo -e "\techo \" done!\"" >> debian/mailman.postinst.ucf
 
 	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postinst.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postinst
 	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postrm.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postrm

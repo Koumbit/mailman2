@@ -17,4 +17,5 @@
 51_nocompile.pyc
 52_check_perms_lstat
 53_disable_addons
+55_options_traceback
 99_js_templates
