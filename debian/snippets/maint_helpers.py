@@ -102,8 +102,8 @@ class CommandRunner:
     """
     """#
 
-    def __init__(self, sys_dir):
-        self._prepend = sys_dir
+    def __init__(self, prepend=None):
+        self._prepend = prepend
 
 
     def run(self, cmd, *args):
@@ -113,7 +113,8 @@ class CommandRunner:
         sys_argv    = sys.argv[:]
         sys_path    = sys.path[:]
         sys.argv    = [cmd] + list(args)
-        sys.path.insert(0, self._prepend)
+        if self._prepend:
+            sys.path.insert(0, self._prepend)
         execfile(cmd, gbls)
         sys.path    = sys_path
         sys.argv    = sys_argv
