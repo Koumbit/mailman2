@@ -3,6 +3,9 @@
 # based on the sample debian/rules file for GNU hello by Ian Jackson.
 
 package=mailman
+PACKAGE=$(package)
+
+include /usr/share/dpatch/dpatch.make
 
 binaries=list_lists find_member config_list mmsitepass newlist rmlist	\
 	add_members list_members remove_members arch clone_member	\
@@ -21,9 +24,7 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 INSTALL_PROGRAM += -s
 endif
 
-export DH_COMPAT=3
-
-build: Makefile debian/po/templates.pot
+build: patch-stamp Makefile debian/po/templates.pot
 	$(MAKE) 
 	touch build
 
@@ -38,7 +39,7 @@ Makefile:
 		--without-permcheck --with-mailhost=localhost \
 		--with-urlhost=localhost
 
-clean:
+clean: unpatch
 	$(checkdir)
 	-$(MAKE) distclean
 	rm -rf build Makefile debian/ucffiles debian/mailman.postinst.ucf
