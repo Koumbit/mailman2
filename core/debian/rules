@@ -27,18 +27,20 @@ build: patch-stamp Makefile debian/po/templates.pot
 	mkdir -p debian/tmp/usr/share/images/mailman
 	$(MAKE) doinstall DESTDIR=$$(pwd)/debian/tmp \
 		prefix=/usr/lib/$(package) \
-		var_prefix=/var/lib/$(package) \
 		icondir=/usr/share/images/mailman \
 		ICONDIR=/usr/share/images/mailman
 	touch build
 
-debian/po/templates.pot: debian/templates
+debian/po/templates.pot: debian/po/POTFILES.in debian/mailman.templates \
+		debian/mailman-en.templates debian/mailman-i18n.templates
 	@debconf-updatepo
 
 Makefile:
 	autoconf
-	./configure --prefix=/var/lib/$(package) --with-username=list \
-		--with-groupname=list \
+	./configure --prefix=/var/lib/$(package) \
+		--exec-prefix=/usr/lib/$(package) \
+		--with-var-prefix=/var/lib/$(package) \
+		--with-username=list --with-groupname=list \
 		--with-mail-gid=daemon --with-cgi-gid=www-data \
 		--without-permcheck --with-mailhost=localhost \
 		--with-urlhost=localhost
@@ -93,6 +95,8 @@ binary-indep:	checkroot build
 		debian/mailman-i18n/usr/share/doc/mailman-i18n
 	# Mailman/Post.py may be run as a script
 	chmod a+x debian/mailman/usr/share/mailman/Mailman/Post.py
+	# Remove irrelevant READMEs
+	rm -f debian/mailman/usr/share/doc/mailman/README.{BSD,MACOSX}
 
 	dh_link --indep
 	dh_compress --indep
