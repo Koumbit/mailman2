@@ -56,7 +56,7 @@ clean: unpatch
 	rm -rf build-indep build-arch Makefile
 	dh_clean
 	rm -rf $$(find . -name "*~")
-	rm -rf debian/tmp debian/mailman debian/mailman-{bin,i18n,doc,trans}
+	rm -rf debian/tmp debian/mailman debian/mailman-{bin,i18n,doc,cfdb}
 
 
 
@@ -101,7 +101,7 @@ binary-indep:	checkroot build-indep
 	# remove .po files
 	rm -f $$(find debian/mailman-i18n/usr/share/locale -name mailman.po)
 	# remove templates.py which belongs into mailman
-	rm -f debian/mailman-trans/usr/lib/mailman/Mailman/Debian/templates.py
+	rm -f debian/mailman-cfdb/usr/lib/mailman/Mailman/Debian/templates.py
 	# move language README.lang to doc directory
 	mv $$(find debian/mailman-i18n/usr/share/locale -name README.\*) \
 		debian/mailman-i18n/usr/share/doc/mailman-i18n
