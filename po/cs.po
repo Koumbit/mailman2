@@ -1,10 +1,3 @@
-# mailman debconf translation to spanish
-# Copyright (C) 2003,2004 Software in the Public Interest
-# This file is distributed under the same license as the mailman package.
-#
-# Changes:
-# - Initial translation
-#        Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>, 2003, 2004
 #
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
@@ -18,17 +11,16 @@
 #
 #    Developers do not need to manually edit POT or PO files.
 #
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: maiman 2.1.4-3\n"
+"Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-08-18 19:27+0200\n"
-"PO-Revision-Date: 2004-04-09 22:10+0200\n"
-"Last-Translator: Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>\n"
-"Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"PO-Revision-Date: 2004-04-18 13:34+0200\n"
+"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
+"Language-Team: Czech <provoz@debian.cz>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: multiselect
@@ -236,7 +228,7 @@ msgstr ""
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "¿Conectar las noticias con el correo?"
+msgstr "Brána z news do po¹ty?"
 
 #. Type: boolean
 #. Description
@@ -245,20 +237,20 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"¿Quiere conectar las noticias con el correo? Consiste en enviar todos los "
-"mensajes que aparecen en un grupo de noticias a una lista de correo."
+"Pøejete-li si posítat v¹echny pøíspìvky, které se objeví v newsové skupinì "
+"do po¹tovní konference."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Most people won't need this."
-msgstr "Prácticamente nadie necesita esto."
+msgstr "Vìt¹ina lidí toto nepotøebuje."
 
 #. Type: note
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "Falta la lista del sitio"
+msgstr "Chybìjící administrativní konference"
 
 #. Type: note
 #. Description
@@ -268,9 +260,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman necesita la llamada \"lista del sitio\", que es la lista a partir de "
-"la que se mandan, por ejemplo, los recordatorios de contraseña. Debe crear "
-"esta lista antes de iniciar mailman."
+"Mailman potøebuje takzvanou \"administrativní adresu\", co¾ je adresa, ze "
+"které posílá napøíklad upomínání hesel a podobnì. Tato adresa musí být "
+"vytvoøena pøed startem mailmanu."
 
 #. Type: note
 #. Description
@@ -280,6 +272,5 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Para crear la lista, ejecute «newlist mailman» y siga las instrucciones que "
-"aparecerán en pantalla. Posteriormente deberá reiniciar mailman, ejecutando "
-"«/etc/init.d/mailman start»."
+"Pro vytvoøení adresy spus»te \"newlist mailman\" a následujte instrukce na "
+"obrazovce. Poté musíte mailman spustit pøíkazem /etc/init.d/mailman start."

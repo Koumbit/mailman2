@@ -2,6 +2,8 @@
 # $URL$
 # $Id$
 
+. /usr/share/debconf/confmodule
+
 if [ "$1" = "install" ]; then
 	if ! id -g list > /dev/null 2>&1 ; then
 		addgroup --system list
@@ -26,16 +28,15 @@ if [ "$1" = "install" -o "$1" = "upgrade" ]; then
 	fi
 fi
 
-if [ "$1" = "upgrade" ] && dpkg --compare-versions "$2" lt 2.1; then
-    # upgrading, make sure the qfiles directory is empty.
-    if ls /var/lib/mailman/qfiles 2>/dev/null | grep -q '.*' ; then
-        # uh-oh.
-        echo "Queue not cleared, please flush mailman queue and retry upgrade"
-        exit 1
-    fi
-
-fi
-
 #DEBHELPER#
+
+# make sure the qfiles directory is empty.
+if [ "$(find /var/lib/mailman/qfiles -type f | wc -l)" -ne 0 ]; then
+    # uh-oh.
+    db_fset mailman/queue_files_present seen false || true
+    db_input critical mailman/queue_files_present || true
+    db_go
+    exit 1
+fi
 
 exit 0

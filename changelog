@@ -1,3 +1,27 @@
+mailman (2.1.5-1) unstable; urgency=high
+
+  * New upstream version (closes: #249959).
+    - fixes NotAMember traceback (closes: #246648).
+    - handles corrupt files better (closes: #221107, #249929).
+  * Rename Catalan translation (closes: #255874)
+  * Apply patch from Pabs to fix crash if enabling missing language
+    (closes: 257606)
+  * Chicken out if the queue is not empty when upgrading.  
+    (closes: #248438)
+  * Make sure the files in the cron.d are executable before running them.
+    Also, call the scripts directly rather than using python $SCRIPT.
+    (closes: #264705).  (No, it doesn't handle upgrades properly, but it's
+    not a big issue and will be fixed for etch.)
+  * Make sure we don't ship /var/lib/mailman/pythonlib, should make that
+    go away on installations which already have it (closes: #242740).
+  * Consolidate logrotate scripts (closes: #235006).
+  * Update Spanish debconf translation, thanks to Carlos Valdivia Yague.
+    (closes: #247830)
+  * Add Czech debconf translation, thanks to Miroslav Kure.  
+    (closes: #244421)
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Wed, 18 Aug 2004 19:21:48 +0200
+
 mailman (2.1.4-5) unstable; urgency=high
 
   * This is an intermediate release to fix a security issue, 2.1.5 will be

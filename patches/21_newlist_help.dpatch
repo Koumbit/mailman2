@@ -21,9 +21,9 @@ esac
 
 exit 0
 @DPATCH@
-
---- mailman-2.1.4.orig/bin/newlist
-+++ mailman-2.1.4/bin/newlist
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/bin/newlist trunk/bin/newlist
+--- /home/tfheen/external/pkg-mailman/trunk/bin/newlist	2004-08-18 14:49:28.000000000 +0200
++++ trunk/bin/newlist	2004-08-18 14:50:26.000000000 +0200
 @@ -62,6 +62,9 @@
  defined in your Defaults.py file or overridden by settings in mm_cfg.py).
  
@@ -44,7 +44,7 @@ exit 0
  from Mailman import mm_cfg
 @@ -97,6 +101,9 @@
  
- ^L
+ 
  def main():
 +    gid = grp.getgrnam(mm_cfg.MAILMAN_GROUP)[2]
 +    if os.getgid() != mm_cfg.MAILMAN_GROUP:
@@ -55,7 +55,7 @@ exit 0
 @@ -163,7 +170,7 @@
          except Errors.BadListNameError, s:
              usage(1, _('Illegal list name: %(s)s'))
-         except Errors.MMBadEmailError, s:
+         except Errors.EmailAddressError, s:
 -            usage(1, _('Bad owner email address: %(s)s'))
 +            usage(1, _('Bad owner email address: %(s)s.  Owner addresses need to be fully-qualified names, like "owner@example.com", not just "owner".'))
          except Errors.MMListAlreadyExistsError:

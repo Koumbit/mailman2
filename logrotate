@@ -1,10 +1,11 @@
-/var/log/mailman/bounce {
+/var/log/mailman/vette /var/log/mailman/error /var/log/mailman/bounce {
 	weekly
 	missingok
 	create 0664 list list
 	rotate 4
 	compress
 	delaycompress
+        sharedscripts
         postrotate
             [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
         endscript
@@ -17,114 +18,33 @@
 	rotate 4
 	compress
 	delaycompress
+        sharedscripts
         postrotate
             [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
         endscript
 }
 
-/var/log/mailman/error {
-	weekly
-	missingok
-	create 0664 list list
-	rotate 4
-	compress
-	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/post {
+/var/log/mailman/subscribe /var/log/mailman/post {
 	monthly
 	missingok
 	create 0664 list list
 	rotate 12
 	compress
 	delaycompress
+        sharedscripts
         postrotate
             [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
         endscript
 }
 
-/var/log/mailman/smtp-failure {
+/var/log/mailman/qrunner /var/log/mailman/fromusenet /var/log/mailman/locks /var/log/mailman/smtp /var/log/mailman/smtp-failure {
 	daily
 	missingok
 	create 0664 list list
 	rotate 7
 	compress
 	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/smtp {
-	daily
-	missingok
-	create 0664 list list
-	rotate 7
-	compress
-	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/locks {
-	daily
-	missingok
-	create 0664 list list
-	rotate 7
-	compress
-	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/fromusenet {
-	daily
-	missingok
-	create 0664 list list
-	rotate 7
-	compress
-	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/qrunner {
-	daily
-	missingok
-	create 0664 list list
-	rotate 7
-	compress
-	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/subscribe {
-	monthly
-	missingok
-	create 0664 list list
-	rotate 12
-	compress
-	delaycompress
-        postrotate
-            [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
-        endscript
-}
-
-/var/log/mailman/vette {
-	weekly
-	missingok
-	create 0664 list list
-	rotate 4
-	compress
-	delaycompress
+        sharedscripts
         postrotate
             [ -f '/var/run/mailman.pid' ] && kill -HUP $(cat /var/run/mailman.pid) || exit 0
         endscript

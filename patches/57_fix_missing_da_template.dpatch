@@ -22,14 +22,28 @@ esac
 
 exit 0
 @DPATCH@
---- mailman-2.1.4.orig/templates/Makefile.in	2003-12-13 16:32:44.000000000 +0000
-+++ mailman-2.1.4/templates/Makefile.in	2004-04-08 16:51:25.000000000 +0000
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/Makefile.in trunk/templates/Makefile.in
+--- /home/tfheen/external/pkg-mailman/trunk/templates/Makefile.in	2004-08-18 15:14:46.000000000 +0200
++++ trunk/templates/Makefile.in	2004-08-18 15:15:42.000000000 +0200
 @@ -42,7 +42,7 @@
  
  SHELL=		/bin/sh
  
 -LANGUAGES=	big5 ca cs de en es et eu fi fr gb hr hu it ja ko lt nl \
 +LANGUAGES=	big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl \
- 		no pl pt pt_BR ro ru sl sr sv uk
+ 		no pl pt pt_BR ro ru sl sr sv tr uk
  
  # Modes for directories and executables created by the install
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/#Makefile.in.rej# trunk/templates/#Makefile.in.rej#
+--- /home/tfheen/external/pkg-mailman/trunk/templates/#Makefile.in.rej#	1970-01-01 01:00:00.000000000 +0100
++++ trunk/templates/#Makefile.in.rej#	2004-08-18 15:15:51.000000000 +0200
+@@ -0,0 +1,9 @@
++@@ -42,7 +42,7 @@
++ 
++ SHELL=		/bin/sh
++ 
++-LANGUAGES=	big5 ca cs de en es et eu fi fr gb hr hu it ja ko lt nl \
+++LANGUAGES=	big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl \
++ 		no pl pt pt_BR ro ru sl sr sv uk
++ 
++ # Modes for directories and executables created by the install
