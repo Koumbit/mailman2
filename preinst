@@ -31,7 +31,8 @@ fi
 #DEBHELPER#
 
 # make sure the qfiles directory is empty.
-if [ "$(find /var/lib/mailman/qfiles -type f | wc -l)" -ne 0 ]; then
+if [ -d /var/lib/mailman/qfiles ] && \
+	[ "$(find /var/lib/mailman/qfiles -type f | wc -l)" -ne 0 ]; then
     # uh-oh.
     db_fset mailman/queue_files_present seen false || true
     db_input critical mailman/queue_files_present || true
