@@ -1,3 +1,10 @@
+mailman (2.1.5-2) unstable; urgency=high
+
+  * Fix for eating messages because of _snooze interface change (Laszlo,
+    closes: #272012).
+
+ -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
+
 mailman (2.1.5-1) unstable; urgency=high
 
   * New upstream version (closes: #249959).
