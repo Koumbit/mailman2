@@ -39,3 +39,10 @@ _Description: Missing site list
  To create the list, run "newlist mailman" and follow the instructions
  on-screen.  Note that you also need to start mailman after that,
  using /etc/init.d/mailman start.
+
+Template: mailman/default_server_language
+Type: select
+Choices: ${site_languages}
+Description: Which language should be the default for Mailman?
+ The web page will be shown in this language, and in general, Mailman
+ will use this language to communicate with the user.

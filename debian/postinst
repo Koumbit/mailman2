@@ -120,6 +120,12 @@ EOF
       done
       echo " done." >&2
     done
+    db_get mailman/default_server_language || true
+    if [ ${RET} ]; then
+      default_server_language=${RET}
+      sed -e s/DEFAULT_SERVER_LANGUAGE=\'..\'/DEFAULT_SERVER_LANGUAGE=\'${default_server_language}\'/ ${mm_etc}/mm_cfg.py > ${mm_etc}/mm_cfg.py.$$
+      mv -f ${mm_etc}/mm_cfg.py.$$ ${mm_etc}/mm_cfg.py
+    fi
     # Done with site language stuff
 
     # Don't forget the qmail specific stuff (but why support non-free?)

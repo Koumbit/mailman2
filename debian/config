@@ -83,6 +83,11 @@ else
 fi
 
 db_input high mailman/site_languages || true
+# Let the db go, and ask the user, so we won't get back a stale setting
+db_go || true
+db_get mailman/site_languages && selected_languages=${RET}
+db_subst mailman/default_server_language site_languages "${selected_languages}"
+db_input high mailman/default_server_language || true
 
 if [ -f "${crontab}" ]; then
   COMMENT=`awk '/^.*gate_news/ { print substr($1,1,1) } ' < ${crontab}`
