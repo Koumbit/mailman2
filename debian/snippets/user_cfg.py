@@ -5,51 +5,26 @@
 # Use a 2.0 mm_cfg.py
 USER_MM_CFG = '/root/stable/etc/mailman/mm_cfg.py'
 # Use a current mm_cfg.py
-#USER_MM_CFG = '/etc/mailman/mm_cfg.py'
+USER_MM_CFG = '/etc/mailman/mm_cfg.py'
 
 import sys
 sys.path.insert(0, '/usr/lib/mailman')
 
-virgin_gbls = globals().copy()
-
-
-## mm_cfg_deprecated = {
-##     'DEFAULT_HOST_NAME' : '''\
-## # Replaced by DEFAULT_EMAIL_HOST
-## # DEFAULT_HOST_NAME = %(DEFAULT_HOST_NAME)r
-## ''',
-##     'DEFAULT_URL' : '''\
-## # Replaced by DEFAULT_URL_PATTERN.
-## # DEFAULT_URL = %(DEFAULT_URL)r
-## ''',
-##     'OLD_IMAGE_LOGOS' : '''\
-## # Location has changed.
-## # IMAGE_LOGOS = %(OLD_IMAGE_LOGOS)r
-## ''',
-##     'PRIVATE_ARCHIVE_URL' : '''\
-## # Private archive access now uses /usr/lib/cgi-bin/mailman/private.
-## # PRIVATE_ARCHIVE_URL = %(PRIVATE_ARCHIVE_URL)r
-## ''',
-##     'OLD_PUBLIC_ARCHIVE_URL' : '''\
-## # Public archive access now uses %(PUBLIC_ARCHIVE_URL)r
-## # PUBLIC_ARCHIVE_URL = %(OLD_PUBLIC_ARCHIVE_URL)r
-## ''',
-##     'MAILMAN_OWNER' : '''\
-## # The mailman-owner@%(DEFAULT_EMAIL_HOST)s is now a special site-list
-## # alias and the MAILMAN_OWNER variable is ignored.
-## # MAILMAN_OWNER = %(MAILMAN_OWNER)r
-## ''',
-##     }
-    
-    
+if sys.modules.has_key('Mailman.Defaults'):
+    reload(sys.modules['Mailman.Defaults'])
+else:
+    virgin_gbls = globals().copy()
 
 
 def upgrade_mm_cfg():
+
     def_gbls = virgin_gbls.copy()
     exec 'from Mailman.Defaults import *' in def_gbls
+    exec 'VIRTUAL_HOSTS = VIRTUAL_HOSTS.copy()' in def_gbls
     usr_gbls = virgin_gbls.copy()
     sys.modules['Defaults'] = sys.modules['Mailman.Defaults']
     execfile(USER_MM_CFG, usr_gbls)
+
     usr_mod  = {}
     usr_def  = {}
 
@@ -115,6 +90,11 @@ def upgrade_mm_cfg():
     cfl.write(mm_cfg_defaults)
     cfl.write(mm_cfg_fillin % usr_gbls)
 
+    for url_host, email_host in usr_gbls['VIRTUAL_HOSTS'].items():
+        if (url_host, email_host) not in ((usr_gbls['DEFAULT_URL_HOST'], usr_gbls['DEFAULT_EMAIL_HOST']),
+                                          ('localhost', 'localhost')):
+            cfl.write('add_virtualhost(%(url_host)r, %(email_host)r)' % locals())
+
     dfl = StringIO()
     deprecated_vars = mm_cfg_deprecated.keys()
     deprecated_vars.sort()
@@ -124,7 +104,6 @@ def upgrade_mm_cfg():
             usr_mod[v]
             dfl.write(mm_cfg_deprecated[v] % usr_gbls)
         except KeyError: pass
-
     s = dfl.getvalue()
     if s:
             cfl.write(mm_cfg_deprecated[None])
@@ -132,6 +111,8 @@ def upgrade_mm_cfg():
 
     print cfl.getvalue()
 
+##     print "Defaults VIRTUAL_HOSTS=%(VIRTUAL_HOSTS)r" % def_gbls
+##     print "mm_cfg   VIRTUAL_HOSTS=%(VIRTUAL_HOSTS)r" % usr_gbls
 
 if __name__ == '__main__':
     upgrade_mm_cfg()
