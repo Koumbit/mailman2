@@ -6,6 +6,8 @@ mailman (2.1.5-2) unstable; urgency=high
     closes: #272419).
   * As we do not use quiet mode for the daemon, do not print extra dots
     when mailman starts/stops/restarts (Laszlo, closes: #270369).
+  * Use the correct pid file for logrotate script (Laszlo,
+    closes: #247194).
 
  -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
 
