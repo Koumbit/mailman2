@@ -30,11 +30,9 @@ case "$1" in
             exit 0
         fi
         $DAEMON -s start
-	echo "."
 	;;
   stop)
         $DAEMON stop
-	echo "."
 	;;
   reload)
 	#
@@ -46,7 +44,6 @@ case "$1" in
 	#
 	echo -n "Reloading $DESC configuration..."
 	$DAEMON restart
-	 echo "done."
   ;;
   restart|force-reload)
 	#
@@ -71,7 +68,6 @@ case "$1" in
 		fi
 	fi
         $DAEMON start
-	echo "."
 	;;
   *)
 	N=/etc/init.d/$NAME
