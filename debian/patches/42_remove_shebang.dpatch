@@ -1,0 +1,36 @@
+#! /bin/sh -e
+## 42_remove_shebang.dpatch by  Siggy Brentrup <bsb@debian.org>
+##
+## $URL$
+## $Id$
+##
+## DP: Remove shebang line to make lintian happy.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Archiver/pipermail.py mailman-2.1.4/Mailman/Archiver/pipermail.py
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Archiver/pipermail.py	2004-04-24 21:32:57.000000000 +0200
++++ mailman-2.1.4/Mailman/Archiver/pipermail.py	2004-04-24 21:34:47.000000000 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++# -*- python -*- NOP when run as script
+ 
+ from __future__ import nested_scopes
+ 

@@ -2,6 +2,13 @@
 # $URL$
 # $Id$
 
+"""
+
+Fooling lintian that complains about not sourcing confmodule:
+. /usr/share/debconf/confmodule
+"""
+
+
 import sys, os
 
 
