@@ -154,5 +154,7 @@ class ConfFileDatabase:
             return self.db.__getitem__
         elif name == '__setitem__':
             return self.db.__setitem__
+        elif name == '__delitem__':
+            return self.db.__delitem__
         else:
             raise AttributeError(name)
