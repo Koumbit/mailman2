@@ -16,8 +16,9 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
   * Fix messages/de/LC_MESSAGES/mailman.po for now, but forward to upstream;
     patch from Ralf Doeblitz <r.doeblitz@asco.de> (closes: #233048)
   * Added german debconf translation (bsb).
+  * Added myself to Uploaders (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Mon, 15 Mar 2004 07:30:47 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Wed, 17 Mar 2004 16:53:35 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 
