@@ -2,8 +2,8 @@ mailman (2.1.5-2) unstable; urgency=high
 
   Changes by Laszlo 'GCS' Boszormenyi:
 
-  * Fix for eating messages because of _snooze interface change
-    (closes: #272012).
+  * Fix for eating messages because of _snooze interface change; ACK NMU
+    by Steve Langasek (closes: #272012).
   * Ensure a new line before append anything to the config file
     (closes: #272419).
   * As we do not use quiet mode for the daemon, do not print extra dots
@@ -21,6 +21,15 @@ mailman (2.1.5-2) unstable; urgency=high
       translations!
 
  -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
+
+mailman (2.1.5-1.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * High-urgency upload for sarge-targetted RC fix.
+  * Fix missing argument in OutgoingRunner.py which could potentially
+    cause email to be lost (closes: #272012).
+
+ -- Steve Langasek <vorlon@debian.org>  Wed, 29 Sep 2004 01:34:46 -0700
 
 mailman (2.1.5-1) unstable; urgency=high
 
