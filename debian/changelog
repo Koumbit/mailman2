@@ -1,10 +1,12 @@
-mailman (2.1.4-4) UNRELEASED; urgency=low
+mailman (2.1.4-4) UNRELEASED; urgency=medium
 
   * NOT YET RELEASED
   * Fix README.Debian concerning URLs (bsb, closes: #235835). 
   * Add fix for missing installation of Danish templates (by GCS)
+  * config: don't try to list_lists when upgrading from pre 2.1
+    (bsb, closes: #242945).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue,  6 Apr 2004 23:52:06 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Sat, 10 Apr 2004 12:46:59 +0200
 
 mailman (2.1.4-3) unstable; urgency=medium
 
