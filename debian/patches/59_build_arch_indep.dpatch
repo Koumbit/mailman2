@@ -1,0 +1,124 @@
+#! /bin/sh -e
+## 59_build_arch_indep.dpatch by  Siggy Brentrup <bsb@debian.org>
+##
+## $URL$
+## $Id$
+##
+## DP: Separate targets do-arch-install and do-indep-install.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Makefile.in mailman-2.1.4/Makefile.in
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/Makefile.in	2004-05-10 11:09:41.000000000 +0200
++++ mailman-2.1.4/Makefile.in	2004-05-10 11:22:31.000000000 +0200
+@@ -55,7 +55,9 @@
+ ARCH_DEP_DIRS=	cgi-bin mail
+ 
+ # Directories make should decend into
+-SUBDIRS=	bin cron misc Mailman scripts src templates messages tests
++ARCH_SUBDIRS  = src
++INDEP_SUBDIRS = bin cron misc Mailman scripts templates messages tests
++SUBDIRS       = $(ARCH_SUBDIRS) $(INDEP_SUBDIRS)	
+ 
+ 
+ # Modes for directories and executables created by the install
+@@ -73,21 +75,27 @@
+ 
+ # Rules
+ 
+-all: subdirs
++all: arch-subdirs indep-subdirs
+ 
+-subdirs: $(SUBDIRS)
+-	for d in $(SUBDIRS); \
++arch-subdirs: $(ARCH_SUBDIRS)
++	for d in $(ARCH_SUBDIRS); \
+ 	do \
+ 	    (cd $$d; $(MAKE)); \
+ 	done
+ 
+-install: doinstall update
++indep-subdirs: $(INDEP_SUBDIRS)
++	for d in $(INDEP_SUBDIRS); \
++	do \
++	    (cd $$d; $(MAKE)); \
++	done
+ 
+-doinstall: $(SUBDIRS)
+-	@echo "Creating architecture independent directories..."
+-	@for d in $(VAR_DIRS); \
++install: do-arch-install do-indep-install update
++
++do-arch-install: $(ARCH_SUBDIRS)
++	@echo "Creating architecture dependent directories..."
++	@for d in $(ARCH_DEP_DIRS); \
+ 	do \
+-	    dir=$(DESTDIR)$(var_prefix)/$$d; \
++	    dir=$(DESTDIR)$(exec_prefix)/$$d; \
+ 	    if test ! -d $$dir; then \
+ 		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+@@ -96,31 +104,37 @@
+ 	    else true; \
+ 	    fi; \
+ 	done
+-	chmod o-r $(DESTDIR)$(var_prefix)/archives/private
+-	@for d in $(ARCH_INDEP_DIRS); \
++	@for d in $(ARCH_SUBDIRS); \
+ 	do \
+-	    dir=$(DESTDIR)$(prefix)/$$d; \
++	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \
++	done
++
++do-indep-install: $(INDEP_SUBDIRS)
++	@echo "Creating architecture independent directories..."
++	@for d in $(VAR_DIRS); \
++	do \
++	    dir=$(DESTDIR)$(var_prefix)/$$d; \
+ 	    if test ! -d $$dir; then \
+-		echo "Creating directory hierarchy $$dir"; \
++		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+ 		chmod $(DIRMODE) $$dir; \
+ 		$(DIRSETGID) $$dir; \
+ 	    else true; \
+ 	    fi; \
+ 	done
+-	@echo "Creating architecture dependent directories..."
+-	@for d in $(ARCH_DEP_DIRS); \
++	chmod o-r $(DESTDIR)$(var_prefix)/archives/private
++	@for d in $(ARCH_INDEP_DIRS); \
+ 	do \
+-	    dir=$(DESTDIR)$(exec_prefix)/$$d; \
++	    dir=$(DESTDIR)$(prefix)/$$d; \
+ 	    if test ! -d $$dir; then \
+-		echo "Creating directory hierarchy $$dir"; \
++		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+ 		chmod $(DIRMODE) $$dir; \
+ 		$(DIRSETGID) $$dir; \
+ 	    else true; \
+ 	    fi; \
+ 	done
+-	@for d in $(SUBDIRS); \
++	@for d in $(INDEP_SUBDIRS); \
+ 	do \
+ 	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \
+ 	done

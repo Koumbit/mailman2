@@ -1,0 +1,9 @@
+#! /bin/sh -e
+# $URL$
+# $Id$
+
+echo ">>> $0 $*" >&2
+
+#DEBHELPER#
+
+exit 0

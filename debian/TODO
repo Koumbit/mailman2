@@ -114,5 +114,9 @@ is packaged now, it might be wiser to defer them until sarge+1.
   
   CONSIDER: When can we get rid of mailman-trans ?
 
+- In mailman.config make sure /etc/mailname contains a legal FQDN
+  before using it.
+
+
 This list is by no means meant to be complete.
 

@@ -8,8 +8,8 @@ Fooling lintian that complains about not sourcing confmodule:
 . /usr/share/debconf/confmodule
 """
 
-
 import sys, os
+virgin_gbls = globals().copy()
 
 
 # Argl, if the debconf Python interface were well designed, sth like
@@ -28,60 +28,14 @@ db = get_debconf_interface() ; del get_debconf_interface
 from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
 
 
+MM_INST = '/usr/lib/mailman'
 MM_HOME = '/var/lib/mailman'
-MM_BIN  = os.path.join(MM_HOME, 'bin')
-MM_INST = '/usr/share/mailman'
+MM_BIN  = os.path.join(MM_INST, 'bin')
 
-sys.path.insert(0, MM_HOME)
+sys.path.insert(0, MM_INST)
 
 from Mailman.Debian import DebuggingLogger, CommandRunner, cfdb
 from errno import ENOENT
-
-
-
-def ucf_to_cfdb():
-    """Import templates under ucf control.
-
-    All Debian releases up to now that used ucf have only registered
-    files under /etc/mailman/LANG and /etc/mailman/qmail-to-mailman.py
-    with ucf, allowing this simplistic approach at moving to our own
-    conffile database.
-    """#
-    from Mailman.Debian import mm_languages
-
-    UCF_CACHE = '/var/lib/ucf/cache'
-    ETC_DIR   = '/etc/mailman/'
-    ETC_LEN   = len(ETC_DIR)
-
-    prev_lang = None
-
-    ucf_list = [ fn for fn in os.listdir(UCF_CACHE)
-                 if fn.startswith(':etc:mailman:') ]
-    if not ucf_list: return
-    
-    log('Moving files out of ucf control ', nl='')
-
-    for cached in ucf_list:
-        path = '/'.join(cached.split(':'))
-        ucf_cached = os.path.join(UCF_CACHE, cached)
-        tmpl = open(ucf_cached).read()
-        try:
-            reg_key = path[ETC_LEN:]
-            lang, tmpl = reg_key.split('/')
-            if lang in mm_languages:
-                if lang != prev_lang:
-                    if prev_lang: cfdb.sync()
-                    prev_lang = lang
-                cfdb.register(reg_key, tmpl)
-        except ValueError:
-            cfdb.register(path, tmpl)
-
-        os.system('ucf --purge --three-way %(path)s' % locals())
-        os.remove(ucf_cached)
-        log('.', nl='')
-
-    cfdb.sync()
-    log(' done.')
 
 
 def compile_modules(directory):
@@ -105,14 +59,58 @@ def compile_modules(directory):
     log(' done.')
 
 
+def default_mm_cfg():
+    """Get default configuration.
+    """#
+    gbls = virgin_gbls.copy()
+    exec 'from Mailman.Defaults import *' in gbls
+    return gbls
+
 def create_mm_cfg():
     """Create an initial /etc/mailman/mm_cfg.py
 
     This works only for a first time install.
     """#
     try:
-        gbls = globals().copy()
+        from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin
+        mm_cfg_fl = open('/etc/mailman/mm_cfg.py', 'w')
+        # Writing a constant prefix (including the import from Defaults)
+        # beforehand makes sure there is a formally working mm_cfg.
+        mm_cfg_fl.write(mm_cfg_defaults)
+        mm_cfg_fl.flush()
 
+        gbls = default_mm_cfg()
+
+        email_host = db.get('mailman/email_host')
+        gbls['DEFAULT_EMAIL_HOST'] = email_host
+        log('DEBCONF email_host=%(DEFAULT_EMAIL_HOST)r' % gbls, lvl=2)
+        url_host = db.get('mailman/url_host') or 'www.'+email_host
+        gbls['DEFAULT_URL_HOST']   = url_host
+        log('DEBCONF url_host=%(DEFAULT_URL_HOST)r' % gbls, lvl=2)
+        server_language = db.get('mailman/default_server_language') or 'en'
+        gbls['DEFAULT_SERVER_LANGUAGE'] = server_language
+        exec 'from urlparse import urlsplit' in gbls
+        exec 'default_url_path = urlsplit(DEFAULT_URL_PATTERN)[2]' in gbls
+        mm_cfg_fl.write(mm_cfg_fillin % gbls)
+        mm_cfg_fl.close()
+    except DebconfError, exc:
+        log.exception()
+
+
+def update_mm_cfg():
+    """Update an existing /etc/mailman/mm_cfg.py.
+
+    Given upgrade paths from 2.0 MM installations and somewhat
+    broken mm_cfg files from 2.1 installations try to translate
+    obsolete variables to their 2.1 counterparts.
+    """#
+    etc_mm_cfg = '/etc/mailman/mm_cfg.py'
+    def_gbls = default_mm_cfg()
+    usr_gbls = virgin_gbls.copy()
+    sys.modules['Defaults'] = sys.modules['Mailman.Defaults']
+    execfile(etc_mm_cfg, usr_gbls)
+    os.rename(etc_mm_cfg, etc_mm_cfg+'.dpkg-old')
+    try:
         from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin
         mm_cfg_fl = open('/etc/mailman/mm_cfg.py', 'w')
         # Writing a constant prefix (including the import from Defaults)
@@ -128,6 +126,10 @@ def create_mm_cfg():
         url_host = db.get('mailman/url_host') or 'www.'+email_host
         gbls['DEFAULT_URL_HOST']   = url_host
         log('DEBCONF url_host=%(DEFAULT_URL_HOST)r' % gbls, lvl=2)
+        server_language = db.get('mailman/default_server_language') or 'en'
+        gbls['DEFAULT_SERVER_LANGUAGE'] = server_language
+        exec 'from urlparse import urlsplit' in gbls
+        exec 'default_url_path = urlsplit(DEFAULT_URL_PATTERN)[2]' in gbls
         mm_cfg_fl.write(mm_cfg_fillin % gbls)
         mm_cfg_fl.close()
     except DebconfError, exc:
@@ -149,11 +151,6 @@ def update_cron():
 
     try:
         old_crontab = open(cron_tab).read()
-        cur_crontab = fix_pathes(old_crontab)
-        if cur_crontab != old_crontab:
-            open(cron_tab, 'w').write(cur_crontab)
-            log('Fixed pathes in %(cron_tab)r.' % locals())
-            old_crontab = cur_crontab
         cur_crontab = apply_gate_news(old_crontab, gate_news)
         if cur_crontab != old_crontab:
             open(cron_tab, 'w').write(cur_crontab)
@@ -163,9 +160,9 @@ def update_cron():
     new_crontab = apply_gate_news(mm_crontab, gate_news)
 
     # Make sure cfdb comparision use identical gate_news settings
-    if cfdb.has_key(cron_tab):
+    try:
         cfdb[cron_tab] = apply_gate_news(cfdb[cron_tab], gate_news)
-    else:
+    except KeyError:
         cfdb.register(cron_tab, new_crontab)
 
     msg = cfdb.update(cron_tab, data=new_crontab)
@@ -173,24 +170,12 @@ def update_cron():
 
 
 
-def fix_pathes(crontab):
-    """Fix obsolete /usr/lib/mailman/cron pathes"""
-    lines = crontab.split('\n')
-    cron_lines = []
-    for line in lines:
-        pos = line.find('/usr/lib/mailman')
-        if pos >= 0:
-            line = line[:pos] + '/var' + line[pos+4:]
-        cron_lines.append(line)
-    return '\n'.join(cron_lines)
-
-
 def apply_gate_news(crontab, gate_news):
     """Apply gate_news setting to crontab string"""
     lines = crontab.split('\n')
     cron_lines = []
     for line in lines:
-        if line.find('/var/lib/mailman/cron/gate_news') > 0:
+        if line.find('/usr/lib/mailman/cron/gate_news') > 0:
             prefix = (gate_news and [''] or ['# '])[0]
             line = prefix + uncomment(line)
         cron_lines.append(line)
@@ -230,19 +215,20 @@ def update_lists():
     return rc
 
 
-def run_debhelper_additions():
-    from Mailman import mm_cfg
-    help = os.path.join(mm_cfg.TEMPLATE_DIR,
-                        mm_cfg.DEFAULT_SERVER_LANGUAGE,
-                        'help.txt')
-    log(os.path.isfile(help) and 'Will start daemon.'
-        or 'Will not start daemon.', lvl=2)
-    enabled = os.path.isfile(help) and '+x' or '-x'
+def start_mm_qrunner():
+    log('>> entering start_mm_qrunner', lvl=3)
+
+    try:
+        if cfdb['mailman/templates'] in ('mailman-en', 'mailman-i18n'):
+            log('Will start qrunners.', lvl=2)
+    except KeyError:
+        log('Will not start qrunners.', lvl=2)
+        return
+
     from popen2 import Popen4
     runner = Popen4('/bin/sh -e')
     runner.tochild.write("""\
-chmod %s /var/lib/mailman/bin/mailmanctl
-#DEBHELPER#""" % enabled)
+#DEBHELPER#""")
     runner.tochild.close()
     while True:
         rc = runner.poll()
@@ -250,26 +236,32 @@ chmod %s /var/lib/mailman/bin/mailmanctl
         log(runner.fromchild.readline(), nl='')
     log(runner.fromchild.read(), nl='')
     if rc != 0:
+        log('DebHelper added script failed with rc=%(rc)r.' % locals())
         raise SystemExit(1)
 
 
 def setup():
-    compile_modules(MM_HOME)
-    ucf_to_cfdb()
+    compile_modules(MM_INST)
+##     ucf_to_cfdb()
     create_mm_cfg()
     update_cron()
     update_lists()
     fix_perms()
-    run_debhelper_additions()
 
 
 if __name__ == '__main__':
     log = DebuggingLogger('MM_MAINT')
     try:
-        function    = sys.argv[1]
-        inst_version = sys.argv[2]
-        if function in ('configure',):
+        op = sys.argv[1]
+        if op == 'configure':
             setup()
+        if op in ('configure','abort-upgrade','abort-remove','abort-deconfigure'):
+            cfdb['mailman/setup'] = 'ok'
+            start_mm_qrunner()
+        else:
+            log("postinst called with unknown argument %r." % op)
+            raise SystemExit(1)
+        sys.exit(0)
     finally:
         # When things break, this information might be useful
         log.sys_info()

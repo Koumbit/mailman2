@@ -2,12 +2,15 @@
 # $URL$
 # $Id$
 
+echo ">>> $0 $*" >&2
+
 #DEBHELPER#
 
 if [ "$1" = purge ]; then
   rm -f /etc/cron.d/mailman 
   rm -rf /etc/mailman
   rm -rf /var/log/mailman
-  rm -f /var/lib/mailman/data/debcf.db
 #  rm -rf /var/lib/mailman
 fi
+
+exit 0

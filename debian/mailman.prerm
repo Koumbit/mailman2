@@ -5,39 +5,42 @@
 #
 # $URL$
 # $Id$
-
-# Hack to allow upgrade from broken 2.1.1 installs where stopping
-# mailman will fail.  This hack can be removed after sarge+1 is released.
-
-if [ "$1" = "failed-upgrade" -a \( "$2" = "2.1.1-1" -o \
-     "$2" = "2.1.1-2" -o "$2" = "2.1.1-3" \) ]; then
-  if [ -x "/etc/init.d/mailman" ]; then
-    if [ -x /usr/sbin/invoke-rc.d ] ; then
-   	  invoke-rc.d mailman stop || true
-    else
-      /etc/init.d/mailman stop || true
-    fi
-  fi
-  chmod -x /usr/lib/mailman/bin/mailmanctl
-fi
-
-if [ "$1" = "failed-upgrade" ] && dpkg --compare-versions "$2" gt "2.1.4-2" ; then
-  if [ -x "/etc/init.d/mailman" ]; then
-    if [ -x /usr/sbin/invoke-rc.d ] ; then
-      invoke-rc.d mailman stop || true
-    else
-      /etc/init.d/mailman stop || true
-    fi
-  fi
-  chmod -x /usr/lib/mailman/bin/mailmanctl
-fi
-
-#DEBHELPER#
+echo ">>> $0 $*" >&2
 
 PACKAGE=mailman
 
+unset_mm_setup () {
+python <<EOF
+import sys; sys.path.insert(0, '/usr/lib/mailman')
+try:
+    from Mailman.Debian import cfdb
+    del cfdb['mailman/setup']
+except:
+    pass
+EOF
+}
+
+mm_shutdown () {
+#DEBHELPER#
+}
+
+
+case "$1" in
+    upgrade|remove)
+        unset_mm_setup
+        mm_shutdown
+        ;;
+    failed-upgrade)
+        if [ "$2" = "2.1.1-1" -o "$2" = "2.1.1-2" -o "$2" = "2.1.1-3" ] ; then
+            mm_shutdown
+        elif dpkg --compare-versions "$2" gt "2.1.4-2" ; then
+            mm_shutdown
+        fi
+esac
+
+
 # dh_python doesn't do TRT[tm], do it manually
-# We have created symlinks and compiled .py files in the postinst, undo now.
+# We have created compiled .py files in the postinst, undo now.
 dpkg --listfiles $PACKAGE |
     awk '$0~/\.py$/ {print $0"c\n" $0"o"}' |
     xargs rm -f >&2
