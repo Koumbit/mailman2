@@ -1,6 +1,6 @@
-mailman (2.1.4-4) UNRELEASED; urgency=medium
+mailman (2.1.4-4) unstable; urgency=medium
 
-  * NOT YET RELEASED
+  * Urgency medium because RC bugs are fixed.
   * Fix README.Debian concerning URLs (bsb, closes: #235835). 
   * Add fix for missing installation of Danish templates (by GCS)
   * config: don't try to list_lists when upgrading from pre 2.1
@@ -14,7 +14,7 @@ mailman (2.1.4-4) UNRELEASED; urgency=medium
   * Update SpamAssassin handler to the most recent version can be found,
     and document it in README.Debian (by GCS, closes: #235667).
 
- -- Siggy Brentrup <bsb@debian.org>  Thu, 15 Apr 2004 21:19:39 +0200
+ --
 
 mailman (2.1.4-3) unstable; urgency=medium
 
