@@ -20,7 +20,7 @@ mailman (2.1.5-2) unstable; urgency=high
       marked as translatable and did the preliminary work with the
       translations!
 
- -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
+ -- Tollef Fog Heen <tfheen@debian.org>  Thu,  7 Oct 2004 10:44:38 +0200
 
 mailman (2.1.5-1.1) unstable; urgency=high
 
