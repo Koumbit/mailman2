@@ -70,6 +70,7 @@ binary-arch:	checkroot build
 	find debian/mailman-bin/usr/lib -type f | xargs chmod g+s
 
 	dh_compress --same-arch
+	dh_installdeb --same-arch
 	dh_gencontrol --same-arch
 	dh_md5sums --same-arch
 	dh_builddeb --same-arch
@@ -80,19 +81,21 @@ binary-indep:	checkroot build
 	dh_installdocs --indep
 	dh_installchangelogs --indep
 	dh_install --indep
+	dh_installlogrotate --indep
+	dh_fixperms --indep
+
 	# remove that wrapper, it's in mailman-bin
 	rm debian/mailman/usr/share/mailman/mail/mailman
-	# remove 'en' templates, they are in mailman
-	rm -rf debian/mailman-i18n/usr/share/mailman/templates/en
 	# remove .po files
 	rm -f $$(find debian/mailman-i18n/usr/share/locale -name mailman.po)
 	# move language README.lang to doc directory
 	mv $$(find debian/mailman-i18n/usr/share/locale -name README.\*) \
 		debian/mailman-i18n/usr/share/doc/mailman-i18n
-	dh_installlogrotate --indep
-	dh_fixperms --indep
+
 	dh_link --indep
 	dh_compress --indep
+	dh_installdebconf --indep
+	dh_installdeb --indep
 	dh_gencontrol --indep
 	dh_md5sums --indep
 	dh_builddeb --indep

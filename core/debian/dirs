@@ -1,5 +1,4 @@
 etc/logrotate.d
-etc/mailman/templates
 usr/lib/cgi-bin/mailman
 usr/sbin
 usr/share/images/mailman
@@ -14,6 +13,7 @@ var/lib/mailman/bin
 var/lib/mailman/data
 var/lib/mailman/lists
 var/lib/mailman/mail
+var/lib/mailman/pythonlib
 var/lib/mailman/qfiles
 var/lib/mailman/qfiles/archive
 var/lib/mailman/qfiles/bad
