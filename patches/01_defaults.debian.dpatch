@@ -49,7 +49,7 @@ exit 0
  
  # Other useful files
 -PIDFILE = os.path.join(DATA_DIR, 'master-qrunner.pid')
-+PIDFILE = "/var/run/mailman.pid"
++PIDFILE = "/var/run/mailman/mailman.pid"
  SITE_PW_FILE = os.path.join(DATA_DIR, 'adm.pw')
  LISTCREATOR_PW_FILE = os.path.join(DATA_DIR, 'creator.pw')
  
