@@ -38,7 +38,7 @@ the system_aliases director.
 
 If a broken image shows on your mailman html pages, it is probably
 because you don't have the /doc/ alias enabled in your webserver. Copy
-the /usr/share/doc/mailman/images/mailman.jpg to a place where your
+the /usr/share/images/mailman/mailman.jpg to a place where your
 webserver can access it and modify the DELIVERED_BY_URL and
 IMAGE_LOGOS option accordingly in your mm_cfg.py (the default is
 '/doc/mailman/images/mailman.jpg').
@@ -79,8 +79,9 @@ there is no better way until Debian's Python policy is fixed.
 Qmail
 -----
 For those using qmail, please see the comments in
-/usr/share/doc/mailman/examples/qmail-to-mailman.py and set it up
-according to those instructions.
+/etc/mailman/qmail-to-mailman.py and set it up according to those
+instructions. Additional information may be available in
+/usr/share/doc/mailman/README.QMAIL.gz
 
 Postfix
 _______
