@@ -4,13 +4,17 @@
 Changes outlined herein being a major deviation from the way Mailman
 is packaged now, it might be wiser to defer them until sarge+1.
 
-- Split into mailman, mailman-common, mailman-doc, mailman-i18n.
-  installing $LANG/LC_MESSAGES/mailman.mo in /usr/share/locale.
+- Split into mailman, mailman-bin, mailman-doc, mailman-i18n.
+  Changed mind: let the main package be arch-indep and depend on
+  arch-dep mailman-bin containing the wrapper binaries.
 
-- mailman-common.postinst should be better at building a new mm_cfg.py
-  from an existing configuration, in particular at removing obsolete
-  vars.  As it stands, a python postinst (using code inspection if
-  needed) seems to be the way to go.
+- mailman.postinst should be better at building a new mm_cfg.py from
+  an existing configuration, in particular at removing obsolete vars.
+  As it stands, a python postinst (using code inspection if needed)
+  seems to be the way to go.
+
+  For a starting point on how to detect user modifications to
+  mm_cfg.py, see debian/snippets/user_cfg.py
 
 - Rewrite qmail-to-mailman.py to read configuration from mm_cfg.py
   like postfix-to-mailman.py does, getting it out of /etc/mailman and
@@ -22,6 +26,23 @@ is packaged now, it might be wiser to defer them until sarge+1.
   archive, somebody will probably object :(
 
 - Make lintian clean.
+
+- mailman-i18n:
+  $LANG/LC_MESSAGES/mailman.mo should go into /usr/share/locale.
+
+  If not installed, admin pages dealing with multilingual support must
+  be replaced by a hint to install mailman-i18n first.
+
+  The main package will only support english, no inclination to prefer
+  any particular language over the others. I'd even prefer calling it
+  the C locale, let's see if renaming (and providing a link when -i18n
+  is installed) works.
+
+- Upstream check_perms reports nonesense, there is no point in making
+  e.g. language directories 2775.  Either rewrite it such that it
+  provides sensible results or drop it completely (when invoked with
+  -f it even enforces that nonsense).
+
 
 This list is by no means meant to be complete.
 
