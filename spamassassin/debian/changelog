@@ -1,0 +1,6 @@
+mailman-spamassassin (1.0-1) UNRELEASED; urgency=low
+
+  * Preliminary packaging.
+
+ -- Siggy Brentrup <bsb@debian.org>  Mon, 19 Apr 2004 20:24:09 +0200
+
