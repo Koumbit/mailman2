@@ -1,0 +1,13 @@
+#! /bin/sh -e
+
+. /usr/share/debconf/confmodule
+
+if [ ! -e /etc/mailman/mm_cfg.py -o ! -x /var/lib/mailman/bin/list_lists ] || \
+    [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
+    db_input critical mailman/create_site_list || true
+    db_go || true
+fi
+
+db_input low mailman/gate_news || true
+db_go || true
+

@@ -1,0 +1,12 @@
+#! /bin/sh -e
+
+#UCF#
+
+if [ "$1" = purge ]; then
+  rm -f /etc/cron.d/mailman 
+  rm -rf /etc/mailman
+  rm -rf /var/log/mailman
+#  rm -rf /var/lib/mailman
+fi
+
+#DEBHELPER#
