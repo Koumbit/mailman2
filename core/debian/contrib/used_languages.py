@@ -22,8 +22,8 @@ python path, choose /usr/lib/mailman/pythonlib for now.
 """#
 
 import sys, atexit, cStringIO
-
-all_languages = {}
+from Mailman import mm_cfg
+all_languages = { mm_cfg.DEFAULT_SERVER_LANGUAGE : True }
 out = None
 
 def used_languages(mlist):
