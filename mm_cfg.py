@@ -45,18 +45,49 @@ from Defaults import *
 
 ##############################################################
 # Put YOUR site-specific configuration below, in mm_cfg.py . #
-# See Defaults.py for explanations of the values.	     #
+# See Defaults.py for explanations of the values.            #
 
-DEFAULT_URL       = 'http://thunderchild.aszi.sztaki.hu/cgi-bin/mailman/'
-DEFAULT_EMAIL_HOST = 'thunderchild.aszi.sztaki.hu'
-DEFAULT_URL_HOST = 'thunderchild.aszi.sztaki.hu'
-IMAGE_LOGOS       = '/images/mailman/'
-USE_ENVELOPE_SENDER = 0
-DEFAULT_SEND_REMINDERS = 0
-
+#-------------------------------------------------------------
+# The name of the list Mailman uses to send password reminders
+# and similar. Don't change if you want mailman-owner to be
+# a valid local part.
 MAILMAN_SITE_LIST = 'mailman'
 
+#-------------------------------------------------------------
+# If you change these, you have to configure your http server
+# accordingly (Alias and ScriptAlias directives in most httpds)
+DEFAULT_URL_PATTERN = 'http://%s/cgi-bin/mailman'
 PRIVATE_ARCHIVE_URL = '/cgi-bin/mailman/private'
+IMAGE_LOGOS         = '/images/mailman/'
+
+#-------------------------------------------------------------
+# Default domain for email addresses of newly created MLs
+DEFAULT_EMAIL_HOST = 'thunderchild.aszi.sztaki.hu'
+#-------------------------------------------------------------
+# Default host for web interface of newly created MLs
+DEFAULT_URL_HOST   = 'thunderchild.aszi.sztaki.hu'
+#-------------------------------------------------------------
+# Required when setting any of its arguments.
+add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
+
+#-------------------------------------------------------------
+# Iirc this was used in pre 2.1, leave it for now
+USE_ENVELOPE_SENDER    = 0              # Still used?
+
+#-------------------------------------------------------------
+# Unset send_reminders on newly created lists
+DEFAULT_SEND_REMINDERS = 0
+
+#-------------------------------------------------------------
+# Uncomment this if you configured your MTA such that it
+# automatically recognizes newly created lists.
+# (see /usr/share/doc/mailman/README.{EXIM,...})
+# MTA=None   # Misnomer, suppresses alias output on newlist
+
+#-------------------------------------------------------------
+# Uncomment if you use Postfix virtual domains, but be sure to
+# read /usr/share/doc/mailman/README.POSTFIX first.
+# MTA='Postfix'
 
 # Note - if you're looking for something that is imported from mm_cfg, but you
-# didn't find it above, it's probably in Defaults.py.
+# didn't find it above, it's probably in /usr/lib/mailman/Mailman/Defaults.py.

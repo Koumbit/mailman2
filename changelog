@@ -12,8 +12,10 @@ mailman (2.1.4-3) UNRELEASED; urgency=low
   * Remove bashism from debian/config (by GCS, closes: #240643).
   * Mention mm_cfg.MTA=None in README.EXIM (closes: #240295), also fix
     pathes to reflect Debian choices (bsb).
+  * Include add_virtualdomain call in mm_cfg.py (closes: #238509), while
+    at it regroup options and add comments (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 01:21:31 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 01:38:02 +0200
 
 mailman (2.1.4-2) unstable; urgency=low
 
