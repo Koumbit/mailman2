@@ -1,3 +1,14 @@
+mailman (2.1.5-4) unstable; urgency=high
+
+  Changes by Laszlo 'GCS' Boszormenyi; the "Pál utcai fiúk (Boys of Paul
+  street) musical band is divine" release, thanks to their fine concert
+  yesterday (2004 Nov. 12).
+
+  * Add /usr/lib/mailman/bin to the Python modul path of
+    postfix-to-mailman.py (closes: #279361, #280246).
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Sat, 13 Nov 2004 21:32:07 +0100
+
 mailman (2.1.5-3) unstable; urgency=high
 
   Changes by Laszlo 'GCS' Boszormenyi:
