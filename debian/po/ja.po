@@ -1,0 +1,67 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-30 12:12+0100\n"
+"PO-Revision-Date: 2004-01-11 15:52+0900\n"
+"Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=EUC-JP\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "Missing site list"
+msgstr "サイトリストがありません"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"mailman は、パスワードリマインダとそれがどこから送られるのかのリストである "
+"\"サイトリスト\" と呼ばれるものを必要とします。このリストは mailman を開始す"
+"る前に作成されていなければなりません。"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"リストを作成するには、\"newlist mailman\" を実行して、画面に現れる指示に従っ"
+"てください。このあと、/etc/init.d/mailman start を使って mailman を開始する必"
+"要があることにも注意してください。"
+
+#~ msgid "Gate news to mail?"
+#~ msgstr "ニュースからメールへゲートしますか?"
+
+#~ msgid ""
+#~ "Do you want to gate news to mail, that is, send all the messages which "
+#~ "appear in a newsgroup to a mailing list."
+#~ msgstr ""
+#~ "ニュースからメールにゲートしますか (つまり、ニュースグループに投稿されたす"
+#~ "べてのメッセージをメーリングリストに送ります)。"
+
+#~ msgid "Most people won't need this."
+#~ msgstr "ほとんどの人にはこれは必要ありません。"

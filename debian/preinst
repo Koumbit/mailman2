@@ -1,0 +1,41 @@
+#!/bin/sh -e
+# $URL$
+# $Id$
+
+if [ "$1" = "install" ]; then
+	if ! id -g list > /dev/null 2>&1 ; then
+		addgroup --system list
+	fi
+	if ! id -u list > /dev/null 2>&1 ; then
+		adduser --system --home /var/list --ingroup list list
+		chsh -s /bin/sh list
+	fi
+fi
+
+if [ "$1" = "install" -o "$1" = "upgrade" ]; then
+	if [ -d /var/lib/mailman/logs -a ! -L /var/lib/mailman/logs ]; then
+		echo "Moving the current logs to /var/lib/mailman/logs.old"
+		echo "New logs will be generated in /var/log/mailman"
+		mv /var/lib/mailman/logs /var/lib/mailman/logs.old
+		mkdir /var/log/mailman && true
+		chown root.list /var/log/mailman
+		chmod 2775 /var/log/mailman
+		ln -s /var/log/mailman /var/lib/mailman/logs
+		echo -n "Press RETURN to continue"
+		read foo
+	fi
+fi
+
+if [ "$1" = "upgrade" ] && dpkg --compare-versions "$2" lt 2.1; then
+    # upgrading, make sure the qfiles directory is empty.
+    if ls /var/lib/mailman/qfiles 2>/dev/null | grep -q '.*' ; then
+        # uh-oh.
+        echo "Queue not cleared, please flush mailman queue and retry upgrade"
+        exit 1
+    fi
+
+fi
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,68 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mailman 2.1.3-2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-30 12:12+0100\n"
+"PO-Revision-Date: 2004-01-09 14:40+0100\n"
+"Last-Translator: Philippe Batailler <philippe.batailler@free.fr>\n"
+"Language-Team: french <debian-l10n-french@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "Missing site list"
+msgstr "La liste du site manque."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"Mailman a besoin d'une liste du site (« site list ») ; cette liste permet "
+"d'envoyer les rappels pour les mots de passe, etc. Elle doit être créée "
+"avant le lancement de Mailman."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"Pour créer cette liste, lancer « newlist mailman » et suivez les "
+"instructions qui apparaissent sur l'écran. Il est ensuite nécessaire de "
+"relancer mailman avec la commande « /etc/init.d/mailman start »."
+
+#~ msgid "Gate news to mail?"
+#~ msgstr "Voulez-vous transformer des nouvelles en courriers électroniques ?"
+
+#~ msgid ""
+#~ "Do you want to gate news to mail, that is, send all the messages which "
+#~ "appear in a newsgroup to a mailing list."
+#~ msgstr ""
+#~ "Voulez-vous transformer des nouvelles en courriers, c'est-à-dire, envoyer "
+#~ "tous les messages qui apparaissent dans un forum vers une liste de "
+#~ "diffusion ?"
+
+#~ msgid "Most people won't need this."
+#~ msgstr "La plupart des utilisateurs n'en ont pas besoin."

@@ -1,0 +1,49 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.4.1-1\n"
+"POT-Creation-Date: 2004-01-30 12:12+0100\n"
+"PO-Revision-Date: 2004-03-15 07:28+0100\n"
+"Last-Translator: Bernd S. Brentrup <bsb@debian.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "Missing site list"
+msgstr "Die Site Liste fehlt."
+
+#. Type: note
+#. Description
+#: ../templates:3
+#, fuzzy
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr "Mailman benötigt eine sogenannte \"Site Liste\", d.h. einen Verteiler, über den Passwort-Erinnerungen und ähnliches versendet werden.  Solange diese Liste fehlt, startet mailman nicht."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr "Um die Site Liste anzulegen, rufen Sie bitte \"newlist mailman\" auf und folgen dann den Anweisungen.  Beachten Sie bitte auch, daß sie anschließend mailman noch von Hand mit dem Kommando \"/etc/init.d/mailman start\" starten müssen."

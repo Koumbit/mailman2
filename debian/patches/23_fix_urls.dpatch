@@ -1,0 +1,36 @@
+#! /bin/sh -e
+## 23_fix_urls.dpatch by Tollef Fog Heen <tfheen@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Make sure URLs are the way we want them.  (See #214211 for more
+## DP: info) 
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+
+--- mailman-2.1.4.orig/Mailman/Utils.py
++++ mailman-2.1.4/Mailman/Utils.py
+@@ -638,7 +638,7 @@
+     else:
+         # See the note in Defaults.py concerning DEFAULT_HOST_NAME
+         # vs. DEFAULT_EMAIL_HOST.
+-        hostname = mm_cfg.DEFAULT_HOST_NAME or mm_cfg.DEFAULT_EMAIL_HOST
++        hostname = mm_cfg.DEFAULT_HOST_NAME or mm_cfg.DEFAULT_URL_HOST
+         return hostname.lower()
+ 
+ 

@@ -1,0 +1,28 @@
+.TH MMARCH 8 2001-03-10
+.SH NAME
+mmarch \- Rebuild a Mailman list's archive.
+
+.SH SYNOPSIS
+mmarch listname [mbox] [-h]
+
+.SH DESCRIPTION
+
+Use this command to rebuild the archives for a mailing list.  You may want to
+do this if you edit some messages in an archive, or remove some messages from
+an archive.
+
+mbox is the path to a list's complete mbox archive.  Usually this will 
+be some path in the archives/private directory.  For example:
+
+% mmarch mylist archives/private/mylist.mbox/mylist.mbox
+
+mbox is optional.  If it is missing, it is calculated.
+
+.SH AUTHOR
+Author of Mailman is the Mailman Cabal, see http://www.list.org/ for
+information.  This manpage is written by Tollef Fog Heen
+<tfheen@debian.org> for Debian
+
+.SH SEE ALSO
+Mailman documentation on http://www.list.org/ and in
+/usr/share/doc/mailman.

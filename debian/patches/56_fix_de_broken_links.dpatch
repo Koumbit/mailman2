@@ -1,0 +1,54 @@
+#! /bin/sh -e
+## 56_fix_de_broken_links, based on Ralf Doeblitz <r.doeblitz@asco.de>
+## fixes (see bug #233048)
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: update is called from the Debian maintainer scripts and prints
+## DP: non-appropriate output.  Change that.
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+--- mailman-2.1.4/messages/de/LC_MESSAGES/mailman.po.orig	2004-03-14 21:10:18.000000000 +0000
++++ mailman-2.1.4/messages/de/LC_MESSAGES/mailman.po	2004-03-14 21:10:28.000000000 +0000
+@@ -5899,7 +5899,7 @@
+ msgstr ""
+ "Soll Mailman das Zustellungshandling für normale Mailinglisten "
+ "personalisieren? Diese Option kann interessant für reine Ankündigunslisten "
+-"sein, lesen sie aber auf alle Fälle die <ahref=\"?VARHELP=nondigest/"
++"sein, lesen sie aber auf alle Fälle die <a href=\"?VARHELP=nondigest/"
+ "personalize\"> Details zu Leistungsaspekten</a> durch, bevor Sie sich hieran "
+ "die Finger verbrennen."
+ 
+@@ -6846,7 +6846,7 @@
+ "\">topics_bodylines_limit</a>\n"
+ "             configuration variable."
+ msgstr ""
+-"Der Themenfilter kategorisiert jede eingehende e-Mailnachricht gemäss href="
++"Der Themenfilter kategorisiert jede eingehende e-Mailnachricht gemäss <a href="
+ "\"http://www.python.org/doc/current/lib/module-re.html\">Filterregeln mit "
+ "regulären Ausdrücken</a>, die Sie weiter unten festlegen können. Wenn die "
+ "<code>Subject:</code> oder <code>Keywords:</code> Header der Nachricht mit "
+@@ -6859,7 +6859,7 @@
+ "nicht mit Sammelnachrichten.\n"
+ " <p>Optional kann auch der Nachrichtentext auf Vorkommen von <code>Subject:</"
+ "code> und <code>Keyword:</code> Header durchsucht werden. Spezifizieren Sie "
+-"hierzu die Optionhref=\"?VARHELP=topics/topics_bodylines_limit"
++"hierzu die Option <a href=\"?VARHELP=topics/topics_bodylines_limit"
+ "\">topics_bodylines_limit</a>."
+ 
+ # Mailman/Gui/Topics.py:57

@@ -1,0 +1,49 @@
+# $URL$
+# $Id$
+Template: mailman/site_languages
+Type: multiselect
+__Choices: big5, ca, cs, da, de, en, es, et, eu, fi, fr, gb, hr, hu, it, ja, ko, lt, nl, no, pl, pt, pt_BR, ro, ru, sl, sr, sv, uk
+Default: en
+_Description: Which languages to support?  
+ For each supported language Debian Mailman stores default language
+ specific texts in /etc/mailman/LANG/ giving them conffile like
+ treatment with the help of ucf.  This means approximately 150kB for
+ each supported language on the root FS.
+ .
+ If you need a different set of languages at a later time, just run
+ dpkg-reconfigure mailman.
+ .
+ NOTE: Languages enabled on existing mailing lists are forcibly re-
+ enabled when deselected and mailman needs at least one language for
+ displaying it's messages.
+
+Template: mailman/used_languages
+Type: string
+Description: Internal holding result of scan
+
+Template: mailman/gate_news
+Type: boolean
+Default: false
+_Description: Gate news to mail?
+ Do you want to gate news to mail, that is, send all the messages which
+ appear in a newsgroup to a mailing list.
+ .
+ Most people won't need this.
+
+Template: mailman/create_site_list
+Type: note
+_Description: Missing site list
+ Mailman needs a so-called "site list", which is the list from which
+ password reminders and such are sent out from.  This list needs to be
+ created before mailman will start.
+ .
+ To create the list, run "newlist mailman" and follow the instructions
+ on-screen.  Note that you also need to start mailman after that,
+ using /etc/init.d/mailman start.
+
+Template: mailman/default_server_language
+Type: select
+Choices: ${site_languages}
+Description: Which language should be the default for Mailman?
+ The web page will be shown in this language, and in general, Mailman
+ will use this language to communicate with the user.
