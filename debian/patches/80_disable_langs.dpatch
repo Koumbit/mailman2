@@ -1,0 +1,43 @@
+#! /bin/sh -e
+## 80_disable_langs.dpatch by Siggy Brentrup <bsb@debian.org>
+##
+## $URL$
+## $Id$
+## DP: Assume only languages in LC_DESCRIPTIONS are shown on admin pages.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Defaults.py.in mailman-2.1.5/Mailman/Defaults.py.in
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Defaults.py.in	2004-05-23 10:30:17.000000000 +0200
++++ mailman-2.1.5/Mailman/Defaults.py.in	2004-05-23 10:37:16.000000000 +0200
+@@ -1244,7 +1244,12 @@
+ LC_DESCRIPTIONS = {}
+ 
+ def add_language(code, description, charset):
+-    LC_DESCRIPTIONS[code] = (description, charset)
++    # Install only languages enabled in mailman-i18n/site_languages
++    if   code == 'zh_CN': lang = 'gb'
++    elif code == 'zh_TW': lang = 'big5'
++    else:                 lang = code
++    if os.path.exists(os.path.join(TEMPLATE_DIR, lang, 'listinfo.html')):
++        LC_DESCRIPTIONS[code] = (description, charset)
+ 
+ add_language('ca',    _('Catalan'),             'iso-8859-1')
+ add_language('cs',    _('Czech'),               'iso-8859-2')
