@@ -116,7 +116,7 @@ def main(operation, inst_version):
 
     site_list = 'mailman'
     if not have_list(site_list):
-        db_input(CRITICAL, 'mailman/site_list')
+        db_input(CRITICAL, 'mailman/create_site_list')
 
     db.go()
 
