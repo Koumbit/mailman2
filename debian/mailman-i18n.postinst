@@ -1,135 +1,141 @@
-#! /bin/sh -e
-#
-# postinst script for Debian python packages
-# Written 1998 by Gregor Hoffleit <flight@debian.org>.
-# Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
-# mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
+#!/usr/bin/python -O
 #
 # $URL$
 # $Id$
 #
+
+"""
+
+Fooling lintian that complains about not sourcing confmodule:
 . /usr/share/debconf/confmodule
+"""#
 
-PACKAGE=mailman
-DIRLIST="/usr/lib/mailman/Mailman /usr/lib/mailman/bin /usr/lib/mailman/cron /usr/lib/mailman/scripts"
-PYLIBDIR="/usr/lib/python`python -c 'import sys; print sys.version[:3]'`"
 
-if [ "$1" = "configure" ]; then
+import sys, os
 
-    mm_etc=/etc/mailman/templates
-    mm_dist=/usr/share/mailman/templates
+
+# Argl, if the debconf Python interface were well designed, sth like
+#   from debconf import instance as db
+# should be sufficient here.  As it is, must work around it's flaws.
+def get_debconf_interface(title=''):
+    """Get an debconf interface instance, starting a frontend if
+    none is available.
+    """#
+    from debconf import Debconf, _frontEndProgram
+    try:             junk = os.environ['DEBIAN_HAS_FRONTEND']
+    except KeyError: os.execv(_frontEndProgram, [_frontEndProgram]+sys.argv)
+    return Debconf(title)
+db = get_debconf_interface() ; del get_debconf_interface
+#  Exception class and convenience constants
+from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
+
+
+PACKAGE='mailman-i18n'
+MM_HOME = '/var/lib/mailman'
+
+sys.path.insert(0, MM_HOME)
+
+from Mailman.Debian import DebuggingLogger, cfdb, mm_languages
+
+from errno import EEXIST, ENOTEMPTY
+#from errno import *
+
+mm_etc='/etc/mailman'
+mm_tmpl=os.path.join(mm_etc, 'templates')
+mm_dist='/usr/share/mailman/templates'
+
+
+def setup():
+    """
+    """#
 
     # Install only languages selected by the administrator
     # forcing used languages to be always available.
-    db_get mailman/site_languages
-    site_languages="$(echo $RET | sed -e 's/, */ /g')"
-    need_languages="${site_languages}"
-    db_get  mailman/used_languages
-    db_fset mailman/used_languages seen true
-    db_fset mailman/used_languages scanned false
-    for lang in ${used_languages} ; do
-      if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
-        need_languages="${need_languages:+${need_languages} }${lang}"
-      fi
-    done
-    if [ "${need_languages}" != "${site_languages}" ]; then
-      db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
-    fi
+    site_languages = db.get('mailman/site_languages').split(', ')
+    site_languages = [ s.strip() for s in site_languages if s.strip() ]
+    need_languages = site_languages
+    used_languages = db.get('mailman/used_languages').split()
+    db.fset('mailman/used_languages', 'seen', 'true')
+    db.fset('mailman/used_languages', 'scanned', 'false')
 
-    # At present ALL directories in /etc/mailman are language directories
-    # but this may change in the future, better check.
-    for dir in $(find ${mm_etc} -type d -maxdepth 1 -mindepth 1 | sed -e "s;^${mm_etc}/;;g"); do
-      if [ -f ${mm_dist}/${dir}/options.html ]; then
-        old_languages="${old_languages} ${dir}"
-      fi
-    done
+    log('DEBCONF: used_languages=%(used_languages)r' % locals(), lvl=2)
+    log('DEBCONF: site_languages=%(site_languages)r' % locals(), lvl=2)
 
-    # Remove languages no longer used, but purging modified files
-    # is a bad thing[TM].
-    leftover=/etc/mailman/leftover
-    : >${leftover}
-    for lang in ${old_languages}; do
-      if  echo " ${site_languages} " | grep -v -q " ${lang} " ; then
-        echo -n "Removing unmodified files from ${mm_etc}/${lang} " >&2
-        # UGLY HACK: Since ucf doesn't support conditional removal
-        #            we access its hashfile directly
-        md5sums=$(tempfile --prefix=mm_${lang})
-        grep ${mm_etc}/$lang/ /var/lib/ucf/hashfile >${md5sums} || true
-        if [ -s ${md5sums} ]; then
-          # Language files are under ucf control, check md5sums
-          for file in $(md5sum -c -v ${md5sums} 2>&1 | egrep "OK$" | sed -e 's/ *OK//'); do 
-            ucf --debconf-ok --purge ${file}
-            rm -f ${file} ${file}.dpkg-dist
-            echo -n . >&2
-          done
-          # For modified files remove corresponding .dpkg-dist
-          for file in $(grep ${mm_etc}/$lang/ /var/lib/ucf/hashfile | cut -d' ' -f3); do
-            rm -f ${file}.dpkg-dist
-            echo -n . >&2
-          done
-        else
-          # We are upgrading from a version that didn't use ucf for this
-          # language, remove files that are unchanged in the NEW version.
-          # At this point there is no way to differentiate between
-          # 'changed by admin' and 'changed in package'.
-          for file in $(cd /etc && find mailman/${lang} -type f -a ! -name \*.dpkg-\* ); do
-            if cmp -s /etc/${file} /usr/share/${file}; then
-              rm -f /etc/${file} /etc/${file}.dpkg-dist
-            else
-              echo /etc/${file} >>${leftover}
-            fi
-            echo -n . >&2
-          done
-        fi
-        echo " done." >&2
-        rmdir ${mm_etc}/${lang} 2>/dev/null \
-          || echo "Directory ${mm_etc}/${lang} not empty, not removed." >&2
-        rm -f ${md5sums}
-      fi
-    done
+    for lang in used_languages:
+        if lang not in site_languages:
+            need_languages.append(lang)
+    if need_languages != site_languages:
+        db.set('mailman/site_languages', ', '.join(need_languages))
+        site_languages = need_languages
 
-    if [ -s ${leftover} ]; then
-      cat >&2 <<EOF
+    log('SETUP: need_languages=%(need_languages)r' % locals(), lvl=2)
 
-----------------------------------------------------------------------
-Some templates from unused langugages could not be automatically
-removed since there was no way to find out if they were modified by
-you or the prototype in the package differs from the previous release.
-${leftover} lists these files; please move them out of the way
-at your discretion if you don't want to see this message again.
-----------------------------------------------------------------------
+    remove_templates(need_languages)
+    install_templates(need_languages)
 
-EOF
-      echo -n "Hit return to continue." >&2
-      read junk </dev/tty
-      echo >&2
-    else
-      rm ${leftover}
-    fi
+    run_debhelper_additions()
 
-    for lang in ${site_languages}; do
-      echo -n "Installing site language ${lang} " >&2
-      mkdir -p ${mm_etc}/${lang}
-      for file in $(ls ${mm_dist}/${lang}); do
-        echo -n . >&2
-        langfile=${lang}/${file}
-        ucf --debconf-ok --three-way ${mm_dist}/${langfile} ${mm_etc}/${langfile} 2>/dev/null
-        # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
-        cmp -s ${mm_etc}/${langfile} ${mm_etc}/${langfile}.dpkg-dist \
-          && rm ${mm_etc}/${langfile}.dpkg-dist
-      done
-      echo " done." >&2
-    done
-    # Done with site language stuff
-fi
 
-case "$1" in
-    configure|abort-upgrade|abort-remove|abort-deconfigure)
-    ;;
-    *)
-        echo "postinst called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
-esac
+def remove_templates(site_languages):
+    """
+    """#
+    old_languages = os.listdir(mm_tmpl)
 
-#DEBHELPER#
+    for lang in old_languages:
+        if lang not in site_languages:
+            langdir = os.path.join(mm_tmpl, lang)
+            log('Removing unmodified files from %(langdir)s ' % locals(),
+                nl='')
+            def cb(*args):
+                log('.', nl='')
+            cfdb.remove_unmod(lang, dst=mm_tmpl, callback=cb)
+            cfdb.sync()
+            log(' done.')
+            try:
+                os.rmdir(langdir)
+            except OSError,err:
+                if err.errno == ENOTEMPTY:
+                    log('Directory %(langdir)s not empty so not removed.' % locals())
+                else: raise
+
+
+def install_templates(site_languages):
+    """
+    """#
+    for lang in site_languages:
+        log('Installing site language %(lang)s ' % locals(), nl='')
+        try:
+            os.mkdir(os.path.join(mm_tmpl, lang))
+        except OSError, err:
+            if err.errno != EEXIST: raise
+
+        for fn in os.listdir(os.path.join(mm_dist, lang)):
+            log('.', nl='')
+            langfile='%(lang)s/%(fn)s' % locals()
+            msg = cfdb.update(langfile, src=mm_dist, dst=mm_tmpl)
+            log(msg, lvl=9, nl='\n ')
+            # TBD: remove templates no longer distributed
+        cfdb.sync()
+        log(' done.')
+
+def run_debhelper_additions():
+    runit = os.popen('/bin/sh -e', 'w')
+    runit.write("""\
+#DEBHELPER#""")
+    if runit.close() is not None:
+        raise SystemExit(1)
+
+if __name__ == '__main__':
+    log = DebuggingLogger('MM_MAINT')
+    try:
+        op = sys.argv[1]
+        if op == 'configure':
+            setup()
+        elif op in ('abort-upgrade','abort-remove','abort-deconfigure'):
+            pass
+        else:
+            log("postinst called with unknown argument \`%s'" % op)
+            raise SystemExit(1)
+    finally:
+        # When things break, this information might be useful
+        log.sys_info()
