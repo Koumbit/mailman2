@@ -29,13 +29,14 @@ from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
 
 
 MM_HOME = '/var/lib/mailman'
+MM_BIN  = os.path.join(MM_HOME, 'bin')
+MM_INST = '/usr/share/mailman'
 
 sys.path.insert(0, MM_HOME)
 
-from Mailman.Debian import DebuggingLogger, CommandRunner
+from Mailman.Debian import DebuggingLogger, CommandRunner, cfdb
+from errno import ENOENT
 
-MM_BIN  = os.path.join(MM_HOME, 'bin')
-MM_INST = '/usr/share/mailman'
 
 
 def ucf_to_cfdb():
@@ -46,7 +47,7 @@ def ucf_to_cfdb():
     with ucf, allowing this simplistic approach at moving to our own
     conffile database.
     """#
-    from Mailman.Debian import cfdb, mm_languages
+    from Mailman.Debian import mm_languages
 
     UCF_CACHE = '/var/lib/ucf/cache'
     ETC_DIR   = '/etc/mailman/'
@@ -140,34 +141,60 @@ def update_cron():
     /usr/lib/mailman, change pathes in crontab to
     /var/lib/mailman.
     """#
+    from Mailman.Debian import mm_crontab
+
     gate_news = db.getBoolean('mailman/gate_news')
     log('DEBCONF gate_news=%(gate_news)r' % locals(), lvl=2)
     cron_tab = '/etc/cron.d/mailman'
-    cron_dir = os.path.join(MM_HOME, 'cron')
-    gn_path = os.path.join(cron_dir, 'gate_news')
-    ctf = open(cron_tab, 'r+')
-    changed_pathes = False
+
+    try:
+        old_crontab = open(cron_tab).read()
+        cur_crontab = fix_pathes(old_crontab)
+        if cur_crontab != old_crontab:
+            open(cron_tab, 'w').write(cur_crontab)
+            log('Fixed pathes in %(cron_tab)r.' % locals())
+            old_crontab = cur_crontab
+        cur_crontab = apply_gate_news(old_crontab, gate_news)
+        if cur_crontab != old_crontab:
+            open(cron_tab, 'w').write(cur_crontab)
+    except IOError, err:
+        if err.errno != ENOENT: raise
+
+    new_crontab = apply_gate_news(mm_crontab, gate_news)
+
+    # Make sure cfdb comparision use identical gate_news settings
+    if cfdb.has_key(cron_tab):
+        cfdb[cron_tab] = apply_gate_news(cfdb[cron_tab], gate_news)
+    else:
+        cfdb.register(cron_tab, new_crontab)
+
+    msg = cfdb.update(cron_tab, data=new_crontab)
+    log(msg, lvl=2)
+
+
+
+def fix_pathes(crontab):
+    """Fix obsolete /usr/lib/mailman/cron pathes"""
+    lines = crontab.split('\n')
     cron_lines = []
-    for line in ctf.readlines():
+    for line in lines:
         pos = line.find('/usr/lib/mailman')
-        if pos != -1:
-            changed_pathes = True
+        if pos >= 0:
             line = line[:pos] + '/var' + line[pos+4:]
-        if line.find(gn_path) > 0:
-            prefix = ''
-            if not gate_news:
-                prefix = '# '
+        cron_lines.append(line)
+    return '\n'.join(cron_lines)
+
+
+def apply_gate_news(crontab, gate_news):
+    """Apply gate_news setting to crontab string"""
+    lines = crontab.split('\n')
+    cron_lines = []
+    for line in lines:
+        if line.find('/var/lib/mailman/cron/gate_news') > 0:
+            prefix = (gate_news and [''] or ['# '])[0]
             line = prefix + uncomment(line)
         cron_lines.append(line)
-    ctf.seek(0)
-    ctf.truncate()
-    for line in cron_lines:
-        ctf.write(line)
-    ctf.close()
-    if changed_pathes:
-        log('Changed pathes in %(cron_tab)r to %(cron_dir)r.'
-            % locals())
-    # FIXME: keep track of changes?
+    return '\n'.join(cron_lines)
 
 
 def uncomment(line):
