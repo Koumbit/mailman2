@@ -1,0 +1,135 @@
+#! /bin/sh -e
+#
+# postinst script for Debian python packages
+# Written 1998 by Gregor Hoffleit <flight@debian.org>.
+# Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
+# mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
+#
+# $URL$
+# $Id$
+#
+. /usr/share/debconf/confmodule
+
+PACKAGE=mailman
+DIRLIST="/usr/lib/mailman/Mailman /usr/lib/mailman/bin /usr/lib/mailman/cron /usr/lib/mailman/scripts"
+PYLIBDIR="/usr/lib/python`python -c 'import sys; print sys.version[:3]'`"
+
+if [ "$1" = "configure" ]; then
+
+    mm_etc=/etc/mailman/templates
+    mm_dist=/usr/share/mailman/templates
+
+    # Install only languages selected by the administrator
+    # forcing used languages to be always available.
+    db_get mailman/site_languages
+    site_languages="$(echo $RET | sed -e 's/, */ /g')"
+    need_languages="${site_languages}"
+    db_get  mailman/used_languages
+    db_fset mailman/used_languages seen true
+    db_fset mailman/used_languages scanned false
+    for lang in ${used_languages} ; do
+      if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+        need_languages="${need_languages:+${need_languages} }${lang}"
+      fi
+    done
+    if [ "${need_languages}" != "${site_languages}" ]; then
+      db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
+    fi
+
+    # At present ALL directories in /etc/mailman are language directories
+    # but this may change in the future, better check.
+    for dir in $(find ${mm_etc} -type d -maxdepth 1 -mindepth 1 | sed -e "s;^${mm_etc}/;;g"); do
+      if [ -f ${mm_dist}/${dir}/options.html ]; then
+        old_languages="${old_languages} ${dir}"
+      fi
+    done
+
+    # Remove languages no longer used, but purging modified files
+    # is a bad thing[TM].
+    leftover=/etc/mailman/leftover
+    : >${leftover}
+    for lang in ${old_languages}; do
+      if  echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+        echo -n "Removing unmodified files from ${mm_etc}/${lang} " >&2
+        # UGLY HACK: Since ucf doesn't support conditional removal
+        #            we access its hashfile directly
+        md5sums=$(tempfile --prefix=mm_${lang})
+        grep ${mm_etc}/$lang/ /var/lib/ucf/hashfile >${md5sums} || true
+        if [ -s ${md5sums} ]; then
+          # Language files are under ucf control, check md5sums
+          for file in $(md5sum -c -v ${md5sums} 2>&1 | egrep "OK$" | sed -e 's/ *OK//'); do 
+            ucf --debconf-ok --purge ${file}
+            rm -f ${file} ${file}.dpkg-dist
+            echo -n . >&2
+          done
+          # For modified files remove corresponding .dpkg-dist
+          for file in $(grep ${mm_etc}/$lang/ /var/lib/ucf/hashfile | cut -d' ' -f3); do
+            rm -f ${file}.dpkg-dist
+            echo -n . >&2
+          done
+        else
+          # We are upgrading from a version that didn't use ucf for this
+          # language, remove files that are unchanged in the NEW version.
+          # At this point there is no way to differentiate between
+          # 'changed by admin' and 'changed in package'.
+          for file in $(cd /etc && find mailman/${lang} -type f -a ! -name \*.dpkg-\* ); do
+            if cmp -s /etc/${file} /usr/share/${file}; then
+              rm -f /etc/${file} /etc/${file}.dpkg-dist
+            else
+              echo /etc/${file} >>${leftover}
+            fi
+            echo -n . >&2
+          done
+        fi
+        echo " done." >&2
+        rmdir ${mm_etc}/${lang} 2>/dev/null \
+          || echo "Directory ${mm_etc}/${lang} not empty, not removed." >&2
+        rm -f ${md5sums}
+      fi
+    done
+
+    if [ -s ${leftover} ]; then
+      cat >&2 <<EOF
+
+----------------------------------------------------------------------
+Some templates from unused langugages could not be automatically
+removed since there was no way to find out if they were modified by
+you or the prototype in the package differs from the previous release.
+${leftover} lists these files; please move them out of the way
+at your discretion if you don't want to see this message again.
+----------------------------------------------------------------------
+
+EOF
+      echo -n "Hit return to continue." >&2
+      read junk </dev/tty
+      echo >&2
+    else
+      rm ${leftover}
+    fi
+
+    for lang in ${site_languages}; do
+      echo -n "Installing site language ${lang} " >&2
+      mkdir -p ${mm_etc}/${lang}
+      for file in $(ls ${mm_dist}/${lang}); do
+        echo -n . >&2
+        langfile=${lang}/${file}
+        ucf --debconf-ok --three-way ${mm_dist}/${langfile} ${mm_etc}/${langfile} 2>/dev/null
+        # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
+        cmp -s ${mm_etc}/${langfile} ${mm_etc}/${langfile}.dpkg-dist \
+          && rm ${mm_etc}/${langfile}.dpkg-dist
+      done
+      echo " done." >&2
+    done
+    # Done with site language stuff
+fi
+
+case "$1" in
+    configure|abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#

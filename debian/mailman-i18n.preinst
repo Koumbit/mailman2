@@ -1,0 +1,33 @@
+#!/bin/sh -e
+# $URL$
+# $Id$
+
+mm_etc=/etc/mailman
+mm_tmpl=${mm_etc}/templates
+
+all_languages="big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl no pl pt pt_BR ro ru sl sr sv uk"
+
+ucf_cache=/var/lib/ucf/cache
+ucf_hashfile=/var/lib/ucf/hashfile
+
+if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
+  if dpkg --compare-versions "$1" ge "2.1" && dpkg --compare-versions "$1" le "2.1.4-4"; then
+    # Move templates from /etc/mailman/LANG to /etc/mailman/templates/LANG
+    for lang in $(cd ${mm_etc} ; find ${all_languages} -maxdepth 0 -type d); do
+      mv ${mm_etc}/${lang} ${mm_tmpl}/${lang}
+      # UGLY HACK: Using ucf for this move would be a major PITA, modifying the ucf database.
+      # This can go away with sarge+1.
+      sed -e "s;${mm_etc}/${lang}/;${mm_tmpl}/${lang}/;" ${ucf_hashfile} >${ucf_hashfile}.$$
+      mv ${ucf_hashfile}.$$ ${ucf_hashfile}
+      old_mangled=$(echo ${mm_etc}/${lang}/ | tr / :)
+      for tmpl in $(find ${ucf_cache} -name ${old_mangled}\*); do
+        new_tmpl=$(echo ${tmpl} | sed -e 's/mailman/mailman:templates/')
+        mv ${tmpl} ${new_tmpl}
+      done
+    done
+  fi
+fi
+
+#DEBHELPER#
+
+exit 0
