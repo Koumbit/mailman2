@@ -1,0 +1,78 @@
+#! /usr/bin/python -O
+# $URL$
+# $Id$
+
+import sys, os
+
+
+# Argl, if the debconf Python interface were well designed, sth like
+#   from debconf import instance as db
+# should be sufficient here.  As it is, must work around it's flaws.
+def get_debconf_interface(title=''):
+    """Get an debconf interface instance, starting a frontend if
+    none is available.
+    """#
+    from debconf import Debconf, _frontEndProgram
+    try:             junk = os.environ['DEBIAN_HAS_FRONTEND']
+    except KeyError: os.execv(_frontEndProgram, [_frontEndProgram]+sys.argv)
+    return Debconf(title)
+db = get_debconf_interface() ; del get_debconf_interface
+#  Exception class and convenience constants
+from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
+
+
+MM_HOME = '/var/lib/mailman'
+
+sys.path[0] = MM_HOME
+
+from Mailman.Debian import DebuggingLogger, CommandRunner
+
+MM_BIN  = os.path.join(MM_HOME, 'bin')
+
+
+def compile_modules(directory):
+    """Compiles all python modules in the specified directory.
+
+    
+    """#
+    from compileall import compile_dir
+    ca_script = sys.modules['compileall'].__file__
+    opt = ca_script[-1] == 'o'
+    ca_script = ca_script[:-1]
+    flag, _int, ext  = (opt and ('', ' optimized', '')
+                        or (' -O', '', ' optimized'))
+    log('Compiling%(_int)s modules ...' % locals(), nl='')
+    compile_dir(directory, force=True, quiet=True)
+    log(' done.')
+    log('Compiling%(ext)s modules ...' % locals(), nl='')
+    cmd = 'python%(flag)s %(ca_script)s -f -q %(directory)s' % locals()
+    log('\n%r' % cmd, lvl=2, nl='\n... ')
+    os.system(cmd)
+    log(' done.')
+
+def create_mm_cfg():
+    try:
+        db_email_host = db.get('mailman/email_host')
+        db_url_host   = db.get('mailman/url_host')
+    except DebconfError, exc:
+        log.exception()
+        
+
+
+def setup():
+    compile_modules(MM_HOME)
+    create_mm_cfg()
+    gate_news = db.getBoolean('mailman/gate_news')
+
+
+if __name__ == '__main__':
+    log = DebuggingLogger('MM_MAINT')
+    try:
+        function    = sys.argv[1]
+        old_version = sys.argv[2]
+        if function in ('configure',):
+            setup()
+    finally:
+        # When things break, this information might be useful
+        log.sys_info()
+
