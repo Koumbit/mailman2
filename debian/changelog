@@ -14,7 +14,7 @@ mailman (2.1.4-4) unstable; urgency=medium
   * Update SpamAssassin handler to the most recent version can be found,
     and document it in README.Debian (by GCS, closes: #235667).
 
- --
+ -- Siggy Brentrup <bsb@debian.org>  Fri, 16 Apr 2004 18:40:38 +0200
 
 mailman (2.1.4-3) unstable; urgency=medium
 
