@@ -75,13 +75,15 @@ def default_mm_cfg():
     return gbls
 
 
+from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin, \
+     mm_cfg_delimiter, mm_cfg_deprecated
+
 def create_mm_cfg():
     """Create an initial /etc/mailman/mm_cfg.py
 
     This works only for a first time install.
     """#
     try:
-        from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin
         mm_cfg_fl = open('/etc/mailman/mm_cfg.py', 'w')
         # Writing a constant prefix (including the import from Defaults)
         # beforehand makes sure there is a formally working mm_cfg.
@@ -102,6 +104,7 @@ def create_mm_cfg():
         exec 'default_url_path = urlsplit(DEFAULT_URL_PATTERN)[2]' in gbls
         exec 'virtual_hosts = ""' in gbls
         mm_cfg_fl.write(mm_cfg_fillin % gbls)
+        mm_cfg_fl.write(mm_cfg_delimiter)
         mm_cfg_fl.close()
     except DebconfError, exc:
         log.exception()
@@ -119,10 +122,18 @@ def upgrade_mm_cfg():
     usr_gbls = {}
     sys.modules['Defaults'] = sys.modules['Mailman.Defaults']
     execfile(etc_mm_cfg, usr_gbls)
+
+    # When DEFAULT_URL_HOST has been changed via debconf, its obsolete
+    # VIRTUAL_HOSTS entry would be regenerated further down when
+    # creating add_virtualhost() calls for non-default entries.
+    try: exec 'del VIRTUAL_HOSTS[DEFAULT_URL_HOST]' in usr_gbls
+    except: pass
+
     os.rename(etc_mm_cfg, etc_mm_cfg+'.dpkg-old')
+
     try:
         from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin
-        mm_cfg_fl = open('/etc/mailman/mm_cfg.py', 'w')
+        mm_cfg_fl = open(etc_mm_cfg, 'w')
         # Writing a constant prefix (including the import from Defaults)
         # beforehand makes sure there is a formally working mm_cfg.
         mm_cfg_fl.write(mm_cfg_defaults)
@@ -136,6 +147,11 @@ def upgrade_mm_cfg():
         log('DEBCONF url_host=%(DEFAULT_URL_HOST)r' % usr_gbls, lvl=2)
         server_language = db.get('mailman/default_server_language') or 'en'
         usr_gbls['DEFAULT_SERVER_LANGUAGE'] = server_language
+
+        from urlparse import urlsplit, urlunsplit
+        if usr_gbls['DEFAULT_URL'] is not None:
+            scheme, host, path = urlsplit(usr_gbls['DEFAULT_URL'])[:3]
+            usr_gbls['DEFAULT_URL_PATTERN'] = urlunsplit((scheme, '%s', path, '', ''))
 
         usr_mod  = {}
         usr_def  = {}
@@ -153,34 +169,21 @@ def upgrade_mm_cfg():
         if usr_mod.keys():
             log("User modified variables:", lvl=3)
             for var in usr_mod.keys():
-                log('  %18s: %r\n%20s: %r'
+                log('  %20s: %r\n%20s: %r'
                     % (var, usr_gbls[var], 'default', def_gbls[var]), lvl=3)
 
         if usr_def.keys():
             log("User defined variables:", lvl=3)
             for var in usr_def.keys():
-                log(' %18s: %r' % (var, usr_gbls[var]), lvl=3)
+                log('  %20s: %r' % (var, usr_gbls[var]), lvl=3)
 
-        from urlparse import urlsplit, urlunsplit
         def_scheme, def_netloc, def_path = urlsplit(def_gbls['DEFAULT_URL_PATTERN'])[:3]
-        if 'DEFAULT_URL' in usr_mod.keys():
-            usr_scheme, usr_netloc, usr_path = urlsplit(usr_gbls['DEFAULT_URL'])[:3]
-            usr_gbls['DEFAULT_URL_HOST'] = usr_netloc
-            usr_mod['DEFAULT_URL_HOST'] = 1
-            if usr_scheme != def_scheme or usr_path != def_path:
-                usr_gbls['DEFAULT_URL_PATTERN'] = urlunsplit((usr_scheme, def_netloc, usr_path,
-                                                              None, None))
-                usr_mod['DEFAULT_URL_PATTERN'] = 1
-            usr_gbls['default_url_path'] = usr_path
-        elif 'DEFAULT_URL_PATTERN' in usr_mod.keys():
+        if 'DEFAULT_URL_PATTERN' in usr_mod.keys():
             usr_scheme, usr_netloc, usr_path = urlsplit(usr_gbls['DEFAULT_URL_PATTERN'])[:3]
             usr_gbls['default_url_path'] = usr_path
         else:    
             usr_gbls['default_url_path'] = def_path
 
-        if 'DEFAULT_HOST_NAME' in usr_mod.keys():
-            exec 'DEFAULT_EMAIL_HOST = DEFAULT_HOST_NAME' in usr_gbls
-            usr_mod['DEFAULT_EMAIL_HOST'] = 1
         if 'IMAGE_LOGOS' in usr_mod.keys():
             if usr_gbls['IMAGE_LOGOS'].startswith('/doc/mailman'):
                 exec 'OLD_IMAGE_LOGOS = IMAGE_LOGOS' in usr_gbls
@@ -198,7 +201,8 @@ def upgrade_mm_cfg():
         # Make sure user added virtual hosts are kept in the new mm_cfg
         vhosts = StringIO()
         for url_host, email_host in usr_gbls['VIRTUAL_HOSTS'].items():
-            if (url_host, email_host) not in ((usr_gbls['DEFAULT_URL_HOST'], usr_gbls['DEFAULT_EMAIL_HOST']),
+            if (url_host, email_host) not in ((usr_gbls['DEFAULT_URL_HOST'],
+                                               usr_gbls['DEFAULT_EMAIL_HOST']),
                                               ('localhost', 'localhost')):
                 vhosts.write('\nadd_virtualhost(%(url_host)r, %(email_host)r)' % locals())
         usr_gbls['virtual_hosts'] = vhosts.getvalue()
@@ -206,6 +210,9 @@ def upgrade_mm_cfg():
         # Generate commented /etc/mailman/mm_cfg.py.dpkg-dist
         cfl = StringIO()
         cfl.write(mm_cfg_fillin % usr_gbls)
+
+        # Add delimiter indicating end of automatically handled section
+        cfl.write(mm_cfg_delimiter)
 
         # Isolate deprecated variables 
         from Mailman.Debian import mm_cfg_deprecated
