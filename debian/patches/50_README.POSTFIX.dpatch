@@ -1,0 +1,158 @@
+#! /bin/sh -e
+## 50_README.POSTFIX.paths.dpatch by  Siggy Brentrup <bsb@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Modify README.POSTFIX for Debian.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /home/bsb/debian/mine/mailman/build-area/mailman-2.1.4/README.POSTFIX mailman-2.1.4/README.POSTFIX
+--- /home/bsb/debian/mine/mailman/build-area/mailman-2.1.4/README.POSTFIX	2003-09-22 04:54:26.000000000 +0200
++++ mailman-2.1.4/README.POSTFIX	2004-03-30 18:24:36.000000000 +0200
+@@ -2,6 +2,17 @@
+ Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+ 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+ 
++! As a service to our users this file has been modified for Debian's
++! Mailman package to reflect configuration settings at package build
++! time.  Modified lines are marked with an exclamation mark at the left
++! edge.  
++
++! Provided you can devote a full subdomain e.g. `lists.example.com´
++! for exclusive use by Mailman, there is a somewhat simpler method to
++! interface Postfix with Mailman by means of the postfix-to-mailman.py
++! script that comes with the Debian package.  Comments at the top of
++! /usr/lib/mailman/bin/postfix-to-mailman.py describe configuration.
++
+ 
+ GENERAL SETUP INFORMATION
+ 
+@@ -49,15 +60,14 @@
+     automatically updated.  The following are the steps you need to
+     take to make this work.
+ 
+-    In the description below, we assume that you've installed Mailman
+-    in the default location, i.e. /usr/local/mailman.  If that's not
+-    the case, adjust the instructions according to your use of
+-    configure's --prefix and --with-var-prefix options.
++!   In the description below, we assume that you have installed an
++!   official Debian mailman package from master.debian.org or one of
++!   its many mirrors.
+ 
+     - If you are using virtual domains and you want Mailman to honor
+       your virtual domains, read the section below first!
+ 
+-    - Add this to the bottom of the $prefix/Mailman/mm_cfg.py file:
++!   - Add this to the bottom of the /etc/mailman/mm_cfg.py file:
+ 
+       MTA = 'Postfix'
+ 
+@@ -68,24 +78,24 @@
+     - Look at the Defaults.py file for the variables POSTFIX_ALIAS_CMD
+       and POSTFIX_MAP_CMD command.  Make sure these point to your
+       postalias and postmap programs respectively.  Remember that if
+-      you need to make changes, do it in mm_cfg.py.
++!     you need to make changes, do it in /etc/mailman/mm_cfg.py.
+ 
+     - Run the genaliases script to initialize your aliases file.
+ 
+-      % cd /usr/local/mailman
+-      % bin/genaliases
++!      % su
++!      # cd /var/lib/mailman
++!      # bin/genaliases
+ 
+       Make sure that the owner of the data/aliases and data/aliases.db
+-      file is `mailman' and that the group owner for those files is
+-      `mailman'.  E.g.:
++      file is `list' and that the group owner for those files is
++      `daemon'.  E.g.:
+ 
+-      % su
+-      % chown mailman:mailman data/aliases*
++!     # chown list:daemon data/aliases*
+ 
+     - Hack your Postfix's main.cf file to include the following path
+       in your alias_maps variable:
+ 
+-          /usr/local/mailman/data/aliases
++!         /var/lib/mailman/data/aliases
+ 
+       (no trailing .db).  Do not include this in your alias_database
+       variable.  This is because you do not want Postfix's newaliases
+@@ -96,13 +106,11 @@
+       Here's an example:
+ 
+       alias_maps = hash:/etc/postfix/aliases,
+-          hash:/usr/local/mailman/data/aliases
++ !         hash:/var/lib/mailman/data/aliases
+ 
+-    - When you configure Mailman, use the --with-mail-gid=mailman
+-      switch (actually, this will be the default if you configured
+-      Mailman after adding the `mailman' owner).  Because the owner of
+-      the aliases.db file is `mailman', Postfix will execute Mailman's
+-      wrapper program as uid and gid mailman.
++ !  - Debian uses the --with-mail-gid=daemon switch on configure.
++      Because the owner of the aliases.db file is `mailman', Postfix
++      will execute Mailman's wrapper program as uid and gid mailman.
+ 
+     That's it!  One caveat: when you add or remove a list, the
+     aliases.db file will updated, but it will not automatically run
+@@ -120,7 +128,7 @@
+     versions.  To make virtual alias domains work with Mailman, you
+     need to do some setup in both Postfix and Mailman.  Mailman will
+     write all virtual alias mappings to a file called, by default,
+-    /usr/local/mailman/data/virtual-mailman.  It will also use postmap
++!   /var/lib/mailman/data/virtual-mailman.  It will also use postmap
+     to create the virtual-mailman.db file that Postfix will actually
+     use.
+ 
+@@ -136,7 +144,7 @@
+     pointing to the virtual-mailman file, e.g.:
+ 
+     virtual_alias_maps = <your normal virtual alias files>,
+-        hash:/usr/local/mailman/data/virtual-mailman
++!       hash:/var/lib/mailman/data/virtual-mailman
+ 
+     assuming you've installed Mailman in the default location.  If
+     you're using an older version of Postfix which doesn't have the
+@@ -190,11 +198,11 @@
+ 
+     Now, any list that Mailman creates in either of those two domains,
+     will have the correct entries written to
+-    /usr/local/mailman/data/virtual-mailman
++!   /var/lib/mailman/data/virtual-mailman
+ 
+     As above with the data/aliases* files, you want to make sure that
+     both data/virtual-mailman and data/virtual-mailman.db are user and
+-    group owned by the `mailman' user/group.  So to get things
++!   group owned by the `list' user/group.  So to get things
+     started, set up your virtual domains, run bin/genaliases, and
+     check the ownerships of the files.  From here on out, you should
+     be good to go.
+@@ -214,8 +222,6 @@
+     should use mylist@lists.dom.ain instead of mylist@dom.ain.
+ 
+     I have not extensively tested this approach however.
+-
+-
+ 
+ Local Variables:
+ mode: text

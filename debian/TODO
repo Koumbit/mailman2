@@ -1,0 +1,27 @@
+# $URL$
+# $Id$
+
+Changes outlined herein being a major deviation from the way Mailman
+is packaged now, it might be wiser to defer them until sarge+1.
+
+- Split into mailman, mailman-common, mailman-doc, mailman-i18n.
+  installing $LANG/LC_MESSAGES/mailman.mo in /usr/share/locale.
+
+- mailman-common.postinst should be better at building a new mm_cfg.py
+  from an existing configuration, in particular at removing obsolete
+  vars.  As it stands, a python postinst (using code inspection if
+  needed) seems to be the way to go.
+
+- Rewrite qmail-to-mailman.py to read configuration from mm_cfg.py
+  like postfix-to-mailman.py does, getting it out of /etc/mailman and
+  the ucf database.
+
+- As far as I(bsb) am concerned, I'd even prefer separate source
+  packages for mm-spamassassin, mm-spamprobe, mm-savannah and
+  mm-clamav but with spamassassin and savannah already being in the
+  archive, somebody will probably object :(
+
+- Make lintian clean.
+
+This list is by no means meant to be complete.
+
