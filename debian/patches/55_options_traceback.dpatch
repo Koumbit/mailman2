@@ -24,8 +24,8 @@ esac
 exit 0
 @DPATCH@
 
---- mailman-2.1.4/Mailman/Cgi/options.py2004-02-17 10:56:16.000000000 +0800
-+++ /usr/lib/mailman/Mailman/Cgi/options.py2004-02-17 10:59:04.000000000 +0800
+--- mailman-2.1.4/Mailman/Cgi/options.py 2004-02-17 10:56:16.000000000 +0800
++++ mailman-2.1.4/Mailman/Cgi/options.py 2004-02-17 10:59:04.000000000 +0800
 @@ -119,8 +119,12 @@
          return
      # Sanity check the user, but only give the "no such member" error when
