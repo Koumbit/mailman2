@@ -60,7 +60,7 @@ binary-arch:	checkroot build
 	$(checkdir)
 #	rm -rf debian/mailman && install -d debian/mailman
 	dh_installdirs
-	dh_installdocs ACKNOWLEDGMENTS README* TODO BUGS UPGRADING NEWS FAQ INSTALL
+	dh_installdocs ACKNOWLEDGMENTS README* TODO BUGS NEWS FAQ
 	dh_installchangelogs
 	$(MAKE) doinstall prefix=$$(pwd)/debian/mailman/var/lib/$(package) \
 		var_prefix=$$(pwd)/debian/mailman/var/lib/$(package) \
