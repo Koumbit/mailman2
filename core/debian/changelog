@@ -6,8 +6,10 @@ mailman (2.1.4-4split0) UNRELEASED; urgency=low
     closes: #176439, #238377, #233410, #237772).
   * Outlining glue packages mailman-spamassassin, mailman-spamprobe,
     mailman-savannah and mailman-clamav (bsb, cf debian/TODO).
-
- -- Siggy Brentrup <bsb@debian.org>  Sat, 24 Apr 2004 19:20:28 +0200
+  * preinst: Add code making sure /var/lib/mailman/pythonlib doesn't
+    contain cruft from ancient installations (bsb, closes: #242740).
+ 
+ -- Siggy Brentrup <bsb@debian.org>  Sat, 24 Apr 2004 19:59:45 +0200
 
 mailman (2.1.4-4) unstable; urgency=medium
 
