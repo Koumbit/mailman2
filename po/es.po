@@ -1,3 +1,10 @@
+# mailman debconf translation to spanish
+# Copyright (C) 2003,2004 Software in the Public Interest
+# This file is distributed under the same license as the mailman package.
+#
+# Changes:
+# - Initial translation
+#        Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>, 2003, 2004
 #
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
@@ -11,14 +18,13 @@
 #
 #    Developers do not need to manually edit POT or PO files.
 #
-# Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: maiman 2.1.2-2\n"
+"Project-Id-Version: maiman 2.1.4-1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-01-30 12:12+0100\n"
-"PO-Revision-Date: 2003-06-25 01:30+0200\n"
+"PO-Revision-Date: 2004-02-15 15:45+0100\n"
 "Last-Translator: Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>\n"
 "Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,24 +52,11 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:3
-#, fuzzy
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
 "Para crear la lista, ejecute «newlist mailman» y siga las instrucciones que "
-"aparecerán en pantalla."
-
-#~ msgid "Gate news to mail?"
-#~ msgstr "¿Conectar las noticias con el correo?"
-
-#~ msgid ""
-#~ "Do you want to gate news to mail, that is, send all the messages which "
-#~ "appear in a newsgroup to a mailing list."
-#~ msgstr ""
-#~ "¿Quiere conectar las noticias con el correo? Consiste en enviar todos los "
-#~ "mensajes que aparecen en un grupo de noticias a una lista de correo."
-
-#~ msgid "Most people won't need this."
-#~ msgstr "Prácticamente nadie necesita esto."
+"aparecerán en pantalla. Posteriormente deberá reiniciar mailman, ejecutando "
+"«/etc/init.d/mailman start»."
