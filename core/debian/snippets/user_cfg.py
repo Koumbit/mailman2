@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+# $URL$
+# $Id$
 
 import sys
 sys.path[0] = '/var/lib/mailman/Mailman'
@@ -15,7 +17,7 @@ def same_func(f, g):
     f_code, g_code = f.func_code, g.func_code
     return (f_code.co_filename == g_code.co_filename
             and
-            g_code.co_firstlineno == g_code.co_firstlineno)
+            f_code.co_firstlineno == g_code.co_firstlineno)
 
 
 for var, usr_value in usr_gbls.items():
