@@ -15,7 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4.1-1\n"
-"POT-Creation-Date: 2004-01-30 12:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-18 19:27+0200\n"
 "PO-Revision-Date: 2004-03-15 07:28+0100\n"
 "Last-Translator: Bernd S. Brentrup <bsb@debian.org>\n"
 "Language-Team: \n"
@@ -23,27 +24,255 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "big5"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ca"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "cs"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "da"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "de"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "en"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "es"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "et"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "eu"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "fi"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "fr"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "hr"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "hu"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "it"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ja"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ko"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "lt"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "nl"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "no"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "pl"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "pt"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "pt_BR"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ro"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ru"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "sl"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "sr"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "sv"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "uk"
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid "Which languages to support?  "
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid ""
+"For each supported language Debian Mailman stores default language specific "
+"texts in /etc/mailman/LANG/ giving them conffile like treatment with the "
+"help of ucf.  This means approximately 150kB for each supported language on "
+"the root FS."
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid ""
+"If you need a different set of languages at a later time, just run dpkg-"
+"reconfigure mailman."
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid ""
+"NOTE: Languages enabled on existing mailing lists are forcibly re- enabled "
+"when deselected and mailman needs at least one language for displaying it's "
+"messages."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:27
+msgid "Gate news to mail?"
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:27
+msgid ""
+"Do you want to gate news to mail, that is, send all the messages which "
+"appear in a newsgroup to a mailing list."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:27
+msgid "Most people won't need this."
+msgstr ""
+
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:35
 msgid "Missing site list"
 msgstr "Die Site Liste fehlt."
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:35
 #, fuzzy
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
-msgstr "Mailman benötigt eine sogenannte \"Site Liste\", d.h. einen Verteiler, über den Passwort-Erinnerungen und ähnliches versendet werden.  Solange diese Liste fehlt, startet mailman nicht."
+msgstr ""
+"Mailman benötigt eine sogenannte \"Site Liste\", d.h. einen Verteiler, über "
+"den Passwort-Erinnerungen und ähnliches versendet werden.  Solange diese "
+"Liste fehlt, startet mailman nicht."
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:35
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
-msgstr "Um die Site Liste anzulegen, rufen Sie bitte \"newlist mailman\" auf und folgen dann den Anweisungen.  Beachten Sie bitte auch, daß sie anschließend mailman noch von Hand mit dem Kommando \"/etc/init.d/mailman start\" starten müssen."
+msgstr ""
+"Um die Site Liste anzulegen, rufen Sie bitte \"newlist mailman\" auf und "
+"folgen dann den Anweisungen.  Beachten Sie bitte auch, daß sie anschließend "
+"mailman noch von Hand mit dem Kommando \"/etc/init.d/mailman start\" starten "
+"müssen."

@@ -25,9 +25,9 @@ esac
 exit 0
 
 @DPATCH@
-diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Commands/cmd_password.py mailman-2.1.4/Mailman/Commands/cmd_password.py
---- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Commands/cmd_password.py	2002-05-02 04:54:46.000000000 +0200
-+++ mailman-2.1.4/Mailman/Commands/cmd_password.py	2004-05-29 14:32:27.000000000 +0200
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/Mailman/Commands/cmd_password.py trunk/Mailman/Commands/cmd_password.py
+--- /home/tfheen/external/pkg-mailman/trunk/Mailman/Commands/cmd_password.py	2004-08-18 15:16:30.000000000 +0200
++++ trunk/Mailman/Commands/cmd_password.py	2004-08-18 15:16:33.000000000 +0200
 @@ -1,4 +1,4 @@
 -# Copyright (C) 2002 by the Free Software Foundation, Inc.
 +# Copyright (C) 2002-2004 by the Free Software Foundation, Inc.

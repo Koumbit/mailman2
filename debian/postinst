@@ -136,27 +136,27 @@ EOF
 # At 8AM every day, mail reminders to admins as to pending requests.
 # They are less likely to ignore these reminders if they're mailed
 # early in the morning, but of course, this is local time... ;)
-0 8 * * * list /usr/lib/mailman/cron/checkdbs
+0 8 * * * list [ -x /usr/lib/mailman/cron/checkdbs ] && /usr/lib/mailman/cron/checkdbs
 #
 # At 9AM, send notifications to disabled members that are due to be
 # reminded to re-enable their accounts.
-0 9 * * * list /usr/lib/mailman/cron/disabled
+0 9 * * * list [ -x /usr/lib/mailman/cron/disabled ] && /usr/lib/mailman/cron/disabled
 #
 # Noon, mail digests for lists that do periodic as well as threshhold delivery.
-0 12 * * * list /usr/lib/mailman/cron/senddigests
+0 12 * * * list [ -x /usr/lib/mailman/cron/senddigests ] && /usr/lib/mailman/cron/senddigests
 #
 # 5 AM on the first of each month, mail out password reminders.
-0 5 1 * * list /usr/lib/mailman/cron/mailpasswds
+0 5 1 * * list [ -x /usr/lib/mailman/cron/mailpasswds ] && /usr/lib/mailman/cron/mailpasswds
 #
 # Every 5 mins, try to gate news to mail.  You can comment this one out
 # if you don't want to allow gating, or don't have any going on right now,
 # or want to exclusively use a callback strategy instead of polling.
-# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * list /usr/lib/mailman/cron/gate_news
+# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * list [ -x /usr/lib/mailman/cron/gate_news] && /usr/lib/mailman/cron/gate_news
 #
 # At 3:27am every night, regenerate the gzip'd archive file.  Only
 # turn this on if the internal archiver is used and
 # GZIP_ARCHIVE_TXT_FILES is false in mm_cfg.py
-27 3 * * * list /usr/lib/mailman/cron/nightly_gzip
+27 3 * * * list [ -x /usr/lib/mailman/cron/nightly_gzip ] && /usr/lib/mailman/cron/nightly_gzip
 EOF
     elif dpkg --compare-versions "$2" lt 2.1; then
         # In versions before 2.1, /etc/cron.{daily,monthly}/mailman did 
@@ -171,37 +171,37 @@ EOF
         mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
 
         # Add those lines which were removed from cron.{daily,monthly}
-        grep -q '0 8 \* \* \* list /usr/lib/mailman/cron/checkdbs' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
+        grep -q '/usr/lib/mailman/cron/checkdbs' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
 # At 8AM every day, mail reminders to admins as to pending requests.
 # They are less likely to ignore these reminders if they're mailed
 # early in the morning, but of course, this is local time... ;)
-0 8 * * * list /usr/lib/mailman/cron/checkdbs
+0 8 * * * list [ -x /usr/lib/mailman/cron/checkdbs ] && /usr/lib/mailman/cron/checkdbs
 EOF
         
-        grep -q '0 9 \* \* \* list /usr/lib/mailman/cron/disabled' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
+        grep -q '/usr/lib/mailman/cron/disabled' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
 #
 # At 9AM, send notifications to disabled members that are due to be
 # reminded to re-enable their accounts.
-0 9 * * * list /usr/lib/mailman/cron/disabled
+0 9 * * * list [ -x /usr/lib/mailman/cron/disabled ] && /usr/lib/mailman/cron/disabled
 EOF
 
-        grep -q '0 12 * * * list /usr/lib/mailman/cron/senddigests' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
+        grep -q '/usr/lib/mailman/cron/senddigests' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
 #
 # Noon, mail digests for lists that do periodic as well as threshhold delivery.
-0 12 * * * list /usr/lib/mailman/cron/senddigests
+0 12 * * * list [ -x /usr/lib/mailman/cron/senddigests ] && /usr/lib/mailman/cron/senddigests
 EOF
 
-        grep -q '0 5 1 \* \* list /usr/lib/mailman/cron/mailpasswds' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
+        grep -q '/usr/lib/mailman/cron/mailpasswds' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
 #
 # 5 AM on the first of each month, mail out password reminders.
-0 5 1 * * list /usr/lib/mailman/cron/mailpasswds
+0 5 1 * * list [ -x /usr/lib/mailman/cron/mailpasswds ] && /usr/lib/mailman/cron/mailpasswds
 EOF
-        grep -q '27 3 \* \* \* list /usr/lib/mailman/cron/nightly_gzip' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
+        grep -q '/usr/lib/mailman/cron/nightly_gzip' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
 #
 # At 3:27am every night, regenerate the gzip'd archive file.  Only
 # turn this on if the internal archiver is used and
 # GZIP_ARCHIVE_TXT_FILES is false in mm_cfg.py
-27 3 * * * list /usr/lib/mailman/cron/nightly_gzip
+27 3 * * * list [ -x /usr/lib/mailman/cron/nightly_gzip ] && /usr/lib/mailman/cron/nightly_gzip
 EOF
     fi
 
@@ -278,6 +278,7 @@ case "$1" in
         if [ -e /etc/mailname ]
 	    then 
             DOMAIN=$(cat /etc/mailname)
+            # fixme - should we look for a dot in the domainname?
         else
             DOMAIN=localhost.localdomain
         fi
