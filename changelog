@@ -1,6 +1,5 @@
 mailman (2.1.4-3) unstable; urgency=medium
 
-  * NOT YET RELEASED (svn-buildpackage likes this line).
   * Fix bogus test for empty qfiles/ in preinst (bsb, closes: #240033).
   * Create group list as a system group if it doesn't exist
     (bsb, closes: #240672).
@@ -18,7 +17,7 @@ mailman (2.1.4-3) unstable; urgency=medium
   * Incorporate enhancements to postfix-to-mailman.py (bsb).
   * 50_README.POSTFIX.dpatch to reflect our choices (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 18:36:22 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 18:51:57 +0200
 
 mailman (2.1.4-2) unstable; urgency=low
 
