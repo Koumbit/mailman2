@@ -39,13 +39,22 @@ EOF
 # while its seen flag is mainly used for cosmetical reasons to mark
 # processed values in debconf-show output.
 
-db_get mailman/used_languages
+db_get mailman/used_languages || true
 used_languages="${RET}"
-db_fget mailman/used_languages scanned
+db_fget mailman/used_languages scanned || true
 scanned="${RET}"
 
-if [ ! -x "/usr/sbin/list_lists" ]; then
-  db_set mailman/site_languages "en"
+if [ ! -z "$2" ] && dpkg --compare-versions $2 lt 2.1 ; then
+  # list_lists will fail when upgrading from pre 2.1; but with those
+  # versions not supporting i18n, english was the only used language.
+  db_set  mailman/site_languages "en"
+  db_set  mailman/used_languages "en"
+  db_fset mailman/used_languages scanned false
+elif  [ ! -x "/usr/sbin/list_lists" ] ; then
+  # For 1st time installers there is no used language.
+  db_set  mailman/site_languages "en"
+  db_set  mailman/used_languages ""
+  db_fset mailman/used_languages scanned false
 else
   if [ "${scanned}" != "true" ] ; then
     echo -n "Looking for enabled languages (this may take some time) ..."
