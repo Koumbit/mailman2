@@ -30,11 +30,11 @@ exit 0
          self.__opendb()
 -        # Subtrace one for the version pseudo-entry
 -        return len(self.__db) - 1
-+       if self.__db.has_key('version'):
-+           # Subtract one for the version pseudo-entry
-+           return len(self.__db) - 1
-+       else:
-+           return len(self.__db)
++        if self.__db.has_key('version'):
++            # Subtract one for the version pseudo-entry
++            return len(self.__db) - 1
++        else:
++            return len(self.__db)
 
      def __getmsgids(self, rtype):
          self.__opendb()
