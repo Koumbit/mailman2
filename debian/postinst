@@ -70,11 +70,19 @@ def update_cron():
     gate_news = db.getBoolean('mailman/gate_news')
 
 
+def run_debhelper_additions():
+    runit = os.popen('/bin/sh', 'w')
+    runit.write("""\
+#DEBHELPER#
+""")
+    runit.close()
+
 
 def setup():
     compile_modules(MM_HOME)
     create_mm_cfg()
     update_cron()
+    run_debhelper_additions()
 
 
 if __name__ == '__main__':
