@@ -238,19 +238,19 @@ EOF
         fi
         if ! grep -q DEFAULT_EMAIL_HOST /etc/mailman/mm_cfg.py; then
             # upgrading from 2.0, add DEFAULT_EMAIL_HOST, remove post-sarge+1
-            echo "DEFAULT_EMAIL_HOST = DEFAULT_HOST_NAME" >> /etc/mailman/mm_cfg.py
+            echo -e "\nDEFAULT_EMAIL_HOST = DEFAULT_HOST_NAME" >> /etc/mailman/mm_cfg.py
         fi
 
         if ! grep -q DEFAULT_URL_HOST /etc/mailman/mm_cfg.py; then
             # upgrading from 2.0, add DEFAULT_URL_HOST, remove post-sarge+1
-            echo "DEFAULT_URL_HOST = DEFAULT_HOST_NAME" >> /etc/mailman/mm_cfg.py
+            echo -e "\nDEFAULT_URL_HOST = DEFAULT_HOST_NAME" >> /etc/mailman/mm_cfg.py
         fi
 
         # Uncruftify.  I was on something bad.
         rm -f /etc/cron.d/mm_cfg.py
 
 	if ! grep -q DEFAULT_SERVER_LANGUAGE /etc/mailman/mm_cfg.py; then
-	    echo "DEFAULT_SERVER_LANGUAGE = 'en'" >> /etc/mailman/mm_cfg.py
+	    echo -e "\nDEFAULT_SERVER_LANGUAGE = 'en'" >> /etc/mailman/mm_cfg.py
 	fi
         db_get mailman/default_server_language || true
         if [ ${RET} ]; then
