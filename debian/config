@@ -37,14 +37,17 @@ def gate_news_enabled():
     Assume valid crontab(5) format: lines whose first non-space character
     is a # are comments, comments on command lines are disallowed.
     """
-    gn = os.popen('grep gate_news %(crontab)s' % globals())
+    cmd = 'grep gate_news %(crontab)s' % globals()
+    gn = os.popen(cmd)
     result = False
     for line in gn.readlines():
         line = line.strip()
+        log('GREPPING: %(line)r' % locals(), lvl=2)
         result |= line[0] != '#'
-    if gn.close() != 0:
-        result = False
-    return result
+    if gn.close() is None:
+        return result
+    else:
+        return False
 
 
 def have_list(listname):
@@ -62,10 +65,10 @@ def have_list(listname):
         return os.path.isdir(list_dir)
 
 
-def main(operation, prev_version):
+def main(operation, inst_version):
 
     log('config main(operation=%(operation)r, '
-        'prev_version=%(prev_version)r)'
+        'inst_version=%(inst_version)r)'
         % locals(), lvl=2)
 
     def db_input(*args):
@@ -118,9 +121,9 @@ def main(operation, prev_version):
 
 if __name__ == '__main__':
     if len(sys.argv) == 2:
-        operation, prev_version = sys.argv[1], None
+        operation, inst_version = sys.argv[1], None
     elif len(sys.argv) == 3:
-        operation, prev_version = sys.argv[1:]
+        operation, inst_version = sys.argv[1:]
 
     def dummy_logger(*args, **kw):
         pass
@@ -130,9 +133,9 @@ if __name__ == '__main__':
         from Mailman.Debian import DebuggingLogger
         log = DebuggingLogger('MM_MAINT')
         try:
-            main(operation, prev_version)
+            main(operation, inst_version)
         finally:
             log.sys_info()
     except ImportError:
         log = dummy_logger
-        main(operation, prev_version)
+        main(operation, inst_version)

@@ -76,5 +76,9 @@ is packaged now, it might be wiser to defer them until sarge+1.
   at hand in /usr/share/mailman/templates, there's no need for an
   additional copy by ucf when --three-way is enabled.
 
+- /etc/cron.d/mailman is treated as a conffile although automatically
+  edited in mailman.postinst.  This is suboptimal, find a better
+  solution.
+
 This list is by no means meant to be complete.
 

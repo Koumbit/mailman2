@@ -67,15 +67,55 @@ def create_mm_cfg():
         log.exception()
 
 def update_cron():
+    """Update mailman crontab according to debconf setting.
+
+    Additionally, if we are upgrading from a MM version using
+    /usr/lib/mailman, change pathes in crontab to
+    /var/lib/mailman.
+    """#
     gate_news = db.getBoolean('mailman/gate_news')
+    log('DEBCONF gate_news=%(gate_news)r' % locals(), lvl=2)
+    cron_tab = '/etc/cron.d/mailman'
+    cron_dir = os.path.join(MM_HOME, 'cron')
+    gn_path = os.path.join(cron_dir, 'gate_news')
+    ctf = open(cron_tab, 'r+')
+    changed_pathes = False
+    cron_lines = []
+    for line in ctf.readlines():
+        pos = line.find('/usr/lib/mailman')
+        if pos != -1:
+            changed_pathes = True
+            line = line[:pos] + '/var' + line[pos+4:]
+        if line.find(gn_path) > 0:
+            prefix = ''
+            if not gate_news:
+                prefix = '# '
+            line = prefix + uncomment(line)
+        cron_lines.append(line)
+    ctf.seek(0)
+    ctf.truncate()
+    for line in cron_lines:
+        ctf.write(line)
+    ctf.close()
+    if changed_pathes:
+        log('Changed pathes in %(cron_tab)r to %(cron_dir)r.'
+            % locals())
+    # FIXME: keep track of changes?
+
+
+def uncomment(line):
+    line = line.lstrip()
+    while line[0] == '#':
+        line = line[1:].lstrip()
+    return line
 
 
 def run_debhelper_additions():
-    runit = os.popen('/bin/sh', 'w')
+    runit = os.popen('/bin/sh -e', 'w')
     runit.write("""\
-#DEBHELPER#
-""")
-    runit.close()
+#DEBHELPER#""")
+    if runit.close() is not None:
+        raise SystemExit(1)
 
 
 def setup():
@@ -89,7 +129,7 @@ if __name__ == '__main__':
     log = DebuggingLogger('MM_MAINT')
     try:
         function    = sys.argv[1]
-        old_version = sys.argv[2]
+        inst_version = sys.argv[2]
         if function in ('configure',):
             setup()
     finally:
