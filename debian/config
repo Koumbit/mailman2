@@ -18,7 +18,7 @@ EOF
   done | sort | uniq
 }
 
-if [ -x "/usr/sbin/list_lists" ]; then
+if [ -f "/etc/mailman/mm_cfg.py" -a -x "/usr/sbin/list_lists" ]; then
   echo -n "Looking for enabled languages (this may take some time) ..."
   used_languages="$(get_used_languages)"
   echo " done."

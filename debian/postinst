@@ -116,7 +116,7 @@ EOF
     # Done with site language stuff
 
     # Don't forget the qmail specific stuff (but why support non-free?)
-    ucf --debconf-ok --three-way ${mm_dist}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py
+    ucf --debconf-ok --three-way ${mm_dist}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py 2>/dev/null
     # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
     cmp -s ${mm_etc}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py.dpkg-dist \
       && rm ${mm_etc}/qmail-to-mailman.py.dpkg-dist
