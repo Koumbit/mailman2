@@ -30,12 +30,12 @@ from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
 
 MM_HOME = '/var/lib/mailman'
 
-sys.path[0] = MM_HOME
+sys.path.insert(0, MM_HOME)
 
 from Mailman.Debian import DebuggingLogger, CommandRunner
 
 MM_BIN  = os.path.join(MM_HOME, 'bin')
-
+MM_INST = '/usr/share/mailman'
 
 def compile_modules(directory):
     """Compiles all python modules in the specified directory.
@@ -58,11 +58,30 @@ def compile_modules(directory):
     log(' done.')
 
 def create_mm_cfg():
+    """Create an initial /etc/mailman/mm_cfg.py
+
+    This works only for a first time install.
+    """#
     try:
-        db_email_host = db.get('mailman/email_host')
-        log('DEBCONF email_host=%(db_email_host)r' % locals(), lvl=2)
-        db_url_host   = db.get('mailman/url_host')
-        log('DEBCONF url_host=%(db_url_host)r' % locals(), lvl=2)
+        gbls = globals().copy()
+
+        from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin
+        mm_cfg_fl = open('/etc/mailman/mm_cfg.py', 'w')
+        # Writing a constant prefix (including the import from Defaults)
+        # beforehand makes sure there is a formally working mm_cfg.
+        mm_cfg_fl.write(mm_cfg_defaults)
+        mm_cfg_fl.flush()
+
+        exec 'from Mailman.Defaults import *' in gbls
+
+        email_host = db.get('mailman/email_host')
+        gbls['DEFAULT_EMAIL_HOST'] = email_host
+        log('DEBCONF email_host=%(DEFAULT_EMAIL_HOST)r' % gbls, lvl=2)
+        url_host = db.get('mailman/url_host') or 'www.'+email_host
+        gbls['DEFAULT_URL_HOST']   = url_host
+        log('DEBCONF url_host=%(DEFAULT_URL_HOST)r' % gbls, lvl=2)
+        mm_cfg_fl.write(mm_cfg_fillin % gbls)
+        mm_cfg_fl.close()
     except DebconfError, exc:
         log.exception()
 

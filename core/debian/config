@@ -60,7 +60,7 @@ def have_list(listname):
     try:
         from Mailman.Utils import list_exists
         return list_exists(listname)
-    except ImportError:
+    except:
         list_dir = os.path.join(mm_lists, listname)
         return os.path.isdir(list_dir)
 
@@ -88,7 +88,7 @@ def main(operation, inst_version):
     mailname = mailname.read().strip()
 
     if os.path.exists(mm_cfg):
-        for line in os.popen('egrep "^DEFAULT_[^ ]+ =" %(mm_cfg)s' % locals()):
+        for line in os.popen('egrep "^DEFAULT_[^ =]+ *=" %(mm_cfg)s' % locals()):
             exec line in gbls
     default_email_host      = gbls.get('DEFAULT_EMAIL_HOST', mailname)
     default_url_host        = gbls.get('DEFAULT_URL_HOST', '')
@@ -97,6 +97,8 @@ def main(operation, inst_version):
     db.set('mailman/email_host', default_email_host)
     db_input(MEDIUM, 'mailman/email_host')
 
+    if not default_url_host:
+        default_url_host = 'www.' + default_email_host
     db.set('mailman/url_host',   default_url_host)
     db_input(MEDIUM, 'mailman/url_host')
 
