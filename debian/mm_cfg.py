@@ -54,7 +54,7 @@ IMAGE_LOGOS       = '/images/mailman/'
 USE_ENVELOPE_SENDER = 0
 DEFAULT_SEND_REMINDERS = 0
 
-MAILMAN_OWNER     = 'mailman-owner@%s' % DEFAULT_HOST_NAME
+MAILMAN_OWNER     = 'mailman-owner@%s' % DEFAULT_EMAIL_HOST
 
 PRIVATE_ARCHIVE_URL = '/cgi-bin/mailman/private'
 
