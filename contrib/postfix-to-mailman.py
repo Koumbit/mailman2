@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
-# $Id: postfix-to-mailman.py 8 2004-03-21 18:05:37Z bsb $
+# $URL: svn+ssh://svn/home/svn/adm/trunk/mailman/postfix-to-mailman.py $
+# $Id: postfix-to-mailman.py 17 2004-03-29 17:06:17Z bsb $
 #
 # Interface mailman to a postfix with a mailman transport. Does not require
 # the creation of _any_ aliases to connect lists to your mail system.
@@ -16,7 +17,7 @@
 #   downloaded from http://www.gurulabs.com/files/postfix-to-mailman-2.1.py
 #   and adopted for inclusion in the Debian Mailman package.
 #   (hi Bruce, back to the roots :-)
-#   rewritten for python >= 2.2 taking configuration from mm_cfg.py
+#   rewritten for python >= 2.2 taking configuration from mm_cfg
 #
 # This script was originally qmail-to-mailman.py by:
 # Bruce Perens, bruce@perens.com, March 1999.
@@ -26,14 +27,15 @@
 
 # It catches all mail to a virtual domain, eg "lists.example.com".  It
 # looks at the recipient for each mail message and decides if the mail
-# is addressed to a valid list or not, and bounces the message with a
-# helpful suggestion if it's not addressed to a list. It decides if it
-# is a posting, a list command, or mail to the list administrator, by
-# checking for the -admin, -owner, -request, -join, -leave, -subscribe
-# and -unsubscribe addresses. It will recognize a list as soon as the
-# list is created, there is no need to add _any_ aliases for any list.
-# It recognizes mail to postmaster, abuse and mailer-daemon, and
-# routes those mails to DEB_LISTMASTER as defined in mm_cfg.py
+# is addressed to a valid list or not, and optionally bounces the
+# message with a helpful suggestion if it's not addressed to a
+# list. It decides if it is a posting, a list command, or mail to the
+# list administrator, by checking for the -admin, -owner, -request,
+# -join, -leave, -subscribe and -unsubscribe addresses. It will
+# recognize a list as soon as the list is created, there is no need to
+# add _any_ aliases for any list.  It recognizes mail to postmaster,
+# abuse and mailer-daemon, and routes those mails to DEB_LISTMASTER as
+# defined in mm_cfg.py
 
 # INSTALLATION:
 #
@@ -46,25 +48,36 @@
 #    transport_maps = hash:/etc/postfix/transport
 #    mailman_destination_recipient_limit = 1
 #
-# /etc/postfix/transport:
-#   lists.example.com   mailman:
-#
 # /etc/postfix/master.cf
 #    mailman unix  -       n       n       -       -       pipe
 #      flags=FR user=list 
-#      argv=/var/lib/mailman/postfix-to-mailman.py ${nexthop} ${user}
+#      argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${user}
+#
+# /etc/postfix/transport:
+#   lists.example.com   mailman:
 #
 # /etc/mailman/mm_cfg.py
 #    MTA = None # No MTA alias processing required
 #    # alias for postmaster, abuse and mailer-daemon
 #    DEB_LISTMASTER = 'postmaster@example.com'
 #
-# Replace lists.example.com above with the name of the domain to be connected
-# to Mailman. Note that _all_ mail to that domain will go to Mailman, so you
-# don't want to put the name of your main domain here. Typically a virtual
-# domain lists.domain.com is used for Mailman, and domain.com for regular
-# email.
+# Replace lists.example.com above with the name of the domain to be
+# connected to Mailman. Note that _all_ mail to that domain will go to
+# Mailman, so you don't want to put the name of your main domain
+# here. Typically a virtual domain lists.domain.com is used for
+# Mailman, and domain.com for regular email.
 #
+# With the sheer amount of spam using faked addresses it seems more
+# appropriate to me to just reject non-existing addresses.  The old
+# behavior sending a helpful bounce message is still configurable
+# by defining DEB_HELP_TEXT in mm_cfg.
+
+# Exit codes accepted by postfix
+#  from postfix-2.0.16/src/global/sys_exits.h
+EX_USAGE    = 64    # command line usage error 
+EX_NOUSER   = 67    # addressee unknown
+EX_SOFTWARE = 70    # internal software error
+EX_TEMPFAIL = 75    # temporary failure
 
 import sys, os
 import paths
@@ -80,8 +93,6 @@ def main():
     except AttributeError:
         MailmanOwner = 'postmaster@localhost'
 
-    os.chdir(os.path.join(paths.prefix, 'lists'))
-
     try:
         domain, local = [ a.lower() for a in sys.argv[1:] ]
     except:
@@ -89,8 +100,7 @@ def main():
         # /etc/postfix/master.cf is badly misconfigured
         sys.stderr.write('Illegal invocation: %r\n',
                          ' '.join(sys.argv))
-        sys.exit(1)
-
+        sys.exit(EX_USAGE)
 
     # Redirect required addresses to 
     if local in ('postmaster', 'abuse', 'mailer-daemon'):
@@ -117,23 +127,20 @@ def main():
             func  = ext[1:]
             break
 
-    if os.path.exists(mlist):
+    # Let Mailman decide if a list exists.
+    from Mailman.Utils import list_exists
+    if list_exists(mlist):
         mm_pgm = os.path.join(paths.prefix, 'mail', 'mailman')
         os.execv(mm_pgm, (mm_pgm, func, mlist))
         # NOT REACHED
     else:
-        bounce()
-        # NOT REACHED
+        try:
+            sys.stderr.write(mm_cfg.DEB_HELP_TEXT)
+        except AttributeError:
+            sys.exit(EX_NOUSER)
 
+        sys.exit(1)
 
-def bounce():
-    """\
-TO ACCESS THE MAILING LIST SYSTEM: Start your web browser on
-  %slistinfo/
-That web page will help you subscribe or unsubscribe, and will
-give you directions on how to post to each mailing list.\n"""
-    sys.stderr.write(bounce.__doc__ % mm_cfg.DEFAULT_URL)
-    sys.exit(1)
 
 if __name__ == '__main__':
     try:
@@ -144,4 +151,4 @@ if __name__ == '__main__':
         xt, xv, tb = sys.exc_info()
         sys.stderr.write("%s %s\n" % (xt, xv))
         sys.stderr.write("Line %d\n" % (tb.tb_lineno))
-        sys.exit(75)       # Soft failure, try again later.
+        sys.exit(EX_TEMPFAIL) # Soft failure, try again later.
