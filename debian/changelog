@@ -5,6 +5,7 @@ mailman (2.1.4-2) unstable; urgency=low
   * Switch to dpatch
   * Don't traceback when using admin password (closes: #233161)
   * Fix up MAILMAN_OWNER. (closes: #232452, #232273)
+  * Make the postinst a lot less chatty (closes: #232546)
 
  -- Tollef Fog Heen <tfheen@debian.org>  Wed, 11 Feb 2004 02:11:04 +0100
 
