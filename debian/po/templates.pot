@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-30 12:12+0100\n"
+"POT-Creation-Date: 2003-12-06 15:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,15 +24,35 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Gate news to mail?"
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"Do you want to gate news to mail, that is, send all the messages which "
+"appear in a newsgroup to a mailing list."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Most people won't need this."
+msgstr ""
+
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:12
 msgid "Missing site list"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:12
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -41,7 +61,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:12
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"

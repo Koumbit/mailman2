@@ -1,3 +1,12 @@
+Template: mailman/gate_news
+Type: boolean
+Default: false
+_Description: Gate news to mail?
+ Do you want to gate news to mail, that is, send all the messages which
+ appear in a newsgroup to a mailing list.
+ .
+ Most people won't need this.
+
 Template: mailman/create_site_list
 Type: note
 _Description: Missing site list
