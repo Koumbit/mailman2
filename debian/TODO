@@ -25,31 +25,43 @@ is packaged now, it might be wiser to defer them until sarge+1.
   like postfix-to-mailman.py does, getting it out of /etc/mailman and
   the ucf database.
 
+- mailman.postinst: if qmail-to-mailman.py has been modified by the
+  administrator, keep the copy in /etc/mailman w/o symlinking to it
+  from /var/lib/mailman but copy its configuration to mm_cfg.py.
+
 - As far as I(bsb) am concerned, I'd even prefer separate source
   packages for mm-spamassassin, mm-spamprobe, mm-savannah and
   mm-clamav but with spamassassin and savannah already being in the
   archive, somebody will probably object :(
+* Tollef objects.
 
 - Make lintian clean.
+* mostly done
 
 - mailman-i18n:
   $LANG/LC_MESSAGES/mailman.mo should go into /usr/share/locale.
 * done in Rev 79
 
-  If not installed, admin pages dealing with multilingual support must
-  be replaced by a hint to install mailman-i18n first.
-
   Instead of mailman-i18n the user may choose to install mailman-en
   which supports only english but still has templates in
   /etc/mailman/templates/en.
+* done in Rev 111
+
+- If not installed, admin pages dealing with multilingual support must
+  be replaced by a hint to install mailman-i18n first.
+
+- Guarantee mailman master qrunner starts only when either mailman-en
+  or mailman-i18n is fully configured.  To get this fully working, use
+  a special key in cfdb, e.g. cfdb['lang-configured'] which is set in
+  mailman-{en,i18n}.postinst and removed in mailman-{en,i18n}.prerm.
+  Patch mailmanctl to check for this key.
+* partially (no cfdb key) done in Rev 122
 
 - Upstream check_perms reports nonesense, there is no point in making
   e.g. language directories 2775.  Either rewrite it such that it
   provides sensible results or drop it completely (when invoked with
   -f it even enforces that nonsense).
-
-- Find a way to split into build-indep and build-arch targets, avoiding
-  to run msgfmt.py on every arch build.
+* done in Rev 120, but still suboptimal
 
 - Make sure no directory symlink is present in /var/lib/mailman,
   otherwise obscure bugs may result (#242740).
@@ -63,22 +75,27 @@ is packaged now, it might be wiser to defer them until sarge+1.
 - Think about a Mailman.Debian (python-)package for postinst helpers.
 * done in Rev 87
 
-- mailman-{en,i18n}.postinst: move /etc/mailman/LANG to
+- mailman-{en,i18n}.{pre,post}inst: move /etc/mailman/LANG to
   /etc/mailman/templates/LANG keeping ucf database up to date!
-
-- mailman.postinst: if qmail-to-mailman.py has been modified, keep the
-  copy in /etc/mailman w/o symlinking to it from /var/lib/mailman but
-  copy its configuration to mm_cfg.py.
+* done in Rev 111
 
 - With up to > 1100 templates to keep track of (43 for english only),
   ucf is the wrong tool to rely upon.  Maybe a rewrite using a BDB
   database is the way to go?  Also we always have original templates
   at hand in /usr/share/mailman/templates, there's no need for an
   additional copy by ucf when --three-way is enabled.
+  Now using Mailman.Debian.cfdb for track-keeping instead of ucf.
+* done in Rev 109
 
 - /etc/cron.d/mailman is treated as a conffile although automatically
   edited in mailman.postinst.  This is suboptimal, find a better
   solution.
+* done in Rev 115
+
+- Decide on what goes into mailman-doc.
+
+- Find a way to split into build-indep and build-arch targets, avoiding
+  to run msgfmt.py on every arch build.
 
 This list is by no means meant to be complete.
 
