@@ -8,6 +8,8 @@ mailman (2.1.5-4) unstable; urgency=high
     postfix-to-mailman.py (closes: #279361, #280246).
   * Suggests listadmin, as that may be useful for some admins
     (closes: #279192).
+  * Prevent caching of html output with 'Pragma: no-cache'
+    (closes: #281284).
 
  -- Tollef Fog Heen <tfheen@debian.org>  Sat, 13 Nov 2004 21:32:07 +0100
 
