@@ -1,5 +1,8 @@
 # -*- python -*-
-
+# $URL$
+# $Id$
+mm_cfg_defaults = '''\
+#
 # Copyright (C) 1998,1999,2000 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
@@ -22,8 +25,8 @@
 From a raw distribution it should be copied to mm_cfg.py.  If you
 already have an mm_cfg.py, be careful to add in only the new settings
 you want.  The complete set of distributed defaults, with annotation,
-are in ./Defaults.  In mm_cfg, override only those you want to
-change, after the
+are in /var/lib/mailman/Mailman/Defaults.py.  In mm_cfg, override only
+those you want to change, after the
 
   from Defaults import *
 
@@ -43,6 +46,9 @@ DEFAULT_MSG_FOOTER for an example."""
 
 from Defaults import *
 
+'''
+
+mm_cfg_fillin = '''\
 ##############################################################
 # Put YOUR site-specific configuration below, in mm_cfg.py . #
 # See Defaults.py for explanations of the values.            #
@@ -51,36 +57,40 @@ from Defaults import *
 # The name of the list Mailman uses to send password reminders
 # and similar. Don't change if you want mailman-owner to be
 # a valid local part.
-MAILMAN_SITE_LIST = 'mailman'
+MAILMAN_SITE_LIST = %(MAILMAN_SITE_LIST)r
 
 #-------------------------------------------------------------
 # If you change these, you have to configure your http server
 # accordingly (Alias and ScriptAlias directives in most httpds)
-DEFAULT_URL_PATTERN = 'http://%s/cgi-bin/mailman'
-PRIVATE_ARCHIVE_URL = '/cgi-bin/mailman/private'
-IMAGE_LOGOS         = '/images/mailman/'
+DEFAULT_URL_PATTERN = %(DEFAULT_URL_PATTERN)r
+# For logos on MM web pages, add this to your httpd config:
+#   Alias %(IMAGE_LOGOS)s /usr/share/images/mailman/
+IMAGE_LOGOS         = %(IMAGE_LOGOS)r
 
 #-------------------------------------------------------------
-# Default domain for email addresses of newly created MLs
-DEFAULT_EMAIL_HOST = 'thunderchild.aszi.sztaki.hu'
-#-------------------------------------------------------------
 # Default host for web interface of newly created MLs
-DEFAULT_URL_HOST   = 'thunderchild.aszi.sztaki.hu'
+DEFAULT_URL_HOST   = %(DEFAULT_URL_HOST)r
+#-------------------------------------------------------------
+# Default domain for email addresses of newly created MLs
+DEFAULT_EMAIL_HOST = %(DEFAULT_EMAIL_HOST)r
 #-------------------------------------------------------------
 # Required when setting any of its arguments.
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
 #-------------------------------------------------------------
-# The default language for this server.
-DEFAULT_SERVER_LANGUAGE = 'en'
+# The default language for this server (may be changed to a
+# supported language when mailman-i18n is installed).
+DEFAULT_SERVER_LANGUAGE = %(DEFAULT_SERVER_LANGUAGE)r
 
 #-------------------------------------------------------------
-# Iirc this was used in pre 2.1, leave it for now
-USE_ENVELOPE_SENDER    = 0              # Still used?
+# Don't use address from envelope instead of from headers when
+# determining if a message comes from a list member.
+USE_ENVELOPE_SENDER    = %(USE_ENVELOPE_SENDER)r
 
 #-------------------------------------------------------------
-# Unset send_reminders on newly created lists
-DEFAULT_SEND_REMINDERS = 0
+# By default don't send monthly password reminders for newly
+# created lists.
+DEFAULT_SEND_REMINDERS = %(DEFAULT_SEND_REMINDERS)r
 
 #-------------------------------------------------------------
 # Uncomment this if you configured your MTA such that it
@@ -95,3 +105,11 @@ DEFAULT_SEND_REMINDERS = 0
 
 # Note - if you're looking for something that is imported from mm_cfg, but you
 # didn't find it above, it's probably in /usr/lib/mailman/Mailman/Defaults.py.
+
+#-------------------------------------------------------------
+# Local settings not managed by Debian maintainer scripts. 
+# only variables not mentioned above are preserved on package
+# upgrade. If you define variables mentioned above here,
+# the last setting here will be used above and occurrences
+# below are removed.
+'''
