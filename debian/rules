@@ -80,6 +80,7 @@ binary-indep:	checkroot build
 	dh_installchangelogs --indep
 	dh_install --indep
 	dh_installman --indep
+	dh_installcron --indep
 	dh_installlogrotate --indep
 	dh_fixperms --indep
 
