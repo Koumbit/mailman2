@@ -449,7 +449,7 @@ mailman (2.0.5-2) unstable; urgency=medium
 
   * updated description (thanks Greg Ward)
   * fix a potential problem when gatewaying lists between news and mail,
-    thanks to Jürgen A. Erhard.
+    thanks to JÃ¼rgen A. Erhard.
   * Fix up IMAGE_LOGOS in Defaults.py, which might make it easier on those
     upgrading, where IMAGE_LOGOS is not set in mm_cfg.py
   * Fix a potential short-term security problem where
