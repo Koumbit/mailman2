@@ -14,8 +14,9 @@ mailman (2.1.4-3) UNRELEASED; urgency=low
     pathes to reflect Debian choices (bsb).
   * Include add_virtualdomain call in mm_cfg.py (closes: #238509), while
     at it regroup options and add comments (bsb).
+  * Incorparate enhancements to postfix-to-mailman.py (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 01:38:02 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 02:15:16 +0200
 
 mailman (2.1.4-2) unstable; urgency=low
 
