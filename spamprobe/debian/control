@@ -1,0 +1,12 @@
+Source: mailman-spamprobe
+Section: mail
+Priority: optional
+Maintainer: Siggy Brentrup <bsb@debian.org>
+Build-Depends: debhelper (>= 4.1.16), autoconf, python-dev, dpatch
+Standards-Version: 3.6.1
+
+Package: mailman-spamprobe
+Architecture: all
+Depends: mailman (= ${Source-Version}), spamprobe (>= 0.9h-2)
+Description: Mixin integrating spamprobe into mailman.
+ Dunno yet, have to look into it.
