@@ -10,10 +10,10 @@ line is for apache):
 
 ScriptAlias /mailman/ /usr/lib/cgi-bin/mailman/
 
-In this case you need to set the DEFAULT_URL in /etc/mailman/mm_cfg.py
-to http://<hostname>/mailman/ for the cookie authentication code to
-work.  Note that you need to change the base URL for all the
-already-created lists as well.
+In this case you need to set the DEFAULT_URL_PATTERN in
+/etc/mailman/mm_cfg.py to http://%s/mailman/ for the cookie
+authentication code to work.  Note that you need to change the base
+URL for all the already-created lists as well.
 
 The public archives are located in /var/lib/mailman/archives/public,
 you can create a symlink from /var/www if you like, or create an alias like
@@ -26,6 +26,13 @@ FollowSymlinks.  This means that if you switch to private archiving
 and then back to public archiving again, you will get a "Forbidden"
 error.
 
+If broken images show on your mailman html pages, it is probably
+because you don't have the /images/mailman/ alias enabled in your
+webserver, create it as follows:
+
+Alias /images/mailman/ /usr/share/images/mailman/
+
+
 You can create new lists with the newlist command (you have to add the
 aliases it needs by hand to /etc/aliases or the corresponding database
 because mailman can not know about configuration of all MTA's, but newlist 
@@ -35,13 +42,6 @@ below).
 For users of exim: if you want to use the /etc/aliases file for mailman
 aliases, you'll need to specify a user=list line or something like that in
 the system_aliases director.
-
-If a broken image shows on your mailman html pages, it is probably
-because you don't have the /doc/ alias enabled in your webserver. Copy
-the /usr/share/images/mailman/mailman.jpg to a place where your
-webserver can access it and modify the DELIVERED_BY_URL and
-IMAGE_LOGOS option accordingly in your mm_cfg.py (the default is
-'/doc/mailman/images/mailman.jpg').
 
 As of 2.0.6-1, gate-news is commented out in the default crontab,
 since most people will be less interested in gating news-to-mail and
@@ -114,4 +114,4 @@ your alias files.
 You must create a "mailman" list on your system, until it is added,
 mailman will not start.  (It will yell at you, so you should notice.)
 
- -- Siggy Brentrup <bsb@debian.org>, Tue Mar 23 19:08:27 2004
+ -- Siggy Brentrup <bsb@debian.org>, Tue Apr  6 23:44:43 2004

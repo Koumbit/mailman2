@@ -1,8 +1,9 @@
 mailman (2.1.4-4) UNRELEASED; urgency=low
 
   * NOT YET RELEASED
+  * Fix README.Debian concerning URLs (bsb, closes: #235835). 
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 20:42:19 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Tue,  6 Apr 2004 23:52:06 +0200
 
 mailman (2.1.4-3) unstable; urgency=medium
 
