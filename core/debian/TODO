@@ -97,5 +97,22 @@ is packaged now, it might be wiser to defer them until sarge+1.
 - Find a way to split into build-indep and build-arch targets, avoiding
   to run msgfmt.py on every arch build.
 
+- CONSIDER:
+  In order to get the transition from ucf to cfdb right and to avoid
+  circular dependencies, a transitional package mailman-trans is
+  required.  This packages Conflict-Replaces older mailman packages
+  and is depended upon by mailman, mailman-{en,i18n}.
+
+           +-> mailman-en ---+
+           | or              |
+  mailman -+-> mailman-i18n -+-> mailman-trans
+           | and
+           +-> mailman-bin
+
+  The mailman-trans package contains no files by itself, it just
+  creates the cfdb in its postinst.
+  
+  CONSIDER: When can we get rid of mailman-trans ?
+
 This list is by no means meant to be complete.
 
