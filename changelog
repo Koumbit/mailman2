@@ -1,3 +1,13 @@
+mailman (2.1.4-5) unstable; urgency=high
+
+  * This is an intermediate release to fix a security issue, 2.1.5 will be
+    released as split binary packages.
+  * Applied Mandrake security patch for CAN-2004-0412, thanks to Florian
+    Weimer (closes: #251176).
+  * Fixed spanish translation (closes: #248083).
+
+ -- Siggy Brentrup <bsb@debian.org>  Sat, 29 May 2004 14:53:41 +0200
+
 mailman (2.1.4-4) unstable; urgency=medium
 
   * Urgency medium because RC bugs are fixed.
