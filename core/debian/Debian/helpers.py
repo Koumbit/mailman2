@@ -60,6 +60,12 @@ class SimpleLogger:
         if lvl <= self._level:
             self._file.write('%(msg)s%(nl)s' % locals())
             self._file.flush()
+
+    def exception(self, lvl=9):
+        """Log exception in sys.exc_info."""
+        import traceback as tb
+        self(''.join(tb.format_exception(*sys.exc_info())),
+             lvl=lvl)
 
 class DebuggingLogger(SimpleLogger):
     """
