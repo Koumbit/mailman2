@@ -11,6 +11,12 @@
 import os
 import bsddb
 
+# HACK: bsddb.btopen() fails at least on mips because "architecture lacks
+#       fast mutexes, applications can't be threaded".
+#       We don't need threading, didn't even ask for it.
+bsddb.db.DB_THREAD = 0
+
+
 class ConfFileDatabase:
     """
     Registered templates are stored as strings indexed by their
