@@ -22,3 +22,4 @@
 57_fix_missing_da_template
 59_build_arch_indep
 60_type_error_temp_fix
+99_js_templates.dpatch
