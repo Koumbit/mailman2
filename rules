@@ -127,7 +127,6 @@ binary-arch:	checkroot build
 		do dh_link usr/lib/$(package)/bin/$$bin usr/sbin/$$bin; done
 	mv debian/mailman/usr/sbin/arch debian/mailman/usr/sbin/mmarch
 	dh_installman
-#	dh_undocumented $(manpages)
 	dh_installinit
 	dh_installdebconf
 	dh_installexamples templates/* debian/mm_cfg.py \
@@ -183,7 +182,6 @@ binary-arch:	checkroot build
 	chmod 2775 debian/mailman/var/log/mailman
 	chmod g+w debian/mailman/var/lock/mailman
 
-#	dh_suidregister
 	dh_installdeb
 
 #	echo 'if [ "$$1" = purge ]; then' >> debian/mailman.postrm.ucf
