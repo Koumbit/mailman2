@@ -14,6 +14,7 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/usr/lib/mailman/bin/mailmanctl
+PIDFILE=/var/lib/mailman/data/master-qrunner.pid
 NAME=mailman
 DESC="mailman queue runner"
 
@@ -53,8 +54,22 @@ case "$1" in
 	#	option to the "reload" entry above. If not, "force-reload" is
 	#	just the same as "restart".
 	#
+	PID=`cat $PIDFILE 2>/dev/null`
 	echo -n "Restarting $DESC: $NAME"
         $DAEMON stop
+	if test -n "$PID" && kill -0 $PID 2>/dev/null ; then
+		echo -n "Waiting "
+                for cnt in `seq 1 5`; do
+			sleep 1
+			kill -0 $PID 2>/dev/null || break
+			echo -n "."
+		done;
+		if kill -0 $PID 2>/dev/null ; then
+			echo " Failed"
+		else
+			echo " Done"
+		fi
+	fi
         $DAEMON start
 	echo "."
 	;;
