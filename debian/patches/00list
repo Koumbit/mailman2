@@ -11,6 +11,7 @@
 30_pipermail_threads
 31_buggy_queuefiles
 32_MIME_fixup
+40_FHS_dirs
 50_README.EXIM.paths
 50_README.POSTFIX
 51_nocompile.pyc

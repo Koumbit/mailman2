@@ -1,8 +1,4 @@
-etc/mailman/templates                   var/lib/mailman/templates
-usr/share/locale                        var/lib/mailman/messages
-var/lock/mailman                        var/lib/mailman/locks
-var/log/mailman                         var/lib/mailman/logs
-etc/mailman/mm_cfg.py                   var/lib/mailman/mm_cfg.py
+etc/mailman/mm_cfg.py                   var/lib/mailman/Mailman/mm_cfg.py
 usr/share/mailman                       var/lib/mailman/.INST
 var/lib/mailman/bin/list_lists          usr/sbin/list_lists
 var/lib/mailman/bin/find_member         usr/sbin/find_member
