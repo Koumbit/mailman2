@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-# $URL: svn+bsb://svn.winnegan.de/svn/adm/trunk/mailman/postfix-to-mailman.py $
-# $Id: postfix-to-mailman.py 38 2004-04-15 19:11:32Z bsb $
+# $URL: svn+ssh://svn.winnegan.de/svn/adm/trunk/mailman/postfix-to-mailman.py $
+# $Id: postfix-to-mailman.py 50 2004-05-17 13:41:21Z bsb $
 #
 # Interface mailman to a postfix with a mailman transport. Does not require
 # the creation of _any_ aliases to connect lists to your mail system.
@@ -39,7 +39,7 @@
 
 # INSTALLATION:
 #
-# Install this file as /var/lib/mailman/bin/postfix-to-mailman.py
+# Install this file as /usr/lib/mailman/bin/postfix-to-mailman.py
 #
 # To configure a virtual domain to connect to mailman, edit Postfix thusly:
 #
@@ -51,7 +51,7 @@
 # /etc/postfix/master.cf
 #    mailman unix  -       n       n       -       -       pipe
 #      flags=FR user=list 
-#      argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${user}
+#      argv=/usr/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${user}
 #
 # /etc/postfix/transport:
 #   lists.example.com   mailman:
@@ -71,6 +71,8 @@
 # appropriate to me to just reject non-existing addresses.  The old
 # behavior sending a helpful bounce message is still configurable
 # by defining DEB_HELP_TEXT in mm_cfg.
+
+SENDMAIL = '/usr/sbin/sendmail'
 
 # Exit codes accepted by postfix
 #  from postfix-2.0.16/src/global/sys_exits.h
@@ -106,10 +108,9 @@ def main():
                              'in main.cf?')
         sys.exit(EX_USAGE)
 
-    # Redirect required addresses to 
+    # Redirect required addresses to MailmanOwner
     if local in ('postmaster', 'abuse', 'mailer-daemon'):
-        os.execv("/usr/sbin/sendmail",
-                 ("/usr/sbin/sendmail", MailmanOwner))
+        os.execv(SENDMAIL, (SENDMAIL, MailmanOwner))
         sys.exit(0)
 
     # Assume normal posting to a mailing list

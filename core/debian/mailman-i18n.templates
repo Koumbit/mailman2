@@ -21,3 +21,14 @@ Template: mailman/used_languages
 Type: string
 Description: Internal holding result of scan
 
+Template: mailman/other_languages
+Type: note
+_Description: Unsupported languages used 
+ The mailman-en package supports only english mailing lists while this
+ installation has support for multiple languages enabled.
+ .
+ Before retrying to install the ${infavor} package, please make sure
+ all mailing lists use only english, then dpkg-reconfigue ${package}
+ disabling all languages but english.
+
+ 

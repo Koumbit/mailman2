@@ -31,12 +31,12 @@ from errno import ENOENT
 ## from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
 
 
+MM_INST = '/usr/lib/mailman'
 MM_HOME = '/var/lib/mailman'
-MM_BIN  = os.path.join(MM_HOME, 'bin')
-MM_INST = '/usr/share/mailman'
+MM_BIN  = os.path.join(MM_INST, 'bin')
 
 # mailman (and thus the Mailman py package) may not be installed yet.
-sys.path.insert(0, os.path.join(MM_HOME, 'Mailman'))
+sys.path.insert(0, os.path.join(MM_INST, 'Mailman'))
 from Debian import DebuggingLogger, mm_languages, cfdb
 
 
