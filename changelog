@@ -11,6 +11,8 @@ mailman (2.1.4-4) UNRELEASED; urgency=medium
     (by GCS, closes: #224319).
   * postfix-to-mailman.py: Fix ',' obscuring illegal invocations, reported
     by martin f krafft <madduck@debian.org> (bsb, closes: #243908)
+  * Update SpamAssassin handler to the most recent version can be found,
+    and document it in README.Debian (by GCS, closes: #235667).
 
  -- Siggy Brentrup <bsb@debian.org>  Thu, 15 Apr 2004 21:19:39 +0200
 

@@ -42,9 +42,10 @@ class SpamAssassinDiscard(Errors.DiscardMessage):
 
 class SpamAssassinHold(Errors.HoldMessage):
     '''The message was scored above the hold threshold'''
-    reason = 'SpamAssassin identified this message as possible spam'
     def __init__(self, score=-1, symbols=''):
         Errors.HoldMessage.__init__(self)
+        self.reason = 'SpamAssassin identified this message as possible ' \
+                      'spam (score %g)' % score
         self.rejection = 'Your message was held for moderation because ' \
                          'SpamAssassin gave the message a score of %g ' \
                          'for the following reasons:\n\n%s' % \

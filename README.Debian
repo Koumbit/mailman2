@@ -97,7 +97,11 @@ the handler, adding
 
 GLOBAL_PIPELINE.insert(1, 'SpamAssassin')
 
-to your mm_cfg.py should enable it.
+to your mm_cfg.py should enable it. You can read more documentation about
+howto configure SpamAssassin and Mailman together at
+http://www.daa.com.au/~james/articles/mailman-spamassassin/
+The current version of this handler used in this package is released on
+2003 May 6 by James Henstridge <james@daa.com.au>.
 
 Upgrading from Mailman 2.x (where x < 1)
 ----------------------------------------

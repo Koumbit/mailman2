@@ -18,7 +18,7 @@
 or tag messages.
 
 Usage is as follows:
-  >>> conn = spamd.SPAMD()
+  >>> conn = spamd.SpamdConnection()
   >>> conn.addheader('User', 'username')
   >>> conn.check(spamd.SYMBOLS, 'From: user@example.com\n...')
   >>> print conn.getspamstatus()
@@ -29,7 +29,12 @@ Usage is as follows:
 
 import socket
 import mimetools, StringIO
-import string
+
+import __builtin__
+if not hasattr(__builtin__, 'True'):
+    __builtin__.True = (1 == 1)
+    __builtin__.False = (1 != 1)
+del __builtin__
 
 class error(Exception): pass
 
@@ -71,20 +76,20 @@ class SpamdConnection:
 
     def __init__(self, host='', port=0):
         if not port and ':' in host:
-            host, port = string.split(host, ':', 1)
+            host, port = host.split(':', 1)
             port = int(port)
         if host: self.host = host
         if port: self.port = port
 
         # message structure to hold request headers
-        self.request_headers = mimetools.Message(StringIO.StringIO(), seekable=0)
+        self.request_headers = mimetools.Message(StringIO.StringIO(), seekable=False)
         self.request_headers.fp = None
 
         # stuff that will be filled in after check()
         self.server_version = None
         self.result_code = None
         self.response_message = None
-        self.response_headers = mimetools.Message(StringIO.StringIO(), seekable=0)
+        self.response_headers = mimetools.Message(StringIO.StringIO(), seekable=False)
 
     def addheader(self, header, value):
         '''Adds a header to the request.'''
@@ -116,6 +121,8 @@ class SpamdConnection:
         fp = sock.makefile('rb')
         response = fp.readline()
         words = response.split(None, 2)
+        if len(words) != 3:
+            raise error('not enough words in response header')
         if words[0][:6] != 'SPAMD/':
             raise error('bad protocol name in response string')
         self.server_version = float(words[0][6:])
@@ -127,7 +134,7 @@ class SpamdConnection:
 
         try:
             # parse header
-            self.response_headers = mimetools.Message(fp, seekable=0)
+            self.response_headers = mimetools.Message(fp, seekable=False)
             self.response_headers.fp = None
         except IOError:
             raise error('could not read in response headers')
@@ -138,7 +145,6 @@ class SpamdConnection:
         except IOError:
             raise error('could not read in response message')
             
-
         fp.close()
         sock.close()
 
