@@ -1,8 +1,12 @@
 #! /bin/sh -e
 #
-# postinst script for Debian python packages.
+# postinst script for Debian python packages
 # Written 1998 by Gregor Hoffleit <flight@debian.org>.
 # Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
+# mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
+#
+# $URL$
+# $Id$
 #
 . /usr/share/debconf/confmodule
 
@@ -20,14 +24,17 @@ if [ "$1" = "configure" ]; then
     db_get mailman/site_languages
     site_languages="$(echo $RET | sed -e 's/, */ /g')"
     need_languages="${site_languages}"
+    db_get  mailman/used_languages
+    db_fset mailman/used_languages seen true
+    db_fset mailman/used_languages scanned false
     for lang in ${used_languages} ; do
       if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
-        need_languages="${lang} ${need_languages}"
-      fi
-      if [ "${need_languages}" != "${site_languages}" ]; then
-        db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
+        need_languages="${need_languages:+${need_languages} }${lang}"
       fi
     done
+    if [ "${need_languages}" != "${site_languages}" ]; then
+      db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
+    fi
 
     # At present ALL directories in /etc/mailman are language directories
     # but this may change in the future, better check.
@@ -83,14 +90,17 @@ if [ "$1" = "configure" ]; then
 
     if [ -s ${leftover} ]; then
       cat >&2 <<EOF
+
+----------------------------------------------------------------------
 Some templates from unused langugages could not be automatically
 removed since there was no way to find out if they were modified by
 you or the prototype in the package differs from the previous release.
 ${leftover} lists these files; please move them out of the way
-at your discretion.
+at your discretion if you don't want to see this message again.
+----------------------------------------------------------------------
 
 EOF
-      echo -n "Press return to continue." >&2
+      echo -n "Hit return to continue." >&2
       read junk </dev/tty
       echo >&2
     else
@@ -103,9 +113,6 @@ EOF
       for file in $(ls ${mm_dist}/${lang}); do
         echo -n . >&2
         langfile=${lang}/${file}
-        # Note that there is no easy way to suppress ucf's chatty output when
-        # creating a config file while keeping --debconf-ok functionality.
-        # cf. Bug#239678
         ucf --debconf-ok --three-way ${mm_dist}/${langfile} ${mm_etc}/${langfile} 2>/dev/null
         # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
         cmp -s ${mm_etc}/${langfile} ${mm_etc}/${langfile}.dpkg-dist \
@@ -213,7 +220,7 @@ EOF
     done
 
     db_get mailman/gate_news || true
-    if [ "$RET" = "no" ]; then
+    if [ "$RET" = "false" ]; then
 	# Comment out any lines containing the words "gate_news"
 	awk '/^[^#]*gate_news/ { print "# " $LINE;next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
     else

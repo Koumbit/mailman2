@@ -1,3 +1,6 @@
+# $URL$
+# $Id$
+
 Template: mailman/site_languages
 Type: multiselect
 __Choices: big5, ca, cs, da, de, en, es, et, eu, fi, fr, gb, hr, hu, it, ja, ko, lt, nl, no, pl, pt, pt_BR, ro, ru, sl, sr, sv, uk
@@ -13,6 +16,10 @@ _Description: Which languages to support?
  .
  NOTE: Languages enabled on existing mailing lists are forcibly re-
  enabled when deselected.
+
+Template: mailman/used_languages
+Type: string
+Description: Internal holding result of scan
 
 Template: mailman/gate_news
 Type: boolean

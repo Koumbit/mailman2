@@ -1,20 +1,19 @@
 #! /bin/sh -e
+# $URL$
+# $Id$
 
 #DEBHELPER#
 
 if [ "$1" = purge ]; then
-  # At present ALL directories in /etc/mailman are language directories
-  # but this may change in the future, cant check in postrm.
-  languages="$(find /etc/mailman -type d -maxdepth 1 -mindepth 1 | sed -e 's;^/etc/mailman/;;g')"
-
-  # Remove all trackings of languages files from the ucf database.
-  for lang in ${languages}; do
-    for file in $(cd /etc && find mailman/${lang} -type f -a ! -name \*.dpkg-\* ); do
-        ucf --debconf-ok --purge /etc/${file}
-    done
+  # HACK: At present there is no way to ask ucf for registered files
+  #       except for directly querying its database.
+  echo -n "Purging files from ucf database " >&2
+  for file in $(sed -e ':/etc/mailman:!d' -e 's:^[0-9a-f]* *::' /var/lib/ucf/hashfile); do
+    ucf --purge ${file} 2>/dev/null
+    echo -n . >&2
   done
-  # Don't forget this one
-  ucf --debconf-ok --purge /etc/mailman/qmail-to-mailman.py
+  ucf --purge /etc/cron.d/mailman 2>/dev/null
+  echo ". done." >&2
 fi
 
 if [ "$1" = purge ]; then

@@ -1,8 +1,10 @@
 #!/bin/sh -e
+# $URL$
+# $Id$
 
 if [ "$1" = "install" ]; then
 	if ! id -g list > /dev/null 2>&1 ; then
-		addgroup list
+		addgroup --system list
 	fi
 	if ! id -u list > /dev/null 2>&1 ; then
 		adduser --system --home /var/list --ingroup list list
