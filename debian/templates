@@ -1,0 +1,10 @@
+Template: mailman/create_site_list
+Type: note
+_Description: Missing site list
+ Mailman needs a so-called "site list", which is the list from which
+ password reminders and such are sent out from.  This list needs to be
+ created before mailman will start.
+ .
+ To create the list, run "newlist mailman" and follow the instructions
+ on-screen.  Note that you also need to start mailman after that,
+ using /etc/init.d/mailman start.

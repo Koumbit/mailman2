@@ -1,0 +1,68 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mailman_2.1.2-2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-30 12:12+0100\n"
+"PO-Revision-Date: 2003-06-21 21:18-0300\n"
+"Last-Translator: André Luís Lopes <andrelop@debian.org>\n"
+"Language-Team: Debian-BR Project <debian-l10n-portuguese@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "Missing site list"
+msgstr "Site list faltando"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"O Mailman precisa de uma \"site list\", que é a lista a partir da qual "
+"lembretes de senhas e coisas do tipo são enviadas. Esta lista precisa ser "
+"criada antes que o Mailman seja iniciado."
+
+#. Type: note
+#. Description
+#: ../templates:3
+#, fuzzy
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"Paar criar a lista, execute o comando \"newlist mailman\" e siga as "
+"instruções dadas na tela."
+
+#~ msgid "Gate news to mail?"
+#~ msgstr "Ligação notícias para menagens ?"
+
+#~ msgid ""
+#~ "Do you want to gate news to mail, that is, send all the messages which "
+#~ "appear in a newsgroup to a mailing list."
+#~ msgstr ""
+#~ "Você deseja criar uma ligação de notícias para mensagens, isto é, enviar "
+#~ "todas as mensagens que aparecerem em um grupo de notícias para uma lista "
+#~ "de discussão."
+
+#~ msgid "Most people won't need this."
+#~ msgstr "A maioria das pessoas não precisarão disso."
