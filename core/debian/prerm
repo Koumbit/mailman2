@@ -36,6 +36,9 @@ fi
 
 PACKAGE=mailman
 
+# dh_python doesn't do TRT[tm], do it manually
+# We have created symlinks and compiled .py files in the postinst, undo now.
 dpkg --listfiles $PACKAGE |
-	awk '$0~/\.py$/ {print $0"c\n" $0"o"}' |
+	sed -e '/.py$/!d' -e ':^/usr/share/mailman:!d' \
+      -e 's:/usr/share\(/mailman/.*)\.py$:/var/lib\1.py\n/var/lib\1.pyc\n/var/lib\1.pyo:' |
 	xargs rm -f >&2
