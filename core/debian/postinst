@@ -37,6 +37,52 @@ from Mailman.Debian import DebuggingLogger, CommandRunner
 MM_BIN  = os.path.join(MM_HOME, 'bin')
 MM_INST = '/usr/share/mailman'
 
+
+def ucf_to_cfdb():
+    """Import templates under ucf control.
+
+    All Debian releases up to now that used ucf have only registered
+    files under /etc/mailman/LANG and /etc/mailman/qmail-to-mailman.py
+    with ucf, allowing this simplistic approach at moving to our own
+    conffile database.
+    """#
+    from Mailman.Debian import cfdb, mm_languages
+
+    UCF_CACHE = '/var/lib/ucf/cache'
+    ETC_DIR   = '/etc/mailman/'
+    ETC_LEN   = len(ETC_DIR)
+
+    prev_lang = None
+
+    ucf_list = [ fn for fn in os.listdir(UCF_CACHE)
+                 if fn.startswith(':etc:mailman:') ]
+    if not ucf_list: return
+    
+    log('Moving files out of ucf control ', nl='')
+
+    for cached in ucf_list:
+        path = '/'.join(cached.split(':'))
+        ucf_cached = os.path.join(UCF_CACHE, cached)
+        tmpl = open(ucf_cached).read()
+        try:
+            reg_key = path[ETC_LEN:]
+            lang, tmpl = reg_key.split('/')
+            if lang in mm_languages:
+                if lang != prev_lang:
+                    if prev_lang: cfdb.sync()
+                    prev_lang = lang
+                cfdb.register(reg_key, tmpl)
+        except ValueError:
+            cfdb.register(path, tmpl)
+
+        os.system('ucf --purge --three-way %(path)s' % locals())
+        os.remove(ucf_cached)
+        log('.', nl='')
+
+    cfdb.sync()
+    log(' done.')
+
+
 def compile_modules(directory):
     """Compiles all python modules in the specified directory.
 
@@ -56,6 +102,7 @@ def compile_modules(directory):
     log('\n%r' % cmd, lvl=2, nl='\n... ')
     os.system(cmd)
     log(' done.')
+
 
 def create_mm_cfg():
     """Create an initial /etc/mailman/mm_cfg.py
@@ -84,6 +131,7 @@ def create_mm_cfg():
         mm_cfg_fl.close()
     except DebconfError, exc:
         log.exception()
+
 
 def update_cron():
     """Update mailman crontab according to debconf setting.
@@ -139,6 +187,7 @@ def run_debhelper_additions():
 
 def setup():
     compile_modules(MM_HOME)
+    ucf_to_cfdb()
     create_mm_cfg()
     update_cron()
     run_debhelper_additions()
