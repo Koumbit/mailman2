@@ -15,13 +15,22 @@ if sys.modules.has_key('Mailman.Defaults'):
 else:
     virgin_gbls = globals().copy()
 
+def keep_mutables(d):
+    for k, v in d.items():
+        try:
+            hash(v)
+        except TypeError:
+            try:
+                d[k] = v.copy()
+            except AttributeError:
+                d[k] = v[:]
 
 def upgrade_mm_cfg():
 
-    def_gbls = virgin_gbls.copy()
+    def_gbls = {}
     exec 'from Mailman.Defaults import *' in def_gbls
-    exec 'VIRTUAL_HOSTS = VIRTUAL_HOSTS.copy()' in def_gbls
-    usr_gbls = virgin_gbls.copy()
+    keep_mutables(def_gbls)
+    usr_gbls = {}
     sys.modules['Defaults'] = sys.modules['Mailman.Defaults']
     execfile(USER_MM_CFG, usr_gbls)
 
@@ -37,17 +46,20 @@ def upgrade_mm_cfg():
             # Handle user defined variable here
             usr_def[var] = 1
 
-    del usr_mod['__doc__']
+    del usr_def['__doc__']
 
-    print "User modified variables:"
-    for var in usr_mod.keys():
-        print '  %s:\t%r was %r' % (var, usr_gbls[var], def_gbls[var])
 
-    print "User defined variables:"
-    for var in usr_def.keys():
-        print '  %s: \t%r' % (var, usr_gbls[var])
+    if usr_mod.keys():
+        log("User modified variables:", lvl=3)
+        for var in usr_mod.keys():
+            log('  %18s: %r\n%20s: %r'
+                % (var, usr_gbls[var], 'default', def_gbls[var]), lvl=3)
 
-    print
+    if usr_def.keys():
+        log("User defined variables:", lvl=3)
+        for var in usr_def.keys():
+            log(' %18s: %r' % (var, usr_gbls[var]), lvl=3)
+
 
     from urlparse import urlsplit, urlunsplit
     def_scheme, def_netloc, def_path = urlsplit(def_gbls['DEFAULT_URL_PATTERN'])[:3]
@@ -115,4 +127,6 @@ def upgrade_mm_cfg():
 ##     print "mm_cfg   VIRTUAL_HOSTS=%(VIRTUAL_HOSTS)r" % usr_gbls
 
 if __name__ == '__main__':
+    from Mailman.Debian import DebuggingLogger
+    log = DebuggingLogger('MM_MAINT')
     upgrade_mm_cfg()
