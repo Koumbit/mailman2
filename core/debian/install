@@ -4,6 +4,7 @@ debian/tmp/usr/lib/mailman/cron         usr/share/mailman
 debian/tmp/usr/lib/mailman/icons/*      usr/share/images/mailman
 debian/tmp/usr/lib/mailman/mail         usr/share/mailman
 debian/tmp/usr/lib/mailman/scripts      usr/share/mailman
+debian/tmp/var/lib/mailman/data         var/lib/mailman
 debian/manpages/*                       usr/share/man/man8
 debian/Debian                           usr/share/mailman/Mailman
 
