@@ -10,8 +10,10 @@ mailman (2.1.4-3) UNRELEASED; urgency=low
   * Added helper debconf template mailman/used_languages to avoid
     duplicate scanning on preconfigure/setup (bsb).
   * Remove bashism from debian/config (by GCS, closes: #240643).
+  * Mention mm_cfg.MTA=None in README.EXIM (closes: #240295), also fix
+    pathes to reflect Debian choices (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Sun, 28 Mar 2004 17:57:08 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 01:21:31 +0200
 
 mailman (2.1.4-2) unstable; urgency=low
 
