@@ -5,7 +5,7 @@ from helpers   import *
 from cf_db     import ConfFileDatabase
 
 try:
-    from templates import mm_cfg_defaults, mm_cfg_fillin, mm_crontab
+    from templates import mm_cfg_defaults, mm_cfg_fillin, mm_cfg_deprecated, mm_crontab
 except ImportError:
     pass
 

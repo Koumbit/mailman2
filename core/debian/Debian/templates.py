@@ -117,6 +117,40 @@ DEFAULT_SERVER_LANGUAGE = %(DEFAULT_SERVER_LANGUAGE)r
 # didn't find it above, it's probably in /usr/lib/mailman/Mailman/Defaults.py.
 '''#
 
+mm_cfg_deprecated = {
+    None : '''\
+#-----------------------------------------------------------------------
+# Variables below are deprecated.  Where applicable, their values are
+# incorporated above.
+''',
+    'DEFAULT_HOST_NAME' : '''\
+# Replaced by DEFAULT_EMAIL_HOST
+# DEFAULT_HOST_NAME = %(DEFAULT_HOST_NAME)r
+''',
+    'DEFAULT_URL' : '''\
+# Replaced by DEFAULT_URL_PATTERN.
+# DEFAULT_URL = %(DEFAULT_URL)r
+''',
+    'OLD_IMAGE_LOGOS' : '''\
+# Location has changed.
+# IMAGE_LOGOS = %(OLD_IMAGE_LOGOS)r
+''',
+    'PRIVATE_ARCHIVE_URL' : '''\
+# Private archive access now uses /usr/lib/cgi-bin/mailman/private.
+# PRIVATE_ARCHIVE_URL = %(PRIVATE_ARCHIVE_URL)r
+''',
+    'OLD_PUBLIC_ARCHIVE_URL' : '''\
+# Public archive access now uses %(PUBLIC_ARCHIVE_URL)r
+# PUBLIC_ARCHIVE_URL = %(OLD_PUBLIC_ARCHIVE_URL)r
+''',
+    'MAILMAN_OWNER' : '''\
+# The mailman-owner@%(DEFAULT_EMAIL_HOST)s is now a special site-list
+# alias and the MAILMAN_OWNER variable is ignored.
+# MAILMAN_OWNER = %(MAILMAN_OWNER)r
+''',
+    }
+
+
 mm_crontab = '''\
 # Mailman crontab for Debian automatically generated from
 # $URL$

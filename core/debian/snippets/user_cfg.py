@@ -4,7 +4,7 @@
 
 # Use a 2.0 mm_cfg.py
 USER_MM_CFG = '/root/stable/etc/mailman/mm_cfg.py'
-# Use a 2.1.4 mm_cfg.py
+# Use a current mm_cfg.py
 #USER_MM_CFG = '/etc/mailman/mm_cfg.py'
 
 import sys
@@ -13,20 +13,33 @@ sys.path.insert(0, '/usr/lib/mailman')
 virgin_gbls = globals().copy()
 
 
-deprecated = {
-    'DEFAULT_HOST_NAME' : '''\
-# Replaced by DEFAULT_EMAIL_HOST
-# DEFAULT_HOST_NAME = %(DEFAULT_HOST_NAME)r
-''',
-    'DEFAULT_URL' : '''\
-# Replaced by DEFAULT_URL_PATTERN.
-# DEFAULT_URL = %(DEFAULT_URL)r
-''',
-    'OLD_IMAGE_LOGOS' : '''\
-# Location has changed.
-# IMAGE_LOGOS = %(OLD_IMAGE_LOGOS)r
-''',
-    }
+## mm_cfg_deprecated = {
+##     'DEFAULT_HOST_NAME' : '''\
+## # Replaced by DEFAULT_EMAIL_HOST
+## # DEFAULT_HOST_NAME = %(DEFAULT_HOST_NAME)r
+## ''',
+##     'DEFAULT_URL' : '''\
+## # Replaced by DEFAULT_URL_PATTERN.
+## # DEFAULT_URL = %(DEFAULT_URL)r
+## ''',
+##     'OLD_IMAGE_LOGOS' : '''\
+## # Location has changed.
+## # IMAGE_LOGOS = %(OLD_IMAGE_LOGOS)r
+## ''',
+##     'PRIVATE_ARCHIVE_URL' : '''\
+## # Private archive access now uses /usr/lib/cgi-bin/mailman/private.
+## # PRIVATE_ARCHIVE_URL = %(PRIVATE_ARCHIVE_URL)r
+## ''',
+##     'OLD_PUBLIC_ARCHIVE_URL' : '''\
+## # Public archive access now uses %(PUBLIC_ARCHIVE_URL)r
+## # PUBLIC_ARCHIVE_URL = %(OLD_PUBLIC_ARCHIVE_URL)r
+## ''',
+##     'MAILMAN_OWNER' : '''\
+## # The mailman-owner@%(DEFAULT_EMAIL_HOST)s is now a special site-list
+## # alias and the MAILMAN_OWNER variable is ignored.
+## # MAILMAN_OWNER = %(MAILMAN_OWNER)r
+## ''',
+##     }
     
     
 
@@ -43,8 +56,7 @@ def upgrade_mm_cfg():
 
     for var, usr_value in usr_gbls.items():
         try:
-            def_value = def_gbls[var]
-            if usr_value != def_value:
+            if usr_value != def_gbls[var]:
                 usr_mod[var] = 1
         except KeyError:
             # Handle user defined variable here
@@ -85,8 +97,12 @@ def upgrade_mm_cfg():
     if 'IMAGE_LOGOS' in usr_mod.keys():
         if usr_gbls['IMAGE_LOGOS'].startswith('/doc/mailman'):
             exec 'OLD_IMAGE_LOGOS = IMAGE_LOGOS' in usr_gbls
-            usr_mod['OLD_IMAGE_LOGOS'] = 1
+            usr_def['OLD_IMAGE_LOGOS'] = 1
             usr_gbls['IMAGE_LOGOS'] = def_gbls['IMAGE_LOGOS']
+    if 'PUBLIC_ARCHIVE_URL' in usr_mod.keys():
+        exec 'OLD_PUBLIC_ARCHIVE_URL = PUBLIC_ARCHIVE_URL' in usr_gbls
+        exec 'PUBLIC_ARCHIVE_URL=%(PUBLIC_ARCHIVE_URL)r' % def_gbls in usr_gbls
+        usr_def['OLD_PUBLIC_ARCHIVE_URL'] = 1
     exec 'DEFAULT_SEND_REMINDERS = DEFAULT_SEND_REMINDERS and True or False' in usr_gbls
     exec 'USE_ENVELOPE_SENDER = USE_ENVELOPE_SENDER and True or False' in usr_gbls
 
@@ -94,26 +110,28 @@ def upgrade_mm_cfg():
 
     from cStringIO import StringIO
     cfl = StringIO()
-    from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin
+    from Mailman.Debian import mm_cfg_defaults, mm_cfg_fillin, mm_cfg_deprecated
 
     cfl.write(mm_cfg_defaults)
     cfl.write(mm_cfg_fillin % usr_gbls)
 
-    print cfl.getvalue()
-
     dfl = StringIO()
-    dfl.write('#%s\n' % ('-'*71))
-    dfl.write('# Variables below are deprecated.  Where applicable, their')
-    dfl.write(' values are\n# incorporated above.\n')
-    deprecated_vars = deprecated.keys()
+    deprecated_vars = mm_cfg_deprecated.keys()
     deprecated_vars.sort()
+    usr_mod.update(usr_def)
     for v in deprecated_vars:
         try:
             usr_mod[v]
-            dfl.write(deprecated[v] % usr_gbls)
+            dfl.write(mm_cfg_deprecated[v] % usr_gbls)
         except KeyError: pass
 
-    print dfl.getvalue()
+    s = dfl.getvalue()
+    if s:
+            cfl.write(mm_cfg_deprecated[None])
+            cfl.write(s)
+
+    print cfl.getvalue()
+
 
 if __name__ == '__main__':
     upgrade_mm_cfg()
