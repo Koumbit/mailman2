@@ -1,6 +1,5 @@
 # $URL$
 # $Id$
-
 Template: mailman/site_languages
 Type: multiselect
 __Choices: big5, ca, cs, da, de, en, es, et, eu, fi, fr, gb, hr, hu, it, ja, ko, lt, nl, no, pl, pt, pt_BR, ro, ru, sl, sr, sv, uk
