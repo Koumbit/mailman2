@@ -10,7 +10,7 @@ Package: mailman
 Architecture: any
 Depends: ${shlibs:Depends}, mailman-common (= ${Source-Version})
 Recommends: mailman-i18n (= ${Source-Version})
-Suggests: mailman-spamassassin, mailman-savannah, 
+Suggests: mailman-spamassassin, mailman-savannah, mailman-spamprobe, mailman-clamav
 Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,
