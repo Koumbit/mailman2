@@ -22,15 +22,15 @@ esac
 
 exit 0
 @DPATCH@
-
---- mailman-2.1.4.orig/Mailman/Defaults.py.in
-+++ mailman-2.1.4/Mailman/Defaults.py.in
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Defaults.py.in mailman-2.1.4/Mailman/Defaults.py.in
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Defaults.py.in	2004-05-02 16:29:10.000000000 +0200
++++ mailman-2.1.4/Mailman/Defaults.py.in	2004-05-02 16:56:07.000000000 +0200
 @@ -54,7 +54,7 @@
  # disable Mailman's logo footer altogther, hack
  # Mailman/htmlformat.py:MailmanLogo(), which also contains the hardcoded links
  # and image names.
 -IMAGE_LOGOS = '/icons/'
-+IMAGE_LOGOS = '/doc/mailman/images/'
++IMAGE_LOGOS = '/images/mailman/'
  
  # The name of the Mailman favicon
  SHORTCUT_ICON = 'mm-icon.png'
@@ -43,6 +43,15 @@ exit 0
  
  # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
  # sites may have the former in their mm_cfg.py files.  If so, we'll believe
+@@ -847,7 +847,7 @@
+ DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX = "-owner"
+ 
+ # This variable controls whether monthly password reminders are sent.
+-DEFAULT_SEND_REMINDERS = Yes
++DEFAULT_SEND_REMINDERS = No
+ 
+ # Send welcome messages to new users?
+ DEFAULT_SEND_WELCOME_MSG = Yes
 @@ -1247,7 +1247,7 @@
  MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
  
