@@ -1,0 +1,117 @@
+#! /bin/sh -e
+## 52_check_perms.dpatch by Siggy Brentrup <bsb@debian.org>
+##
+## DP: Upstream check_perms wants all directories and files to be
+## DP: owned by group list with sgid set on directories.  This is
+## DP: neither necessary for mailman to work correctly no acceptable
+## DP: for a Debian package.
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/bin/check_perms mailman-2.1.4/bin/check_perms
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/bin/check_perms	2004-05-07 11:44:37.000000000 +0200
++++ mailman-2.1.4/bin/check_perms	2004-05-07 11:58:11.000000000 +0200
+@@ -18,11 +18,11 @@
+ 
+ """Check the permissions for the Mailman installation.
+ 
+-Usage: %(PROGRAM)s [-f] [-v] [-h]
++Usage: %(PROGRAM)s [-f] [-v] [-q] [-h]
+ 
+ With no arguments, just check and report all the files that have bogus
+ permissions or group ownership.  With -f (and run as root), fix all the
+-permission problems found.  With -v be verbose.
++permission problems found.  With -v be verbose, with -q suppress output.
+ 
+ """
+ 
+@@ -91,8 +91,7 @@
+     if seen.has_key(dirname):
+         return
+     seen[dirname] = True
+-    for name in names:
+-        path = os.path.join(dirname, name)
++    for path in [dirname]+[ os.path.join(dirname, name) for name in names]:
+         if arg.VERBOSE:
+             print _('    checking gid and mode for %(path)s')
+         try:
+@@ -157,14 +156,15 @@
+                 else:
+                     print
+ 
+-def checkall():
++def checkvar():
+     # first check PREFIX
+     if STATE.VERBOSE:
+         prefix = mm_cfg.PREFIX
+         print _('checking mode for %(prefix)s')
+     dirs = {}
+-    for d in (mm_cfg.PREFIX, mm_cfg.EXEC_PREFIX, mm_cfg.VAR_PREFIX,
+-              mm_cfg.LOG_DIR):
++    for d in (mm_cfg.LIST_DATA_DIR, mm_cfg.LOG_DIR, mm_cfg.LOCK_DIR,
++              mm_cfg.DATA_DIR, mm_cfg.SPAM_DIR, '/var/lib/mailman/archives',
++              mm_cfg.QUEUE_DIR, mm_cfg.MAILDIR_DIR, '/var/run/mailman'):
+         dirs[d] = True
+     for d in dirs.keys():
+         try:
+@@ -242,7 +242,7 @@
+                 print
+ 
+ def checkcgi():
+-    cgidir = os.path.join(mm_cfg.EXEC_PREFIX, 'cgi-bin')
++    cgidir = '/usr/lib/cgi-bin/mailman'
+     if STATE.VERBOSE:
+         print _('checking cgi-bin permissions')
+     exes = os.listdir(cgidir)
+@@ -346,8 +346,8 @@
+ 
+ if __name__ == '__main__':
+     try:
+-        opts, args = getopt.getopt(sys.argv[1:], 'fvh',
+-                                   ['fix', 'verbose', 'help'])
++        opts, args = getopt.getopt(sys.argv[1:], 'fvqh',
++                                   ['fix', 'verbose', 'quiet', 'help'])
+     except getopt.error, msg:
+         usage(1, msg)
+ 
+@@ -358,8 +358,10 @@
+             STATE.FIX = True
+         elif opt in ('-v', '--verbose'):
+             STATE.VERBOSE = True
++        elif opt in ('-q', '--quiet'):
++            sys.stdout = open('/dev/null', 'w')
+ 
+-    checkall()
++    checkvar()
+     checkarchives()
+     checkarchivedbs()
+     checkcgi()
+@@ -368,8 +370,12 @@
+     checkadminpw()
+     checkmta()
+ 
++    sys.stdout = sys.__stdout__
++
+     if not STATE.ERRORS:
+         print _('No problems found')
+     else:
+         print _('Problems found:'), STATE.ERRORS
+-        print _('Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix')
++        print _('Re-run as root with -f flag to fix')
++else:
++    print __name__
