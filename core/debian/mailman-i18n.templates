@@ -1,0 +1,23 @@
+# $URL$
+# $Id$
+Template: mailman/site_languages
+Type: multiselect
+__Choices: big5, ca, cs, da, de, en, es, et, eu, fi, fr, gb, hr, hu, it, ja, ko, lt, nl, no, pl, pt, pt_BR, ro, ru, sl, sr, sv, uk
+Default: en
+_Description: Which languages to support?  
+ For each supported language Debian Mailman stores default language
+ specific texts in /etc/mailman/LANG/ giving them conffile like
+ treatment with the help of ucf.  This means approximately 150kB for
+ each supported language on the root FS.
+ .
+ If you need a different set of languages at a later time, just run
+ dpkg-reconfigure mailman.
+ .
+ NOTE: Languages enabled on existing mailing lists are forcibly
+ reenabled when deselected and mailman needs at least one language for
+ displaying it's messages.
+
+Template: mailman/used_languages
+Type: string
+Description: Internal holding result of scan
+
