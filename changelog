@@ -9,8 +9,10 @@ mailman (2.1.4-4) UNRELEASED; urgency=medium
     <aba@not.so.argh.org>, (by GCS, closes: #243209).
   * Ask for the language used by Mailman from the enabled languages
     (by GCS, closes: #224319).
+  * postfix-to-mailman.py: Fix ',' obscuring illegal invocations, reported
+    by martin f krafft <madduck@debian.org> (bsb, closes: #243908)
 
- -- Siggy Brentrup <bsb@debian.org>  Sat, 10 Apr 2004 12:46:59 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Thu, 15 Apr 2004 21:19:39 +0200
 
 mailman (2.1.4-3) unstable; urgency=medium
 
