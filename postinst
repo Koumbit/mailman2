@@ -285,7 +285,7 @@ case "$1" in
 
         if [ -e /etc/mailname ]
 	    then 
-            DOMAIN=$(cat /etc/mailname)
+            DOMAIN=$(head -n 1 /etc/mailname)
             # fixme - should we look for a dot in the domainname?
         else
             DOMAIN=localhost.localdomain
