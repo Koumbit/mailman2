@@ -19,6 +19,8 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
   * Added myself to Uploaders (bsb).
   * Bumped 'Standards Version' to 3.6.1 (bsb, GCS's commit was lost during
     the alioth move).
+  * Added catalan debconf translation from Aleix Badia i Bosch <abadia@ica.es>
+    (by GCS, closes: #236666)
 
  -- Siggy Brentrup <bsb@debian.org>  Thu, 18 Mar 2004 10:41:34 +0100
 
