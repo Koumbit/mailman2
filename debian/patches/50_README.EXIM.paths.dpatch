@@ -62,7 +62,7 @@ diff -urNad /home/bsb/debian/mine/mailman/build-area/mailman-2.1.4/README.EXIM m
 -  MAILMAN_USER=mailman
 -  MAILMAN_GROUP=mailman
 +  MAILMAN_USER=list
-+  MAILMAN_GROUP=list
++  MAILMAN_GROUP=daemon
  
  
  Transport for Exim 3
