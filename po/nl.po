@@ -13,189 +13,189 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman\n"
+"Project-Id-Version: mailman 2.1.5-4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-06 22:06+0000\n"
-"PO-Revision-Date: 2004-12-31 12:42+0100\n"
-"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
-"Language-Team: Czech <provoz@debian.cz>\n"
+"PO-Revision-Date: 2004-12-02 18:12+0100\n"
+"Last-Translator: Luk Claes <luk.claes@ugent.be>\n"
+"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "big5"
-msgstr "èín¹tina"
+msgstr "big5"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ca"
-msgstr "katalán¹tina"
+msgstr "ca"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "cs"
-msgstr "èe¹tina"
+msgstr "cs"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "da"
-msgstr "dán¹tina"
+msgstr "da"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "de"
-msgstr "nìmèina"
+msgstr "de"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "en"
-msgstr "angliètina"
+msgstr "en"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "es"
-msgstr "¹panìl¹tina"
+msgstr "es"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "et"
-msgstr "eston¹tina"
+msgstr "et"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "eu"
-msgstr "baskiètina"
+msgstr "eu"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fi"
-msgstr "fin¹tina"
+msgstr "fi"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fr"
-msgstr "francouz¹tina"
+msgstr "fr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hr"
-msgstr "chorvat¹tina"
+msgstr "hr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hu"
-msgstr "maïar¹tina"
+msgstr "hu"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "it"
-msgstr "ital¹tina"
+msgstr "it"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ja"
-msgstr "japon¹tina"
+msgstr "ja"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ko"
-msgstr "korej¹tina"
+msgstr "ko"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "lt"
-msgstr "litev¹tina"
+msgstr "lt"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "nl"
-msgstr "holand¹tina"
+msgstr "nl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "no"
-msgstr "nor¹tina"
+msgstr "no"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pl"
-msgstr "pol¹tina"
+msgstr "pl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt"
-msgstr "portugal¹tina"
+msgstr "pt"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt_BR"
-msgstr "brazilská portugal¹tina"
+msgstr "pt_BR"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ro"
-msgstr "rumun¹tina"
+msgstr "ro"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ru"
-msgstr "ru¹tina"
+msgstr "ru"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sl"
-msgstr "slovin¹tina"
+msgstr "sl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sr"
-msgstr "srb¹tina"
+msgstr "sr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sv"
-msgstr "¹véd¹tina"
+msgstr "sv"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "uk"
-msgstr "ukrajin¹tina"
+msgstr "uk"
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
 msgid "Which languages to support?  "
-msgstr "Které jazyky podporovat?  "
+msgstr "Voor welke talen wenst u ondersteuning?"
 
 #. Type: multiselect
 #. Description
@@ -206,9 +206,10 @@ msgid ""
 "help of ucf.  This means approximately 150kB for each supported language on "
 "the root FS."
 msgstr ""
-"Pro ka¾dý podporovaný jazyk uchovává Mailman texty v /etc/mailman/JAZYK/, "
-"co¾ znamená zhruba 150kB zabraného místa na koøenovém souborovém systému pro "
-"ka¾dý podporovaný jazyk."
+"Voor elke ondersteunde taal bewaart Debian Mailman standaard "
+"taalafhankelijke teksten in /etc/mailman/LANG/, wat hen een soort conffile-"
+"behandeling geeft met de hulp van ucf. Dit betekent ongeveer 150kB voor elke "
+"ondersteunde taal op het hoofdbestandssysteem."
 
 #. Type: multiselect
 #. Description
@@ -217,8 +218,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Budete-li chtít pozdìji zmìnit seznam podporovaných jazykù, jednodu¹e "
-"spus»te \"dpkg-reconfigure mailman\"."
+"Als u op een later tijdstip een andere verzameling talen wilt, voer dan dpkg-"
+"reconfigure mailman uit."
 
 #. Type: multiselect
 #. Description
@@ -228,15 +229,15 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying it's "
 "messages."
 msgstr ""
-"POZNÁMKA: Jazyky povolené pro stávající po¹tovní diskuse budou povoleny "
-"v¾dy. Mailman potøebuje mít povolen alespoò jeden jazyk, ve kterém má "
-"zobrazovat hlá¹ky."
+"LET OP: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
+"opnieuw ingesteld indien u ze heeft uitgeschakeld; en mailman heeft ook ten "
+"minste Ã©Ã©n taal nodig om zijn boodschappen weer te geven."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "Brána z news do po¹ty?"
+msgstr "Nieuws doorsluizen naar e-mail?"
 
 #. Type: boolean
 #. Description
@@ -245,20 +246,20 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"Pøejete-li si posítat v¹echny pøíspìvky, které se objeví v newsové skupinì "
-"do po¹tovní konference."
+"Wilt u nieuws doorsluizen naar e-mail, d.w.z. alle boodschappen die "
+"verschijnen in een nieuwsgroep verzenden naar een mailinglijst."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Most people won't need this."
-msgstr "Vìt¹ina lidí toto nepotøebuje."
+msgstr "De meeste mensen hebben dit niet nodig."
 
 #. Type: note
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "Chybìjící administrativní konference"
+msgstr "Ontbrekende site-lijst"
 
 #. Type: note
 #. Description
@@ -268,9 +269,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman potøebuje takzvanou \"administrativní adresu\", co¾ je adresa, ze "
-"které posílá napøíklad upomínání hesel a podobnì. Tato adresa musí být "
-"vytvoøena pøed startem mailmanu."
+"Mailman heeft een zogenaamde \"site-lijst\" nodig, dit is de lijst waaruit "
+"wachtwoordherinneringen en dergelijke worden verstuurd. Deze lijst moet "
+"aangemaakt worden voordat mailman wordt opgestart."
 
 #. Type: note
 #. Description
@@ -280,14 +281,15 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Pro vytvoøení adresy spus»te \"newlist mailman\" a následujte instrukce na "
-"obrazovce. Poté musíte mailman spustit pøíkazem /etc/init.d/mailman start."
+"Om de lijst aan te maken, voert u \"newlist mailman\" uit en volgt u de "
+"instructies op het scherm. Merk op dat u mailman daarna moet opstarten door /"
+"etc/init.d/mailman start te gebruiken."
 
 #. Type: select
 #. Description
 #: ../templates:47
 msgid "Which language should be the default for Mailman?"
-msgstr "Který jazyk má být pro Mailman výchozí?"
+msgstr "Welke taal wenst u als standaard taal in te stellen voor Mailman?"
 
 #. Type: select
 #. Description
@@ -296,14 +298,14 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"V zadaném jazyce bude zobrazena webová stránka a dále bude Mailman tento "
-"jazyk pou¾ívat pro komunikaci s u¾ivatelem."
+"De webpagina's zullen in deze taal worden getoond en Mailman zal in het "
+"algemeen deze taal gebruiken om te communiceren met de gebruiker."
 
 #. Type: note
 #. Description
 #: ../templates:53
 msgid "Old queue files present"
-msgstr "Ve frontì jsou pøítomny staré soubory"
+msgstr "Oude queue-bestanden zijn beschikbaar"
 
 #. Type: note
 #. Description
@@ -315,8 +317,8 @@ msgid ""
 "finished) or remove those files.  Note that removing the files will lose "
 "some emails sent to lists."
 msgstr ""
-"Adresáø /var/lib/mailman/qfiles obsahuje soubory. Aby se aktualizace "
-"zdaøila, musí být adresáø prázdný. Buï frontu vyprázdnìte (pøíkazy "
-"mailmanctl start, mailmactl stop a po skonèení znovu spus»te aktualizaci), "
-"nebo soubory sma¾te. Smazáním souborù pøijdete o nìkteré emaily zaslané do "
-"konferencí."
+"De map /var/lib/mailman/qfiles bevat bestanden. Deze moet leeg zijn om de "
+"opwaardering correct te laten werken. Ledig de queue (door mailmanctl start, "
+"stop ze dan en herdoe de opwaardering wanneer het is beÃ«indigd) of verwijder "
+"deze bestanden. Merk op dat deze bestanden verwijderen enkele naar de "
+"lijsten verzonden e-mails zal verliezen."

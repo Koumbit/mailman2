@@ -1,14 +1,47 @@
+mailman (2.1.5-6) unstable; urgency=high
+
+  * SECURITY UPDATE: fix information disclosure
+  * Added debian/patches/04_CAN-2005-0202.dpatch:
+    Mailman/Cgi/private.py, true_path(): fix the removal of '..' and '.' from
+    private mail archive paths to prohibit path traversal (the former version
+    transformed ".....///" to "../") (closes: #294467) 
+    (References: CAN-2005-0202)
+  * Tighten build-deps on dpatch. (closes: #291289)
+  * Update Czech debconf translation. (closes: #293002)
+  * Add Dutch debconf translation. (closes: #283973)
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Thu, 10 Feb 2005 12:10:42 +0100
+
+mailman (2.1.5-5) unstable; urgency=high
+
+  * Fix CAN-2004-1143 (weak auto-generated passwords) by pulling the
+    appropriate CVS change from upstream.  Thanks to Florian Weimer for
+    finding and producing a patch for this bug.  (closes: #286796)
+  * Fix CAN-2004-1177 (CSS problem in scripts/driver) by pulling the
+    appropriate patch from upstream CVS.  Thanks to Florian Weimer for
+    discovering and producing a patch for this bug.  (closes: #287555)
+  * Handle the case of upgrading from Mailman 2.0 where we have
+    pending subscriptions.  This should hopefully fix #280529.  Thanks to
+    Bastian Kleinedam for the patch.  (closes: #280529)
+  * Skip directories when updating templates, to make the life easier for
+    people who have their configuration in Subversion or Arch.  
+    (closes: #284771)
+  * Remove 55_options_traceback.dpatch as this problem seems to have been
+    fixed upstream and it causes other problems.  (closes: #285839)
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Mon, 10 Jan 2005 17:12:58 +0100
+
 mailman (2.1.5-4) unstable; urgency=high
 
   Changes by Laszlo 'GCS' Boszormenyi; the "Pál utcai fiúk (Boys of Paul
   street) musical band is divine" release, thanks to their fine concert
   yesterday (2004 Nov. 12).
 
-  * Add /usr/lib/mailman/bin to the Python modul path of
+  * Add /usr/lib/mailman/bin to the Python module path of
     postfix-to-mailman.py (closes: #279361, #280246).
   * Suggests listadmin, as that may be useful for some admins
     (closes: #279192).
-  * Prevent caching of html output with 'Pragma: no-cache'
+  * Prevent caching of html output with 'Cache-control: no-cache'
     (closes: #281284).
 
  -- Tollef Fog Heen <tfheen@debian.org>  Sat, 13 Nov 2004 21:32:07 +0100

@@ -31,7 +31,7 @@ exit 0
              charset = Utils.GetCharSet(self.language)
 -        output = ['Content-Type: text/html; charset=%s\n' % charset]
 +        output = ['Content-Type: text/html; charset=%s' % charset]
-+        output.append('Pragma: no-cache\n')
++        output.append('Cache-control: no-cache\n')
          if not self.suppress_head:
              kws.setdefault('bgcolor', self.bgcolor)
              tab = ' ' * indent

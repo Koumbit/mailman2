@@ -1,5 +1,8 @@
 00_stolen_from_HEAD
 01_defaults.debian
+02_CAN-2004-1177_driver_css
+03_CAN-2004-1143
+04_CAN-2005-0202
 07_snooze
 10_wrapper_uid
 11_handle_propfind
@@ -17,7 +20,6 @@
 51_nocompile.pyc
 52_check_perms_lstat
 53_disable_addons
-55_options_traceback
 56_fix_de_broken_links
 57_fix_missing_da_template
 58_fix_translations
