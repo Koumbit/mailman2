@@ -33,7 +33,7 @@ import sys, os
 class SimpleLogger:
     """
     """#
-    levels = [ 'no', 'yes', 'all' ]
+    levels = [ 'none', 'some', 'most', 'all' ]
 
     def __init__(self, prefix):
         self._file = sys.stderr
@@ -43,7 +43,10 @@ class SimpleLogger:
         except KeyError:
             self._level = 1
         except ValueError:
-            self._level = Logger.levels.index(level.lower())
+            try:
+                self._level = self.levels.index(level.lower())
+            except ValueError:
+                self._level = 0
 
     def set_level(self, lvl):
         self._level = lvl
@@ -99,14 +102,13 @@ class CommandRunner:
     """
     """#
 
-    def __init__(self, sys_path):
-        self._prepend = sys_path
-        self._sys_path = 
+    def __init__(self, sys_dir):
+        self._prepend = sys_dir
 
 
     def run(self, cmd, *args):
-    """
-    """#
+        """
+        """#
         gbls = virgin_gbls.copy()
         sys_argv    = sys.argv[:]
         sys_path    = sys.path[:]
@@ -130,4 +132,3 @@ if __name__ == '__main__':
         # If things break, show useful information
         # depending on $MM_MAINT_DEBUG settings
         log.sys_info()
-
