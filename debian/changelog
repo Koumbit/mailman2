@@ -34,6 +34,8 @@ mailman (2.1.4-2) unstable; urgency=low
   * Applied patch supplied by Marc Haber <mh+debian-bugs@zugschlus.de> to
     simplify backporting to woody (cf. XX_po-debconf_hack.dpatch)
     (bsb, closes: #223348).
+  * Fix path problems, found by Nathan Stratton Treadway <nathanst@ontko.com>
+    (by GCS, closes: #235835, #236473)
 
  -- Siggy Brentrup <bsb@debian.org>  Tue, 23 Mar 2004 20:07:08 +0100
 
