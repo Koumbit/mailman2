@@ -9,7 +9,7 @@ Standards-Version: 3.6.1
 Package: mailman
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), python (>= 2.3), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), ucf (>= 1.05), pwgen
+Depends: mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), ucf (>= 1.05), pwgen, python-bsddb3
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
 Recommends: base-passwd (>= 1.3.0)
 Suggests: mailman-doc (= ${Source-Version}), mailman-spamassassin | mailman-spamprobe, mailman-savannah, mailman-clamav
@@ -42,6 +42,7 @@ Description: setgid wrappers required for running mailman
 
 Package: mailman-i18n
 Architecture: all
+Pre-Depends: python (>= 2.3)
 Depends: mailman (= ${Source-Version}), ucf (>= 1.05), debconf (>= 1.4.16)
 Conflicts: mailman (<= 2.1.4-4), mailman-en
 Replaces: mailman (<= 2.1.4-4), mailman-en
@@ -52,6 +53,7 @@ Description: language specific parts of mailman (international)
 
 Package: mailman-en
 Architecture: all
+Pre-Depends: python (>= 2.3)
 Depends: mailman (= ${Source-Version}), ucf (>= 1.05), debconf (>= 1.4.16)
 Conflicts: mailman (<= 2.1.4-4), mailman-i18n
 Replaces: mailman (<= 2.1.4-4), mailman-i18n
