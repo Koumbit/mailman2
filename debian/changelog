@@ -1,13 +1,17 @@
 mailman (2.1.5-2) unstable; urgency=high
 
-  * Fix for eating messages because of _snooze interface change (Laszlo,
-    closes: #272012).
-  * Ensure a new line before append anything to the config file (Laszlo,
-    closes: #272419).
+  Changes by Laszlo 'GCS' Boszormenyi:
+
+  * Fix for eating messages because of _snooze interface change
+    (closes: #272012).
+  * Ensure a new line before append anything to the config file
+    (closes: #272419).
   * As we do not use quiet mode for the daemon, do not print extra dots
-    when mailman starts/stops/restarts (Laszlo, closes: #270369).
-  * Use the correct pid file for logrotate script (Laszlo,
-    closes: #247194).
+    when mailman starts/stops/restarts (closes: #270369).
+  * Use the correct pid file for logrotate script (closes: #247194).
+  * Fix Russian newlist template, mailman-owner is siteowner now
+    (closes: #260816); remove CAN-2004-0412 dpatch, as this is now
+    included upstream; enable french_archtocentry dpatch.
 
  -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
 
