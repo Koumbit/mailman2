@@ -48,27 +48,3 @@ Depends: mailman (= ${Source-Version})
 Description: Powerful, web-bases mailing list manager (Documentation)
  Documentation and examples for mailman.
 
-Package: mailman-spamassassin
-Architecture: all
-Depends: mailman (= ${Source-Version}), spamassassin
-Description: Mixin integrating spamassassin into mailman.
- Dunno yet, have to look into it.
-
-Package: mailman-spamprobe
-Architecture: all
-Depends: mailman (= ${Source-Version}), spamprobe (>= 0.9h-2)
-Description: Mixin integrating spamprobe into mailman.
- Dunno yet, have to look into it.
-
-Package: mailman-savannah
-Architecture: all
-Depends: mailman (= ${Source-Version})
-Description: Savannah patches for mailman
- Dunno yet, have to look into it.
-
-Package: mailman-clamav
-Architecture: all
-Depends: mailman (= ${Source-Version})
-Description: Mixin integrating Clam Antivirus into Mailman.
- Dunno yet, have to look into it.
-

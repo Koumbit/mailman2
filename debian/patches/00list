@@ -3,7 +3,6 @@
 07_snooze
 10_wrapper_uid
 11_handle_propfind
-12_savannah_wrapper
 15_mailmanctl_daemonize
 16_update_debian
 20_qmail_to_mailman.debian
