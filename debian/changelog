@@ -1,3 +1,9 @@
+mailman (2.1.5-8) unstable; urgency=low
+
+  * Add Italian debconf translation (closes: #278562)
+
+ --
+
 mailman (2.1.5-7) unstable; urgency=high
 
   * Brown bag release -- use '/' instead of the undefined SLASH in
