@@ -1,0 +1,41 @@
+#! /bin/sh -e
+## $URL$
+## $Id$
+## 60_type_error_temp_fix.dpatch by  Siggy Brentrup <bsb@debian.org>
+## 
+## DP: Temporary workaround for a TypeError 
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Gui/General.py mailman-2.1.4/Mailman/Gui/General.py
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Gui/General.py	2002-12-11 13:41:56.000000000 +0100
++++ mailman-2.1.4/Mailman/Gui/General.py	2004-04-30 19:29:10.000000000 +0200
+@@ -50,7 +50,10 @@
+             _('Filter out duplicate messages to list members (if possible)'),
+             }
+ 
+-        optvals = [mlist.new_member_options & bitfields[o] for o in OPTIONS]
++        try:
++            optvals = [mlist.new_member_options & bitfields[o] for o in OPTIONS]
++        except TypeError:
++            optvals = [ 0, 0, 0, bitfields['nodupes'] ]
+         opttext = [bitdescrs[o] for o in OPTIONS]
+ 
+         rtn = [
