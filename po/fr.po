@@ -13,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.3-2\n"
+"Project-Id-Version: mailman 2.1.5-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-18 19:27+0200\n"
-"PO-Revision-Date: 2004-01-09 14:40+0100\n"
+"POT-Creation-Date: 2004-10-06 22:06+0000\n"
+"PO-Revision-Date: 2004-10-06 16:42+0200\n"
 "Last-Translator: Philippe Batailler <philippe.batailler@free.fr>\n"
 "Language-Team: french <debian-l10n-french@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,175 +27,175 @@ msgstr ""
 #. Choices
 #: ../templates:5
 msgid "big5"
-msgstr ""
+msgstr "big5 (chinois big5)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ca"
-msgstr ""
+msgstr "ca (catalan)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "cs"
-msgstr ""
+msgstr "cs (tchèque)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "da"
-msgstr ""
+msgstr "da (danois)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "de"
-msgstr ""
+msgstr "de (allemand)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "en"
-msgstr ""
+msgstr "en (anglais)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "es"
-msgstr ""
+msgstr "es (espagnol)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "et"
-msgstr ""
+msgstr "et (estonien)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "eu"
-msgstr ""
+msgstr "eu (basque)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fi"
-msgstr ""
+msgstr "fi (finnois)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fr"
-msgstr ""
+msgstr "fr (français)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hr"
-msgstr ""
+msgstr "hr (croate)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hu"
-msgstr ""
+msgstr "hu (hongrois)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "it"
-msgstr ""
+msgstr "it (italien)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ja"
-msgstr ""
+msgstr "ja (japonais)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ko"
-msgstr ""
+msgstr "ko (coréen)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "lt"
-msgstr ""
+msgstr "lt (lituanien)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "nl"
-msgstr ""
+msgstr "nl (néerlandais)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "no"
-msgstr ""
+msgstr "no (norvégien)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pl"
-msgstr ""
+msgstr "pl (polonais)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt"
-msgstr ""
+msgstr "pt (portugais)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt_BR"
-msgstr ""
+msgstr "pt_BR (portugais du Brésil)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ro"
-msgstr ""
+msgstr "ro (roumain)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ru"
-msgstr ""
+msgstr "ru (russe)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sl"
-msgstr ""
+msgstr "sl (slovène)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sr"
-msgstr ""
+msgstr "sr (serbe)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sv"
-msgstr ""
+msgstr "sv (suédois)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "uk"
-msgstr ""
+msgstr "uk (ukrainien)"
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
 msgid "Which languages to support?  "
-msgstr ""
+msgstr "Choisissez les langues que vous voulez gérer :"
 
 #. Type: multiselect
 #. Description
@@ -206,6 +206,10 @@ msgid ""
 "help of ucf.  This means approximately 150kB for each supported language on "
 "the root FS."
 msgstr ""
+"Debian Mailman garde les textes de chaque langue reconnue dans /etc/mailman/"
+"LANG/ ; chaque langue possède un traitement particulier de type « conffile » "
+"grâce au programme « ucf » ; chaque langue « pèse » environ 150 kB sur le "
+"système de fichiers racine."
 
 #. Type: multiselect
 #. Description
@@ -214,6 +218,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
+"Si vous voulez d'autres langues, exécutez simplement « dpkg-reconfigure "
+"mailman »."
 
 #. Type: multiselect
 #. Description
@@ -223,6 +229,9 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying it's "
 "messages."
 msgstr ""
+"NOTE : les langues reconnues sur les listes de discussion existantes sont "
+"automatiquement gérées quand dselect et mailman ont besoin d'une langue pour "
+"afficher leurs messages."
 
 #. Type: boolean
 #. Description
@@ -237,15 +246,15 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"Voulez-vous transformer des nouvelles en courriers, c'est-à-dire, envoyer "
-"tous les messages qui apparaissent dans un forum vers une liste de "
-"diffusion ?"
+"Il est possible de transformer des nouvelles en courriers, c'est-à-dire, "
+"envoyer tous les messages qui apparaissent dans un forum vers une liste de "
+"diffusion."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Most people won't need this."
-msgstr "La plupart des utilisateurs n'en ont pas besoin."
+msgstr "La plupart des utilisateurs n'ont pas besoin de cette fonction."
 
 #. Type: note
 #. Description
@@ -276,3 +285,41 @@ msgstr ""
 "Pour créer cette liste, lancer « newlist mailman » et suivez les "
 "instructions qui apparaissent sur l'écran. Il est ensuite nécessaire de "
 "relancer mailman avec la commande « /etc/init.d/mailman start »."
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid "Which language should be the default for Mailman?"
+msgstr "Langue par defaut à utiliser :"
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+"La page web est affichée dans la langue choisie ; Maiman se sert aussi de "
+"cette langue pour communiquer avec les utilisateurs."
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid "Old queue files present"
+msgstr "D'anciennes files d'attente sont présentes"
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid ""
+"The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
+"for the upgrade work properly.  Please either flush the queue (by way of "
+"mailmanctl start, then stopping it and redoing the upgrade when it is "
+"finished) or remove those files.  Note that removing the files will lose "
+"some emails sent to lists."
+msgstr ""
+"Le répertoire /var/lib/mailman/qfiles contient des fichiers. Il doit être "
+"vide pour que la mise à jour se passe correctement. Veuillez vider la file "
+"d'attente avec mailmanctl start, arrêter mailman et relancer la mise à jour. "
+"Vous pouvez aussi supprimer ces fichiers. Remarquer que la suppression de "
+"ces fichiers fera perdre des courriels envoyés à des listes."

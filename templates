@@ -44,13 +44,13 @@ _Description: Missing site list
 Template: mailman/default_server_language
 Type: select
 Choices: ${site_languages}
-Description: Which language should be the default for Mailman?
+_Description: Which language should be the default for Mailman?
  The web page will be shown in this language, and in general, Mailman
  will use this language to communicate with the user.
 
 Template: mailman/queue_files_present
 Type: note
-Description: Old queue files present
+_Description: Old queue files present
  The directory /var/lib/mailman/qfiles contains files.  It needs to be
  empty for the upgrade work properly.  Please either flush the queue
  (by way of mailmanctl start, then stopping it and redoing the upgrade
