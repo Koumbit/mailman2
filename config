@@ -5,7 +5,7 @@
 crontab=/etc/cron.d/mailman
 site_languages=/etc/mailman/site-languages
 
-function get_used_languages ()
+get_used_languages ()
 {
   for ml in $(/usr/sbin/list_lists -b); do
     ( /usr/sbin/config_list -o - ${ml} 2>/dev/null
