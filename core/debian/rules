@@ -11,8 +11,6 @@ PACKAGE=$(package)
 include /usr/share/dpatch/dpatch.make
 
 
-manpages = debian/*.8
-
 export DH_VERBOSE=1
 
 SHELL=/bin/bash
@@ -81,6 +79,7 @@ binary-indep:	checkroot build
 	dh_installdocs --indep
 	dh_installchangelogs --indep
 	dh_install --indep
+	dh_installman --indep
 	dh_installlogrotate --indep
 	dh_fixperms --indep
 
@@ -91,6 +90,8 @@ binary-indep:	checkroot build
 	# move language README.lang to doc directory
 	mv $$(find debian/mailman-i18n/usr/share/locale -name README.\*) \
 		debian/mailman-i18n/usr/share/doc/mailman-i18n
+	# Mailman/Post.py may be run as a script
+	chmod a+x debian/mailman/usr/share/mailman/Mailman/Post.py
 
 	dh_link --indep
 	dh_compress --indep
