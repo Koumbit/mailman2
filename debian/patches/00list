@@ -28,4 +28,5 @@
 63_update_default_server_language
 64_correct_html_nesting
 65_donot_add_empty_cc
+66_donot_let_cache_html_pages
 99_js_templates
