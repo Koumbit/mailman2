@@ -12,17 +12,9 @@ if [ "$1" = "install" ]; then
 	fi
 fi
 
-if [ "$1" = "install" -o "$1" = "upgrade" ]; then
-	if [ -d /var/lib/mailman/logs -a ! -L /var/lib/mailman/logs ]; then
-		echo "Moving the current logs to /var/lib/mailman/logs.old"
+if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
+	if [ -d /var/lib/mailman/logs ] && [ ! -L /var/lib/mailman/logs ] ; then
 		echo "New logs will be generated in /var/log/mailman"
-		mv /var/lib/mailman/logs /var/lib/mailman/logs.old
-		mkdir /var/log/mailman && true
-		chown root.list /var/log/mailman
-		chmod 2775 /var/log/mailman
-		ln -s /var/log/mailman /var/lib/mailman/logs
-		echo -n "Press RETURN to continue"
-		read foo
 	fi
 fi
 
@@ -33,7 +25,44 @@ if [ "$1" = "upgrade" ] && dpkg --compare-versions "$2" lt 2.1; then
         echo "Queue not cleared, please flush mailman queue and retry upgrade"
         exit 1
     fi
+fi
 
+pythonlib=/var/lib/mailman/pythonlib
+
+if [ -d ${pythonlib} ] && [ "$(ls -A ${pythonlib})" != "" ] ; then
+    cat <<EOF 
+You have a non-empty ${pythonlib}, possibly caused by an incomplete
+removal of an ancient mailman version.  In any case it's contents may
+lead to mailman failing in obscure ways.
+
+If you want it to be moved to ${pythonlib}.obsolete.$$ now, answer Y
+to the following question, any other response will abort installation
+and give you the opportunity to examine the situation.
+EOF
+    read -p "Move ${pythonlib} out of the way? [yN] " ans
+    case $ans in
+        y|Y)  mv ${pythonlib} ${pythonlib}.obsolete.$$
+            ;;
+        *) exit 1
+            ;;
+    esac
+fi
+if [ -L ${pythonlib} ] ; then
+    cat <<EOF
+You have a symbolic link ${pythonlib} pointing to $(readlink ${pythonlib})
+while mailman installs ${pythonlib} as a directory.
+
+If you want it to be moved to ${pythonlib}.obsolete.$$ now, answer Y
+to the following question, any other response will abort installation
+and give you the opportunity to examine the situation.
+EOF
+    read -p "Move ${pythonlib} out of the way? [yN] " ans
+    case $ans in
+        y|Y)  mv ${pythonlib} ${pythonlib}.obsolete.$$
+            ;;
+        *) exit 1
+            ;;
+    esac
 fi
 
 #DEBHELPER#
