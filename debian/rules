@@ -10,9 +10,6 @@ PACKAGE=$(package)
 
 include /usr/share/dpatch/dpatch.make
 
-binaries=list_lists find_member config_list mmsitepass newlist rmlist	\
-	add_members list_members remove_members arch clone_member	\
-	sync_members check_db check_perms list_admins withlist
 
 manpages = debian/*.8
 
@@ -29,6 +26,7 @@ endif
 
 build: patch-stamp Makefile debian/po/templates.pot
 	$(MAKE) 
+	mkdir -p debian/tmp/usr/share/images/mailman
 	$(MAKE) doinstall DESTDIR=$$(pwd)/debian/tmp \
 		prefix=/usr/lib/$(package) \
 		var_prefix=/var/lib/$(package) \
@@ -82,8 +80,18 @@ binary-indep:	checkroot build
 	dh_installdocs --indep
 	dh_installchangelogs --indep
 	dh_install --indep
+	# remove that wrapper, it's in mailman-bin
+	rm debian/mailman/usr/share/mailman/mail/mailman
+	# remove 'en' templates, they are in mailman
+	rm -rf debian/mailman-i18n/usr/share/mailman/templates/en
+	# remove .po files
+	rm -f $$(find debian/mailman-i18n/usr/share/locale -name mailman.po)
+	# move language README.lang to doc directory
+	mv $$(find debian/mailman-i18n/usr/share/locale -name README.\*) \
+		debian/mailman-i18n/usr/share/doc/mailman-i18n
 	dh_installlogrotate --indep
 	dh_fixperms --indep
+	dh_link --indep
 	dh_compress --indep
 	dh_gencontrol --indep
 	dh_md5sums --indep

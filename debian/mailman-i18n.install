@@ -1,1 +1,2 @@
-usr/share/locale/*/LC_MESSAGES/mailman.mo
+debian/tmp/usr/lib/mailman/messages/* usr/share/locale
+debian/tmp/usr/lib/mailman/templates usr/share/mailman

@@ -16,8 +16,10 @@ Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,
  Mailman gives each mailing list a web page, and allows users to
- subscribe, unsubscribe, etc. over the web.  Even the list manager can
- administer his or her list entirely from the web.
+ subscribe, unsubscribe, etc. over the web.  Even list owners can
+ administer their lists entirely from the web and delegate routine
+ operations like approval of held messages to list moderators with
+ restricted rights.
  .
  Mailman also integrates most things people want to do with mailing
  lists, including archiving, mail <-> news gateways, and so on.  It
@@ -30,6 +32,8 @@ Description: Powerful, web-based mailing list manager
 Package: mailman-bin
 Architecture: any
 Depends: ${shlibs:Depends}, mailman (= ${Source-Version})
+Conflicts: mailman (<= 2.1.4-4)
+Replaces: mailman (<= 2.1.4-4)
 Description: Setgid wrappers for mailman.
  Architecture dependent setgid-wrappers required for running mailman.
  because is implemented in Python.
@@ -37,12 +41,15 @@ Description: Setgid wrappers for mailman.
 Package: mailman-i18n
 Architecture: all
 Depends: mailman (= ${Source-Version}), ucf (>= 1.0.0), debconf (>= 1.4.16)
+Conflicts: mailman (<= 2.1.4-4)
+Replaces: mailman (<= 2.1.4-4)
 Suggests: python2.3-korean-codecs, python-japanese-codecs
-Description: Powerful, web-bases mailing list manager (internationalization)
+Description: Powerful, web-based mailing list manager (internationalization)
  Message translations plus language specific templates for mailman.
 
 Package: mailman-doc
 Architecture: all
-Description: Powerful, web-bases mailing list manager (Documentation)
+Conflicts: mailman (<= 2.1.4-4)
+Description: Powerful, web-based mailing list manager (Documentation)
  Documentation and examples for mailman.
 
