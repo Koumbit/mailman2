@@ -36,8 +36,9 @@ mailman (2.1.4-2) unstable; urgency=low
     (bsb, closes: #223348).
   * Fix path problems, found by Nathan Stratton Treadway <nathanst@ontko.com>
     (by GCS, closes: #235835, #236473)
+  * Added missing manpages withlist.8 and list_admins.8 (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 23 Mar 2004 20:07:08 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Wed, 24 Mar 2004 23:24:23 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 
