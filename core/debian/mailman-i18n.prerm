@@ -13,6 +13,7 @@ case $1 in
         used_languages=$(withlist -q -a -r used_languages)
         db_set mailman/used_languages "${used_languages}" || true
         if [ "${used_languages}" != "en" ] ; then
+            db_title "Deconfiguring mailman-i18n" || true
             db_input critical mailman/other_languages || true
             db_go || true
             exit 1
