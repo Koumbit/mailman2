@@ -2,7 +2,7 @@ debian/tmp/usr/lib/mailman/Mailman      usr/lib/mailman
 debian/tmp/usr/lib/mailman/bin          usr/lib/mailman
 debian/tmp/usr/lib/mailman/cron         usr/lib/mailman
 debian/tmp/usr/lib/mailman/scripts      usr/lib/mailman
-debian/tmp/usr/share/images/mailman     usr/share/images
+debian/tmp/usr/lib/mailman/icons/*      usr/share/images/mailman
 debian/tmp/var/lib/mailman/data         var/lib/mailman
 debian/Debian/templates.py              usr/lib/mailman/Mailman/Debian
 debian/manpages/*                       usr/share/man/man8
