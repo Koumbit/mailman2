@@ -27,7 +27,7 @@ exit 0
 diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Gui/General.py mailman-2.1.4/Mailman/Gui/General.py
 --- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Gui/General.py	2002-12-11 13:41:56.000000000 +0100
 +++ mailman-2.1.4/Mailman/Gui/General.py	2004-04-30 19:29:10.000000000 +0200
-@@ -50,7 +50,10 @@
+@@ -50,7 +50,11 @@
              _('Filter out duplicate messages to list members (if possible)'),
              }
  
@@ -35,7 +35,8 @@ diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Gui/General.p
 +        try:
 +            optvals = [mlist.new_member_options & bitfields[o] for o in OPTIONS]
 +        except TypeError:
-+            optvals = [ 0, 0, 0, bitfields['nodupes'] ]
++            optvals = [ bitfields[o] for o in OPTIONS
++                        if bitfields[o] in mlist.new_member_options ]
          opttext = [bitdescrs[o] for o in OPTIONS]
  
          rtn = [
