@@ -1,12 +1,12 @@
 mailman (2.1.4-4split) UNRELEASED; urgency=low
 
   * NOT YET RELEASED.
-  * Outlining package split into mailman, mailman-common, mailman-i18n,
+  * Splitting package into mailman, mailman-bin, mailman-i18n,
     mailman-doc (bsb, closes: #176439, #238377, #233410, #237772).
-  * Outlining mixin packages mailman-spamassassin, mailman-spamprobe,
+  * Outlining glue packages mailman-spamassassin, mailman-spamprobe,
     mailman-savannah and mailman-clamav (bsb, cf debian/TODO).
 
- -- Siggy Brentrup <bsb@debian.org>  Sun, 18 Apr 2004 18:32:49 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Wed, 21 Apr 2004 09:16:31 +0200
 
 mailman (2.1.4-4) unstable; urgency=medium
 

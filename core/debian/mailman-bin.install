@@ -1,0 +1,3 @@
+debian/tmp/usr/lib/mailman/cgi-bin/* usr/lib/cgi-bin/mailman
+debian/tmp/usr/lib/mailman/mail/mailman
+
