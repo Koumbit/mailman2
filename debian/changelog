@@ -1,9 +1,9 @@
 mailman (2.1.4-3) UNRELEASED; urgency=low
 
   * NOT YET RELEASED (svn-buildpackage likes it).
-  * Fix bogus test for empty qfiles/ in preinst (bsb, closes: #230033).
+  * Fix bogus test for empty qfiles/ in preinst (bsb, closes: #240033).
 
- -- Siggy Brentrup <bsb@debian.org>  Thu, 25 Mar 2004 19:03:14 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Thu, 25 Mar 2004 19:10:17 +0100
 
 mailman (2.1.4-2) unstable; urgency=low
 
