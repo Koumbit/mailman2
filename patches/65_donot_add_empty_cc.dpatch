@@ -2,8 +2,8 @@
 ## 65_donot_add_empty_cc.dpatch, by Alexis S. L. Carvalho <alexis@cecm.usp.br>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: update is called from the Debian maintainer scripts and prints
-## DP: non-appropriate output.  Change that.
+## DP: If Mailman is about to send out a Cc to other parties, then be
+## DP: sure it has a value, otherwise do not ever add Cc.
 
 [ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
 patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
