@@ -38,7 +38,7 @@ build-indep: patch-stamp Makefile debian/po/templates.pot
 	touch build-indep
 
 debian/po/templates.pot: debian/po/POTFILES.in debian/mailman.templates \
-		debian/mailman-en.templates debian/mailman-i18n.templates
+		debian/mailman-i18n.templates
 	@debconf-updatepo
 
 Makefile:
