@@ -15,8 +15,9 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
   * Revert gate_news changes (by GCS, closes: #237006)
   * Fix messages/de/LC_MESSAGES/mailman.po for now, but forward to upstream;
     patch from Ralf Doeblitz <r.doeblitz@asco.de> (closes: #233048)
+  * Added german debconf translation (bsb).
 
- -- Tollef Fog Heen <tfheen@debian.org>  Wed, 11 Feb 2004 02:11:04 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Mon, 15 Mar 2004 07:30:47 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 
