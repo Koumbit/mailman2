@@ -4,9 +4,9 @@
 Changes outlined herein being a major deviation from the way Mailman
 is packaged now, it might be wiser to defer them until sarge+1.
 
-- Split into mailman, mailman-bin, mailman-doc, mailman-i18n.
-  Changed mind: let the main package be arch-indep and depend on
-  arch-dep mailman-bin containing the wrapper binaries.
+- Split into mailman, mailman-bin, mailman-doc, mailman-i18n,
+  mailman-en.  Changed mind: let the main package be arch-indep and
+  depend on arch-dep mailman-bin containing the wrapper binaries.
 * Partially done in Rev 79
 
 * As of Rev 79, individual files in /var/lib/mailman are symlinks to
@@ -39,11 +39,9 @@ is packaged now, it might be wiser to defer them until sarge+1.
   If not installed, admin pages dealing with multilingual support must
   be replaced by a hint to install mailman-i18n first.
 
-  The main package will only support english, no inclination to prefer
-  any particular language over the others.
-
-  I'd even prefer calling it the C locale, let's see if renaming (and
-  providing a link when -i18n is installed) works.
+  Instead of mailman-i18n the user may choose to install mailman-en
+  which supports only english but still has templates in
+  /etc/mailman/templates/en.
 
 - Upstream check_perms reports nonesense, there is no point in making
   e.g. language directories 2775.  Either rewrite it such that it
@@ -53,8 +51,9 @@ is packaged now, it might be wiser to defer them until sarge+1.
 - Find a way to split into build-indep and build-arch targets, avoiding
   to run msgfmt.py on every arch build.
 
-- Make sure no /var/lib/mailman/pythonlib symlink is present,
+- Make sure no directory symlink is present in /var/lib/mailman,
   otherwise obscure bugs may result (#242740).
+* done in Rev 88, 92
 
 - Instead of symlinking directories VAR_PREFIX/logs, VAR_PREFIX/locks and
   VAR_PREFIX/templates redefine mm_cfg.LOG_DIR, mm_cfg.LOCK_DIR and
@@ -62,6 +61,7 @@ is packaged now, it might be wiser to defer them until sarge+1.
 * done in Rev 83
 
 - Think about a Mailman.Debian (python-)package for postinst helpers.
+* done in Rev 87
 
 This list is by no means meant to be complete.
 
