@@ -18,6 +18,7 @@ mailman (2.1.5-3) unstable; urgency=high
   * Treat postfix-to-mailman.py with ucf just like qmail-to-postfix.py
     and update README.Debian accordingly (closes: #275482).
   * Update newlist.8 manpage, -o is no more, add -l (closes: #269642).
+  * Rephrase README.EXIM a bit more to be more clearer (closes: #271987).
 
  -- Tollef Fog Heen <tfheen@debian.org>  Thu, 14 Oct 2004 19:38:22 +0000
 
