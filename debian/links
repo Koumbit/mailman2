@@ -211,6 +211,7 @@ var/lib/mailman/.INST/Mailman/versions.py  var/lib/mailman/Mailman/versions.py
 var/lib/mailman/.INST/Mailman/Debian/__init__.py  var/lib/mailman/Mailman/Debian/__init__.py
 var/lib/mailman/.INST/Mailman/Debian/helpers.py  var/lib/mailman/Mailman/Debian/helpers.py
 var/lib/mailman/.INST/Mailman/Debian/templates.py  var/lib/mailman/Mailman/Debian/templates.py
+var/lib/mailman/.INST/Mailman/Debian/cf_db.py  var/lib/mailman/Mailman/Debian/cf_db.py
 var/lib/mailman/.INST/cron/crontab.in  var/lib/mailman/cron/crontab.in
 var/lib/mailman/.INST/cron/checkdbs  var/lib/mailman/cron/checkdbs
 var/lib/mailman/.INST/cron/mailpasswds  var/lib/mailman/cron/mailpasswds
