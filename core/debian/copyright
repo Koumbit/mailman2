@@ -27,8 +27,9 @@ and 5/98.  Autoconf support added 5/98 by Barry Warsaw.
 
 
 Modifications for Debian are copyright (C) 1998 Johnie Ingram, (C)
-1999 Gergely Madarasz and (C) 2001 Tollef Fog Heen, and also released
-under the terms of the GPL -- version 2, or any later version.
+1999 Gergely Madarasz, (C) 2001 Tollef Fog Heen and (C) 2004 Bernd
+S. Brentrup, and also released under the terms of the GPL -- version
+2, or any later version.
 
 On Debian GNU/Linux systems, the text of the GPL can be found in
 /usr/share/common-licenses/GPL-2.
