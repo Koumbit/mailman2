@@ -73,7 +73,7 @@ def setup():
     remove_templates(need_languages)
     install_templates(need_languages)
 
-    run_debhelper_additions()
+    start_mailman()
 
 
 def remove_templates(site_languages):
@@ -118,12 +118,30 @@ def install_templates(site_languages):
         cfdb.sync()
         log(' done.')
 
-def run_debhelper_additions():
-    runit = os.popen('/bin/sh -e', 'w')
-    runit.write("""\
-#DEBHELPER#""")
-    if runit.close() is not None:
+
+def start_mailman():
+    from popen2 import Popen4
+    runner = Popen4('/bin/sh -e')
+    runner.tochild.write("""\
+chmod +x /var/lib/mailman/bin/mailmanctl
+
+if [ -x "/etc/init.d/mailman" ]; then
+  if [ -x /usr/sbin/invoke-rc.d ] ; then
+    invoke-rc.d mailman start || true
+  else
+    /etc/init.d/mailman start || true
+  fi
+fi
+""")
+    runner.tochild.close()
+    while True:
+        rc = runner.poll()
+        if rc != -1: break
+        log(runner.fromchild.readline(), nl='')
+    log(runner.fromchild.read(), nl='')
+    if rc != 0:
         raise SystemExit(1)
+
 
 if __name__ == '__main__':
     log = DebuggingLogger('MM_MAINT')
