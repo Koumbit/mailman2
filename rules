@@ -144,11 +144,11 @@ binary-arch:	checkroot build
 #	install -m 0644 debian/lintian-overrides debian/mailman/usr/share/lintian/overrides/mailman
 
 # Install savannah plugin
-	install -m 0644 contrib/savannah debian/mailman/usr/lib/$(package)/Mailman/Cgi
+	install -m 0644 debian/contrib/savannah debian/mailman/usr/lib/$(package)/Mailman/Cgi
 
 # Spamassassin plugin
-	install -m 0644 debian/SpamAssassin.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
-	install -m 0644 debian/spamd.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
+	install -m 0644 debian/contrib/SpamAssassin.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
+	install -m 0644 debian/contrib/spamd.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
 
 # Move templates
 	mv `find debian/mailman/etc/mailman -type d -mindepth 1 -maxdepth 1` debian/mailman/usr/share/mailman
