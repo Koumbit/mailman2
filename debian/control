@@ -8,9 +8,8 @@ Standards-Version: 3.6.1
 Package: mailman
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-trans (= ${Source-Version}), mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), pwgen
-Conflicts: mailman (<= 2.1.4-4), suidmanager (<< 0.50), sendmail (<< 8.12.6), ssmtp, nullmailer
-Replaces: mailman (<= 2.1.4-4)
+Depends: mailman-cfdb (= ${Source-Version}), mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), pwgen
+Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6), ssmtp, nullmailer
 Recommends: base-passwd (>= 1.3.0)
 Suggests: mailman-doc (= ${Source-Version}), mailman-spamassassin | mailman-spamprobe, mailman-savannah, mailman-clamav
 Description: powerful, web-based mailing list manager
@@ -30,7 +29,7 @@ Description: powerful, web-based mailing list manager
  .
  For more information see http://www.list.org/.
 
-Package: mailman-trans
+Package: mailman-cfdb
 Architecture: all
 Pre-Depends: python (>= 2.3)
 Depends: ucf (>= 1.05)
@@ -51,7 +50,7 @@ Description: setgid wrappers required for running mailman
 Package: mailman-i18n
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-trans (= ${Source-Version}), debconf (>= 1.4.16)
+Depends: mailman-cfdb (= ${Source-Version}), debconf (>= 1.4.16)
 Conflicts: mailman (<= 2.1.4-4), mailman-en
 Replaces: mailman-en (= ${Source-Version})
 Suggests: python2.3-korean-codecs, python-japanese-codecs
@@ -62,7 +61,7 @@ Description: language specific parts of mailman (international)
 Package: mailman-en
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-trans (= ${Source-Version}), debconf (>= 1.4.16)
+Depends: mailman-cfdb (= ${Source-Version}), debconf (>= 1.4.16)
 Conflicts: mailman (<= 2.1.4-4), mailman-i18n
 Replaces: mailman-i18n (= ${Source-Version})
 Description: language specific parts of mailman (english only)
