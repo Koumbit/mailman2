@@ -5,6 +5,8 @@ mailman (2.1.4-4) UNRELEASED; urgency=medium
   * Add fix for missing installation of Danish templates (by GCS)
   * config: don't try to list_lists when upgrading from pre 2.1
     (bsb, closes: #242945).
+  * Fix Woody FTBFS, reported and solution provided by Andreas Barth
+    <aba@not.so.argh.org>, (by GCS, closes: #243209).
 
  -- Siggy Brentrup <bsb@debian.org>  Sat, 10 Apr 2004 12:46:59 +0200
 
