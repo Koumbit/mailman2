@@ -42,7 +42,7 @@ diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Defaults.py.i
  SCRIPTS_DIR     = os.path.join(PREFIX, 'scripts')
 -TEMPLATE_DIR    = os.path.join(PREFIX, 'templates')
 -MESSAGES_DIR    = os.path.join(PREFIX, 'messages')
-+TEMPLATE_DIR    = '/etc/mailman/templates'
++TEMPLATE_DIR    = os.path.join(VAR_PREFIX, 'templates')
 +MESSAGES_DIR    = '/usr/share/locale'
  PUBLIC_ARCHIVE_FILE_DIR  = os.path.join(VAR_PREFIX, 'archives', 'public')
  PRIVATE_ARCHIVE_FILE_DIR = os.path.join(VAR_PREFIX, 'archives', 'private')

@@ -1,0 +1,57 @@
+#! /bin/sh -e
+## 81_templates_default.dpatch by Siggy Brentrup <bsb@debian.org>
+##
+## $URL$
+## $Id$
+##
+## DP: Adjust default templates directory in search path.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Utils.py mailman-2.1.5/Mailman/Utils.py
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Utils.py	2004-05-24 12:46:00.000000000 +0200
++++ mailman-2.1.5/Mailman/Utils.py	2004-05-24 12:46:12.000000000 +0200
+@@ -411,7 +411,7 @@
+     #    templates/site/<language>
+     #
+     # 4. the global default language directory
+-    #    templates/<language>
++    #    templates/default/<language>
+     #
+     # The first match found stops the search.  In this way, you can specialize
+     # templates at the desired level, or, if you use only the default
+@@ -456,7 +456,7 @@
+         searchdirs.append(mlist.fullpath())
+         searchdirs.append(os.path.join(mm_cfg.TEMPLATE_DIR, mlist.host_name))
+     searchdirs.append(os.path.join(mm_cfg.TEMPLATE_DIR, 'site'))
+-    searchdirs.append(mm_cfg.TEMPLATE_DIR)
++    searchdirs.append(os.path.join(mm_cfg.TEMPLATE_DIR, 'default'))
+     # Start scanning
+     quickexit = 'quickexit'
+     fp = None
+@@ -477,7 +477,7 @@
+         # Try one last time with the distro English template, which, unless
+         # you've got a really broken installation, must be there.
+         try:
+-            filename = os.path.join(mm_cfg.TEMPLATE_DIR, 'en', templatefile)
++            filename = os.path.join('/usr/share/mailman/templates', 'en', templatefile)
+             fp = open(filename)
+         except IOError, e:
+             if e.errno <> errno.ENOENT: raise

@@ -8,17 +8,6 @@ echo ">>>" $0 $* >&2
 
 package=mailman-i18n
 
-unset_mm_templates () {
-python <<EOF
-import sys; sys.path.insert(0, '/usr/lib/mailman/Mailman')
-try:
-    from Debian import cfdb
-    del cfdb['mailman/templates']
-except:
-    pass
-EOF
-}
-
 mm_shutdown () {
     if [ -x "/etc/init.d/mailman" ]; then
         if [ -x /usr/sbin/invoke-rc.d ] ; then
@@ -33,24 +22,17 @@ mm_shutdown () {
 case $1 in
     remove)
         mm_shutdown
-        unset_mm_templates
-        if [ "$2 $3" = "in-favour mailman-en" ] ; then
-            db_get mailman/site_languages || true
-            if [ "$RET" = "en" ] ; then
-                unset_mm_templates
-            else
-                db_fset mailman/other_languages seen false || true
-                db_subst mailman/other_languages infavor $3 || true
-                db_subst mailman/other_languages package ${package} || true
-                db_input critical mailman/other_languages || true
-                db_go || true
-                exit 1
-            fi
+        used_languages=$(withlist -q -a -r used_languages)
+        db_set mailman/used_languages "${used_languages}" || true
+        if [ "${used_languages}" != "en" ] ; then
+            db_fset mailman/other_languages seen false || true
+            db_input critical mailman/other_languages || true
+            db_go || true
+            exit 1
         fi
         ;;
     upgrade)
         mm_shutdown
-        unset_mm_templates
         ;;
     failed-upgrade|deconfigure)
         ;;

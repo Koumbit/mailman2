@@ -8,10 +8,10 @@ Standards-Version: 3.6.1
 Package: mailman
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-cfdb (= ${Source-Version}), mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), pwgen
+Depends: mailman-bin (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), pwgen
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6), ssmtp, nullmailer
-Recommends: base-passwd (>= 1.3.0)
-Suggests: mailman-doc (= ${Source-Version}), mailman-spamassassin | mailman-spamprobe, mailman-savannah, mailman-clamav
+Recommends: mailman-i18n (= ${Source-Version}), base-passwd (>= 1.3.0)
+Suggests: mailman-doc (= ${Source-Version})
 Description: powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,
@@ -29,46 +29,24 @@ Description: powerful, web-based mailing list manager
  .
  For more information see http://www.list.org/.
 
-Package: mailman-cfdb
-Architecture: all
-Pre-Depends: python (>= 2.3)
-Depends: ucf (>= 1.05)
-Description: transitional package for mailman
- The kernel allowing only native compiled code to be installed setgid,
- theses wrappers invoke workers implemented in Python after validating
- arguments.
-
 Package: mailman-bin
 Architecture: any
 Depends: ${shlibs:Depends}
 Conflicts: mailman (<= 2.1.4-4)
 Description: setgid wrappers required for running mailman
- The kernel allowing only native compiled code to be installed setgid,
+ The kernel honoring only native compiled code being installed setgid,
  theses wrappers invoke workers implemented in Python after validating
  arguments.
 
 Package: mailman-i18n
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-cfdb (= ${Source-Version}), debconf (>= 1.4.16)
-Conflicts: mailman (<= 2.1.4-4), mailman-en
-Replaces: mailman-en (= ${Source-Version})
+Depends: mailman (= ${Source-Version}), debconf (>= 1.4.16)
+Conflicts: mailman (<= 2.1.4-4)
 Suggests: python2.3-korean-codecs, python-japanese-codecs
-Description: language specific parts of mailman (international)
+Description: international language specific parts of mailman
  Message translations plus international templates for web pages and
  automatically generated emails.
-
-Package: mailman-en
-Architecture: all
-Pre-Depends: python (>= 2.3)
-Depends: mailman-cfdb (= ${Source-Version}), debconf (>= 1.4.16)
-Conflicts: mailman (<= 2.1.4-4), mailman-i18n
-Replaces: mailman-i18n (= ${Source-Version})
-Description: language specific parts of mailman (english only)
- English templates for web-pages and automatically generated emails.
- .
- This package is provided for the benefit of sites that don't need
- internationalization.
 
 Package: mailman-doc
 Architecture: all

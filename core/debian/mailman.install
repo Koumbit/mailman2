@@ -3,8 +3,10 @@ debian/tmp/usr/lib/mailman/bin          usr/lib/mailman
 debian/tmp/usr/lib/mailman/cron         usr/lib/mailman
 debian/tmp/usr/lib/mailman/scripts      usr/lib/mailman
 debian/tmp/usr/lib/mailman/icons/*      usr/share/images/mailman
+debian/tmp/usr/lib/mailman/templates/en usr/share/mailman/templates
 debian/tmp/var/lib/mailman/data         var/lib/mailman
-debian/Debian/templates.py              usr/lib/mailman/Mailman/Debian
+debian/Debian                           usr/lib/mailman/Mailman
 debian/manpages/*                       usr/share/man/man8
-
+debian/contrib/postfix-to-mailman.py    usr/lib/mailman/bin
+debian/contrib/used_languages.py        usr/lib/mailman/pythonlib
 

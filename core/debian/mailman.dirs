@@ -22,6 +22,7 @@ var/lib/mailman/qfiles/retry
 var/lib/mailman/qfiles/shunt
 var/lib/mailman/qfiles/virgin
 var/lib/mailman/spam
+var/lib/mailman/templates/site
 var/lock/mailman
 var/log/mailman
 var/run/mailman

@@ -15,3 +15,4 @@ usr/lib/mailman/bin/check_db            usr/sbin/check_db
 usr/lib/mailman/bin/check_perms         usr/sbin/check_perms
 usr/lib/mailman/bin/list_admins         usr/sbin/list_admins
 usr/lib/mailman/bin/withlist            usr/sbin/withlist
+usr/share/mailman/templates             var/lib/mailman/templates/default
