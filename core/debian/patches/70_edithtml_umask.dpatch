@@ -1,0 +1,56 @@
+#! /bin/sh -e
+## 70_edithtml_umask.dpatch by Siggy Brentrup <bsb@debian.org>
+##
+## $URL$
+## $Id$
+## 
+## DP: Make sure files and directories are create with correct modes
+## DP: regardless of the httpd's umask setting.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Cgi/edithtml.py mailman-2.1.5/Mailman/Cgi/edithtml.py
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Cgi/edithtml.py	2002-05-22 05:00:18.000000000 +0200
++++ mailman-2.1.5/Mailman/Cgi/edithtml.py	2004-05-30 17:44:16.000000000 +0200
+@@ -155,13 +155,18 @@
+         doc.AddItem('<hr>')
+         return
+     code = cgi_info['html_code'].value
+-    langdir = os.path.join(mlist.fullpath(), mlist.preferred_language)
+-    # Make sure the directory exists
++    # Make sure file and dir modes are correct
++    orig_umask = os.umask(002)
+     try:
+-        os.mkdir(langdir, 02775)
+-    except OSError, e:
+-        if e.errno <> errno.EEXIST: raise
+-    fp = open(os.path.join(langdir, template_name), 'w')
++        langdir = os.path.join(mlist.fullpath(), mlist.preferred_language)
++        # Make sure the directory exists
++        try:
++            os.mkdir(langdir, 02775)
++        except OSError, e:
++            if e.errno <> errno.EEXIST: raise
++        fp = open(os.path.join(langdir, template_name), 'w')
++    finally:
++        os.umask(orig_umask)
+     try:
+         fp.write(code)
+     finally:
