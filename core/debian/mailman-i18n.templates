@@ -6,7 +6,7 @@ Description: Internal holding result of scan
 
 Template: mailman/other_languages
 Type: note
-_Description: i18n support in use
+_Description: Deconfiguring mailman-i18n
  You are attempting to remove the mailman-i18n package while some
  mailing lists still have non-english language support enabled.
  .
