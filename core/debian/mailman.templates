@@ -49,7 +49,7 @@ _Description: What will be the host part of mailing list URLs?
 
 Template: mailman/site_languages
 Type: multiselect
-__Choices: big5, ca, cs, da, de, en, es, et, eu, fi, fr, gb, hr, hu, it, ja, ko, lt, nl, no, pl, pt, pt_BR, ro, ru, sl, sr, sv, uk
+__Choices: big5, ca, cs, da, de, en, es, et, eu, fi, fr, gb, hr, hu, it, ja, ko, lt, nl, no, pl, pt, pt_BR, ro, ru, sl, sr, sv, tr, uk
 Default: en
 _Description: Which languages to support?  
  For each supported language Debian Mailman stores default language

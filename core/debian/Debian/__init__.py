@@ -9,7 +9,7 @@ try:
 except ImportError:
     pass
 
-mm_languages="big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl no pl pt pt_BR ro ru sl sr sv uk".split()
+mm_languages="big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl no pl pt pt_BR ro ru sl sr sv tr uk".split()
 
 cfdb = ConfFileDatabase('/var/lib/mailman/data/debcf.db')
 
