@@ -2,6 +2,8 @@ mailman (2.1.5-2) unstable; urgency=high
 
   * Fix for eating messages because of _snooze interface change (Laszlo,
     closes: #272012).
+  * Ensure a new line before append anything to the config file (Laszlo,
+    closes: #272419).
 
  -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
 
