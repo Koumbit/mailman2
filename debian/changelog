@@ -3,6 +3,7 @@ mailman (2.1.5-7) unstable; urgency=high
   * Brown bag release -- use '/' instead of the undefined SLASH in
     Cgi/private.py.  (closes: #294874)
   * Handle the case of non-ascii chars in realname.  (closes: #293861)
+  * Fix up typo in cron script (closes: #284311)
 
  -- Tollef Fog Heen <tfheen@debian.org>  Wed, 16 Feb 2005 20:29:00 +0100
 

@@ -153,7 +153,7 @@ EOF
 # Every 5 mins, try to gate news to mail.  You can comment this one out
 # if you don't want to allow gating, or don't have any going on right now,
 # or want to exclusively use a callback strategy instead of polling.
-# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * list [ -x /usr/lib/mailman/cron/gate_news] && /usr/lib/mailman/cron/gate_news
+# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * list [ -x /usr/lib/mailman/cron/gate_news ] && /usr/lib/mailman/cron/gate_news
 #
 # At 3:27am every night, regenerate the gzip'd archive file.  Only
 # turn this on if the internal archiver is used and
@@ -220,6 +220,12 @@ EOF
           mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
       fi
     done
+
+    # This should be removed after etch is released, it crept in in 2.1.5-1
+    if grep -q "gate_news]" /etc/cron.d/mailman; then
+        sed -e 's/gate_news]/gate_news ]/' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+        mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
+    fi
 
     db_get mailman/gate_news || true
     if [ "$RET" = "false" ]; then
