@@ -26,4 +26,5 @@
 61_fix_ru_siteowner
 62_new_list_bad_pending_requests
 63_update_default_server_language
+64_correct_html_nesting
 99_js_templates

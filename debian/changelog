@@ -11,6 +11,8 @@ mailman (2.1.5-3) unstable; urgency=high
     exists yet (closes: #273553).
   * Update DEFAULT_SERVER_LANGUAGE and not blindly English as that can
     break package if English is not selected (closes: #274104).
+  * Correct HTML nesting in listinfo for browsers with strict checking
+    (iCab and maybe others, closes: #249212).
 
  -- Tollef Fog Heen <tfheen@debian.org>  Thu, 14 Oct 2004 19:38:22 +0000
 
