@@ -49,6 +49,7 @@ if [ ! -x "/usr/sbin/list_lists" ]; then
 else
   if [ "${scanned}" != "true" ] ; then
     echo -n "Looking for enabled languages (this may take some time) ..."
+    unset used_languages
     for l in $(get_used_languages); do
       used_languages=${used_languages:+${used_languages} }$l
     done
