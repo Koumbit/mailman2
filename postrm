@@ -2,7 +2,20 @@
 
 #DEBHELPER#
 
-#UCF#
+if [ "$1" = purge ]; then
+  # At present ALL directories in /etc/mailman are language directories
+  # but this may change in the future, cant check in postrm.
+  languages="$(find /etc/mailman -type d -maxdepth 1 -mindepth 1 | sed -e 's;^/etc/mailman/;;g')"
+
+  # Remove all trackings of languages files from the ucf database.
+  for lang in ${languages}; do
+    for file in $(cd /etc && find mailman/${lang} -type f -a ! -name \*.dpkg-\* ); do
+        ucf --debconf-ok --purge /etc/${file}
+    done
+  done
+  # Don't forget this one
+  ucf --debconf-ok --purge /etc/mailman/qmail-to-mailman.py
+fi
 
 if [ "$1" = purge ]; then
   rm -f /etc/cron.d/mailman 

@@ -23,8 +23,12 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
     (by GCS, closes: #236666)
   * Change obsolete MAILMAN_OWNER to MAILMAN_SITE_LIST, note that this
     invalidate #232273 and #232452 (by GCS, closes: #235913)
+  * Add debconf question for languages supported at a site reducing space
+    required in /etc (bsb).
+  * Backed out hack in 05_config_list_member_options.dpatch since it
+    breaks config_list in mm 2.1.4 (bsb, closes: #231967).
 
- -- Siggy Brentrup <bsb@debian.org>  Thu, 18 Mar 2004 10:41:34 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Sun, 21 Mar 2004 17:50:04 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 

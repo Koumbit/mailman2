@@ -180,26 +180,26 @@ binary-arch:	checkroot build
 #	dh_suidregister
 	dh_installdeb
 
-	echo 'if [ "$$1" = purge ]; then' >> debian/mailman.postrm.ucf
-	for f in `cat debian/ucffiles`; do \
-		echo -e "\techo Removing $$f" >> debian/mailman.postrm.ucf; \
-		echo -e "\tucf --debconf-ok --purge $$f" >> debian/mailman.postrm.ucf ; \
-	done
-	echo 'fi' >> debian/mailman.postrm.ucf
+#	echo 'if [ "$$1" = purge ]; then' >> debian/mailman.postrm.ucf
+#	for f in `cat debian/ucffiles`; do \
+#		echo -e "\techo Removing $$f" >> debian/mailman.postrm.ucf; \
+#		echo -e "\tucf --debconf-ok --purge $$f" >> debian/mailman.postrm.ucf ; \
+#	done
+#	echo 'fi' >> debian/mailman.postrm.ucf
 
-	echo 'if [ "$$1" = "configure" ]; then'>> debian/mailman.postinst.ucf
-	for dir in $$(for f in $$(cat debian/ucffiles); do dirname "$$f" ; done | sort | uniq); do echo -e "\tmkdir -p $$dir" >> debian/mailman.postinst.ucf ; done
+#	echo 'if [ "$$1" = "configure" ]; then'>> debian/mailman.postinst.ucf
+#	for dir in $$(for f in $$(cat debian/ucffiles); do dirname "$$f" ; done | sort | uniq); do echo -e "\tmkdir -p $$dir" >> debian/mailman.postinst.ucf ; done
 
-	echo -e "\techo -n 'Checking/installing config files (this takes time)': " >> debian/mailman.postinst.ucf
-	for f in `cat debian/ucffiles`; do \
-		echo -e "\techo -n ." >> debian/mailman.postinst.ucf ; \
-		echo -e "\tucf `echo $$f | sed s,/etc/mailman,/usr/share/mailman,` $$f < /dev/tty > /dev/tty" >> debian/mailman.postinst.ucf ; \
-	done
-	echo 'fi' >> debian/mailman.postinst.ucf
-	echo -e "\techo \" done!\"" >> debian/mailman.postinst.ucf
+#	echo -e "\techo -n 'Checking/installing config files (this takes time)': " >> debian/mailman.postinst.ucf
+#	for f in `cat debian/ucffiles`; do \
+#		echo -e "\techo -n ." >> debian/mailman.postinst.ucf ; \
+#		echo -e "\tucf `echo $$f | sed s,/etc/mailman,/usr/share/mailman,` $$f < /dev/tty > /dev/tty" >> debian/mailman.postinst.ucf ; \
+#	done
+#	echo 'fi' >> debian/mailman.postinst.ucf
+#	echo -e "\techo \" done!\"" >> debian/mailman.postinst.ucf
 
-	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postinst.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postinst
-	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postrm.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postrm
+#	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postinst.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postinst
+#	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postrm.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postrm
 
 	dh_shlibdeps
 	dh_gencontrol

@@ -1,6 +1,5 @@
 00_stolen_from_HEAD
 01_defaults.debian
-05_config_list_member_options
 07_snooze
 10_wrapper_uid
 11_handle_propfind
