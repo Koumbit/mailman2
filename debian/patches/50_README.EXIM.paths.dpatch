@@ -21,9 +21,8 @@ esac
 
 exit 0
 @DPATCH@
-diff -urNad /home/bsb/debian/mine/mailman/build-area/mailman-2.1.4/README.EXIM mailman-2.1.4/README.EXIM
---- /home/bsb/debian/mine/mailman/build-area/mailman-2.1.4/README.EXIM	2004-03-30 00:39:08.000000000 +0200
-+++ mailman-2.1.4/README.EXIM	2004-03-30 00:48:05.000000000 +0200
+--- mailman-2.1.5/README.EXIM.orig	2004-10-17 19:09:42.000000000 +0000
++++ mailman-2.1.5/README.EXIM	2004-10-17 19:09:15.000000000 +0000
 @@ -4,7 +4,8 @@
  [This is derived from Nigel Metheringham's "HOWTO - Using Exim and
   Mailman together", which covers Mailman 2.0.x and Exim 3.  It
@@ -49,6 +48,15 @@ diff -urNad /home/bsb/debian/mine/mailman/build-area/mailman-2.1.4/README.EXIM m
  
  Exim configuration
  ------------------
+@@ -33,7 +40,7 @@
+ 
+ The configuration file excerpts below are for use in an already
+ functional Exim configuration, which accepts mail for the domain in
+-which the list resides.  If this domain is separate from the others
++which the list resides.  If this domain is not the only domain
+ handled by your Exim configuration, then you'll need to:
+ 
+   * add the list domain, "my.list.domain" to local_domains
 @@ -72,13 +79,13 @@
  
    # Home dir for your Mailman installation -- aka Mailman's prefix
