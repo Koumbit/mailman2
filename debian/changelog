@@ -1,3 +1,9 @@
+mailman (2.1.4-4) UNRELEASED; urgency=low
+
+  * NOT YET RELEASED
+
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 30 Mar 2004 20:42:19 +0200
+
 mailman (2.1.4-3) unstable; urgency=medium
 
   * Fix bogus test for empty qfiles/ in preinst (bsb, closes: #240033).
