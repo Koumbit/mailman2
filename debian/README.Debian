@@ -1,0 +1,121 @@
+Notes for the debian mailman package.
+=====================================
+
+You can access the web interface of mailman on
+http://<hostname>/cgi-bin/mailman/listinfo
+
+In case you want to access mailman thru a shorter URL you should add
+something like the following to your webserver configuration (this
+line is for apache):
+
+ScriptAlias /mailman/ /usr/lib/cgi-bin/mailman/
+
+In this case you need to set the DEFAULT_URL_PATTERN in
+/etc/mailman/mm_cfg.py to http://%s/mailman/ for the cookie
+authentication code to work.  Note that you need to change the base
+URL for all the already-created lists as well.
+
+The public archives are located in /var/lib/mailman/archives/public,
+you can create a symlink from /var/www if you like, or create an alias like
+the following:
+
+Alias /pipermail/ /var/lib/mailman/archives/public/
+
+Note that by default Apache is shipped with SymlinksIfOwnerMatch, not
+FollowSymlinks.  This means that if you switch to private archiving
+and then back to public archiving again, you will get a "Forbidden"
+error.
+
+If broken images show on your mailman html pages, it is probably
+because you don't have the /images/mailman/ alias enabled in your
+webserver, create it as follows:
+
+Alias /images/mailman/ /usr/share/images/mailman/
+
+
+You can create new lists with the newlist command (you have to add the
+aliases it needs by hand to /etc/aliases or the corresponding database
+because mailman can not know about configuration of all MTA's, but newlist 
+tells you about the alias it needs, but see the notes on qmail and postfix
+below).
+
+For users of exim: if you want to use the /etc/aliases file for mailman
+aliases, you'll need to specify a user=list line or something like that in
+the system_aliases director.
+
+As of 2.0.6-1, gate-news is commented out in the default crontab,
+since most people will be less interested in gating news-to-mail and
+vice versa.  This is asked by a low priority debconf question, so you
+can change it through debconf or by editing the crontab by hand.
+
+As of 2.1.4-2 a debconf question has been added allowing for
+installing only templates for languages used at your site in
+/etc/mailman (mailman/site_languages).
+
+Savannah
+--------
+Mailman now includes a savannah plugin, courtesy of Guillaume Morin.
+His description of it:
+
+if the list does not exist it just prints 0
+if the list exists but the password is false, it just prints 2
+if the list exists and the password is correct, it prints
+1 adminemail 0/1 (value of advertised)
+
+It is needed for integration with savannah (a sourceforge fork, which
+runs savannah.gnu.org).
+
+Python Bug
+----------
+Debian's Python policy has a problem where it gives an application no
+way to recompile it's .py files when a new python version is
+installed.  This means that if you install Mailman with python 1.5.2,
+then upgrade to Python 2.1, the .py files will not be recompiled.
+This will cause performance degradation, if you experience this
+problem a "dpkg-reconfigure mailman" will fix this problem.  You
+should stop Mailman before running dpkg-reconfigure.  I am sorry, but
+there is no better way until Debian's Python policy is fixed.
+
+Qmail
+-----
+For those using qmail, please see the comments in
+/etc/mailman/qmail-to-mailman.py and set it up according to those
+instructions. Additional information may be available in
+/usr/share/doc/mailman/README.QMAIL.gz
+
+Postfix
+_______
+For those using postfix who are able to devote a full subdomain
+lists.doma.in for use by mailman, please see the comments in
+/usr/lib/mailman/bin/postfix-to-mailman.py.
+
+SpamAssassin
+------------
+As of Mailman 2.1-1, Mailman includes the SpamAssassin patch from
+Sourceforge.net.  It is not enabled by default.  If you want to enable
+the handler, adding
+
+GLOBAL_PIPELINE.insert(1, 'SpamAssassin')
+
+to your mm_cfg.py should enable it. You can read more documentation about
+howto configure SpamAssassin and Mailman together at
+http://www.daa.com.au/~james/articles/mailman-spamassassin/
+The current version of this handler used in this package is released on
+2003 May 6 by James Henstridge <james@daa.com.au>.
+
+Upgrading from Mailman 2.x (where x < 1)
+----------------------------------------
+
+Mailman 2.1 has some new aliases which you might want to add, namely
+admin, bounces, confirm, join, leave, owner, request, subscribe and
+unsubscribe.
+
+Also, /var/lib/mailman/mail/wrapper was changed to
+/var/lib/mailman/mail/mailman.  A compatilbility symlink has been
+added, but it will be removed in some future version, so please update
+your alias files.
+
+You must create a "mailman" list on your system, until it is added,
+mailman will not start.  (It will yell at you, so you should notice.)
+
+ -- Siggy Brentrup <bsb@debian.org>, Tue Apr  6 23:44:43 2004

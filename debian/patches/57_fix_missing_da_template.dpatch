@@ -1,0 +1,49 @@
+#! /bin/sh -e
+## 57_fix_missing_da_template.dpatch, by László 'GCS' Böszörményi <gcs@lsc.hu>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: update is called from the Debian maintainer scripts and prints
+## DP: non-appropriate output.  Change that.
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/Makefile.in trunk/templates/Makefile.in
+--- /home/tfheen/external/pkg-mailman/trunk/templates/Makefile.in	2004-08-18 15:14:46.000000000 +0200
++++ trunk/templates/Makefile.in	2004-08-18 15:15:42.000000000 +0200
+@@ -42,7 +42,7 @@
+ 
+ SHELL=		/bin/sh
+ 
+-LANGUAGES=	big5 ca cs de en es et eu fi fr gb hr hu it ja ko lt nl \
++LANGUAGES=	big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl \
+ 		no pl pt pt_BR ro ru sl sr sv tr uk
+ 
+ # Modes for directories and executables created by the install
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/#Makefile.in.rej# trunk/templates/#Makefile.in.rej#
+--- /home/tfheen/external/pkg-mailman/trunk/templates/#Makefile.in.rej#	1970-01-01 01:00:00.000000000 +0100
++++ trunk/templates/#Makefile.in.rej#	2004-08-18 15:15:51.000000000 +0200
+@@ -0,0 +1,9 @@
++@@ -42,7 +42,7 @@
++ 
++ SHELL=		/bin/sh
++ 
++-LANGUAGES=	big5 ca cs de en es et eu fi fr gb hr hu it ja ko lt nl \
+++LANGUAGES=	big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl \
++ 		no pl pt pt_BR ro ru sl sr sv uk
++ 
++ # Modes for directories and executables created by the install
