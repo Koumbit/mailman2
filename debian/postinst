@@ -204,11 +204,47 @@ def uncomment(line):
     return line
 
 
+def fix_perms():
+    """Fix directory permissions to allow write access to group list.
+    """#
+    from stat import S_IMODE, S_ISGID, S_IRWXG
+
+    from Mailman.Defaults import LIST_DATA_DIR, LOG_DIR, LOCK_DIR, \
+         DATA_DIR, SPAM_DIR, PUBLIC_ARCHIVE_FILE_DIR, PRIVATE_ARCHIVE_FILE_DIR, \
+         QUEUE_DIR, INQUEUE_DIR, OUTQUEUE_DIR, CMDQUEUE_DIR, BOUNCEQUEUE_DIR, \
+         NEWSQUEUE_DIR, ARCHQUEUE_DIR, SHUNTQUEUE_DIR, VIRGINQUEUE_DIR, \
+         BADQUEUE_DIR, RETRYQUEUE_DIR, MAILDIR_DIR
+
+    import grp
+    gid = grp.getgrnam('list')[2]
+
+    for dir_ in (LIST_DATA_DIR, LOG_DIR, LOCK_DIR, DATA_DIR, SPAM_DIR,
+                 PUBLIC_ARCHIVE_FILE_DIR, PRIVATE_ARCHIVE_FILE_DIR,
+                 QUEUE_DIR, INQUEUE_DIR, OUTQUEUE_DIR, CMDQUEUE_DIR,
+                 BOUNCEQUEUE_DIR, NEWSQUEUE_DIR, ARCHQUEUE_DIR,
+                 SHUNTQUEUE_DIR, VIRGINQUEUE_DIR, BADQUEUE_DIR,
+                 RETRYQUEUE_DIR, MAILDIR_DIR,):
+        stt = os.stat(dir_)
+        if stt.st_gid != gid:
+            os.chown(dir_, stt.st_uid, gid)
+        if (stt.st_mode & (S_ISGID|S_IRWXG)) != (S_ISGID|S_IRWXG):
+            os.chmod(dir_, S_IMODE(stt.st_mode) | S_ISGID | S_IRWXG)
+
+
 def run_debhelper_additions():
-    runit = os.popen('/bin/sh -e', 'w')
-    runit.write("""\
+    from popen2 import Popen4
+    runner = Popen4('/bin/sh -e')
+    runner.tochild.write("""\
+sg list -c "umask 002; /var/lib/mailman/bin/update;"
+
 #DEBHELPER#""")
-    if runit.close() is not None:
+    runner.tochild.close()
+    while True:
+        rc = runner.poll()
+        if rc != -1: break
+        log(runner.fromchild.readline(), nl='')
+    log(runner.fromchild.read(), nl='')
+    if rc != 0:
         raise SystemExit(1)
 
 
@@ -217,6 +253,7 @@ def setup():
     ucf_to_cfdb()
     create_mm_cfg()
     update_cron()
+    fix_perms()
     run_debhelper_additions()
 
 
