@@ -2,18 +2,18 @@ mailman (2.1.4-4split0) UNRELEASED; urgency=low
 
   * NOT YET RELEASED.
   * Splitting package into mailman, mailman-bin, mailman-doc,
-    mailman-i18n, mailman-en (bsb,
-    closes: #176439, #238377, #233410, #237772).
+    mailman-i18n, mailman-en, mailman-trans (closes: #176439, #238377,
+    #233410, #237772).
   * Outlining glue packages mailman-spamassassin, mailman-spamprobe,
     mailman-savannah and mailman-clamav (bsb, cf debian/TODO). Tollef
     says splitting off single file packages is silly.
-  * preinst: Add code making sure /var/lib/mailman/pythonlib doesn't
-    contain cruft from ancient installations (bsb, closes: #242740).
+  * mailman.preinst: Add code making sure /var/lib/mailman/pythonlib
+    doesn't contain cruft from ancient installations (closes: #242740).
   * 60_type_error_temp_fix.dpatch: curing symptom where new_member_options
     is a list instead of an integer (closes: #246681).
   * Move template directories to /etc/mailman/templates (closes: #199039).
 
- -- Siggy Brentrup <bsb@debian.org>  Sat,  8 May 2004 09:12:28 +0200
+ -- Siggy Brentrup <bsb@debian.org>  Sat, 15 May 2004 10:02:21 +0200
 
 mailman (2.1.4-4) unstable; urgency=medium
 
