@@ -12,7 +12,7 @@ Pre-Depends: debconf (>= 1.4.16)
 Depends: ${shlibs:Depends}, python (>= 2.2.2.91-1), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, ucf (>= 0.28), pwgen
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
 Recommends: base-passwd (>= 1.3.0)
-Suggests: spamassassin, python2.2-korean-codecs | python2.3-korean-codecs, python-japanese-codecs
+Suggests: spamassassin, python2.3-korean-codecs | python2.2-korean-codecs, python-japanese-codecs, listadmin
 Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,
