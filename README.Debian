@@ -29,9 +29,8 @@ error.
 You can create new lists with the newlist command (you have to add the
 aliases it needs by hand to /etc/aliases or the corresponding database
 because mailman can not know about configuration of all MTA's, but newlist 
-tells you about the alias it needs).
-
-Additionally you need a mailman-owner alias pointing probably to you.
+tells you about the alias it needs, but see the notes on qmail and postfix
+below).
 
 For users of exim: if you want to use the /etc/aliases file for mailman
 aliases, you'll need to specify a user=list line or something like that in
@@ -48,6 +47,10 @@ As of 2.0.6-1, gate-news is commented out in the default crontab,
 since most people will be less interested in gating news-to-mail and
 vice versa.  This is asked by a low priority debconf question, so you
 can change it through debconf or by editing the crontab by hand.
+
+As of 2.1.4-2 a debconf question has been added allowing for
+installing only templates for languages used at your site in
+/etc/mailman (mailman/site_languages).
 
 Savannah
 --------
@@ -79,6 +82,12 @@ For those using qmail, please see the comments in
 /usr/share/doc/mailman/examples/qmail-to-mailman.py and set it up
 according to those instructions.
 
+Postfix
+_______
+For those using postfix who are able to devote a full subdomain
+lists.doma.in for use by mailman, please see the comments in
+/usr/lib/mailman/bin/postfix-to-mailman.py.
+
 SpamAssassin
 ------------
 As of Mailman 2.1-1, Mailman includes the SpamAssassin patch from
@@ -104,4 +113,4 @@ your alias files.
 You must create a "mailman" list on your system, until it is added,
 mailman will not start.  (It will yell at you, so you should notice.)
 
- -- Tollef Fog Heen <tfheen@debian.org>, Sat Dec  6 14:01:20 2003
+ -- Siggy Brentrup <bsb@debian.org>, Tue Mar 23 19:08:27 2004
