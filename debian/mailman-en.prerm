@@ -2,13 +2,40 @@
 # $URL$
 # $Id$
 
-if [ "$1" = "upgrade" ] ; then
-  if [ -x "/etc/init.d/mailman" ]; then
-    if [ -x /usr/sbin/invoke-rc.d ] ; then
-      invoke-rc.d mailman stop || true
-    else
-      /etc/init.d/mailman stop || true
+echo ">>> $0 $*" >&2
+
+package=mailman-en
+
+unset_mm_templates () {
+python <<EOF
+import sys; sys.path.insert(0, '/usr/lib/mailman/Mailman')
+try:
+    from Debian import cfdb
+    del cfdb['mailman/templates']
+except:
+    pass
+EOF
+}
+
+mm_shutdown () {
+    if [ -x "/etc/init.d/mailman" ]; then
+        if [ -x /usr/sbin/invoke-rc.d ] ; then
+            invoke-rc.d mailman stop || true
+        else
+            /etc/init.d/mailman stop || true
+        fi
     fi
-  fi
-  chmod -x /var/lib/mailman/bin/mailmanctl
-fi
+}
+
+case $1 in
+    remove|upgrade)
+        mm_shutdown
+        unset_mm_templates
+        ;;
+    failed-upgrade|deconfigure)
+        ;;
+    *)
+        echo "${package}.prerm called with unknown argument $1" >&2
+        exit 1
+        ;;
+esac
