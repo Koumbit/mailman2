@@ -59,6 +59,7 @@ is packaged now, it might be wiser to defer them until sarge+1.
 - Instead of symlinking directories VAR_PREFIX/logs, VAR_PREFIX/locks and
   VAR_PREFIX/templates redefine mm_cfg.LOG_DIR, mm_cfg.LOCK_DIR and
   mm_cfg.TEMPLATE_DIR (in fixed section of Defaults.py).
+* done in Rev 83
 
 - Think about a Mailman.Debian (python-)package for postinst helpers.
 

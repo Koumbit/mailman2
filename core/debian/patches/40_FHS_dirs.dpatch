@@ -1,0 +1,49 @@
+#! /bin/sh -e
+## 40_FHS_dirs.dpatch by  Siggy Brentrup <bsb@debian.org>
+##
+## DP: FHS compliant directories for logs, locks, messages and templates.
+## $URL$
+## $Id$
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Defaults.py.in mailman-2.1.4/Mailman/Defaults.py.in
+--- /debuild/mine/mailman/build-area/mailman-2.1.4/Mailman/Defaults.py.in	2004-04-23 13:52:20.000000000 +0200
++++ mailman-2.1.4/Mailman/Defaults.py.in	2004-04-23 13:54:46.000000000 +0200
+@@ -1220,15 +1220,15 @@
+ 
+ # Useful directories
+ LIST_DATA_DIR   = os.path.join(VAR_PREFIX, 'lists')
+-LOG_DIR         = os.path.join(VAR_PREFIX, 'logs')
+-LOCK_DIR        = os.path.join(VAR_PREFIX, 'locks')
++LOG_DIR         = '/var/log/mailman'
++LOCK_DIR        = '/var/lock/mailman'
+ DATA_DIR        = os.path.join(VAR_PREFIX, 'data')
+ SPAM_DIR        = os.path.join(VAR_PREFIX, 'spam')
+ WRAPPER_DIR     = os.path.join(EXEC_PREFIX, 'mail')
+ BIN_DIR         = os.path.join(PREFIX, 'bin')
+ SCRIPTS_DIR     = os.path.join(PREFIX, 'scripts')
+-TEMPLATE_DIR    = os.path.join(PREFIX, 'templates')
+-MESSAGES_DIR    = os.path.join(PREFIX, 'messages')
++TEMPLATE_DIR    = '/etc/mailman/templates'
++MESSAGES_DIR    = '/usr/share/locale'
+ PUBLIC_ARCHIVE_FILE_DIR  = os.path.join(VAR_PREFIX, 'archives', 'public')
+ PRIVATE_ARCHIVE_FILE_DIR = os.path.join(VAR_PREFIX, 'archives', 'private')
+ 
