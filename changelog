@@ -9,6 +9,8 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
   * Update Spanish debconf translation (closes: #233693)
   * Update pt_BR debconf translation (closes: #228123)
   * Add Hungarian debconf translation (by GCS)
+  * Wait for termination on restart|force-reload (by GCS,
+    closes: #231468, #204006, #224012)
 
  -- Tollef Fog Heen <tfheen@debian.org>  Wed, 11 Feb 2004 02:11:04 +0100
 
