@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-# $URL: svn+ssh://svn/home/svn/adm/trunk/mailman/postfix-to-mailman.py $
-# $Id: postfix-to-mailman.py 17 2004-03-29 17:06:17Z bsb $
+# $URL: svn+bsb://svn.winnegan.de/svn/adm/trunk/mailman/postfix-to-mailman.py $
+# $Id: postfix-to-mailman.py 38 2004-04-15 19:11:32Z bsb $
 #
 # Interface mailman to a postfix with a mailman transport. Does not require
 # the creation of _any_ aliases to connect lists to your mail system.
@@ -98,8 +98,12 @@ def main():
     except:
         # This might happen if we're not using Postfix or
         # /etc/postfix/master.cf is badly misconfigured
-        sys.stderr.write('Illegal invocation: %r\n',
-                         ' '.join(sys.argv))
+        sys.stderr.write('Illegal invocation: %r\n'
+                         % ' '.join(sys.argv))
+        if len(sys.argv) > 3:
+            sys.stderr.write('Did you forget to set '
+                             'mailman_destination_recipient_limit=1 '
+                             'in main.cf?')
         sys.exit(EX_USAGE)
 
     # Redirect required addresses to 
