@@ -8,7 +8,7 @@ Standards-Version: 3.6.1
 Package: mailman
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: mailman-trans (= ${Source-Version}), mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), pwgen, python-bsddb3
+Depends: mailman-trans (= ${Source-Version}), mailman-bin (= ${Source-Version}), mailman-i18n (= ${Source-Version}) | mailman-en (= ${Source-Version}), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf (>= 1.4.16), pwgen
 Conflicts: mailman (<= 2.1.4-4), suidmanager (<< 0.50), sendmail (<< 8.12.6), ssmtp, nullmailer
 Replaces: mailman (<= 2.1.4-4)
 Recommends: base-passwd (>= 1.3.0)
@@ -33,7 +33,7 @@ Description: powerful, web-based mailing list manager
 Package: mailman-trans
 Architecture: all
 Pre-Depends: python (>= 2.3)
-Depends: ucf (>= 1.05), python-bsddb3
+Depends: ucf (>= 1.05)
 Description: transitional package for mailman
  The kernel allowing only native compiled code to be installed setgid,
  theses wrappers invoke workers implemented in Python after validating
