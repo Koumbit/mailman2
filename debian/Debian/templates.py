@@ -74,11 +74,11 @@ MAILMAN_SITE_LIST = %(MAILMAN_SITE_LIST)r
 #   Alias       %(IMAGE_LOGOS)s /usr/share/images/mailman/
 # </VirtualHost>
 #-------------------------------------------------------------
-DEFAULT_URL_HOST   = %(DEFAULT_URL_HOST)r
-DEFAULT_EMAIL_HOST = %(DEFAULT_EMAIL_HOST)r
-add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 DEFAULT_URL_PATTERN = %(DEFAULT_URL_PATTERN)r
 IMAGE_LOGOS         = %(IMAGE_LOGOS)r
+DEFAULT_URL_HOST   = %(DEFAULT_URL_HOST)r
+DEFAULT_EMAIL_HOST = %(DEFAULT_EMAIL_HOST)r
+add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)%(virtual_hosts)s
 
 #-------------------------------------------------------------
 # Depending on your MTA setup, the MTA configuration variable
@@ -90,7 +90,7 @@ IMAGE_LOGOS         = %(IMAGE_LOGOS)r
 #             aliases in /etc/aliases or similar.
 # In any case, please read the MTA specific README.* in
 # /usr/share/doc/mailman before setting this.
-MTA=%(MTA)r
+MTA = %(MTA)r
 
 #-------------------------------------------------------------
 # The USE_ENVELOPE_SENDER variable controls the order in which
@@ -123,7 +123,7 @@ mm_cfg_deprecated = {
 # Variables below are deprecated.  Where applicable, their values are
 # incorporated above.
 ''',
-    'DEFAULT_HOST_NAME' : '''\
+    'DEFAULT_HOST_NAME' : '''
 # Replaced by DEFAULT_EMAIL_HOST
 # DEFAULT_HOST_NAME = %(DEFAULT_HOST_NAME)r
 ''',
