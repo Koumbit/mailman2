@@ -13,6 +13,7 @@
 31_buggy_queuefiles
 32_MIME_fixup
 50_README.EXIM.paths
+50_README.POSTFIX
 51_nocompile.pyc
 52_check_perms_lstat
 53_disable_addons
