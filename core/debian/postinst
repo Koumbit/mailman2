@@ -60,16 +60,21 @@ def compile_modules(directory):
 def create_mm_cfg():
     try:
         db_email_host = db.get('mailman/email_host')
+        log('DEBCONF email_host=%(db_email_host)r' % locals(), lvl=2)
         db_url_host   = db.get('mailman/url_host')
+        log('DEBCONF url_host=%(db_url_host)r' % locals(), lvl=2)
     except DebconfError, exc:
         log.exception()
-        
+
+def update_cron():
+    gate_news = db.getBoolean('mailman/gate_news')
+
 
 
 def setup():
     compile_modules(MM_HOME)
     create_mm_cfg()
-    gate_news = db.getBoolean('mailman/gate_news')
+    update_cron()
 
 
 if __name__ == '__main__':
