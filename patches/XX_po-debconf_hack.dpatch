@@ -1,0 +1,102 @@
+#! /bin/sh -e
+## XX_po-debconf_hack.dpatch by Siggy Brentrup <bsb@debian.org>
+##   thanks to Marc Haber <mh+debian-bugs@zugschlus.de>
+## DP: Simplifies backporting to woody where po-debconf is missing.
+## DP: This patch must be manually applied since debian/rules clean
+## DP: fails otherwise with the unpatched debian/rules;
+## DP: in order to revert it when sarge is released, run
+## DP:   dpatch -F deapply XX_po-debconf_hack 
+
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) mv debian/templates debian/templates.master
+            patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0
+              mv debian/templates.master debian/templates;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+
+diff -uN mailman-2.1.4.orig/debian/control mailman-2.1.4/debian/control
+--- mailman-2.1.4.orig/debian/control	2004-03-18 11:00:48.000000000 +0100
++++ mailman-2.1.4/debian/control	2004-03-23 18:10:11.000000000 +0100
+@@ -8,7 +8,7 @@
+ 
+ Package: mailman
+ Architecture: any
+-Depends: ${shlibs:Depends}, python (>= 2.2.2.91-1), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf, ucf (>= 0.28), pwgen
++Depends: ${shlibs:Depends}, ${debconf-depends}, python (>= 2.2.2.91-1), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, debconf, ucf (>= 0.28), pwgen
+ Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
+ Recommends: base-passwd (>= 1.3.0)
+ Suggests: spamassassin, python2.2-korean-codecs | python2.3-korean-codecs, python-japanese-codecs
+diff -uN mailman-2.1.4.orig/debian/rules mailman-2.1.4/debian/rules
+--- mailman-2.1.4.orig/debian/rules	2004-03-23 16:56:29.000000000 +0100
++++ mailman-2.1.4/debian/rules	2004-03-23 18:18:04.000000000 +0100
+@@ -17,6 +17,14 @@
+ 
+ SHELL=/bin/bash
+ 
++ifeq (,$(wildcard /usr/bin/po2debconf))
++PO2DEBCONF := no
++MINDEBCONFVER := 0.5
++else
++PO2DEBCONF := yes
++MINDEBCONFVER := 1.2.0
++endif
++
+ ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+ CFLAGS += -g
+ endif
+@@ -28,8 +36,11 @@
+ 	$(MAKE) 
+ 	touch build
+ 
+-debian/po/templates.pot: debian/templates
+-	@debconf-updatepo
++debian/po/templates.pot: debian/templates.master
++ifeq ($(PO2DEBCONF),yes)
++	po2debconf -e utf8 debian/templates.master > debian/templates
++	@debconf-updatepo || true
++endif
+ 
+ Makefile:
+ 	autoconf
+@@ -49,6 +60,18 @@
+ 	find .. -name $(package)*dsc.asc -size 0 -maxdepth 1 -exec rm {} ";"
+ 	chmod +x debian/{prerm,postinst}
+ 
++ifeq ($(PO2DEBCONF),yes)
++	# Hack for woody compatibility. This makes sure that the
++	# debian/templates file shipped in the source package doesn't
++	# specify encodings, which woody's debconf can't handle. If building
++	# on a system with po-debconf installed (conveniently debhelper (>=
++	# 4.1.16) depends on it), the binary-arch target will generate a
++	# better version for sarge.
++	echo 1 > debian/po/output
++	po2debconf debian/templates.master > debian/templates
++	rm -f debian/po/output
++endif
++
+ binary-indep:	checkroot build
+ 	$(checkdir)
+ # There are no architecture-independent files to be uploaded
+@@ -205,7 +228,7 @@
+ #	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postrm.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postrm
+ 
+ 	dh_shlibdeps
+-	dh_gencontrol
++	dh_gencontrol -- -V'debconf-depends=debconf (>= $(MINDEBCONFVER))'
+ 	dh_md5sums
+ 	dpkg --build debian/mailman ..
+ 

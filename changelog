@@ -1,4 +1,4 @@
-mailman (2.1.4-2) UNRELEASED; urgency=low
+mailman (2.1.4-2) unstable; urgency=low
 
   * Brown bag release.
   * Move that pid file.  Now.  (closes: #226152)
@@ -31,8 +31,11 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
     /usr/lib/mailman/bin/postfix-to-mailman.py (bsb).
   * Cleaned up README.Debian removing obsolete mailman-owner alias and
     adding a section on using postfix-to-mailman.py (bsb).
+  * Applied patch supplied by Marc Haber <mh+debian-bugs@zugschlus.de> to
+    simplify backporting to woody (cf. XX_po-debconf_hack.dpatch)
+    (bsb, closes: #223348).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 23 Mar 2004 19:13:30 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 23 Mar 2004 20:07:08 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 
