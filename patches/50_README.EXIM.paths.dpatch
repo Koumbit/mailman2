@@ -1,5 +1,5 @@
 #! /bin/sh -e
-## 10_wrapper_uid.dpatch by Tollef Fog Heen <tfheen@debian.org>
+## 50_README.EXIM.paths.dpatch by Tollef Fog Heen <tfheen@debian.org>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
 ## DP: Makes sure we're called with the right UID and GID
@@ -12,12 +12,11 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 case "$1" in
-       -patch) patch $patch_opts -p1 < $0;;
-       -unpatch) patch $patch_opts -p1 -R < $0;;
-        *)
-                echo >&2 "`basename $0`: script expects -patch|-unpatch as argum
-ent"
-                exit 1;;
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
 esac
 
 exit 0
