@@ -13,7 +13,7 @@
 #
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/lib/mailman/bin/mailmanctl
+DAEMON=/var/lib/mailman/bin/mailmanctl
 PIDFILE=/var/lib/mailman/data/master-qrunner.pid
 NAME=mailman
 DESC="mailman queue runner"
