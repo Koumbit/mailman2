@@ -116,14 +116,21 @@ class CommandRunner:
         """
         """#
         gbls = virgin_gbls.copy()
-        sys_argv    = sys.argv[:]
-        sys_path    = sys.path[:]
-        sys.argv    = [cmd] + list(args)
-        if self._prepend:
-            sys.path.insert(0, self._prepend)
-        execfile(cmd, gbls)
-        sys.path    = sys_path
-        sys.argv    = sys_argv
+        self._save = (sys.argv[:], sys.path[:])
+        self._rc = None
+        try:
+            try:
+                sys.argv    = [cmd] + list(args)
+                if self._prepend:
+                    sys.path.insert(0, self._prepend)
+                gbls['__name__'] = '__main__'
+                execfile(cmd, gbls)
+            except SystemExit, err:
+                self._rc = err.code
+        finally:
+            sys.argv, sys.path = self._save
+        return self._rc
+
 
 # If run as a script, provide debug info for MM commands
 # implemented in Python.
