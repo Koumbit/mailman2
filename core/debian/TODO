@@ -7,11 +7,14 @@ is packaged now, it might be wiser to defer them until sarge+1.
 - Split into mailman, mailman-bin, mailman-doc, mailman-i18n,
   mailman-en.  Changed mind: let the main package be arch-indep and
   depend on arch-dep mailman-bin containing the wrapper binaries.
-* Partially done in Rev 79
+* Mostly done in Rev 130
 
-* As of Rev 79, individual files in /var/lib/mailman are symlinks to
-  files installed in /usr/share/mailman as opposed to the previous
-  approach symlinking directories.
+* As of Rev 130, symlinking /usr/lib/mailman from /var/lib/mailman
+  has been completely dropped.  AFAICT, the only reason for this
+  was getting compiled versions of Mailman/mm_cfg.py which happens
+  automatically done when starting the daemon as root.  In case
+  /usr is mounted readonly, temporarily mounting it rw and running
+  dpkg-reconfigure mailman will do the job.
 
 - mailman.postinst should be better at building a new mm_cfg.py from
   an existing configuration, in particular at removing obsolete vars.
@@ -20,6 +23,7 @@ is packaged now, it might be wiser to defer them until sarge+1.
 
   For a starting point on how to detect user modifications to
   mm_cfg.py, see debian/snippets/user_cfg.py
+* Mostly done in Rev 151
 
 - Rewrite qmail-to-mailman.py to read configuration from mm_cfg.py
   like postfix-to-mailman.py does, getting it out of /etc/mailman and
@@ -49,6 +53,7 @@ is packaged now, it might be wiser to defer them until sarge+1.
 
 - If not installed, admin pages dealing with multilingual support must
   be replaced by a hint to install mailman-i18n first.
+* done in Rev 149
 
 - Guarantee mailman master qrunner starts only when either mailman-en
   or mailman-i18n is fully configured.  To get this fully working, use
