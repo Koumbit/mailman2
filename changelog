@@ -11,7 +11,7 @@ mailman (2.1.5-2) unstable; urgency=high
   * Use the correct pid file for logrotate script (closes: #247194).
   * Fix Russian newlist template, mailman-owner is siteowner now
     (closes: #260816); remove CAN-2004-0412 dpatch, as this is now
-    included upstream; enable french_archtocentry dpatch.
+    included upstream; enable french_archtocentry dpatch (closes: #262349).
 
  -- László Böszörményi (GCS) <gcs@lsc.hu>  Sat, 25 Sep 2004 08:12:24 +0000
 
