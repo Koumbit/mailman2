@@ -2,6 +2,7 @@ mailman (2.1.4-2) unstable; urgency=low
 
   * Brown bag release.
   * Move that pid file.  Now.
+  * Switch to dpatch
 
  -- Tollef Fog Heen <tfheen@debian.org>  Wed, 11 Feb 2004 02:11:04 +0100
 
