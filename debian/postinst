@@ -207,37 +207,42 @@ def uncomment(line):
 def fix_perms():
     """Fix directory permissions to allow write access to group list.
     """#
-    from stat import S_IMODE, S_ISGID, S_IRWXG
+    log('Fixing permissions ...', nl='', lvl=2)
+    check_perms = os.path.join(MM_BIN, 'check_perms')
+    rc = CommandRunner(MM_BIN).run(check_perms, '-f', '-q')
+    if rc:
+        log(' done, rc=%r.' % rc, lvl=2)
+    else:
+        log(' done.', lvl=2)
+    return rc
 
-    from Mailman.Defaults import LIST_DATA_DIR, LOG_DIR, LOCK_DIR, \
-         DATA_DIR, SPAM_DIR, PUBLIC_ARCHIVE_FILE_DIR, PRIVATE_ARCHIVE_FILE_DIR, \
-         QUEUE_DIR, INQUEUE_DIR, OUTQUEUE_DIR, CMDQUEUE_DIR, BOUNCEQUEUE_DIR, \
-         NEWSQUEUE_DIR, ARCHQUEUE_DIR, SHUNTQUEUE_DIR, VIRGINQUEUE_DIR, \
-         BADQUEUE_DIR, RETRYQUEUE_DIR, MAILDIR_DIR
 
-    import grp
-    gid = grp.getgrnam('list')[2]
-
-    for dir_ in (LIST_DATA_DIR, LOG_DIR, LOCK_DIR, DATA_DIR, SPAM_DIR,
-                 PUBLIC_ARCHIVE_FILE_DIR, PRIVATE_ARCHIVE_FILE_DIR,
-                 QUEUE_DIR, INQUEUE_DIR, OUTQUEUE_DIR, CMDQUEUE_DIR,
-                 BOUNCEQUEUE_DIR, NEWSQUEUE_DIR, ARCHQUEUE_DIR,
-                 SHUNTQUEUE_DIR, VIRGINQUEUE_DIR, BADQUEUE_DIR,
-                 RETRYQUEUE_DIR, MAILDIR_DIR,):
-        stt = os.stat(dir_)
-        if stt.st_gid != gid:
-            os.chown(dir_, stt.st_uid, gid)
-        if (stt.st_mode & (S_ISGID|S_IRWXG)) != (S_ISGID|S_IRWXG):
-            os.chmod(dir_, S_IMODE(stt.st_mode) | S_ISGID | S_IRWXG)
+def update_lists():
+    """Update mailing list configurations.
+    """#
+    log('Updating existing mailing lists ...', nl='', lvl=2)
+    update = os.path.join(MM_BIN, 'update')
+    rc = CommandRunner(MM_BIN).run(update)
+    if rc:
+        log(' done, rc=%r.' % rc, lvl=2)
+    else:
+        log(' done.', lvl=2)
+    return rc
 
 
 def run_debhelper_additions():
+    from Mailman import mm_cfg
+    help = os.path.join(mm_cfg.TEMPLATE_DIR,
+                        mm_cfg.DEFAULT_SERVER_LANGUAGE,
+                        'help.txt')
+    log(os.path.isfile(help) and 'Will start daemon.'
+        or 'Will not start daemon.', lvl=2)
+    enabled = os.path.isfile(help) and '+x' or '-x'
     from popen2 import Popen4
     runner = Popen4('/bin/sh -e')
     runner.tochild.write("""\
-sg list -c "umask 002; /var/lib/mailman/bin/update;"
-
-#DEBHELPER#""")
+chmod %s /var/lib/mailman/bin/mailmanctl
+#DEBHELPER#""" % enabled)
     runner.tochild.close()
     while True:
         rc = runner.poll()
@@ -253,6 +258,7 @@ def setup():
     ucf_to_cfdb()
     create_mm_cfg()
     update_cron()
+    update_lists()
     fix_perms()
     run_debhelper_additions()
 
