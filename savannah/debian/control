@@ -1,0 +1,13 @@
+Source: mailman-savannah
+Section: mail
+Priority: optional
+Maintainer: Tollef Fog Heen <tfheen@debian.org>
+Uploaders: Siggy Brentrup <bsb@debian.org>
+Build-Depends: debhelper (>= 4.1.16), autoconf, python-dev, dpatch
+Standards-Version: 3.6.1
+
+Package: mailman-savannah
+Architecture: all
+Depends: mailman (= ${Source-Version})
+Description: Savannah patches for mailman
+ Dunno yet, have to look into it.
