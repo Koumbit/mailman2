@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maiman 2.1.4-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-07 20:36+0200\n"
+"POT-Creation-Date: 2004-05-30 19:03+0200\n"
 "PO-Revision-Date: 2004-02-15 15:45+0100\n"
 "Last-Translator: Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>\n"
 "Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -31,242 +31,35 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "big5"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "ca"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "cs"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "da"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "de"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "en"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "es"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "et"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "eu"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "fi"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "fr"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "gb"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "hr"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "hu"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "it"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "ja"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "ko"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "lt"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "nl"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "no"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "pl"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "pt"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "pt_BR"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "ro"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "ru"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "sl"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "sr"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "sv"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../mailman.templates:5 ../mailman-i18n.templates:5
-msgid "uk"
-msgstr ""
-
-#. Type: multiselect
+#. Type: boolean
 #. Description
-#: ../mailman.templates:7 ../mailman-i18n.templates:7
-msgid "Which languages to support?  "
-msgstr ""
-
-#. Type: multiselect
-#. Description
-#: ../mailman.templates:7 ../mailman-i18n.templates:7
-msgid ""
-"For each supported language Debian Mailman stores default language specific "
-"texts in /etc/mailman/LANG/ giving them conffile like treatment with the "
-"help of ucf.  This means approximately 150kB for each supported language on "
-"the root FS."
-msgstr ""
-
-#. Type: multiselect
-#. Description
-#: ../mailman.templates:7 ../mailman-i18n.templates:7
-msgid ""
-"If you need a different set of languages at a later time, just run dpkg-"
-"reconfigure mailman."
-msgstr ""
-
-#. Type: multiselect
-#. Description
-#: ../mailman.templates:7 ../mailman-i18n.templates:7
-msgid ""
-"NOTE: Languages enabled on existing mailing lists are forcibly reenabled "
-"when deselected and mailman needs at least one language for displaying it's "
-"messages."
-msgstr ""
-
-#. Type: string
-#. Description
-#: ../mailman.templates:27
+#: ../mailman.templates:6
 msgid "Gate news to mail?"
 msgstr ""
 
-#. Type: string
+#. Type: boolean
 #. Description
-#: ../mailman.templates:27
+#: ../mailman.templates:6
 msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
 
-#. Type: string
+#. Type: boolean
 #. Description
-#: ../mailman.templates:27
+#: ../mailman.templates:6
 msgid "Most people won't need this."
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../mailman.templates:35
+#: ../mailman.templates:14
 msgid "Missing site list"
 msgstr "Falta la lista del sitio"
 
 #. Type: note
 #. Description
-#: ../mailman.templates:35
+#: ../mailman.templates:14
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -278,7 +71,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../mailman.templates:35
+#: ../mailman.templates:14
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
@@ -290,13 +83,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../mailman.templates:47
+#: ../mailman.templates:26
 msgid "Which language should be the default for Mailman?"
 msgstr ""
 
 #. Type: select
 #. Description
-#: ../mailman.templates:47
+#: ../mailman.templates:26
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
@@ -304,13 +97,13 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../mailman.templates:54
+#: ../mailman.templates:33
 msgid "What will be the domain part of mailing list addresses?"
 msgstr ""
 
 #. Type: string
 #. Description
-#: ../mailman.templates:54
+#: ../mailman.templates:33
 msgid ""
 "Either use the default from /etc/mailname or you might prefer to devote a "
 "full subdomain like lists.doma.in for use by mailman."
@@ -318,7 +111,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../mailman.templates:54
+#: ../mailman.templates:33
 msgid ""
 "In any case your mail transfer agent (MTA) must be configured to accept mail "
 "for that domain."
@@ -326,13 +119,13 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../mailman.templates:64
+#: ../mailman.templates:43
 msgid "What will be the host part of mailing list URLs?"
 msgstr ""
 
 #. Type: string
 #. Description
-#: ../mailman.templates:64
+#: ../mailman.templates:43
 msgid ""
 "Either use the default derived from /etc/mailname or you might prefer to "
 "devote a full subdomain like lists.doma.in for use by mailman."
@@ -340,31 +133,48 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../mailman.templates:64
+#: ../mailman.templates:43
 msgid ""
 "In any case if this isn't the FQDN of this host, you must configure it as a "
 "virtual host in your web server."
 msgstr ""
 
-#. Type: note
+#. Type: string
 #. Description
-#: ../mailman-en.templates:5
-msgid "Unsupported languages used "
+#: ../mailman.templates:56
+msgid "I18n support in use"
 msgstr ""
 
-#. Type: note
+#. Type: string
 #. Description
-#: ../mailman-en.templates:5
+#: ../mailman.templates:56 ../mailman-i18n.templates:9
 msgid ""
-"The mailman-en package supports only english mailing lists while this "
-"installation has support for multiple languages enabled."
+"You are attempting to remove the mailman-i18n package while some mailing "
+"lists still have non-english language support enabled."
 msgstr ""
 
-#. Type: note
+#. Type: string
 #. Description
-#: ../mailman-en.templates:5
+#: ../mailman.templates:56 ../mailman-i18n.templates:9
 msgid ""
-"Before retrying to install this package, please make sure all mailing lists "
-"use english only before disabling all non-english site languages in mailman-"
-"i18n."
+"Please make sure all your mailing lists have only english enabled and "
+"DEFAULT_SERVER_LANGUAGE is 'en' in /etc/mailman/mm_cfg.py."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../mailman.templates:56 ../mailman-i18n.templates:9
+msgid "To see which mailing lists have international support enabled, issue"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../mailman.templates:56 ../mailman-i18n.templates:9
+msgid "  /usr/sbin/withlist -q -a -r used_languages.show_intl"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../mailman-i18n.templates:9
+msgid "i18n support in use"
 msgstr ""
