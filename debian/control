@@ -2,7 +2,7 @@ Source: mailman
 Section: mail
 Priority: optional
 Maintainer: Tollef Fog Heen <tfheen@debian.org>
-Uploaders: Siggy Brentrup <bsb@debian.org>, László Böszörményi (GCS) <gcs@lsc.hu>
+Uploaders: Siggy Brentrup <bsb@debian.org>
 Build-Depends: debhelper (>= 4.1.16), autoconf, python-dev, dpatch
 Standards-Version: 3.6.1
 
