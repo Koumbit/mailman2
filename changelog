@@ -1,10 +1,17 @@
 mailman (2.1.4-3) UNRELEASED; urgency=low
 
-  * NOT YET RELEASED (svn-buildpackage likes it).
+  * NOT YET RELEASED (svn-buildpackage likes this line).
   * Fix bogus test for empty qfiles/ in preinst (bsb, closes: #240033).
+  * Create group list as a system group if it doesn't exist
+    (bsb, closes: #240672).
+  * Use true/false for mailman/gate_news to make it work (bsb).
+  * Purge all mailman files _in_ucf_database_ on package purge (bsb).
+  * Make 'leftover' notice stand out (bsb).
+  * Added helper debconf template mailman/used_languages to avoid
+    duplicate scanning on preconfigure/setup (bsb).
   * Remove bashism from debian/config (by GCS, closes: #240643).
 
- -- Siggy Brentrup <bsb@debian.org>  Thu, 25 Mar 2004 19:10:17 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Sun, 28 Mar 2004 17:57:08 +0200
 
 mailman (2.1.4-2) unstable; urgency=low
 
