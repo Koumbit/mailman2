@@ -27,7 +27,8 @@ if [ "$1" = "upgrade" ] && dpkg --compare-versions "$2" lt 2.1; then
     fi
 fi
 
-pythonlib=/var/lib/mailman/pythonlib
+mm_home=/var/lib/mailman
+pythonlib=${mm_home}/pythonlib
 
 if [ -d ${pythonlib} ] && [ "$(ls -A ${pythonlib})" != "" ] ; then
     cat <<EOF 
@@ -47,23 +48,14 @@ EOF
             ;;
     esac
 fi
-if [ -L ${pythonlib} ] ; then
-    cat <<EOF
-You have a symbolic link ${pythonlib} pointing to $(readlink ${pythonlib})
-while mailman installs ${pythonlib} as a directory.
 
-If you want it to be moved to ${pythonlib}.obsolete.$$ now, answer Y
-to the following question, any other response will abort installation
-and give you the opportunity to examine the situation.
-EOF
-    read -p "Move ${pythonlib} out of the way? [yN] " ans
-    case $ans in
-        y|Y)  mv ${pythonlib} ${pythonlib}.obsolete.$$
-            ;;
-        *) exit 1
-            ;;
-    esac
-fi
+# Before unpacking make sure no symlink cruft is left in ${mm_home}
+for d in Mailman bin cron mail pythonlib scripts ; do
+    if [ -L ${mm_home}/${d} ]; then
+        rm -f ${mm_home}/${d}
+    fi
+done
+
 
 #DEBHELPER#
 
