@@ -51,7 +51,7 @@ case "$1" in
 	#	option to the "reload" entry above. If not, "force-reload" is
 	#	just the same as "restart".
 	#
-	PID=`cat $PIDFILE 2>/dev/null`
+	PID=`cat $PIDFILE 2>/dev/null` || true
 	echo -n "Restarting $DESC: $NAME"
         $DAEMON stop
 	if test -n "$PID" && kill -0 $PID 2>/dev/null ; then

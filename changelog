@@ -1,3 +1,12 @@
+mailman (2.1.5-3) unstable; urgency=high
+
+  Changes by Laszlo 'GCS' Boszormenyi:
+
+  * Do not fail if $PIDFILE does not exist during initscript restart
+    (closes: #275690).
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Thu, 14 Oct 2004 19:38:22 +0000
+
 mailman (2.1.5-2) unstable; urgency=high
 
   Changes by Laszlo 'GCS' Boszormenyi:
