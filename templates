@@ -14,7 +14,8 @@ _Description: Which languages to support?
  dpkg-reconfigure mailman.
  .
  NOTE: Languages enabled on existing mailing lists are forcibly re-
- enabled when deselected.
+ enabled when deselected and mailman needs at least one language for
+ displaying it's messages.
 
 Template: mailman/used_languages
 Type: string

@@ -82,11 +82,14 @@ else
   fi
 fi
 
-db_input high mailman/site_languages || true
-# Let the db go, and ask the user, so we won't get back a stale setting
-db_go || true
-db_get mailman/site_languages && selected_languages=${RET}
-db_subst mailman/default_server_language site_languages "${selected_languages}"
+site_languages=""
+while [ -z "${site_languages}" ]; do
+  db_input high mailman/site_languages || true
+  # Let the db go, and ask the user, so we won't get back a stale setting
+  db_go || true
+  db_get mailman/site_languages && site_languages=${RET}
+done
+db_subst mailman/default_server_language site_languages "${site_languages}"
 db_input high mailman/default_server_language || true
 
 if [ -f "${crontab}" ]; then
