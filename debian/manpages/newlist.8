@@ -1,4 +1,4 @@
-.TH NEWLIST 8 2001-03-10
+.TH NEWLIST 8 2004-10-17
 .SH NAME
 newlist \- Create a new, unpopulated mailing list.
 
@@ -9,14 +9,14 @@ newlist [options] listname listadmin-addr admin-password
 
 .PP
 .TP
+\fB\-l\fR \fIlanguage\fR, \fB\-\-language\fR \fIlanguage\fR
+Make the list's preferred language `\fIlanguage\fR', which must be a two
+letter language code.
+.TP
 \fB\-q\fB, \fB\-\-quiet\fB
 Normally the administrator is notified by email (after a prompt) that
 their list has been created.  This option suppresses that
 notification and the prompting.
-.TP
-\fB\-o\fB \fIfile\fI, \fB\-\-\fBoutput\fB=\fIfile\fI
-Append the alias setting recommendations to file, in addition to
-printing them to standard output.
 .TP
 \fB\-h\fB, \fB\-\-help\fB
 Print a small help text and exit
@@ -37,7 +37,7 @@ Listnames are forced to lowercase.
 .SH AUTHOR
 Author of Mailman is the Mailman Cabal, see http://www.list.org/ for
 information.  This manpage is written by Tollef Fog Heen
-<tfheen@debian.org> for Debian
+<tfheen@debian.org> for Debian GNU/Linux.
 
 .SH SEE ALSO
 Mailman documentation on http://www.list.org/ and in
