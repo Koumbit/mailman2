@@ -22,14 +22,15 @@ esac
 
 exit 0
 @DPATCH@
---- mailman-2.1.4.orig/templates/Makefile.in	2003-12-13 16:32:44.000000000 +0000
-+++ mailman-2.1.4/templates/Makefile.in	2004-04-08 16:51:25.000000000 +0000
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/Makefile.in mailman-2.1.5/templates/Makefile.in
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/Makefile.in	2004-05-19 17:34:23.000000000 +0200
++++ mailman-2.1.5/templates/Makefile.in	2004-05-19 17:38:16.000000000 +0200
 @@ -42,7 +42,7 @@
  
  SHELL=		/bin/sh
  
 -LANGUAGES=	big5 ca cs de en es et eu fi fr gb hr hu it ja ko lt nl \
 +LANGUAGES=	big5 ca cs da de en es et eu fi fr gb hr hu it ja ko lt nl \
- 		no pl pt pt_BR ro ru sl sr sv uk
+ 		no pl pt pt_BR ro ru sl sr sv tr uk
  
  # Modes for directories and executables created by the install
