@@ -5,7 +5,6 @@
 #
 
 """
-
 Fooling lintian that complains about not sourcing confmodule:
 . /usr/share/debconf/confmodule
 """#
@@ -29,8 +28,6 @@ db = get_debconf_interface() ; del get_debconf_interface
 #  Exception class and convenience constants
 from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
 
-print >>sys.stderr, '>>>', sys.argv
-
 PACKAGE='mailman-i18n'
 MM_INST = '/usr/lib/mailman'
 
@@ -38,103 +35,16 @@ MM_INST = '/usr/lib/mailman'
 sys.path.insert(0, os.path.join(MM_INST, 'Mailman'))
 from Debian import DebuggingLogger, cfdb, mm_languages
 
-from errno import EEXIST, ENOTEMPTY
-#from errno import *
-
-mm_etc='/etc/mailman'
-mm_tmpl=os.path.join(mm_etc, 'templates')
-mm_dist='/usr/share/mailman/templates'
-
-
-def setup():
-    """
-    """#
-
-    # Install only languages selected by the administrator
-    # forcing used languages to be always available.
-    site_languages = db.get('mailman/site_languages').split(', ')
-    site_languages = [ s.strip() for s in site_languages if s.strip() ]
-    need_languages = site_languages[:]
-    used_languages = db.get('mailman/used_languages').split()
-    db.fset('mailman/used_languages', 'seen', 'true')
-    db.fset('mailman/used_languages', 'scanned', 'false')
-
-    log('DEBCONF: used_languages=%(used_languages)r' % locals(), lvl=2)
-    log('DEBCONF: site_languages=%(site_languages)r' % locals(), lvl=2)
-
-    for lang in used_languages:
-        if lang not in site_languages:
-            need_languages.append(lang)
-
-    log('SETUP: need_languages=%(need_languages)r' % locals(), lvl=2)
-
-    site_languages.sort()
-    need_languages.sort()
-    if need_languages != site_languages:
-        db.set('mailman/site_languages', ', '.join(need_languages))
-        site_languages = need_languages
-        log('SETUP: site_languages=%(site_languages)r' % locals(), lvl=2)
-
-    remove_templates(need_languages)
-    install_templates(need_languages)
-
-
-def remove_templates(languages):
-    """
-    """#
-    old_languages = os.listdir(mm_tmpl)
-
-    for lang in old_languages:
-        if lang not in languages:
-            langdir = os.path.join(mm_tmpl, lang)
-            log('Removing unmodified files from %(langdir)s ' % locals(),
-                nl='')
-            def cb(*args):
-                log('.', nl='')
-            cfdb.remove_unmod(lang+'/', dst=mm_tmpl, callback=cb)
-            cfdb.sync()
-            log(' done.')
-            try:
-                os.rmdir(langdir)
-            except OSError,err:
-                if err.errno == ENOTEMPTY:
-                    log('Directory %(langdir)s not empty so not removed.' % locals())
-                else: raise
-
-
-def install_templates(languages):
-    """
-    """#
-    for lang in languages:
-        log('Installing site language %(lang)s ' % locals(), nl='')
-        try:
-            os.mkdir(os.path.join(mm_tmpl, lang))
-        except OSError, err:
-            if err.errno != EEXIST: raise
-
-        for fn in os.listdir(os.path.join(mm_dist, lang)):
-            log('.', nl='')
-            langfile='%(lang)s/%(fn)s' % locals()
-            msg = cfdb.update(langfile, src=mm_dist, dst=mm_tmpl)
-            log(msg, lvl=9, nl='\n ')
-            # TBD: remove templates no longer distributed
-        cfdb.sync()
-        log(' done.')
-
 
 def start_mm_qrunner():
-    log('>> entering start_mm_qrunner', lvl=3)
-    if not cfdb.has_key('mailman/setup'):
-        log('Must reconfigure mailman to restart daemons.')
-        return
     from popen2 import Popen4
     runner = Popen4('/bin/sh -e')
     runner.tochild.write("""\
 if [ -x "/etc/init.d/mailman" ]; then
   if [ -x /usr/sbin/invoke-rc.d ] ; then
-    invoke-rc.d mailman start || true
+    invoke-rc.d mailman reload || true
   else
-    /etc/init.d/mailman start || true
+    /etc/init.d/mailman reload || true
   fi
 fi
 """)
@@ -152,10 +62,7 @@ if __name__ == '__main__':
     log = DebuggingLogger('MM_MAINT')
     try:
         op = sys.argv[1]
-        if op == 'configure':
-            setup()
         if op in ('configure','abort-upgrade','abort-remove','abort-deconfigure'):
-            cfdb['mailman/templates'] = PACKAGE
             start_mm_qrunner()
         else:
             log("postinst called with unknown argument %r." % op)

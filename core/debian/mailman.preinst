@@ -1,7 +1,6 @@
 #!/bin/sh -e
 # $URL$
 # $Id$
-echo ">>> $0 $*" >&2
 
 mm_inst=/usr/lib/mailman
 mm_home=/var/lib/mailman
@@ -35,34 +34,17 @@ if [ "$1" = "upgrade" ] ; then
     fi
 fi
 
-pythonlib=${mm_home}/pythonlib
-
-if [ -d ${pythonlib} ] && [ "$(ls -A ${pythonlib})" != "" ] ; then
-    cat <<EOF 
-You have a non-empty ${pythonlib}, possibly caused by an incomplete
-removal of an ancient mailman version.  In any case it's contents may
-lead to mailman failing in obscure ways.
-
-If you want it to be moved to ${pythonlib}.obsolete.$$ now, answer Y
-to the following question, any other response will abort installation
-and give you the opportunity to examine the situation.
-EOF
-    read -p "Move ${pythonlib} out of the way? [yN] " ans
-    case $ans in
-        y|Y)  mv ${pythonlib} ${pythonlib}.obsolete.$$
-            ;;
-        *) exit 1
-            ;;
-    esac
-fi
-
-# Before unpacking make sure no symlink cruft is left in ${mm_inst}
+# Before unpacking make sure no symlink cruft is left in ${mm_inst} or ${mm_home}
 for d in Mailman bin cron mail pythonlib scripts ; do
     if [ -L ${mm_inst}/${d} ]; then
         rm -f ${mm_inst}/${d}
     fi
 done
-
+for d in Mailman bin cgi-bin cron icons locks logs mail scripts templates ; do
+    if [ -L ${mm_home}/${d} ]; then
+        rm -f ${mm_home}/${d}
+    fi
+done
 
 #DEBHELPER#
 

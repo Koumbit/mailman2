@@ -5,20 +5,8 @@
 #
 # $URL$
 # $Id$
-echo ">>> $0 $*" >&2
 
 PACKAGE=mailman
-
-unset_mm_setup () {
-python <<EOF
-import sys; sys.path.insert(0, '/usr/lib/mailman')
-try:
-    from Mailman.Debian import cfdb
-    del cfdb['mailman/setup']
-except:
-    pass
-EOF
-}
 
 mm_shutdown () {
 #DEBHELPER#
@@ -27,7 +15,6 @@ mm_shutdown () {
 
 case "$1" in
     upgrade|remove)
-        unset_mm_setup
         mm_shutdown
         ;;
     failed-upgrade)

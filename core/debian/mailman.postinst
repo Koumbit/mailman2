@@ -9,7 +9,6 @@ Fooling lintian that complains about not sourcing confmodule:
 """
 
 import sys, os
-virgin_gbls = globals().copy()
 
 
 # Argl, if the debconf Python interface were well designed, sth like
@@ -59,8 +58,97 @@ def compile_modules(directory):
     log(' done.')
 
 
+
+class UCF:
+    # Find a better name for this class!
+    def __init__(self, hashfile):
+        self.hashlines = open(hashfile).readlines()
+        self.dirs = {}
+
+    def enum(self, rexp):
+        import re
+        tmpl_re = re.compile(rexp)
+        for line in self.hashlines:
+            words = line.split()
+            if len(words) != 2: continue
+            ucf_md5, path = words
+            if not tmpl_re.match(path): continue
+            yield ucf_md5, path
+
+    def purge(self, path):
+        os.system('ucf --purge %(path)s' % locals())
+        try:
+            os.remove(path)
+        except OSError, e:
+            if e.errno != ENOENT: raise
+        for ext in ('dist', 'old', 'new'):
+            try:
+                os.remove('%(path)s.dpkg-%(ext)s' % locals())
+            except OSError, e:
+                if e.errno != ENOENT: raise
+        self.dirs[os.path.dirname(path)] = True
+
+    def rmdirs(self):
+        for d, p in self.dirs.items():
+            try:
+                if p: os.rmdir(d)
+            except OSError, e:
+                if e.errno == ENOTEMPTY:
+                    log('Directory %(d)s not empty, not removed.' % locals())
+                elif e.errno != ENOENT: raise
+            del self.dirs[d]
+
+        
+
+def templates_from_ucf():
+    """Get templates out of ucf control.
+
+    With mailman's own template overriding there is no need for
+    local templates in /etc/mailman under ucf control.  Locally
+    modified templates are assumed to be site wide modifications.
+    """#
+    import md5
+    from Mailman.Defaults import TEMPLATE_DIR
+
+    def save_site_template(path, data):
+        orig_umask = os.umask(002)
+        try:
+            dst_tmpl = os.path.join(TEMPLATE_DIR, 'site', path[13:])
+            try:
+                stfl = open(dst_tmpl, 'w')
+            except IOError, e:
+                if e.errno <> ENOENT: raise
+                os.makedirs(os.path.dirname(dst_tmpl), 02775)
+                stfl = open(dst_tmpl, 'w')
+        finally:
+            os.umask(orig_umask)
+        try:
+            stfl.write(data)
+        finally:
+            stfl.close()
+
+    ucf = UCF('/var/lib/ucf/hashfile')
+    log_cnt = 0
+    for ucf_md5, path in ucf.enum('^/etc/mailman/.+/'):
+        if log_cnt == 0:
+            log('Moving templates out of ucf control ', nl='')
+        log_cnt += 1
+        try:
+            tmpl = open(path).read()
+            site_md5 = md5.new(tmpl).hexdigest()
+            if site_md5 != ucf_md5:
+                save_site_template(path, tmpl)
+        except IOError, e:
+            if e.errno <> ENOENT: raise
+        ucf.purge(path)
+        log('.', nl='')
+    if log_cnt:
+        log(' done.')
+    ucf.rmdirs()
+
+
 def default_mm_cfg():
-    """Get default configuration.
+    """Get configuration defaults.
     """#
     gbls = {}
     exec 'from Mailman.Defaults import *' in gbls
@@ -169,7 +257,7 @@ def upgrade_mm_cfg():
         if usr_mod.keys():
             log("User modified variables:", lvl=3)
             for var in usr_mod.keys():
-                log('  %20s: %r\n%20s: %r'
+                log('  %20s: %r\n  %20s: %r'
                     % (var, usr_gbls[var], 'default', def_gbls[var]), lvl=3)
 
         if usr_def.keys():
@@ -332,13 +420,6 @@ def update_lists():
 def start_mm_qrunner():
     log('>> entering start_mm_qrunner', lvl=3)
 
-    try:
-        if cfdb['mailman/templates'] in ('mailman-en', 'mailman-i18n'):
-            log('Will start qrunners.', lvl=2)
-    except KeyError:
-        log('Will not start qrunners.', lvl=2)
-        return
-
     from popen2 import Popen4
     runner = Popen4('/bin/sh -e')
     runner.tochild.write("""\
@@ -356,13 +437,14 @@ def start_mm_qrunner():
 
 def setup():
     compile_modules(MM_INST)
+    templates_from_ucf()
     if os.path.exists('/etc/mailman/mm_cfg.py'):
         upgrade_mm_cfg()
     else:
         create_mm_cfg()
     update_cron()
-    update_lists()
     fix_perms()
+    update_lists()
 
 
 if __name__ == '__main__':
@@ -372,7 +454,6 @@ if __name__ == '__main__':
         if op == 'configure':
             setup()
         if op in ('configure','abort-upgrade','abort-remove','abort-deconfigure'):
-            cfdb['mailman/setup'] = 'ok'
             start_mm_qrunner()
         else:
             log("postinst called with unknown argument %r." % op)

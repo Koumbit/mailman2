@@ -1,0 +1,16 @@
+mailman (2.1.5-0split1) UNRELEASED; urgency=low
+
+  * Mailman now comes in separate binary packages mailman, mailman-bin,
+    mailman-doc and mailman-i18n with the latter being needed only if you
+    plan to support languages other than english in Mailman's web
+    interface or for automatically generated messages.
+
+  * Debian mailman packages no longer store HTML and text templates in
+    /etc/mailman but use Mailman's own override mechanism, see
+    README.Debian for a more detailed discussion.  If you have changed any
+    templates under /etc/mailman/<lang>, these are assumed to be site-wide
+    changes moving them to /var/lib/mailman/templates/site/<lang>.
+
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 25 May 2004 08:28:38 +0200
+
+ $Id$

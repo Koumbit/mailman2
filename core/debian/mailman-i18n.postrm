@@ -2,8 +2,15 @@
 # $URL$
 # $Id$
 
-echo ">>> $0 $*" >&2
-
-#DEBHELPER#
-
+# After removing templates restart the mailman to make sure
+# its mm_cfg.LC_DESCRIPTIONS are up to date.
+if [ "$1" = "remove" ]; then
+  if [ -x "/etc/init.d/mailman" ]; then
+    if [ -x /usr/sbin/invoke-rc.d ] ; then
+      invoke-rc.d mailman reload || true
+    else
+      /etc/init.d/mailman reload || true
+    fi
+  fi
+fi
 exit 0

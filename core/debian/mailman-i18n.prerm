@@ -4,37 +4,21 @@
 
 . /usr/share/debconf/confmodule
 
-echo ">>>" $0 $* >&2
-
 package=mailman-i18n
 
-mm_shutdown () {
-    if [ -x "/etc/init.d/mailman" ]; then
-        if [ -x /usr/sbin/invoke-rc.d ] ; then
-            invoke-rc.d mailman stop || true
-        else
-            /etc/init.d/mailman stop || true
-        fi
-    fi
-}
-
+db_fset mailman/other_languages seen false || true
 
 case $1 in
     remove)
-        mm_shutdown
         used_languages=$(withlist -q -a -r used_languages)
         db_set mailman/used_languages "${used_languages}" || true
         if [ "${used_languages}" != "en" ] ; then
-            db_fset mailman/other_languages seen false || true
             db_input critical mailman/other_languages || true
             db_go || true
             exit 1
         fi
         ;;
-    upgrade)
-        mm_shutdown
-        ;;
-    failed-upgrade|deconfigure)
+    upgrade|failed-upgrade|deconfigure)
         ;;
     *)
         echo "${package}.prerm called with unknown arguments $*" >&2
