@@ -15,6 +15,8 @@ mailman (2.1.5-3) unstable; urgency=high
     (iCab and maybe others, closes: #249212).
   * Only add the 'Cc:' mail header in AvoidDuplicates.py if that it isn't
     empty (closes: #253944).
+  * Treat postfix-to-mailman.py with ucf just like qmail-to-postfix.py
+    and update README.Debian accordingly (closes: #275482).
 
  -- Tollef Fog Heen <tfheen@debian.org>  Thu, 14 Oct 2004 19:38:22 +0000
 
