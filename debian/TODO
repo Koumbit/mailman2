@@ -7,6 +7,11 @@ is packaged now, it might be wiser to defer them until sarge+1.
 - Split into mailman, mailman-bin, mailman-doc, mailman-i18n.
   Changed mind: let the main package be arch-indep and depend on
   arch-dep mailman-bin containing the wrapper binaries.
+* Partially done in Rev 79
+
+* As of Rev 79, individual files in /var/lib/mailman are symlinks to
+  files installed in /usr/share/mailman as opposed to the previous
+  approach symlinking directories.
 
 - mailman.postinst should be better at building a new mm_cfg.py from
   an existing configuration, in particular at removing obsolete vars.
@@ -29,20 +34,33 @@ is packaged now, it might be wiser to defer them until sarge+1.
 
 - mailman-i18n:
   $LANG/LC_MESSAGES/mailman.mo should go into /usr/share/locale.
+* done in Rev 79
 
   If not installed, admin pages dealing with multilingual support must
   be replaced by a hint to install mailman-i18n first.
 
   The main package will only support english, no inclination to prefer
-  any particular language over the others. I'd even prefer calling it
-  the C locale, let's see if renaming (and providing a link when -i18n
-  is installed) works.
+  any particular language over the others.
+
+  I'd even prefer calling it the C locale, let's see if renaming (and
+  providing a link when -i18n is installed) works.
 
 - Upstream check_perms reports nonesense, there is no point in making
   e.g. language directories 2775.  Either rewrite it such that it
   provides sensible results or drop it completely (when invoked with
   -f it even enforces that nonsense).
 
+- Find a way to split into build-indep and build-arch targets, avoiding
+  to run msgfmt.py on every arch build.
+
+- Make sure no /var/lib/mailman/pythonlib symlink is present,
+  otherwise obscure bugs may result (#242740).
+
+- Instead of symlinking directories VAR_PREFIX/logs, VAR_PREFIX/locks and
+  VAR_PREFIX/templates redefine mm_cfg.LOG_DIR, mm_cfg.LOCK_DIR and
+  mm_cfg.TEMPLATE_DIR (in fixed section of Defaults.py).
+
+- Think about a Mailman.Debian (python-)package for postinst helpers.
 
 This list is by no means meant to be complete.
 
