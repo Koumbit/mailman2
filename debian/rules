@@ -183,7 +183,7 @@ binary-arch:	checkroot build
 	echo 'if [ "$$1" = purge ]; then' >> debian/mailman.postrm.ucf
 	for f in `cat debian/ucffiles`; do \
 		echo -e "\techo Removing $$f" >> debian/mailman.postrm.ucf; \
-		echo -e "\tucf --purge $$f" >> debian/mailman.postrm.ucf ; \
+		echo -e "\tucf --debconf-ok --purge $$f" >> debian/mailman.postrm.ucf ; \
 	done
 	echo 'fi' >> debian/mailman.postrm.ucf
 

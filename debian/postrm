@@ -1,5 +1,7 @@
 #! /bin/sh -e
 
+#DEBHELPER#
+
 #UCF#
 
 if [ "$1" = purge ]; then
@@ -8,5 +10,3 @@ if [ "$1" = purge ]; then
   rm -rf /var/log/mailman
 #  rm -rf /var/lib/mailman
 fi
-
-#DEBHELPER#
