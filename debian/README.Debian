@@ -87,7 +87,7 @@ Postfix
 _______
 For those using postfix who are able to devote a full subdomain
 lists.doma.in for use by mailman, please see the comments in
-/usr/lib/mailman/bin/postfix-to-mailman.py.
+/etc/mailman/postfix-to-mailman.py .
 
 SpamAssassin
 ------------
