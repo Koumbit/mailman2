@@ -4,10 +4,6 @@
 # Written 1998 by Gregor Hoffleit <flight@debian.org>.
 # Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
 #
-
-# workaround for debconf bug -- save stdin in fd 52 (restore after db_stop)
-# if we arn't given the chance, try /dev/tty
-
 . /usr/share/debconf/confmodule
 
 PACKAGE=mailman
@@ -35,6 +31,11 @@ if [ "$1" = "configure" ]; then
 #
 # 5 AM on the first of each month, mail out password reminders.
 0 5 1 * * list /usr/lib/mailman/cron/mailpasswds
+#
+# Every 5 mins, try to gate news to mail.  You can comment this one out
+# if you don't want to allow gating, or don't have any going on right now,
+# or want to exclusively use a callback strategy instead of polling.
+# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * list /usr/lib/mailman/cron/gate_news
 #
 # At 3:27am every night, regenerate the gzip'd archive file.  Only
 # turn this on if the internal archiver is used and
@@ -102,8 +103,14 @@ EOF
       fi
     done
 
-    # Comment out any lines containing the words "gate_news"
-    awk '/^[^#]*gate_news/ { print "# " $LINE;next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+    db_get mailman/gate_news || true
+    if [ "$RET" = "no" ]; then
+	# Comment out any lines containing the words "gate_news"
+	awk '/^[^#]*gate_news/ { print "# " $LINE;next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+    else
+	# Remove commenting of any lines containing gate_news
+	awk '/^[ \t]*#.*gate_news/ { sub(/^[ \t]*#[ \t]*/, ""); print; next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+    fi
     mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
 
     if [ -e /etc/mailman/mm_cfg.py ]; then

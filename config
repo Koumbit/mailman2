@@ -2,6 +2,15 @@
 
 . /usr/share/debconf/confmodule
 
+if [ -f "/etc/cron.d/mailman" ]; then
+    COMMENT=`awk '/^.*gate_news/ { print substr($1,1,1) } ' < /etc/cron.d/mailman`
+    if [ "$COMMENT" = "#" ]; then
+	db_set mailman/gate_news no
+    else
+	db_set mailman/gate_news yes
+    fi
+fi
+
 if [ ! -e /etc/mailman/mm_cfg.py -o ! -x /var/lib/mailman/bin/list_lists ] || \
     [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
     db_input critical mailman/create_site_list || true
