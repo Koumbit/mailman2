@@ -9,6 +9,8 @@ mailman (2.1.5-3) unstable; urgency=high
     rules.
   * Do not report pending requests on new lists because no request.pck
     exists yet (closes: #273553).
+  * Update DEFAULT_SERVER_LANGUAGE and not blindly English as that can
+    break package if English is not selected.
 
  -- Tollef Fog Heen <tfheen@debian.org>  Thu, 14 Oct 2004 19:38:22 +0000
 
