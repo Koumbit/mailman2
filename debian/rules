@@ -17,14 +17,6 @@ manpages = debian/*.8
 
 SHELL=/bin/bash
 
-ifeq (,$(wildcard /usr/bin/po2debconf))
-PO2DEBCONF := no
-MINDEBCONFVER := 0.5
-else
-PO2DEBCONF := yes
-MINDEBCONFVER := 1.2.0
-endif
-
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
 CFLAGS += -g
 endif
@@ -36,11 +28,8 @@ build: patch-stamp Makefile debian/po/templates.pot
 	$(MAKE) 
 	touch build
 
-debian/po/templates.pot: debian/templates.master
-ifeq ($(PO2DEBCONF),yes)
-	po2debconf -e utf8 debian/templates.master > debian/templates
-	@debconf-updatepo || true
-endif
+debian/po/templates.pot: debian/templates
+	@debconf-updatepo
 
 Makefile:
 	autoconf
@@ -59,18 +48,6 @@ clean: unpatch
 	rm -rf $$(find . -name "*~")
 	find .. -name $(package)*dsc.asc -size 0 -maxdepth 1 -exec rm {} ";"
 	chmod +x debian/{prerm,postinst}
-
-ifeq ($(PO2DEBCONF),yes)
-	# Hack for woody compatibility. This makes sure that the
-	# debian/templates file shipped in the source package doesn't
-	# specify encodings, which woody's debconf can't handle. If building
-	# on a system with po-debconf installed (conveniently debhelper (>=
-	# 4.1.16) depends on it), the binary-arch target will generate a
-	# better version for sarge.
-	echo 1 > debian/po/output
-	po2debconf debian/templates.master > debian/templates
-	rm -f debian/po/output
-endif
 
 binary-indep:	checkroot build
 	$(checkdir)
@@ -163,6 +140,7 @@ binary-arch:	checkroot build
 	chown list.list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}
 	chown root.list debian/mailman/var/log/mailman
 	find debian/mailman/var/lib/$(package) -type d | xargs chmod 2775
+	find debian/mailman/var/lib/$(package)/messages -type d | xargs chmod 755
 
 	# make lintian happy
 #	install -m 0644 debian/lintian-overrides debian/mailman/usr/share/lintian/overrides/mailman
@@ -188,7 +166,7 @@ binary-arch:	checkroot build
 
 # Fix permissions
 	chmod +x debian/mailman/usr/lib/$(package)/Mailman/Cgi/*
-	chmod +x debian/mailman/usr/lib/$(package)/scripts/*
+#	chmod +x debian/mailman/usr/lib/$(package)/scripts/*
 	chmod +x debian/mailman/usr/lib/$(package)/Mailman/Archiver/pipermail.py
 
 	chmod g+s debian/mailman/usr/lib/cgi-bin/mailman/* \
@@ -228,7 +206,7 @@ binary-arch:	checkroot build
 #	perl -pi -e '/#UCF#/ and do { open F, "debian/mailman.postrm.ucf"; local $$/ ; $$_ = <F> };' debian/mailman/DEBIAN/postrm
 
 	dh_shlibdeps
-	dh_gencontrol -- -V'debconf-depends=debconf (>= $(MINDEBCONFVER))'
+	dh_gencontrol
 	dh_md5sums
 	dpkg --build debian/mailman ..
 

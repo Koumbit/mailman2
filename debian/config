@@ -19,12 +19,24 @@ EOF
 }
 
 if [ -x "/usr/sbin/list_lists" ]; then
-    echo -n "Looking for enabled languages (this may take some time) ..."
-    used_languages="$(get_used_languages)"
-    echo " done."
-    db_set mailman/site_languages "$(echo ${used_languages} | sed -e 's/  */, /g')"
+  echo -n "Looking for enabled languages (this may take some time) ..."
+  used_languages="$(get_used_languages)"
+  echo " done."
+  # Install only languages selected by the administrator
+  # forcing english to be always available.
+  db_get mailman/site_languages
+  site_languages="$(echo $RET | sed -e 's/, */ /g')"
+  need_languages="${site_languages}"
+  for lang in ${used_languages} ; do
+    if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+      need_languages="${lang} ${need_languages}"
+    fi
+    if [ "${need_languages}" != "${site_languages}" ]; then
+      db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
+    fi
+  done
 else
-    db_set mailman/site_languages "en"
+  db_set mailman/site_languages "en"
 fi
 
 db_input high mailman/site_languages || true
@@ -46,4 +58,3 @@ if [ ! -e /etc/mailman/mm_cfg.py -o ! -x /var/lib/mailman/bin/list_lists ] || \
 fi
 
 db_go || true
-
