@@ -2,6 +2,7 @@ mailman (2.1.4-4) UNRELEASED; urgency=low
 
   * NOT YET RELEASED
   * Fix README.Debian concerning URLs (bsb, closes: #235835). 
+  * Add fix for missing installation of Danish templates (by GCS)
 
  -- Siggy Brentrup <bsb@debian.org>  Tue,  6 Apr 2004 23:52:06 +0200
 
