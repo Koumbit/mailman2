@@ -1,0 +1,14 @@
+# $URL$
+# $Id$
+Template: mailman/other_languages
+Type: note
+_Description: Unsupported languages used 
+ The mailman-en package
+ supports only english mailing lists while this installation has
+ support for multiple languages enabled.
+ .
+ Before retrying to install this package, please make sure all mailing
+ lists use english only before disabling all non-english site
+ languages in mailman-i18n.
+
+ 
