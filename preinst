@@ -26,7 +26,7 @@ fi
 
 if [ "$1" = "upgrade" ] && dpkg --compare-versions "$2" lt 2.1; then
     # upgrading, make sure the qfiles directory is empty.
-    if [ "$(ls /var/lib/mailman/qfiles | wc)" gt "0" ]; then
+    if ls /var/lib/mailman/qfiles 2>/dev/null | grep -q '.*' ; then
         # uh-oh.
         echo "Queue not cleared, please flush mailman queue and retry upgrade"
         exit 1
