@@ -443,6 +443,7 @@ def setup():
     else:
         create_mm_cfg()
     update_cron()
+    db.stop()
     fix_perms()
     update_lists()
 
