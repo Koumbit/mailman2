@@ -27,8 +27,12 @@ mailman (2.1.4-2) UNRELEASED; urgency=low
     required in /etc and chattyness (bsb, closes: #232005).
   * Backed out hack in 05_config_list_member_options.dpatch since it
     breaks config_list in mm 2.1.4 (bsb, closes: #231967).
+  * Added debian/contrib/postfix-to-mailman.py installing it as
+    /usr/lib/mailman/bin/postfix-to-mailman.py (bsb).
+  * Cleaned up README.Debian removing obsolete mailman-owner alias and
+    adding a section on using postfix-to-mailman.py (bsb).
 
- -- Siggy Brentrup <bsb@debian.org>  Tue, 23 Mar 2004 12:30:01 +0100
+ -- Siggy Brentrup <bsb@debian.org>  Tue, 23 Mar 2004 19:13:30 +0100
 
 mailman (2.1.4-1) unstable; urgency=medium
 

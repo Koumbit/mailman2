@@ -151,6 +151,9 @@ binary-arch:	checkroot build
 	install -m 0644 debian/contrib/SpamAssassin.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
 	install -m 0644 debian/contrib/spamd.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
 
+# postfix-to-mailman.py
+	install -m 0755 debian/contrib/postfix-to-mailman.py debian/mailman/usr/lib/$(package)/bin
+
 # Move templates
 	mv `find debian/mailman/etc/mailman -type d -mindepth 1 -maxdepth 1` debian/mailman/usr/share/mailman
 	cp build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman
