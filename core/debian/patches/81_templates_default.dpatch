@@ -55,3 +55,50 @@ diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Utils.py mail
              fp = open(filename)
          except IOError, e:
              if e.errno <> errno.ENOENT: raise
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/bin/update mailman-2.1.5/bin/update
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/bin/update	2004-05-26 11:10:05.000000000 +0200
++++ mailman-2.1.5/bin/update	2004-05-26 11:16:11.000000000 +0200
+@@ -121,11 +121,12 @@
+     #
+     # First, get rid of any lists/<list> template or lists/<list>/en template
+     # that is identical to the global templates/* default.
+-    for gtemplate in os.listdir(os.path.join(mm_cfg.TEMPLATE_DIR, 'en')):
++    dist_template_dir = os.path.join(mm_cfg.TEMPLATE_DIR, 'default')
++    for gtemplate in os.listdir(os.path.join(dist_template_dir, 'en')):
+         # BAW: get rid of old templates, e.g. admlogin.txt and
+         # handle_opts.html
+         try:
+-            fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
++            fp = open(os.path.join(dist_template_dir, gtemplate))
+         except IOError, e:
+             if e.errno <> errno.ENOENT: raise
+             # No global template
+@@ -165,24 +166,24 @@
+                 os.unlink(os.path.join(mlist.fullpath(), 'en', gtemplate))
+         # Match against the templates/* template
+         try:
+-            fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
++            fp = open(os.path.join(dist_template_dir, gtemplate))
+         except IOError, e:
+             if e.errno <> errno.ENOENT: raise
+         else:
+             tcksum = md5.new(fp.read()).digest()
+             fp.close()
+             if gcksum == tcksum:
+-                os.unlink(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
++                os.unlink(os.path.join(dist_template_dir, gtemplate))
+         # Match against the templates/*.prev template
+         try:
+-            fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate + '.prev'))
++            fp = open(os.path.join(dist_template_dir, gtemplate + '.prev'))
+         except IOError, e:
+             if e.errno <> errno.ENOENT: raise
+         else:
+             tcksum = md5.new(fp.read()).digest()
+             fp.close()
+             if gcksum == tcksum:
+-                os.unlink(os.path.join(mm_cfg.TEMPLATE_DIR,
++                os.unlink(os.path.join(dist_template_dir,
+                                        gtemplate + '.prev'))
+ 
+ 

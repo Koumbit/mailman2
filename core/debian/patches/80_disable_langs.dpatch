@@ -25,8 +25,8 @@ exit 0
 
 @DPATCH@
 diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Defaults.py.in mailman-2.1.5/Mailman/Defaults.py.in
---- /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Defaults.py.in	2004-05-24 12:51:15.000000000 +0200
-+++ mailman-2.1.5/Mailman/Defaults.py.in	2004-05-24 13:10:02.000000000 +0200
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Defaults.py.in	2004-05-26 11:10:05.000000000 +0200
++++ mailman-2.1.5/Mailman/Defaults.py.in	2004-05-26 11:10:08.000000000 +0200
 @@ -1244,7 +1244,10 @@
  LC_DESCRIPTIONS = {}
  
@@ -34,7 +34,7 @@ diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/Mailman/Defaults.py.i
 -    LC_DESCRIPTIONS[code] = (description, charset)
 +    # Add only languages installed by mailman-i18n
 +    if os.path.exists(os.path.join('/usr/share/mailman/templates',
-+                                   lang, 'listinfo.html')):
++                                   code, 'listinfo.html')):
 +        LC_DESCRIPTIONS[code] = (description, charset)
  
  add_language('ca',    _('Catalan'),             'iso-8859-1')
