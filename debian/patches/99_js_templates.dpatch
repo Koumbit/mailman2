@@ -22,655 +22,9 @@ esac
 
 exit 0
 @DPATCH@
-
---- mailman-2.1.4.orig/templates/sr/private.html
-+++ mailman-2.1.4/templates/sr/private.html
-@@ -1,8 +1,9 @@
- Ôªø<html>
- <head>
-     <title>–ü—Ä–∏—ò–∞–≤–∞ –∑–∞ —É–ª–∞–∑ —É –ø—Ä–∏–≤–∞—Ç–Ω—É –∞—Ä—Ö–∏–≤—É –ª–∏—Å—Ç–µ: %(realname)s </title>
--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
--<body bgcolor="#ffffff">
-+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script>function sf(){document.f.adminpw.focus();}</script>
-+</head>
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/sr/admlogin.html
-+++ mailman-2.1.4/templates/sr/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Authentication</title>
--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script>function sf(){document.f.adminpw.focus();}</script>
-+</head>
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/es/private.html
-+++ mailman-2.1.4/templates/es/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-   <title>Autentificaci&oacute;n para los archivos privados de %(realname)s </title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/es/admlogin.html
-+++ mailman-2.1.4/templates/es/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>AutentificaciÛn del %(who)s de %(listname)s </title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/en/private.html
-+++ mailman-2.1.4/templates/en/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s Private Archives Authentication</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/en/listinfo.html
-+++ mailman-2.1.4/templates/en/listinfo.html
-@@ -4,7 +4,7 @@
-     <TITLE><MM-List-Name> Info Page</TITLE>
-   
-   </HEAD>
--  <BODY BGCOLOR="#ffffff">
-+  <BODY>
- 
-     <P>
-       <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/en/admlogin.html
-+++ mailman-2.1.4/templates/en/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Authentication</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/eu/private.html
-+++ mailman-2.1.4/templates/eu/private.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-     <title>%(realname)s Artxibo Pribatuak Egiaztatzea</title>
-+<script>function sf(){document.f.username.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(action)s/">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(action)s/" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/eu/admlogin.html
-+++ mailman-2.1.4/templates/eu/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s Zerrendako %(who)s Identifikatzen</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/hu/private.html
-+++ mailman-2.1.4/templates/hu/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-  <title>%(realname)s Priv·t archÌvum azonosÌt·s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/hu/admlogin.html
-+++ mailman-2.1.4/templates/hu/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-    <title>%(listname)s %(who)s AzonosÌt·s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/de/private.html
-+++ mailman-2.1.4/templates/de/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>Authentifizierung f¸r den Zugriff auf die Archive von %(realname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/de/admlogin.html
-+++ mailman-2.1.4/templates/de/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>Anmeldung als %(listname)s-%(who)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/pt_BR/private.html
-+++ mailman-2.1.4/templates/pt_BR/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/pt_BR/admlogin.html
-+++ mailman-2.1.4/templates/pt_BR/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>AutenticaÁ„o %(listname)s %(who)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/uk/private.html
-+++ mailman-2.1.4/templates/uk/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –¥–æ—Å—Ç—É–ø—É –¥–æ –∑–∞–∫—Ä–∏—Ç–æ–≥–æ —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(realname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/uk/admlogin.html
-+++ mailman-2.1.4/templates/uk/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á–∞ %(who)s —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(listname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/da/private.html
-+++ mailman-2.1.4/templates/da/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s Login til Private Arkiver</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/da/admlogin.html
-+++ mailman-2.1.4/templates/da/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Loggin</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/fi/private.html
-+++ mailman-2.1.4/templates/fi/private.html
-@@ -2,8 +2,9 @@
- <html>
- <head>
-     <title>%(realname)s Private Archives Authentication</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/fi/admlogin.html
-+++ mailman-2.1.4/templates/fi/admlogin.html
-@@ -2,9 +2,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Authentication</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/fr/private.html
-+++ mailman-2.1.4/templates/fr/private.html
-@@ -2,8 +2,9 @@
- <head>
-     <title>Authentifi:cation pour l'acc&egrave;s aux archives priv&eacute;es de
- %(realname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/fr/admlogin.html
-+++ mailman-2.1.4/templates/fr/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>Authentification %(who)s sur %(listname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/ko/private.html
-+++ mailman-2.1.4/templates/ko/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s ∫Ò∞¯∞≥ ¿˙¿Âº“ ¿Œ¡ı</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/ko/admlogin.html
-+++ mailman-2.1.4/templates/ko/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s ∞¸∏Æ¿⁄ ¿Œ¡ı</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/it/private.html
-+++ mailman-2.1.4/templates/it/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
- <title>Autenticazione per gli archivi privati di %(realname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/it/admlogin.html
-+++ mailman-2.1.4/templates/it/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
- <title>Autenticazione per %(who)s di %(listname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/cs/private.html
-+++ mailman-2.1.4/templates/cs/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>Konference %(realname)s - p¯ihl·πenÌ pro p¯Ìstup do priv·tnÌho archivu </title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/cs/admlogin.html
-+++ mailman-2.1.4/templates/cs/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s p¯ihl·πenÌ</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/et/private.html
-+++ mailman-2.1.4/templates/et/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s privaatarhiiv</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/et/admlogin.html
-+++ mailman-2.1.4/templates/et/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s autoriseerimine</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/nl/private.html
-+++ mailman-2.1.4/templates/nl/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s Prive Archief beveiligd</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/nl/admlogin.html
-+++ mailman-2.1.4/templates/nl/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s inloggen</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/gb/admlogin.html
-+++ mailman-2.1.4/templates/gb/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s ¡–±Ì π‹¿Ì‘±—È÷§</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/pt/private.html
-+++ mailman-2.1.4/templates/pt/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/pt/admlogin.html
-+++ mailman-2.1.4/templates/pt/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Authentication</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/sv/private.html
-+++ mailman-2.1.4/templates/sv/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s Inloggning till Privata Arkiv</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/sv/admlogin.html
-+++ mailman-2.1.4/templates/sv/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Inloggning</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/pl/private.html
-+++ mailman-2.1.4/templates/pl/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s Private Archives Authentication</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/pl/admlogin.html
-+++ mailman-2.1.4/templates/pl/admlogin.html
-@@ -2,9 +2,10 @@
- <head>
-   <title>Autoryzacja %(who)s %(listname)s</title>
- <meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/ru/private.html
-+++ mailman-2.1.4/templates/ru/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>·’‘≈Œ‘…∆…À¡√…— ƒÃ— ƒœ”‘’–¡ À ⁄¡À“Ÿ‘œÕ’ ¡“»…◊’ ”–…”À¡ “¡””ŸÃÀ… %(realname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/ru/admlogin.html
-+++ mailman-2.1.4/templates/ru/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-     <title>·’‘≈Œ‘…∆…À¡√…— %(who)s ”–…”À¡ “¡””ŸÃÀ… %(listname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/no/private.html
-+++ mailman-2.1.4/templates/no/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s Innlogging til Private Arkiver</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/no/admlogin.html
-+++ mailman-2.1.4/templates/no/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s Innlogging</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/lt/private.html
-+++ mailman-2.1.4/templates/lt/private.html
-@@ -1,8 +1,9 @@
- <html>
- <head>
-     <title>%(realname)s privataus archyvo prisijungimas</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
-+<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/lt/admlogin.html
-+++ mailman-2.1.4/templates/lt/admlogin.html
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s %(who)s prisijungimas</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
---- mailman-2.1.4.orig/templates/big5/admlogin.html
-+++ mailman-2.1.4/templates/big5/admlogin.html
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/big5/admlogin.html mailman-2.1.5/templates/big5/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/big5/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/big5/admlogin.html	2004-05-19 19:24:15.000000000 +0200
 @@ -1,9 +1,11 @@
  <html>
  <head>
@@ -685,12 +39,29 @@ exit 0
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
---- mailman-2.1.4.orig/templates/ja/private.html
-+++ mailman-2.1.4/templates/ja/private.html
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/cs/admlogin.html mailman-2.1.5/templates/cs/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/cs/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/cs/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s p¯ihl·πenÌ</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/cs/private.html mailman-2.1.5/templates/cs/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/cs/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/cs/private.html	2004-05-19 19:24:15.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
-     <title>%(realname)s ∏¬ƒÍ∏¯≥´ ›¬∏ΩÒ∏À «ßæ⁄</title>
+     <title>Konference %(realname)s - p¯ihl·πenÌ pro p¯Ìstup do priv·tnÌho archivu </title>
 +<script>function sf(){document.f.adminpw.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
@@ -698,8 +69,339 @@ exit 0
  <FORM METHOD=POST ACTION="%(action)s/">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
---- mailman-2.1.4.orig/templates/ja/admlogin.html
-+++ mailman-2.1.4/templates/ja/admlogin.html
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/da/admlogin.html mailman-2.1.5/templates/da/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/da/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/da/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Loggin</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/da/private.html mailman-2.1.5/templates/da/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/da/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/da/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Login til Private Arkiver</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/de/admlogin.html mailman-2.1.5/templates/de/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/de/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/de/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>Anmeldung als %(listname)s-%(who)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/de/private.html mailman-2.1.5/templates/de/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/de/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/de/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>Authentifizierung f¸r den Zugriff auf die Archive von %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/en/admlogin.html mailman-2.1.5/templates/en/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/en/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/en/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/en/listinfo.html mailman-2.1.5/templates/en/listinfo.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/en/listinfo.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/en/listinfo.html	2004-05-19 19:24:15.000000000 +0200
+@@ -4,7 +4,7 @@
+     <TITLE><MM-List-Name> Info Page</TITLE>
+   
+   </HEAD>
+-  <BODY BGCOLOR="#ffffff">
++  <BODY>
+ 
+     <P>
+       <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/en/private.html mailman-2.1.5/templates/en/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/en/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/en/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Private Archives Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/es/admlogin.html mailman-2.1.5/templates/es/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/es/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/es/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>AutentificaciÛn del %(who)s de %(listname)s </title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/es/private.html mailman-2.1.5/templates/es/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/es/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/es/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+   <title>Autentificaci&oacute;n para los archivos privados de %(realname)s </title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/et/admlogin.html mailman-2.1.5/templates/et/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/et/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/et/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s autoriseerimine</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/et/private.html mailman-2.1.5/templates/et/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/et/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/et/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s privaatarhiiv</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/eu/admlogin.html mailman-2.1.5/templates/eu/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/eu/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/eu/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s Zerrendako %(who)s Identifikatzen</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/eu/private.html mailman-2.1.5/templates/eu/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/eu/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/eu/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+     <title>%(realname)s Artxibo Pribatuak Egiaztatzea</title>
++<script>function sf(){document.f.username.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(action)s/" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fi/admlogin.html mailman-2.1.5/templates/fi/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fi/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/fi/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -2,9 +2,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fi/private.html mailman-2.1.5/templates/fi/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fi/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/fi/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -2,8 +2,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Private Archives Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fr/admlogin.html mailman-2.1.5/templates/fr/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fr/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/fr/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>Authentification %(who)s sur %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fr/private.html mailman-2.1.5/templates/fr/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/fr/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/fr/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -2,8 +2,9 @@
+ <head>
+     <title>Authentifi:cation pour l'acc&egrave;s aux archives priv&eacute;es de
+ %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/gb/admlogin.html mailman-2.1.5/templates/gb/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/gb/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/gb/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s ¡–±Ì π‹¿Ì‘±—È÷§</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/hu/admlogin.html mailman-2.1.5/templates/hu/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/hu/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/hu/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+    <title>%(listname)s %(who)s AzonosÌt·s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/hu/private.html mailman-2.1.5/templates/hu/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/hu/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/hu/private.html	2004-05-19 19:29:19.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+  <title>%(realname)s Priv·t archÌvum azonosÌt·s</title>
++ <script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/it/admlogin.html mailman-2.1.5/templates/it/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/it/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/it/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+ <title>Autenticazione per %(who)s di %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/it/private.html mailman-2.1.5/templates/it/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/it/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/it/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+ <title>Autenticazione per gli archivi privati di %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ja/admlogin.html mailman-2.1.5/templates/ja/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ja/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/ja/admlogin.html	2004-05-19 19:24:15.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -713,3 +415,349 @@ exit 0
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ja/private.html mailman-2.1.5/templates/ja/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ja/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/ja/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s ∏¬ƒÍ∏¯≥´ ›¬∏ΩÒ∏À «ßæ⁄</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ko/admlogin.html mailman-2.1.5/templates/ko/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ko/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/ko/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s ∞¸∏Æ¿⁄ ¿Œ¡ı</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ko/private.html mailman-2.1.5/templates/ko/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ko/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/ko/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s ∫Ò∞¯∞≥ ¿˙¿Âº“ ¿Œ¡ı</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/lt/admlogin.html mailman-2.1.5/templates/lt/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/lt/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/lt/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s prisijungimas</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/lt/private.html mailman-2.1.5/templates/lt/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/lt/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/lt/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s privataus archyvo prisijungimas</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/nl/admlogin.html mailman-2.1.5/templates/nl/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/nl/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/nl/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s inloggen</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/nl/private.html mailman-2.1.5/templates/nl/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/nl/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/nl/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Prive Archief beveiligd</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/no/admlogin.html mailman-2.1.5/templates/no/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/no/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/no/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Innlogging</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/no/private.html mailman-2.1.5/templates/no/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/no/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/no/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Innlogging til Private Arkiver</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pl/admlogin.html mailman-2.1.5/templates/pl/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pl/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/pl/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -2,9 +2,10 @@
+ <head>
+   <title>Autoryzacja %(who)s %(listname)s</title>
+ <meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pl/private.html mailman-2.1.5/templates/pl/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pl/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/pl/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Private Archives Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt/admlogin.html mailman-2.1.5/templates/pt/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/pt/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt/private.html mailman-2.1.5/templates/pt/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/pt/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt_BR/admlogin.html mailman-2.1.5/templates/pt_BR/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt_BR/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/pt_BR/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>AutenticaÁ„o %(listname)s %(who)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt_BR/private.html mailman-2.1.5/templates/pt_BR/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/pt_BR/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/pt_BR/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ru/admlogin.html mailman-2.1.5/templates/ru/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ru/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/ru/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+     <title>·’‘≈Œ‘…∆…À¡√…— %(who)s ”–…”À¡ “¡””ŸÃÀ… %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ru/private.html mailman-2.1.5/templates/ru/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/ru/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/ru/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>·’‘≈Œ‘…∆…À¡√…— ƒÃ— ƒœ”‘’–¡ À ⁄¡À“Ÿ‘œÕ’ ¡“»…◊’ ”–…”À¡ “¡””ŸÃÀ… %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sr/admlogin.html mailman-2.1.5/templates/sr/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sr/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/sr/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
+-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script>function sf(){document.f.adminpw.focus();}</script>
++</head>
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sr/private.html mailman-2.1.5/templates/sr/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sr/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/sr/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ Ôªø<html>
+ <head>
+     <title>–ü—Ä–∏—ò–∞–≤–∞ –∑–∞ —É–ª–∞–∑ —É –ø—Ä–∏–≤–∞—Ç–Ω—É –∞—Ä—Ö–∏–≤—É –ª–∏—Å—Ç–µ: %(realname)s </title>
+-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+-<body bgcolor="#ffffff">
++<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script>function sf(){document.f.adminpw.focus();}</script>
++</head>
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sv/admlogin.html mailman-2.1.5/templates/sv/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sv/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/sv/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Inloggning</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sv/private.html mailman-2.1.5/templates/sv/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/sv/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/sv/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Inloggning till Privata Arkiv</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/uk/admlogin.html mailman-2.1.5/templates/uk/admlogin.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/uk/admlogin.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/uk/admlogin.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á–∞ %(who)s —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad /debuild/mine/mailman/build-area/mailman-2.1.5/templates/uk/private.html mailman-2.1.5/templates/uk/private.html
+--- /debuild/mine/mailman/build-area/mailman-2.1.5/templates/uk/private.html	2004-05-19 19:23:45.000000000 +0200
++++ mailman-2.1.5/templates/uk/private.html	2004-05-19 19:24:15.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –¥–æ—Å—Ç—É–ø—É –¥–æ –∑–∞–∫—Ä–∏—Ç–æ–≥–æ —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
