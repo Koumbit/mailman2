@@ -2,7 +2,7 @@
 # $URL$
 # $Id$
 
-mm_cfg_defaults = '''\
+mm_cfg_defaults = """\
 # Mailman site configuration for Debian automatically generated from
 # $URL$
 # $Id$
@@ -24,7 +24,7 @@ mm_cfg_defaults = '''\
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
-"""This is the module which takes your site-specific settings.
+\"\"\"This is the module which takes your site-specific settings.
 
 From a raw distribution it should be copied to mm_cfg.py.  If you
 already have an mm_cfg.py, be careful to add in only the new settings
@@ -42,7 +42,7 @@ admin and user interfaces on a per-list or per-user basis.
 Note also that some of the settings are resolved against the active list
 setting by using the value as a format string against the
 list-instance-object's dictionary - see the distributed value of
-DEFAULT_MSG_FOOTER for an example."""
+DEFAULT_MSG_FOOTER for an example.\"\"\"
 
 
 #######################################################
@@ -50,22 +50,22 @@ DEFAULT_MSG_FOOTER for an example."""
 
 from Defaults import *
 
-'''#
+"""#
 
-mm_cfg_fillin = '''\
-##############################################################
-# Put YOUR site-specific configuration below, in mm_cfg.py . #
-# See Defaults.py for explanations of the values.            #
+mm_cfg_fillin = """\
+########################################################################
+# Put YOUR site-specific configuration below, in mm_cfg.py.  See       #
+# /usr/lib/mailman/Mailman/Defaults.py for explanations of the values. #
 
-#-------------------------------------------------------------
-# The name of the list Mailman uses to send password reminders
-# and similar. Don't change if you want mailman-owner to be
-# a valid local part.
+#-----------------------------------------------------------------------
+# The name of the list Mailman uses to send password reminders and
+# similar. Don't change if you want mailman-owner to be a valid local
+# part.
 MAILMAN_SITE_LIST = %(MAILMAN_SITE_LIST)r
 
-#-------------------------------------------------------------
-# Virtual host httpd setup, if you don't use a virtual host
-# just copy the ScriptAlias and Alias directives.
+#-----------------------------------------------------------------------
+# Virtual host httpd setup, if you don't use a virtual host just copy
+# the ScriptAlias and Alias directives.
 #
 # <Virtualhost %(DEFAULT_URL_HOST)s>
 #   ServerName  %(DEFAULT_URL_HOST)s
@@ -73,17 +73,17 @@ MAILMAN_SITE_LIST = %(MAILMAN_SITE_LIST)r
 #   Alias       /pipermail/ %(PUBLIC_ARCHIVE_FILE_DIR)s/
 #   Alias       %(IMAGE_LOGOS)s /usr/share/images/mailman/
 # </VirtualHost>
-#-------------------------------------------------------------
+#-----------------------------------------------------------------------
 DEFAULT_URL_PATTERN = %(DEFAULT_URL_PATTERN)r
 IMAGE_LOGOS         = %(IMAGE_LOGOS)r
 DEFAULT_URL_HOST   = %(DEFAULT_URL_HOST)r
 DEFAULT_EMAIL_HOST = %(DEFAULT_EMAIL_HOST)r
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)%(virtual_hosts)s
 
-#-------------------------------------------------------------
-# Depending on your MTA setup, the MTA configuration variable
-# controls how aliases are generated.
-# At the time of this writing legal values are:
+#-----------------------------------------------------------------------
+# Depending on your MTA setup, the MTA configuration variable controls
+# how aliases are generated.
+# Legal values are:
 # None      - your MTA automatically recognizes new lists
 # 'Postfix' - you are using postfix virtual domains
 # 'Manual'  - default, meaning you have to manually create the
@@ -92,66 +92,73 @@ add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)%(virtual_hosts)s
 # /usr/share/doc/mailman before setting this.
 MTA = %(MTA)r
 
-#-------------------------------------------------------------
-# The USE_ENVELOPE_SENDER variable controls the order in which
-# headers are searched when determining if a message originates
-# from a subscriber.  When True, the order is Sender:, From:,
-# unixfrom, when False it is From:, Sender:, unixfrom.  In both
-# cases the first address encountered is used.
-# Debian default is not to use the envelope address when
-# determining if a message comes from a subscriber.
-# This option applies globally to all mailing lists.
+#-----------------------------------------------------------------------
+# The USE_ENVELOPE_SENDER variable controls the order in which headers
+# are searched when determining if a message originates from a
+# subscriber.  When True, the order is Sender:, From:, unixfrom, when
+# False it is From:, Sender:, unixfrom.  In both cases the first address
+# encountered is used.
+# Debian default is not to use the envelope address when determining if
+# a message comes from a subscriber.  This option applies globally to
+# all mailing lists.
 USE_ENVELOPE_SENDER    = %(USE_ENVELOPE_SENDER)r
 
-#-------------------------------------------------------------
-# Debian default is not to send monthly password reminders
-# on newly created lists.  This can be changed per list.
+#-----------------------------------------------------------------------
+# Debian default is not to send monthly password reminders on newly
+# created lists.  This can be changed per list.
 DEFAULT_SEND_REMINDERS = %(DEFAULT_SEND_REMINDERS)r
 
-#-------------------------------------------------------------
-# The default language for this server (may be changed to a
-# supported language when mailman-i18n is installed).
+#-----------------------------------------------------------------------
+# The default language for this server (may be changed to a supported
+# language when mailman-i18n is installed).
 DEFAULT_SERVER_LANGUAGE = %(DEFAULT_SERVER_LANGUAGE)r
 
-# Note - if you're looking for something that is imported from mm_cfg, but you
-# didn't find it above, it's probably in /usr/lib/mailman/Mailman/Defaults.py.
-'''#
+# Note - if you're looking for something that is imported from mm_cfg,
+#        but you didn't find it above, it's probably in
+#        /usr/lib/mailman/Mailman/Defaults.py.
+"""#
 
 mm_cfg_deprecated = {
-    None : '''\
+    None : """\
 #-----------------------------------------------------------------------
 # Variables below are deprecated.  Where applicable, their values are
 # incorporated above.
-''',
-    'DEFAULT_HOST_NAME' : '''
+""",
+    'DEFAULT_HOST_NAME' : """
 # Replaced by DEFAULT_EMAIL_HOST
 # DEFAULT_HOST_NAME = %(DEFAULT_HOST_NAME)r
-''',
-    'DEFAULT_URL' : '''\
+""",
+    'DEFAULT_URL' : """\
 # Replaced by DEFAULT_URL_PATTERN.
 # DEFAULT_URL = %(DEFAULT_URL)r
-''',
-    'OLD_IMAGE_LOGOS' : '''\
+""",
+    'OLD_IMAGE_LOGOS' : """\
 # Location has changed.
 # IMAGE_LOGOS = %(OLD_IMAGE_LOGOS)r
-''',
-    'PRIVATE_ARCHIVE_URL' : '''\
+""",
+    'PRIVATE_ARCHIVE_URL' : """\
 # Private archive access now uses /usr/lib/cgi-bin/mailman/private.
 # PRIVATE_ARCHIVE_URL = %(PRIVATE_ARCHIVE_URL)r
-''',
-    'OLD_PUBLIC_ARCHIVE_URL' : '''\
+""",
+    'OLD_PUBLIC_ARCHIVE_URL' : """\
 # Public archive access now uses %(PUBLIC_ARCHIVE_URL)r
 # PUBLIC_ARCHIVE_URL = %(OLD_PUBLIC_ARCHIVE_URL)r
-''',
-    'MAILMAN_OWNER' : '''\
-# The mailman-owner@%(DEFAULT_EMAIL_HOST)s is now a special site-list
-# alias and the MAILMAN_OWNER variable is ignored.
+""",
+    'MAILMAN_OWNER' : """\
+# The mailman-owner@%(DEFAULT_EMAIL_HOST)s address is now a special
+# site-list aliases with the MAILMAN_OWNER variable being ignored.
 # MAILMAN_OWNER = %(MAILMAN_OWNER)r
-''',
+""",
     }
 
 
-mm_crontab = '''\
+mm_cfg_delimiter = """\
+#-----------------------------------------------------------------------
+# Anything below this marker will not be touched by maintainer scripts.
+#=======================================================================
+"""#
+
+mm_crontab = """\
 # Mailman crontab for Debian automatically generated from
 # $URL$
 # $Id$
@@ -180,4 +187,4 @@ mm_crontab = '''\
 # turn this on if the internal archiver is used and
 # GZIP_ARCHIVE_TXT_FILES is false in mm_cfg.py
 27 3 * * * list /usr/lib/mailman/cron/nightly_gzip
-'''#
+"""#
