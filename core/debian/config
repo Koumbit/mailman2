@@ -1,111 +1,138 @@
-#! /bin/sh -e
+#! /usr/bin/python
 # $URL$
 # $Id$
 
+"""
+
+Fooling lintian that complains about not sourcing confmodule:
 . /usr/share/debconf/confmodule
+"""
 
-crontab=/etc/cron.d/mailman
+import sys, os
 
-get_used_languages ()
-{
-  # Python being non-essential it may not be available at preconfigure
-  # time, but then no languages are used either.
-  if python </dev/null 2>/dev/null ; then
-    # list_lists may fail if mm_cfg is not yet installed
-    ( for ml in $(/usr/sbin/list_lists -b 2>/dev/null); do
-        ( /usr/sbin/config_list -o - ${ml} 2>/dev/null
-          cat <<EOF
-try: print '\n'.join(available_languages)
-except: pass
-EOF
-        ) | python -W ignore::DeprecationWarning
-      done 
-    ) | sort | uniq
-  fi
-}
+# Argl, if the debconf Python interface were well designed, sth like
+#   from debconf import instance as db
+# should be sufficient here.  As it is, must work around it's flaws.
+def get_debconf_interface(title=''):
+    """Get an debconf interface instance, starting a frontend if
+    none is available.
+    """#
+    from debconf import Debconf, _frontEndProgram
+    try:             junk = os.environ['DEBIAN_HAS_FRONTEND']
+    except KeyError: os.execv(_frontEndProgram, [_frontEndProgram]+sys.argv)
+    return Debconf(title)
+db = get_debconf_interface() ; del get_debconf_interface
+#  Exception class and convenience constants
+from debconf import DebconfError, LOW, MEDIUM, HIGH, CRITICAL
 
-# This script will be invoked by apt-get 2 times in a row, once when
-# preconfiguring the package and a second time just before running the
-# postinst script.  OTOH when installing the package with dpkg or when
-# reconfiguring the package, it runs only once.
-#
-# It scans all mailing lists on a system for used languages which may
-# be quite time consuming on systems with many lists; hence we better
-# avoid to run that scan twice in a row.
-# 
-# The debconf template mailman/used_languages holds the result of the
-# scan but is never presented to the user, instead its scanned flag
-# indicates if it holds a fresh value and is reset by the postinst,
-# while its seen flag is mainly used for cosmetical reasons to mark
-# processed values in debconf-show output.
 
-db_get mailman/used_languages || true
-used_languages="${RET}"
-db_fget mailman/used_languages scanned || true
-scanned="${RET}"
+mm_home  = '/var/lib/mailman'
+mm_lists = os.path.join(mm_home, 'lists')
+crontab  = '/etc/cron.d/mailman'
 
-if [ ! -z "$2" ] && dpkg --compare-versions $2 lt 2.1 ; then
-  # list_lists will fail when upgrading from pre 2.1; but with those
-  # versions not supporting i18n, english was the only used language.
-  db_set  mailman/site_languages "en"
-  db_set  mailman/used_languages "en"
-  db_fset mailman/used_languages scanned false
-elif  [ ! -x "/usr/sbin/list_lists" ] ; then
-  # For 1st time installers there is no used language.
-  db_set  mailman/site_languages "en"
-  db_set  mailman/used_languages ""
-  db_fset mailman/used_languages scanned false
-else
-  if [ "${scanned}" != "true" ] ; then
-    echo -n "Looking for enabled languages (this may take some time) ..."
-    unset used_languages
-    for l in $(get_used_languages); do
-      used_languages=${used_languages:+${used_languages} }$l
-    done
-    db_set  mailman/used_languages "${used_languages}"
-    db_fset mailman/used_languages scanned true
-    db_fset mailman/used_languages seen false
-    echo " done."
-  fi
-  # Install only languages selected by the administrator
-  # forcing used languages to be always available.
-  db_get mailman/site_languages
-  site_languages="$(echo $RET | sed -e 's/, */ /g')"
-  need_languages="${site_languages}"
-  for lang in ${used_languages} ; do
-    if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
-      need_languages="${lang} ${need_languages}"
-    fi
-  done
-  if [ "${need_languages}" != "${site_languages}" ]; then
-    db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
-  fi
-fi
 
-site_languages=""
-while [ -z "${site_languages}" ]; do
-  db_input high mailman/site_languages || true
-  # Let the db go, and ask the user, so we won't get back a stale setting
-  db_go || true
-  db_get mailman/site_languages && site_languages=${RET}
-done
-db_subst mailman/default_server_language site_languages "${site_languages}"
-db_input high mailman/default_server_language || true
+def gate_news_enabled():
+    """Checks crontab if gate_news is enabled.
 
-if [ -f "${crontab}" ]; then
-  COMMENT=`awk '/^.*gate_news/ { print substr($1,1,1) } ' < ${crontab}`
-  if [ "$COMMENT" = "#" ]; then
-    db_set mailman/gate_news false
-  else
-    db_set mailman/gate_news true
-  fi
-fi
+    Assume valid crontab(5) format: lines whose first non-space character
+    is a # are comments, comments on command lines are disallowed.
+    """
+    gn = os.popen('grep gate_news %(crontab)s' % globals())
+    result = False
+    for line in gn.readlines():
+        line = line.strip()
+        result |= line[0] != '#'
+    if gn.close() != 0:
+        result = False
+    return result
 
-db_input low mailman/gate_news || true
 
-if [ ! -e /etc/mailman/mm_cfg.py -o ! -x /var/lib/mailman/bin/list_lists ] || \
-    [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
-    db_input critical mailman/create_site_list || true
-fi
+def have_list(listname):
+    """Check if a list with the specified internal name exists.
 
-db_go || true
+    When upgrading, use installed MM's own notion of list existence.
+    On a first time install (or when MM has been removed prior to this
+    installation, simply checks for directory existence.
+    """#
+    try:
+        from Mailman.Utils import list_exists
+        return list_exists(listname)
+    except ImportError:
+        list_dir = os.path.join(mm_lists, listname)
+        return os.path.isdir(list_dir)
+
+
+def main(operation, prev_version):
+
+    log('config main(operation=%(operation)r, '
+        'prev_version=%(prev_version)r)'
+        % locals(), lvl=2)
+
+    def db_input(*args):
+        try:
+            db.input(*args)
+        except DebconfError, exc:
+            if exc.args[0] != 30:
+                raise
+
+    gbls = globals().copy()
+    mm_cfg = '/etc/mailman/mm_cfg.py'
+
+    if os.path.exists('/etc/mailname'):
+        mailname = open('/etc/mailname')
+    else:
+        mailname = os.popen('hostname --fqdn')
+    mailname = mailname.read().strip()
+
+    if os.path.exists(mm_cfg):
+        for line in os.popen('egrep "^DEFAULT_[^ ]+ =" %(mm_cfg)s' % locals()):
+            exec line in gbls
+    default_email_host      = gbls.get('DEFAULT_EMAIL_HOST', mailname)
+    default_url_host        = gbls.get('DEFAULT_URL_HOST', '')
+    default_server_language = gbls.get('DEFAULT_SERVER_LANGUAGE', 'en')
+
+    db.set('mailman/email_host', default_email_host)
+    db_input(MEDIUM, 'mailman/email_host')
+
+    db.set('mailman/url_host',   default_url_host)
+    db_input(MEDIUM, 'mailman/url_host')
+
+    site_languages = db.get('mailman/site_languages')
+    langs = site_languages.split(', ')
+    if len(langs) > 1 and default_server_language not in langs:
+        default_server_language = ''
+    db.subst('mailman/default_server_language', 'site_languages', site_languages)
+    db.set('mailman/default_server_language', default_server_language)
+    db_input(HIGH, 'mailman/default_server_language')
+
+    db.set('mailman/gate_news',
+           gate_news_enabled() and 'true' or 'false')
+    db_input(LOW, 'mailman/gate_news')
+
+    site_list = 'mailman'
+    if not have_list(site_list):
+        db_input(CRITICAL, 'mailman/site_list')
+
+    db.go()
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        operation, prev_version = sys.argv[1], None
+    elif len(sys.argv) == 3:
+        operation, prev_version = sys.argv[1:]
+
+    def dummy_logger(*args, **kw):
+        pass
+
+    try:
+        sys.path.insert(0, mm_home)
+        from Mailman.Debian import DebuggingLogger
+        log = DebuggingLogger('MM_MAINT')
+        try:
+            main(operation, prev_version)
+        finally:
+            log.sys_info()
+    except ImportError:
+        log = dummy_logger
+        main(operation, prev_version)
