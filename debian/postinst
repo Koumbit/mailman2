@@ -10,9 +10,75 @@ PACKAGE=mailman
 DIRLIST="/usr/lib/mailman/Mailman /usr/lib/mailman/bin /usr/lib/mailman/cron /usr/lib/mailman/scripts"
 PYLIBDIR="/usr/lib/python`python -c 'import sys; print sys.version[:3]'`"
 
-#UCF#
-
 if [ "$1" = "configure" ]; then
+
+    mm_etc=/etc/mailman
+    mm_dist=/usr/share/mailman
+
+    # Install only languages selected by the administrator
+    # forcing english to be always available.
+    db_get mailman/site_languages
+    site_languages="$(echo $RET | sed -e 's/, */ /g')"
+    need_languages=${site_languages}
+    for lang in ${used_languages} ; do
+      if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+        need_languages="${lang} ${need_languages}"
+      fi
+      if [ "${need_languages}" != "${site_languages}" ]; then
+        db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
+      fi
+    done
+
+    # At present ALL directories in /etc/mailman are language directories
+    # but this may change in the future, better check.
+    for dir in $(find ${mm_etc} -type d -maxdepth 1 -mindepth 1 | sed -e "s;^${mm_etc}/;;g"); do
+      if [ -f ${mm_dist}/${dir}/options.html ]; then
+        old_languages="${old_languages} ${dir}"
+      fi
+    done
+
+    # Remove languages no longer used, but purging modified files
+    # is a bad thing.  Since ucf doesn't support conditional removal
+    # we must compare with the /usr/share/mailman copy.
+    for lang in ${old_languages}; do
+      if  echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+        echo -n "Removing unmodified files from ${mm_etc}/${lang} "
+        for file in $(cd /etc && find mailman/${lang} -type f -a ! -name \*.dpkg-\* ); do
+          if cmp -s /etc/${file} /usr/share/${file}; then
+            ucf --debconf-ok --purge /etc/${file}
+            rm -f /etc/${file} /etc/${file}.dpkg-dist
+            echo -n .
+          fi
+        done
+        echo " done."
+        rmdir ${mm_etc}/${lang} 2>/dev/null \
+          || echo "Directory ${mm_etc}/${lang} not empty, not removed."
+      fi
+    done
+
+    for lang in ${site_languages}; do
+      echo -n "Installing site language ${lang} "
+      mkdir -p ${mm_etc}/${lang}
+      for file in $(ls ${mm_dist}/${lang}); do
+        echo -n .
+        langfile=${lang}/${file}
+        ucf --debconf-ok --three-way ${mm_dist}/${langfile} ${mm_etc}/${langfile} \
+          </dev/tty >/dev/tty
+        # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
+        cmp -s ${mm_etc}/${langfile} ${mm_etc}/${langfile}.dpkg-dist \
+          && rm ${mm_etc}/${langfile}.dpkg-dist
+      done
+      echo " done."
+    done
+    # Done with site language stuff
+
+    # Don't forget the qmail specific stuff (but why support non-free?)
+    ucf --debconf-ok --three-way ${mm_dist}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py
+    # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
+    cmp -s ${mm_etc}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py.dpkg-dist \
+      && rm ${mm_etc}/qmail-to-mailman.py.dpkg-dist
+
+    # Configure Mailman crontab
 
     # Ensure the file exists before we awk it.
     if [ ! -f /etc/cron.d/mailman ]; then

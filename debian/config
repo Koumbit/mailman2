@@ -2,8 +2,35 @@
 
 . /usr/share/debconf/confmodule
 
-if [ -f "/etc/cron.d/mailman" ]; then
-    COMMENT=`awk '/^.*gate_news/ { print substr($1,1,1) } ' < /etc/cron.d/mailman`
+crontab=/etc/cron.d/mailman
+site_languages=/etc/mailman/site-languages
+
+function get_used_languages ()
+{
+  for ml in $(/usr/sbin/list_lists -b); do
+    ( /usr/sbin/config_list -o - ${ml} 2>/dev/null
+      cat <<EOF
+try:
+  print '\n'.join(available_languages)
+except: print 'en'
+EOF
+    ) | python -W ignore::DeprecationWarning
+  done | sort | uniq
+}
+
+if [ -x "/usr/sbin/list_lists" ]; then
+    echo -n "Looking for enabled languages (this may take some time) ..."
+    used_languages="$(get_used_languages)"
+    echo " done."
+    db_set mailman/site_languages "$(echo ${used_languages} | sed -e 's/  */, /g')"
+else
+    db_set mailman/site_languages "en"
+fi
+
+db_input high mailman/site_languages || true
+
+if [ -f "${crontab}" ]; then
+    COMMENT=`awk '/^.*gate_news/ { print substr($1,1,1) } ' < ${crontab}`
     if [ "$COMMENT" = "#" ]; then
 	db_set mailman/gate_news no
     else
@@ -11,12 +38,12 @@ if [ -f "/etc/cron.d/mailman" ]; then
     fi
 fi
 
+db_input low mailman/gate_news || true
+
 if [ ! -e /etc/mailman/mm_cfg.py -o ! -x /var/lib/mailman/bin/list_lists ] || \
     [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
     db_input critical mailman/create_site_list || true
-    db_go || true
 fi
 
-db_input low mailman/gate_news || true
 db_go || true
 
