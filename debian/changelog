@@ -2,8 +2,10 @@ mailman (2.1.5-8) unstable; urgency=low
 
   * Add Italian debconf translation (closes: #278562)
   * Remove Siggy from uploaders as he is MIA.
+  * Actually add 67_update_handle_old_versions to the list of patches applied
+    and fix up line numbers.  (closes: #304023)
 
- --
+ -- Tollef Fog Heen <tfheen@debian.org>  Thu, 14 Apr 2005 16:01:15 +0200
 
 mailman (2.1.5-7) unstable; urgency=high
 
