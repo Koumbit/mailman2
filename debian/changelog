@@ -1,6 +1,7 @@
 mailman (2.1.5-8) unstable; urgency=low
 
   * Add Italian debconf translation (closes: #278562)
+  * Remove Siggy from uploaders as he is MIA.
 
  --
 
