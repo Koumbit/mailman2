@@ -8,9 +8,10 @@
 
 
 @DPATCH@
---- update.orig	2004-12-15 17:25:41.000000000 +0100
-+++ update	2004-12-15 17:29:09.000000000 +0100
-@@ -532,9 +532,11 @@
+diff -urNad trunk/bin/update /tmp/dpep.sAkJKA/trunk/bin/update
+--- trunk/bin/update	2005-04-14 15:30:00.858629713 +0200
++++ /tmp/dpep.sAkJKA/trunk/bin/update	2005-04-14 15:32:19.483231517 +0200
+@@ -505,9 +505,11 @@
      file20 = os.path.join(mm_cfg.DATA_DIR, 'pending_subscriptions.db')
      file214 = os.path.join(mm_cfg.DATA_DIR, 'pending.pck')
      db = None
@@ -22,7 +23,7 @@
      except IOError, e:
          if e.errno <> errno.ENOENT: raise
      else:
-@@ -546,6 +548,7 @@
+@@ -519,6 +521,7 @@
          # Try to load the Mailman 2.1.x where x < 5, file
          try:
              fp = open(file214)
@@ -30,7 +31,7 @@
          except IOError, e:
              if e.errno <> errno.ENOENT: raise
          else:
-@@ -579,8 +582,12 @@
+@@ -552,8 +555,12 @@
              # data[0] is the address being unsubscribed
              addrops_by_address.setdefault(data[0], []).append((key, val))
          elif op == Pending.SUBSCRIPTION:
