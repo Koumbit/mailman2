@@ -1,3 +1,10 @@
+mailman (2.1.5-9) unstable; urgency=medium
+
+  * Update the Belgian translation, thanks to Luc Stroobant for prodding
+    and for providing the translation.  (closes: #306748)
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Sat, 28 May 2005 12:47:32 +0200
+
 mailman (2.1.5-8) unstable; urgency=low
 
   * Add Italian debconf translation (closes: #278562)
