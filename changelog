@@ -1,9 +1,11 @@
-mailman (2.1.5-10) unstable; urgency=low
+mailman (2.1.5-10) UNRELEASED; urgency=high
 
   * Merge with 2.1.5-8ubuntu2:
     Python 2.4 compatibility patch in bounce handling.
+  * Don't fall apart if the filename of an attachment is an invalid UTF-8
+    string (closes: #327732)
 
- --
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 13 Nov 2005 15:41:15 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
