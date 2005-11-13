@@ -1,0 +1,40 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 71_date_overflows.dpatch by  <lionel@mamane.lu>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: React sensibly on integer overflow in date handling
+
+@DPATCH@
+diff -urNad mailman-2.1.5~/Mailman/Handlers/Scrubber.py mailman-2.1.5/Mailman/Handlers/Scrubber.py
+--- mailman-2.1.5~/Mailman/Handlers/Scrubber.py	2005-11-13 17:14:04.000000000 +0100
++++ mailman-2.1.5/Mailman/Handlers/Scrubber.py	2005-11-13 17:44:31.308551771 +0100
+@@ -113,7 +113,7 @@
+ def safe_strftime(fmt, floatsecs):
+     try:
+         return time.strftime(fmt, floatsecs)
+-    except (TypeError, ValueError):
++    except (OverflowError, TypeError, ValueError):
+         return None
+ 
+ 
+@@ -142,7 +142,7 @@
+                      }.get(parts[3], 0)
+             day = int(parts[4])
+             year = int(parts[6])
+-        except (IndexError, ValueError):
++        except (OverflowError, IndexError, ValueError):
+             # Best we can do I think
+             month = day = year = 0
+         datedir = '%04d%02d%02d' % (year, month, day)
+diff -urNad mailman-2.1.5~/Mailman/Queue/ArchRunner.py mailman-2.1.5/Mailman/Queue/ArchRunner.py
+--- mailman-2.1.5~/Mailman/Queue/ArchRunner.py	2003-12-01 02:50:40.000000000 +0100
++++ mailman-2.1.5/Mailman/Queue/ArchRunner.py	2005-11-13 17:43:38.642854438 +0100
+@@ -49,7 +49,7 @@
+                 elif abs(now - mktime_tz(tup)) > \
+                          mm_cfg.ARCHIVER_ALLOWABLE_SANE_DATE_SKEW:
+                     clobber = 1
+-            except ValueError:
++            except (OverflowError, ValueError):
+                 # The likely cause of this is that the year in the Date: field
+                 # is horribly incorrect, e.g. (from SF bug # 571634):
+                 # Date: Tue, 18 Jun 0102 05:12:09 +0500
