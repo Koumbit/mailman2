@@ -3,7 +3,7 @@ Section: mail
 Priority: optional
 Maintainer: Tollef Fog Heen <tfheen@debian.org>
 Build-Depends: debhelper (>= 4.1.16), autoconf, python-dev, dpatch (>= 2.0.9)
-Standards-Version: 3.6.1
+Standards-Version: 3.6.2
 
 Package: mailman
 Architecture: any
