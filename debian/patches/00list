@@ -34,4 +34,9 @@
 67_update_handle_old_versions
 68_translation_update_nl
 69_python24_bouncehandler_datetime
+70_invalid_utf8_dos.dpatch
+71_date_overflows.dpatch
+72_hyperarch_error_handling.dpatch
+73_list-id_strict_rfc.dpatch
+74_admin_non-ascii_emails.dpatch
 99_js_templates
