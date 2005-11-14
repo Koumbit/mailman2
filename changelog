@@ -9,8 +9,9 @@ mailman (2.1.5-10) UNRELEASED; urgency=high
   * Ensure list-id is always in brackets in headers
   * Admin page: don't assume subscribed emails are pure ASCII
     (closes: #315358)
+  * Bump up Standards-Version to 3.6.2
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 14 Nov 2005 00:53:38 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 14 Nov 2005 23:45:33 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
