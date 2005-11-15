@@ -128,7 +128,7 @@ msgstr "ko (koreanisch)"
 #. Choices
 #: ../templates:5
 msgid "lt"
-msgstr "lt (littauisch)"
+msgstr "lt (litauisch)"
 
 #. Type: multiselect
 #. Choices
@@ -158,7 +158,7 @@ msgstr "pt (portugiesisch)"
 #. Choices
 #: ../templates:5
 msgid "pt_BR"
-msgstr "pt_BR (brasillianisches Portugisisch)"
+msgstr "pt_BR (brasilianisches Portugiesisch)"
 
 #. Type: multiselect
 #. Choices
