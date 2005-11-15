@@ -6,7 +6,7 @@ mailman (2.1.5-10) UNRELEASED; urgency=high
     string (closes: #327732)
   * Don't die on overflow in date handling (closes: #326024)
   * Enable error handling in HyperArch (closes: #310451)
-  * Ensure list-id is always in brackets in headers
+  * Ensure list-id is always in brackets in headers (closes: #244700)
   * Admin page: don't assume subscribed emails are pure ASCII
     (closes: #315358)
   * Bump up Standards-Version to 3.6.2
