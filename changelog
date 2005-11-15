@@ -10,8 +10,9 @@ mailman (2.1.5-10) UNRELEASED; urgency=high
   * Admin page: don't assume subscribed emails are pure ASCII
     (closes: #315358)
   * Bump up Standards-Version to 3.6.2
+  * Add vietnamese translation (closes: #312673)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 14 Nov 2005 23:45:33 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 15 Nov 2005 01:43:56 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
