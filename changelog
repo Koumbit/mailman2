@@ -17,8 +17,9 @@ mailman (2.1.5-10) UNRELEASED; urgency=low
     - Don't touch files of other packages that happen to have
       our file's full path as subpath.
     - Accept any number of spaces between the hash and the filename there.
+  * Work around ucf bug #238730 for postfix-to-mailman.py, too.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 20 Nov 2005 17:06:21 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 20 Nov 2005 17:10:44 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
