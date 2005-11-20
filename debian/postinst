@@ -139,8 +139,10 @@ EOF
     # Install postfix-to-mailman.py as well
     ucf --debconf-ok --three-way ${mm_dist}/postfix-to-mailman.py ${mm_etc}/postfix-to-mailman.py 2>/dev/null
     # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
-    cmp -s ${mm_etc}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py.dpkg-dist \
-      && rm ${mm_etc}/qmail-to-mailman.py.dpkg-dist
+    for file in qmail-to-mailman.py postfix-to-mailman.py; do
+      cmp -s ${mm_etc}/${file} ${mm_etc}/${file}.dpkg-dist \
+        && rm ${mm_etc}/${file}.dpkg-dist
+    done
 
     # Configure Mailman crontab
 
