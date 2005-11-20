@@ -13,8 +13,12 @@ mailman (2.1.5-10) UNRELEASED; urgency=low
   * Add vietnamese translation (closes: #312673)
   * Apply corrections to german translation (closes: #313800)
   * Adapt to the md5sum in dpkg or coreutils automatically (closes: #340036)
+  * More robust parsing of /var/lib/ucf/hashfile:
+    - Don't touch files of other packages that happen to have
+      our file's full path as subpath.
+    - Accept any number of spaces between the hash and the filename there.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 20 Nov 2005 16:43:51 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 20 Nov 2005 17:06:21 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 

@@ -62,7 +62,7 @@ if [ "$1" = "configure" ]; then
         # UGLY HACK: Since ucf doesn't support conditional removal
         #            we access its hashfile directly
         md5sums=$(tempfile --prefix=mm_${lang})
-        grep ${mm_etc}/$lang/ /var/lib/ucf/hashfile >${md5sums} || true
+        grep "^[[:xdigit:]]{32}[[:space:]]\+${mm_etc}/$lang/" /var/lib/ucf/hashfile >${md5sums} || true
         if [ -s ${md5sums} ]; then
           # Language files are under ucf control, check md5sums
           # LEM: The ":\?" is there to accomodate both md5sum from dpkg (in sarge)
@@ -75,7 +75,7 @@ if [ "$1" = "configure" ]; then
             echo -n . >&2
           done
           # For modified files remove corresponding .dpkg-dist
-          for file in $(grep ${mm_etc}/$lang/ /var/lib/ucf/hashfile | cut -d' ' -f3); do
+          for file in $(grep "^[[:xdigit:]]{32}[[:space:]]\+${mm_etc}/$lang/" /var/lib/ucf/hashfile | awk '{ print $2 }'); do
             rm -f ${file}.dpkg-dist
             echo -n . >&2
           done
