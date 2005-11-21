@@ -1,0 +1,362 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## imc-33-fix-private-redirects.dpatch by Pabs <pabs@zip.to>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: en: Fix the private authentication form to point to the right file.
+
+@DPATCH@
+diff -urNad mailman-2.1.5~/Mailman/Cgi/private.py mailman-2.1.5/Mailman/Cgi/private.py
+--- mailman-2.1.5~/Mailman/Cgi/private.py	2005-11-21 16:24:29.519606510 +0100
++++ mailman-2.1.5/Mailman/Cgi/private.py	2005-11-21 16:24:31.015397046 +0100
+@@ -126,7 +126,7 @@
+             path=path[1:]  # Remove leading /'s
+         print Utils.maketext(
+             'private.html',
+-            {'action'  : mlist.GetScriptURL('private', absolute=1),
++            {'action'  : mlist.GetScriptURL('private', absolute=1)+'/'+true_path('/'+'/'.join(parts[1:])),
+              'realname': mlist.real_name,
+              'message' : message,
+              }, mlist=mlist)
+diff -urNad mailman-2.1.5~/templates/ca/private.html mailman-2.1.5/templates/ca/private.html
+--- mailman-2.1.5~/templates/ca/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/ca/private.html	2005-11-21 16:32:14.538576061 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Private Archives Authentication</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/cs/private.html mailman-2.1.5/templates/cs/private.html
+--- mailman-2.1.5~/templates/cs/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/cs/private.html	2005-11-21 16:32:14.545575081 +0100
+@@ -3,7 +3,7 @@
+     <title>Konference %(realname)s - p¯ihl·πenÌ pro p¯Ìstup do priv·tnÌho archivu </title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/da/private.html mailman-2.1.5/templates/da/private.html
+--- mailman-2.1.5~/templates/da/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/da/private.html	2005-11-21 16:32:14.554573822 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Login til Private Arkiver</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/de/private.html mailman-2.1.5/templates/de/private.html
+--- mailman-2.1.5~/templates/de/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/de/private.html	2005-11-21 16:32:14.561572842 +0100
+@@ -3,7 +3,7 @@
+     <title>Authentifizierung f¸r den Zugriff auf die Archive von %(realname)s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/en/private.html mailman-2.1.5/templates/en/private.html
+--- mailman-2.1.5~/templates/en/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/en/private.html	2005-11-21 16:32:14.595568083 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Private Archives Authentication</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/es/private.html mailman-2.1.5/templates/es/private.html
+--- mailman-2.1.5~/templates/es/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/es/private.html	2005-11-21 16:32:14.603566963 +0100
+@@ -3,7 +3,7 @@
+   <title>Autentificaci&oacute;n para los archivos privados de %(realname)s </title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/et/private.html mailman-2.1.5/templates/et/private.html
+--- mailman-2.1.5~/templates/et/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/et/private.html	2005-11-21 16:32:14.610565983 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s privaatarhiiv</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/eu/private.html mailman-2.1.5/templates/eu/private.html
+--- mailman-2.1.5~/templates/eu/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/eu/private.html	2005-11-21 16:32:14.617565003 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Artxibo Pribatuak Egiaztatzea</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/fi/private.html mailman-2.1.5/templates/fi/private.html
+--- mailman-2.1.5~/templates/fi/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/fi/private.html	2005-11-21 16:32:14.624564023 +0100
+@@ -4,7 +4,7 @@
+     <title>%(realname)s Private Archives Authentication</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/fr/private.html mailman-2.1.5/templates/fr/private.html
+--- mailman-2.1.5~/templates/fr/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/fr/private.html	2005-11-21 16:32:14.632562904 +0100
+@@ -4,7 +4,7 @@
+ %(realname)s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/hr/private.html mailman-2.1.5/templates/hr/private.html
+--- mailman-2.1.5~/templates/hr/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/hr/private.html	2005-11-21 16:32:14.639561924 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Privatna Arhiva Autentikacija</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/hu/private.html mailman-2.1.5/templates/hu/private.html
+--- mailman-2.1.5~/templates/hu/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/hu/private.html	2005-11-21 16:32:14.646560944 +0100
+@@ -3,7 +3,7 @@
+  <title>%(realname)s Priv·t archÌvum azonosÌt·s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/it/private.html mailman-2.1.5/templates/it/private.html
+--- mailman-2.1.5~/templates/it/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/it/private.html	2005-11-21 16:32:14.653559964 +0100
+@@ -3,7 +3,7 @@
+ <title>Autenticazione per gli archivi privati di %(realname)s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/ja/private.html mailman-2.1.5/templates/ja/private.html
+--- mailman-2.1.5~/templates/ja/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/ja/private.html	2005-11-21 16:32:14.660558984 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s ∏¬ƒÍ∏¯≥´ ›¬∏ΩÒ∏À «ßæ⁄</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/ko/private.html mailman-2.1.5/templates/ko/private.html
+--- mailman-2.1.5~/templates/ko/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/ko/private.html	2005-11-21 16:32:14.667558005 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s ∫Ò∞¯∞≥ ¿˙¿Âº“ ¿Œ¡ı</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/lt/private.html mailman-2.1.5/templates/lt/private.html
+--- mailman-2.1.5~/templates/lt/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/lt/private.html	2005-11-21 16:32:14.681556045 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s privataus archyvo prisijungimas</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/nl/private.html mailman-2.1.5/templates/nl/private.html
+--- mailman-2.1.5~/templates/nl/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/nl/private.html	2005-11-21 16:32:14.688555065 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Prive Archief beveiligd</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+@@ -31,4 +31,4 @@
+       Verdere pagina's werken alleen met cookies.
+ </FORM>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+diff -urNad mailman-2.1.5~/templates/no/private.html mailman-2.1.5/templates/no/private.html
+--- mailman-2.1.5~/templates/no/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/no/private.html	2005-11-21 16:32:14.694554225 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Innlogging til Private Arkiver</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/pl/private.html mailman-2.1.5/templates/pl/private.html
+--- mailman-2.1.5~/templates/pl/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/pl/private.html	2005-11-21 16:32:14.713551566 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Private Archives Authentication</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/pt/private.html mailman-2.1.5/templates/pt/private.html
+--- mailman-2.1.5~/templates/pt/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/pt/private.html	2005-11-21 16:32:14.727549606 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/pt_BR/private.html mailman-2.1.5/templates/pt_BR/private.html
+--- mailman-2.1.5~/templates/pt_BR/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/pt_BR/private.html	2005-11-21 16:32:14.720550586 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/ro/private.html mailman-2.1.5/templates/ro/private.html
+--- mailman-2.1.5~/templates/ro/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/ro/private.html	2005-11-21 16:32:14.734548626 +0100
+@@ -4,7 +4,7 @@
+     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-2">
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/ru/private.html mailman-2.1.5/templates/ru/private.html
+--- mailman-2.1.5~/templates/ru/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/ru/private.html	2005-11-21 16:32:14.741547646 +0100
+@@ -3,7 +3,7 @@
+     <title>·’‘≈Œ‘…∆…À¡√…— ƒÃ— ƒœ”‘’–¡ À ⁄¡À“Ÿ‘œÕ’ ¡“»…◊’ ”–…”À¡ “¡””ŸÃÀ… %(realname)s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/sl/private.html mailman-2.1.5/templates/sl/private.html
+--- mailman-2.1.5~/templates/sl/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/sl/private.html	2005-11-21 16:32:14.748546667 +0100
+@@ -3,7 +3,7 @@
+     <title>Avtentikacija za zasebne arhive Ëlana %(realname)s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/sr/private.html mailman-2.1.5/templates/sr/private.html
+--- mailman-2.1.5~/templates/sr/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/sr/private.html	2005-11-21 16:32:14.755545687 +0100
+@@ -3,7 +3,7 @@
+     <title>–ü—Ä–∏—ò–∞–≤–∞ –∑–∞ —É–ª–∞–∑ —É –ø—Ä–∏–≤–∞—Ç–Ω—É –∞—Ä—Ö–∏–≤—É –ª–∏—Å—Ç–µ: %(realname)s </title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/sv/private.html mailman-2.1.5/templates/sv/private.html
+--- mailman-2.1.5~/templates/sv/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/sv/private.html	2005-11-21 16:32:14.762544707 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s Inloggning till Privata Arkiv</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/tr/private.html mailman-2.1.5/templates/tr/private.html
+--- mailman-2.1.5~/templates/tr/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/tr/private.html	2005-11-21 16:32:14.769543727 +0100
+@@ -3,7 +3,7 @@
+     <title>%(realname)s ÷zel Ar˛ivleri Giri˛i</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.5~/templates/uk/private.html mailman-2.1.5/templates/uk/private.html
+--- mailman-2.1.5~/templates/uk/private.html	2005-11-21 16:20:32.000000000 +0100
++++ mailman-2.1.5/templates/uk/private.html	2005-11-21 16:32:14.775542887 +0100
+@@ -3,7 +3,7 @@
+     <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –¥–æ—Å—Ç—É–ø—É –¥–æ –∑–∞–∫—Ä–∏—Ç–æ–≥–æ —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(realname)s</title>
+ </head>
+ <body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s/">
++<FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
