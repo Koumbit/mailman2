@@ -1,7 +1,8 @@
 Source: mailman
 Section: mail
 Priority: optional
-Maintainer: Tollef Fog Heen <tfheen@debian.org>
+Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
+Uploaders: Tollef Fog Heen <tfheen@debian.org>, Lionel Elie Mamane <lmamane@debian.org>
 Build-Depends: debhelper (>= 4.1.16), autoconf, python-dev, dpatch (>= 2.0.9)
 Standards-Version: 3.6.2
 
