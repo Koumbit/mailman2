@@ -21,8 +21,9 @@ mailman (2.1.5-10) UNRELEASED; urgency=low
   * Fix traceback on Danish version of options page (closes: #339582)
   * Fix the private authentication form to point to the right file
     (closes: #298842)
+  * Add Swedish debconf template translation (closes: #339890)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 21 Nov 2005 16:15:19 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 21 Nov 2005 16:49:59 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
