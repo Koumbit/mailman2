@@ -39,4 +39,5 @@
 72_hyperarch_error_handling.dpatch
 73_list-id_strict_rfc.dpatch
 74_admin_non-ascii_emails.dpatch
+75_danish_options_traceback.dpatch
 99_js_templates
