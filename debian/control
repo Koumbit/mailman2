@@ -8,7 +8,7 @@ Standards-Version: 3.6.2
 
 Package: mailman
 Architecture: any
-Pre-Depends: debconf (>= 1.4.16)
+Pre-Depends: debconf (>= 1.4.16) | debconf-2.0
 Depends: ${shlibs:Depends}, python (>= 2.2.2.91-1), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache | httpd, ucf (>= 0.28), pwgen
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
 Recommends: base-passwd (>= 1.3.0)
