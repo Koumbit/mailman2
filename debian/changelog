@@ -24,8 +24,13 @@ mailman (2.1.5-10) UNRELEASED; urgency=low
   * Add Swedish debconf template translation (closes: #339890)
   * Depend on any debconf-2.0 implementation instead of debconf
     specifically (closes: #332018)
+  * Copyright file:
+    - New FSF address
+    - List the other maintainers
+  * Depend on adduser, used in preinst
+  * Move away from deprecated user.group syntax in chown
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 22 Nov 2005 22:30:28 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 26 Nov 2005 09:03:13 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
