@@ -20,7 +20,7 @@ if [ "$1" = "install" -o "$1" = "upgrade" ]; then
 		echo "New logs will be generated in /var/log/mailman"
 		mv /var/lib/mailman/logs /var/lib/mailman/logs.old
 		mkdir /var/log/mailman && true
-		chown root.list /var/log/mailman
+		chown root:list /var/log/mailman
 		chmod 2775 /var/log/mailman
 		ln -s /var/log/mailman /var/lib/mailman/logs
 		echo -n "Press RETURN to continue"
