@@ -1,4 +1,4 @@
-mailman (2.1.5-10) UNRELEASED; urgency=low
+mailman (2.1.5-10) unstable; urgency=low
 
   * Merge with 2.1.5-8ubuntu2:
     Python 2.4 compatibility patch in bounce handling.
@@ -30,7 +30,7 @@ mailman (2.1.5-10) UNRELEASED; urgency=low
   * Depend on adduser, used in preinst
   * Move away from deprecated user.group syntax in chown
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 26 Nov 2005 09:03:13 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 26 Nov 2005 09:36:13 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
