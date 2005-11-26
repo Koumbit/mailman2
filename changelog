@@ -29,8 +29,9 @@ mailman (2.1.5-10) unstable; urgency=low
     - List the other maintainers
   * Depend on adduser, used in preinst
   * Move away from deprecated user.group syntax in chown
+  * Ensure package is built with autoconf 2.5x, not autoconf 2.13
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 26 Nov 2005 09:36:13 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 26 Nov 2005 10:03:23 +0100
 
 mailman (2.1.5-9) unstable; urgency=medium
 
