@@ -66,7 +66,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/cs/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/da/admlogin.html trunk/templates/da/admlogin.html
@@ -96,7 +96,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/da/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/de/admlogin.html trunk/templates/de/admlogin.html
@@ -126,7 +126,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/de/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/en/admlogin.html trunk/templates/en/admlogin.html
@@ -168,7 +168,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/en/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/es/admlogin.html trunk/templates/es/admlogin.html
@@ -198,7 +198,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/es/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/et/admlogin.html trunk/templates/et/admlogin.html
@@ -228,7 +228,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/et/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/eu/admlogin.html trunk/templates/eu/admlogin.html
@@ -257,9 +257,9 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/eu/private.html tr
 +<script>function sf(){document.f.username.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(action)s/">
+-<FORM METHOD=POST ACTION="%(action)s">
 +<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(action)s/" name="f">
++<FORM METHOD=POST ACTION="%(action)s" name="f">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
@@ -290,7 +290,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/fi/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/fr/admlogin.html trunk/templates/fr/admlogin.html
@@ -320,7 +320,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/fr/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/gb/admlogin.html trunk/templates/gb/admlogin.html
@@ -366,7 +366,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/hu/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/hu/#private.html.rej# trunk/templates/hu/#private.html.rej#
@@ -411,7 +411,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/it/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/ja/admlogin.html trunk/templates/ja/admlogin.html
@@ -441,7 +441,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/ja/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/ko/admlogin.html trunk/templates/ko/admlogin.html
@@ -471,7 +471,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/ko/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/lt/admlogin.html trunk/templates/lt/admlogin.html
@@ -501,7 +501,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/lt/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/nl/admlogin.html trunk/templates/nl/admlogin.html
@@ -531,7 +531,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/nl/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/no/admlogin.html trunk/templates/no/admlogin.html
@@ -561,7 +561,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/no/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/pl/admlogin.html trunk/templates/pl/admlogin.html
@@ -591,7 +591,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/pl/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/pt/admlogin.html trunk/templates/pt/admlogin.html
@@ -621,7 +621,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/pt/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/pt_BR/admlogin.html trunk/templates/pt_BR/admlogin.html
@@ -651,7 +651,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/pt_BR/private.html
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/ru/admlogin.html trunk/templates/ru/admlogin.html
@@ -681,7 +681,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/ru/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/sr/admlogin.html trunk/templates/sr/admlogin.html
@@ -713,7 +713,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/sr/private.html tr
 +<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script>function sf(){document.f.adminpw.focus();}</script>
 +</head>
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/sv/admlogin.html trunk/templates/sv/admlogin.html
@@ -743,7 +743,7 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/sv/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/uk/admlogin.html trunk/templates/uk/admlogin.html
@@ -773,6 +773,6 @@ diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/uk/private.html tr
  </head>
 -<body bgcolor="#ffffff">
 +<body bgcolor="#ffffff" onLoad="sf()">
- <FORM METHOD=POST ACTION="%(action)s/">
+ <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
