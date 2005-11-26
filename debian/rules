@@ -32,7 +32,11 @@ debian/po/templates.pot: debian/templates
 	@debconf-updatepo
 
 Makefile:
-	autoconf
+	if [ -x /usr/bin/autoconf2.50 ]; then \
+	  autoconf2.50; \
+	else \
+	  autoconf; \
+	fi
 	./configure --prefix=/var/lib/$(package) --with-username=list \
 		--with-groupname=list \
 		--with-mail-gid=daemon --with-cgi-gid=www-data \
