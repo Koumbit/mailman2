@@ -56,3 +56,13 @@ _Description: Old queue files present
  (by way of mailmanctl start, then stopping it and redoing the upgrade
  when it is finished) or remove those files.  Note that removing the
  files will lose some emails sent to lists.
+
+Template: mailman/update_aliases
+Type: note
+_Description: Administrator must update aliases
+ The aliases you need for mailman in your MTA's configuration have
+ changed. Please run /var/lib/mailman/bin/genaliases to see the new
+ aliases you need.
+ .
+ Until you do that, some features will stop working and mails will go
+ out with an invalid Return-Path.

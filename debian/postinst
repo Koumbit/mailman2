@@ -27,6 +27,23 @@ if [ "$1" = "configure" ]; then
     mm_etc=/etc/mailman
     mm_dist=/usr/share/mailman
 
+    if [ "$2" != "" ] && dpkg --compare-versions "$2" lt "2.1"; then
+	# We need to update the aliases
+	mm_MTA=`grep ^MTA "/etc/mailman/mm_cfg.py" | sed "s/^MTA[[:space:]]*=[[:space:]]*'\\?\\(None\|Manual\|Postfix\\).*/\1/"`
+	case $mm_MTA in
+	    Postfix)
+		/var/lib/mailman/genaliases
+		;;
+	    None)
+	        # nothing to do
+		;;
+	    Manual)
+		db_input critical mailman/update_aliases || true
+		db_go
+		;;
+	esac
+    fi
+
     # Install only languages selected by the administrator
     # forcing used languages to be always available.
     db_get mailman/site_languages

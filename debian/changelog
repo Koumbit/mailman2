@@ -1,3 +1,9 @@
+mailman (2.1.5-11) UNRELEASED; urgency=low
+
+  * Run genaliases (or direct admin to do it) on upgrade from 2.0 (closes: #340503)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Thu,  8 Dec 2005 21:05:03 +0100
+
 mailman (2.1.5-10) unstable; urgency=low
 
   * Merge with 2.1.5-8ubuntu2:
