@@ -29,6 +29,7 @@
 63_update_default_server_language
 64_correct_html_nesting
 65_donot_add_empty_cc
+65_handle_templates_directories
 66_donot_let_cache_html_pages
 67_update_handle_old_versions
 68_translation_update_nl
