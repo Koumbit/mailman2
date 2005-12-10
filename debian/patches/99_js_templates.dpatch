@@ -22,26 +22,9 @@ esac
 
 exit 0
 @DPATCH@
-diff -urNad mailman-2.1.5~/templates/big5/admlogin.html mailman-2.1.5/templates/big5/admlogin.html
---- mailman-2.1.5~/templates/big5/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/big5/admlogin.html	2005-11-26 09:22:31.573793099 +0100
-@@ -1,9 +1,11 @@
- <html>
- <head>
-   <title>%(listname)s �׾� �¥D����</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
-diff -urNad mailman-2.1.5~/templates/cs/admlogin.html mailman-2.1.5/templates/cs/admlogin.html
---- mailman-2.1.5~/templates/cs/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/cs/admlogin.html	2005-11-26 09:22:31.573793099 +0100
+diff -urNad mailman-2.1.6~/templates/cs/admlogin.html mailman-2.1.6/templates/cs/admlogin.html
+--- mailman-2.1.6~/templates/cs/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/cs/admlogin.html	2005-12-10 12:59:39.496717322 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -55,9 +38,9 @@ diff -urNad mailman-2.1.5~/templates/cs/admlogin.html mailman-2.1.5/templates/cs
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/cs/private.html mailman-2.1.5/templates/cs/private.html
---- mailman-2.1.5~/templates/cs/private.html	2005-11-26 09:22:30.349964865 +0100
-+++ mailman-2.1.5/templates/cs/private.html	2005-11-26 09:22:31.573793099 +0100
+diff -urNad mailman-2.1.6~/templates/cs/private.html mailman-2.1.6/templates/cs/private.html
+--- mailman-2.1.6~/templates/cs/private.html	2005-12-10 12:59:38.411869611 +0100
++++ mailman-2.1.6/templates/cs/private.html	2005-12-10 12:59:39.496717322 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -69,13 +52,13 @@ diff -urNad mailman-2.1.5~/templates/cs/private.html mailman-2.1.5/templates/cs/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/da/admlogin.html mailman-2.1.5/templates/da/admlogin.html
---- mailman-2.1.5~/templates/da/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/da/admlogin.html	2005-11-26 09:22:31.586791274 +0100
+diff -urNad mailman-2.1.6~/templates/da/admlogin.html mailman-2.1.6/templates/da/admlogin.html
+--- mailman-2.1.6~/templates/da/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/da/admlogin.html	2005-12-10 12:59:39.496717322 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
-   <title>%(listname)s %(who)s Loggin</title>
+   <title>%(listname)s %(who)s Login</title>
 +<script>function sf(){document.f.adminpw.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
@@ -85,9 +68,9 @@ diff -urNad mailman-2.1.5~/templates/da/admlogin.html mailman-2.1.5/templates/da
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/da/private.html mailman-2.1.5/templates/da/private.html
---- mailman-2.1.5~/templates/da/private.html	2005-11-26 09:22:30.349964865 +0100
-+++ mailman-2.1.5/templates/da/private.html	2005-11-26 09:22:31.586791274 +0100
+diff -urNad mailman-2.1.6~/templates/da/private.html mailman-2.1.6/templates/da/private.html
+--- mailman-2.1.6~/templates/da/private.html	2005-12-10 12:59:38.411869611 +0100
++++ mailman-2.1.6/templates/da/private.html	2005-12-10 12:59:39.497717182 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -99,9 +82,9 @@ diff -urNad mailman-2.1.5~/templates/da/private.html mailman-2.1.5/templates/da/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/de/admlogin.html mailman-2.1.5/templates/de/admlogin.html
---- mailman-2.1.5~/templates/de/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/de/admlogin.html	2005-11-26 09:22:31.586791274 +0100
+diff -urNad mailman-2.1.6~/templates/de/admlogin.html mailman-2.1.6/templates/de/admlogin.html
+--- mailman-2.1.6~/templates/de/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/de/admlogin.html	2005-12-10 12:59:39.497717182 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -115,9 +98,9 @@ diff -urNad mailman-2.1.5~/templates/de/admlogin.html mailman-2.1.5/templates/de
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/de/private.html mailman-2.1.5/templates/de/private.html
---- mailman-2.1.5~/templates/de/private.html	2005-11-26 09:22:30.350964724 +0100
-+++ mailman-2.1.5/templates/de/private.html	2005-11-26 09:22:31.587791134 +0100
+diff -urNad mailman-2.1.6~/templates/de/private.html mailman-2.1.6/templates/de/private.html
+--- mailman-2.1.6~/templates/de/private.html	2005-12-10 12:59:38.415869049 +0100
++++ mailman-2.1.6/templates/de/private.html	2005-12-10 12:59:39.498717042 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -129,9 +112,9 @@ diff -urNad mailman-2.1.5~/templates/de/private.html mailman-2.1.5/templates/de/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/en/admlogin.html mailman-2.1.5/templates/en/admlogin.html
---- mailman-2.1.5~/templates/en/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/en/admlogin.html	2005-11-26 09:22:31.587791134 +0100
+diff -urNad mailman-2.1.6~/templates/en/admlogin.html mailman-2.1.6/templates/en/admlogin.html
+--- mailman-2.1.6~/templates/en/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/en/admlogin.html	2005-12-10 12:59:39.498717042 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -145,9 +128,9 @@ diff -urNad mailman-2.1.5~/templates/en/admlogin.html mailman-2.1.5/templates/en
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/en/listinfo.html mailman-2.1.5/templates/en/listinfo.html
---- mailman-2.1.5~/templates/en/listinfo.html	2005-11-26 09:22:29.997014402 +0100
-+++ mailman-2.1.5/templates/en/listinfo.html	2005-11-26 09:22:31.587791134 +0100
+diff -urNad mailman-2.1.6~/templates/en/listinfo.html mailman-2.1.6/templates/en/listinfo.html
+--- mailman-2.1.6~/templates/en/listinfo.html	2005-12-10 12:59:38.121910315 +0100
++++ mailman-2.1.6/templates/en/listinfo.html	2005-12-10 12:59:39.498717042 +0100
 @@ -4,7 +4,7 @@
      <TITLE><MM-List-Name> Info Page</TITLE>
    
@@ -157,9 +140,9 @@ diff -urNad mailman-2.1.5~/templates/en/listinfo.html mailman-2.1.5/templates/en
  
      <P>
        <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/en/private.html mailman-2.1.5/templates/en/private.html
---- mailman-2.1.5~/templates/en/private.html	2005-11-26 09:22:30.350964724 +0100
-+++ mailman-2.1.5/templates/en/private.html	2005-11-26 09:22:31.587791134 +0100
+diff -urNad mailman-2.1.6~/templates/en/private.html mailman-2.1.6/templates/en/private.html
+--- mailman-2.1.6~/templates/en/private.html	2005-12-10 12:59:38.416868909 +0100
++++ mailman-2.1.6/templates/en/private.html	2005-12-10 12:59:39.499716901 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -171,9 +154,9 @@ diff -urNad mailman-2.1.5~/templates/en/private.html mailman-2.1.5/templates/en/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/es/admlogin.html mailman-2.1.5/templates/es/admlogin.html
---- mailman-2.1.5~/templates/es/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/es/admlogin.html	2005-11-26 09:22:31.588790994 +0100
+diff -urNad mailman-2.1.6~/templates/es/admlogin.html mailman-2.1.6/templates/es/admlogin.html
+--- mailman-2.1.6~/templates/es/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/es/admlogin.html	2005-12-10 12:59:39.499716901 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -187,9 +170,9 @@ diff -urNad mailman-2.1.5~/templates/es/admlogin.html mailman-2.1.5/templates/es
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/es/private.html mailman-2.1.5/templates/es/private.html
---- mailman-2.1.5~/templates/es/private.html	2005-11-26 09:22:30.350964724 +0100
-+++ mailman-2.1.5/templates/es/private.html	2005-11-26 09:22:31.588790994 +0100
+diff -urNad mailman-2.1.6~/templates/es/private.html mailman-2.1.6/templates/es/private.html
+--- mailman-2.1.6~/templates/es/private.html	2005-12-10 12:59:38.416868909 +0100
++++ mailman-2.1.6/templates/es/private.html	2005-12-10 12:59:39.499716901 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -201,9 +184,9 @@ diff -urNad mailman-2.1.5~/templates/es/private.html mailman-2.1.5/templates/es/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/et/admlogin.html mailman-2.1.5/templates/et/admlogin.html
---- mailman-2.1.5~/templates/et/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/et/admlogin.html	2005-11-26 09:22:31.588790994 +0100
+diff -urNad mailman-2.1.6~/templates/et/admlogin.html mailman-2.1.6/templates/et/admlogin.html
+--- mailman-2.1.6~/templates/et/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/et/admlogin.html	2005-12-10 12:59:39.499716901 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -217,9 +200,9 @@ diff -urNad mailman-2.1.5~/templates/et/admlogin.html mailman-2.1.5/templates/et
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/et/private.html mailman-2.1.5/templates/et/private.html
---- mailman-2.1.5~/templates/et/private.html	2005-11-26 09:22:30.350964724 +0100
-+++ mailman-2.1.5/templates/et/private.html	2005-11-26 09:22:31.589790853 +0100
+diff -urNad mailman-2.1.6~/templates/et/private.html mailman-2.1.6/templates/et/private.html
+--- mailman-2.1.6~/templates/et/private.html	2005-12-10 12:59:38.416868909 +0100
++++ mailman-2.1.6/templates/et/private.html	2005-12-10 12:59:39.500716761 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -231,9 +214,9 @@ diff -urNad mailman-2.1.5~/templates/et/private.html mailman-2.1.5/templates/et/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/eu/admlogin.html mailman-2.1.5/templates/eu/admlogin.html
---- mailman-2.1.5~/templates/eu/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/eu/admlogin.html	2005-11-26 09:22:31.589790853 +0100
+diff -urNad mailman-2.1.6~/templates/eu/admlogin.html mailman-2.1.6/templates/eu/admlogin.html
+--- mailman-2.1.6~/templates/eu/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/eu/admlogin.html	2005-12-10 12:59:39.500716761 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -247,9 +230,9 @@ diff -urNad mailman-2.1.5~/templates/eu/admlogin.html mailman-2.1.5/templates/eu
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/eu/private.html mailman-2.1.5/templates/eu/private.html
---- mailman-2.1.5~/templates/eu/private.html	2005-11-26 09:22:30.351964584 +0100
-+++ mailman-2.1.5/templates/eu/private.html	2005-11-26 09:22:31.589790853 +0100
+diff -urNad mailman-2.1.6~/templates/eu/private.html mailman-2.1.6/templates/eu/private.html
+--- mailman-2.1.6~/templates/eu/private.html	2005-12-10 12:59:38.417868769 +0100
++++ mailman-2.1.6/templates/eu/private.html	2005-12-10 12:59:39.500716761 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -263,9 +246,9 @@ diff -urNad mailman-2.1.5~/templates/eu/private.html mailman-2.1.5/templates/eu/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/fi/admlogin.html mailman-2.1.5/templates/fi/admlogin.html
---- mailman-2.1.5~/templates/fi/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/fi/admlogin.html	2005-11-26 09:22:31.589790853 +0100
+diff -urNad mailman-2.1.6~/templates/fi/admlogin.html mailman-2.1.6/templates/fi/admlogin.html
+--- mailman-2.1.6~/templates/fi/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/fi/admlogin.html	2005-12-10 12:59:39.501716621 +0100
 @@ -2,9 +2,10 @@
  <html>
  <head>
@@ -279,9 +262,9 @@ diff -urNad mailman-2.1.5~/templates/fi/admlogin.html mailman-2.1.5/templates/fi
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/fi/private.html mailman-2.1.5/templates/fi/private.html
---- mailman-2.1.5~/templates/fi/private.html	2005-11-26 09:22:30.351964584 +0100
-+++ mailman-2.1.5/templates/fi/private.html	2005-11-26 09:22:31.590790713 +0100
+diff -urNad mailman-2.1.6~/templates/fi/private.html mailman-2.1.6/templates/fi/private.html
+--- mailman-2.1.6~/templates/fi/private.html	2005-12-10 12:59:38.417868769 +0100
++++ mailman-2.1.6/templates/fi/private.html	2005-12-10 12:59:39.501716621 +0100
 @@ -2,8 +2,9 @@
  <html>
  <head>
@@ -293,9 +276,9 @@ diff -urNad mailman-2.1.5~/templates/fi/private.html mailman-2.1.5/templates/fi/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/fr/admlogin.html mailman-2.1.5/templates/fr/admlogin.html
---- mailman-2.1.5~/templates/fr/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/fr/admlogin.html	2005-11-26 09:22:31.590790713 +0100
+diff -urNad mailman-2.1.6~/templates/fr/admlogin.html mailman-2.1.6/templates/fr/admlogin.html
+--- mailman-2.1.6~/templates/fr/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/fr/admlogin.html	2005-12-10 12:59:39.501716621 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -309,9 +292,9 @@ diff -urNad mailman-2.1.5~/templates/fr/admlogin.html mailman-2.1.5/templates/fr
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/fr/private.html mailman-2.1.5/templates/fr/private.html
---- mailman-2.1.5~/templates/fr/private.html	2005-11-26 09:22:30.351964584 +0100
-+++ mailman-2.1.5/templates/fr/private.html	2005-11-26 09:22:31.590790713 +0100
+diff -urNad mailman-2.1.6~/templates/fr/private.html mailman-2.1.6/templates/fr/private.html
+--- mailman-2.1.6~/templates/fr/private.html	2005-12-10 12:59:38.417868769 +0100
++++ mailman-2.1.6/templates/fr/private.html	2005-12-10 12:59:39.501716621 +0100
 @@ -2,8 +2,9 @@
  <head>
      <title>Authentifi:cation pour l'acc&egrave;s aux archives priv&eacute;es de
@@ -323,25 +306,9 @@ diff -urNad mailman-2.1.5~/templates/fr/private.html mailman-2.1.5/templates/fr/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/gb/admlogin.html mailman-2.1.5/templates/gb/admlogin.html
---- mailman-2.1.5~/templates/gb/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/gb/admlogin.html	2005-11-26 09:22:31.590790713 +0100
-@@ -1,9 +1,10 @@
- <html>
- <head>
-   <title>%(listname)s �б� ����Ա��֤</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
- </head>
--<body bgcolor="#ffffff">
--<FORM METHOD=POST ACTION="%(path)s">
-+<body bgcolor="#ffffff" onLoad="sf()">
-+<FORM METHOD=POST ACTION="%(path)s" name="f">
- %(message)s
-   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-     <TR>
-diff -urNad mailman-2.1.5~/templates/hu/admlogin.html mailman-2.1.5/templates/hu/admlogin.html
---- mailman-2.1.5~/templates/hu/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/hu/admlogin.html	2005-11-26 09:22:31.591790573 +0100
+diff -urNad mailman-2.1.6~/templates/hu/admlogin.html mailman-2.1.6/templates/hu/admlogin.html
+--- mailman-2.1.6~/templates/hu/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/hu/admlogin.html	2005-12-10 12:59:39.502716480 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -355,9 +322,9 @@ diff -urNad mailman-2.1.5~/templates/hu/admlogin.html mailman-2.1.5/templates/hu
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/hu/private.html mailman-2.1.5/templates/hu/private.html
---- mailman-2.1.5~/templates/hu/private.html	2005-11-26 09:22:30.352964444 +0100
-+++ mailman-2.1.5/templates/hu/private.html	2005-11-26 09:22:31.591790573 +0100
+diff -urNad mailman-2.1.6~/templates/hu/private.html mailman-2.1.6/templates/hu/private.html
+--- mailman-2.1.6~/templates/hu/private.html	2005-12-10 12:59:38.418868628 +0100
++++ mailman-2.1.6/templates/hu/private.html	2005-12-10 12:59:39.502716480 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -369,9 +336,9 @@ diff -urNad mailman-2.1.5~/templates/hu/private.html mailman-2.1.5/templates/hu/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/it/admlogin.html mailman-2.1.5/templates/it/admlogin.html
---- mailman-2.1.5~/templates/it/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/it/admlogin.html	2005-11-26 09:22:31.591790573 +0100
+diff -urNad mailman-2.1.6~/templates/it/admlogin.html mailman-2.1.6/templates/it/admlogin.html
+--- mailman-2.1.6~/templates/it/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/it/admlogin.html	2005-12-10 12:59:39.502716480 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -385,9 +352,9 @@ diff -urNad mailman-2.1.5~/templates/it/admlogin.html mailman-2.1.5/templates/it
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/it/private.html mailman-2.1.5/templates/it/private.html
---- mailman-2.1.5~/templates/it/private.html	2005-11-26 09:22:30.352964444 +0100
-+++ mailman-2.1.5/templates/it/private.html	2005-11-26 09:22:31.592790432 +0100
+diff -urNad mailman-2.1.6~/templates/it/private.html mailman-2.1.6/templates/it/private.html
+--- mailman-2.1.6~/templates/it/private.html	2005-12-10 12:59:38.418868628 +0100
++++ mailman-2.1.6/templates/it/private.html	2005-12-10 12:59:39.502716480 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -399,9 +366,9 @@ diff -urNad mailman-2.1.5~/templates/it/private.html mailman-2.1.5/templates/it/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/ja/admlogin.html mailman-2.1.5/templates/ja/admlogin.html
---- mailman-2.1.5~/templates/ja/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/ja/admlogin.html	2005-11-26 09:22:31.592790432 +0100
+diff -urNad mailman-2.1.6~/templates/ja/admlogin.html mailman-2.1.6/templates/ja/admlogin.html
+--- mailman-2.1.6~/templates/ja/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/ja/admlogin.html	2005-12-10 12:59:39.503716340 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -415,9 +382,9 @@ diff -urNad mailman-2.1.5~/templates/ja/admlogin.html mailman-2.1.5/templates/ja
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ja/private.html mailman-2.1.5/templates/ja/private.html
---- mailman-2.1.5~/templates/ja/private.html	2005-11-26 09:22:30.352964444 +0100
-+++ mailman-2.1.5/templates/ja/private.html	2005-11-26 09:22:31.592790432 +0100
+diff -urNad mailman-2.1.6~/templates/ja/private.html mailman-2.1.6/templates/ja/private.html
+--- mailman-2.1.6~/templates/ja/private.html	2005-12-10 12:59:38.418868628 +0100
++++ mailman-2.1.6/templates/ja/private.html	2005-12-10 12:59:39.503716340 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -429,9 +396,9 @@ diff -urNad mailman-2.1.5~/templates/ja/private.html mailman-2.1.5/templates/ja/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/ko/admlogin.html mailman-2.1.5/templates/ko/admlogin.html
---- mailman-2.1.5~/templates/ko/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/ko/admlogin.html	2005-11-26 09:22:31.592790432 +0100
+diff -urNad mailman-2.1.6~/templates/ko/admlogin.html mailman-2.1.6/templates/ko/admlogin.html
+--- mailman-2.1.6~/templates/ko/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/ko/admlogin.html	2005-12-10 12:59:39.503716340 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -445,9 +412,9 @@ diff -urNad mailman-2.1.5~/templates/ko/admlogin.html mailman-2.1.5/templates/ko
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ko/private.html mailman-2.1.5/templates/ko/private.html
---- mailman-2.1.5~/templates/ko/private.html	2005-11-26 09:22:30.352964444 +0100
-+++ mailman-2.1.5/templates/ko/private.html	2005-11-26 09:22:31.626785661 +0100
+diff -urNad mailman-2.1.6~/templates/ko/private.html mailman-2.1.6/templates/ko/private.html
+--- mailman-2.1.6~/templates/ko/private.html	2005-12-10 12:59:38.419868488 +0100
++++ mailman-2.1.6/templates/ko/private.html	2005-12-10 12:59:39.504716199 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -459,9 +426,9 @@ diff -urNad mailman-2.1.5~/templates/ko/private.html mailman-2.1.5/templates/ko/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/lt/admlogin.html mailman-2.1.5/templates/lt/admlogin.html
---- mailman-2.1.5~/templates/lt/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/lt/admlogin.html	2005-11-26 09:22:31.626785661 +0100
+diff -urNad mailman-2.1.6~/templates/lt/admlogin.html mailman-2.1.6/templates/lt/admlogin.html
+--- mailman-2.1.6~/templates/lt/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/lt/admlogin.html	2005-12-10 12:59:39.504716199 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -475,9 +442,9 @@ diff -urNad mailman-2.1.5~/templates/lt/admlogin.html mailman-2.1.5/templates/lt
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/lt/private.html mailman-2.1.5/templates/lt/private.html
---- mailman-2.1.5~/templates/lt/private.html	2005-11-26 09:22:30.353964303 +0100
-+++ mailman-2.1.5/templates/lt/private.html	2005-11-26 09:22:31.627785521 +0100
+diff -urNad mailman-2.1.6~/templates/lt/private.html mailman-2.1.6/templates/lt/private.html
+--- mailman-2.1.6~/templates/lt/private.html	2005-12-10 12:59:38.419868488 +0100
++++ mailman-2.1.6/templates/lt/private.html	2005-12-10 12:59:39.504716199 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -489,9 +456,9 @@ diff -urNad mailman-2.1.5~/templates/lt/private.html mailman-2.1.5/templates/lt/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/nl/admlogin.html mailman-2.1.5/templates/nl/admlogin.html
---- mailman-2.1.5~/templates/nl/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/nl/admlogin.html	2005-11-26 09:22:31.627785521 +0100
+diff -urNad mailman-2.1.6~/templates/nl/admlogin.html mailman-2.1.6/templates/nl/admlogin.html
+--- mailman-2.1.6~/templates/nl/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/nl/admlogin.html	2005-12-10 12:59:39.505716059 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -505,9 +472,9 @@ diff -urNad mailman-2.1.5~/templates/nl/admlogin.html mailman-2.1.5/templates/nl
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/nl/private.html mailman-2.1.5/templates/nl/private.html
---- mailman-2.1.5~/templates/nl/private.html	2005-11-26 09:22:30.353964303 +0100
-+++ mailman-2.1.5/templates/nl/private.html	2005-11-26 09:22:31.627785521 +0100
+diff -urNad mailman-2.1.6~/templates/nl/private.html mailman-2.1.6/templates/nl/private.html
+--- mailman-2.1.6~/templates/nl/private.html	2005-12-10 12:59:38.419868488 +0100
++++ mailman-2.1.6/templates/nl/private.html	2005-12-10 12:59:39.505716059 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -519,9 +486,9 @@ diff -urNad mailman-2.1.5~/templates/nl/private.html mailman-2.1.5/templates/nl/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/no/admlogin.html mailman-2.1.5/templates/no/admlogin.html
---- mailman-2.1.5~/templates/no/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/no/admlogin.html	2005-11-26 09:22:31.628785380 +0100
+diff -urNad mailman-2.1.6~/templates/no/admlogin.html mailman-2.1.6/templates/no/admlogin.html
+--- mailman-2.1.6~/templates/no/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/no/admlogin.html	2005-12-10 12:59:39.505716059 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -535,9 +502,9 @@ diff -urNad mailman-2.1.5~/templates/no/admlogin.html mailman-2.1.5/templates/no
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/no/private.html mailman-2.1.5/templates/no/private.html
---- mailman-2.1.5~/templates/no/private.html	2005-11-26 09:22:30.353964303 +0100
-+++ mailman-2.1.5/templates/no/private.html	2005-11-26 09:22:31.628785380 +0100
+diff -urNad mailman-2.1.6~/templates/no/private.html mailman-2.1.6/templates/no/private.html
+--- mailman-2.1.6~/templates/no/private.html	2005-12-10 12:59:38.419868488 +0100
++++ mailman-2.1.6/templates/no/private.html	2005-12-10 12:59:39.550709743 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -549,12 +516,12 @@ diff -urNad mailman-2.1.5~/templates/no/private.html mailman-2.1.5/templates/no/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/pl/admlogin.html mailman-2.1.5/templates/pl/admlogin.html
---- mailman-2.1.5~/templates/pl/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/pl/admlogin.html	2005-11-26 09:22:31.628785380 +0100
+diff -urNad mailman-2.1.6~/templates/pl/admlogin.html mailman-2.1.6/templates/pl/admlogin.html
+--- mailman-2.1.6~/templates/pl/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/pl/admlogin.html	2005-12-10 12:59:39.550709743 +0100
 @@ -2,9 +2,10 @@
  <head>
-   <title>Autoryzacja %(who)s %(listname)s</title>
+   <title>Uwierzytelnienie %(who)s %(listname)s</title>
  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
 +<script>function sf(){document.f.adminpw.focus();}</script>
  </head>
@@ -565,9 +532,9 @@ diff -urNad mailman-2.1.5~/templates/pl/admlogin.html mailman-2.1.5/templates/pl
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/pl/private.html mailman-2.1.5/templates/pl/private.html
---- mailman-2.1.5~/templates/pl/private.html	2005-11-26 09:22:30.353964303 +0100
-+++ mailman-2.1.5/templates/pl/private.html	2005-11-26 09:22:31.628785380 +0100
+diff -urNad mailman-2.1.6~/templates/pl/private.html mailman-2.1.6/templates/pl/private.html
+--- mailman-2.1.6~/templates/pl/private.html	2005-12-10 12:59:38.420868348 +0100
++++ mailman-2.1.6/templates/pl/private.html	2005-12-10 12:59:39.550709743 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -579,9 +546,9 @@ diff -urNad mailman-2.1.5~/templates/pl/private.html mailman-2.1.5/templates/pl/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/pt/admlogin.html mailman-2.1.5/templates/pt/admlogin.html
---- mailman-2.1.5~/templates/pt/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/pt/admlogin.html	2005-11-26 09:22:31.629785240 +0100
+diff -urNad mailman-2.1.6~/templates/pt/admlogin.html mailman-2.1.6/templates/pt/admlogin.html
+--- mailman-2.1.6~/templates/pt/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/pt/admlogin.html	2005-12-10 12:59:39.551709603 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -595,9 +562,9 @@ diff -urNad mailman-2.1.5~/templates/pt/admlogin.html mailman-2.1.5/templates/pt
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/pt/private.html mailman-2.1.5/templates/pt/private.html
---- mailman-2.1.5~/templates/pt/private.html	2005-11-26 09:22:30.354964163 +0100
-+++ mailman-2.1.5/templates/pt/private.html	2005-11-26 09:22:31.629785240 +0100
+diff -urNad mailman-2.1.6~/templates/pt/private.html mailman-2.1.6/templates/pt/private.html
+--- mailman-2.1.6~/templates/pt/private.html	2005-12-10 12:59:38.420868348 +0100
++++ mailman-2.1.6/templates/pt/private.html	2005-12-10 12:59:39.551709603 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -609,13 +576,13 @@ diff -urNad mailman-2.1.5~/templates/pt/private.html mailman-2.1.5/templates/pt/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/pt_BR/admlogin.html mailman-2.1.5/templates/pt_BR/admlogin.html
---- mailman-2.1.5~/templates/pt_BR/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/pt_BR/admlogin.html	2005-11-26 09:22:31.629785240 +0100
+diff -urNad mailman-2.1.6~/templates/pt_BR/admlogin.html mailman-2.1.6/templates/pt_BR/admlogin.html
+--- mailman-2.1.6~/templates/pt_BR/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/pt_BR/admlogin.html	2005-12-10 12:59:39.551709603 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
-   <title>Autentica��o %(listname)s %(who)s</title>
+   <title>Autentica��o de %(who)s na lista %(listname)s</title>
 +<script>function sf(){document.f.adminpw.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
@@ -625,13 +592,13 @@ diff -urNad mailman-2.1.5~/templates/pt_BR/admlogin.html mailman-2.1.5/templates
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/pt_BR/private.html mailman-2.1.5/templates/pt_BR/private.html
---- mailman-2.1.5~/templates/pt_BR/private.html	2005-11-26 09:22:30.354964163 +0100
-+++ mailman-2.1.5/templates/pt_BR/private.html	2005-11-26 09:22:31.630785100 +0100
+diff -urNad mailman-2.1.6~/templates/pt_BR/private.html mailman-2.1.6/templates/pt_BR/private.html
+--- mailman-2.1.6~/templates/pt_BR/private.html	2005-12-10 12:59:38.420868348 +0100
++++ mailman-2.1.6/templates/pt_BR/private.html	2005-12-10 12:59:39.551709603 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
-     <title>%(realname)s Autentica��o de Arquivos Privados</title>
+     <title>Autentica��o para acesso aos arquivos privados da %(realname)s</title>
 +<script>function sf(){document.f.adminpw.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
@@ -639,9 +606,9 @@ diff -urNad mailman-2.1.5~/templates/pt_BR/private.html mailman-2.1.5/templates/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/ru/admlogin.html mailman-2.1.5/templates/ru/admlogin.html
---- mailman-2.1.5~/templates/ru/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/ru/admlogin.html	2005-11-26 09:22:31.630785100 +0100
+diff -urNad mailman-2.1.6~/templates/ru/admlogin.html mailman-2.1.6/templates/ru/admlogin.html
+--- mailman-2.1.6~/templates/ru/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/ru/admlogin.html	2005-12-10 12:59:39.552709462 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -655,9 +622,9 @@ diff -urNad mailman-2.1.5~/templates/ru/admlogin.html mailman-2.1.5/templates/ru
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ru/private.html mailman-2.1.5/templates/ru/private.html
---- mailman-2.1.5~/templates/ru/private.html	2005-11-26 09:22:30.354964163 +0100
-+++ mailman-2.1.5/templates/ru/private.html	2005-11-26 09:22:31.634784538 +0100
+diff -urNad mailman-2.1.6~/templates/ru/private.html mailman-2.1.6/templates/ru/private.html
+--- mailman-2.1.6~/templates/ru/private.html	2005-12-10 12:59:38.421868207 +0100
++++ mailman-2.1.6/templates/ru/private.html	2005-12-10 12:59:39.552709462 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -669,9 +636,9 @@ diff -urNad mailman-2.1.5~/templates/ru/private.html mailman-2.1.5/templates/ru/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/sr/admlogin.html mailman-2.1.5/templates/sr/admlogin.html
---- mailman-2.1.5~/templates/sr/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/sr/admlogin.html	2005-11-26 09:22:31.634784538 +0100
+diff -urNad mailman-2.1.6~/templates/sr/admlogin.html mailman-2.1.6/templates/sr/admlogin.html
+--- mailman-2.1.6~/templates/sr/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/sr/admlogin.html	2005-12-10 12:59:39.552709462 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -686,9 +653,9 @@ diff -urNad mailman-2.1.5~/templates/sr/admlogin.html mailman-2.1.5/templates/sr
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/sr/private.html mailman-2.1.5/templates/sr/private.html
---- mailman-2.1.5~/templates/sr/private.html	2005-11-26 09:22:30.355964023 +0100
-+++ mailman-2.1.5/templates/sr/private.html	2005-11-26 09:22:31.634784538 +0100
+diff -urNad mailman-2.1.6~/templates/sr/private.html mailman-2.1.6/templates/sr/private.html
+--- mailman-2.1.6~/templates/sr/private.html	2005-12-10 12:59:38.421868207 +0100
++++ mailman-2.1.6/templates/sr/private.html	2005-12-10 12:59:39.553709322 +0100
 @@ -1,8 +1,9 @@
  ﻿<html>
  <head>
@@ -701,9 +668,9 @@ diff -urNad mailman-2.1.5~/templates/sr/private.html mailman-2.1.5/templates/sr/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/sv/admlogin.html mailman-2.1.5/templates/sv/admlogin.html
---- mailman-2.1.5~/templates/sv/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/sv/admlogin.html	2005-11-26 09:22:31.635784398 +0100
+diff -urNad mailman-2.1.6~/templates/sv/admlogin.html mailman-2.1.6/templates/sv/admlogin.html
+--- mailman-2.1.6~/templates/sv/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/sv/admlogin.html	2005-12-10 12:59:39.553709322 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -717,9 +684,9 @@ diff -urNad mailman-2.1.5~/templates/sv/admlogin.html mailman-2.1.5/templates/sv
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/sv/private.html mailman-2.1.5/templates/sv/private.html
---- mailman-2.1.5~/templates/sv/private.html	2005-11-26 09:22:30.355964023 +0100
-+++ mailman-2.1.5/templates/sv/private.html	2005-11-26 09:22:31.635784398 +0100
+diff -urNad mailman-2.1.6~/templates/sv/private.html mailman-2.1.6/templates/sv/private.html
+--- mailman-2.1.6~/templates/sv/private.html	2005-12-10 12:59:38.421868207 +0100
++++ mailman-2.1.6/templates/sv/private.html	2005-12-10 12:59:39.553709322 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -731,9 +698,9 @@ diff -urNad mailman-2.1.5~/templates/sv/private.html mailman-2.1.5/templates/sv/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -urNad mailman-2.1.5~/templates/uk/admlogin.html mailman-2.1.5/templates/uk/admlogin.html
---- mailman-2.1.5~/templates/uk/admlogin.html	2005-11-26 09:22:20.000000000 +0100
-+++ mailman-2.1.5/templates/uk/admlogin.html	2005-11-26 09:22:31.635784398 +0100
+diff -urNad mailman-2.1.6~/templates/uk/admlogin.html mailman-2.1.6/templates/uk/admlogin.html
+--- mailman-2.1.6~/templates/uk/admlogin.html	2005-12-10 12:50:56.000000000 +0100
++++ mailman-2.1.6/templates/uk/admlogin.html	2005-12-10 12:59:39.553709322 +0100
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -747,13 +714,13 @@ diff -urNad mailman-2.1.5~/templates/uk/admlogin.html mailman-2.1.5/templates/uk
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/uk/private.html mailman-2.1.5/templates/uk/private.html
---- mailman-2.1.5~/templates/uk/private.html	2005-11-26 09:22:30.356963882 +0100
-+++ mailman-2.1.5/templates/uk/private.html	2005-11-26 09:22:31.635784398 +0100
+diff -urNad mailman-2.1.6~/templates/uk/private.html mailman-2.1.6/templates/uk/private.html
+--- mailman-2.1.6~/templates/uk/private.html	2005-12-10 12:59:38.422868067 +0100
++++ mailman-2.1.6/templates/uk/private.html	2005-12-10 12:59:39.554709182 +0100
 @@ -1,8 +1,9 @@
  <html>
  <head>
-     <title>Автентифікація доступу до закритого списку листування %(realname)s</title>
+     <title>Автентифікація доступу до закритого списку розсилки %(realname)s</title>
 +<script>function sf(){document.f.adminpw.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
@@ -761,3 +728,49 @@ diff -urNad mailman-2.1.5~/templates/uk/private.html mailman-2.1.5/templates/uk/
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad mailman-2.1.6~/templates/zh_CN/admlogin.html mailman-2.1.6/templates/zh_CN/admlogin.html
+--- mailman-2.1.6~/templates/zh_CN/admlogin.html	2005-05-14 06:13:40.000000000 +0200
++++ mailman-2.1.6/templates/zh_CN/admlogin.html	2005-12-10 13:00:37.054637465 +0100
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onload="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+diff -urNad mailman-2.1.6~/templates/zh_CN/private.html mailman-2.1.6/templates/zh_CN/private.html
+--- mailman-2.1.6~/templates/zh_CN/private.html	2005-05-14 06:13:41.000000000 +0200
++++ mailman-2.1.6/templates/zh_CN/private.html	2005-12-10 13:02:03.066563295 +0100
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s 私有归档认证</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s/">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+diff -urNad mailman-2.1.6~/templates/zh_TW/admlogin.html mailman-2.1.6/templates/zh_TW/admlogin.html
+--- mailman-2.1.6~/templates/zh_TW/admlogin.html	2005-03-23 03:04:14.000000000 +0100
++++ mailman-2.1.6/templates/zh_TW/admlogin.html	2005-12-10 13:01:06.051566938 +0100
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s 論壇 壇主驗證</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onload="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>

@@ -22,19 +22,20 @@ esac
 
 exit 0
 @DPATCH@
---- mailman/Mailman/ListAdmin.py.orig   2004-09-26 22:11:59.412607418 +0100
-+++ mailman/Mailman/ListAdmin.py        2004-09-26 22:19:43.623697828 +0100
-@@ -122,8 +122,11 @@
-
+diff -urNad mailman-2.1.6~/Mailman/ListAdmin.py mailman-2.1.6/Mailman/ListAdmin.py
+--- mailman-2.1.6~/Mailman/ListAdmin.py	2005-12-10 11:48:45.000000000 +0100
++++ mailman-2.1.6/Mailman/ListAdmin.py	2005-12-10 11:52:18.230056696 +0100
+@@ -130,8 +130,11 @@
+ 
      def NumRequestsPending(self):
          self.__opendb()
--        # Subtrace one for the version pseudo-entry
+-        # Subtract one for the version pseudo-entry
 -        return len(self.__db) - 1
 +        if self.__db.has_key('version'):
 +            # Subtract one for the version pseudo-entry
 +            return len(self.__db) - 1
 +        else:
 +            return len(self.__db)
-
+ 
      def __getmsgids(self, rtype):
          self.__opendb()

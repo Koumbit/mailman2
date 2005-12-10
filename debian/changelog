@@ -1,3 +1,26 @@
+mailman (2.1.6-1) unstable; urgency=low
+
+  * New upstream release: (closes: #311414)
+    - Drop patches integrated upstream (or same fix in another way):
+      handle-from-in-non-ascii
+      75_danish_options_traceback
+      73_list-id_strict_rfc
+      69_python24_bouncehandler_datetime
+      65_donot_add_empty_cc
+      57_fix_missing_da_template
+      04_CAN-2005-0202
+      03_CAN-2004-1143
+      02_CAN-2004-1177_driver_css
+    - Upstream doesn't ship README.{EXIM,POSTFIX} anymore: Drop their patch
+    - Update patches
+       62_new_list_bad_pending_requests
+       64_correct_html_nesting
+       68_translation_update_nl
+       70_invalid_utf8_dos.dpatch
+       99_js_templates
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 10 Dec 2005 13:08:40 +0100
+
 mailman (2.1.5-11) UNRELEASED; urgency=low
 
   * Run genaliases (or direct admin to do it) on upgrade from 2.0 (closes: #340503)

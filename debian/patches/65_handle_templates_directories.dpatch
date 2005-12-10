@@ -13,7 +13,7 @@ diff -urNad mailman-2.1.5/bin/update /tmp/dpep.3rh2pG/mailman-2.1.5/bin/update
              fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
          except IOError, e:
 -            if e.errno <> errno.ENOENT: raise
-+            if not (e.errno in [errno.ENOENT, errno.EISDIR, ]: raise
++            if not (e.errno in [errno.ENOENT, errno.EISDIR, ]): raise
              # No global template
              continue
  
