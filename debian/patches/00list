@@ -31,4 +31,5 @@
 72_hyperarch_error_handling.dpatch
 74_admin_non-ascii_emails.dpatch
 76_fix-private-redirect.dpatch
+77_header_folding_in_attachments
 99_js_templates

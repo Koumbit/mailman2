@@ -21,8 +21,10 @@ mailman (2.1.6-1) unstable; urgency=low
        99_js_templates
     Bugs fixed upstream:
     - Possible data loss in archives (closes: #244699)
+  * Don't fold headers in attachments (closes: #244673)
+    This avoids breaking cryptographic signatures
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 10 Dec 2005 13:08:40 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 11 Dec 2005 12:19:29 +0100
 
 mailman (2.1.5-11) UNRELEASED; urgency=low
 
