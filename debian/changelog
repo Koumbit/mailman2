@@ -1,6 +1,7 @@
 mailman (2.1.6-1) unstable; urgency=low
 
   * New upstream release: (closes: #311414)
+    New release packaging work:
     - Drop patches integrated upstream (or same fix in another way):
       handle-from-in-non-ascii
       75_danish_options_traceback
@@ -18,6 +19,8 @@ mailman (2.1.6-1) unstable; urgency=low
        68_translation_update_nl
        70_invalid_utf8_dos.dpatch
        99_js_templates
+    Bugs fixed upstream:
+    - Possible data loss in archives (closes: #244699)
 
  -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 10 Dec 2005 13:08:40 +0100
 
