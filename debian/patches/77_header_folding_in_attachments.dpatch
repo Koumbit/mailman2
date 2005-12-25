@@ -8,7 +8,7 @@
 @DPATCH@
 diff -urNad mailman-2.1.6~/Mailman/Generator.py mailman-2.1.6/Mailman/Generator.py
 --- mailman-2.1.6~/Mailman/Generator.py	1970-01-01 01:00:00.000000000 +0100
-+++ mailman-2.1.6/Mailman/Generator.py	2005-12-11 12:13:13.928413754 +0100
++++ mailman-2.1.6/Mailman/Generator.py	2005-12-25 14:37:46.374075579 +0100
 @@ -0,0 +1,55 @@
 +# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 +#                    2005 Lionel Elie Mamane <lionel@mamane.lu>
@@ -54,11 +54,11 @@ diff -urNad mailman-2.1.6~/Mailman/Generator.py mailman-2.1.6/Mailman/Generator.
 +class Generator(email.Generator.Generator):
 +    """Generates output from a Message object tree, keeping signatures.
 +
-+       Headers will by default _not_ be folded for in attachments.
++       Headers will by default _not_ be folded in attachments.
 +    """
 +    def __init__(self, outfp, mangle_from_=False,
-+                 children_maxheaderlen=0, toplevel_maxheaderlen=78):
-+        email.Generator.Generator.__init__(self, outfp, maxheaderlen=toplevel_maxheaderlen, mangle_from_=mangle_from_)
++                 maxheaderlen=78, children_maxheaderlen=0):
++        email.Generator.Generator.__init__(self, outfp, mangle_from_=mangle_from_, maxheaderlen=maxheaderlen)
 +        self.__children_maxheaderlen = children_maxheaderlen
 +
 +    def clone(self, fp):
@@ -67,7 +67,7 @@ diff -urNad mailman-2.1.6~/Mailman/Generator.py mailman-2.1.6/Mailman/Generator.
 +
 diff -urNad mailman-2.1.6~/Mailman/Mailbox.py mailman-2.1.6/Mailman/Mailbox.py
 --- mailman-2.1.6~/Mailman/Mailbox.py	2003-04-19 06:57:14.000000000 +0200
-+++ mailman-2.1.6/Mailman/Mailbox.py	2005-12-11 12:11:50.696486982 +0100
++++ mailman-2.1.6/Mailman/Mailbox.py	2005-12-25 14:31:54.590515028 +0100
 @@ -22,10 +22,10 @@
  
  import email
@@ -91,7 +91,7 @@ diff -urNad mailman-2.1.6~/Mailman/Mailbox.py mailman-2.1.6/Mailman/Mailbox.py
          # to be appended to the mbox.
 diff -urNad mailman-2.1.6~/Mailman/Message.py mailman-2.1.6/Mailman/Message.py
 --- mailman-2.1.6~/Mailman/Message.py	2005-04-29 14:04:48.000000000 +0200
-+++ mailman-2.1.6/Mailman/Message.py	2005-12-11 12:11:50.697486851 +0100
++++ mailman-2.1.6/Mailman/Message.py	2005-12-25 14:31:54.590515028 +0100
 @@ -21,6 +21,8 @@
  """
  
