@@ -39,9 +39,10 @@ if [ "$1" = "configure" ]; then
 		;;
 	    Manual)
 		db_input critical mailman/update_aliases || true
-		db_go
 		;;
 	esac
+	db_input critical mailman/update_passwords || true
+	db_go
     fi
 
     # Install only languages selected by the administrator

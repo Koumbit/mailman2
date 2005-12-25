@@ -23,8 +23,9 @@ mailman (2.1.6-1) unstable; urgency=low
     - Possible data loss in archives (closes: #244699)
   * Don't fold headers in attachments (closes: #244673)
     This avoids breaking cryptographic signatures
+  * Warn that list passwords are broken on upgrade from 2.0 (closes: #343029)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 11 Dec 2005 12:19:29 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 25 Dec 2005 13:44:08 +0100
 
 mailman (2.1.5-11) UNRELEASED; urgency=low
 

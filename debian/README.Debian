@@ -118,4 +118,8 @@ your alias files.
 You must create a "mailman" list on your system, until it is added,
 mailman will not start.  (It will yell at you, so you should notice.)
 
- -- Siggy Brentrup <bsb@debian.org>, Tue Apr  6 23:44:43 2004
+List admin and moderator passwords will be broken. Use
+/var/lib/mailman/bin/change_pw to generate new ones and email them to
+the admins and moderators.
+
+ -- Lionel Elie Mamane <lmamane@debian.org>, Sun Dec 25 13:20:37 2005

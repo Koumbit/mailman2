@@ -66,3 +66,10 @@ _Description: Administrator must update aliases
  .
  Until you do that, some features will stop working and mails will go
  out with an invalid Return-Path.
+
+Template: mailman/update_passwords
+Type: note
+_Description: List passwords broken
+ List admin and moderator passwords are broken by this upgrade. Use
+ /var/lib/mailman/bin/change_pw to generate new ones and email them to
+ the admins and moderators.
