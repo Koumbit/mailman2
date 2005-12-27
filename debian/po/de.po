@@ -1,3 +1,4 @@
+# translation of mailman_2.1.6-1_de.po to German
 # translation of mailman.po to German
 # translation of de.po to German
 #
@@ -12,20 +13,20 @@
 #         or http://www.debian.org/intl/l10n/po-debconf/README-trans
 #
 #    Developers do not need to manually edit POT or PO files.
-# Jens Nachtigall <nachtigall@web.de>, 2004.
+# Jens Nachtigall <nachtigall@web.de>, 2004, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman\n"
+"Project-Id-Version: mailman_2.1.6-1_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-06 22:06+0000\n"
-"PO-Revision-Date: 2004-10-06 09:49+0200\n"
+"POT-Creation-Date: 2005-12-26 05:02-0700\n"
+"PO-Revision-Date: 2005-12-27 15:16+0100\n"
 "Last-Translator: Jens Nachtigall <nachtigall@web.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.9.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. Type: multiselect
@@ -213,7 +214,7 @@ msgid ""
 msgstr ""
 "Für jede unterstützte Sprache speichert Debian Mailman sprachspezifische "
 "Texte in /etc/mailmain/LANG/, wobei jedem Text mit Hilfe von ucf das für "
-"Konfigurationsdateien übliche Verfahren zuteil wird.  Pro unterstützter "
+"Konfigurationsdateien übliche Verfahren zuteil wird. Pro unterstützter "
 "Sprache werden auf dem root-Dateisystem rund 150kB benötigt."
 
 #. Type: multiselect
@@ -277,7 +278,7 @@ msgid ""
 msgstr ""
 "Mailman benötigt eine sogenannte Site-Liste (»site list«), welches die "
 "Mailingliste ist, von der die Passwort-Erinnerungen und ähnliches abgesendet "
-"werden.  Diese Liste muss erstellt werden, bevor mailman startet."
+"werden. Diese Liste muss erstellt werden, bevor mailman startet."
 
 #. Type: note
 #. Description
@@ -288,7 +289,7 @@ msgid ""
 "init.d/mailman start."
 msgstr ""
 "Um die Liste zu erzeugen, starten Sie »newlist mailman« und folgen den "
-"Anweisungen auf dem Bildschirm.  Beachten Sie, dass mailman danach gestartet "
+"Anweisungen auf dem Bildschirm. Beachten Sie, dass mailman danach gestartet "
 "werden muss, indem Sie »/etc/init.d/mailman start« aufrufen."
 
 #. Type: select
@@ -323,9 +324,47 @@ msgid ""
 "finished) or remove those files.  Note that removing the files will lose "
 "some emails sent to lists."
 msgstr ""
-"Das Verzeichnis /var/lib/mailman/qfiles enthält Dateien.  Es muss leer sein, "
-"damit der Upgrade sauber vonstatten gehen kann.  Entweder Sie beseitigen die "
+"Das Verzeichnis /var/lib/mailman/qfiles enthält Dateien. Es muss leer sein, "
+"damit der Upgrade sauber vonstatten gehen kann. Entweder Sie beseitigen die "
 "Warteschlange (mittels »mailmanctl start«, danach mailman stoppen und dann, "
 "wenn es fertig ist, den Upgrade wiederholen) oder Sie löschen diese "
-"Dateien.  Beachten Sie, dass durch das Löschen dieser Dateien einige an die "
+"Dateien. Beachten Sie, dass durch das Löschen dieser Dateien einige an die "
 "Mailinglisten gesendeten E-Mails verloren gehen."
+
+#. Type: note
+#. Description
+#: ../templates:62
+msgid "Administrator must update aliases"
+msgstr "Administrator muss Aliase aktualisieren"
+
+#. Type: note
+#. Description
+#: ../templates:62
+msgid ""
+"The aliases you need for mailman in your MTA's configuration have changed. "
+"Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
+msgstr "Die Aliase, welche Mailman in Ihrer MTA-Konfiguration benötigt, haben sich verändert. Bitte führen Sie /var/lib/mailman/bin/genaliases aus, um zu sehe welche neuen Aliase Sie benötigen."
+
+#. Type: note
+#. Description
+#: ../templates:62
+msgid ""
+"Until you do that, some features will stop working and mails will go out "
+"with an invalid Return-Path."
+msgstr "Solange die Aliase nicht aktualisiert wurden, werden einige Dinge nicht funktionieren und E-Mails werden mit einem ungültigen »Return-Path« gesendet."
+
+#. Type: note
+#. Description
+#: ../templates:72
+msgid "List passwords broken"
+msgstr "Listen-Passwörter sind kaputt"
+
+#. Type: note
+#. Description
+#: ../templates:72
+msgid ""
+"List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
+"mailman/bin/change_pw to generate new ones and email them to the admins and "
+"moderators."
+msgstr "Die Administrator- und Moderator-Passwörter für die Mailinglisten sind durch diese Aktualisierung kaputt gegangen. Verwenden Sie /var/lib/mailman/bin/change_pw um Neue zu erstellen und senden Sie sie den Admins und Moderatoren per E-Mail zu."
+
