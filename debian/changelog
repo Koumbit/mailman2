@@ -2,7 +2,7 @@ mailman (2.1.6-2) UNRELEASED; urgency=low
 
   * Tweak 21_newlist_help.dpatch:
     The "automagically setgid to right group" part was slightly
-    suboptimal.
+    suboptimal. (closes: #309339)
   * Update German translation of debconf templates (closes: #344907)
 
  -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Dec 2005 22:24:01 +0100
