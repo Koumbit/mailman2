@@ -4,8 +4,9 @@ mailman (2.1.6-2) UNRELEASED; urgency=low
     The "automagically setgid to right group" part was slightly
     suboptimal. (closes: #309339)
   * Update German translation of debconf templates (closes: #344907)
+  * Shut up DeprecationWarning with Python 2.4 in Scrubber.py (closes: #341699)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Dec 2005 22:24:01 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Wed,  4 Jan 2006 21:43:25 +0100
 
 mailman (2.1.6-1) unstable; urgency=low
 

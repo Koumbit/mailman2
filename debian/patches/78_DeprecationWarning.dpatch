@@ -1,0 +1,21 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 78_DeprecationWarning.dpatch by  <lionel@mamane.lu>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Shut up DeprecationWarning in Python 2.4
+
+@DPATCH@
+diff -urNad mailman-2.1.6~/Mailman/Handlers/Scrubber.py mailman-2.1.6/Mailman/Handlers/Scrubber.py
+--- mailman-2.1.6~/Mailman/Handlers/Scrubber.py	2005-12-10 13:37:51.000000000 +0100
++++ mailman-2.1.6/Mailman/Handlers/Scrubber.py	2006-01-04 21:37:03.123494616 +0100
+@@ -76,6 +76,10 @@
+             check(mimetypes.common_types)
+         return all
+ 
++# FIXME: Remove for Mailman 2.2 (which will drop support for Python 2.1)
++# and then actually replace part.get_type(part.get_default_type())
++# with part.get_content_type()
++warnings.filterwarnings("ignore","^get_type\(\) deprecated;",DeprecationWarning,"Mailman")
+ 
+ 
+ def guess_extension(ctype, ext):
