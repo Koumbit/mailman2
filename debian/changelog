@@ -9,6 +9,7 @@ mailman (2.1.7-1) UNRELEASED; urgency=low
       68_translation_update_nl.dpatch
     - Drop patches merged upstream:
       60_french_archtocentry
+      76_fix-private-redirect
     - Bugs fixed upstream:
       - Mailman loses header spam rules (closes: #309870)
   * Pull fixes from various bugs from upstream CVS
@@ -23,7 +24,7 @@ mailman (2.1.7-1) UNRELEASED; urgency=low
   * Tweak mailman/update_passwords debconf note to address ambiguity in
     English version discovered by French translation.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 21:06:15 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 21:20:17 +0100
 
 mailman (2.1.6-2) UNRELEASED; urgency=low
 
