@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 69_python24_bouncehandler_datetime.dpatch by  <tfheen@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Python 2.4 compatibility patch in bounce handler
+
+@DPATCH@
+diff -urNad --exclude=CVS --exclude=.svn ./Mailman/Bouncer.py /tmp/dpep-work.xo86JD/mailman-2.1.5/Mailman/Bouncer.py
+--- ./Mailman/Bouncer.py	2004-02-10 23:38:26.000000000 +0100
++++ /tmp/dpep-work.xo86JD/mailman-2.1.5/Mailman/Bouncer.py	2005-10-10 10:38:24.000000000 +0200
+@@ -128,7 +128,7 @@
+             # We've already scored any bounces for this day, so ignore it.
+             syslog('bounce', '%s: %s already scored a bounce for date %s',
+                    self.internal_name(), member,
+-                   time.strftime('%d-%b-%Y', day + (0,)*6))
++                   time.strftime('%d-%b-%Y', day + (0,0,0,0,1,0)))
+             # Continue to check phase below
+         else:
+             # See if this member's bounce information is stale.

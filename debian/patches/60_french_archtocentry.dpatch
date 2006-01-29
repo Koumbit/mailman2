@@ -1,0 +1,47 @@
+#! /bin/sh -e
+## 60_french_archtocentry.dpatch by Tollef Fog Heen <tfheen@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix bad French translation which causes tables to look bad.
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/templates/fr/archtocentry.html trunk/templates/fr/archtocentry.html
+--- /home/tfheen/external/pkg-mailman/trunk/templates/fr/archtocentry.html	2004-03-30 17:01:28.000000000 +0200
++++ trunk/templates/fr/archtocentry.html	2004-08-18 17:43:21.000000000 +0200
+@@ -1,10 +1,11 @@
+              
+ 	<tr>
+-	<td>%(archivelabel)s:                            
+-	<A href="%(archive)s/thread.html">[ Enfilade ]</a>               
+-	<A href="%(archive)s/subject.html">[ Sujet ]</a>               
+-	<A href="%(archive)s/author.html">[ Auteur ]</a>               
+-	<A href="%(archive)s/date.html">[ Date ]</a>                          
++	<td>%(archivelabel)s:</td>
++        <td>
++	<A href="%(archive)s/thread.html">[ Enfilade ]</a>
++	<A href="%(archive)s/subject.html">[ Sujet ]</a>
++	<A href="%(archive)s/author.html">[ Auteur ]</a>
++	<A href="%(archive)s/date.html">[ Date ]</a>
+ 	</td>
+-	%(textlink)s 
+-        </tr>     
++	%(textlink)s
++        </tr>

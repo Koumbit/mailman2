@@ -1,0 +1,121 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix CAN-2004-1143: weak auto-generated passwords.
+
+@DPATCH@
+===================================================================
+RCS file: /cvsroot/mailman/mailman/Mailman/Utils.py,v
+retrieving revision 2.45.2.9
+retrieving revision 2.45.2.11
+diff -u -r2.45.2.9 -r2.45.2.11
+--- mailman/Mailman/Utils.py	2004/10/09 04:15:41	2.45.2.9
++++ mailman/Mailman/Utils.py	2004/12/31 00:02:57	2.45.2.11
+@@ -1,4 +1,4 @@
+-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
++# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+ #
+ # This program is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License
+@@ -27,12 +27,13 @@
+ 
+ import os
+ import re
+-import random
+-import urlparse
++import cgi
+ import sha
+-import errno
+ import time
+-import cgi
++import errno
++import base64
++import random
++import urlparse
+ import htmlentitydefs
+ import email.Header
+ import email.Iterators
+@@ -298,12 +299,53 @@
+         _syllables.append(v+c)
+ del c, v
+ 
+-def MakeRandomPassword(length=6):
++def UserFriendly_MakeRandomPassword(length):
+     syls = []
+     while len(syls) * 2 < length:
+         syls.append(random.choice(_syllables))
+     return EMPTYSTRING.join(syls)[:length]
+ 
++
++def Secure_MakeRandomPassword(length):
++    bytesread = 0
++    bytes = []
++    fd = None
++    try:
++        while bytesread < length:
++            try:
++                # Python 2.4 has this on available systems.
++                newbytes = os.urandom(length - bytesread)
++            except (AttributeError, NotImplementedError):
++                if fd is None:
++                    try:
++                        fd = os.open('/dev/urandom', os.O_RDONLY)
++                    except OSError, e:
++                        if e.errno <> errno.ENOENT:
++                            raise
++                        # We have no available source of cryptographically
++                        # secure random characters.  Log an error and fallback
++                        # to the user friendly passwords.
++                        from Mailman.Logging.Syslog import syslog
++                        syslog('error',
++                               'urandom not available, passwords not secure')
++                        return UserFriendly_MakeRandomPassword(length)
++                newbytes = os.read(fd, length - bytesread)
++            bytes.append(newbytes)
++            bytesread += len(newbytes)
++        s = base64.encodestring(EMPTYSTRING.join(bytes))
++        # base64 will expand the string by 4/3rds
++        return s.replace('\n', '')[:length]
++    finally:
++        if fd is not None:
++            os.close(fd)
++
++
++def MakeRandomPassword(length=mm_cfg.MEMBER_PASSWORD_LENGTH):
++    if mm_cfg.USER_FRIENDLY_PASSWORDS:
++        return UserFriendly_MakeRandomPassword(length)
++    return Secure_MakeRandomPassword(length)
++
++
+ def GetRandomSeed():
+     chr1 = int(random.random() * 52)
+     chr2 = int(random.random() * 52)
+===================================================================
+RCS file: /cvsroot/mailman/mailman/Mailman/Defaults.py.in,v
+retrieving revision 2.112.2.23
+retrieving revision 2.112.2.24
+diff -u -r2.112.2.23 -r2.112.2.24
+--- mailman/Mailman/Defaults.py.in	2004/12/10 08:14:13	2.112.2.23
++++ mailman/Mailman/Defaults.py.in	2004/12/30 20:49:29	2.112.2.24
+@@ -787,6 +787,21 @@
+ # list's config variable default_member_moderation.
+ DEFAULT_NEW_MEMBER_OPTIONS = 256
+ 
++# Specify the type of passwords to use, when Mailman generates the passwords
++# itself, as would be the case for membership requests where the user did not
++# fill in a password, or during list creation, when auto-generation of admin
++# passwords was selected.
++#
++# Set this value to Yes for classic Mailman user-friendly(er) passwords.
++# These generate semi-pronounceable passwords which are easier to remember.
++# Set this value to No to use more cryptographically secure, but harder to
++# remember, passwords -- if your operating system and Python version support
++# the necessary feature (specifically that /dev/urandom be available).
++USER_FRIENDLY_PASSWORDS = Yes
++# This value specifies the default lengths of member and list admin passwords
++MEMBER_PASSWORD_LENGTH = 8
++ADMIN_PASSWORD_LENGTH = 10
++
+ 
+ 
+ #####

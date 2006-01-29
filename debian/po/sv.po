@@ -1,0 +1,279 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mailman 2.1.5-9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-06 22:06+0000\n"
+"PO-Revision-Date: 2005-11-19 15:35+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: sv\n"
+"X-Poedit-Country: sv\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "big5"
+msgstr "big5"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ca"
+msgstr "ca"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "cs"
+msgstr "cs"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "da"
+msgstr "da"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "de"
+msgstr "de"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "en"
+msgstr "en"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "es"
+msgstr "es"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "et"
+msgstr "et"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "eu"
+msgstr "eu"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "fi"
+msgstr "fi"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "fr"
+msgstr "fr"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "hr"
+msgstr "hr"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "hu"
+msgstr "hu"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "it"
+msgstr "it"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ja"
+msgstr "ja"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ko"
+msgstr "ko"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "lt"
+msgstr "lt"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "nl"
+msgstr "nl"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "no"
+msgstr "no"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "pl"
+msgstr "pl"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "pt"
+msgstr "pt"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "pt_BR"
+msgstr "pt_BR"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ro"
+msgstr "ro"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "ru"
+msgstr "ru"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "sl"
+msgstr "sl"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "sr"
+msgstr "sr"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "sv"
+msgstr "sv"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:5
+msgid "uk"
+msgstr "uk"
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid "Which languages to support?  "
+msgstr "Vilka språk ska finnas stöd för?  "
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid "For each supported language Debian Mailman stores default language specific texts in /etc/mailman/LANG/ giving them conffile like treatment with the help of ucf.  This means approximately 150kB for each supported language on the root FS."
+msgstr "För varje språk som stöds av Debian lagrar Mailman specifik text för standardspråket i /etc/mailman/LANG/ och tilldelar dem konfigurationsfil-liknande behandlning med hjälp av ucf.  Detta betyder ungefär 150kB för varje språk som stöds."
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid "If you need a different set of languages at a later time, just run dpkg-reconfigure mailman."
+msgstr "Om du behöver en annan uppsättning språk vid en senare tidpunkt, kör bara \"dpkg-reconfigure mailman\"."
+
+#. Type: multiselect
+#. Description
+#: ../templates:7
+msgid "NOTE: Languages enabled on existing mailing lists are forcibly re- enabled when deselected and mailman needs at least one language for displaying it's messages."
+msgstr "NOTERA: Aktiverade språk på existerande e-postlistor kommer att tvingas att återaktiveras när de avmarkeras och mailman behöver åtminstone ett språk för att visa sina meddelande."
+
+#. Type: boolean
+#. Description
+#: ../templates:27
+msgid "Gate news to mail?"
+msgstr "Hantera nyhetsgrupper till e-postlistor?"
+
+#. Type: boolean
+#. Description
+#: ../templates:27
+msgid "Do you want to gate news to mail, that is, send all the messages which appear in a newsgroup to a mailing list."
+msgstr "Vill du hantera nyheter till e-post, alltså, skicka alla meddelanden som dyker upp i en nyhetsgrupp till en e-postlista."
+
+#. Type: boolean
+#. Description
+#: ../templates:27
+msgid "Most people won't need this."
+msgstr "De flesta kommer inte att behöva detta."
+
+#. Type: note
+#. Description
+#: ../templates:35
+msgid "Missing site list"
+msgstr "Saknad \"site list"
+
+#. Type: note
+#. Description
+#: ../templates:35
+msgid "Mailman needs a so-called \"site list\", which is the list from which password reminders and such are sent out from.  This list needs to be created before mailman will start."
+msgstr "Mailman behöver en så kallad \"site list\" som är en lista från vilka påminnelser om lösenord och liknande skickas ut från.  Denna lista behöver skapas före mailman startar upp."
+
+#. Type: note
+#. Description
+#: ../templates:35
+msgid "To create the list, run \"newlist mailman\" and follow the instructions on-screen.  Note that you also need to start mailman after that, using /etc/init.d/mailman start."
+msgstr "För att skapa listan, kör \"newlist mailman\" och följ instruktionerna på skärmen.  Notera att du också behöver starta mailman efter det genom att köra \"/etc/init.d/mailman start\"."
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid "Which language should be the default for Mailman?"
+msgstr "Vilket språk ska vara det förvalda i Mailman?"
+
+#. Type: select
+#. Description
+#: ../templates:47
+msgid "The web page will be shown in this language, and in general, Mailman will use this language to communicate with the user."
+msgstr "Webbsidan kommer att visas på detta språk och i allmänhet kommer Mailman att använda detta språk för att kommunicera med användaren."
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid "Old queue files present"
+msgstr "Gamla köfiler existerar"
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid "The directory /var/lib/mailman/qfiles contains files.  It needs to be empty for the upgrade work properly.  Please either flush the queue (by way of mailmanctl start, then stopping it and redoing the upgrade when it is finished) or remove those files.  Note that removing the files will lose some emails sent to lists."
+msgstr "Katalogen /var/lib/mailman/qfiles innehåller filer.  Den behöver vara tom för att uppgraderingen ska fungera korrekt. Vänligen antingen rensa kön (genom att köra mailmanctl start, sedan stoppa den och gör om uppgraderingen nät den är klar) eller ta bort dessa filer.  Notera att borttagning av filerna kommer att innebära att viss e-post skickad till listorna förloras."
+

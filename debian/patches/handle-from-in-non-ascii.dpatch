@@ -1,0 +1,34 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## handle-from-in-non-ascii.dpatch by  <tfheen@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad trunk/Mailman/Commands/cmd_subscribe.py /tmp/dpep.glnNSg/trunk/Mailman/Commands/cmd_subscribe.py
+--- trunk/Mailman/Commands/cmd_subscribe.py	2002-11-21 06:37:25.000000000 +0100
++++ /tmp/dpep.glnNSg/trunk/Mailman/Commands/cmd_subscribe.py	2005-02-16 21:10:35.179365720 +0100
+@@ -76,6 +76,7 @@
+     if password is None:
+         password = Utils.MakeRandomPassword()
+     if address is None:
++        h = None
+         realname, address = parseaddr(res.msg['from'])
+         if not address:
+             # Fall back to the sender address
+@@ -84,9 +85,13 @@
+             res.results.append(_('No valid address found to subscribe'))
+             return STOP
+         # Watch for encoded names
+-        h = make_header(decode_header(realname))
++        try:
++            h = make_header(decode_header(realname))
++        except UnicodeDecodeError:
++            # Just fall back to an empty real, it's not critical
++            h = ""
+         # BAW: in Python 2.2, use just unicode(h)
+-        realname = h.__unicode__()
++        realname = unicode(h)
+         # Coerce to byte string if uh contains only ascii
+         try:
+             realname = realname.encode('us-ascii')

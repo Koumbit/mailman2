@@ -1,0 +1,39 @@
+#!/bin/sh -e
+## 04_CAN-2005-0202.dpatch by  <martin.pitt@ubuntu.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+diff -urNad mailman-2.1.5/Mailman/Cgi/private.py /tmp/dpep.URxxJG/mailman-2.1.5/Mailman/Cgi/private.py
+--- mailman-2.1.5/Mailman/Cgi/private.py	2003-02-08 08:13:50.000000000 +0100
++++ /tmp/dpep.URxxJG/mailman-2.1.5/Mailman/Cgi/private.py	2005-02-09 12:49:59.245112000 +0100
+@@ -39,10 +39,8 @@
+ 
+ def true_path(path):
+     "Ensure that the path is safe by removing .."
+-    path = path.replace('../', '')
+-    path = path.replace('./', '')
+-    return path[1:]
+-
++    parts = [x for x in path.split('/') if x not in ('.', '..')]
++    return '/'.join(parts)[1:]
+ 
+ 
+ def guess_type(url, strict):

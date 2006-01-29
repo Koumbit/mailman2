@@ -1,0 +1,63 @@
+#! /bin/sh -e
+## 31_buggy_queuefiles.dpatch by Tollef Fog Heen <tfheen@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Handle empty queue files.
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch $patch_opts -p1 < $0;;
+    -unpatch) patch $patch_opts -p1 -R < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+@DPATCH@
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/Mailman/Queue/#Switchboard.py.rej# trunk/Mailman/Queue/#Switchboard.py.rej#
+--- /home/tfheen/external/pkg-mailman/trunk/Mailman/Queue/#Switchboard.py.rej#	1970-01-01 01:00:00.000000000 +0100
++++ trunk/Mailman/Queue/#Switchboard.py.rej#	2004-08-18 14:54:18.000000000 +0200
+@@ -0,0 +1,12 @@
++@@ -259,7 +259,10 @@
++ 
++     def _ext_read(self, filename):
++         fp = open(filename)
++-        dict = marshal.load(fp)
+++        try:
+++            dict = marshal.load(fp)
+++        except EOFError:
+++            return {}
++         # Update from version 2 files
++         if dict.get('version', 0) == 2:
++             del dict['filebase']
+diff -urNad /home/tfheen/external/pkg-mailman/trunk/Mailman/Queue/Switchboard.py.rej trunk/Mailman/Queue/Switchboard.py.rej
+--- /home/tfheen/external/pkg-mailman/trunk/Mailman/Queue/Switchboard.py.rej	1970-01-01 01:00:00.000000000 +0100
++++ trunk/Mailman/Queue/Switchboard.py.rej	2004-08-18 14:52:13.000000000 +0200
+@@ -0,0 +1,20 @@
++***************
++*** 259,265 ****
++  
++      def _ext_read(self, filename):
++          fp = open(filename)
++-         dict = marshal.load(fp)
++          # Update from version 2 files
++          if dict.get('version', 0) == 2:
++              del dict['filebase']
++--- 259,268 ----
++  
++      def _ext_read(self, filename):
++          fp = open(filename)
+++         try:
+++             dict = marshal.load(fp)
+++         except EOFError:
+++             return {}
++          # Update from version 2 files
++          if dict.get('version', 0) == 2:
++              del dict['filebase']
