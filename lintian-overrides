@@ -1,4 +1,0 @@
-mailman: setgid-binary
-mailman: non-standard-dir-perm
-mailman: non-standard-file-perm
-mailman: package-contains-upstream-install-documentation
