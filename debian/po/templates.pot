@@ -1,22 +1,14 @@
-#
-#    Translators, if you are not familiar with the PO format, gettext
-#    documentation is worth reading, especially sections dedicated to
-#    this format, e.g. by running:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#
-#    Some information specific to po-debconf are available at
-#            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
-#    Developers do not need to manually edit POT or PO files.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-06 22:06+0000\n"
+"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-01-29 21:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -195,7 +187,7 @@ msgstr ""
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "Which languages to support?  "
+msgid "Which languages to support?"
 msgstr ""
 
 #. Type: multiselect
@@ -294,8 +286,65 @@ msgstr ""
 #: ../templates:53
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
-"for the upgrade work properly.  Please either flush the queue (by way of "
-"mailmanctl start, then stopping it and redoing the upgrade when it is "
-"finished) or remove those files.  Note that removing the files will lose "
-"some emails sent to lists."
+"for the upgrade work properly. If these files are not yet processed, but "
+"otherwise fine messages, then you can try to handle them by: - Stopping new "
+"messages from coming in the queue (at the MTA level:\n"
+"  queue them in the MTA's queue or refuse them with a 4xx code). If\n"
+"  your site has a relatively low mailman traffic, you can skip this\n"
+"  step.\n"
+"- Start a mailman queue runner: /etc/init.d/mailman start - Let it run until "
+"all messages are handled\n"
+"  If they don't all get handled in a timely manner, look at the logs\n"
+"  to try to understand why and solve the cause.\n"
+"- Stop it: /etc/init.d/mailman stop - Retry the upgrade - Let messages come "
+"in again You can also decide to simply remove the files, which will make "
+"Mailman forget about (and lose) the corresponding emails; expect angry users."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:53
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them. Shunted messages are messages on which Mailman has "
+"already abandoned any further processing because of an error condition, but "
+"that are kept for admin review, as they usually originate from Mailman bugs "
+"or other abnormal situations that need human inspection."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:82
+msgid "Administrator must update aliases"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:82
+msgid ""
+"The aliases you need for mailman in your MTA's configuration have changed. "
+"Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:82
+msgid ""
+"Until you do that, some features will stop working and mails will go out "
+"with an invalid Return-Path."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:92
+msgid "List passwords broken"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:92
+msgid ""
+"List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
+"mailman/bin/change_pw to have new ones automatically generated and emailed "
+"to the admins and moderators."
 msgstr ""

@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.6-1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-26 05:02-0700\n"
+"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-01-29 21:07+0100\n"
 "PO-Revision-Date: 2006-01-11 19:04+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -194,26 +194,45 @@ msgstr "uk"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "Which languages to support?  "
+#, fuzzy
+msgid "Which languages to support?"
 msgstr "Vilka språk ska finnas stöd för?  "
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "For each supported language Debian Mailman stores default language specific texts in /etc/mailman/LANG/ giving them conffile like treatment with the help of ucf.  This means approximately 150kB for each supported language on the root FS."
-msgstr "För varje språk som stöds av Debian lagrar Mailman specifik text för standardspråket i /etc/mailman/LANG/ och tilldelar dem konfigurationsfil-liknande behandlning med hjälp av ucf.  Detta betyder ungefär 150kB för varje språk som stöds."
+msgid ""
+"For each supported language Debian Mailman stores default language specific "
+"texts in /etc/mailman/LANG/ giving them conffile like treatment with the "
+"help of ucf.  This means approximately 150kB for each supported language on "
+"the root FS."
+msgstr ""
+"För varje språk som stöds av Debian lagrar Mailman specifik text för "
+"standardspråket i /etc/mailman/LANG/ och tilldelar dem konfigurationsfil-"
+"liknande behandlning med hjälp av ucf.  Detta betyder ungefär 150kB för "
+"varje språk som stöds."
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "If you need a different set of languages at a later time, just run dpkg-reconfigure mailman."
-msgstr "Om du behöver en annan uppsättning språk vid en senare tidpunkt, kör bara \"dpkg-reconfigure mailman\"."
+msgid ""
+"If you need a different set of languages at a later time, just run dpkg-"
+"reconfigure mailman."
+msgstr ""
+"Om du behöver en annan uppsättning språk vid en senare tidpunkt, kör bara "
+"\"dpkg-reconfigure mailman\"."
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "NOTE: Languages enabled on existing mailing lists are forcibly re- enabled when deselected and mailman needs at least one language for displaying it's messages."
-msgstr "NOTERA: Aktiverade språk på existerande e-postlistor kommer att tvingas att återaktiveras när de avmarkeras och mailman behöver åtminstone ett språk för att visa sina meddelande."
+msgid ""
+"NOTE: Languages enabled on existing mailing lists are forcibly re- enabled "
+"when deselected and mailman needs at least one language for displaying it's "
+"messages."
+msgstr ""
+"NOTERA: Aktiverade språk på existerande e-postlistor kommer att tvingas att "
+"återaktiveras när de avmarkeras och mailman behöver åtminstone ett språk för "
+"att visa sina meddelande."
 
 #. Type: boolean
 #. Description
@@ -224,8 +243,12 @@ msgstr "Hantera nyhetsgrupper till e-postlistor?"
 #. Type: boolean
 #. Description
 #: ../templates:27
-msgid "Do you want to gate news to mail, that is, send all the messages which appear in a newsgroup to a mailing list."
-msgstr "Vill du hantera nyheter till e-post, alltså, skicka alla meddelanden som dyker upp i en nyhetsgrupp till en e-postlista."
+msgid ""
+"Do you want to gate news to mail, that is, send all the messages which "
+"appear in a newsgroup to a mailing list."
+msgstr ""
+"Vill du hantera nyheter till e-post, alltså, skicka alla meddelanden som "
+"dyker upp i en nyhetsgrupp till en e-postlista."
 
 #. Type: boolean
 #. Description
@@ -242,14 +265,26 @@ msgstr "Saknad \"site list"
 #. Type: note
 #. Description
 #: ../templates:35
-msgid "Mailman needs a so-called \"site list\", which is the list from which password reminders and such are sent out from.  This list needs to be created before mailman will start."
-msgstr "Mailman behöver en så kallad \"site list\" som är en lista från vilka påminnelser om lösenord och liknande skickas ut från.  Denna lista behöver skapas före mailman startar upp."
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"Mailman behöver en så kallad \"site list\" som är en lista från vilka "
+"påminnelser om lösenord och liknande skickas ut från.  Denna lista behöver "
+"skapas före mailman startar upp."
 
 #. Type: note
 #. Description
 #: ../templates:35
-msgid "To create the list, run \"newlist mailman\" and follow the instructions on-screen.  Note that you also need to start mailman after that, using /etc/init.d/mailman start."
-msgstr "För att skapa listan, kör \"newlist mailman\" och följ instruktionerna på skärmen.  Notera att du också behöver starta mailman efter det genom att köra \"/etc/init.d/mailman start\"."
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"För att skapa listan, kör \"newlist mailman\" och följ instruktionerna på "
+"skärmen.  Notera att du också behöver starta mailman efter det genom att "
+"köra \"/etc/init.d/mailman start\"."
 
 #. Type: select
 #. Description
@@ -260,8 +295,12 @@ msgstr "Vilket språk ska vara det förvalda i Mailman?"
 #. Type: select
 #. Description
 #: ../templates:47
-msgid "The web page will be shown in this language, and in general, Mailman will use this language to communicate with the user."
-msgstr "Webbsidan kommer att visas på detta språk och i allmänhet kommer Mailman att använda detta språk för att kommunicera med användaren."
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+"Webbsidan kommer att visas på detta språk och i allmänhet kommer Mailman att "
+"använda detta språk för att kommunicera med användaren."
 
 #. Type: note
 #. Description
@@ -272,36 +311,90 @@ msgstr "Gamla köfiler existerar"
 #. Type: note
 #. Description
 #: ../templates:53
-msgid "The directory /var/lib/mailman/qfiles contains files.  It needs to be empty for the upgrade work properly.  Please either flush the queue (by way of mailmanctl start, then stopping it and redoing the upgrade when it is finished) or remove those files.  Note that removing the files will lose some emails sent to lists."
-msgstr "Katalogen /var/lib/mailman/qfiles innehåller filer.  Den behöver vara tom för att uppgraderingen ska fungera korrekt. Vänligen antingen rensa kön (genom att köra mailmanctl start, sedan stoppa den och gör om uppgraderingen nät den är klar) eller ta bort dessa filer.  Notera att borttagning av filerna kommer att innebära att viss e-post skickad till listorna förloras."
+msgid ""
+"The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
+"for the upgrade work properly. If these files are not yet processed, but "
+"otherwise fine messages, then you can try to handle them by: - Stopping new "
+"messages from coming in the queue (at the MTA level:\n"
+"  queue them in the MTA's queue or refuse them with a 4xx code). If\n"
+"  your site has a relatively low mailman traffic, you can skip this\n"
+"  step.\n"
+"- Start a mailman queue runner: /etc/init.d/mailman start - Let it run until "
+"all messages are handled\n"
+"  If they don't all get handled in a timely manner, look at the logs\n"
+"  to try to understand why and solve the cause.\n"
+"- Stop it: /etc/init.d/mailman stop - Retry the upgrade - Let messages come "
+"in again You can also decide to simply remove the files, which will make "
+"Mailman forget about (and lose) the corresponding emails; expect angry users."
+msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:53
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them. Shunted messages are messages on which Mailman has "
+"already abandoned any further processing because of an error condition, but "
+"that are kept for admin review, as they usually originate from Mailman bugs "
+"or other abnormal situations that need human inspection."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:82
 msgid "Administrator must update aliases"
 msgstr "Administratören måste uppdatera alias"
 
 #. Type: note
 #. Description
-#: ../templates:62
-msgid "The aliases you need for mailman in your MTA's configuration have changed. Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
-msgstr "De alias som du behöver för mailman i din e-postservers konfiguration har ändrats. Vänligen kör /var/lib/mailman/bin/genaliases för att se de nya alias du behöver."
+#: ../templates:82
+msgid ""
+"The aliases you need for mailman in your MTA's configuration have changed. "
+"Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
+msgstr ""
+"De alias som du behöver för mailman i din e-postservers konfiguration har "
+"ändrats. Vänligen kör /var/lib/mailman/bin/genaliases för att se de nya "
+"alias du behöver."
 
 #. Type: note
 #. Description
-#: ../templates:62
-msgid "Until you do that, some features will stop working and mails will go out with an invalid Return-Path."
-msgstr "Fram tills du gör det kommer några funktioner att sluta fungera och e-post kommer att skickas med en ogiltig Return-Path."
+#: ../templates:82
+msgid ""
+"Until you do that, some features will stop working and mails will go out "
+"with an invalid Return-Path."
+msgstr ""
+"Fram tills du gör det kommer några funktioner att sluta fungera och e-post "
+"kommer att skickas med en ogiltig Return-Path."
 
 #. Type: note
 #. Description
-#: ../templates:72
+#: ../templates:92
 msgid "List passwords broken"
 msgstr "Listornas lösenord är trasiga"
 
 #. Type: note
 #. Description
-#: ../templates:72
-msgid "List admin and moderator passwords are broken by this upgrade. Use /var/lib/mailman/bin/change_pw to generate new ones and email them to the admins and moderators."
-msgstr "Listadministratörerna och moderatorernas lösenord är trasiga i denna uppgradering. Använd /var/lib/mailman/bin/change_pw för att generera nya och skicka e-post till administratörerna och moderatorerna."
+#: ../templates:92
+#, fuzzy
+msgid ""
+"List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
+"mailman/bin/change_pw to have new ones automatically generated and emailed "
+"to the admins and moderators."
+msgstr ""
+"Listadministratörerna och moderatorernas lösenord är trasiga i denna "
+"uppgradering. Använd /var/lib/mailman/bin/change_pw för att generera nya och "
+"skicka e-post till administratörerna och moderatorerna."
 
+#~ msgid ""
+#~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
+#~ "empty for the upgrade work properly.  Please either flush the queue (by "
+#~ "way of mailmanctl start, then stopping it and redoing the upgrade when it "
+#~ "is finished) or remove those files.  Note that removing the files will "
+#~ "lose some emails sent to lists."
+#~ msgstr ""
+#~ "Katalogen /var/lib/mailman/qfiles innehåller filer.  Den behöver vara tom "
+#~ "för att uppgraderingen ska fungera korrekt. Vänligen antingen rensa kön "
+#~ "(genom att köra mailmanctl start, sedan stoppa den och gör om "
+#~ "uppgraderingen nät den är klar) eller ta bort dessa filer.  Notera att "
+#~ "borttagning av filerna kommer att innebära att viss e-post skickad till "
+#~ "listorna förloras."

@@ -18,8 +18,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.6-1_de\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-26 05:02-0700\n"
+"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-01-29 21:07+0100\n"
 "PO-Revision-Date: 2005-12-27 15:16+0100\n"
 "Last-Translator: Jens Nachtigall <nachtigall@web.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -200,7 +200,8 @@ msgstr "uk (ukrainisch)"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "Which languages to support?  "
+#, fuzzy
+msgid "Which languages to support?"
 msgstr "Welche Sprachen sollen unterstützt werden?"
 
 #. Type: multiselect
@@ -319,52 +320,89 @@ msgstr "Alte Dateien befinden sich in der Warteschlange"
 #: ../templates:53
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
-"for the upgrade work properly.  Please either flush the queue (by way of "
-"mailmanctl start, then stopping it and redoing the upgrade when it is "
-"finished) or remove those files.  Note that removing the files will lose "
-"some emails sent to lists."
+"for the upgrade work properly. If these files are not yet processed, but "
+"otherwise fine messages, then you can try to handle them by: - Stopping new "
+"messages from coming in the queue (at the MTA level:\n"
+"  queue them in the MTA's queue or refuse them with a 4xx code). If\n"
+"  your site has a relatively low mailman traffic, you can skip this\n"
+"  step.\n"
+"- Start a mailman queue runner: /etc/init.d/mailman start - Let it run until "
+"all messages are handled\n"
+"  If they don't all get handled in a timely manner, look at the logs\n"
+"  to try to understand why and solve the cause.\n"
+"- Stop it: /etc/init.d/mailman stop - Retry the upgrade - Let messages come "
+"in again You can also decide to simply remove the files, which will make "
+"Mailman forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
-"Das Verzeichnis /var/lib/mailman/qfiles enthält Dateien. Es muss leer sein, "
-"damit der Upgrade sauber vonstatten gehen kann. Entweder Sie beseitigen die "
-"Warteschlange (mittels »mailmanctl start«, danach mailman stoppen und dann, "
-"wenn es fertig ist, den Upgrade wiederholen) oder Sie löschen diese "
-"Dateien. Beachten Sie, dass durch das Löschen dieser Dateien einige an die "
-"Mailinglisten gesendeten E-Mails verloren gehen."
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:53
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them. Shunted messages are messages on which Mailman has "
+"already abandoned any further processing because of an error condition, but "
+"that are kept for admin review, as they usually originate from Mailman bugs "
+"or other abnormal situations that need human inspection."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:82
 msgid "Administrator must update aliases"
 msgstr "Administrator muss Aliase aktualisieren"
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:82
 msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
-msgstr "Die Aliase, welche Mailman in Ihrer MTA-Konfiguration benötigt, haben sich verändert. Bitte führen Sie /var/lib/mailman/bin/genaliases aus, um zu sehe welche neuen Aliase Sie benötigen."
+msgstr ""
+"Die Aliase, welche Mailman in Ihrer MTA-Konfiguration benötigt, haben sich "
+"verändert. Bitte führen Sie /var/lib/mailman/bin/genaliases aus, um zu sehe "
+"welche neuen Aliase Sie benötigen."
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:82
 msgid ""
 "Until you do that, some features will stop working and mails will go out "
 "with an invalid Return-Path."
-msgstr "Solange die Aliase nicht aktualisiert wurden, werden einige Dinge nicht funktionieren und E-Mails werden mit einem ungültigen »Return-Path« gesendet."
+msgstr ""
+"Solange die Aliase nicht aktualisiert wurden, werden einige Dinge nicht "
+"funktionieren und E-Mails werden mit einem ungültigen »Return-Path« gesendet."
 
 #. Type: note
 #. Description
-#: ../templates:72
+#: ../templates:92
 msgid "List passwords broken"
 msgstr "Listen-Passwörter sind kaputt"
 
 #. Type: note
 #. Description
-#: ../templates:72
+#: ../templates:92
+#, fuzzy
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
-"mailman/bin/change_pw to generate new ones and email them to the admins and "
-"moderators."
-msgstr "Die Administrator- und Moderator-Passwörter für die Mailinglisten sind durch diese Aktualisierung kaputt gegangen. Verwenden Sie /var/lib/mailman/bin/change_pw um Neue zu erstellen und senden Sie sie den Admins und Moderatoren per E-Mail zu."
+"mailman/bin/change_pw to have new ones automatically generated and emailed "
+"to the admins and moderators."
+msgstr ""
+"Die Administrator- und Moderator-Passwörter für die Mailinglisten sind durch "
+"diese Aktualisierung kaputt gegangen. Verwenden Sie /var/lib/mailman/bin/"
+"change_pw um Neue zu erstellen und senden Sie sie den Admins und Moderatoren "
+"per E-Mail zu."
 
+#~ msgid ""
+#~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
+#~ "empty for the upgrade work properly.  Please either flush the queue (by "
+#~ "way of mailmanctl start, then stopping it and redoing the upgrade when it "
+#~ "is finished) or remove those files.  Note that removing the files will "
+#~ "lose some emails sent to lists."
+#~ msgstr ""
+#~ "Das Verzeichnis /var/lib/mailman/qfiles enthält Dateien. Es muss leer "
+#~ "sein, damit der Upgrade sauber vonstatten gehen kann. Entweder Sie "
+#~ "beseitigen die Warteschlange (mittels »mailmanctl start«, danach mailman "
+#~ "stoppen und dann, wenn es fertig ist, den Upgrade wiederholen) oder Sie "
+#~ "löschen diese Dateien. Beachten Sie, dass durch das Löschen dieser "
+#~ "Dateien einige an die Mailinglisten gesendeten E-Mails verloren gehen."

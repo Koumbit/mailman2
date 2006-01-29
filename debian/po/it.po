@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.5 debconf templates\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-26 05:02-0700\n"
+"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-01-29 21:07+0100\n"
 "PO-Revision-Date: 2005-12-27 18:38+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
@@ -186,7 +186,8 @@ msgstr "uk"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-msgid "Which languages to support?  "
+#, fuzzy
+msgid "Which languages to support?"
 msgstr "Quali lingue supportare?  "
 
 #. Type: multiselect
@@ -304,27 +305,41 @@ msgstr "Vecchi file nella coda"
 #: ../templates:53
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
-"for the upgrade work properly.  Please either flush the queue (by way of "
-"mailmanctl start, then stopping it and redoing the upgrade when it is "
-"finished) or remove those files.  Note that removing the files will lose "
-"some emails sent to lists."
+"for the upgrade work properly. If these files are not yet processed, but "
+"otherwise fine messages, then you can try to handle them by: - Stopping new "
+"messages from coming in the queue (at the MTA level:\n"
+"  queue them in the MTA's queue or refuse them with a 4xx code). If\n"
+"  your site has a relatively low mailman traffic, you can skip this\n"
+"  step.\n"
+"- Start a mailman queue runner: /etc/init.d/mailman start - Let it run until "
+"all messages are handled\n"
+"  If they don't all get handled in a timely manner, look at the logs\n"
+"  to try to understand why and solve the cause.\n"
+"- Stop it: /etc/init.d/mailman stop - Retry the upgrade - Let messages come "
+"in again You can also decide to simply remove the files, which will make "
+"Mailman forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
-"La directory /var/lib/mailman/qfiles contiene dei file, deve essere vuota "
-"altrimenti l'aggiornamento potrebbe non funzionare correttamente. Svuotare "
-"la coda (avviando mailmanctl start, poi fermandolo e rifacendo "
-"l'aggiornamento quando ha finito) o cancellare questi file. Notare che la "
-"cancellazione dei file comporta la perdita di alcune delle email inviate "
-"alle liste."
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:53
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them. Shunted messages are messages on which Mailman has "
+"already abandoned any further processing because of an error condition, but "
+"that are kept for admin review, as they usually originate from Mailman bugs "
+"or other abnormal situations that need human inspection."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:82
 msgid "Administrator must update aliases"
 msgstr "L'amministratore deve aggiornare gli alias"
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:82
 msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
@@ -335,7 +350,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:62
+#: ../templates:82
 msgid ""
 "Until you do that, some features will stop working and mails will go out "
 "with an invalid Return-Path."
@@ -345,19 +360,34 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:72
+#: ../templates:92
 msgid "List passwords broken"
 msgstr "Le password di lista non funzionano"
 
 #. Type: note
 #. Description
-#: ../templates:72
+#: ../templates:92
+#, fuzzy
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
-"mailman/bin/change_pw to generate new ones and email them to the admins and "
-"moderators."
+"mailman/bin/change_pw to have new ones automatically generated and emailed "
+"to the admins and moderators."
 msgstr ""
 "Dopo questo aggiornamento le password dell'amministratore e del moderatore "
 "di ciascuna lista non funzionano più. Usare /var/lib/mailman/bin/change_pw "
 "per creare delle nuove password e inviarle per email agli amministratori e "
 "ai moderatori."
+
+#~ msgid ""
+#~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
+#~ "empty for the upgrade work properly.  Please either flush the queue (by "
+#~ "way of mailmanctl start, then stopping it and redoing the upgrade when it "
+#~ "is finished) or remove those files.  Note that removing the files will "
+#~ "lose some emails sent to lists."
+#~ msgstr ""
+#~ "La directory /var/lib/mailman/qfiles contiene dei file, deve essere vuota "
+#~ "altrimenti l'aggiornamento potrebbe non funzionare correttamente. "
+#~ "Svuotare la coda (avviando mailmanctl start, poi fermandolo e rifacendo "
+#~ "l'aggiornamento quando ha finito) o cancellare questi file. Notare che la "
+#~ "cancellazione dei file comporta la perdita di alcune delle email inviate "
+#~ "alle liste."
