@@ -16,7 +16,6 @@ mailman (2.1.7-1) UNRELEASED; urgency=low
   * Ship documentation source (closes: #346180)
   * Document queue-is-not-empty upgrade condition better
     (closes: #268117)
-  * Don't forcibly add a slash after Archiver base URL (closes: #350388)
   * Updated debconf template translations:
     - it (closes: #345234)
     - fr (closes: #346297)
@@ -24,7 +23,7 @@ mailman (2.1.7-1) UNRELEASED; urgency=low
   * Tweak mailman/update_passwords debconf note to address ambiguity in
     English version discovered by French translation.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 21:20:17 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 21:52:38 +0100
 
 mailman (2.1.6-2) UNRELEASED; urgency=low
 
