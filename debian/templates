@@ -91,5 +91,5 @@ Template: mailman/update_passwords
 Type: note
 _Description: List passwords broken
  List admin and moderator passwords are broken by this upgrade. Use
- /var/lib/mailman/bin/change_pw to generate new ones and email them to
- the admins and moderators.
+ /var/lib/mailman/bin/change_pw to have new ones automatically
+ generated and emailed to the admins and moderators.
