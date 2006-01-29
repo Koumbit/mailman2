@@ -1,4 +1,4 @@
-mailman (2.1.7-1) unstable; urgency=low
+mailman (2.1.7-1) UNRELEASED; urgency=low
 
   * New upstream release:
     - Update patches:
@@ -10,8 +10,9 @@ mailman (2.1.7-1) unstable; urgency=low
     - Drop patches merged upstream:
       60_french_archtocentry
   * Pull fixes from various bugs from upstream CVS
+  * Ship documentation source (closes: #346180)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 17:16:09 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 17:31:48 +0100
 
 mailman (2.1.6-2) UNRELEASED; urgency=low
 
