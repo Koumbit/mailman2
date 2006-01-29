@@ -9,6 +9,7 @@ mailman (2.1.7-1) unstable; urgency=low
       68_translation_update_nl.dpatch
     - Drop patches merged upstream:
       60_french_archtocentry
+  * Pull fixes from various bugs from upstream CVS
 
  -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 17:16:09 +0100
 
