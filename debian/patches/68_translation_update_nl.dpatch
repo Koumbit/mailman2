@@ -5,19 +5,10 @@
 ## DP: Update NL translation
 
 @DPATCH@
-diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/messages/nl/LC_MESSAGES/mailman.po
---- mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po	2005-12-10 12:11:38.000000000 +0100
-+++ mailman-2.1.6/messages/nl/LC_MESSAGES/mailman.po	2005-12-10 12:25:21.406656098 +0100
-@@ -193,7 +193,7 @@
- 
- #: Mailman/Bouncer.py:45
- msgid "by yourself"
--msgstr "door uzelf"
-+msgstr "door uwzelf"
- 
- #: Mailman/Bouncer.py:46
- msgid "by the list administrator"
-@@ -310,7 +310,7 @@
+diff -urNad mailman-2.1.7~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.7/messages/nl/LC_MESSAGES/mailman.po
+--- mailman-2.1.7~/messages/nl/LC_MESSAGES/mailman.po	2006-01-29 16:29:46.000000000 +0100
++++ mailman-2.1.7/messages/nl/LC_MESSAGES/mailman.po	2006-01-29 17:01:47.593230097 +0100
+@@ -311,7 +311,7 @@
  "            %(mailmanlink)s mailing lists on %(hostname)s.  Click on a list\n"
  "            name to visit the configuration pages for that list."
  msgstr ""
@@ -26,7 +17,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            %(mailmanlink)s maillijsten op %(hostname)s.  Klik op een\n"
  "            lijstnaam voor de configuratiepagina's van die lijst."
  
-@@ -387,7 +387,7 @@
+@@ -388,7 +388,7 @@
  "<em><strong>Waarschuwing:</strong> het veranderen van\n"
  "    deze instelling hier kan problemen opleveren op andere\n"
  "    pagina's.  Vernieuw elke pagina waar ook deze instelling\n"
@@ -35,7 +26,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "    "
  
  #: Mailman/Cgi/admin.py:373
-@@ -598,11 +598,11 @@
+@@ -599,11 +599,11 @@
  
  #: Mailman/Cgi/admin.py:834
  msgid "Mass Subscriptions"
@@ -49,7 +40,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admin.py:848
  msgid "Membership List"
-@@ -634,7 +634,7 @@
+@@ -635,7 +635,7 @@
  
  #: Mailman/Cgi/admin.py:958
  msgid "unsub"
@@ -58,7 +49,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admin.py:959
  msgid "member address<br>member name"
-@@ -694,7 +694,7 @@
+@@ -695,7 +695,7 @@
  
  #: Mailman/Cgi/admin.py:1050
  msgid "<b>unsub</b> -- Click on this to unsubscribe the member."
@@ -67,7 +58,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admin.py:1052
  msgid ""
-@@ -809,7 +809,7 @@
+@@ -810,7 +810,7 @@
  "<p><em>To view more members, click on the appropriate\n"
  "        range listed below:</em>"
  msgstr ""
@@ -76,7 +67,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "        hieronder:</em>"
  
  #: Mailman/Cgi/admin.py:1121
-@@ -826,7 +826,7 @@
+@@ -827,7 +827,7 @@
  
  #: Mailman/Cgi/admin.py:1136 Mailman/Cgi/listinfo.py:178
  msgid "Subscribe"
@@ -85,7 +76,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admin.py:1142
  msgid "Send welcome messages to new subscribees?"
-@@ -887,7 +887,7 @@
+@@ -889,7 +889,7 @@
  
  #: Mailman/Cgi/admin.py:1151
  msgid "Send notifications of new subscriptions to the list owner?"
@@ -94,7 +85,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admin.py:1159 Mailman/Cgi/admin.py:1200
  msgid "Enter one address per line below..."
-@@ -905,12 +905,12 @@
+@@ -907,12 +907,12 @@
  "    one blank line at the end..."
  msgstr ""
  "Voeg hieronder een begeleidende tekst in die\n"
@@ -109,7 +100,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admin.py:1192
  msgid "Send notifications to the list owner?"
-@@ -949,7 +949,7 @@
+@@ -951,7 +951,7 @@
  "geen veranderingen in de instellingen van de lijst aanbrengen, maar zij "
  "mogen wel\n"
  "onbehandelde beheerverzoeken verwerken, zoals goedkeuren en afkeuren van\n"
@@ -118,53 +109,53 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "Natuurlijk\n"
  "kunnen de <em>lijstbeheerders</em> ook onbehandelde verzoeken verwerken\n"
  "\n"
-@@ -1009,7 +1009,7 @@
+@@ -1015,7 +1015,7 @@
  
- #: Mailman/Cgi/admin.py:1355
+ #: Mailman/Cgi/admin.py:1358
  msgid "Successfully subscribed:"
 -msgstr "Succesvol aangemeld:"
 +msgstr "Succesvol ingeschreven:"
  
- #: Mailman/Cgi/admin.py:1360
+ #: Mailman/Cgi/admin.py:1363
  msgid "Error inviting:"
-@@ -1017,15 +1017,15 @@
+@@ -1023,15 +1023,15 @@
  
- #: Mailman/Cgi/admin.py:1362
+ #: Mailman/Cgi/admin.py:1365
  msgid "Error subscribing:"
 -msgstr "Fouten bij het aanmelden:"
 +msgstr "Fouten bij het inschrijven:"
  
- #: Mailman/Cgi/admin.py:1391
+ #: Mailman/Cgi/admin.py:1394
  msgid "Successfully Unsubscribed:"
 -msgstr "Met success afgemeld:"
 +msgstr "Met success uitgeschreven:"
  
- #: Mailman/Cgi/admin.py:1396
+ #: Mailman/Cgi/admin.py:1399
  msgid "Cannot unsubscribe non-members:"
 -msgstr "Kan geen niet-leden afmelden:"
 +msgstr "Kan geen niet-leden uitschrijven:"
  
- #: Mailman/Cgi/admin.py:1408
+ #: Mailman/Cgi/admin.py:1411
  msgid "Bad moderation flag value"
-@@ -1033,7 +1033,7 @@
+@@ -1039,7 +1039,7 @@
  
- #: Mailman/Cgi/admin.py:1429
+ #: Mailman/Cgi/admin.py:1432
  msgid "Not subscribed"
 -msgstr "Niet aangemeld"
 +msgstr "Niet ingeschreven"
  
- #: Mailman/Cgi/admin.py:1432
+ #: Mailman/Cgi/admin.py:1435
  msgid "Ignoring changes to deleted member: %(user)s"
-@@ -1045,7 +1045,7 @@
+@@ -1051,7 +1051,7 @@
  
- #: Mailman/Cgi/admin.py:1476
+ #: Mailman/Cgi/admin.py:1479
  msgid "Error Unsubscribing:"
 -msgstr "Fout bij afmelden:"
 +msgstr "Fout bij uitschrijven:"
  
  #: Mailman/Cgi/admindb.py:159 Mailman/Cgi/admindb.py:167
  msgid "%(realname)s Administrative Database"
-@@ -1105,7 +1105,7 @@
+@@ -1111,7 +1111,7 @@
  
  #: Mailman/Cgi/admindb.py:280
  msgid "Subscription Requests"
@@ -173,7 +164,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admindb.py:282
  msgid "Address/name"
-@@ -1134,7 +1134,7 @@
+@@ -1140,7 +1140,7 @@
  
  #: Mailman/Cgi/admindb.py:373
  msgid "Unsubscription Requests"
@@ -182,7 +173,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admindb.py:396 Mailman/Cgi/admindb.py:620
  msgid "From:"
-@@ -1161,9 +1161,8 @@
+@@ -1167,9 +1167,8 @@
  msgstr "<em>De zender is nu lid van deze lijst</em>"
  
  #: Mailman/Cgi/admindb.py:448
@@ -193,7 +184,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/admindb.py:453
  msgid "Accepts"
-@@ -1187,7 +1186,7 @@
+@@ -1193,7 +1192,7 @@
  "Ban <b>%(esender)s</b> from ever subscribing to this\n"
  "                    mailing list"
  msgstr ""
@@ -202,7 +193,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "                    maillijst"
  
  #: Mailman/Cgi/admindb.py:467
-@@ -1303,8 +1302,8 @@
+@@ -1313,8 +1312,8 @@
  "    %(safecookie)s.\n"
  "\n"
  "    <p>Opmerking: de bevestigingen zijn maar\n"
@@ -213,7 +204,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "    Anders, bevestig <a href=\"%(confirmurl)s\">hier</a> uw\n"
  "    bevestigingscode."
  
-@@ -1315,8 +1314,8 @@
+@@ -1325,8 +1324,8 @@
  "been\n"
  "                unsubscribed, e.g. by the list administrator?"
  msgstr ""
@@ -224,7 +215,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "                bijvoorbeeld door de lijstbeheerder?"
  
  #: Mailman/Cgi/confirm.py:144
-@@ -1326,7 +1325,7 @@
+@@ -1336,7 +1335,7 @@
  "                    cancelled."
  msgstr ""
  "Het adres dat een veranderingsverzoek deed\n"
@@ -233,7 +224,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/confirm.py:164
  msgid "System error, bad content: %(content)s"
-@@ -1364,10 +1363,9 @@
+@@ -1374,10 +1373,9 @@
  
  #: Mailman/Cgi/confirm.py:230
  msgid "Confirm subscription request"
@@ -245,7 +236,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  msgid ""
  "Your confirmation is required in order to complete the\n"
  "    subscription request to the mailing list <em>%(listname)s</em>.  Your\n"
-@@ -1385,22 +1383,22 @@
+@@ -1395,22 +1393,22 @@
  "to\n"
  "    subscribe to this list."
  msgstr ""
@@ -273,7 +264,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/confirm.py:260
  msgid ""
-@@ -1422,17 +1420,17 @@
+@@ -1432,17 +1430,17 @@
  "        this mailing list, you can hit <em>Cancel my subscription\n"
  "        request</em>."
  msgstr ""
@@ -295,7 +286,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "nadat\n"
  "    uw lidmaatschap is bevestigd.  U kunt het wachtwoord veranderen als u "
  "uw\n"
-@@ -1440,7 +1438,7 @@
+@@ -1450,7 +1448,7 @@
  "\n"
  "    <p>Mocht u van gedachten zijn veranderd en geen lid willen worden van "
  "de\n"
@@ -304,7 +295,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/confirm.py:278
  msgid "Your email address:"
-@@ -1460,15 +1458,15 @@
+@@ -1470,15 +1468,15 @@
  
  #: Mailman/Cgi/confirm.py:302
  msgid "Cancel my subscription request"
@@ -323,7 +314,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/confirm.py:358
  msgid "Awaiting moderator approval"
-@@ -1485,12 +1483,12 @@
+@@ -1495,12 +1493,12 @@
  "notified\n"
  "            of the moderator's decision."
  msgstr ""
@@ -338,7 +329,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            lijstmoderator. U zult nog bericht ontvangen over de "
  "moderator's\n"
  "            beslissing."
-@@ -1503,8 +1501,8 @@
+@@ -1513,8 +1511,8 @@
  "            address that has already been unsubscribed."
  msgstr ""
  "Foute bevestigingscode!.  Het is\n"
@@ -349,16 +340,16 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            "
  
  #: Mailman/Cgi/confirm.py:372
-@@ -1520,7 +1518,7 @@
+@@ -1542,7 +1540,7 @@
  
- #: Mailman/Cgi/confirm.py:384
+ #: Mailman/Cgi/confirm.py:389
  msgid "Subscription request confirmed"
 -msgstr "Aanmeldingsverzoek bevestigd"
 +msgstr "Inschrijvingsverzoek bevestigd"
  
- #: Mailman/Cgi/confirm.py:388
+ #: Mailman/Cgi/confirm.py:393
  msgid ""
-@@ -1533,7 +1531,7 @@
+@@ -1555,7 +1553,7 @@
  "            <a href=\"%(optionsurl)s\">proceed to your membership login\n"
  "            page</a>."
  msgstr ""
@@ -367,21 +358,21 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            maillijst %(listname)s met \"%(addr)s\".  Een apart\n"
  "            bevestigingsbericht zal naar uw e-mailadres worden\n"
  "            verstuurd, samen met uw wachtwoord en andere belangrijke\n"
-@@ -1544,11 +1542,11 @@
+@@ -1566,11 +1564,11 @@
  
- #: Mailman/Cgi/confirm.py:406
+ #: Mailman/Cgi/confirm.py:411
  msgid "You have canceled your unsubscription request."
 -msgstr "U heeft uw afmeldingsverzoek geannuleerd."
 +msgstr "U heeft uw uitschrijvingsverzoek geannuleerd."
  
- #: Mailman/Cgi/confirm.py:434
+ #: Mailman/Cgi/confirm.py:439
  msgid "Unsubscription request confirmed"
 -msgstr "Afmeldingsverzoek is bevestigd"
 +msgstr "Uitschrijvingsverzoek is bevestigd"
  
- #: Mailman/Cgi/confirm.py:438
+ #: Mailman/Cgi/confirm.py:443
  msgid ""
-@@ -1558,14 +1556,14 @@
+@@ -1580,14 +1578,14 @@
  "main\n"
  "            information page</a>."
  msgstr ""
@@ -391,14 +382,14 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "de\n"
  "            maillijst</a> bezoeken."
  
- #: Mailman/Cgi/confirm.py:449
+ #: Mailman/Cgi/confirm.py:454
  msgid "Confirm unsubscription request"
 -msgstr "Bevestig afmeldingsverzoek"
 +msgstr "Bevestig uitschrijvingsverzoek"
  
- #: Mailman/Cgi/confirm.py:464 Mailman/Cgi/confirm.py:554
+ #: Mailman/Cgi/confirm.py:469 Mailman/Cgi/confirm.py:565
  msgid "<em>Not available</em>"
-@@ -1588,24 +1586,24 @@
+@@ -1610,24 +1608,24 @@
  "    <p>Or hit <em>Cancel and discard</em> to cancel this unsubscription\n"
  "    request."
  msgstr ""
@@ -420,24 +411,24 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"    <p>Of klik op <em>Annuleren</em> om uw uitschrijvingsverzoek af\n"
  "    te breken."
  
- #: Mailman/Cgi/confirm.py:483 Mailman/Cgi/options.py:696
- #: Mailman/Cgi/options.py:837 Mailman/Cgi/options.py:847
+ #: Mailman/Cgi/confirm.py:488 Mailman/Cgi/options.py:746
+ #: Mailman/Cgi/options.py:887 Mailman/Cgi/options.py:897
  msgid "Unsubscribe"
 -msgstr "Afmelden"
 +msgstr "Uitschrijven"
  
- #: Mailman/Cgi/confirm.py:484 Mailman/Cgi/confirm.py:583
+ #: Mailman/Cgi/confirm.py:489 Mailman/Cgi/confirm.py:594
  msgid "Cancel and discard"
-@@ -1613,7 +1611,7 @@
+@@ -1635,7 +1633,7 @@
  
- #: Mailman/Cgi/confirm.py:494
+ #: Mailman/Cgi/confirm.py:499
  msgid "You have canceled your change of address request."
 -msgstr "Je hebt je email adres verandering geannuleerd."
 +msgstr "U hebt uw email adres verandering geannuleerd."
  
- #: Mailman/Cgi/confirm.py:523
- msgid "Change of address request confirmed"
-@@ -1667,7 +1665,7 @@
+ #: Mailman/Cgi/confirm.py:528
+ #, fuzzy
+@@ -1701,7 +1699,7 @@
  msgstr ""
  "Uw bevestiging is vereist om uw adreswijzigingsverzoek voor\n"
  "    de <em>%(listname)s</em> maillijst te voltooien.  U bent op dit moment\n"
@@ -446,16 +437,16 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "\n"
  "    <ul><li><b>Naam:</b> %(fullname)s\n"
  "        <li><b>Oude e-mailadres:</b> %(oldaddr)s\n"
-@@ -1792,7 +1790,7 @@
+@@ -1826,7 +1824,7 @@
  
- #: Mailman/Cgi/confirm.py:746
+ #: Mailman/Cgi/confirm.py:757
  msgid "Membership re-enabled."
 -msgstr "Lidmaatschap is weer geaktiveerd."
 +msgstr "Lidmaatschap is weer geactiveerd."
  
- #: Mailman/Cgi/confirm.py:750
+ #: Mailman/Cgi/confirm.py:761
  msgid ""
-@@ -1801,7 +1799,7 @@
+@@ -1835,7 +1833,7 @@
  "            href=\"%(optionsurl)s\">visit your member options page</a>.\n"
  "            "
  msgstr ""
@@ -464,16 +455,16 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            %(listname)s maillijst.  U kunt nu <a\n"
  "            href=\"%(optionsurl)s\">uw lidmaatschap instellingenpagina "
  "bezoeken</a>.\n"
-@@ -1809,7 +1807,7 @@
+@@ -1843,7 +1841,7 @@
  
- #: Mailman/Cgi/confirm.py:762
+ #: Mailman/Cgi/confirm.py:773
  msgid "Re-enable mailing list membership"
 -msgstr "Her-aanmelding mailing lijst lidmaatschap"
 +msgstr "Her-inschrijving mailinglijst lidmaatschap"
  
- #: Mailman/Cgi/confirm.py:779
+ #: Mailman/Cgi/confirm.py:790
  msgid ""
-@@ -1817,8 +1815,8 @@
+@@ -1851,8 +1849,8 @@
  "        from this mailing list.  To re-subscribe, please visit the\n"
  "        <a href=\"%(listinfourl)s\">list information page</a>."
  msgstr ""
@@ -483,25 +474,28 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"        deze mailing lijst.  Om weer in te schrijven, bezoek\n"
  "        <a href=\"%(listinfourl)s\">lijst informatie pagina</a>."
  
- #: Mailman/Cgi/confirm.py:794
-@@ -1900,7 +1898,6 @@
+ #: Mailman/Cgi/confirm.py:805
+@@ -1934,9 +1932,8 @@
  msgstr "Lijstnaam mag niet de volgende tekens bevatten: \"@\": %(listname)s"
  
- #: Mailman/Cgi/create.py:109
+ #: Mailman/Cgi/create.py:110
 -#, fuzzy
  msgid "List already exists: %(safelistname)s"
- msgstr "Lijst bestaat al: %(listname)s"
+-msgstr "Lijst bestaat al: %(listname)s"
++msgstr "Lijst bestaat al: %(safelistname)s"
  
-@@ -1974,7 +1971,7 @@
+ #: Mailman/Cgi/create.py:114
+ msgid "You forgot to enter the list name"
+@@ -2008,7 +2005,7 @@
  msgstr ""
  "De maillijst is aangemaakt.\n"
  "    <b>%(listname)s</b> gegevens zijn naar de lijstbeheerder verstuurd\n"
 -"    <b>%(owner)s</b>.  Je kan nu:"
 +"    <b>%(owner)s</b>.  U kan nu:"
  
- #: Mailman/Cgi/create.py:262
+ #: Mailman/Cgi/create.py:263
  msgid "Visit the list's info page"
-@@ -2097,7 +2094,7 @@
+@@ -2131,7 +2128,7 @@
  "        select at least one initial language, the list will use the server\n"
  "        default language of %(deflang)s"
  msgstr ""
@@ -510,7 +504,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "        taal kiest dan zal de lijst deze standaardtaal voor deze server\n"
  "        gebruiken: %(deflang)s"
  
-@@ -2123,7 +2120,7 @@
+@@ -2157,7 +2154,7 @@
  
  #: Mailman/Cgi/edithtml.py:44
  msgid "Subscribe results page"
@@ -519,7 +513,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/edithtml.py:45
  msgid "User specific options page"
-@@ -2202,7 +2199,7 @@
+@@ -2236,7 +2233,7 @@
  "preferences\n"
  "            on your subscription."
  msgstr ""
@@ -528,7 +522,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            %(hostname)s. Klik op een lijstnaam voor meer informatie."
  
  #: Mailman/Cgi/listinfo.py:116
-@@ -2227,13 +2224,12 @@
+@@ -2261,13 +2258,12 @@
  msgstr "de lijstbeheer overzichtspagina"
  
  #: Mailman/Cgi/listinfo.py:125
@@ -544,18 +538,18 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/listinfo.py:190
  msgid "Edit Options"
-@@ -2257,9 +2253,8 @@
+@@ -2291,9 +2287,8 @@
  msgstr "Er is geen adres opgegeven"
  
- #: Mailman/Cgi/options.py:116
+ #: Mailman/Cgi/options.py:117
 -#, fuzzy
  msgid "Illegal Email Address: %(safeuser)s"
 -msgstr "Ongeldig e-mailadres opgegeven"
 +msgstr "Ongeldig e-mailadres opgegeven: %(safeuser)s"
  
- #: Mailman/Cgi/options.py:123 Mailman/Cgi/options.py:187
- #: Mailman/Cgi/options.py:209
-@@ -2272,7 +2267,7 @@
+ #: Mailman/Cgi/options.py:124 Mailman/Cgi/options.py:188
+ #: Mailman/Cgi/options.py:210
+@@ -2306,7 +2301,7 @@
  "Your unsubscription request has been\n"
  "                    forwarded to the list administrator for approval."
  msgstr ""
@@ -563,28 +557,28 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"Uw uitschrijvingsverzoek is doorgestuurd naar de lijstbeheerder voor\n"
  "goedkeuring."
  
- #: Mailman/Cgi/options.py:178 Mailman/Cgi/options.py:192
-@@ -2289,9 +2284,8 @@
- msgstr "Autentificatie is mislukt"
+ #: Mailman/Cgi/options.py:179 Mailman/Cgi/options.py:193
+@@ -2334,9 +2329,8 @@
+ msgstr ""
  
- #: Mailman/Cgi/options.py:263
+ #: Mailman/Cgi/options.py:284
 -#, fuzzy
  msgid "List subscriptions for %(safeuser)s on %(hostname)s"
 -msgstr "Lijstaanmeldingen voor %(user)s op %(hostname)s"
-+msgstr "Lijstinschrijvingen voor %(user)s op %(hostname)s"
++msgstr "Lijstinschrijvingen voor %(safeuser)s op %(hostname)s"
  
- #: Mailman/Cgi/options.py:266
+ #: Mailman/Cgi/options.py:287
  msgid ""
-@@ -2307,7 +2301,7 @@
+@@ -2359,7 +2353,7 @@
  
- #: Mailman/Cgi/options.py:320
+ #: Mailman/Cgi/options.py:347
  msgid "You are already using that email address"
 -msgstr "Je gebruikt dat e-mailadres al"
 +msgstr "Uw e-mailadres is al in gebruik"
  
- #: Mailman/Cgi/options.py:332
+ #: Mailman/Cgi/options.py:359
  #, fuzzy
-@@ -2372,13 +2366,13 @@
+@@ -2447,13 +2441,13 @@
  "                on the checkbox below the <em>Unsubscribe</em> button.  You\n"
  "                have not been unsubscribed!"
  msgstr ""
@@ -595,14 +589,14 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"                onder de <em>Uitschrijven</em>-knop aan te vinken.  U\n"
 +"                bent niet uitgeschreven!"
  
- #: Mailman/Cgi/options.py:455
+ #: Mailman/Cgi/options.py:497
  msgid "Unsubscription results"
 -msgstr "Afmeldingsresultaat"
 +msgstr "Uitschrijvingsresultaat"
  
- #: Mailman/Cgi/options.py:459
+ #: Mailman/Cgi/options.py:501
  msgid ""
-@@ -2387,7 +2381,7 @@
+@@ -2462,7 +2456,7 @@
  "            receive notification once the list moderators have made their\n"
  "            decision."
  msgstr ""
@@ -611,7 +605,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            naar de lijstmoderators voor goedkeuring. U zult een bericht\n"
  "            ontvangen zodra de lijstmoderators een beslissing hebben\n"
  "            genomen."
-@@ -2401,10 +2395,10 @@
+@@ -2476,10 +2470,10 @@
  "            about your unsubscription, please contact the list owners at\n"
  "            %(owneraddr)s."
  msgstr ""
@@ -624,25 +618,25 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            contact op met de lijsteigenaar op het volgende e-mailadres:\n"
  "            %(owneraddr)s."
  
-@@ -2442,7 +2436,7 @@
+@@ -2525,7 +2519,7 @@
  
- #: Mailman/Cgi/options.py:698
+ #: Mailman/Cgi/options.py:748
  msgid "<em>Yes, I really want to unsubscribe</em>"
 -msgstr "<em>Ja, ik wil mezelf echt afmelden</em>"
 +msgstr "<em>Ja, ik wil mezelf echt uitschrijven</em>"
  
- #: Mailman/Cgi/options.py:702
+ #: Mailman/Cgi/options.py:752
  msgid "Change My Password"
-@@ -2450,7 +2444,7 @@
+@@ -2533,7 +2527,7 @@
  
- #: Mailman/Cgi/options.py:705
+ #: Mailman/Cgi/options.py:755
  msgid "List my other subscriptions"
 -msgstr "Laat mijn andere aanmeldingen zien"
 +msgstr "Laat mijn andere inschrijvingen zien"
  
- #: Mailman/Cgi/options.py:711
+ #: Mailman/Cgi/options.py:761
  msgid "Email My Password To Me"
-@@ -2496,7 +2490,7 @@
+@@ -2579,7 +2573,7 @@
  "<em>%(cpuser)s</em>."
  msgstr ""
  "\n"
@@ -651,15 +645,18 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "subscribed to this list with the case-preserved address\n"
  "<em>%(cpuser)s</em>."
  
-@@ -2509,7 +2503,6 @@
+@@ -2592,9 +2586,8 @@
  msgstr "e-mailadres en "
  
- #: Mailman/Cgi/options.py:788
+ #: Mailman/Cgi/options.py:838
 -#, fuzzy
  msgid "%(realname)s list: member options for user %(safeuser)s"
- msgstr "%(realname)s lijst: lidmaatschapsinstellingen voor gebruiker %(user)s"
+-msgstr "%(realname)s lijst: lidmaatschapsinstellingen voor gebruiker %(user)s"
++msgstr "%(realname)s lijst: lidmaatschapsinstellingen voor gebruiker %(safeuser)s"
  
-@@ -2534,7 +2527,7 @@
+ #: Mailman/Cgi/options.py:863
+ msgid ""
+@@ -2617,7 +2610,7 @@
  "mailadres\n"
  "    en uw wachtwoord. Als u uw wachtwoord niet meer weet, klik dan op\n"
  "    <em>Herinnering</em>. Het wachtwoord wordt u dan naar u verstuurd via\n"
@@ -668,7 +665,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "Er\n"
  "    zal dan een bevestigingsbericht naar u worden verstuurd.\n"
  "\n"
-@@ -2565,11 +2558,11 @@
+@@ -2648,11 +2641,11 @@
  "    also confirm by email; see the instructions in the confirmation\n"
  "    message)."
  msgstr ""
@@ -682,34 +679,36 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"    het bericht terugsturen (reply/antwoord) om de uitschrijving te\n"
  "    voltooien.)"
  
- #: Mailman/Cgi/options.py:849
-@@ -2609,9 +2602,8 @@
+ #: Mailman/Cgi/options.py:899
+@@ -2692,9 +2685,8 @@
  msgstr "Patroon:"
  
- #: Mailman/Cgi/private.py:64
+ #: Mailman/Cgi/private.py:65
 -#, fuzzy
  msgid "Private Archive Error"
 -msgstr "privé Archief fout"
 +msgstr "Privé Archief fout"
  
- #: Mailman/Cgi/private.py:65
+ #: Mailman/Cgi/private.py:66
  msgid "You must specify a list."
-@@ -2620,12 +2612,12 @@
- #: Mailman/Cgi/private.py:102
- #, fuzzy
+@@ -2705,14 +2697,12 @@
+ msgstr ""
+ 
+ #: Mailman/Cgi/private.py:110
+-#, fuzzy
  msgid "Private Archive Error - %(msg)s"
 -msgstr "privé Archief fout - %(msg)s"
 +msgstr "Privé Archief fout - %(msg)s"
  
- #: Mailman/Cgi/private.py:159
- #, fuzzy
+ #: Mailman/Cgi/private.py:180
+-#, fuzzy
  msgid "Private archive file not found"
 -msgstr "privé archief bestand niet gevonden"
 +msgstr "Privé archief bestand niet gevonden"
  
  #: Mailman/Cgi/rmlist.py:81
  msgid "You're being a sneaky list owner!"
-@@ -2727,7 +2719,7 @@
+@@ -2814,7 +2804,7 @@
  
  #: Mailman/Cgi/roster.py:97
  msgid "%(realname)s roster authentication failed."
@@ -718,7 +717,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/roster.py:125 Mailman/Cgi/roster.py:126
  #: Mailman/Cgi/subscribe.py:49 Mailman/Cgi/subscribe.py:60
-@@ -2740,7 +2732,7 @@
+@@ -2827,7 +2817,7 @@
  
  #: Mailman/Cgi/subscribe.py:123
  msgid "You may not subscribe a list to itself!"
@@ -727,7 +726,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/subscribe.py:131
  msgid "If you supply a password, you must confirm it."
-@@ -2759,10 +2751,10 @@
+@@ -2846,10 +2836,10 @@
  "moderator.  If confirmation is required, you will soon get a confirmation\n"
  "email which contains further instructions."
  msgstr ""
@@ -740,7 +739,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "moet worden goedgekeurd door de lijstmoderator. Als uw bevestiging nodig\n"
  "is zult u een e-mail ontvangen met verdere instructies"
  
-@@ -2790,7 +2782,7 @@
+@@ -2877,7 +2867,7 @@
  "Your subscription is not allowed because the email address you gave is\n"
  "insecure."
  msgstr ""
@@ -749,7 +748,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "onveilig is."
  
  #: Mailman/Cgi/subscribe.py:197
-@@ -2800,10 +2792,10 @@
+@@ -2887,10 +2877,10 @@
  "%(email)s.  Please note your subscription will not start until you confirm\n"
  "your subscription."
  msgstr ""
@@ -764,7 +763,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/subscribe.py:209
  msgid ""
-@@ -2813,13 +2805,13 @@
+@@ -2900,13 +2890,13 @@
  "the\n"
  "moderator's decision when they get to your request."
  msgstr ""
@@ -780,7 +779,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Cgi/subscribe.py:230
  msgid "Mailman privacy alert"
-@@ -2843,8 +2835,8 @@
+@@ -2930,8 +2920,8 @@
  "message\n"
  "to the list administrator at %(listowner)s.\n"
  msgstr ""
@@ -791,7 +790,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "\n"
  "Let er op dat lidmaatschap van deze lijst niet publiek toegankelijk is, dus\n"
  "het is mogelijk dat een onbevoegd person probeert de lijst binnen te "
-@@ -2852,11 +2844,11 @@
+@@ -2939,11 +2929,11 @@
  "Het zou een privacyschending zijn als we dit door zouden laten, daarom\n"
  "is deze poging tegengehouden.\n"
  "\n"
@@ -806,7 +805,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "over\n"
  "uw privacy, meld dit dan aan de lijsteigenaar op dit e-mailadres: %"
  "(listowner)s.\n"
-@@ -2871,7 +2863,7 @@
+@@ -2958,7 +2948,7 @@
  
  #: Mailman/Cgi/subscribe.py:259
  msgid "You have been successfully subscribed to the %(realname)s mailing list."
@@ -815,7 +814,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_confirm.py:17
  #, fuzzy
-@@ -2902,9 +2894,9 @@
+@@ -2989,9 +2979,9 @@
  "message."
  msgstr ""
  "Ongeldige bevestigingscode. Let er op dat de bevestigingscode \n"
@@ -827,7 +826,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_confirm.py:55
  msgid "Your request has been forwarded to the list moderator for approval."
-@@ -2916,7 +2908,7 @@
+@@ -3003,7 +2993,7 @@
  "You are not currently a member.  Have you already unsubscribed or changed\n"
  "your email address?"
  msgstr ""
@@ -836,7 +835,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "uw\n"
  "e-mailadres veranderd?"
  
-@@ -3071,13 +3063,13 @@
+@@ -3169,13 +3159,13 @@
  "        huidige wachtwoord toegestuurd. Met de argumenten <oud wachtwoord>\n"
  "        en <nieuw wachtwoord> kunt u uw wachtwoord veranderen.\n"
  "\n"
@@ -854,7 +853,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_password.py:51 Mailman/Commands/cmd_password.py:66
  msgid "Your password is: %(password)s"
-@@ -3215,7 +3207,7 @@
+@@ -3313,7 +3303,7 @@
  "    set show [address=<adres>]\n"
  "        Bekijken van uw huidige instellingen.  Als u een bericht verstuurd "
  "vanaf een\n"
@@ -863,7 +862,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "adres\n"
  "        op met `address=<adres>' (zonder haakjes om het e-mailadres heen, en "
  "zonder\n"
-@@ -3225,7 +3217,7 @@
+@@ -3323,7 +3313,7 @@
  "        Om uw instellingen te kunnen wijzigen moet u eerst dit commando "
  "gebruiken,\n"
  "        samen met uw wachtwoord.  Als u een bericht verstuurd vanaf een\n"
@@ -872,7 +871,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "adres\n"
  "        op met `address=<adres>' (zonder haakjes om het e-mailadres heen, en "
  "zonder\n"
-@@ -3363,7 +3355,7 @@
+@@ -3461,7 +3451,7 @@
  
  #: Mailman/Commands/cmd_set.py:224
  msgid "You did not give the correct password"
@@ -881,7 +880,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_set.py:236 Mailman/Commands/cmd_set.py:283
  msgid "Bad argument: %(arg)s"
-@@ -3436,17 +3428,17 @@
+@@ -3534,17 +3524,17 @@
  msgstr ""
  "\n"
  "    subscribe [wachtwoord] [digest|nodigest] [address=<adres>]\n"
@@ -903,7 +902,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "het \n"
  "        e-mailadres, en zonder aanhalingstekens!) gebruiken.\n"
  
-@@ -3456,7 +3448,7 @@
+@@ -3554,7 +3544,7 @@
  
  #: Mailman/Commands/cmd_subscribe.py:84
  msgid "No valid address found to subscribe"
@@ -912,7 +911,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_subscribe.py:105
  msgid ""
-@@ -3481,16 +3473,16 @@
+@@ -3579,16 +3569,16 @@
  "Your subscription is not allowed because\n"
  "the email address you gave is insecure."
  msgstr ""
@@ -932,7 +931,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_subscribe.py:128
  msgid "This list only supports digest subscriptions!"
-@@ -3501,12 +3493,12 @@
+@@ -3599,12 +3589,12 @@
  "Your subscription request has been forwarded to the list administrator\n"
  "at %(listowner)s for review."
  msgstr ""
@@ -947,7 +946,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_unsubscribe.py:17
  msgid ""
-@@ -3523,18 +3515,18 @@
+@@ -3621,18 +3611,18 @@
  msgstr ""
  "\n"
  "    unsubscribe [wachtwoord] [address=<adres>]\n"
@@ -970,7 +969,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_unsubscribe.py:62
  msgid "%(address)s is not a member of the %(listname)s mailing list"
-@@ -3546,7 +3538,7 @@
+@@ -3644,7 +3634,7 @@
  "for\n"
  "approval."
  msgstr ""
@@ -979,7 +978,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "goedkeuring."
  
  #: Mailman/Commands/cmd_unsubscribe.py:84
-@@ -3555,7 +3547,7 @@
+@@ -3653,7 +3643,7 @@
  
  #: Mailman/Commands/cmd_unsubscribe.py:87
  msgid "Unsubscription request succeeded."
@@ -988,7 +987,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Commands/cmd_who.py:29
  msgid ""
-@@ -3585,11 +3577,11 @@
+@@ -3683,11 +3673,11 @@
  "        door leden worden opgevraagd, daarom moet uw wachtwoord worden\n"
  "        opgegeven om de lijst op te vragen. Als u een bericht verstuurd "
  "vanaf\n"
@@ -1003,16 +1002,16 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "verstuurd.\n"
  
  #: Mailman/Commands/cmd_who.py:44
-@@ -3770,7 +3762,7 @@
+@@ -3872,7 +3862,7 @@
  
- #: Mailman/Deliverer.py:87
+ #: Mailman/Deliverer.py:88
  msgid "You have been unsubscribed from the %(realname)s mailing list"
 -msgstr "Uw bent afgemeld van de %(realname)s maillijst"
 +msgstr "Uw bent uitgeschreven van de %(realname)s maillijst"
  
- #: Mailman/Deliverer.py:114
+ #: Mailman/Deliverer.py:115
  msgid "%(listfullname)s mailing list reminder"
-@@ -3893,7 +3885,7 @@
+@@ -3995,7 +3985,7 @@
  "    <li><b>owneremail</b> - <em>geeft het adres van de lijsteigenaar</em>\n"
  "</ul>\n"
  "\n"
@@ -1021,7 +1020,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "kan\n"
  " een bestand specificeren op uw locale computersysteem om als tekst te "
  "uploaden."
-@@ -4296,7 +4288,7 @@
+@@ -4398,7 +4388,7 @@
  "             cause a member to be unsubscribed?"
  msgstr ""
  "Moet Mailman u, de lijsteigenaar, een melding sturen wanneer\n"
@@ -1030,7 +1029,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Gui/Bounce.py:158
  msgid ""
-@@ -4309,7 +4301,7 @@
+@@ -4411,7 +4401,7 @@
  "Door deze waarde op <em>Nee</em> in te stellen worden\n"
  "             meldingsberichten uitgeschakeld die normaal aan de "
  "lijsteigenaar\n"
@@ -1039,7 +1038,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             teveel aan bounceberichten.\n"
  "             Een poging om het lid hiervan op de hoogte te stellen zal wel\n"
  "             worden gedaan."
-@@ -4803,7 +4795,7 @@
+@@ -4918,7 +4908,7 @@
  "De letters in deze naam kunnen naar kleine letters of hoofdletters\n"
  "             worden veranderd om het meer toonbaar te maken. Echter,\n"
  "             deze naam wordt gebruikt als het e-mailadres (b.v. in\n"
@@ -1048,7 +1047,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             andere manieren worden veranderd (e-mail is niet hoofdletter/\n"
  "             kleine lettergevoelig, maar is wel gevoelig voor al het "
  "andere :-)"
-@@ -4855,7 +4847,7 @@
+@@ -4970,7 +4960,7 @@
  "             <p>De <em>lijstmoderators</em> hebben wat beperktere\n"
  "             bevoegdheden. Zijn kunnen geen enkele lijstinstelling\n"
  "             wijzigen, maar zij mogen wel uitstaande beheertaken doen,\n"
@@ -1057,7 +1056,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             en het verwijderen van vastgehouden berichten. Natuurlijk\n"
  "             kunnen de <em>lijstbeheerders</em> ook deze taken uitvoeren.\n"
  "\n"
-@@ -4915,7 +4907,7 @@
+@@ -5030,7 +5020,7 @@
  "             <p>De <em>lijstmoderators</em> hebben wat beperktere\n"
  "             bevoegdheden. Zijn kunnen geen enkele lijstinstelling\n"
  "             wijzigen, maar zij mogen wel uitstaande beheertaken doen,\n"
@@ -1066,16 +1065,16 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             en het verwijderen van vastgehouden berichten. Natuurlijk\n"
  "             kunnen de <em>lijstbeheerders</em> ook deze taken uitvoeren.\n"
  "\n"
-@@ -5359,7 +5351,7 @@
+@@ -5475,7 +5465,7 @@
  
- #: Mailman/Gui/General.py:293
+ #: Mailman/Gui/General.py:292
  msgid "Send welcome message to newly subscribed members?"
 -msgstr "Stuur een welkomstbericht naar nieuwe aanmelders?"
 +msgstr "Stuur een welkomstbericht naar nieuwe inschrijvers?"
  
- #: Mailman/Gui/General.py:294
+ #: Mailman/Gui/General.py:293
  msgid ""
-@@ -5370,7 +5362,7 @@
+@@ -5486,7 +5476,7 @@
  "mailing\n"
  "             list manager to Mailman."
  msgstr ""
@@ -1084,21 +1083,21 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             zonder dat zij dat merken. Deze instelling is waardevol\n"
  "             wanneer u lijsten transparant wilt verhuizen van een\n"
  "             ander lijstbeheerprogramma naar Mailman."
-@@ -5382,11 +5374,11 @@
+@@ -5498,11 +5488,11 @@
  msgstr ""
  "Tekst die wordt verzonden naar mensen die de lijst verlaten.\n"
  "             Als dit leeg is dan zal geen speciale tekst worden\n"
 -"             toegevoegd aan het afmeldingsbericht."
 +"             toegevoegd aan het uitschrijvingsbericht."
  
- #: Mailman/Gui/General.py:304
+ #: Mailman/Gui/General.py:303
  msgid "Send goodbye message to members when they are unsubscribed?"
 -msgstr "Verstuur een afmeldingsbericht aan leden als ze zijn afgemeld?"
 +msgstr "Verstuur een uitschrijvingsbericht aan leden als ze zijn afgemeld?"
  
- #: Mailman/Gui/General.py:307
+ #: Mailman/Gui/General.py:306
  msgid ""
-@@ -5408,7 +5400,7 @@
+@@ -5524,7 +5514,7 @@
  msgstr ""
  "Lijstmoderators (en lijstbeheerders) krijgen dagelijks\n"
  "             herinneringen van aanvragen die wachten op goedkeuring, zoals\n"
@@ -1107,7 +1106,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             worden vastgehouden om bepaalde redenen. Het instellen van\n"
  "             deze instelling zorgt er ook voor dat er onmiddelijk meldingen\n"
  "             worden verstuurd als er nieuwe verzoeken binnenkomen."
-@@ -5418,8 +5410,8 @@
+@@ -5534,8 +5524,8 @@
  "Should administrator get notices of subscribes and\n"
  "             unsubscribes?"
  msgstr ""
@@ -1116,9 +1115,9 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"Moet de beheerder meldingen krijgen van inschrijving\n"
 +"             en uitschrijvingen?"
  
- #: Mailman/Gui/General.py:322
+ #: Mailman/Gui/General.py:321
  msgid "Send mail to poster when their posting is held for approval?"
-@@ -5456,7 +5448,7 @@
+@@ -5572,7 +5562,7 @@
  "Default options for new members joining this list.<input\n"
  "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
  msgstr ""
@@ -1127,7 +1126,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             op deze lijst.<input type=\"hidden\" name=\"new_member_options"
  "\" value=\"ignore\">"
  
-@@ -5465,7 +5457,7 @@
+@@ -5581,7 +5571,7 @@
  "When a new member is subscribed to this list, their initial\n"
  "             set of options is taken from the this variable's setting."
  msgstr ""
@@ -1136,7 +1135,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             initiële groepinstellingen genomen van de instelling\n"
  "             van deze variabele."
  
-@@ -5488,8 +5480,8 @@
+@@ -5604,8 +5594,8 @@
  "             in the process."
  msgstr ""
  "Beheertests zullen berichten controleren of ze\n"
@@ -1147,7 +1146,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             toegevoegd aan de beheerverzoekenwachtrij met een\n"
  "             melding aan de beheerder dat er een nieuw verzoek is\n"
  "             binnengekomen."
-@@ -5784,11 +5776,11 @@
+@@ -5900,11 +5890,11 @@
  
  #: Mailman/Gui/Membership.py:31
  msgid "Mass&nbsp;Subscription"
@@ -1161,7 +1160,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Gui/NonDigest.py:34
  msgid "Non-digest&nbsp;options"
-@@ -6009,7 +6001,7 @@
+@@ -6125,7 +6115,7 @@
  
  #: Mailman/Gui/Privacy.py:41
  msgid "Subscription&nbsp;rules"
@@ -1170,7 +1169,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Gui/Privacy.py:42
  msgid "Sender&nbsp;filters"
-@@ -6041,7 +6033,7 @@
+@@ -6157,7 +6147,7 @@
  
  #: Mailman/Gui/Privacy.py:63 Mailman/Gui/Privacy.py:86
  msgid "What steps are required for subscription?<br>"
@@ -1179,7 +1178,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Gui/Privacy.py:64
  msgid ""
-@@ -6072,13 +6064,13 @@
+@@ -6188,13 +6178,13 @@
  "                           Bevestiging en goedkeuring - zowel goedkeuring "
  "als bevestiging zijn vereist\n"
  "                           \n"
@@ -1196,7 +1195,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "                           doen voor anderen zonder hun toestemming."
  
  #: Mailman/Gui/Privacy.py:87
-@@ -6099,16 +6091,16 @@
+@@ -6215,16 +6205,16 @@
  "Bevestiging (*) - er wordt een e-mailbevestigingsstap gevraagd <br>\n"
  "                           Verzoek tot goedkeuring - de lijstbeheerder wordt "
  "om goedkeuring gevraagd\n"
@@ -1217,7 +1216,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "                           voor anderen zonder hun toestemming."
  
  #: Mailman/Gui/Privacy.py:103
-@@ -6119,7 +6111,7 @@
+@@ -6235,7 +6225,7 @@
  "            <a href=\"%(admin)s/archive\">Archival Options</a> section for\n"
  "            separate archive-related privacy settings."
  msgstr ""
@@ -1226,7 +1225,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            en ledenpublicatiebeleid in te stellen. U kunt ook instellen of "
  "deze\n"
  "            lijst wel of niet publiek toegankelijk is.  Zie ook de\n"
-@@ -6129,7 +6121,7 @@
+@@ -6245,7 +6235,7 @@
  
  #: Mailman/Gui/Privacy.py:109
  msgid "Subscribing"
@@ -1235,7 +1234,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Gui/Privacy.py:111
  msgid ""
-@@ -6145,7 +6137,7 @@
+@@ -6261,7 +6251,7 @@
  "             requests?  (<em>No</em> is recommended)"
  msgstr ""
  "Is de lijstmoderator's goedkeuring noodzakelijk voor\n"
@@ -1244,7 +1243,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Gui/Privacy.py:120
  msgid ""
-@@ -6165,9 +6157,9 @@
+@@ -6281,9 +6271,9 @@
  "             are required to be members of."
  msgstr ""
  "Als leden een lijst willen verlaten, dan moeten zijn een\n"
@@ -1257,7 +1256,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "maillijsten.\n"
  "             (ze kunnen echt heel kwaad worden als ze niet van een lijst "
  "af \n"
-@@ -6175,7 +6167,7 @@
+@@ -6291,7 +6281,7 @@
  "\n"
  "             <p>For sommige lijsten kan het nodig zijn om "
  "moderatorgoedkeuring\n"
@@ -1266,7 +1265,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "Voorbeelden\n"
  "             hiervan zijn lijsten binnen bedrijven waar alle werknemers lid "
  "van\n"
-@@ -6202,7 +6194,7 @@
+@@ -6318,7 +6308,7 @@
  "             addresses one per line; start the line with a ^ character to\n"
  "             designate a regular expression match."
  msgstr ""
@@ -1275,7 +1274,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             deze maillijst, zonder dat verdere moderatie noodzakelijk is.  "
  "Voeg\n"
  "             een adres per regel toe. Start de regel met een ^ teken om\n"
-@@ -6386,7 +6378,7 @@
+@@ -6502,7 +6492,7 @@
  "             de lijstbeheerder kan beslissen of een specifiek individueel\n"
  "             adres moet worden gemodereerd of niet.\n"
  "\n"
@@ -1284,7 +1283,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "             gezet overeenkomstig deze instelling. Zet deze instelling uit "
  "om\n"
  "             berichten van leden standaard te accepteren. Zet deze "
-@@ -7282,7 +7274,7 @@
+@@ -7398,7 +7388,7 @@
  #: Mailman/HTMLFormatter.py:149
  #, fuzzy
  msgid "Note: your list delivery is currently disabled%(reason)s."
@@ -1293,7 +1292,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/HTMLFormatter.py:152
  msgid "Mail delivery"
-@@ -7326,6 +7318,8 @@
+@@ -7442,6 +7432,8 @@
  "You will be sent email requesting confirmation, to\n"
  "            prevent others from gratuitously subscribing you."
  msgstr ""
@@ -1302,7 +1301,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/HTMLFormatter.py:192
  msgid ""
-@@ -7333,6 +7327,9 @@
+@@ -7449,6 +7441,9 @@
  "            will be held for approval.  You will be notified of the list\n"
  "            moderator's decision by email."
  msgstr ""
@@ -1312,7 +1311,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/HTMLFormatter.py:195 Mailman/HTMLFormatter.py:202
  msgid "also "
-@@ -7348,7 +7345,7 @@
+@@ -7464,7 +7459,7 @@
  "            decision by email."
  msgstr ""
  "Er wordt een bericht verzonden ter bevestiging, zodat\n"
@@ -1321,7 +1320,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            de bevestiging is ontvangen, wordt uw verzoek \n"
  "            vastgehouden voor goedkeuring  door de\n"
  "            lijstmoderator.  U krijgt via de beslissing van de\n"
-@@ -7397,7 +7394,6 @@
+@@ -7513,7 +7508,6 @@
  msgstr "<b><i>of</i></b> "
  
  #: Mailman/HTMLFormatter.py:254
@@ -1329,7 +1328,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  msgid ""
  "To unsubscribe from %(realname)s, get a password reminder,\n"
  "        or change your subscription options %(either)senter your "
-@@ -7405,16 +7401,15 @@
+@@ -7521,16 +7515,15 @@
  "        email address:\n"
  "        <p><center> "
  msgstr ""
@@ -1351,7 +1350,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/HTMLFormatter.py:265
  msgid ""
-@@ -7429,25 +7424,23 @@
+@@ -7545,25 +7538,23 @@
  " If you leave the field blank, you will be prompted for\n"
  "        your email address"
  msgstr ""
@@ -1380,7 +1379,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  "            de lijst beheerder.</i>)"
  
  #: Mailman/HTMLFormatter.py:289
-@@ -7476,16 +7469,15 @@
+@@ -7592,16 +7583,15 @@
  
  #: Mailman/HTMLFormatter.py:303
  msgid "The subscribers list"
@@ -1400,7 +1399,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/HTMLFormatter.py:312
  msgid "Password: "
-@@ -7496,16 +7488,14 @@
+@@ -7612,16 +7602,14 @@
  msgstr "Bezoek de ledenlijst"
  
  #: Mailman/HTMLFormatter.py:346
@@ -1419,7 +1418,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Handlers/Acknowledge.py:59
  msgid "%(realname)s post acknowledgement"
-@@ -7518,9 +7508,8 @@
+@@ -7634,9 +7622,8 @@
  msgstr ""
  
  #: Mailman/Handlers/Emergency.py:29
@@ -1428,12 +1427,12 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 -msgstr "Noodsituatie voor al het berichtverkeer is in werking getreden"
 +msgstr "Noodmoderatie voor al het berichtverkeer is in werking getreden"
  
- #: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
+ #: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:57
  msgid "Your message was deemed inappropriate by the moderator."
-@@ -7547,43 +7536,34 @@
+@@ -7663,43 +7650,34 @@
  msgstr "Niet-leden mogen geen berichten sturen naar deze lijst."
  
- #: Mailman/Handlers/Hold.py:65
+ #: Mailman/Handlers/Hold.py:64
 -#, fuzzy
  msgid "Posting to a restricted list by sender requires approval"
 -msgstr ""
@@ -1442,29 +1441,29 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 -"goedkeuring"
 +msgstr "Versturen naar een gemodereerde lijst vereist goedkeuring door de moderator"
  
- #: Mailman/Handlers/Hold.py:66
+ #: Mailman/Handlers/Hold.py:65
 -#, fuzzy
  msgid "This list is restricted; your message was not approved."
 -msgstr "Deze lijst heeft restricties, je bericht is niet goedgekeurd."
 +msgstr "Deze lijst is gesloten, uw bericht is niet goedgekeurd."
  
- #: Mailman/Handlers/Hold.py:69
+ #: Mailman/Handlers/Hold.py:68
  msgid "Too many recipients to the message"
  msgstr "Te veel ontvangers in het bericht (AAN:/CC:)"
  
- #: Mailman/Handlers/Hold.py:70
+ #: Mailman/Handlers/Hold.py:69
 -#, fuzzy
  msgid "Please trim the recipient list; it is too long."
 -msgstr "Verkort de AAN:/CC: lijst, het is te lang."
 +msgstr "Verkort de AAN:/CC: lijst, hij is te lang."
  
- #: Mailman/Handlers/Hold.py:73
+ #: Mailman/Handlers/Hold.py:72
 -#, fuzzy
  msgid "Message has implicit destination"
 -msgstr "Het bericht heeft een onbekend doel"
-+msgstr "Het bericht heeft een onbekende bestemming"
++msgstr "Het bericht heeft een onbekend bestemming"
  
- #: Mailman/Handlers/Hold.py:74
+ #: Mailman/Handlers/Hold.py:73
 -#, fuzzy
  msgid ""
  "Blind carbon copies or other implicit destinations are\n"
@@ -1479,17 +1478,17 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
 +"Stuur uw bericht opnieuw en zet het mailing lijst adres in een AAN: of CC: "
 +"veld."
  
- #: Mailman/Handlers/Hold.py:79
+ #: Mailman/Handlers/Hold.py:78
  msgid "Message may contain administrivia"
-@@ -7599,7 +7579,6 @@
+@@ -7715,7 +7693,6 @@
  msgstr ""
  
- #: Mailman/Handlers/Hold.py:90
+ #: Mailman/Handlers/Hold.py:89
 -#, fuzzy
  msgid "Message has a suspicious header"
  msgstr "Bericht heeft een verdachte header"
  
-@@ -7847,9 +7826,8 @@
+@@ -7963,9 +7940,8 @@
  msgstr ""
  
  #: Mailman/ListAdmin.py:496
@@ -1500,27 +1499,27 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/ListAdmin.py:499
  msgid "Request to mailing list %(realname)s rejected"
-@@ -7873,9 +7851,8 @@
+@@ -7989,9 +7965,8 @@
  msgstr ""
  
- #: Mailman/MTA/Manual.py:80
+ #: Mailman/MTA/Manual.py:81
 -#, fuzzy
  msgid "## %(listname)s mailing list"
 -msgstr "%(hostname)s Mailing Lijsten"
 +msgstr "%(hostname)s maillijsten"
  
- #: Mailman/MTA/Manual.py:97
+ #: Mailman/MTA/Manual.py:98
  msgid "Mailing list creation request for list %(listname)s"
-@@ -7942,7 +7919,7 @@
+@@ -8063,7 +8038,7 @@
  
- #: Mailman/MailList.py:888 Mailman/MailList.py:1277
+ #: Mailman/MailList.py:877 Mailman/MailList.py:1289
  msgid " from %(remote)s"
 -msgstr ""
 +msgstr " vanaf %(remote)s"
  
- #: Mailman/MailList.py:922
+ #: Mailman/MailList.py:910
  msgid "subscriptions to %(realname)s require moderator approval"
-@@ -7983,9 +7960,8 @@
+@@ -8104,9 +8079,8 @@
  msgstr ""
  
  #: Mailman/Queue/BounceRunner.py:308
@@ -1531,7 +1530,7 @@ diff -urNad mailman-2.1.6~/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.6/mess
  
  #: Mailman/Queue/CommandRunner.py:92
  msgid "Ignoring non-text/plain MIME parts"
-@@ -8823,11 +8799,11 @@
+@@ -8961,11 +8935,11 @@
  #: bin/discard:94
  #, fuzzy
  msgid "Ignoring non-held message: %(f)s"

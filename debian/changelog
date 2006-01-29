@@ -1,3 +1,17 @@
+mailman (2.1.7-1) unstable; urgency=low
+
+  * New upstream release:
+    - Update patches:
+      71_date_overflows.dpatch
+      76_fix-private-redirect.dpatch
+      99_js_templates.dpatch
+      53_disable_addons.dpatch
+      68_translation_update_nl.dpatch
+    - Drop patches merged upstream:
+      60_french_archtocentry
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 17:16:09 +0100
+
 mailman (2.1.6-2) UNRELEASED; urgency=low
 
   * Tweak 21_newlist_help.dpatch:

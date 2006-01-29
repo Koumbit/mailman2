@@ -22,21 +22,22 @@ esac
 
 exit 0
 @DPATCH@
-
---- mailman-2.1.4.orig/misc/Makefile.in
-+++ mailman-2.1.4/misc/Makefile.in
+diff -urNad mailman-2.1.7~/misc/Makefile.in mailman-2.1.7/misc/Makefile.in
+--- mailman-2.1.7~/misc/Makefile.in	2006-01-29 16:20:52.000000000 +0100
++++ mailman-2.1.7/misc/Makefile.in	2006-01-29 16:21:13.931406954 +0100
 @@ -56,7 +56,7 @@
- JACODECSPKG=   JapaneseCodecs-1.4.10
- KOCODECSPKG=   KoreanCodecs-2.0.5
+ JACODECSPKG=	JapaneseCodecs-1.4.11
+ KOCODECSPKG=	KoreanCodecs-2.0.5
  
 -PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
 +PACKAGES=  
  
  # Modes for directories and executables created by the install
  # process.  Default to group-writable directories but
---- mailman-2.1.4.orig/misc/paths.py.in
-+++ mailman-2.1.4/misc/paths.py.in
-@@ -52,9 +52,15 @@
+diff -urNad mailman-2.1.7~/misc/paths.py.in mailman-2.1.7/misc/paths.py.in
+--- mailman-2.1.7~/misc/paths.py.in	2006-01-29 16:20:52.000000000 +0100
++++ mailman-2.1.7/misc/paths.py.in	2006-01-29 16:23:12.481780992 +0100
+@@ -53,12 +53,18 @@
  # In a normal interactive Python environment, the japanese.pth and korean.pth
  # files would be imported automatically.  But because we inhibit the importing
  # of the site module, we need to be explicit about importing these codecs.
@@ -55,3 +56,6 @@ exit 0
 +    import korean.aliases
 +except ImportError:
 +    pass
+ # Arabic and Hebrew (RFC-1556) encoding aliases. (temporary solution)
+ import encodings.aliases
+ encodings.aliases.aliases.update({

@@ -5,21 +5,9 @@
 ## DP: en: Fix the private authentication form to point to the right file.
 
 @DPATCH@
-diff -urNad mailman-2.1.5~/Mailman/Cgi/private.py mailman-2.1.5/Mailman/Cgi/private.py
---- mailman-2.1.5~/Mailman/Cgi/private.py	2005-11-21 16:24:29.519606510 +0100
-+++ mailman-2.1.5/Mailman/Cgi/private.py	2005-11-21 16:24:31.015397046 +0100
-@@ -126,7 +126,7 @@
-             path=path[1:]  # Remove leading /'s
-         print Utils.maketext(
-             'private.html',
--            {'action'  : mlist.GetScriptURL('private', absolute=1),
-+            {'action'  : mlist.GetScriptURL('private', absolute=1)+'/'+true_path('/'+'/'.join(parts[1:])),
-              'realname': mlist.real_name,
-              'message' : message,
-              }, mlist=mlist)
-diff -urNad mailman-2.1.5~/templates/ca/private.html mailman-2.1.5/templates/ca/private.html
---- mailman-2.1.5~/templates/ca/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/ca/private.html	2005-11-21 16:32:14.538576061 +0100
+diff -urNad mailman-2.1.7~/templates/ca/private.html mailman-2.1.7/templates/ca/private.html
+--- mailman-2.1.7~/templates/ca/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/ca/private.html	2006-01-29 17:09:11.661626051 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Private Archives Authentication</title>
  </head>
@@ -29,9 +17,9 @@ diff -urNad mailman-2.1.5~/templates/ca/private.html mailman-2.1.5/templates/ca/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/cs/private.html mailman-2.1.5/templates/cs/private.html
---- mailman-2.1.5~/templates/cs/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/cs/private.html	2005-11-21 16:32:14.545575081 +0100
+diff -urNad mailman-2.1.7~/templates/cs/private.html mailman-2.1.7/templates/cs/private.html
+--- mailman-2.1.7~/templates/cs/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/cs/private.html	2006-01-29 17:09:11.662625911 +0100
 @@ -3,7 +3,7 @@
      <title>Konference %(realname)s - p¯ihl·πenÌ pro p¯Ìstup do priv·tnÌho archivu </title>
  </head>
@@ -41,9 +29,9 @@ diff -urNad mailman-2.1.5~/templates/cs/private.html mailman-2.1.5/templates/cs/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/da/private.html mailman-2.1.5/templates/da/private.html
---- mailman-2.1.5~/templates/da/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/da/private.html	2005-11-21 16:32:14.554573822 +0100
+diff -urNad mailman-2.1.7~/templates/da/private.html mailman-2.1.7/templates/da/private.html
+--- mailman-2.1.7~/templates/da/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/da/private.html	2006-01-29 17:09:11.662625911 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Login til Private Arkiver</title>
  </head>
@@ -53,9 +41,9 @@ diff -urNad mailman-2.1.5~/templates/da/private.html mailman-2.1.5/templates/da/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/de/private.html mailman-2.1.5/templates/de/private.html
---- mailman-2.1.5~/templates/de/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/de/private.html	2005-11-21 16:32:14.561572842 +0100
+diff -urNad mailman-2.1.7~/templates/de/private.html mailman-2.1.7/templates/de/private.html
+--- mailman-2.1.7~/templates/de/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/de/private.html	2006-01-29 17:09:11.662625911 +0100
 @@ -3,7 +3,7 @@
      <title>Authentifizierung f¸r den Zugriff auf die Archive von %(realname)s</title>
  </head>
@@ -65,9 +53,9 @@ diff -urNad mailman-2.1.5~/templates/de/private.html mailman-2.1.5/templates/de/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/en/private.html mailman-2.1.5/templates/en/private.html
---- mailman-2.1.5~/templates/en/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/en/private.html	2005-11-21 16:32:14.595568083 +0100
+diff -urNad mailman-2.1.7~/templates/en/private.html mailman-2.1.7/templates/en/private.html
+--- mailman-2.1.7~/templates/en/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/en/private.html	2006-01-29 17:09:11.663625771 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Private Archives Authentication</title>
  </head>
@@ -77,9 +65,9 @@ diff -urNad mailman-2.1.5~/templates/en/private.html mailman-2.1.5/templates/en/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/es/private.html mailman-2.1.5/templates/es/private.html
---- mailman-2.1.5~/templates/es/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/es/private.html	2005-11-21 16:32:14.603566963 +0100
+diff -urNad mailman-2.1.7~/templates/es/private.html mailman-2.1.7/templates/es/private.html
+--- mailman-2.1.7~/templates/es/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/es/private.html	2006-01-29 17:09:11.663625771 +0100
 @@ -3,7 +3,7 @@
    <title>Autentificaci&oacute;n para los archivos privados de %(realname)s </title>
  </head>
@@ -89,9 +77,9 @@ diff -urNad mailman-2.1.5~/templates/es/private.html mailman-2.1.5/templates/es/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/et/private.html mailman-2.1.5/templates/et/private.html
---- mailman-2.1.5~/templates/et/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/et/private.html	2005-11-21 16:32:14.610565983 +0100
+diff -urNad mailman-2.1.7~/templates/et/private.html mailman-2.1.7/templates/et/private.html
+--- mailman-2.1.7~/templates/et/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/et/private.html	2006-01-29 17:09:11.663625771 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s privaatarhiiv</title>
  </head>
@@ -101,9 +89,9 @@ diff -urNad mailman-2.1.5~/templates/et/private.html mailman-2.1.5/templates/et/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/eu/private.html mailman-2.1.5/templates/eu/private.html
---- mailman-2.1.5~/templates/eu/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/eu/private.html	2005-11-21 16:32:14.617565003 +0100
+diff -urNad mailman-2.1.7~/templates/eu/private.html mailman-2.1.7/templates/eu/private.html
+--- mailman-2.1.7~/templates/eu/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/eu/private.html	2006-01-29 17:09:11.663625771 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Artxibo Pribatuak Egiaztatzea</title>
  </head>
@@ -113,9 +101,9 @@ diff -urNad mailman-2.1.5~/templates/eu/private.html mailman-2.1.5/templates/eu/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/fi/private.html mailman-2.1.5/templates/fi/private.html
---- mailman-2.1.5~/templates/fi/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/fi/private.html	2005-11-21 16:32:14.624564023 +0100
+diff -urNad mailman-2.1.7~/templates/fi/private.html mailman-2.1.7/templates/fi/private.html
+--- mailman-2.1.7~/templates/fi/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/fi/private.html	2006-01-29 17:09:11.664625631 +0100
 @@ -4,7 +4,7 @@
      <title>%(realname)s Private Archives Authentication</title>
  </head>
@@ -125,9 +113,9 @@ diff -urNad mailman-2.1.5~/templates/fi/private.html mailman-2.1.5/templates/fi/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/fr/private.html mailman-2.1.5/templates/fr/private.html
---- mailman-2.1.5~/templates/fr/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/fr/private.html	2005-11-21 16:32:14.632562904 +0100
+diff -urNad mailman-2.1.7~/templates/fr/private.html mailman-2.1.7/templates/fr/private.html
+--- mailman-2.1.7~/templates/fr/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/fr/private.html	2006-01-29 17:09:11.664625631 +0100
 @@ -4,7 +4,7 @@
  %(realname)s</title>
  </head>
@@ -137,9 +125,9 @@ diff -urNad mailman-2.1.5~/templates/fr/private.html mailman-2.1.5/templates/fr/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/hr/private.html mailman-2.1.5/templates/hr/private.html
---- mailman-2.1.5~/templates/hr/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/hr/private.html	2005-11-21 16:32:14.639561924 +0100
+diff -urNad mailman-2.1.7~/templates/hr/private.html mailman-2.1.7/templates/hr/private.html
+--- mailman-2.1.7~/templates/hr/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/hr/private.html	2006-01-29 17:09:11.664625631 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Privatna Arhiva Autentikacija</title>
  </head>
@@ -149,9 +137,9 @@ diff -urNad mailman-2.1.5~/templates/hr/private.html mailman-2.1.5/templates/hr/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/hu/private.html mailman-2.1.5/templates/hu/private.html
---- mailman-2.1.5~/templates/hu/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/hu/private.html	2005-11-21 16:32:14.646560944 +0100
+diff -urNad mailman-2.1.7~/templates/hu/private.html mailman-2.1.7/templates/hu/private.html
+--- mailman-2.1.7~/templates/hu/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/hu/private.html	2006-01-29 17:09:11.664625631 +0100
 @@ -3,7 +3,7 @@
   <title>%(realname)s Priv·t archÌvum azonosÌt·s</title>
  </head>
@@ -161,9 +149,9 @@ diff -urNad mailman-2.1.5~/templates/hu/private.html mailman-2.1.5/templates/hu/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/it/private.html mailman-2.1.5/templates/it/private.html
---- mailman-2.1.5~/templates/it/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/it/private.html	2005-11-21 16:32:14.653559964 +0100
+diff -urNad mailman-2.1.7~/templates/it/private.html mailman-2.1.7/templates/it/private.html
+--- mailman-2.1.7~/templates/it/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/it/private.html	2006-01-29 17:09:11.665625491 +0100
 @@ -3,7 +3,7 @@
  <title>Autenticazione per gli archivi privati di %(realname)s</title>
  </head>
@@ -173,9 +161,9 @@ diff -urNad mailman-2.1.5~/templates/it/private.html mailman-2.1.5/templates/it/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ja/private.html mailman-2.1.5/templates/ja/private.html
---- mailman-2.1.5~/templates/ja/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/ja/private.html	2005-11-21 16:32:14.660558984 +0100
+diff -urNad mailman-2.1.7~/templates/ja/private.html mailman-2.1.7/templates/ja/private.html
+--- mailman-2.1.7~/templates/ja/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/ja/private.html	2006-01-29 17:09:11.665625491 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s ∏¬ƒÍ∏¯≥´ ›¬∏ΩÒ∏À «ßæ⁄</title>
  </head>
@@ -185,9 +173,9 @@ diff -urNad mailman-2.1.5~/templates/ja/private.html mailman-2.1.5/templates/ja/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ko/private.html mailman-2.1.5/templates/ko/private.html
---- mailman-2.1.5~/templates/ko/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/ko/private.html	2005-11-21 16:32:14.667558005 +0100
+diff -urNad mailman-2.1.7~/templates/ko/private.html mailman-2.1.7/templates/ko/private.html
+--- mailman-2.1.7~/templates/ko/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/ko/private.html	2006-01-29 17:09:11.665625491 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s ∫Ò∞¯∞≥ ¿˙¿Âº“ ¿Œ¡ı</title>
  </head>
@@ -197,9 +185,9 @@ diff -urNad mailman-2.1.5~/templates/ko/private.html mailman-2.1.5/templates/ko/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/lt/private.html mailman-2.1.5/templates/lt/private.html
---- mailman-2.1.5~/templates/lt/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/lt/private.html	2005-11-21 16:32:14.681556045 +0100
+diff -urNad mailman-2.1.7~/templates/lt/private.html mailman-2.1.7/templates/lt/private.html
+--- mailman-2.1.7~/templates/lt/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/lt/private.html	2006-01-29 17:09:11.666625350 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s privataus archyvo prisijungimas</title>
  </head>
@@ -209,9 +197,9 @@ diff -urNad mailman-2.1.5~/templates/lt/private.html mailman-2.1.5/templates/lt/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/nl/private.html mailman-2.1.5/templates/nl/private.html
---- mailman-2.1.5~/templates/nl/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/nl/private.html	2005-11-21 16:32:14.688555065 +0100
+diff -urNad mailman-2.1.7~/templates/nl/private.html mailman-2.1.7/templates/nl/private.html
+--- mailman-2.1.7~/templates/nl/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/nl/private.html	2006-01-29 17:09:11.666625350 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Prive Archief beveiligd</title>
  </head>
@@ -228,9 +216,9 @@ diff -urNad mailman-2.1.5~/templates/nl/private.html mailman-2.1.5/templates/nl/
 -</html>
 \ No newline at end of file
 +</html>
-diff -urNad mailman-2.1.5~/templates/no/private.html mailman-2.1.5/templates/no/private.html
---- mailman-2.1.5~/templates/no/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/no/private.html	2005-11-21 16:32:14.694554225 +0100
+diff -urNad mailman-2.1.7~/templates/no/private.html mailman-2.1.7/templates/no/private.html
+--- mailman-2.1.7~/templates/no/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/no/private.html	2006-01-29 17:09:11.666625350 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Innlogging til Private Arkiver</title>
  </head>
@@ -240,9 +228,9 @@ diff -urNad mailman-2.1.5~/templates/no/private.html mailman-2.1.5/templates/no/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/pl/private.html mailman-2.1.5/templates/pl/private.html
---- mailman-2.1.5~/templates/pl/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/pl/private.html	2005-11-21 16:32:14.713551566 +0100
+diff -urNad mailman-2.1.7~/templates/pl/private.html mailman-2.1.7/templates/pl/private.html
+--- mailman-2.1.7~/templates/pl/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/pl/private.html	2006-01-29 17:09:11.666625350 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Private Archives Authentication</title>
  </head>
@@ -252,9 +240,9 @@ diff -urNad mailman-2.1.5~/templates/pl/private.html mailman-2.1.5/templates/pl/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/pt/private.html mailman-2.1.5/templates/pt/private.html
---- mailman-2.1.5~/templates/pt/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/pt/private.html	2005-11-21 16:32:14.727549606 +0100
+diff -urNad mailman-2.1.7~/templates/pt/private.html mailman-2.1.7/templates/pt/private.html
+--- mailman-2.1.7~/templates/pt/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/pt/private.html	2006-01-29 17:09:11.667625210 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
  </head>
@@ -264,11 +252,11 @@ diff -urNad mailman-2.1.5~/templates/pt/private.html mailman-2.1.5/templates/pt/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/pt_BR/private.html mailman-2.1.5/templates/pt_BR/private.html
---- mailman-2.1.5~/templates/pt_BR/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/pt_BR/private.html	2005-11-21 16:32:14.720550586 +0100
+diff -urNad mailman-2.1.7~/templates/pt_BR/private.html mailman-2.1.7/templates/pt_BR/private.html
+--- mailman-2.1.7~/templates/pt_BR/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/pt_BR/private.html	2006-01-29 17:09:11.667625210 +0100
 @@ -3,7 +3,7 @@
-     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
+     <title>AutenticaÁ„o para acesso aos arquivos privados da %(realname)s</title>
  </head>
  <body bgcolor="#ffffff">
 -<FORM METHOD=POST ACTION="%(action)s/">
@@ -276,9 +264,9 @@ diff -urNad mailman-2.1.5~/templates/pt_BR/private.html mailman-2.1.5/templates/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ro/private.html mailman-2.1.5/templates/ro/private.html
---- mailman-2.1.5~/templates/ro/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/ro/private.html	2005-11-21 16:32:14.734548626 +0100
+diff -urNad mailman-2.1.7~/templates/ro/private.html mailman-2.1.7/templates/ro/private.html
+--- mailman-2.1.7~/templates/ro/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/ro/private.html	2006-01-29 17:09:11.667625210 +0100
 @@ -4,7 +4,7 @@
      <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-2">
  </head>
@@ -288,9 +276,9 @@ diff -urNad mailman-2.1.5~/templates/ro/private.html mailman-2.1.5/templates/ro/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/ru/private.html mailman-2.1.5/templates/ru/private.html
---- mailman-2.1.5~/templates/ru/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/ru/private.html	2005-11-21 16:32:14.741547646 +0100
+diff -urNad mailman-2.1.7~/templates/ru/private.html mailman-2.1.7/templates/ru/private.html
+--- mailman-2.1.7~/templates/ru/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/ru/private.html	2006-01-29 17:09:11.667625210 +0100
 @@ -3,7 +3,7 @@
      <title>·’‘≈Œ‘…∆…À¡√…— ƒÃ— ƒœ”‘’–¡ À ⁄¡À“Ÿ‘œÕ’ ¡“»…◊’ ”–…”À¡ “¡””ŸÃÀ… %(realname)s</title>
  </head>
@@ -300,9 +288,9 @@ diff -urNad mailman-2.1.5~/templates/ru/private.html mailman-2.1.5/templates/ru/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/sl/private.html mailman-2.1.5/templates/sl/private.html
---- mailman-2.1.5~/templates/sl/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/sl/private.html	2005-11-21 16:32:14.748546667 +0100
+diff -urNad mailman-2.1.7~/templates/sl/private.html mailman-2.1.7/templates/sl/private.html
+--- mailman-2.1.7~/templates/sl/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/sl/private.html	2006-01-29 17:09:11.668625070 +0100
 @@ -3,7 +3,7 @@
      <title>Avtentikacija za zasebne arhive Ëlana %(realname)s</title>
  </head>
@@ -312,9 +300,9 @@ diff -urNad mailman-2.1.5~/templates/sl/private.html mailman-2.1.5/templates/sl/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/sr/private.html mailman-2.1.5/templates/sr/private.html
---- mailman-2.1.5~/templates/sr/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/sr/private.html	2005-11-21 16:32:14.755545687 +0100
+diff -urNad mailman-2.1.7~/templates/sr/private.html mailman-2.1.7/templates/sr/private.html
+--- mailman-2.1.7~/templates/sr/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/sr/private.html	2006-01-29 17:09:11.668625070 +0100
 @@ -3,7 +3,7 @@
      <title>–ü—Ä–∏—ò–∞–≤–∞ –∑–∞ —É–ª–∞–∑ —É –ø—Ä–∏–≤–∞—Ç–Ω—É –∞—Ä—Ö–∏–≤—É –ª–∏—Å—Ç–µ: %(realname)s </title>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
@@ -324,9 +312,9 @@ diff -urNad mailman-2.1.5~/templates/sr/private.html mailman-2.1.5/templates/sr/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/sv/private.html mailman-2.1.5/templates/sv/private.html
---- mailman-2.1.5~/templates/sv/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/sv/private.html	2005-11-21 16:32:14.762544707 +0100
+diff -urNad mailman-2.1.7~/templates/sv/private.html mailman-2.1.7/templates/sv/private.html
+--- mailman-2.1.7~/templates/sv/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/sv/private.html	2006-01-29 17:09:11.668625070 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s Inloggning till Privata Arkiv</title>
  </head>
@@ -336,9 +324,9 @@ diff -urNad mailman-2.1.5~/templates/sv/private.html mailman-2.1.5/templates/sv/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/tr/private.html mailman-2.1.5/templates/tr/private.html
---- mailman-2.1.5~/templates/tr/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/tr/private.html	2005-11-21 16:32:14.769543727 +0100
+diff -urNad mailman-2.1.7~/templates/tr/private.html mailman-2.1.7/templates/tr/private.html
+--- mailman-2.1.7~/templates/tr/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/tr/private.html	2006-01-29 17:09:11.668625070 +0100
 @@ -3,7 +3,7 @@
      <title>%(realname)s ÷zel Ar˛ivleri Giri˛i</title>
  </head>
@@ -348,11 +336,11 @@ diff -urNad mailman-2.1.5~/templates/tr/private.html mailman-2.1.5/templates/tr/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -urNad mailman-2.1.5~/templates/uk/private.html mailman-2.1.5/templates/uk/private.html
---- mailman-2.1.5~/templates/uk/private.html	2005-11-21 16:20:32.000000000 +0100
-+++ mailman-2.1.5/templates/uk/private.html	2005-11-21 16:32:14.775542887 +0100
+diff -urNad mailman-2.1.7~/templates/uk/private.html mailman-2.1.7/templates/uk/private.html
+--- mailman-2.1.7~/templates/uk/private.html	2006-01-29 17:08:56.000000000 +0100
++++ mailman-2.1.7/templates/uk/private.html	2006-01-29 17:09:11.669624930 +0100
 @@ -3,7 +3,7 @@
-     <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –¥–æ—Å—Ç—É–ø—É –¥–æ –∑–∞–∫—Ä–∏—Ç–æ–≥–æ —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(realname)s</title>
+     <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –¥–æ—Å—Ç—É–ø—É –¥–æ –∑–∞–∫—Ä–∏—Ç–æ–≥–æ —Å–ø–∏—Å–∫—É —Ä–æ–∑—Å–∏–ª–∫–∏ %(realname)s</title>
  </head>
  <body bgcolor="#ffffff">
 -<FORM METHOD=POST ACTION="%(action)s/">
