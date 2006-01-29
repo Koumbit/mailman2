@@ -9,6 +9,8 @@ mailman (2.1.7-1) UNRELEASED; urgency=low
       68_translation_update_nl.dpatch
     - Drop patches merged upstream:
       60_french_archtocentry
+    - Bugs fixed upstream:
+      - Mailman loses header spam rules (closes: #309870)
   * Pull fixes from various bugs from upstream CVS
   * Ship documentation source (closes: #346180)
 
