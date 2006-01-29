@@ -15,8 +15,9 @@ mailman (2.1.7-1) UNRELEASED; urgency=low
   * Ship documentation source (closes: #346180)
   * Document queue-is-not-empty upgrade condition better
     (closes: #268117)
+  * Don't forcibly add a slash after Archiver base URL (closes: #350388)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 19:14:12 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 29 Jan 2006 20:50:22 +0100
 
 mailman (2.1.6-2) UNRELEASED; urgency=low
 

@@ -1,0 +1,24 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 79_archiver_base_no_slash.dpatch by  <lionel@mamane.lu>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad mailman-2.1.7~/Mailman/Archiver/Archiver.py mailman-2.1.7/Mailman/Archiver/Archiver.py
+--- mailman-2.1.7~/Mailman/Archiver/Archiver.py	2005-08-27 03:40:15.000000000 +0200
++++ mailman-2.1.7/Mailman/Archiver/Archiver.py	2006-01-29 20:47:53.718046842 +0100
+@@ -146,9 +146,10 @@
+                 'listname': self.internal_name(),
+                 'hostname': hostname
+                 }
+-            if not url.endswith('/'):
+-                url += '/'
+-            return url
++#             Disabled by Debian: bug #350388
++#             if not url.endswith('/'):
++#                 url += '/'
++#             return url
+ 
+     def __archive_file(self, afn):
+         """Open (creating, if necessary) the named archive file."""

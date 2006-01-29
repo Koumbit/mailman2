@@ -33,4 +33,5 @@
 74_admin_non-ascii_emails.dpatch
 76_fix-private-redirect.dpatch
 77_header_folding_in_attachments
+79_archiver_base_no_slash
 99_js_templates
