@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.5 debconf templates\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-06 22:06+0000\n"
-"PO-Revision-Date: 2004-10-24 18:38+0200\n"
+"POT-Creation-Date: 2005-12-26 05:02-0700\n"
+"PO-Revision-Date: 2005-12-27 18:38+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -200,8 +200,8 @@ msgid ""
 msgstr ""
 "Per ciascuna lingua supportata Debian Mailman memorizza i messaggi "
 "predefiniti in /etc/mailman/LANG/ trattandoli, con l'aiuto di ucf, come "
-"conffile. Questo comporta circa 150 kB per ogni lingua supportata nella "
-"root del filesystem."
+"conffile. Questo comporta circa 150 kB per ogni lingua supportata nella root "
+"del filesystem."
 
 #. Type: multiselect
 #. Description
@@ -210,8 +210,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Se in seguito è necessario utilizzare un diverso insieme di lingue "
-"eseguire dpkg-reconfigure mailman."
+"Se in seguito è necessario utilizzare un diverso insieme di lingue eseguire "
+"dpkg-reconfigure mailman."
 
 #. Type: multiselect
 #. Description
@@ -222,8 +222,8 @@ msgid ""
 "messages."
 msgstr ""
 "NOTA: Le lingue attivate nelle liste di messaggi estenti sono forzatamente "
-"ri-attivate quando deselezionate, mailman necessita almeno una lingua in "
-"cui mostrare i propri messaggi."
+"ri-attivate quando deselezionate, mailman necessita almeno una lingua in cui "
+"mostrare i propri messaggi."
 
 #. Type: boolean
 #. Description
@@ -274,8 +274,8 @@ msgid ""
 "init.d/mailman start."
 msgstr ""
 "Per creare una lista eseguire \"newlist mailman\" e seguire le istruzioni "
-"sullo schermo. Ricordarsi che poi è necessario attivare mailman usando "
-"/etc/init.d/mailman start."
+"sullo schermo. Ricordarsi che poi è necessario attivare mailman usando /etc/"
+"init.d/mailman start."
 
 #. Type: select
 #. Description
@@ -290,8 +290,8 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"La pagina web verrà mostrata in questa lingua e Mailman userà questa "
-"lingua per comunicare con gli utenti."
+"La pagina web verrà mostrata in questa lingua e Mailman userà questa lingua "
+"per comunicare con gli utenti."
 
 #. Type: note
 #. Description
@@ -312,6 +312,52 @@ msgstr ""
 "La directory /var/lib/mailman/qfiles contiene dei file, deve essere vuota "
 "altrimenti l'aggiornamento potrebbe non funzionare correttamente. Svuotare "
 "la coda (avviando mailmanctl start, poi fermandolo e rifacendo "
-"l'aggiornamento quando ha finito) o cancellando questi file. Notare che la "
+"l'aggiornamento quando ha finito) o cancellare questi file. Notare che la "
 "cancellazione dei file comporta la perdita di alcune delle email inviate "
 "alle liste."
+
+#. Type: note
+#. Description
+#: ../templates:62
+msgid "Administrator must update aliases"
+msgstr "L'amministratore deve aggiornare gli alias"
+
+#. Type: note
+#. Description
+#: ../templates:62
+msgid ""
+"The aliases you need for mailman in your MTA's configuration have changed. "
+"Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
+msgstr ""
+"Sono cambiati gli alias necessari a mailman da inserire nella configurazione "
+"del proprio MTA. Eseguire /var/lib/mailman/bin/genaliases per conoscere "
+"quali sono i nuovi alias obbligatori."
+
+#. Type: note
+#. Description
+#: ../templates:62
+msgid ""
+"Until you do that, some features will stop working and mails will go out "
+"with an invalid Return-Path."
+msgstr ""
+"Fino a quando non viene fatta questa operazione alcune funzionalità non "
+"funzionano e nelle email inviate il valore di Return-Path non è valido."
+
+#. Type: note
+#. Description
+#: ../templates:72
+msgid "List passwords broken"
+msgstr "Le password di lista non funzionano"
+
+#. Type: note
+#. Description
+#: ../templates:72
+msgid ""
+"List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
+"mailman/bin/change_pw to generate new ones and email them to the admins and "
+"moderators."
+msgstr ""
+"Dopo questo aggiornamento le password dell'amministratore e del moderatore "
+"di ciascuna lista non funzionano più. Usare /var/lib/mailman/bin/change_pw "
+"per creare delle nuove password e inviarle per email agli amministratori e "
+"ai moderatori."
