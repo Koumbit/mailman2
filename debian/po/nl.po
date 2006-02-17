@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.5-4\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-01-29 21:07+0100\n"
+"POT-Creation-Date: 2006-02-17 16:33+0100\n"
 "PO-Revision-Date: 2004-12-02 18:12+0100\n"
 "Last-Translator: Luk Claes <luk.claes@ugent.be>\n"
 "Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
@@ -225,9 +225,10 @@ msgstr ""
 #. Type: multiselect
 #. Description
 #: ../templates:7
+#, fuzzy
 msgid ""
-"NOTE: Languages enabled on existing mailing lists are forcibly re- enabled "
-"when deselected and mailman needs at least one language for displaying it's "
+"NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
+"when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
 "LET OP: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
@@ -312,20 +313,22 @@ msgstr "Oude queue-bestanden zijn beschikbaar"
 #. Description
 #: ../templates:53
 msgid ""
-"The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
-"for the upgrade work properly. If these files are not yet processed, but "
-"otherwise fine messages, then you can try to handle them by: - Stopping new "
-"messages from coming in the queue (at the MTA level:\n"
-"  queue them in the MTA's queue or refuse them with a 4xx code). If\n"
-"  your site has a relatively low mailman traffic, you can skip this\n"
-"  step.\n"
-"- Start a mailman queue runner: /etc/init.d/mailman start - Let it run until "
-"all messages are handled\n"
-"  If they don't all get handled in a timely manner, look at the logs\n"
-"  to try to understand why and solve the cause.\n"
-"- Stop it: /etc/init.d/mailman stop - Retry the upgrade - Let messages come "
-"in again You can also decide to simply remove the files, which will make "
-"Mailman forget about (and lose) the corresponding emails; expect angry users."
+"The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
+"for the upgrade to work properly. If these files contain unprocessed "
+"messages that are otherwise fine, then you can try to handle them by:\n"
+" - Stopping new messages from coming in the queue (at the MTA level:\n"
+"   queue them in the MTA's queue or refuse them with a 4xx code). If\n"
+"   your site has a relatively low mailman traffic, you can skip this\n"
+"   step.\n"
+" - Start a mailman queue runner: /etc/init.d/mailman start\n"
+" - Let it run until all messages are handled.\n"
+"   If they don't all get handled in a timely manner, look at the logs\n"
+"   to try to understand why and solve the cause.\n"
+" - Stop it: /etc/init.d/mailman stop\n"
+" - Retry the upgrade.\n"
+" - Let messages come in again.\n"
+"You can also decide to simply remove the files, which will make Mailman "
+"forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
 
 #. Type: note
@@ -333,21 +336,23 @@ msgstr ""
 #: ../templates:53
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
-"them or unshunt them. Shunted messages are messages on which Mailman has "
-"already abandoned any further processing because of an error condition, but "
-"that are kept for admin review, as they usually originate from Mailman bugs "
-"or other abnormal situations that need human inspection."
+"them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
+"are messages on which Mailman has already abandoned any further processing "
+"because of an error condition, but that are kept for admin review, as they "
+"usually originate from Mailman bugs or other abnormal situations that need "
+"human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
+"the contents of the queues."
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:82
+#: ../templates:84
 msgid "Administrator must update aliases"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:82
+#: ../templates:84
 msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
@@ -355,7 +360,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:82
+#: ../templates:84
 msgid ""
 "Until you do that, some features will stop working and mails will go out "
 "with an invalid Return-Path."
@@ -363,13 +368,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:92
+#: ../templates:94
 msgid "List passwords broken"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:92
+#: ../templates:94
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
