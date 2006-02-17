@@ -13,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.6-1\n"
+"Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: 2006-01-11 19:04+0100\n"
+"PO-Revision-Date: 2006-01-29 23:24+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -194,9 +194,8 @@ msgstr "uk"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-#, fuzzy
 msgid "Which languages to support?"
-msgstr "Vilka språk ska finnas stöd för?  "
+msgstr "Vilka språk ska det finnas stöd för?"
 
 #. Type: multiselect
 #. Description
@@ -208,9 +207,9 @@ msgid ""
 "the root FS."
 msgstr ""
 "För varje språk som stöds av Debian lagrar Mailman specifik text för "
-"standardspråket i /etc/mailman/LANG/ och tilldelar dem konfigurationsfil-"
-"liknande behandlning med hjälp av ucf.  Detta betyder ungefär 150kB för "
-"varje språk som stöds."
+"standardspråket i /etc/mailman/LANG/ och ger dem konfigurationsfilsliknande "
+"behandling med hjälp av ucf.  Detta betyder ungefär 150kB för varje språk "
+"som stöds."
 
 #. Type: multiselect
 #. Description
@@ -219,8 +218,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Om du behöver en annan uppsättning språk vid en senare tidpunkt, kör bara "
-"\"dpkg-reconfigure mailman\"."
+"Om du behöver en annan uppsättning språk vid en senare tidpunkt, kör \"dpkg-"
+"reconfigure mailman\"."
 
 #. Type: multiselect
 #. Description
@@ -231,15 +230,15 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTERA: Aktiverade språk på existerande e-postlistor kommer att tvingas att "
+"NOTERA: Aktiverade språk på existerande sändlistor kommer att tvingas att "
 "återaktiveras när de avmarkeras och mailman behöver åtminstone ett språk för "
-"att visa sina meddelande."
+"att visa sina meddelanden."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "Hantera nyhetsgrupper till e-postlistor?"
+msgstr "Hantera nyhetsgrupper till sändlistor?"
 
 #. Type: boolean
 #. Description
@@ -248,8 +247,8 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"Vill du hantera nyheter till e-post, alltså, skicka alla meddelanden som "
-"dyker upp i en nyhetsgrupp till en e-postlista."
+"Vill du hantera nyhetsgrupper till sändlistor, alltså, skicka alla "
+"meddelanden som dyker upp i en nyhetsgrupp till en sändlista."
 
 #. Type: boolean
 #. Description
@@ -261,7 +260,7 @@ msgstr "De flesta kommer inte att behöva detta."
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "Saknad \"site list"
+msgstr "Saknad \"site list\""
 
 #. Type: note
 #. Description
@@ -291,7 +290,7 @@ msgstr ""
 #. Description
 #: ../templates:47
 msgid "Which language should be the default for Mailman?"
-msgstr "Vilket språk ska vara det förvalda i Mailman?"
+msgstr "Vilket språk ska vara standard i Mailman?"
 
 #. Type: select
 #. Description
@@ -312,6 +311,7 @@ msgstr "Gamla köfiler existerar"
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. If these files contain unprocessed "
@@ -330,10 +330,26 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
+"Katalogen /var/lib/mailman/qfiles innehåller filer.  Den behöver tömmas för "
+"att uppgraderingen ska fungera korrekt. Om dessa filer ännu inte är "
+"behandlade men för övrigt är fina meddelanden kan du försöka att hantera dem "
+"med: - Stoppa nya meddelanden från att komma in i kön (på MTA-nivå:\n"
+"  köa dem i MTA:ns kö eller vägra ta emot dem med en 4xx-kod). Om\n"
+"  ditt system har en relativ låg trafik för Mailman kan du hoppa över detta\n"
+"  steg.\n"
+"- Starta en kökörare i Mailman: /etc/init.d/mailman start - Låt den kör "
+"tills alla meddelanden är hanterade\n"
+"  Om alla inte blir hanterade på ett korrekt sätt, se på loggarna\n"
+"  för att försöka förstå varför och lösa problemet.\n"
+"- Stoppa den: /etc/init.d/mailman stop - Försök uppgradera igen - Låt "
+"meddelanden komma in igen. Du kan också bestämma att helt enkelt ta bort "
+"filerna, vilken kommer att göra att Mailman glömmer (och förlorar) den "
+"korresponderande e-posten; förvänta dig arga användare."
 
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -343,6 +359,12 @@ msgid ""
 "human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
 "the contents of the queues."
 msgstr ""
+"Om dessa filer korresponderar med undanskyfflade meddelanden, behöver du "
+"antingen ta bort dem eller skyffla tillbaka dem. Undanskyfflade meddelanden "
+"är meddelanden som Mailman redan har övergivet all vidare behandling av på "
+"grund av en felsituation men som hålls kvar för granskning av "
+"administratören, eftersom de vanligtvis kommer från buggar i Mailman eller "
+"andra onormala situationer som behöver mänsklig inspektion."
 
 #. Type: note
 #. Description
@@ -357,8 +379,8 @@ msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
 msgstr ""
-"De alias som du behöver för mailman i din e-postservers konfiguration har "
-"ändrats. Vänligen kör /var/lib/mailman/bin/genaliases för att se de nya "
+"De alias som du behöver för mailman i konfigurationen för din e-postserver "
+"har ändrats. Vänligen kör /var/lib/mailman/bin/genaliases för att se de nya "
 "alias du behöver."
 
 #. Type: note
@@ -380,7 +402,6 @@ msgstr "Listornas lösenord är trasiga"
 #. Type: note
 #. Description
 #: ../templates:94
-#, fuzzy
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
@@ -388,7 +409,7 @@ msgid ""
 msgstr ""
 "Listadministratörerna och moderatorernas lösenord är trasiga i denna "
 "uppgradering. Använd /var/lib/mailman/bin/change_pw för att generera nya och "
-"skicka e-post till administratörerna och moderatorerna."
+"skicka dem via e-post till administratörerna och moderatorerna."
 
 #~ msgid ""
 #~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "

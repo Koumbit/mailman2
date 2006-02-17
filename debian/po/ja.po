@@ -13,189 +13,189 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: 2004-01-11 15:52+0900\n"
+"PO-Revision-Date: 2006-02-07 18:12+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=EUC-JP\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "big5"
-msgstr ""
+msgstr "big5"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "da"
-msgstr ""
+msgstr "da"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "et"
-msgstr ""
+msgstr "et"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "eu"
-msgstr ""
+msgstr "eu"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hr"
-msgstr ""
+msgstr "hr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hu"
-msgstr ""
+msgstr "hu"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "lt"
-msgstr ""
+msgstr "lt"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pl"
-msgstr ""
+msgstr "pl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt_BR"
-msgstr ""
+msgstr "pt_BR"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ro"
-msgstr ""
+msgstr "ro"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sl"
-msgstr ""
+msgstr "sl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sr"
-msgstr ""
+msgstr "sr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "uk"
-msgstr ""
+msgstr "uk"
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
 msgid "Which languages to support?"
-msgstr ""
+msgstr "どの言語をサポートしますか?"
 
 #. Type: multiselect
 #. Description
@@ -206,6 +206,10 @@ msgid ""
 "help of ucf.  This means approximately 150kB for each supported language on "
 "the root FS."
 msgstr ""
+"サポートされている各言語のために、Debian Mailman はデフォルト言語固有のテキス"
+"トを /etc/mailman/言語/ に保有しています。このテキストは、ucf のヘルプなどに"
+"使われる設定ファイルを提供します。各サポート言語ごとにおよそ 150kB、ルート"
+"ファイルシステム上のスペースを費します。"
 
 #. Type: multiselect
 #. Description
@@ -214,21 +218,27 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
+"あとになって異なる言語セットが必要になったら、単に dpkg-reconfigure mailman "
+"を実行してください。"
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
+#, fuzzy
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
+"注意: 既存のメーリングリストで選択されている言語は、選択解除されたときに強制"
+"的に再度有効にされます。また、mailman は、そのメッセージを表示するために少な"
+"くとも 1 つの言語を必要とします。"
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "�˥塼������᡼��إ����Ȥ��ޤ���?"
+msgstr "ニュースからメールへゲートしますか?"
 
 #. Type: boolean
 #. Description
@@ -237,20 +247,20 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"�˥塼������᡼��˥����Ȥ��ޤ��� (�Ĥޤꡢ�˥塼�����롼�פ���Ƥ��줿����"
-"�ƤΥ�å�������᡼��󥰥ꥹ�Ȥ�����ޤ�)��"
+"ニュースからメールにゲートしますか (つまり、ニュースグループに投稿されたすべ"
+"てのメッセージをメーリングリストに送ります)。"
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Most people won't need this."
-msgstr "�ۤȤ�ɤοͤˤϤ����ɬ�פ���ޤ���"
+msgstr "ほとんどの人にはこれは必要ありません。"
 
 #. Type: note
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "�����ȥꥹ�Ȥ�����ޤ���"
+msgstr "サイトリストがありません"
 
 #. Type: note
 #. Description
@@ -260,9 +270,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"mailman �ϡ��ѥ���ɥ�ޥ�����Ȥ��줬�ɤ�����������Τ��Υꥹ�ȤǤ��� "
-"\"�����ȥꥹ��\" �ȸƤФ���Τ�ɬ�פȤ��ޤ������Υꥹ�Ȥ� mailman �򳫻Ϥ�"
-"�����˺�������Ƥ��ʤ���Фʤ�ޤ���"
+"mailman は、パスワードリマインダとそれがどこから送られるのかのリストである "
+"\"サイトリスト\" と呼ばれるものを必要とします。このリストは mailman を開始す"
+"る前に作成されていなければなりません。"
 
 #. Type: note
 #. Description
@@ -272,15 +282,15 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"�ꥹ�Ȥ��������ˤϡ�\"newlist mailman\" ��¹Ԥ��ơ����̤˸����ؼ��˽���"
-"�Ƥ������������Τ��ȡ�/etc/init.d/mailman start ��Ȥä� mailman �򳫻Ϥ���ɬ"
-"�פ����뤳�Ȥˤ����դ��Ƥ���������"
+"リストを作成するには、\"newlist mailman\" を実行して、画面に現れる指示に従っ"
+"てください。このあと、/etc/init.d/mailman start を使って mailman を開始する必"
+"要があることにも注意してください。"
 
 #. Type: select
 #. Description
 #: ../templates:47
 msgid "Which language should be the default for Mailman?"
-msgstr ""
+msgstr "どの言語を Mailman のデフォルトにしたいですか?"
 
 #. Type: select
 #. Description
@@ -289,16 +299,19 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
+"Web ページはこの言語で表示されます。また、概して Mailman はユーザとのやり取り"
+"にこの言語を使います。"
 
 #. Type: note
 #. Description
 #: ../templates:53
 msgid "Old queue files present"
-msgstr ""
+msgstr "古いキューファイルが存在します"
 
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. If these files contain unprocessed "
@@ -317,10 +330,26 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
+"ディレクトリ /var/lib/mailman/qfiles がファイルを含んでいます。更新作業を正し"
+"く行うために、この中を空にする必要があります。これらのファイルがまだ処理され"
+"ていないものの正しいメッセージである場合、次のようにこの処理を試みることがで"
+"きます。- キューに新しいメッセージが入ってくるのを停止する (MTA レベルで:\n"
+" MTA のキューにこれらをキューするか、4xx コードを付けてこれらを拒否する)。\n"
+" あなたのサイトの mailman トラフィックが比較的少ないなら、このステップを\n"
+" 省略できる。\n"
+"- mailman キューランナーを起動する: /etc/init.d/mailman start - すべてのメッ"
+"セージが処理されるまで実行させておく。\n"
+" いつになっても処理が終わらない場合には、どのような問題が発生し解決したら\n"
+" よいかを理解するためにログを参照する。\n"
+"- キューランナーを停止する: /etc/init.d/mailman stop - 更新を再試行する - 再"
+"びメッセージをやってこさせる。Mailman に対応するメールを忘れさせる (そして失"
+"わせる)ことになりますが、単にファイルを削除すると決めることもできます (ユー"
+"ザーは怒るかもしれませんが)。"
 
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -330,12 +359,17 @@ msgid ""
 "human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
 "the contents of the queues."
 msgstr ""
+"これらのファイルが分路されたメッセージに関連付けられている場合、両方を削除す"
+"るかあるいは主路に戻すかする必要があります。分路されたメッセージは、Mailman "
+"がエラー状態のためにすでにその後の処理を放棄してしまったメッセージです。これ"
+"は、Mailman のバグあるいはその他の目視が必要な異常な状況が元で通常発生したも"
+"のとして、管理者のレビュー用に保持されます。"
 
 #. Type: note
 #. Description
 #: ../templates:84
 msgid "Administrator must update aliases"
-msgstr ""
+msgstr "管理者はエイリアスを更新しなければなりません"
 
 #. Type: note
 #. Description
@@ -344,6 +378,9 @@ msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
 msgstr ""
+"あなたの MTA の設定にあった mailman に必要なエイリアスが変更されました。必要"
+"な新しいエイリアスを調べるために /var/lib/mailman/bin/genaliases を実行してく"
+"ださい。"
 
 #. Type: note
 #. Description
@@ -352,12 +389,14 @@ msgid ""
 "Until you do that, some features will stop working and mails will go out "
 "with an invalid Return-Path."
 msgstr ""
+"これを行うまで、いくつかの機能は動作せず、メールは無効な Return-Path に送られ"
+"ます。"
 
 #. Type: note
 #. Description
 #: ../templates:94
 msgid "List passwords broken"
-msgstr ""
+msgstr "リストのパスワードは壊れました"
 
 #. Type: note
 #. Description
@@ -367,3 +406,6 @@ msgid ""
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
 "to the admins and moderators."
 msgstr ""
+"リスト管理者およびモデレータのパスワードがこの更新で壊れました。新しいパス"
+"ワードを自動生成して管理者およびモデレータにメールするために /var/lib/"
+"mailman/bin/change_pw を使ってください。"

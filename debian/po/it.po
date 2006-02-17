@@ -1,14 +1,14 @@
 # mailman po-debconf translation to italian
-# Copyright (C) 2004 Software in the Public Interest
+# Copyright (C) 2006 Software in the Public Interest
 # This file is distributed under the same license as the mailman package.
-# Luca Monducci <luca.mo@tiscali.it>, 2004.
+# Luca Monducci <luca.mo@tiscali.it>, 2004-2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.5 debconf templates\n"
+"Project-Id-Version: mailman debconf templates\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: 2005-12-27 18:38+0100\n"
+"PO-Revision-Date: 2006-02-12 14:39+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -186,9 +186,8 @@ msgstr "uk"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-#, fuzzy
 msgid "Which languages to support?"
-msgstr "Quali lingue supportare?  "
+msgstr "Quali lingue supportare?"
 
 #. Type: multiselect
 #. Description
@@ -223,9 +222,9 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTA: Le lingue attivate nelle liste di messaggi estenti sono forzatamente "
-"ri-attivate quando deselezionate, mailman necessita almeno una lingua in cui "
-"mostrare i propri messaggi."
+"NOTA: Le lingue attivate per le liste estenti sono forzatamente ri-attivate "
+"se deselezionate, mailman necessita almeno una lingua in cui mostrare i "
+"propri messaggi."
 
 #. Type: boolean
 #. Description
@@ -253,7 +252,7 @@ msgstr "Non serve alla maggior parte delle persone."
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "Site list mancante"
+msgstr "\"Site list\" mancante"
 
 #. Type: note
 #. Description
@@ -263,9 +262,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman necessita di una cosiddetta \"site list\" cioè la lista da cui "
-"prende i dati per inviare i promemoria della password. Questa lista deve "
-"essere creata prima di avviare mailman."
+"Mailman necessita di una cosiddetta \"site list\", cioè di una lista da cui "
+"prendere i dati per inviare i promemoria della password. Questa lista deve "
+"essere creata prima dell'avvio di mailman."
 
 #. Type: note
 #. Description
@@ -275,7 +274,7 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Per creare una lista eseguire \"newlist mailman\" e seguire le istruzioni "
+"Per creare la lista eseguire \"newlist mailman\" e seguire le istruzioni "
 "sullo schermo. Ricordarsi che poi è necessario attivare mailman usando /etc/"
 "init.d/mailman start."
 
@@ -304,6 +303,7 @@ msgstr "Vecchi file nella coda"
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. If these files contain unprocessed "
@@ -322,10 +322,27 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
+"La directory /var/lib/mailman/qfiles contiene dei file, deve essere vuota "
+"altrimenti l'aggiornamento potrebbe non funzionare correttamente. Se questi "
+"file sono dei messaggi non ancora elaborati allora si ouò provare a "
+"gestirli: - Fermare l'arrivo di nuovi messaggi nella coda (a livello del "
+"MTA:\n"
+"  lasciare i messaggi nella coda del MTA oppure rifiutarli restituendo un\n"
+"  codice 4xx). Se si gestiscono liste con poco traffico si può anche non\n"
+"  eseguire questo passo.\n"
+"- Avviare il gestore della coda di mailman: /etc/init.d/mailman start - "
+"Lasciarlo in esecuzione fino a quando tutti i messaggi sono stati elaborati\n"
+"  Se alcuni messaggi non escono, controllare i log e provare a capire la\n"
+"  causa per poi risolverla.\n"
+"- Fermare il gestore della coda: /etc/init.d/mailman stop - Riprovare "
+"l'aggiornamento - Riattivare l'arrivo dei messaggi. I file possono anche "
+"essere cancellati, però questo comporta la perdita dei messaggi con "
+"conseguente arrabbiatura degli utenti."
 
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -335,6 +352,12 @@ msgid ""
 "human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
 "the contents of the queues."
 msgstr ""
+"Se i file corrispondono a messaggi sospesi è possibile rimuoverli oppure "
+"revocarne la sospensione. I messaggi sospesi sono messaggi la cui "
+"elaborazione da parte di Mailman ha prodotto un errore e che sono in attesa "
+"della revisione da parte dell'amministratore, di solito sono originati da "
+"bug di Mailman o da altre situazioni anomale e richiedono un'ispezione "
+"uamana."
 
 #. Type: note
 #. Description
@@ -372,7 +395,6 @@ msgstr "Le password di lista non funzionano"
 #. Type: note
 #. Description
 #: ../templates:94
-#, fuzzy
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
@@ -380,19 +402,5 @@ msgid ""
 msgstr ""
 "Dopo questo aggiornamento le password dell'amministratore e del moderatore "
 "di ciascuna lista non funzionano più. Usare /var/lib/mailman/bin/change_pw "
-"per creare delle nuove password e inviarle per email agli amministratori e "
-"ai moderatori."
-
-#~ msgid ""
-#~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
-#~ "empty for the upgrade work properly.  Please either flush the queue (by "
-#~ "way of mailmanctl start, then stopping it and redoing the upgrade when it "
-#~ "is finished) or remove those files.  Note that removing the files will "
-#~ "lose some emails sent to lists."
-#~ msgstr ""
-#~ "La directory /var/lib/mailman/qfiles contiene dei file, deve essere vuota "
-#~ "altrimenti l'aggiornamento potrebbe non funzionare correttamente. "
-#~ "Svuotare la coda (avviando mailmanctl start, poi fermandolo e rifacendo "
-#~ "l'aggiornamento quando ha finito) o cancellare questi file. Notare che la "
-#~ "cancellazione dei file comporta la perdita di alcune delle email inviate "
-#~ "alle liste."
+"per avere delle nuove password e per inviarle via email agli amministratori "
+"e ai moderatori."

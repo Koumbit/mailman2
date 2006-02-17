@@ -1,19 +1,20 @@
-# Vietnamese Translation for mailman.
-# Copyright © 2005 Free Software Foundation, Inc.
-# Clytie Siddall <clytie@riverland.net.au>, 2005.
+# Vietnamese Translation for Mailman.
+# Copyright © 2005-2006 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2006.
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.5-9\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: 2005-06-09 23:09+0930\n"
+"PO-Revision-Date: 2006-01-30 16:11+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.6b34\n"
 
 #. Type: multiselect
 #. Choices
@@ -186,7 +187,6 @@ msgstr "uk"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-#, fuzzy
 msgid "Which languages to support?"
 msgstr "Bạn có muốn hỗ trợ những ngôn ngữ nào?"
 
@@ -199,10 +199,10 @@ msgid ""
 "help of ucf.  This means approximately 150kB for each supported language on "
 "the root FS."
 msgstr ""
-"Với mỗi ngôn ngữ được hỗ trợ, trình Mailman Debian lưu các văn bản mặc định "
-"đặc trưng cho một ngôn ngữ nào đó vào «/etc/mailman/MÃ/» (mã này là mã ngôn "
-"ngữ có hai chữ), xử lý chúng giống như tập tin cấu hình (conffile) dùng "
-"«ucf». Có nghĩa là sẽ dùng khoảng 150kB cho mỗi ngôn ngữ được hỗ trợ trong "
+"Với mỗi ngôn ngữ được hỗ trợ, trình Mailman của Debian lưu các văn bản mặc "
+"định đặc trưng cho một ngôn ngữ nào đó vào </etc/mailman/MÃ/> (mã này là mã "
+"ngôn ngữ có hai chữ), xử lý chúng giống như tập tin cấu hình (conffile) dùng "
+"« ucf ». Có nghĩa là sẽ dùng khoảng 150kB cho mỗi ngôn ngữ được hỗ trợ trong "
 "hệ thống tập tin gốc."
 
 #. Type: multiselect
@@ -212,8 +212,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Nếu bạn muốn dùng một bộ ngôn ngữ khác lần sau, thì chỉ hãy đơn giản chạy "
-"«dpkg-reconfigure mailman»."
+"Nếu bạn muốn dùng một bộ ngôn ngữ khác lần sau, thì chỉ hãy đơn giản chạy « "
+"dpkg-reconfigure mailman »."
 
 #. Type: multiselect
 #. Description
@@ -224,15 +224,15 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"GHI CHÚ: các ngôn ngữ được hiệu lực trong hộp thư chung đã có, thì được hiệu "
-"lực lại một cách ép buộc khi bị bỏ chọn. Hơn nữa, trình Mailman cần đến ít "
-"nhất một ngôn ngữ để hiển thị thông điệp."
+"GHI CHÚ : các ngôn ngữ được hiệu lực trong hộp thư chung đã có, thì được "
+"hiệu lực lại một cách ép buộc khi bị bỏ chọn. Hơn nữa, trình Mailman cần đến "
+"ít nhất một ngôn ngữ để hiển thị thông điệp."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "Chuyển tiếp tin tới thư?"
+msgstr "Chuyển tiếp tin tới hộp?"
 
 #. Type: boolean
 #. Description
@@ -241,8 +241,8 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"Bạn có muốn chuyển tiếp tin tới thư, tức là gửi mọi thông điệp mà xuất hiện "
-"trong một nhóm tin nào đó, tới một hộp thư chung không?"
+"Bạn có muốn chuyển tiếp tin tới hộp, tức là gửi mọi thông điệp mà xuất hiện "
+"trong nhóm tin nào, tới một hộp thư chung không?"
 
 #. Type: boolean
 #. Description
@@ -254,7 +254,7 @@ msgstr "Hầu hết người sẽ không cần tùy chọn này."
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "Thiếu hộp thư chung nơi"
+msgstr "Thiếu danh sách chỗ"
 
 #. Type: note
 #. Description
@@ -264,9 +264,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Trình Mailman cần đến một hộp thư chung được gọi «hộp thư chung nơi», để gửi "
-"thư nhắc nhở mặt khẩu và thư quản lý khác. Phải tạo hộp thư chung để khởi "
-"chạy trình Mailman."
+"Trình Mailman cần đến một danh sách chỗ, để gửi thư nhắc nhở mặt khẩu và thư "
+"quản lý khác. Phải tạo danh sách này trước khi có thể khởi chạy trình "
+"Mailman."
 
 #. Type: note
 #. Description
@@ -276,9 +276,9 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Để tạo hộp thư chung này, hãy chạy «newlist mailman», và theo những hướng "
-"dẫn trên màn hình. Ghi chú rằng bạn cũng cần phải khởi chạy trình Mailman "
-"sau đó, dùng tập tin «/etc/init.d/mailman start»."
+"Để tạo danh sách này, hãy chạy « newlist mailman » (danh sách mới mailman), "
+"và theo những hướng dẫn trên màn hình. Ghi chú rằng bạn cũng cần phải khởi "
+"chạy trình Mailman sau đó, dùng lệnh « /etc/init.d/mailman start »."
 
 #. Type: select
 #. Description
@@ -293,7 +293,7 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"Sẽ hiển thị trang Mạng Mailman bằng ngôn ngữ này, và thông thường, trình "
+"Trang Mạng sẽ được hiển thị bằng ngôn ngữ này, và thông thường, trình "
 "Mailman sẽ dùng ngôn ngữ này để liên lạc với người dùng."
 
 #. Type: note
@@ -305,6 +305,7 @@ msgstr "Có một số tập tin hàng đợi cũ"
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. If these files contain unprocessed "
@@ -323,10 +324,28 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
+"Thư mục </var/lib/mailman/qfiles> chứa một số tập tin. Nó cần phải là rỗng "
+"để cho phép việc cập nhật hoạt động cho đúng. Nếu những tập tin này chứa "
+"thông điệp chưa được xử lý mà vẫn đúng, bạn có thể cố quản lý chúng bằng "
+"cách:\n"
+" • ngăn cản thông điệp mới vào hàng đợi (trên cấp MTA: sắp hàng các thông "
+"điệp trong hàng đợi của MTA, hoặc từ chối hết với mã kiểu 4xx). Nếu chỗ bạn "
+"có trọng tải mailman hơi thấp, bạn có thể bỏ qua bước này.\n"
+" • Khởi chạy một bộ chạy hàng đợi mailman: « /etc/init.d/mailman start ». "
+"Cho phép nó chạy cho đến khi mọi thông điệp đã được quản lý.\n"
+"\tNếu chưa quản lý hết trong thời gian một cách hợp thời, hãy xem các bản "
+"ghi để cố xác định nguyên nhân.\n"
+"  • Dừng nó : « /etc/init.d/mailman stop ».\n"
+" • Thử lại việc nâng cấp.\n"
+" • Cho phép thông điệp lại vào.\n"
+" • Bạn cũng có thể quyết định đơn giản gỡ bỏ những tập tin này, mà sẽ làm "
+"cho trình Mailman quên (và mất) các thư tương ứng. Như thế thì bạn nên ngờ "
+"nhận được thư từ nhiều người dùng giận."
 
 #. Type: note
 #. Description
 #: ../templates:53
+#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -336,12 +355,18 @@ msgid ""
 "human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
 "the contents of the queues."
 msgstr ""
+"Nếu những tập tin này tương ứng với thông điệp đã giữ riêng cho người kiểm "
+"tra, bạn phải hoặc xoá bỏ hết hoặc gỡ bỏ hết ra nhóm giữ riêng đó. (Thông "
+"điệp đã giữ riêng cho người kiểm tra [tiếng Anh: shunted message] là thông "
+"điệp mà trình Mailman đã hủy bỏ xử lý vì gặp lỗi, thì giữ nó cho quản trị "
+"xem lại, vì nó thường được gây ra do lỗi Mailman hay trường hợp bất thường "
+"khác nào cần đến người kiểm tra."
 
 #. Type: note
 #. Description
 #: ../templates:84
 msgid "Administrator must update aliases"
-msgstr ""
+msgstr "Quản trị phải cập nhật các bí danh"
 
 #. Type: note
 #. Description
@@ -350,6 +375,9 @@ msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
 msgstr ""
+"Những bí danh bạn cần cho trình Mailman trong cấu hình MTA đã thay đổi. Hãy "
+"chạy tập tin </var/lib/mailman/bin/genaliases> đề xem những bí danh mới cần "
+"thiết."
 
 #. Type: note
 #. Description
@@ -358,12 +386,14 @@ msgid ""
 "Until you do that, some features will stop working and mails will go out "
 "with an invalid Return-Path."
 msgstr ""
+"Trước khi bạn làm như thế, một số tính năng sẽ không hoạt động, và thư sẽ đi "
+"ra với dòng đầu Return-Path (đường dẫn trả về) không hợp lệ."
 
 #. Type: note
 #. Description
 #: ../templates:94
 msgid "List passwords broken"
-msgstr ""
+msgstr "Mật khẩu hộp thư chung bị hỏng"
 
 #. Type: note
 #. Description
@@ -373,16 +403,6 @@ msgid ""
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
 "to the admins and moderators."
 msgstr ""
-
-#~ msgid ""
-#~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
-#~ "empty for the upgrade work properly.  Please either flush the queue (by "
-#~ "way of mailmanctl start, then stopping it and redoing the upgrade when it "
-#~ "is finished) or remove those files.  Note that removing the files will "
-#~ "lose some emails sent to lists."
-#~ msgstr ""
-#~ "Thư mục «/var/lib/mailman/qfiles» chứa một số tập tin, nhưng mà nó cần "
-#~ "phải rỗng, để cho phép nâng cấp. Hãy hoặc tẩy hàng đợi (bằng cách "
-#~ "«mailmanctl start», rồi ngừng nó, và khi xong thì nâng cấp lại) hoặc loại "
-#~ "bỏ những tập tin ấy. Hãy ghi chú rằng loại bỏ những tập tin ấy sẽ mất một "
-#~ "số thư được gữi cho hộp thư chung."
+"Mật khẩu của quản trị và điều tiết viên bị hỏng do việc nâng cấp này. Hãy "
+"dùng </var/lib/mailman/bin/change_pw> để gây ra mật khẩu mới được tạo ra tự "
+"động và được gửi trong thư cho các quản trị và điều tiết viên."
