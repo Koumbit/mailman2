@@ -33,4 +33,5 @@
 74_admin_non-ascii_emails.dpatch
 77_header_folding_in_attachments
 78_DeprecationWarning
+79_archiver_slash
 99_js_templates

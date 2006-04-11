@@ -2,8 +2,10 @@ mailman (2.1.7-2) UNRELEASED; urgency=low
 
   * Integrate translations: (closes: #350491, #351759, #351947)
     vi, sv, ja, nl, it
+  * Don't force archiver URL to end in a slash, yet ensure the default one
+    has one because pipermail needs it. (closes: #350388)
 
- --
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 11 Apr 2006 20:35:20 +0200
 
 mailman (2.1.7-1) unstable; urgency=low
 
