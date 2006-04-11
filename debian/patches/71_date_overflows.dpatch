@@ -5,9 +5,9 @@
 ## DP: React sensibly on integer overflow in date handling
 
 @DPATCH@
-diff -urNad mailman-2.1.7~/Mailman/Handlers/Scrubber.py mailman-2.1.7/Mailman/Handlers/Scrubber.py
---- mailman-2.1.7~/Mailman/Handlers/Scrubber.py	2006-01-29 17:06:54.132258543 +0100
-+++ mailman-2.1.7/Mailman/Handlers/Scrubber.py	2006-01-29 17:06:55.657044794 +0100
+diff -urNad mailman-2.1.8rc1~/Mailman/Handlers/Scrubber.py mailman-2.1.8rc1/Mailman/Handlers/Scrubber.py
+--- mailman-2.1.8rc1~/Mailman/Handlers/Scrubber.py	2006-04-11 21:42:42.598306358 +0200
++++ mailman-2.1.8rc1/Mailman/Handlers/Scrubber.py	2006-04-11 21:42:43.737147119 +0200
 @@ -143,7 +143,7 @@
                       }.get(parts[3], 0)
              day = int(parts[4])
@@ -17,15 +17,3 @@ diff -urNad mailman-2.1.7~/Mailman/Handlers/Scrubber.py mailman-2.1.7/Mailman/Ha
              # Best we can do I think
              month = day = year = 0
          datedir = '%04d%02d%02d' % (year, month, day)
-diff -urNad mailman-2.1.7~/Mailman/Queue/ArchRunner.py mailman-2.1.7/Mailman/Queue/ArchRunner.py
---- mailman-2.1.7~/Mailman/Queue/ArchRunner.py	2006-01-29 17:06:43.000000000 +0100
-+++ mailman-2.1.7/Mailman/Queue/ArchRunner.py	2006-01-29 17:06:55.658044654 +0100
-@@ -49,7 +49,7 @@
-                 elif abs(now - mktime_tz(tup)) > \
-                          mm_cfg.ARCHIVER_ALLOWABLE_SANE_DATE_SKEW:
-                     clobber = 1
--            except ValueError:
-+            except (OverflowError, ValueError):
-                 # The likely cause of this is that the year in the Date: field
-                 # is horribly incorrect, e.g. (from SF bug # 571634):
-                 # Date: Tue, 18 Jun 0102 05:12:09 +0500

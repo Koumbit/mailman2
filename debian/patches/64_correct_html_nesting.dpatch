@@ -23,9 +23,9 @@ esac
 
 exit 0
 @DPATCH@
-diff -urNad mailman-2.1.6~/templates/ca/listinfo.html mailman-2.1.6/templates/ca/listinfo.html
---- mailman-2.1.6~/templates/ca/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/ca/listinfo.html	2005-12-10 11:59:46.538086466 +0100
+diff -urNad mailman-2.1.8rc1~/templates/ca/listinfo.html mailman-2.1.8rc1/templates/ca/listinfo.html
+--- mailman-2.1.8rc1~/templates/ca/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/ca/listinfo.html	2006-04-11 21:22:32.267496053 +0200
 @@ -53,8 +53,9 @@
        </TR>
        
@@ -37,9 +37,9 @@ diff -urNad mailman-2.1.6~/templates/ca/listinfo.html mailman-2.1.6/templates/ca
          <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
            <TR> 
-diff -urNad mailman-2.1.6~/templates/cs/listinfo.html mailman-2.1.6/templates/cs/listinfo.html
---- mailman-2.1.6~/templates/cs/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/cs/listinfo.html	2005-12-10 11:59:46.538086466 +0100
+diff -urNad mailman-2.1.8rc1~/templates/cs/listinfo.html mailman-2.1.8rc1/templates/cs/listinfo.html
+--- mailman-2.1.8rc1~/templates/cs/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/cs/listinfo.html	2006-04-11 21:22:32.268495913 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -50,9 +50,9 @@ diff -urNad mailman-2.1.6~/templates/cs/listinfo.html mailman-2.1.6/templates/cs
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/da/listinfo.html mailman-2.1.6/templates/da/listinfo.html
---- mailman-2.1.6~/templates/da/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/da/listinfo.html	2005-12-10 11:59:46.538086466 +0100
+diff -urNad mailman-2.1.8rc1~/templates/da/listinfo.html mailman-2.1.8rc1/templates/da/listinfo.html
+--- mailman-2.1.8rc1~/templates/da/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/da/listinfo.html	2006-04-11 21:22:32.268495913 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -63,9 +63,9 @@ diff -urNad mailman-2.1.6~/templates/da/listinfo.html mailman-2.1.6/templates/da
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/de/listinfo.html mailman-2.1.6/templates/de/listinfo.html
---- mailman-2.1.6~/templates/de/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/de/listinfo.html	2005-12-10 11:59:46.539086326 +0100
+diff -urNad mailman-2.1.8rc1~/templates/de/listinfo.html mailman-2.1.8rc1/templates/de/listinfo.html
+--- mailman-2.1.8rc1~/templates/de/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/de/listinfo.html	2006-04-11 21:22:32.269495773 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Abonnieren Sie <MM-List-Name>, indem Sie das folgende Formular
@@ -76,9 +76,9 @@ diff -urNad mailman-2.1.6~/templates/de/listinfo.html mailman-2.1.6/templates/de
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/en/listinfo.html mailman-2.1.6/templates/en/listinfo.html
---- mailman-2.1.6~/templates/en/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/en/listinfo.html	2005-12-10 11:59:46.539086326 +0100
+diff -urNad mailman-2.1.8rc1~/templates/en/listinfo.html mailman-2.1.8rc1/templates/en/listinfo.html
+--- mailman-2.1.8rc1~/templates/en/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/en/listinfo.html	2006-04-11 21:22:32.269495773 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Subscribe to <MM-List-Name> by filling out the following
@@ -89,12 +89,12 @@ diff -urNad mailman-2.1.6~/templates/en/listinfo.html mailman-2.1.6/templates/en
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/es/listinfo.html mailman-2.1.6/templates/es/listinfo.html
---- mailman-2.1.6~/templates/es/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/es/listinfo.html	2005-12-10 11:59:46.539086326 +0100
+diff -urNad mailman-2.1.8rc1~/templates/es/listinfo.html mailman-2.1.8rc1/templates/es/listinfo.html
+--- mailman-2.1.8rc1~/templates/es/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/es/listinfo.html	2006-04-11 21:22:32.269495773 +0200
 @@ -64,8 +64,8 @@
  	  <P>
- 	    Subscribase a <MM-List-Name> rellenando los datos del
+ 	    Suscr&iacute;base a <MM-List-Name> rellenando los datos del
  	    siguiente formulario
 -	  <MM-List-Subscription-Msg>
  	  <ul>
@@ -102,9 +102,9 @@ diff -urNad mailman-2.1.6~/templates/es/listinfo.html mailman-2.1.6/templates/es
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/et/listinfo.html mailman-2.1.6/templates/et/listinfo.html
---- mailman-2.1.6~/templates/et/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/et/listinfo.html	2005-12-10 11:59:46.540086186 +0100
+diff -urNad mailman-2.1.8rc1~/templates/et/listinfo.html mailman-2.1.8rc1/templates/et/listinfo.html
+--- mailman-2.1.8rc1~/templates/et/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/et/listinfo.html	2006-04-11 21:22:32.269495773 +0200
 @@ -58,8 +58,8 @@
  	<td colspan="2">
  	  <P>
@@ -115,9 +115,9 @@ diff -urNad mailman-2.1.6~/templates/et/listinfo.html mailman-2.1.6/templates/et
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/eu/listinfo.html mailman-2.1.6/templates/eu/listinfo.html
---- mailman-2.1.6~/templates/eu/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/eu/listinfo.html	2005-12-10 11:59:46.540086186 +0100
+diff -urNad mailman-2.1.8rc1~/templates/eu/listinfo.html mailman-2.1.8rc1/templates/eu/listinfo.html
+--- mailman-2.1.8rc1~/templates/eu/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/eu/listinfo.html	2006-04-11 21:22:32.270495633 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -128,9 +128,9 @@ diff -urNad mailman-2.1.6~/templates/eu/listinfo.html mailman-2.1.6/templates/eu
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/fi/listinfo.html mailman-2.1.6/templates/fi/listinfo.html
---- mailman-2.1.6~/templates/fi/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/fi/listinfo.html	2005-12-10 11:59:46.540086186 +0100
+diff -urNad mailman-2.1.8rc1~/templates/fi/listinfo.html mailman-2.1.8rc1/templates/fi/listinfo.html
+--- mailman-2.1.8rc1~/templates/fi/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/fi/listinfo.html	2006-04-11 21:22:32.270495633 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -141,9 +141,9 @@ diff -urNad mailman-2.1.6~/templates/fi/listinfo.html mailman-2.1.6/templates/fi
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/fr/listinfo.html mailman-2.1.6/templates/fr/listinfo.html
---- mailman-2.1.6~/templates/fr/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/fr/listinfo.html	2005-12-10 11:59:46.541086045 +0100
+diff -urNad mailman-2.1.8rc1~/templates/fr/listinfo.html mailman-2.1.8rc1/templates/fr/listinfo.html
+--- mailman-2.1.8rc1~/templates/fr/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/fr/listinfo.html	2006-04-11 21:22:32.270495633 +0200
 @@ -61,8 +61,8 @@
        <p> 	    
  	Abonnez-vous &agrave; <MM-List-Name> en remplissant le formulaire 
@@ -154,9 +154,9 @@ diff -urNad mailman-2.1.6~/templates/fr/listinfo.html mailman-2.1.6/templates/fr
          <table border="0" cellspacing="2" cellpadding="2" width="70%"
   height="112">
              <tr>
-diff -urNad mailman-2.1.6~/templates/hr/listinfo.html mailman-2.1.6/templates/hr/listinfo.html
---- mailman-2.1.6~/templates/hr/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/hr/listinfo.html	2005-12-10 11:59:46.541086045 +0100
+diff -urNad mailman-2.1.8rc1~/templates/hr/listinfo.html mailman-2.1.8rc1/templates/hr/listinfo.html
+--- mailman-2.1.8rc1~/templates/hr/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/hr/listinfo.html	2006-04-11 21:22:32.271495493 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Pretplatite se na <MM-List-Name> ispunjavanjem sljedeæe 
@@ -167,9 +167,9 @@ diff -urNad mailman-2.1.6~/templates/hr/listinfo.html mailman-2.1.6/templates/hr
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/hu/listinfo.html mailman-2.1.6/templates/hu/listinfo.html
---- mailman-2.1.6~/templates/hu/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/hu/listinfo.html	2005-12-10 11:59:46.541086045 +0100
+diff -urNad mailman-2.1.8rc1~/templates/hu/listinfo.html mailman-2.1.8rc1/templates/hu/listinfo.html
+--- mailman-2.1.8rc1~/templates/hu/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/hu/listinfo.html	2006-04-11 21:22:32.271495493 +0200
 @@ -59,11 +59,10 @@
  	<td colspan="2">
  	  <P>
@@ -183,9 +183,9 @@ diff -urNad mailman-2.1.6~/templates/hu/listinfo.html mailman-2.1.6/templates/hu
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/it/listinfo.html mailman-2.1.6/templates/it/listinfo.html
---- mailman-2.1.6~/templates/it/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/it/listinfo.html	2005-12-10 11:59:46.542085905 +0100
+diff -urNad mailman-2.1.8rc1~/templates/it/listinfo.html mailman-2.1.8rc1/templates/it/listinfo.html
+--- mailman-2.1.8rc1~/templates/it/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/it/listinfo.html	2006-04-11 21:22:32.271495493 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -196,9 +196,9 @@ diff -urNad mailman-2.1.6~/templates/it/listinfo.html mailman-2.1.6/templates/it
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/ja/listinfo.html mailman-2.1.6/templates/ja/listinfo.html
---- mailman-2.1.6~/templates/ja/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/ja/listinfo.html	2005-12-10 11:59:46.542085905 +0100
+diff -urNad mailman-2.1.8rc1~/templates/ja/listinfo.html mailman-2.1.8rc1/templates/ja/listinfo.html
+--- mailman-2.1.8rc1~/templates/ja/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/ja/listinfo.html	2006-04-11 21:22:32.272495353 +0200
 @@ -65,8 +65,8 @@
  	  <P>
  	    <MM-List-Name> ¤Ø¤ÎÆþ²ñ¤Ï, 
@@ -209,9 +209,9 @@ diff -urNad mailman-2.1.6~/templates/ja/listinfo.html mailman-2.1.6/templates/ja
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/ko/listinfo.html mailman-2.1.6/templates/ko/listinfo.html
---- mailman-2.1.6~/templates/ko/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/ko/listinfo.html	2005-12-10 11:59:46.542085905 +0100
+diff -urNad mailman-2.1.8rc1~/templates/ko/listinfo.html mailman-2.1.8rc1/templates/ko/listinfo.html
+--- mailman-2.1.8rc1~/templates/ko/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/ko/listinfo.html	2006-04-11 21:22:32.272495353 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -222,9 +222,9 @@ diff -urNad mailman-2.1.6~/templates/ko/listinfo.html mailman-2.1.6/templates/ko
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/lt/listinfo.html mailman-2.1.6/templates/lt/listinfo.html
---- mailman-2.1.6~/templates/lt/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/lt/listinfo.html	2005-12-10 11:59:46.543085765 +0100
+diff -urNad mailman-2.1.8rc1~/templates/lt/listinfo.html mailman-2.1.8rc1/templates/lt/listinfo.html
+--- mailman-2.1.8rc1~/templates/lt/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/lt/listinfo.html	2006-04-11 21:22:32.272495353 +0200
 @@ -61,8 +61,8 @@
  	<td colspan="2">
  	  <P>
@@ -235,9 +235,9 @@ diff -urNad mailman-2.1.6~/templates/lt/listinfo.html mailman-2.1.6/templates/lt
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/nl/listinfo.html mailman-2.1.6/templates/nl/listinfo.html
---- mailman-2.1.6~/templates/nl/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/nl/listinfo.html	2005-12-10 11:59:46.543085765 +0100
+diff -urNad mailman-2.1.8rc1~/templates/nl/listinfo.html mailman-2.1.8rc1/templates/nl/listinfo.html
+--- mailman-2.1.8rc1~/templates/nl/listinfo.html	2006-04-11 21:22:03.000000000 +0200
++++ mailman-2.1.8rc1/templates/nl/listinfo.html	2006-04-11 21:22:32.272495353 +0200
 @@ -57,8 +57,8 @@
  	<td colspan="2">
  	  <P>
@@ -248,16 +248,9 @@ diff -urNad mailman-2.1.6~/templates/nl/listinfo.html mailman-2.1.6/templates/nl
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-@@ -123,4 +123,4 @@
-   </table>
- <MM-Mailman-Footer>
- </BODY>
--</HTML>
-\ No newline at end of file
-+</HTML>
-diff -urNad mailman-2.1.6~/templates/no/listinfo.html mailman-2.1.6/templates/no/listinfo.html
---- mailman-2.1.6~/templates/no/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/no/listinfo.html	2005-12-10 11:59:46.543085765 +0100
+diff -urNad mailman-2.1.8rc1~/templates/no/listinfo.html mailman-2.1.8rc1/templates/no/listinfo.html
+--- mailman-2.1.8rc1~/templates/no/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/no/listinfo.html	2006-04-11 21:22:32.273495213 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -268,9 +261,9 @@ diff -urNad mailman-2.1.6~/templates/no/listinfo.html mailman-2.1.6/templates/no
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/pl/listinfo.html mailman-2.1.6/templates/pl/listinfo.html
---- mailman-2.1.6~/templates/pl/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/pl/listinfo.html	2005-12-10 11:59:46.543085765 +0100
+diff -urNad mailman-2.1.8rc1~/templates/pl/listinfo.html mailman-2.1.8rc1/templates/pl/listinfo.html
+--- mailman-2.1.8rc1~/templates/pl/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/pl/listinfo.html	2006-04-11 21:22:32.273495213 +0200
 @@ -65,8 +65,8 @@
            W celu zapisania siê na listê <MM-List-Name> nale¿y wype³niæ 
            poni¿szy formularz.
@@ -281,9 +274,9 @@ diff -urNad mailman-2.1.6~/templates/pl/listinfo.html mailman-2.1.6/templates/pl
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/pt/listinfo.html mailman-2.1.6/templates/pt/listinfo.html
---- mailman-2.1.6~/templates/pt/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/pt/listinfo.html	2005-12-10 11:59:46.544085624 +0100
+diff -urNad mailman-2.1.8rc1~/templates/pt/listinfo.html mailman-2.1.8rc1/templates/pt/listinfo.html
+--- mailman-2.1.8rc1~/templates/pt/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/pt/listinfo.html	2006-04-11 21:22:32.274495072 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -294,9 +287,9 @@ diff -urNad mailman-2.1.6~/templates/pt/listinfo.html mailman-2.1.6/templates/pt
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/pt_BR/listinfo.html mailman-2.1.6/templates/pt_BR/listinfo.html
---- mailman-2.1.6~/templates/pt_BR/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/pt_BR/listinfo.html	2005-12-10 11:59:46.544085624 +0100
+diff -urNad mailman-2.1.8rc1~/templates/pt_BR/listinfo.html mailman-2.1.8rc1/templates/pt_BR/listinfo.html
+--- mailman-2.1.8rc1~/templates/pt_BR/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/pt_BR/listinfo.html	2006-04-11 21:22:32.274495072 +0200
 @@ -64,8 +64,8 @@
  	  <P>
  	    Para se inscrever na lista <MM-List-Name>, preencha o seguinte
@@ -307,9 +300,9 @@ diff -urNad mailman-2.1.6~/templates/pt_BR/listinfo.html mailman-2.1.6/templates
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/ro/listinfo.html mailman-2.1.6/templates/ro/listinfo.html
---- mailman-2.1.6~/templates/ro/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/ro/listinfo.html	2005-12-10 11:59:46.544085624 +0100
+diff -urNad mailman-2.1.8rc1~/templates/ro/listinfo.html mailman-2.1.8rc1/templates/ro/listinfo.html
+--- mailman-2.1.8rc1~/templates/ro/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/ro/listinfo.html	2006-04-11 21:22:32.274495072 +0200
 @@ -60,8 +60,8 @@
  	  <P>
  	    Vã puteþi abona la lista de discuþii <MM-List-Name> completând formularul
@@ -320,9 +313,9 @@ diff -urNad mailman-2.1.6~/templates/ro/listinfo.html mailman-2.1.6/templates/ro
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/ru/listinfo.html mailman-2.1.6/templates/ru/listinfo.html
---- mailman-2.1.6~/templates/ru/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/ru/listinfo.html	2005-12-10 11:59:46.545085484 +0100
+diff -urNad mailman-2.1.8rc1~/templates/ru/listinfo.html mailman-2.1.8rc1/templates/ru/listinfo.html
+--- mailman-2.1.8rc1~/templates/ru/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/ru/listinfo.html	2006-04-11 21:22:32.307490450 +0200
 @@ -51,8 +51,8 @@
          <td colspan="2">
            <P>
@@ -333,9 +326,9 @@ diff -urNad mailman-2.1.6~/templates/ru/listinfo.html mailman-2.1.6/templates/ru
                <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
                  WIDTH="70%" HEIGHT= "112">
                  <TR>
-diff -urNad mailman-2.1.6~/templates/sl/listinfo.html mailman-2.1.6/templates/sl/listinfo.html
---- mailman-2.1.6~/templates/sl/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/sl/listinfo.html	2005-12-10 11:59:46.545085484 +0100
+diff -urNad mailman-2.1.8rc1~/templates/sl/listinfo.html mailman-2.1.8rc1/templates/sl/listinfo.html
+--- mailman-2.1.8rc1~/templates/sl/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/sl/listinfo.html	2006-04-11 21:22:32.307490450 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Na seznam <MM-List-Name> se prijavite tako, da izpolnite
@@ -346,9 +339,9 @@ diff -urNad mailman-2.1.6~/templates/sl/listinfo.html mailman-2.1.6/templates/sl
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/sr/listinfo.html mailman-2.1.6/templates/sr/listinfo.html
---- mailman-2.1.6~/templates/sr/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/sr/listinfo.html	2005-12-10 11:59:46.545085484 +0100
+diff -urNad mailman-2.1.8rc1~/templates/sr/listinfo.html mailman-2.1.8rc1/templates/sr/listinfo.html
+--- mailman-2.1.8rc1~/templates/sr/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/sr/listinfo.html	2006-04-11 21:22:32.307490450 +0200
 @@ -52,8 +52,9 @@
        </TR>
        <tr>
@@ -360,9 +353,9 @@ diff -urNad mailman-2.1.6~/templates/sr/listinfo.html mailman-2.1.6/templates/sr
          <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
            <TR> 
-diff -urNad mailman-2.1.6~/templates/sv/listinfo.html mailman-2.1.6/templates/sv/listinfo.html
---- mailman-2.1.6~/templates/sv/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/sv/listinfo.html	2005-12-10 11:59:46.546085344 +0100
+diff -urNad mailman-2.1.8rc1~/templates/sv/listinfo.html mailman-2.1.8rc1/templates/sv/listinfo.html
+--- mailman-2.1.8rc1~/templates/sv/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/sv/listinfo.html	2006-04-11 21:22:32.310490030 +0200
 @@ -56,8 +56,9 @@
        </TR>
        <tr>
@@ -374,9 +367,9 @@ diff -urNad mailman-2.1.6~/templates/sv/listinfo.html mailman-2.1.6/templates/sv
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/tr/listinfo.html mailman-2.1.6/templates/tr/listinfo.html
---- mailman-2.1.6~/templates/tr/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/tr/listinfo.html	2005-12-10 11:59:46.546085344 +0100
+diff -urNad mailman-2.1.8rc1~/templates/tr/listinfo.html mailman-2.1.8rc1/templates/tr/listinfo.html
+--- mailman-2.1.8rc1~/templates/tr/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/tr/listinfo.html	2006-04-11 21:22:32.310490030 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    <MM-List-Name> listesine aþaðýdaki formu doldurarak üye
@@ -387,9 +380,9 @@ diff -urNad mailman-2.1.6~/templates/tr/listinfo.html mailman-2.1.6/templates/tr
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/uk/listinfo.html mailman-2.1.6/templates/uk/listinfo.html
---- mailman-2.1.6~/templates/uk/listinfo.html	2005-12-10 11:53:42.000000000 +0100
-+++ mailman-2.1.6/templates/uk/listinfo.html	2005-12-10 11:59:46.546085344 +0100
+diff -urNad mailman-2.1.8rc1~/templates/uk/listinfo.html mailman-2.1.8rc1/templates/uk/listinfo.html
+--- mailman-2.1.8rc1~/templates/uk/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/uk/listinfo.html	2006-04-11 21:22:32.310490030 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -400,9 +393,9 @@ diff -urNad mailman-2.1.6~/templates/uk/listinfo.html mailman-2.1.6/templates/uk
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/zh_CN/listinfo.html mailman-2.1.6/templates/zh_CN/listinfo.html
---- mailman-2.1.6~/templates/zh_CN/listinfo.html	2005-05-14 06:13:41.000000000 +0200
-+++ mailman-2.1.6/templates/zh_CN/listinfo.html	2005-12-10 12:00:53.081745941 +0100
+diff -urNad mailman-2.1.8rc1~/templates/zh_CN/listinfo.html mailman-2.1.8rc1/templates/zh_CN/listinfo.html
+--- mailman-2.1.8rc1~/templates/zh_CN/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/zh_CN/listinfo.html	2006-04-11 21:22:32.310490030 +0200
 @@ -60,8 +60,8 @@
  	<td colspan="2">
  	  <P>
@@ -413,9 +406,9 @@ diff -urNad mailman-2.1.6~/templates/zh_CN/listinfo.html mailman-2.1.6/templates
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-diff -urNad mailman-2.1.6~/templates/zh_TW/listinfo.html mailman-2.1.6/templates/zh_TW/listinfo.html
---- mailman-2.1.6~/templates/zh_TW/listinfo.html	2005-03-23 03:04:14.000000000 +0100
-+++ mailman-2.1.6/templates/zh_TW/listinfo.html	2005-12-10 12:00:43.257124993 +0100
+diff -urNad mailman-2.1.8rc1~/templates/zh_TW/listinfo.html mailman-2.1.8rc1/templates/zh_TW/listinfo.html
+--- mailman-2.1.8rc1~/templates/zh_TW/listinfo.html	2006-04-11 21:21:05.000000000 +0200
++++ mailman-2.1.8rc1/templates/zh_TW/listinfo.html	2006-04-11 21:22:32.311489890 +0200
 @@ -60,8 +60,8 @@
  	<td colspan="2">
  	  <P>

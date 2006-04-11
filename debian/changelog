@@ -1,3 +1,20 @@
+mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=low
+
+  * New upstream release
+    - Update patches:
+      64_correct_html_nesting
+      68_translation_update_nl
+      71_date_overflows
+      99_js_templates
+    - Drop patches merged upstream:
+      02_stolen_from_upstream_CVS
+      23_fix_urls
+      72_hyperarch_error_handling.dpatch
+    - Bugs fixed upstream:
+      - Fix XSS hole in private archive cgi-bin. (CVE-2006-1512)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 11 Apr 2006 21:24:54 +0200
+
 mailman (2.1.7-2) UNRELEASED; urgency=low
 
   * Integrate translations: (closes: #350491, #351759, #351947)

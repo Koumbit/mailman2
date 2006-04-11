@@ -1,6 +1,5 @@
 00_stolen_from_HEAD
 01_defaults.debian
-02_stolen_from_upstream_CVS
 03_documentation_source
 07_snooze
 10_wrapper_uid
@@ -10,7 +9,6 @@
 16_update_debian
 20_qmail_to_mailman.debian
 21_newlist_help
-23_fix_urls
 30_pipermail_threads
 32_MIME_fixup
 51_nocompile.pyc
@@ -29,7 +27,6 @@
 68_translation_update_nl
 70_invalid_utf8_dos.dpatch
 71_date_overflows.dpatch
-72_hyperarch_error_handling.dpatch
 74_admin_non-ascii_emails.dpatch
 77_header_folding_in_attachments
 78_DeprecationWarning
