@@ -2,6 +2,7 @@ mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=high
 
   * New upstream release
     - Update patches:
+      03_documentation_source
       64_correct_html_nesting
       68_translation_update_nl
       71_date_overflows
@@ -15,7 +16,7 @@ mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=high
   * Don't delete other package's ucf-managed configuration files
     (closes: #358575)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 11 Apr 2006 22:12:06 +0200
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 11 Apr 2006 22:35:33 +0200
 
 mailman (2.1.7-2) UNRELEASED; urgency=low
 

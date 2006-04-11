@@ -5,9 +5,9 @@
 ## DP: Sources of documentation from upstream CVS
 
 @DPATCH@
-diff -urNad mailman-2.1.7~/doc/mailman-admin.tex mailman-2.1.7/doc/mailman-admin.tex
---- mailman-2.1.7~/doc/mailman-admin.tex	1970-01-01 01:00:00.000000000 +0100
-+++ mailman-2.1.7/doc/mailman-admin.tex	2006-01-29 17:30:21.546755556 +0100
+diff -urNad mailman-2.1.8rc1~/doc/mailman-admin.tex mailman-2.1.8rc1/doc/mailman-admin.tex
+--- mailman-2.1.8rc1~/doc/mailman-admin.tex	1970-01-01 01:00:00.000000000 +0100
++++ mailman-2.1.8rc1/doc/mailman-admin.tex	2006-04-11 22:32:46.837866286 +0200
 @@ -0,0 +1,1402 @@
 +\documentclass{howto}
 +
@@ -1411,9 +1411,9 @@ diff -urNad mailman-2.1.7~/doc/mailman-admin.tex mailman-2.1.7/doc/mailman-admin
 +
 +
 +\end{document}
-diff -urNad mailman-2.1.7~/doc/mailman-install.tex mailman-2.1.7/doc/mailman-install.tex
---- mailman-2.1.7~/doc/mailman-install.tex	1970-01-01 01:00:00.000000000 +0100
-+++ mailman-2.1.7/doc/mailman-install.tex	2006-01-29 17:30:21.546755556 +0100
+diff -urNad mailman-2.1.8rc1~/doc/mailman-install.tex mailman-2.1.8rc1/doc/mailman-install.tex
+--- mailman-2.1.8rc1~/doc/mailman-install.tex	1970-01-01 01:00:00.000000000 +0100
++++ mailman-2.1.8rc1/doc/mailman-install.tex	2006-04-11 22:32:46.838866146 +0200
 @@ -0,0 +1,1804 @@
 +\documentclass{howto}
 +
@@ -3219,9 +3219,9 @@ diff -urNad mailman-2.1.7~/doc/mailman-install.tex mailman-2.1.7/doc/mailman-ins
 +start up.
 +
 +\end{document}
-diff -urNad mailman-2.1.7~/doc/mailman-member-es.tex mailman-2.1.7/doc/mailman-member-es.tex
---- mailman-2.1.7~/doc/mailman-member-es.tex	1970-01-01 01:00:00.000000000 +0100
-+++ mailman-2.1.7/doc/mailman-member-es.tex	2006-01-29 17:30:21.546755556 +0100
+diff -urNad mailman-2.1.8rc1~/doc/mailman-member-es.tex mailman-2.1.8rc1/doc/mailman-member-es.tex
+--- mailman-2.1.8rc1~/doc/mailman-member-es.tex	1970-01-01 01:00:00.000000000 +0100
++++ mailman-2.1.8rc1/doc/mailman-member-es.tex	2006-04-11 22:32:46.838866146 +0200
 @@ -0,0 +1,1635 @@
 +% Complete documentation on the extended LaTeX mark up used for Python
 +% documentation is available in ``Documenting Python'', which is part
@@ -4858,9 +4858,9 @@ diff -urNad mailman-2.1.7~/doc/mailman-member-es.tex mailman-2.1.7/doc/mailman-m
 +\end{list}
 +
 +\end{document}
-diff -urNad mailman-2.1.7~/doc/mailman-member.tex mailman-2.1.7/doc/mailman-member.tex
---- mailman-2.1.7~/doc/mailman-member.tex	1970-01-01 01:00:00.000000000 +0100
-+++ mailman-2.1.7/doc/mailman-member.tex	2006-01-29 17:30:21.547755415 +0100
+diff -urNad mailman-2.1.8rc1~/doc/mailman-member.tex mailman-2.1.8rc1/doc/mailman-member.tex
+--- mailman-2.1.8rc1~/doc/mailman-member.tex	1970-01-01 01:00:00.000000000 +0100
++++ mailman-2.1.8rc1/doc/mailman-member.tex	2006-04-11 22:32:46.838866146 +0200
 @@ -0,0 +1,1505 @@
 +% Complete documentation on the extended LaTeX mark up used for Python
 +% documentation is available in ``Documenting Python'', which is part
@@ -6367,9 +6367,9 @@ diff -urNad mailman-2.1.7~/doc/mailman-member.tex mailman-2.1.7/doc/mailman-memb
 +\end{list}
 +
 +\end{document}
-diff -urNad mailman-2.1.7~/doc/posting-flow-chart.ps mailman-2.1.7/doc/posting-flow-chart.ps
---- mailman-2.1.7~/doc/posting-flow-chart.ps	1970-01-01 01:00:00.000000000 +0100
-+++ mailman-2.1.7/doc/posting-flow-chart.ps	2006-01-29 17:30:21.547755415 +0100
+diff -urNad mailman-2.1.8rc1~/doc/posting-flow-chart.ps mailman-2.1.8rc1/doc/posting-flow-chart.ps
+--- mailman-2.1.8rc1~/doc/posting-flow-chart.ps	1970-01-01 01:00:00.000000000 +0100
++++ mailman-2.1.8rc1/doc/posting-flow-chart.ps	2006-04-11 22:32:46.893858482 +0200
 @@ -0,0 +1,735 @@
 +%!PS-Adobe-2.0
 +%%Title: posting-flow-chart
