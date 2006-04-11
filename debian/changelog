@@ -1,4 +1,4 @@
-mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=low
+mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=high
 
   * New upstream release
     - Update patches:
@@ -12,8 +12,10 @@ mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=low
       72_hyperarch_error_handling.dpatch
     - Bugs fixed upstream:
       - Fix XSS hole in private archive cgi-bin. (CVE-2006-1512)
+  * Don't delete other package's ucf-managed configuration files
+    (closes: #358575)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 11 Apr 2006 21:24:54 +0200
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 11 Apr 2006 22:12:06 +0200
 
 mailman (2.1.7-2) UNRELEASED; urgency=low
 
