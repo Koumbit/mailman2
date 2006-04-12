@@ -1,4 +1,4 @@
-mailman (0:2.1.7:2.1.8rc1-1) unstable; urgency=high
+mailman (2.1.7+2.1.8rc1-1) unstable; urgency=high
 
   * New upstream release
     - Update patches:
