@@ -18,7 +18,7 @@ mailman (2.1.7+2.1.8rc1-1) unstable; urgency=high
       23_fix_urls
       72_hyperarch_error_handling.dpatch
     - Bugs fixed upstream:
-      - Fix XSS hole in private archive cgi-bin. (CVE-2006-1512)
+      - Fix XSS hole in private archive cgi-bin. (CVE-2006-1712)
   * Don't delete other package's ucf-managed configuration files
     (closes: #358575)
 
