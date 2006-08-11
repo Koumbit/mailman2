@@ -1,3 +1,5 @@
+# translation of mailman 0:2.1.8-1_templates.po to Dutch
+# This file is distributed under the same license as the mailman package.
 #
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
@@ -11,15 +13,18 @@
 #
 #    Developers do not need to manually edit POT or PO files.
 #
-# Luk Claes <luk@debian.org> (C) 2006
+# Luk Claes <luk.claes(AT)ugent(DOT)be>, 2006
+# Kurt De Bree <kdebree(AT)telenet(DOT)be>, 2006
+# This is an unofficial translation
 #
+
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.5-4\n"
+"Project-Id-Version: mailman 0:2.1.8-1\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: 2006-02-08 18:35+0100\n"
-"Last-Translator: Luk Claes <luk@debian.org>\n"
+"PO-Revision-Date: 2006-07-05 13:05+0100\n"
+"Last-Translator: Kurt De Bree <kdebree(AT)telenet(DOT)be>\n"
 "Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -226,13 +231,12 @@ msgstr ""
 #. Type: multiselect
 #. Description
 #: ../templates:7
-#, fuzzy
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"LET OP: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
+"MERK OP: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
 "opnieuw ingesteld indien u ze heeft uitgeschakeld; en mailman heeft ook ten "
 "minste één taal nodig om zijn boodschappen weer te geven."
 
@@ -313,7 +317,6 @@ msgstr "Oude queue-bestanden zijn beschikbaar"
 #. Type: note
 #. Description
 #: ../templates:53
-#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. If these files contain unprocessed "
@@ -333,26 +336,26 @@ msgid ""
 "forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
 "De map /var/lib/mailman/qfiles bevat bestanden. Ze moet leeg zijn om de "
-"opwaardering goed te laten werken. Als deze bestanden nog niet zijn "
-"behandeld, maar wel echte boodschappen zijn, dan kunt u ze proberen "
-"afhandelen door: - nieuwe boodschappen niet meer in de wachtrij te laten "
-"komen (op het MTA-niveau:\n"
-"  steek ze in de wachtrij van de MTA of weiger ze met een 4xx-code). Als\n"
-"  uw site relatief weinig mailman-verkeer heeft, dan kunt u deze stap "
-"overslaan.\n"
-"- een mailman-wachtrijloper te starten: /etc/init.d/mailman start - laat het "
-"uitvoeren totdat alle boodschappen afgehandeld zijn\n"
-"  Als ze niet tijdig worden afgehandeld, kijk dan in de logs\n"
-"  om te begrijpen waarom en los dat dan op.\n"
-"- stop het: /etc/init.d/mailman stop - probeer de opwaardering opnieuw - "
-"laat opnieuw boodschappen toekomen. U kunt ook beslissen om de bestanden "
-"eenvoudigweg te verwijderen. Mailman zal ze dan vergeten (en de "
-"overeenkomende e-mails verliezen); verwacht boze gebruikers."
+"opwaardering goed te laten werken. Als deze bestanden nog niet zijn behandeld, "
+"maar wel echte boodschappen zijn, dan kunt u ze proberen afhandelen door:\n"
+" - nieuwe boodschappen niet meer in de wachtrij te laten komen \n"
+"   (op het MTA-niveau: steek ze in de wachtrij van de MTA of weiger ze \n"
+"   met een 4xx-code). Als uw site relatief weinig mailman-verkeer heeft, \n"
+"   dan kunt u deze stap overslaan.\n"
+" - een mailman-wachtrijloper te starten: /etc/init.d/mailman start \n"
+" - laat het uitvoeren totdat alle boodschappen afgehandeld zijn\n"
+"   Als ze niet tijdig worden afgehandeld, kijk dan in de logs\n"
+"   om te begrijpen waarom en los dat dan op.\n"
+" - stop het: /etc/init.d/mailman stop\n"
+" - Probeer de opwaardering opnieuw.\n"
+" - Laat opnieuw boodschappen toekomen.\n"
+"U kunt ook beslissen om de bestanden eenvoudigweg te verwijderen. "
+"Mailman zal ze dan vergeten (en de overeenkomende e-mails verliezen); "
+"verwacht boze gebruikers."
 
 #. Type: note
 #. Description
 #: ../templates:53
-#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -363,11 +366,12 @@ msgid ""
 "the contents of the queues."
 msgstr ""
 "Als deze bestanden overeenkomen met shunted boodschappen, dan moet u ze "
-"ofwel verwijderen ofwel unshunten. Shunted boodschappen zijn boodschappen "
-"waarvan Mailman al elke verdere behandeling heeft gestopt door een "
-"fouttoestand. Maar ze worden bewaard voor nazicht door een beheerder omdat "
-"ze gewoonlijk ontstaan door Mailman-bugs of andere abnormale situaties die "
-"inspectie vereisen."
+"ofwel verwijderen ofwel unshunten (met /var/lib/mailman/bin/unshunt). Shunted "
+"boodschappen zijn boodschappen waarvan Mailman al elke verdere behandeling "
+"heeft gestopt door een fouttoestand. Maar ze worden bewaard voor nazicht door "
+"een beheerder omdat ze gewoonlijk ontstaan door Mailman-bugs of andere "
+"abnormale situaties die inspectie vereisen. U kunt /var/lib/mailman/bin/show_qfiles "
+"gebruiken om de inhoud van de queues te controleren."
 
 #. Type: note
 #. Description
@@ -383,7 +387,7 @@ msgid ""
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
 msgstr ""
 "De aliasen die u nodig heeft voor mailman in uw configuratie van MTA zijn "
-"gewijzigd. Voer /var/lib/mailman/bin/genaliases uit om de nieuwe aliasen die "
+"gewijzigd. Voer /var/lib/mailman/bin/genaliases uit om de nieuwe aliassen die "
 "u nodig heeft te bekijken."
 
 #. Type: note
@@ -413,16 +417,3 @@ msgstr ""
 "Lijstbeheerder- en -moderatorwachtwoorden zijn stuk door deze opwaardering. "
 "Gebruik /var/lib/mailman/bin/change_pw om automatisch nieuwe aan te maken en "
 "te versturen naar de beheerders en moderators."
-
-#~ msgid ""
-#~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
-#~ "empty for the upgrade work properly.  Please either flush the queue (by "
-#~ "way of mailmanctl start, then stopping it and redoing the upgrade when it "
-#~ "is finished) or remove those files.  Note that removing the files will "
-#~ "lose some emails sent to lists."
-#~ msgstr ""
-#~ "De map /var/lib/mailman/qfiles bevat bestanden. Deze moet leeg zijn om de "
-#~ "opwaardering correct te laten werken. Ledig de queue (door mailmanctl "
-#~ "start, stop ze dan en herdoe de opwaardering wanneer het is beëindigd) of "
-#~ "verwijder deze bestanden. Merk op dat deze bestanden verwijderen enkele "
-#~ "naar de lijsten verzonden e-mails zal verliezen."

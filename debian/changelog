@@ -1,4 +1,4 @@
-mailman (2.1.8-2) unstable; urgency=low
+mailman (1:2.1.8-2) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
   * Add example apache.conf under /etc/mailman
@@ -15,7 +15,20 @@ mailman (2.1.8-2) unstable; urgency=low
     any user from reading private lists and taking away write access to
     www-data. (Closes: #356877)
 
- -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 10:27:25 +0200
+  [ Riccardo Setti ]
+  * epoch 1. Now people should upgrade mailman without problems. (closes: #366438)
+  * Applied patch from which fix string search in admin.py. (closes: #359721)
+  * Updated German debconf translation (closes: #353713)
+  * Updated French debcon translation (closes: #355674)
+  * Updated Italian debconf templates translation (closes: #352523)
+  * Updated Russian translation for debconf template (closes: #361656)
+  * Updated Dutch po-debconf translation (closes: #377254)
+  * Applied patch of Martin Pitt which will create /var/run and
+    /var/lock directory if missing. (closes: #376542)
+  * Bumped debhelper compatibily to 5.
+   - modified debian/control to reflect this change.
+
+ -- Riccardo Setti <giskard@debian.org>  Fri, 11 Aug 2006 10:42:35 +0200
 
 mailman (2.1.8-1) unstable; urgency=low
 

@@ -1,204 +1,203 @@
+# translation of mailman_2.1.7-1_ru.po to Russian
 # Russian messages:
-# Ilgiz Kalmetev <translator@ilgiz.pp.ru>, 2003
-#
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
 #    this format, e.g. by running:
 #         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#
+#         info -n '(gettext)Header Entry'#
 #    Some information specific to po-debconf are available at
 #            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
 #    Developers do not need to manually edit POT or PO files.
+# Ilgiz Kalmetev <translator@ilgiz.pp.ru>, 2003.
+# Yuri Kozlov <kozlov.y@gmail.com>, 2006.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: mailman_2.1.7-1\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2006-01-29 21:07+0100\n"
+"PO-Revision-Date: 2006-04-09 16:46+0300\n"
+"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=KOI8-R\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "big5"
-msgstr ""
+msgstr "big5"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "da"
-msgstr ""
+msgstr "da"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "et"
-msgstr ""
+msgstr "et"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "eu"
-msgstr ""
+msgstr "eu"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hr"
-msgstr ""
+msgstr "hr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "hu"
-msgstr ""
+msgstr "hu"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "lt"
-msgstr ""
+msgstr "lt"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pl"
-msgstr ""
+msgstr "pl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "pt_BR"
-msgstr ""
+msgstr "pt_BR"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ro"
-msgstr ""
+msgstr "ro"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sl"
-msgstr ""
+msgstr "sl"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sr"
-msgstr ""
+msgstr "sr"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "uk"
-msgstr ""
+msgstr "uk"
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
 msgid "Which languages to support?"
-msgstr ""
+msgstr "Какие языки нужно поддерживать?"
 
 #. Type: multiselect
 #. Description
@@ -209,6 +208,11 @@ msgid ""
 "help of ucf.  This means approximately 150kB for each supported language on "
 "the root FS."
 msgstr ""
+"Для каждого поддерживаемого языка Debian Mailman хранит текст "
+"с заданным языком по умолчанию в каталоге /etc/mailman/LANG/, "
+"давая настроить конфигурационные файлы типа обращения за помощью в ucf. "
+"Это займёт приблизительно 150Кб на каждый поддерживаемый "
+"язык в корневой файловой системе."
 
 #. Type: multiselect
 #. Description
@@ -217,13 +221,15 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
+"Если позже вам захочется изменить список языков, просто "
+"запустите dpkg-reconfigure mailman."
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
 msgid ""
-"NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
-"when deselected and mailman needs at least one language for displaying its "
+"NOTE: Languages enabled on existing mailing lists are forcibly re- enabled "
+"when deselected and mailman needs at least one language for displaying it's "
 "messages."
 msgstr ""
 
@@ -231,7 +237,7 @@ msgstr ""
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "��������� �������� � �����?"
+msgstr "Шлюзовать новости в почту?"
 
 #. Type: boolean
 #. Description
@@ -240,20 +246,20 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"�� ������ ��������� ������� � �����, �� ���� ���������� ��� ���������, "
-"������� �������� � ������ �������� � ������ �������� ��������?"
+"Нужно ли шлюзовать новости в почту, то есть отправлять все сообщения, "
+"которые приходят в группу новостей в список почтовой рассылки?"
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Most people won't need this."
-msgstr "����������� ����� ��� �� �����."
+msgstr "Большинству людей это не нужно."
 
 #. Type: note
 #. Description
 #: ../templates:35
 msgid "Missing site list"
-msgstr "����������� �������� ������ ��������"
+msgstr "Отсутствует сайтовый список рассылки"
 
 #. Type: note
 #. Description
@@ -263,27 +269,27 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"��� ������ mailman ����� ��� ���������� \"�������� ������ ��������\", "
-"������� �������� ������� ��������, �� �������� ������������ ����������� "
-"�������. ���� ������ �������� ������ ���� ������ �� ������� mailman."
+"Для работы mailman нужен так называемый \"сайтовый список рассылки\", "
+"являющийся списком рассылки, из которого отправляются напоминания "
+"паролей. Этот список рассылки должен быть создан до запуска mailman."
 
 #. Type: note
 #. Description
 #: ../templates:35
-#, fuzzy
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"����� ������� ������ ��������, ��������� ������� \"newlist mailman\" � "
-"�������� ����������� �� ������"
+"Чтобы создать список рассылки, выполните команду \"newlist mailman\" и "
+"следуйте инструкциям на экране. Заметим, что после этого вы также должны "
+"запустить mailman с помощью команды /etc/init.d/mailman start."
 
 #. Type: select
 #. Description
 #: ../templates:47
 msgid "Which language should be the default for Mailman?"
-msgstr ""
+msgstr "Язык по умолчанию для Mailman?"
 
 #. Type: select
 #. Description
@@ -292,81 +298,108 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
+"Веб страница будет отображаться на этом языке, и в общем Mailman "
+"будет использовать этот язык для общения с пользователем."
 
 #. Type: note
 #. Description
 #: ../templates:53
 msgid "Old queue files present"
-msgstr ""
+msgstr "Найдены старые файлы очереди"
 
 #. Type: note
 #. Description
 #: ../templates:53
 msgid ""
-"The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
-"for the upgrade to work properly. If these files contain unprocessed "
-"messages that are otherwise fine, then you can try to handle them by:\n"
-" - Stopping new messages from coming in the queue (at the MTA level:\n"
-"   queue them in the MTA's queue or refuse them with a 4xx code). If\n"
-"   your site has a relatively low mailman traffic, you can skip this\n"
-"   step.\n"
-" - Start a mailman queue runner: /etc/init.d/mailman start\n"
-" - Let it run until all messages are handled.\n"
-"   If they don't all get handled in a timely manner, look at the logs\n"
-"   to try to understand why and solve the cause.\n"
-" - Stop it: /etc/init.d/mailman stop\n"
-" - Retry the upgrade.\n"
-" - Let messages come in again.\n"
-"You can also decide to simply remove the files, which will make Mailman "
-"forget about (and lose) the corresponding emails; expect angry users."
+"The directory /var/lib/mailman/qfiles contains files.  It needs to be empty "
+"for the upgrade work properly. If these files are not yet processed, but "
+"otherwise fine messages, then you can try to handle them by: - Stopping new "
+"messages from coming in the queue (at the MTA level:\n"
+"  queue them in the MTA's queue or refuse them with a 4xx code). If\n"
+"  your site has a relatively low mailman traffic, you can skip this\n"
+"  step.\n"
+"- Start a mailman queue runner: /etc/init.d/mailman start - Let it run until "
+"all messages are handled\n"
+"  If they don't all get handled in a timely manner, look at the logs\n"
+"  to try to understand why and solve the cause.\n"
+"- Stop it: /etc/init.d/mailman stop - Retry the upgrade - Let messages come "
+"in again You can also decide to simply remove the files, which will make "
+"Mailman forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
+"Найдены файлы в каталоге /var/lib/mailman/qfiles. Для правильного "
+"выполнения процедуры обновления он должен быть пуст. Если это пока не обработанные "
+"файлы, и они нужны, вы можете попытаться разобрать их:\n"
+"- Остановить появление новых сообщений в очереди (на уровне MTA:\n"
+"  оставлять их в очереди MTA или не принимать с кодом 4xx). Если\n"
+"  у вашего сайта относительно низкий уровень трафика mailman, вы можете\n"
+"  пропустить этот шаг.\n"
+"- Запустить обработчик очереди mailman: /etc/init.d/mailman start - Дождаться "
+"пока все сообщения не будут обработаны\n"
+"  Если они не обработаются за приемлемое время, посмотрите в файлы журнала,\n"
+"  чтобы попытаться понять в чём причина и решить проблему.\n"
+"- Остановить его: /etc/init.d/mailma n stop - Повторить процедуру обновления - Позволить "
+"сообщениям поступать снова. Также вы можете просто удалить эти файлы, и "
+"Mailman забудет (и потеряет) соответствующие почтовые сообщения; ожидайте "
+"разгневанных пользователей."
 
 #. Type: note
 #. Description
 #: ../templates:53
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
-"them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
-"are messages on which Mailman has already abandoned any further processing "
-"because of an error condition, but that are kept for admin review, as they "
-"usually originate from Mailman bugs or other abnormal situations that need "
-"human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
-"the contents of the queues."
+"them or unshunt them. Shunted messages are messages on which Mailman has "
+"already abandoned any further processing because of an error condition, but "
+"that are kept for admin review, as they usually originate from Mailman bugs "
+"or other abnormal situations that need human inspection."
 msgstr ""
+"Если эти файлы соответствуют отложенным сообщениям, вы можете удалить их "
+"или сделать их обычными сообщениями. Отложенные сообщения -- это сообщения, "
+"для которых Mailman уже отменил обработку, так как возникла ошибка, но они "
+"хранятся для просмотра администратором, так как обычно это указывает на "
+"ошибку Mailman или другую ненормальную ситуацию, которая требует "
+"ручной обработки."
 
 #. Type: note
 #. Description
-#: ../templates:84
+#: ../templates:82
 msgid "Administrator must update aliases"
-msgstr ""
+msgstr "Администратор должен обновить псевдонимы"
 
 #. Type: note
 #. Description
-#: ../templates:84
+#: ../templates:82
 msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
 msgstr ""
+"Для работы mailman в конфигурации вашего MTA нужно изменить псевдонимы. "
+"Чтобы увидеть новые псевдонимы запустите /var/lib/mailman/bin/genaliases."
 
 #. Type: note
 #. Description
-#: ../templates:84
+#: ../templates:82
 msgid ""
 "Until you do that, some features will stop working and mails will go out "
 "with an invalid Return-Path."
 msgstr ""
+"Пока вы не сделаете этого, некоторые функции не будут работать и почта будет "
+"уходить с неправильным Return-Path."
 
 #. Type: note
 #. Description
-#: ../templates:94
+#: ../templates:92
 msgid "List passwords broken"
-msgstr ""
+msgstr "Список паролей испорчен"
 
 #. Type: note
 #. Description
-#: ../templates:94
+#: ../templates:92
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
 "to the admins and moderators."
 msgstr ""
+"Список паролей администраторов и модераторов сломан из-за данного обновления. "
+"Используйте /var/lib/mailman/bin/change_pw для генерации новых "
+"паролей и их автоматической отправки по почте администраторам и модераторам."
+

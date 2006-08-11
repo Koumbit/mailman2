@@ -1,4 +1,3 @@
-#
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
 #    this format, e.g. by running:
@@ -13,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.6-1\n"
+"Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-02-17 16:33+0100\n"
-"PO-Revision-Date: 2006-01-06 21:39+0100\n"
+"PO-Revision-Date: 2006-03-07 09:21+0100\n"
 "Last-Translator: Philippe Batailler <philippe.batailler@free.fr>\n"
 "Language-Team: french <debian-l10n-french@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +38,7 @@ msgstr "ca (catalan)"
 #. Choices
 #: ../templates:5
 msgid "cs"
-msgstr "cs (tchèque)"
+msgstr "cs (tchÃ¨que)"
 
 #. Type: multiselect
 #. Choices
@@ -87,7 +86,7 @@ msgstr "fi (finnois)"
 #. Choices
 #: ../templates:5
 msgid "fr"
-msgstr "fr (français)"
+msgstr "fr (franÃ§ais)"
 
 #. Type: multiselect
 #. Choices
@@ -117,7 +116,7 @@ msgstr "ja (japonais)"
 #. Choices
 #: ../templates:5
 msgid "ko"
-msgstr "ko (coréen)"
+msgstr "ko (corÃ©en)"
 
 #. Type: multiselect
 #. Choices
@@ -129,13 +128,13 @@ msgstr "lt (lituanien)"
 #. Choices
 #: ../templates:5
 msgid "nl"
-msgstr "nl (néerlandais)"
+msgstr "nl (nÃ©erlandais)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:5
 msgid "no"
-msgstr "no (norvégien)"
+msgstr "no (norvÃ©gien)"
 
 #. Type: multiselect
 #. Choices
@@ -153,7 +152,7 @@ msgstr "pt (portugais)"
 #. Choices
 #: ../templates:5
 msgid "pt_BR"
-msgstr "pt_BR (portugais du Brésil)"
+msgstr "pt_BR (portugais du BrÃ©sil)"
 
 #. Type: multiselect
 #. Choices
@@ -171,7 +170,7 @@ msgstr "ru (russe)"
 #. Choices
 #: ../templates:5
 msgid "sl"
-msgstr "sl (slovène)"
+msgstr "sl (slovÃ¨ne)"
 
 #. Type: multiselect
 #. Choices
@@ -183,7 +182,7 @@ msgstr "sr (serbe)"
 #. Choices
 #: ../templates:5
 msgid "sv"
-msgstr "sv (suédois)"
+msgstr "sv (suÃ©dois)"
 
 #. Type: multiselect
 #. Choices
@@ -194,9 +193,8 @@ msgstr "uk (ukrainien)"
 #. Type: multiselect
 #. Description
 #: ../templates:7
-#, fuzzy
 msgid "Which languages to support?"
-msgstr "Choisissez les langues que vous voulez gérer :"
+msgstr "Choisissez les langues que vous voulez gÃ©rer :"
 
 #. Type: multiselect
 #. Description
@@ -208,8 +206,8 @@ msgid ""
 "the root FS."
 msgstr ""
 "Mailman garde les textes de chaque langue reconnue dans /etc/mailman/LANG/. "
-"Ces fichiers sont alors gérés comme des fichiers de configuration grâce au "
-"programme « ucf » ; chaque langue occupe environ 150 ko sur le système de "
+"Ces fichiers sont alors gÃ©rÃ©s comme des fichiers de configuration grÃ¢ce au "
+"programme Â« ucf Â» ; chaque langue occupe environ 150 ko sur le systÃ¨me de "
 "fichiers racine."
 
 #. Type: multiselect
@@ -219,27 +217,26 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Quand vous voudrez ajouter ou retirer des langues, il suffira d'exécuter "
-"« dpkg-reconfigure mailman »."
+"Quand vous voudrez ajouter ou retirer des langues, il suffira d'exÃ©cuter Â« "
+"dpkg-reconfigure mailman Â»."
 
 #. Type: multiselect
 #. Description
 #: ../templates:7
-#, fuzzy
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTE : les langues gérées par des listes de discussion existantes sont "
-"automatiquement réactivées même si vous les désactivez ici. Veuillez "
-"également noter que mailman a besoin d'au moins une langue activée."
+"NOTE : les langues gÃ©rÃ©es par des listes de discussion existantes sont "
+"automatiquement rÃ©activÃ©es mÃªme si vous les dÃ©sactivez ici. Mailman a besoin "
+"d'au moins une langue activÃ©e pour afficher ses messages."
 
 #. Type: boolean
 #. Description
 #: ../templates:27
 msgid "Gate news to mail?"
-msgstr "Voulez-vous transformer des nouvelles en courriers électroniques ?"
+msgstr "Voulez-vous transformer des nouvelles en courriers Ã©lectroniques ?"
 
 #. Type: boolean
 #. Description
@@ -248,7 +245,7 @@ msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
 "appear in a newsgroup to a mailing list."
 msgstr ""
-"Il est possible de transformer des nouvelles en courriers, c'est-à-dire "
+"Il est possible de transformer des nouvelles en courriers, c'est-Ã -dire "
 "envoyer tous les messages qui apparaissent dans un forum vers une liste de "
 "diffusion."
 
@@ -272,8 +269,8 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman a besoin d'une liste du site (« site list ») ; cette liste permet "
-"d'envoyer les rappels pour les mots de passe, etc. Elle doit être créée "
+"Mailman a besoin d'une liste du site (Â« site list Â») ; cette liste permet "
+"d'envoyer les rappels pour les mots de passe, etc. Elle doit Ãªtre crÃ©Ã©e "
 "avant le lancement de Mailman."
 
 #. Type: note
@@ -284,15 +281,15 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Pour créer cette liste, lancez « newlist mailman » et suivez les "
-"instructions qui apparaissent sur l'écran. Il est ensuite nécessaire de "
-"relancer mailman avec la commande « /etc/init.d/mailman start »."
+"Pour crÃ©er cette liste, lancez Â« newlist mailman Â» et suivez les "
+"instructions qui apparaissent sur l'Ã©cran. Il est ensuite nÃ©cessaire de "
+"relancer mailman avec la commande Â« /etc/init.d/mailman start Â»."
 
 #. Type: select
 #. Description
 #: ../templates:47
 msgid "Which language should be the default for Mailman?"
-msgstr "Langue à utiliser par défaut :"
+msgstr "Langue Ã  utiliser par dÃ©faut :"
 
 #. Type: select
 #. Description
@@ -301,7 +298,7 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"La page web est affichée dans la langue choisie ; Mailman se sert aussi de "
+"La page web est affichÃ©e dans la langue choisie ; Mailman se sert aussi de "
 "cette langue pour communiquer avec les utilisateurs."
 
 #. Type: note
@@ -331,6 +328,24 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails; expect angry users."
 msgstr ""
+"Le rÃ©pertoire /var/lib/mailman/qfiles contient des fichiers. Il doit Ãªtre "
+"vide pour que la mise Ã  jour se passe correctement. Si ces fichiers sont des "
+"messages qui n'ont pas encore Ã©tÃ© traitÃ©s, vous pouvez procÃ©der ainsi :\n"
+" - EmpÃªchez l'arrivÃ©e de nouveaux messages dans la file d'attente.\n"
+"   Au niveau MTA, mettez les nouveaux fichiers en attente ou refusez-les "
+"avec\n"
+"   un code 4xx. Si le trafic de votre site est peu important, vous pouvez "
+"sauter\n"
+"   cette Ã©tape.\n"
+" - Traitez la file d'attente de mailman : /etc/init.d/mailman start\n"
+" - Attendez que tous les messages soient traitÃ©s.\n"
+"   Si cela prend trop de temps, lisez les journaux et essayez de comprendre "
+"pourquoi.\n"
+" - ArrÃªtez mailman : /etc/init.d/mailman stop\n"
+" - RÃ©essayez la mise Ã  jour.\n"
+" - Autorisez l'arrivÃ©e des messages.\n"
+"Vous pouvez aussi supprimer ces fichiers. Mailman ignorera les messages "
+"correspondants. Utilisateurs en colÃ¨re Ã  prÃ©voir."
 
 #. Type: note
 #. Description
@@ -344,12 +359,18 @@ msgid ""
 "human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
 "the contents of the queues."
 msgstr ""
+"Si ces fichiers correspondent Ã  des messages mis de cÃ´tÃ©, vous devez les "
+"dÃ©truire ou bien les traiter Ã  nouveau (avec /var/lib/mailman/bin/unshunt). "
+"Les messages mis de cÃ´tÃ© sont des messages que mailman ne traitera plus car "
+"ils provoquent une erreur. Ils sont conservÃ©s pour Ã©tude car ils proviennent "
+"de bogues de mailman ou de situation anormale. Vous pouvez utiliser /var/lib/"
+"mailman/bin/show_qfiles pour examiner le contenu de la file d'attente."
 
 #. Type: note
 #. Description
 #: ../templates:84
 msgid "Administrator must update aliases"
-msgstr "L'administrateur doit mettre à jour les alias"
+msgstr "L'administrateur doit mettre Ã  jour les alias"
 
 #. Type: note
 #. Description
@@ -358,8 +379,8 @@ msgid ""
 "The aliases you need for mailman in your MTA's configuration have changed. "
 "Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
 msgstr ""
-"Les alias dont vous avez besoin pour la configuration du MTA ont changé. "
-"Veuillez exécuter /var/lib/mailman/bin/genaliases pour voir ces nouveaux "
+"Les alias dont vous avez besoin pour la configuration du MTA ont changÃ©. "
+"Veuillez exÃ©cuter /var/lib/mailman/bin/genaliases pour voir ces nouveaux "
 "alias."
 
 #. Type: note
@@ -370,26 +391,25 @@ msgid ""
 "with an invalid Return-Path."
 msgstr ""
 "Tant que vous ne l'aurez pas fait, certaines options ne fonctionneront pas "
-"et des courriels seront envoyés avec un champ Return-Path invalide."
+"et des courriels seront envoyÃ©s avec un champ Return-Path invalide."
 
 #. Type: note
 #. Description
 #: ../templates:94
 msgid "List passwords broken"
-msgstr "Les mots de passe de la liste sont cassés"
+msgstr "Les mots de passe de la liste sont cassÃ©s"
 
 #. Type: note
 #. Description
 #: ../templates:94
-#, fuzzy
 msgid ""
 "List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
 "mailman/bin/change_pw to have new ones automatically generated and emailed "
 "to the admins and moderators."
 msgstr ""
-"Les mots de passe des administrateurs et modérateurs des listes ont été "
-"cassés par cette mise à niveau. Exécutez /var/lib/mailman/bin/change_pw pour "
-"en créer de nouveaux et les envoyer aux administrateurs et aux modérateurs."
+"Les mots de passe des administrateurs et modÃ©rateurs des listes ont Ã©tÃ© "
+"cassÃ©s par cette mise Ã  jour. ExÃ©cutez /var/lib/mailman/bin/change_pw pour "
+"en crÃ©er de nouveaux et les envoyer aux administrateurs et aux modÃ©rateurs."
 
 #~ msgid ""
 #~ "The directory /var/lib/mailman/qfiles contains files.  It needs to be "
@@ -398,9 +418,10 @@ msgstr ""
 #~ "is finished) or remove those files.  Note that removing the files will "
 #~ "lose some emails sent to lists."
 #~ msgstr ""
-#~ "Le répertoire /var/lib/mailman/qfiles contient des fichiers. Il doit être "
-#~ "vide pour que la mise à jour se passe correctement. Veuillez vider la "
-#~ "file d'attente avec mailmanctl start, arrêter mailman et relancer la mise "
-#~ "à jour. Vous pouvez aussi supprimer ces fichiers. Remarquez que la "
-#~ "suppression de ces fichiers fera perdre des courriels envoyés à des "
+#~ "Le rÃ©pertoire /var/lib/mailman/qfiles contient des fichiers. Il doit Ãªtre "
+#~ "vide pour que la mise Ã  jour se passe correctement. Veuillez vider la "
+#~ "file d'attente avec mailmanctl start, arrÃ©ter mailman et relancer la mise "
+#~ "Ã  jour. Vous pouvez aussi supprimer ces fichiers. Remarquez que la "
+#~ "suppression de ces fichiers fera perdre des courriels envoyÃ©s Ã  des "
 #~ "listes."
+

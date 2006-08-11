@@ -36,6 +36,19 @@ test -x $DAEMON || exit 0
 
 set -e
 
+if ! [ -d /var/run/mailman ]; then
+      install -d -o list -g list /var/run/mailman
+fi
+
+if ! [ -d /var/lock/mailman ]; then
+      install -d -o root -g list -m 2775 /var/lock/mailman
+fi
+
+
+
+
+
+
 case "$1" in
   start)
         if [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
