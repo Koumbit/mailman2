@@ -9,6 +9,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Checked for policy 3.7.2, no changes necessary.
   * Add watch file.
   * Add LSB dependency info to init script.
+  * Fix example in postfix-to-mailman.py to pass ${mailbox}, not ${user}
+    (Closes: #305762).
 
   [ Hector Garcia ]
   * Putting permision on archive/private to 570 www-data.list to prevent
@@ -30,7 +32,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Bumped debhelper compatibily to 5.
    - modified debian/control to reflect this change.
 
- -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 11:02:38 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 11:24:24 +0200
 
 mailman (0:2.1.8-1) unstable; urgency=low
 
