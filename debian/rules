@@ -161,6 +161,9 @@ binary-arch:	checkroot build
 	install -m 0755 debian/contrib/postfix-to-mailman.py debian/mailman/usr/share/mailman
 	dh_link etc/mailman/postfix-to-mailman.py usr/lib/mailman/bin/postfix-to-mailman.py
 
+# apache default config
+	install -m 0644 debian/contrib/apache.conf debian/mailman/etc/mailman
+
 # Move templates
 	mv `find debian/mailman/etc/mailman -type d -mindepth 1 -maxdepth 1` debian/mailman/usr/share/mailman
 	cp build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman
