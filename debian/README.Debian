@@ -4,35 +4,6 @@ Notes for the debian mailman package.
 You can access the web interface of mailman on
 http://<hostname>/cgi-bin/mailman/listinfo
 
-In case you want to access mailman thru a shorter URL you should add
-something like the following to your webserver configuration (this
-line is for apache):
-
-ScriptAlias /mailman/ /usr/lib/cgi-bin/mailman/
-
-In this case you need to set the DEFAULT_URL_PATTERN in
-/etc/mailman/mm_cfg.py to http://%s/mailman/ for the cookie
-authentication code to work.  Note that you need to change the base
-URL for all the already-created lists as well.
-
-The public archives are located in /var/lib/mailman/archives/public,
-you can create a symlink from /var/www if you like, or create an alias like
-the following:
-
-Alias /pipermail/ /var/lib/mailman/archives/public/
-
-Note that by default Apache is shipped with SymlinksIfOwnerMatch, not
-FollowSymlinks.  This means that if you switch to private archiving
-and then back to public archiving again, you will get a "Forbidden"
-error.
-
-If broken images show on your mailman html pages, it is probably
-because you don't have the /images/mailman/ alias enabled in your
-webserver, create it as follows:
-
-Alias /images/mailman/ /usr/share/images/mailman/
-
-
 You can create new lists with the newlist command (you have to add the
 aliases it needs by hand to /etc/aliases or the corresponding database
 because mailman can not know about configuration of all MTA's, but newlist 

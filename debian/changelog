@@ -1,8 +1,10 @@
 mailman (2.1.8-2) unstable; urgency=low
 
+  * Add example apache.conf under /etc/mailman
+    (Closes: #282460, #135148, #178543, #179253).
   * Add watch file.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:48:02 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:48:59 +0200
 
 mailman (2.1.8-1) unstable; urgency=low
 
