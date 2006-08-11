@@ -14,6 +14,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Putting permision on archive/private to 570 www-data.list to prevent
     any user from reading private lists and taking away write access to
     www-data. (Closes: #356877)
+  * Changed '| xarg' for '-exec' on find to prevent problems when there are
+    too many files (Closes: #366102)
 
   [ Riccardo Setti ]
   * epoch 1. Now people should upgrade mailman without problems. (closes: #366438)
@@ -28,7 +30,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Bumped debhelper compatibily to 5.
    - modified debian/control to reflect this change.
 
- -- Riccardo Setti <giskard@debian.org>  Fri, 11 Aug 2006 10:42:35 +0200
+ -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 11:02:38 +0200
 
 mailman (2.1.8-1) unstable; urgency=low
 

@@ -348,7 +348,7 @@ case "$1" in
 	fi
 
 	# fix permissions
-	find /var/lib/mailman/ -type d -print0 | xargs -r -0 chmod g+s
+	find /var/lib/mailman/ -type d -exec chmod g+s \{\} \;
 	chmod u-w,o-rx /var/lib/mailman/archives/private
 	chown www-data /var/lib/mailman/archives/private
 
