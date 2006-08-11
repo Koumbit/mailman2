@@ -23,6 +23,13 @@ As of 2.1.4-2 a debconf question has been added allowing for
 installing only templates for languages used at your site in
 /etc/mailman (mailman/site_languages).
 
+Apache + suexec
+---------------
+
+Since suexec forbids execution of CGIs with gid < 50 and www-data (the default
+for mailman cgi) is 33, you should execute the cgi with a gid of 50-99 or 65534.
+It cannot be any other gid since mailman cgi check that gid < 100 and != 65534.
+
 Savannah
 --------
 Mailman now includes a savannah plugin, courtesy of Guillaume Morin.
