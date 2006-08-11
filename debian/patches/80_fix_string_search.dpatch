@@ -1,6 +1,3 @@
---- debian/patches/80_fix_admin.py.dpatch       (revisione 0)
-+++ debian/patches/80_fix_admin.py.dpatch       (revisione 0)
-@@ -0,0 +1,19 @@
 #! /bin/sh /usr/share/dpatch/dpatch-run
 ## fix_admin.py.dpatch by  <giskard@localhost.localdomain>
 ##
