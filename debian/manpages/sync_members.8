@@ -1,4 +1,4 @@
-.TH SYNC_MEMBERS 8 2001-03-10
+.TH SYNC_MEMBERS 8 2006-08-09
 .SH NAME
 sync_members \- Synchronize a mailing list's membership with a flat file.
 
@@ -28,6 +28,13 @@ Sets whether or not to send the newly added members a welcome message,
 overriding whatever the list's `send_welcome_msg' setting is.  With
 \fB\-w=yes\fB or \fB\-w\fB, the welcome message is sent.  With
 \fB\-w=no\fB, no message is sent.
+
+.TP
+\fB\-g\fB=\fI{ yes | no }\fI, \fB\-\-goodbye\-msg\fB=\fI{ yes | no }\fI
+Sets whether or not to send the goodbye message to removed members,
+overriding whatever the list's `send_goodbye_msg' setting is.  With
+\fB\-g=yes\fB or \fB\-g\fB, the goodbye message is sent.  With
+\fB\-g=no\fB, no message is sent.
 
 .TP
 \fB\-d\fB=\fI{ yes | no }\fI, \fB\-\-digest\fB=\fI{ yes | no }\fI

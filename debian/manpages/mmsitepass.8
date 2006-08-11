@@ -1,4 +1,4 @@
-.TH MMSITEPASS 8 2001-03-10
+.TH MMSITEPASS 8 2006-08-09
 .SH NAME
 mmsitepass \- Set the Mailman site password, prompting from the terminal.
 
@@ -8,6 +8,11 @@ mmsitepass [options] [password]
 .SH OPTIONS
 
 .PP
+\fB\-c\fB, \fB\-\-listcreator\fB
+Set the list creator password instead of the site password.  The list
+creator is authorized to create and remove lists, but does not have
+the total power of the site administrator.
+
 \fB\-h\fB, \fB\-\-help\fB
 Print a small help text and exit
 .PP

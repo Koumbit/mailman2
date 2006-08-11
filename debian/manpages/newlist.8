@@ -1,4 +1,4 @@
-.TH NEWLIST 8 2004-10-17
+.TH NEWLIST 8 2006-08-09
 .SH NAME
 newlist \- Create a new, unpopulated mailing list.
 
@@ -9,9 +9,15 @@ newlist [options] listname listadmin-addr admin-password
 
 .PP
 .TP
-\fB\-l\fR \fIlanguage\fR, \fB\-\-language\fR \fIlanguage\fR
+\fB\-l\fR \fIlanguage\fR, \fB\-\-language\fR=\fIlanguage\fR
 Make the list's preferred language `\fIlanguage\fR', which must be a two
 letter language code.
+.TP
+\fB\-u\fR \fIurlhost\fR, \fB\-\-urlhost=\fR\fIurlhost\fR
+Gives the list's web interface host name.
+.TP
+\fB\-e\fR \fIemailhost\fR, \fB\-\-emailhost=\fR\fIemailhost\fR
+Gives the list's email domain name.
 .TP
 \fB\-q\fB, \fB\-\-quiet\fB
 Normally the administrator is notified by email (after a prompt) that
@@ -31,7 +37,50 @@ risk if you have untrusted users on the system.
 You can specify as many of the arguments as you want on the command
 line: you will be prompted for the missing ones.
 
-Listnames are forced to lowercase.
+Every Mailman list has two parameters which define the default host name for
+outgoing email, and the default URL for all web interfaces.  When you
+configured Mailman, certain defaults were calculated, but if you are running
+multiple virtual Mailman sites, then the defaults may not be appropriate for
+the list you are creating.
+
+You also specify the domain to create your new list in by typing the command
+like so:
+
+    newlist \-\-urlhost=www.mydom.ain mylist
+
+where `www.mydom.ain' should be the base hostname for the URL to this virtual
+hosts's lists.  E.g. with this setting people will view the general list
+overviews at http://www.mydom.ain/mailman/listinfo.  Also, www.mydom.ain
+should be a key in the VIRTUAL_HOSTS mapping in mm_cfg.py/Defaults.py if
+the email hostname to be automatically determined.
+
+If you want the email hostname to be different from the one looked up by the
+VIRTUAL_HOSTS or if urlhost is not registered in VIRTUAL_HOSTS, you can specify
+`emailhost' like so:
+
+    newlist \-\-urlhost=www.mydom.ain \-\-emailhost=mydom.ain mylist
+
+where `mydom.ain' is the mail domain name. If you don't specify emailhost but
+urlhost is not in the virtual host list, then mm_cfg.DEFAULT_EMAIL_HOST will
+be used for the email interface.
+
+For backward compatibility, you can also specify the domain to create your
+new list in by spelling the listname like so:
+
+    mylist@www.mydom.ain
+
+where www.mydom.ain is used for `urlhost' but it will also be used for
+`emailhost' if it is not found in the virtual host table. Note that
+'\-\-urlhost' and '\-\-emailhost' have precedence to this notation.
+
+If you spell the list name as just `mylist', then the email hostname will be
+taken from DEFAULT_EMAIL_HOST and the url will be taken from DEFAULT_URL (as
+defined in your Defaults.py file or overridden by settings in mm_cfg.py).
+
+Note that listnames are forced to lowercase.
+
+The list admin address need to be a fully-qualified address, like
+owner@example.com, not just owner.
 
 
 .SH AUTHOR

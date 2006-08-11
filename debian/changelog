@@ -2,11 +2,13 @@ mailman (2.1.8-2) unstable; urgency=low
 
   * Add example apache.conf under /etc/mailman
     (Closes: #282460, #135148, #178543, #179253).
+  * Update all man pages to be in line with current mailman functionality
+    (Closes: #286607, #276952).
   * Add suggests on lynx (Closes: #296781).
   * Checked for policy 3.7.2, no changes necessary.
   * Add watch file.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:53:00 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:54:15 +0200
 
 mailman (2.1.8-1) unstable; urgency=low
 

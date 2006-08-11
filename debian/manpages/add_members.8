@@ -1,9 +1,9 @@
-.TH ADD_MEMBERS 8 2001-03-10
+.TH ADD_MEMBERS 8 2006-08-09
 .SH NAME
 add_members \- Add members to a list from the command line.
 
 .SH SYNOPSIS
-add_members [\-n <file>] [\-d <file>] [\-c <y|n>] [\-w <y|n>] [\-h] listname
+add_members [\-r <file>] [\-d <file>] [\-y <y|n>] [\-w <y|n>] [\-h] listname
 
 .SH DESCRIPTION
 
@@ -13,27 +13,29 @@ Mailman list you are adding members to.  It must already exist.
 .SH OPTIONS
 
 .TP
-\fB\-n\fB \fIfile\fI, \fB\-\-\fBnon-digest-members-file\fB \fIfile\fI
+\fB\-r\fB \fIfile\fI, \fB\-\-\fBregular-members-file=\fB\fIfile\fI
 
 A file containing addresses of the members to be added, one address
 per line.  This list of people become non-digest members.  If file is
-`-', read addresses from stdin.
+`-', read addresses from stdin. Note that -n/--non-digest-members-file
+are deprecated synonyms for this option.
 
 .TP
-\fB\-d\fB \fIfile\fI, \fB\-\-\fBdigest-members-file\fB \fIfile\fI
+\fB\-d\fB \fIfile\fI, \fB\-\-\fBdigest-members-file=\fB\fIfile\fI
 
 Similar to above, but these people become digest members.
 
 .TP
-\fB\-c [y|n]\fB, \fB\-\-changes-msg [y|n]\fB
+\fB\-a [y|n]\fB, \fB\-\-admin-notify=[y|n]\fB
 
-Whether or not to send the list members the `there's going to be big
-changes to your list' message. defaults to no.
+Set whether or not to send the list administrators a notification on
+the success/failure of these subscriptions, overriding whatever the
+list's `admin_notify_mchanges' setting is.
 
 .TP
-\fB\-w [y|n]\fB, \fB\-\-welcome-msg [y|n]\fB
+\fB\-w [y|n]\fB, \fB\-\-welcome-msg=[y|n]\fB
 
-set whether or not to send the list members a welcome message,
+Set whether or not to send the list members a welcome message,
 overriding whatever the list's `send_welcome_msg' setting is.
 
 .TP
@@ -43,7 +45,7 @@ Print a help message and exit.
 
 .SH NOTES
 
-You must supply at least one of -n and -d options.  At most one of the
+You must supply at least one of -r and -d options.  At most one of the
 files can be `-'.
 
 .SH AUTHOR
