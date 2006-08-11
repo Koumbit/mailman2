@@ -7,8 +7,9 @@ mailman (2.1.8-2) unstable; urgency=low
   * Add suggests on lynx (Closes: #296781).
   * Checked for policy 3.7.2, no changes necessary.
   * Add watch file.
+  * Add LSB dependency info to init script.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:54:15 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:58:09 +0200
 
 mailman (2.1.8-1) unstable; urgency=low
 
