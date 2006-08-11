@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: mailman_2.1.7-1\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-01-29 21:07+0100\n"
-"PO-Revision-Date: 2006-04-09 16:46+0300\n"
+"PO-Revision-Date: 2006-08-10 19:55+0300\n"
 "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,7 @@ msgstr ""
 "Для каждого поддерживаемого языка Debian Mailman хранит текст "
 "с заданным языком по умолчанию в каталоге /etc/mailman/LANG/, "
 "давая настроить конфигурационные файлы типа обращения за помощью в ucf. "
-"Это займёт приблизительно 150Кб на каждый поддерживаемый "
+"Это занимает приблизительно 150Кб на каждый поддерживаемый "
 "язык в корневой файловой системе."
 
 #. Type: multiselect
@@ -232,6 +232,9 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying it's "
 "messages."
 msgstr ""
+"ЗАМЕЧАНИЕ: При повторной настройке в списке отмечены языки, которые "
+"уже включены у существующих списков рассылки, и для mailman требуется "
+"по крайней мере один язык для отображения своих сообщений."
 
 #. Type: boolean
 #. Description
