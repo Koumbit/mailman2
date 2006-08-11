@@ -18,6 +18,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
     www-data. (Closes: #356877)
   * Changed '| xarg' for '-exec' on find to prevent problems when there are
     too many files (Closes: #366102)
+  * Added a slash to the end of DEFAULT_URL_PATTERN on mm_cfg.py 
+    (Closes: #365881)
 
   [ Riccardo Setti ]
   * epoch 1. Now people should upgrade mailman without problems. (closes: #366438)
@@ -32,7 +34,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Bumped debhelper compatibily to 5.
    - modified debian/control to reflect this change.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 11:24:24 +0200
+ -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 11:26:01 +0200
 
 mailman (0:2.1.8-1) unstable; urgency=low
 
