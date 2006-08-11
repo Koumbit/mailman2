@@ -5,7 +5,10 @@
 ## fix_admin.py.dpatch by  <giskard@localhost.localdomain>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: No description.
+## DP: Debian Bug #359721
+## DP: Improve the search method in the admin page wich list members
+
+
 
 @DPATCH@
 diff -urNad mailman-2.1.8~/Mailman/Cgi/admin.py mailman-2.1.8/Mailman/Cgi/admin.py
