@@ -1,5 +1,6 @@
 mailman (2.1.8-2) unstable; urgency=low
 
+  [ Thijs Kinkhorst ]
   * Add example apache.conf under /etc/mailman
     (Closes: #282460, #135148, #178543, #179253).
   * Update all man pages to be in line with current mailman functionality
@@ -9,7 +10,12 @@ mailman (2.1.8-2) unstable; urgency=low
   * Add watch file.
   * Add LSB dependency info to init script.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 09:58:09 +0200
+  [ Hector Garcia ]
+  * Putting permision on archive/private to 570 www-data.list to prevent
+    any user from reading private lists and taking away write access to
+    www-data. (Closes: #356877)
+
+ -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 10:27:25 +0200
 
 mailman (2.1.8-1) unstable; urgency=low
 
