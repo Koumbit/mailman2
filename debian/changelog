@@ -32,13 +32,13 @@ mailman (1:2.1.8-2) unstable; urgency=low
 
  -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 11:02:38 +0200
 
-mailman (2.1.8-1) unstable; urgency=low
+mailman (0:2.1.8-1) unstable; urgency=low
 
   * New upstream release
 
  -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 16 Apr 2006 15:16:02 +0200
 
-mailman (2.1.7+2.1.8rc1-1) unstable; urgency=high
+mailman (0:2.1.7+2.1.8rc1-1) unstable; urgency=high
 
   * New upstream release
     - Update patches:
