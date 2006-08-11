@@ -11,6 +11,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Add LSB dependency info to init script.
   * Fix example in postfix-to-mailman.py to pass ${mailbox}, not ${user}
     (Closes: #305762).
+  * Add Lintian overrides for those things that are legitimate.
 
   [ Hector Garcia ]
   * Putting permision on archive/private to 570 www-data.list to prevent
@@ -18,7 +19,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
     www-data. (Closes: #356877)
   * Changed '| xarg' for '-exec' on find to prevent problems when there are
     too many files (Closes: #366102)
-  * Added a slash to the end of DEFAULT_URL_PATTERN on mm_cfg.py 
+  * Added a slash to the end of DEFAULT_URL_PATTERN on mm_cfg.py
     (Closes: #365881)
   * Documented on README.Debian the apache + suexec case. (Closes: #360905)
 
@@ -35,7 +36,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Bumped debhelper compatibily to 5.
    - modified debian/control to reflect this change.
 
- -- Hector Garcia <hector@debian.org>  Fri, 11 Aug 2006 11:30:01 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 12:01:23 +0200
 
 mailman (0:2.1.8-1) unstable; urgency=low
 
