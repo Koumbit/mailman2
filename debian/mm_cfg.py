@@ -93,5 +93,11 @@ DEFAULT_SEND_REMINDERS = 0
 # read /usr/share/doc/mailman/README.POSTFIX first.
 # MTA='Postfix'
 
+#-------------------------------------------------------------
+# Uncomment if you want to filter mail with SpamAssassin. For
+# more information please visit this website:
+# http://www.daa.com.au/~james/articles/mailman-spamassassin/
+# GLOBAL_PIPELINE.insert(1, 'SpamAssassin')
+
 # Note - if you're looking for something that is imported from mm_cfg, but you
 # didn't find it above, it's probably in /usr/lib/mailman/Mailman/Defaults.py.
