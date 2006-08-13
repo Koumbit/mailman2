@@ -12,6 +12,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Fix example in postfix-to-mailman.py to pass ${mailbox}, not ${user}
     (Closes: #305762).
   * Add Lintian overrides for those things that are legitimate.
+  * Drop recommends on essential base-passwd >= a version from 1997.
+  * Use apache2 instead of apache as the first alternative for httpd.
 
   [ Hector Garcia ]
   * Putting permision on archive/private to 570 www-data.list to prevent
@@ -39,7 +41,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   [ Paul Wise ]
   * Add spamassassin example to the mm_cfg.py
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 11 Aug 2006 12:01:23 +0200
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 13 Aug 2006 16:40:58 +0200
 
 mailman (0:2.1.8-1) unstable; urgency=low
 
