@@ -14,6 +14,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Add Lintian overrides for those things that are legitimate.
   * Drop recommends on essential base-passwd >= a version from 1997.
   * Use apache2 instead of apache as the first alternative for httpd.
+  * Move options to `find` in debian/rules to start of commandline to
+    prevent warnings.
 
   [ Hector Garcia ]
   * Putting permision on archive/private to 770 www-data:list to prevent
@@ -43,7 +45,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Add spamassassin example to the mm_cfg.py
 
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 14 Aug 2006 18:33:43 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 14 Aug 2006 18:49:29 +0200
 
 mailman (0:2.1.8-1) unstable; urgency=low
 
