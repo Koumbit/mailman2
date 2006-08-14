@@ -349,7 +349,7 @@ case "$1" in
 
 	# fix permissions
 	find /var/lib/mailman/ -type d -exec chmod g+s \{\} \;
-	chmod u-w,o-rx /var/lib/mailman/archives/private
+	chmod o-rx /var/lib/mailman/archives/private
 	chown www-data /var/lib/mailman/archives/private
 
 

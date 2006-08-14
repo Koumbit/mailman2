@@ -16,9 +16,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Use apache2 instead of apache as the first alternative for httpd.
 
   [ Hector Garcia ]
-  * Putting permision on archive/private to 570 www-data.list to prevent
-    any user from reading private lists and taking away write access to
-    www-data. (Closes: #356877)
+  * Putting permision on archive/private to 770 www-data.list to prevent
+    any user from reading private lists. (Closes: #356877)
   * Changed '| xarg' for '-exec' on find to prevent problems when there are
     too many files (Closes: #366102)
   * Added a slash to the end of DEFAULT_URL_PATTERN on mm_cfg.py
