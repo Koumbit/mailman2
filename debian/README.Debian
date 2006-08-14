@@ -23,6 +23,9 @@ As of 2.1.4-2 a debconf question has been added allowing for
 installing only templates for languages used at your site in
 /etc/mailman (mailman/site_languages).
 
+An example Apache configuration is included in /etc/mailman/apache.conf.
+It can be copied to or symlinked from e.g. the /etc/apache2/conf.d/ directory.
+
 Apache + suexec
 ---------------
 

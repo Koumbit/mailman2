@@ -50,7 +50,6 @@ clean: unpatch
 	rm -f debian/mailman.postrm.ucf
 	dh_clean
 	rm -rf $$(find . -name "*~")
-	find .. -name $(package)*dsc.asc -size 0 -maxdepth 1 -exec rm {} ";"
 	chmod +x debian/{prerm,postinst}
 
 binary-indep:	checkroot build
@@ -165,7 +164,7 @@ binary-arch:	checkroot build
 	install -m 0644 debian/contrib/apache.conf debian/mailman/etc/mailman
 
 # Move templates
-	mv `find debian/mailman/etc/mailman -type d -mindepth 1 -maxdepth 1` debian/mailman/usr/share/mailman
+	mv `find debian/mailman/etc/mailman -mindepth 1 -maxdepth 1 -type d` debian/mailman/usr/share/mailman
 	cp build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman
 
 	find debian/mailman/usr/share/mailman -type f | sed 's,debian/mailman/usr/share/mailman,/etc/mailman,' > debian/ucffiles
