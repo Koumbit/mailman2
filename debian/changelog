@@ -16,8 +16,8 @@ mailman (1:2.1.8-2) unstable; urgency=low
   * Use apache2 instead of apache as the first alternative for httpd.
 
   [ Hector Garcia ]
-  * Putting permision on archive/private to 770 www-data.list to prevent
-    any user from reading private lists. (Closes: #356877)
+  * Putting permision on archive/private to 770 www-data:list to prevent
+    regular users from reading private lists. (Closes: #356877)
   * Changed '| xarg' for '-exec' on find to prevent problems when there are
     too many files (Closes: #366102)
   * Added a slash to the end of DEFAULT_URL_PATTERN on mm_cfg.py
@@ -27,22 +27,22 @@ mailman (1:2.1.8-2) unstable; urgency=low
 
   [ Riccardo Setti ]
   * epoch 1. Now people should upgrade mailman without problems. (closes: #366438)
-  * Applied patch from which fix string search in admin.py. (closes: #359721)
+  * Applied patch which fixes string search in admin.py. (closes: #359721)
   * Updated German debconf translation (closes: #353713)
-  * Updated French debcon translation (closes: #355674)
-  * Updated Italian debconf templates translation (closes: #352523)
-  * Updated Russian translation for debconf template (closes: #361656)
-  * Updated Dutch po-debconf translation (closes: #377254)
+  * Updated French debconf translation (closes: #355674)
+  * Updated Italian debconf translation (closes: #352523)
+  * Updated Russian debconf translation (closes: #361656)
+  * Updated Dutch debconf translation (closes: #377254)
   * Applied patch of Martin Pitt which will create /var/run and
     /var/lock directory if missing. (closes: #376542)
   * Bumped debhelper compatibily to 5.
-   - modified debian/control to reflect this change.
+    - modified debian/control to reflect this change.
 
   [ Paul Wise ]
   * Add spamassassin example to the mm_cfg.py
 
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 13 Aug 2006 16:40:58 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 14 Aug 2006 18:33:43 +0200
 
 mailman (0:2.1.8-1) unstable; urgency=low
 
