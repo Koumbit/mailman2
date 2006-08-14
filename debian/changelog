@@ -24,6 +24,7 @@ mailman (1:2.1.8-2) unstable; urgency=low
     (Closes: #365881)
   * Documented on README.Debian the apache + suexec case. (Closes: #360905)
   * Updated Uploaders
+  * Removed the find which deleted ../$(package)*dsc.asc. It is not needed.
 
   [ Riccardo Setti ]
   * epoch 1. Now people should upgrade mailman without problems. (closes: #366438)

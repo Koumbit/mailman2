@@ -50,7 +50,6 @@ clean: unpatch
 	rm -f debian/mailman.postrm.ucf
 	dh_clean
 	rm -rf $$(find . -name "*~")
-	find .. -name $(package)*dsc.asc -size 0 -maxdepth 1 -exec rm {} ";"
 	chmod +x debian/{prerm,postinst}
 
 binary-indep:	checkroot build
