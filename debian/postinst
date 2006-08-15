@@ -337,33 +337,10 @@ case "$1" in
 	fi
 	sg list -c "umask 002; /usr/lib/mailman/bin/update;"
 
-	if [ "$1" = "configure" -a "$2" != "" ] && dpkg --compare-versions "$2" lt "1.0b10"; then
-		echo
-		echo "You will need to manually update your mailing lists."
-		echo "For each mailing list you need to copy the file /etc/mailman/options.html to"
-		echo "/var/lib/mailman/lists/<listname>/options.html."
-		echo
-		echo "However, if you have edited this file via the Web interface, you will have to"
-		echo "merge your changes into this file, otherwise you will lose your changes."
-	fi
-
 	# fix permissions
 	find /var/lib/mailman/ -type d -exec chmod g+s \{\} \;
 	chmod o-rx /var/lib/mailman/archives/private
 	chown www-data /var/lib/mailman/archives/private
-
-
-	if [ "$1" = "configure" -a "$2" != "" ] && dpkg --compare-versions "$2" lt "1.0rel"; then
-		echo ""
-		echo "Please read /usr/share/doc/mailman/README.Debian to learn how"
-		echo "to integrate mailman best with your MTA and webserver"
-
-		echo -n "Press RETURN to continue..."
-		DEBIAN_FRONTEND=`echo "$DEBIAN_FRONTEND" | tr A-Z a-z`
-		if [ ! "$DEBIAN_FRONTEND" = "noninteractive" ]; then
-		    read foo
-		fi
-	fi
     ;;
 
     *)
