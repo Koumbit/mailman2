@@ -152,7 +152,7 @@ EOF
     done
     # Done with site language stuff
 
-    # Don't forget the qmail specific stuff (but why support non-free?)
+    # Don't forget the qmail specific stuff
     ucf --debconf-ok --three-way ${mm_dist}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py 2>/dev/null
     # Install postfix-to-mailman.py as well
     ucf --debconf-ok --three-way ${mm_dist}/postfix-to-mailman.py ${mm_etc}/postfix-to-mailman.py 2>/dev/null
