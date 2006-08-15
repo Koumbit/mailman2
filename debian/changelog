@@ -1,5 +1,9 @@
 mailman (1:2.1.8-3) UNRELEASED; urgency=low
 
+  [ Paul Wise ]
+  * Switch from dpatch to quilt and regenerate all patches
+
+  [ Thijs Kinkhorst ]
   * Use LSB output functions in init script.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Tue, 15 Aug 2006 13:49:48 +0200

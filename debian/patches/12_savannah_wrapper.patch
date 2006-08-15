@@ -1,0 +1,16 @@
+Patch: 12_savannah_wrapper.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Compile a wrapper for the savannah contrib plugin
+Index: src/Makefile.in
+===================================================================
+--- src/Makefile.in.orig	2006-08-15 15:12:18.000000000 +0800
++++ src/Makefile.in	2006-08-15 15:14:28.000000000 +0800
+@@ -71,7 +71,7 @@
+ # Fixed definitions
+ 
+ CGI_PROGS= admindb admin confirm create edithtml listinfo options \
+-	private rmlist roster subscribe
++	private rmlist roster subscribe savannah
+ 
+ COMMONOBJS= common.o vsnprintf.o
+ 

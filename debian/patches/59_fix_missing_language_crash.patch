@@ -1,0 +1,16 @@
+Patch: fix_missing_language_crash.patch
+Author: Paul Wise <pabs3@bonedaddy.net>
+Fix crash when a language is missing
+Index: Mailman/htmlformat.py
+===================================================================
+--- Mailman/htmlformat.py.orig	2006-08-15 15:12:17.000000000 +0800
++++ Mailman/htmlformat.py	2006-08-15 15:14:43.000000000 +0800
+@@ -297,7 +297,7 @@
+ 
+     def Format(self, indent=0, **kws):
+         charset = 'us-ascii'
+-        if self.language:
++        if self.language and Utils.IsLanguage(self.language):
+             charset = Utils.GetCharSet(self.language)
+         output = ['Content-Type: text/html; charset=%s\n' % charset]
+         if not self.suppress_head:

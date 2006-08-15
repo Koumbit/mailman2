@@ -5,7 +5,7 @@
 package=mailman
 PACKAGE=$(package)
 
-include /usr/share/dpatch/dpatch.make
+include /usr/share/quilt/quilt.make
 
 binaries=list_lists find_member config_list mmsitepass newlist rmlist	\
 	add_members list_members remove_members arch clone_member	\
@@ -24,9 +24,10 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 INSTALL_PROGRAM += -s
 endif
 
-build: patch-stamp Makefile debian/po/templates.pot
+build: patch build-stamp
+build-stamp: Makefile debian/po/templates.pot
 	$(MAKE) 
-	touch build
+	touch build-stamp
 
 debian/po/templates.pot: debian/templates
 	@debconf-updatepo
@@ -46,7 +47,7 @@ Makefile:
 clean: unpatch
 	$(checkdir)
 	-$(MAKE) distclean
-	rm -rf build Makefile debian/ucffiles debian/mailman.postinst.ucf
+	rm -rf build-stamp Makefile debian/ucffiles debian/mailman.postinst.ucf
 	rm -f debian/mailman.postrm.ucf
 	dh_clean
 	rm -rf $$(find . -name "*~")
