@@ -139,11 +139,11 @@ binary-arch:	checkroot build
 	dh_strip
 	dh_compress
 	dh_fixperms
-	chown -R root.root debian/mailman
-	chown -R root.list \
+	chown -R root:root debian/mailman
+	chown -R root:list \
 		debian/mailman/{etc/$(package),var/lib/$(package),usr/lib/{$(package),cgi-bin/$(package)}}
-	chown list.list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}
-	chown root.list debian/mailman/var/log/mailman
+	chown list:list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}
+	chown root:list debian/mailman/var/log/mailman
 	find debian/mailman/var/lib/$(package) -type d | xargs chmod 2775
 	find debian/mailman/var/lib/$(package)/messages -type d | xargs chmod 755
 

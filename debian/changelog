@@ -6,8 +6,9 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   [ Thijs Kinkhorst ]
   * Use LSB output functions in init script.
   * Tweak debconf templates according to best practices.
+  * Use chown root:list instead of deprecated root.list.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 15 Aug 2006 15:33:22 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 16 Aug 2006 15:12:04 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
