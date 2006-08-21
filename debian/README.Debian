@@ -1,6 +1,12 @@
 Notes for the debian mailman package.
 =====================================
 
+Full documentation is available when the mailman-doc package is installed.
+
+
+Getting started
+---------------
+
 You can access the web interface of mailman on
 http://<hostname>/cgi-bin/mailman/listinfo
 

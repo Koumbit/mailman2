@@ -1,0 +1,6 @@
+admin/www/*	/usr/share/doc/mailman/html
+src/*.c		/usr/share/doc/mailman/src
+src/*.h		/usr/share/doc/mailman/src
+templates/*	/usr/share/doc/mailman/examples
+debian/mm_cfg.py	/usr/share/doc/mailman/examples
+Mailman/Defaults.py	/usr/share/doc/mailman/examples

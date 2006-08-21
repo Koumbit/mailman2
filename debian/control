@@ -10,6 +10,7 @@ Package: mailman
 Architecture: any
 Pre-Depends: debconf (>= 1.4.16) | debconf-2.0
 Depends: ${shlibs:Depends}, python (>= 2.2.2.91-1), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache2 | httpd, ucf (>= 0.28), pwgen, adduser, lsb-base
+Recommends: mailman-doc
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
 Suggests: spamassassin, lynx, python2.3-korean-codecs | python2.2-korean-codecs, python-japanese-codecs, listadmin
 Description: Powerful, web-based mailing list manager
@@ -26,3 +27,13 @@ Description: Powerful, web-based mailing list manager
  automated bounce handling and integrated spam prevention.
  .
  Homepage: http://www.list.org/
+
+Package: mailman-doc
+Suggests: mailman (>= 1:2.1.8-3)
+Replaces: mailman (<< 1:2.1.8-3)
+Architecture: all
+Description: Documentation for Mailman, web-based mailing list manager
+ Examples and documentation for the mailman package: the GNU Mailing List
+ Manager.
+
+
