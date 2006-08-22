@@ -9,8 +9,9 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Use chown root:list instead of deprecated root.list.
   * Remove pre-sarge upgrading code; this eliminates a lot of cruft,
     non-debconf prompting and two debconf templates.
+  * Only use ucf on purge when it's available.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 01:59:21 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 02:09:00 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
