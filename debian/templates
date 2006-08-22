@@ -64,7 +64,7 @@ Type: note
 _Description: Old queue files present
  The directory /var/lib/mailman/qfiles contains files. It needs to be
  empty for the upgrade to work properly. You can try to handle them by:
-  - Stopping new messages from coming in (at the MTA level).
+  - Stop new messages from coming in (at the MTA level).
   - Start a mailman queue runner: /etc/init.d/mailman start
   - Let it run until all messages are handled.
     If they don't all get handled in a timely manner, look at the logs
