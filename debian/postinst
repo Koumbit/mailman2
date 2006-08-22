@@ -27,24 +27,6 @@ if [ "$1" = "configure" ]; then
     mm_etc=/etc/mailman
     mm_dist=/usr/share/mailman
 
-    if [ "$2" != "" ] && dpkg --compare-versions "$2" lt "2.1"; then
-	# We need to update the aliases
-	mm_MTA=`grep ^MTA "/etc/mailman/mm_cfg.py" | sed "s/^MTA[[:space:]]*=[[:space:]]*'\\?\\(None\|Manual\|Postfix\\).*/\1/"`
-	case $mm_MTA in
-	    Postfix)
-		/var/lib/mailman/genaliases
-		;;
-	    None)
-	        # nothing to do
-		;;
-	    Manual)
-		db_input critical mailman/update_aliases || true
-		;;
-	esac
-	db_input critical mailman/update_passwords || true
-	db_go
-    fi
-
     # Install only languages selected by the administrator
     # forcing used languages to be always available.
     db_get mailman/site_languages
@@ -81,7 +63,6 @@ if [ "$1" = "configure" ]; then
         #            we access its hashfile directly
         md5sums=$(tempfile --prefix=mm_${lang})
         grep "^[[:xdigit:]]{32}[[:space:]]\+${mm_etc}/$lang/" /var/lib/ucf/hashfile >${md5sums} || true
-        if [ -s ${md5sums} ]; then
           # Language files are under ucf control, check md5sums
           # LEM: The ":\?" is there to accomodate both md5sum from dpkg (in sarge)
           #      and md5sum from coreutils (in etch and onwards).
@@ -97,45 +78,12 @@ if [ "$1" = "configure" ]; then
             rm -f ${file}.dpkg-dist
             echo -n . >&2
           done
-        else
-          # We are upgrading from a version that didn't use ucf for this
-          # language, remove files that are unchanged in the NEW version.
-          # At this point there is no way to differentiate between
-          # 'changed by admin' and 'changed in package'.
-          for file in $(cd /etc && find mailman/${lang} -type f -a ! -name \*.dpkg-\* ); do
-            if cmp -s /etc/${file} /usr/share/${file}; then
-              rm -f /etc/${file} /etc/${file}.dpkg-dist
-            else
-              echo /etc/${file} >>${leftover}
-            fi
-            echo -n . >&2
-          done
-        fi
         echo " done." >&2
         rmdir ${mm_etc}/${lang} 2>/dev/null \
           || echo "Directory ${mm_etc}/${lang} not empty, not removed." >&2
         rm -f ${md5sums}
       fi
     done
-
-    if [ -s ${leftover} ]; then
-      cat >&2 <<EOF
-
-----------------------------------------------------------------------
-Some templates from unused langugages could not be automatically
-removed since there was no way to find out if they were modified by
-you or the prototype in the package differs from the previous release.
-${leftover} lists these files; please move them out of the way
-at your discretion if you don't want to see this message again.
-----------------------------------------------------------------------
-
-EOF
-      echo -n "Hit return to continue." >&2
-      read junk </dev/tty
-      echo >&2
-    else
-      rm ${leftover}
-    fi
 
     for lang in ${site_languages}; do
       echo -n "Installing site language ${lang} " >&2
@@ -192,66 +140,7 @@ EOF
 # GZIP_ARCHIVE_TXT_FILES is false in mm_cfg.py
 27 3 * * * list [ -x /usr/lib/mailman/cron/nightly_gzip ] && /usr/lib/mailman/cron/nightly_gzip
 EOF
-    elif dpkg --compare-versions "$2" lt 2.1; then
-        # In versions before 2.1, /etc/cron.{daily,monthly}/mailman did 
-        # some stuff which is now moved into /etc/cron.d/mailman.
-        # Those files are just removed, since they now serve no useful 
-        # purpose.
-        rm -f /etc/cron.daily/mailman /etc/cron.monthly/mailman
-        
-        # Comment out any lines containing qrunner, since it is no longer 
-        # used.
-	awk '/^[^#]*qrunner/ { print "# " $LINE;next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
-        mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
-
-        # Add those lines which were removed from cron.{daily,monthly}
-        grep -q '/usr/lib/mailman/cron/checkdbs' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
-# At 8AM every day, mail reminders to admins as to pending requests.
-# They are less likely to ignore these reminders if they're mailed
-# early in the morning, but of course, this is local time... ;)
-0 8 * * * list [ -x /usr/lib/mailman/cron/checkdbs ] && /usr/lib/mailman/cron/checkdbs
-EOF
-        
-        grep -q '/usr/lib/mailman/cron/disabled' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
-#
-# At 9AM, send notifications to disabled members that are due to be
-# reminded to re-enable their accounts.
-0 9 * * * list [ -x /usr/lib/mailman/cron/disabled ] && /usr/lib/mailman/cron/disabled
-EOF
-
-        grep -q '/usr/lib/mailman/cron/senddigests' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
-#
-# Noon, mail digests for lists that do periodic as well as threshhold delivery.
-0 12 * * * list [ -x /usr/lib/mailman/cron/senddigests ] && /usr/lib/mailman/cron/senddigests
-EOF
-
-        grep -q '/usr/lib/mailman/cron/mailpasswds' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
-#
-# 5 AM on the first of each month, mail out password reminders.
-0 5 1 * * list [ -x /usr/lib/mailman/cron/mailpasswds ] && /usr/lib/mailman/cron/mailpasswds
-EOF
-        grep -q '/usr/lib/mailman/cron/nightly_gzip' /etc/cron.d/mailman || cat >> /etc/cron.d/mailman <<EOF
-#
-# At 3:27am every night, regenerate the gzip'd archive file.  Only
-# turn this on if the internal archiver is used and
-# GZIP_ARCHIVE_TXT_FILES is false in mm_cfg.py
-27 3 * * * list [ -x /usr/lib/mailman/cron/nightly_gzip ] && /usr/lib/mailman/cron/nightly_gzip
-EOF
     fi
-
-    # This fuckup got in 2.1-4, it should be removed at sarge + 1
-    for pattern in '0 8 \* \* \* /usr/lib/mailman/cron/checkdbs'\
-        '0 9 \* \* \* /usr/lib/mailman/cron/disabled' \
-        '0 12 \* \* \* /usr/lib/mailman/cron/senddigests' \
-        '0 5 1 \* \* /usr/lib/mailman/cron/mailpasswds' \
-        '27 3 \* \* \* /usr/lib/mailman/cron/nightly_gzip' \
-        '0,5,10,15,20,25,30,35,40,45,50,55 \* \* \* \* /usr/lib/mailman/cron/gate_news'; do
-      if grep -q "$pattern" /etc/cron.d/mailman; then
-          replacement=$(echo "$pattern" | sed -e 's,/usr/lib,list /usr/lib,')
-          sed -e "s|$pattern|$replacement|" < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
-          mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
-      fi
-    done
 
     # This should be removed after etch is released, it crept in in 2.1.5-1
     if grep -q "gate_news]" /etc/cron.d/mailman; then
@@ -270,28 +159,6 @@ EOF
     mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
 
     if [ -e /etc/mailman/mm_cfg.py ]; then
-        if grep -q "^PUBLIC_ARCHIVE_URL *= *'/pipermail'" /etc/mailman/mm_cfg.py; then
-        # Upgrading from 2.0 changed the semantics of PUBLIC_ARCHIVE_URL.  
-        # Remove post sarge+1
-            awk '/^PUBLIC_ARCHIVE_URL/ { print "# " $LINE;next }; //' < /etc/mailman/mm_cfg.py > /etc/mailman/mm_cfg.py.$$
-            mv -f /etc/mailman/mm_cfg.py.$$ /etc/mailman/mm_cfg.py
-        fi
-        if ! grep -q DEFAULT_EMAIL_HOST /etc/mailman/mm_cfg.py; then
-            # upgrading from 2.0, add DEFAULT_EMAIL_HOST, remove post-sarge+1
-            printf "\nDEFAULT_EMAIL_HOST = DEFAULT_HOST_NAME" >> /etc/mailman/mm_cfg.py
-        fi
-
-        if ! grep -q DEFAULT_URL_HOST /etc/mailman/mm_cfg.py; then
-            # upgrading from 2.0, add DEFAULT_URL_HOST, remove post-sarge+1
-            printf "\nDEFAULT_URL_HOST = DEFAULT_HOST_NAME" >> /etc/mailman/mm_cfg.py
-        fi
-
-        # Uncruftify.  I was on something bad.
-        rm -f /etc/cron.d/mm_cfg.py
-
-	if ! grep -q DEFAULT_SERVER_LANGUAGE /etc/mailman/mm_cfg.py; then
-	    printf "\nDEFAULT_SERVER_LANGUAGE = 'en'" >> /etc/mailman/mm_cfg.py
-	fi
         db_get mailman/default_server_language || true
         if [ ${RET} ]; then
             default_server_language=${RET}
