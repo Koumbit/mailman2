@@ -90,19 +90,3 @@ _Description: Old queue files present
  human inspection. You can use /var/lib/mailman/bin/show_qfiles to
  examine the contents of the queues.
 
-Template: mailman/update_aliases
-Type: note
-_Description: Administrator must update aliases
- The aliases you need for mailman in your MTA's configuration have
- changed. Please run /var/lib/mailman/bin/genaliases to see the new
- aliases you need.
- .
- Until you do that, some features will stop working and mails will go
- out with an invalid Return-Path.
-
-Template: mailman/update_passwords
-Type: note
-_Description: List passwords broken
- List admin and moderator passwords are broken by this upgrade. Use
- /var/lib/mailman/bin/change_pw to have new ones automatically
- generated and emailed to the admins and moderators.

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-02-17 16:33+0100\n"
+"POT-Creation-Date: 2006-08-22 02:17+0200\n"
 "PO-Revision-Date: 2004-01-31 17:56GMT\n"
 "Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
@@ -17,191 +17,209 @@ msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "big5"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "ca"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "cs"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "da"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "de"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "en"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "es"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "et"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "eu"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "fi"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "fr"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "hr"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "hu"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "it"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "ja"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "ko"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "lt"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "nl"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "no"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "pl"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "pt"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "pt_BR"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "ro"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "ru"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "sl"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "sr"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "sv"
 msgstr ""
 
 #. Type: multiselect
 #. Choices
-#: ../templates:5
+#: ../templates:1001
 msgid "uk"
 msgstr ""
 
 #. Type: multiselect
-#. Description
-#: ../templates:7
-msgid "Which languages to support?"
+#. Default
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl".
+#. Type: select
+#. Default
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl".
+#: ../templates:1002 ../templates:5001
+msgid "en [ default language ]"
 msgstr ""
 
 #. Type: multiselect
 #. Description
-#: ../templates:7
+#: ../templates:1003
+msgid "Languages to support:"
+msgstr ""
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
 msgid ""
-"For each supported language Debian Mailman stores default language specific "
-"texts in /etc/mailman/LANG/ giving them conffile like treatment with the "
-"help of ucf.  This means approximately 150kB for each supported language on "
-"the root FS."
+"For each supported language, Mailman stores default language specific texts "
+"in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
+"ucf.  This means approximately 150kB for each supported language on the root "
+"FS."
 msgstr ""
 
 #. Type: multiselect
 #. Description
-#: ../templates:7
+#: ../templates:1003
 msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
@@ -209,7 +227,7 @@ msgstr ""
 
 #. Type: multiselect
 #. Description
-#: ../templates:7
+#: ../templates:1003
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
@@ -218,35 +236,36 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:27
+#: ../templates:3001
 msgid "Gate news to mail?"
 msgstr "S'envien les notícies al correu?"
 
 #. Type: boolean
 #. Description
-#: ../templates:27
+#: ../templates:3001
+#, fuzzy
 msgid ""
 "Do you want to gate news to mail, that is, send all the messages which "
-"appear in a newsgroup to a mailing list."
+"appear in a newsgroup to a mailing list?"
 msgstr ""
 "Voleu que s'enviïn les notícies al correu, és a dir, que s'enviïn tots els "
 "missatges d'un grup de discussió a una llista de correu."
 
 #. Type: boolean
 #. Description
-#: ../templates:27
+#: ../templates:3001
 msgid "Most people won't need this."
 msgstr "En la majoria de casos no és necessari."
 
 #. Type: note
 #. Description
-#: ../templates:35
+#: ../templates:4001
 msgid "Missing site list"
 msgstr "Falta la llista del lloc"
 
 #. Type: note
 #. Description
-#: ../templates:35
+#: ../templates:4001
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -258,7 +277,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:35
+#: ../templates:4001
 #, fuzzy
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
@@ -270,13 +289,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:47
-msgid "Which language should be the default for Mailman?"
+#: ../templates:5002
+msgid "Default language for Mailman:"
 msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:47
+#: ../templates:5002
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
@@ -284,13 +303,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:53
+#: ../templates:6001
 msgid "Old queue files present"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:53
+#: ../templates:6001
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. If these files contain unprocessed "
@@ -312,7 +331,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:53
+#: ../templates:6001
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -321,41 +340,4 @@ msgid ""
 "usually originate from Mailman bugs or other abnormal situations that need "
 "human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
 "the contents of the queues."
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:84
-msgid "Administrator must update aliases"
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:84
-msgid ""
-"The aliases you need for mailman in your MTA's configuration have changed. "
-"Please run /var/lib/mailman/bin/genaliases to see the new aliases you need."
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:84
-msgid ""
-"Until you do that, some features will stop working and mails will go out "
-"with an invalid Return-Path."
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:94
-msgid "List passwords broken"
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:94
-msgid ""
-"List admin and moderator passwords are broken by this upgrade. Use /var/lib/"
-"mailman/bin/change_pw to have new ones automatically generated and emailed "
-"to the admins and moderators."
 msgstr ""
