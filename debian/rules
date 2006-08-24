@@ -48,7 +48,6 @@ clean: unpatch
 	rm -rf build-stamp Makefile debian/ucffiles debian/mailman.postinst.ucf
 	rm -f debian/mailman.postrm.ucf
 	dh_clean
-	rm -rf $$(find . -name "*~")
 	chmod +x debian/{prerm,postinst}
 
 binary-indep:	checkroot build
