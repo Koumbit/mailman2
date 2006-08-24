@@ -46,7 +46,7 @@ if [ "$1" = "configure" ]; then
 
     # At present ALL directories in /etc/mailman are language directories
     # but this may change in the future, better check.
-    for dir in $(find ${mm_etc} -type d -maxdepth 1 -mindepth 1 | sed -e "s;^${mm_etc}/;;g"); do
+    for dir in $(find ${mm_etc} -maxdepth 1 -mindepth 1 -type d | sed -e "s;^${mm_etc}/;;g"); do
       if [ -f ${mm_dist}/${dir}/options.html ]; then
         old_languages="${old_languages} ${dir}"
       fi
