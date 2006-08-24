@@ -160,7 +160,7 @@ binary-arch:	checkroot build
 	mv `find debian/mailman/etc/mailman -mindepth 1 -maxdepth 1 -type d` debian/mailman/usr/share/mailman
 	cp build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman
 
-	find debian/mailman/usr/share/mailman -type f | sed 's,debian/mailman/usr/share/mailman,/etc/mailman,' > debian/ucffiles
+	find debian/mailman/usr/share/mailman -type f -printf '/etc/mailman/%P\n' > debian/ucffiles
 
 	dh_link etc/mailman/qmail-to-mailman.py usr/lib/mailman/bin/qmail-to-mailman.py
 

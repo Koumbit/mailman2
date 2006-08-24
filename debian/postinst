@@ -46,7 +46,7 @@ if [ "$1" = "configure" ]; then
 
     # At present ALL directories in /etc/mailman are language directories
     # but this may change in the future, better check.
-    for dir in $(find ${mm_etc} -maxdepth 1 -mindepth 1 -type d | sed -e "s;^${mm_etc}/;;g"); do
+    for dir in $(find ${mm_etc} -maxdepth 1 -mindepth 1 -type d -printf '%P\n'); do
       if [ -f ${mm_dist}/${dir}/options.html ]; then
         old_languages="${old_languages} ${dir}"
       fi
@@ -68,7 +68,7 @@ if [ "$1" = "configure" ]; then
           #      and md5sum from coreutils (in etch and onwards).
           #      It breaks with md5sum-from-dpkg if a filename ends with ":",
           #      but this is not expected to happen.
-          for file in $(${md5sum} -c ${md5sums} 2>&1 | egrep "OK$" | sed -e 's/:\? *OK$//'); do 
+          for file in $(${md5sum} -c ${md5sums} 2>&1 | sed -n 's/:\? *OK$//p'); do 
             ucf --debconf-ok --purge ${file}
             rm -f ${file} ${file}.dpkg-dist
             echo -n . >&2
