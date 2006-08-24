@@ -13,6 +13,9 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
 
+  [ Matej Vela ]
+  * Rearrange find options in debian/postinst to prevent warnings.
+
  -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 02:19:15 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
