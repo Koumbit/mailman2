@@ -16,7 +16,10 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   [ Matej Vela ]
   * Rearrange find options in debian/postinst to prevent warnings.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 02:19:15 +0200
+  [ Lionel Elie Mamane ]
+  * Don't ship C sources with documentation; there is no reason for it.
+
+ --
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
