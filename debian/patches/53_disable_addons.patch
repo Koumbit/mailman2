@@ -5,12 +5,15 @@ Index: misc/Makefile.in
 ===================================================================
 --- misc/Makefile.in.orig	2006-08-15 15:12:18.000000000 +0800
 +++ misc/Makefile.in	2006-08-15 15:14:39.000000000 +0800
-@@ -57,7 +57,7 @@
+@@ -57,7 +57,10 @@
  JACODECSPKG=	JapaneseCodecs-1.4.11
  KOCODECSPKG=	KoreanCodecs-2.0.5
  
 -PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
-+PACKAGES=  
++#Debian note (LEM): we take the Japanese and Korean codecs from other
++#Debian packages, but not email because the one in Python 2.4 doesn't work
++#with Mailman; when Mailman upgrades to mailman 3.0.x, we can try again.
++PACKAGES= $(EMAILPKG)
  
  # Modes for directories and executables created by the install
  # process.  Default to group-writable directories but

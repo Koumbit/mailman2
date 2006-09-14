@@ -18,6 +18,9 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
 
   [ Lionel Elie Mamane ]
   * Don't ship C sources with documentation; there is no reason for it.
+  * Use Mailman's fork of the Python email package instead of the one from
+    Python; Mailman is incompatible with the one in Python 2.4
+    (closes: #384016)
 
  --
 
