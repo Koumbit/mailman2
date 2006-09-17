@@ -21,14 +21,13 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Use Mailman's fork of the Python email package instead of the one from
     Python; Mailman is incompatible with the one in Python 2.4
     (closes: #384016)
-  * Install example apache.conf in /usr/share/doc/${PKG}/examples/ .
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Sun, 17 Sep 2006 12:19:59 +0200
+ --
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
-  * Add example apache.conf under /etc/mailman
+  * Add default apache.conf under /etc/mailman
     (Closes: #282460, #135148, #178543, #179253).
   * Update all man pages to be in line with current mailman functionality
     (Closes: #286607, #276952).
