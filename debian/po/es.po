@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maiman 2.1.4-3\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"POT-Creation-Date: 2006-09-18 17:20+0200\n"
 "PO-Revision-Date: 2004-04-09 22:10+0200\n"
 "Last-Translator: Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>\n"
 "Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -112,6 +112,12 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+msgid "ia (Interlingua)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
 msgid "it (Italian)"
 msgstr ""
 
@@ -191,6 +197,12 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "tr (Turkish)"
 msgstr ""
 
 #. Type: multiselect

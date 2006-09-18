@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.4-1\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"POT-Creation-Date: 2006-09-18 17:20+0200\n"
 "PO-Revision-Date: 2004-02-20 20:06+0100\n"
 "Last-Translator: László 'GCS' Böszörményi <gcs@lsc.hu>\n"
 "Language-Team: \n"
@@ -104,6 +104,12 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+msgid "ia (Interlingua)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
 msgid "it (Italian)"
 msgstr ""
 
@@ -183,6 +189,12 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "tr (Turkish)"
 msgstr ""
 
 #. Type: multiselect

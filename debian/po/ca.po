@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"POT-Creation-Date: 2006-09-18 17:20+0200\n"
 "PO-Revision-Date: 2004-01-31 17:56GMT\n"
 "Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
@@ -96,6 +96,12 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+msgid "ia (Interlingua)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
 msgid "it (Italian)"
 msgstr ""
 
@@ -175,6 +181,12 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "tr (Turkish)"
 msgstr ""
 
 #. Type: multiselect

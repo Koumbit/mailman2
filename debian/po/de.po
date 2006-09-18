@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"POT-Creation-Date: 2006-09-18 17:20+0200\n"
 "PO-Revision-Date: 2006-02-21 11:48+0100\n"
 "Last-Translator: Jens Nachtigall <nachtigall@web.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -108,6 +108,12 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+msgid "ia (Interlingua)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
 msgid "it (Italian)"
 msgstr ""
 
@@ -187,6 +193,12 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "tr (Turkish)"
 msgstr ""
 
 #. Type: multiselect
