@@ -2,7 +2,7 @@
 # $Id$
 Template: mailman/site_languages
 Type: multiselect
-__Choices: big5 (Chinese big5), ca (Catalan), cs (Czech), da (Danish), de (German), en (English), es (Spanish), et (Estonian), eu (Basque), fi (Finnish), fr (French), hr (Croatian), hu (Hungarian), it (Italian), ja (Japanese), ko (Korean), lt (Lithuanian), nl (Dutch), no (Norwegian), pl (Polish), pt (Portuguese), pt_BR (Brasilian Portuguese), ro (Romanian), ru (Russian), sl (Slovenian), sr (Serbian), sv (Swedish), uk (Ukrainian)
+__Choices: big5 (Chinese big5), ca (Catalan), cs (Czech), da (Danish), de (German), en (English), es (Spanish), et (Estonian), eu (Basque), fi (Finnish), fr (French), hr (Croatian), hu (Hungarian), ia (Interlingua), it (Italian), ja (Japanese), ko (Korean), lt (Lithuanian), nl (Dutch), no (Norwegian), pl (Polish), pt (Portuguese), pt_BR (Brasilian Portuguese), ro (Romanian), ru (Russian), sl (Slovenian), sr (Serbian), sv (Swedish), tr (Turkish), uk (Ukrainian)
 #  You must NOT translate this string, but you can change its value.
 #  The comment between brackets is used to distinguish this msgid
 #  from the one in the Choices list; you do not have to worry about
