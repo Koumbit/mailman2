@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.7-1\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 15:12+0200\n"
+"POT-Creation-Date: 2006-09-18 15:22+0200\n"
 "PO-Revision-Date: 2006-08-10 19:55+0300\n"
 "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -200,7 +200,14 @@ msgstr ""
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002
+#. Type: select
+#. DefaultChoice
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
 msgstr ""
 
@@ -302,17 +309,6 @@ msgstr ""
 "Чтобы создать список рассылки, выполните команду \"newlist mailman\" и "
 "следуйте инструкциям на экране. Заметим, что после этого вы также должны "
 "запустить mailman с помощью команды /etc/init.d/mailman start."
-
-#. Type: select
-#. Default
-#. You must NOT translate this string, but you can change its value.
-#. The comment between brackets is used to distinguish this msgid
-#. from the one in the Choices list; you do not have to worry about
-#. them, and have to simply choose a msgstr among the English values
-#. listed in the Choices field above, e.g. msgstr "nl".
-#: ../templates:5001
-msgid "en [ default language ]"
-msgstr ""
 
 #. Type: select
 #. Description
