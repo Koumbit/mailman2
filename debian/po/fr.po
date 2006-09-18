@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-08-22 02:17+0200\n"
+"POT-Creation-Date: 2006-09-18 15:12+0200\n"
 "PO-Revision-Date: 2006-03-07 09:21+0100\n"
 "Last-Translator: Philippe Batailler <philippe.batailler@free.fr>\n"
 "Language-Team: french <debian-l10n-french@lists.debian.org>\n"
@@ -25,187 +25,180 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "big5"
-msgstr "big5 (chinois big5)"
+msgid "big5 (Chinese big5)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "ca"
-msgstr "ca (catalan)"
+msgid "ca (Catalan)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "cs"
-msgstr "cs (tchèque)"
+msgid "cs (Czech)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "da"
-msgstr "da (danois)"
+msgid "da (Danish)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "de"
-msgstr "de (allemand)"
+msgid "de (German)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "en"
-msgstr "en (anglais)"
+msgid "en (English)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "es"
-msgstr "es (espagnol)"
+msgid "es (Spanish)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "et"
-msgstr "et (estonien)"
+msgid "et (Estonian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "eu"
-msgstr "eu (basque)"
+msgid "eu (Basque)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "fi"
-msgstr "fi (finnois)"
+msgid "fi (Finnish)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "fr"
-msgstr "fr (français)"
+msgid "fr (French)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "hr"
-msgstr "hr (croate)"
+msgid "hr (Croatian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "hu"
-msgstr "hu (hongrois)"
+msgid "hu (Hungarian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "it"
-msgstr "it (italien)"
+msgid "it (Italian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "ja"
-msgstr "ja (japonais)"
+msgid "ja (Japanese)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "ko"
-msgstr "ko (coréen)"
+msgid "ko (Korean)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "lt"
-msgstr "lt (lituanien)"
+msgid "lt (Lithuanian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "nl"
-msgstr "nl (néerlandais)"
+msgid "nl (Dutch)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "no"
-msgstr "no (norvégien)"
+msgid "no (Norwegian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "pl"
-msgstr "pl (polonais)"
+msgid "pl (Polish)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "pt"
-msgstr "pt (portugais)"
+msgid "pt (Portuguese)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "pt_BR"
-msgstr "pt_BR (portugais du Brésil)"
+msgid "pt_BR (Brasilian Portuguese)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "ro"
-msgstr "ro (roumain)"
+msgid "ro (Romanian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "ru"
-msgstr "ru (russe)"
+msgid "ru (Russian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "sl"
-msgstr "sl (slovène)"
+msgid "sl (Slovenian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "sr"
-msgstr "sr (serbe)"
+msgid "sr (Serbian)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "sv"
-msgstr "sv (suédois)"
+msgid "sv (Swedish)"
+msgstr ""
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "uk"
-msgstr "uk (ukrainien)"
+msgid "uk (Ukrainian)"
+msgstr ""
 
 #. Type: multiselect
-#. Default
+#. DefaultChoice
 #. You must NOT translate this string, but you can change its value.
 #. The comment between brackets is used to distinguish this msgid
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
-#. listed in the Choices field above, e.g. msgstr "nl".
-#. Type: select
-#. Default
-#. You must NOT translate this string, but you can change its value.
-#. The comment between brackets is used to distinguish this msgid
-#. from the one in the Choices list; you do not have to worry about
-#. them, and have to simply choose a msgstr among the English values
-#. listed in the Choices field above, e.g. msgstr "nl".
-#: ../templates:1002 ../templates:5001
-msgid "en [ default language ]"
+#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#: ../templates:1002
+msgid "en (English)[ default language ]"
 msgstr ""
 
 #. Type: multiselect
@@ -223,7 +216,7 @@ msgid ""
 "For each supported language, Mailman stores default language specific texts "
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
-"FS."
+"file system."
 msgstr ""
 "Mailman garde les textes de chaque langue reconnue dans /etc/mailman/LANG/. "
 "Ces fichiers sont alors gérés comme des fichiers de configuration grâce "
@@ -263,8 +256,8 @@ msgstr "Voulez-vous transformer des nouvelles en courriers électroniques ?"
 #: ../templates:3001
 #, fuzzy
 msgid ""
-"Do you want to gate news to mail, that is, send all the messages which "
-"appear in a newsgroup to a mailing list?"
+"Mailman allows to gate news to mail, that is, send all the messages which "
+"appear in a Usenet newsgroup to a mailing list."
 msgstr ""
 "Il est possible de transformer des nouvelles en courriers, c'est-à-dire "
 "envoyer tous les messages qui apparaissent dans un forum vers une liste de "
@@ -307,6 +300,17 @@ msgstr ""
 "relancer mailman avec la commande « /etc/init.d/mailman start »."
 
 #. Type: select
+#. Default
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl".
+#: ../templates:5001
+msgid "en [ default language ]"
+msgstr ""
+
+#. Type: select
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
@@ -331,14 +335,11 @@ msgstr "Fichiers anciens dans les files d'attente"
 #. Type: note
 #. Description
 #: ../templates:6001
+#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
-"for the upgrade to work properly. If these files contain unprocessed "
-"messages that are otherwise fine, then you can try to handle them by:\n"
-" - Stopping new messages from coming in the queue (at the MTA level:\n"
-"   queue them in the MTA's queue or refuse them with a 4xx code). If\n"
-"   your site has a relatively low mailman traffic, you can skip this\n"
-"   step.\n"
+"for the upgrade to work properly. You can try to handle them by:\n"
+" - Stop new messages from coming in (at the MTA level).\n"
 " - Start a mailman queue runner: /etc/init.d/mailman start\n"
 " - Let it run until all messages are handled.\n"
 "   If they don't all get handled in a timely manner, look at the logs\n"
@@ -347,7 +348,7 @@ msgid ""
 " - Retry the upgrade.\n"
 " - Let messages come in again.\n"
 "You can also decide to simply remove the files, which will make Mailman "
-"forget about (and lose) the corresponding emails; expect angry users."
+"forget about (and lose) the corresponding emails."
 msgstr ""
 "Le répertoire /var/lib/mailman/qfiles contient des fichiers. Il doit être "
 "vide pour que la mise à jour se passe correctement. Si ces fichiers sont "
@@ -372,14 +373,13 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:6001
+#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
 "are messages on which Mailman has already abandoned any further processing "
-"because of an error condition, but that are kept for admin review, as they "
-"usually originate from Mailman bugs or other abnormal situations that need "
-"human inspection. You can use /var/lib/mailman/bin/show_qfiles to examine "
-"the contents of the queues."
+"because of an error condition, but that are kept for admin review. You can "
+"use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
 "Si ces fichiers correspondent à des messages mis de côté, vous devez les "
 "détruire ou bien les traiter à nouveau (avec /var/lib/mailman/bin/"
@@ -388,6 +388,90 @@ msgstr ""
 "car ils proviennent de bogues de mailman ou de situation anormale. Vous "
 "pouvez utiliser /var/lib/mailman/bin/show_qfiles pour examiner le contenu de "
 "la file d'attente."
+
+#~ msgid "big5"
+#~ msgstr "big5 (chinois big5)"
+
+#~ msgid "ca"
+#~ msgstr "ca (catalan)"
+
+#~ msgid "cs"
+#~ msgstr "cs (tchèque)"
+
+#~ msgid "da"
+#~ msgstr "da (danois)"
+
+#~ msgid "de"
+#~ msgstr "de (allemand)"
+
+#~ msgid "en"
+#~ msgstr "en (anglais)"
+
+#~ msgid "es"
+#~ msgstr "es (espagnol)"
+
+#~ msgid "et"
+#~ msgstr "et (estonien)"
+
+#~ msgid "eu"
+#~ msgstr "eu (basque)"
+
+#~ msgid "fi"
+#~ msgstr "fi (finnois)"
+
+#~ msgid "fr"
+#~ msgstr "fr (français)"
+
+#~ msgid "hr"
+#~ msgstr "hr (croate)"
+
+#~ msgid "hu"
+#~ msgstr "hu (hongrois)"
+
+#~ msgid "it"
+#~ msgstr "it (italien)"
+
+#~ msgid "ja"
+#~ msgstr "ja (japonais)"
+
+#~ msgid "ko"
+#~ msgstr "ko (coréen)"
+
+#~ msgid "lt"
+#~ msgstr "lt (lituanien)"
+
+#~ msgid "nl"
+#~ msgstr "nl (néerlandais)"
+
+#~ msgid "no"
+#~ msgstr "no (norvégien)"
+
+#~ msgid "pl"
+#~ msgstr "pl (polonais)"
+
+#~ msgid "pt"
+#~ msgstr "pt (portugais)"
+
+#~ msgid "pt_BR"
+#~ msgstr "pt_BR (portugais du Brésil)"
+
+#~ msgid "ro"
+#~ msgstr "ro (roumain)"
+
+#~ msgid "ru"
+#~ msgstr "ru (russe)"
+
+#~ msgid "sl"
+#~ msgstr "sl (slovène)"
+
+#~ msgid "sr"
+#~ msgstr "sr (serbe)"
+
+#~ msgid "sv"
+#~ msgstr "sv (suédois)"
+
+#~ msgid "uk"
+#~ msgstr "uk (ukrainien)"
 
 #~ msgid "Administrator must update aliases"
 #~ msgstr "L'administrateur doit mettre à jour les alias"
