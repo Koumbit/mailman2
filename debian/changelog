@@ -12,6 +12,8 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Only use ucf on purge when it's available.
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
+  * Name languages together with their ISO code in the debconf question
+    (Closes: #276505).
 
   [ Matej Vela ]
   * Rearrange find options in debian/postinst to prevent warnings.
@@ -22,7 +24,7 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
     Python; Mailman is incompatible with the one in Python 2.4
     (closes: #384016)
 
- --
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 18 Sep 2006 15:16:16 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 

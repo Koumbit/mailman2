@@ -64,7 +64,7 @@ else
   # Install only languages selected by the administrator
   # forcing used languages to be always available.
   db_get mailman/site_languages
-  site_languages="$(echo $RET | sed -e 's/, */ /g')"
+  site_languages="$(echo $RET | sed -e 's/, */ /g' | sed -r 's/ \([^\)]*\)//g')"
   need_languages="${site_languages}"
   for lang in ${used_languages} ; do
     if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
