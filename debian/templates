@@ -53,8 +53,8 @@ Choices: ${site_languages}
 #  The comment between brackets is used to distinguish this msgid
 #  from the one in the Choices list; you do not have to worry about
 #  them, and have to simply choose a msgstr among the English values
-#  listed in the Choices field above, e.g. msgstr "nl".
-_Default: en [ default language ]
+#  listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+_DefaultChoice: en (English)[ default language ]
 _Description: Default language for Mailman:
  The web page will be shown in this language, and in general, Mailman
  will use this language to communicate with the user.
