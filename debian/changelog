@@ -4,12 +4,16 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Switch from dpatch to quilt and regenerate all patches
 
   [ Thijs Kinkhorst ]
+  * Split the mailman package into mailman (architecture dependent files),
+    mailman-common (architecture independent), mailman-doc (documentation).
+
   * Use LSB output functions in init script.
-  * Tweak debconf templates according to best practices.
   * Use chown root:list instead of deprecated root.list.
   * Remove pre-sarge upgrading code; this eliminates a lot of cruft,
     non-debconf prompting and two debconf templates.
   * Only use ucf on purge when it's available.
+  
+  * Tweak debconf templates according to best practices.
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
   * Name languages together with their ISO code in the debconf question
@@ -25,7 +29,7 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
     Python; Mailman is incompatible with the one in Python 2.4
     (closes: #384016)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 18 Sep 2006 17:05:21 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 18 Sep 2006 17:11:52 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
