@@ -1,344 +1,309 @@
 # Vietnamese Translation for Mailman.
-# Copyright © 2005-2006 Free Software Foundation, Inc.
+# Copyright © 2006 Free Software Foundation, Inc.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2006.
 # 
 msgid ""
-msgstr ""
-"Project-Id-Version: mailman 2.1.5-9\n"
+""
+msgstr "Project-Id-Version: mailman 1:2.1.8-3\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 17:20+0200\n"
-"PO-Revision-Date: 2006-01-30 16:11+1030\n"
+"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"PO-Revision-Date: 2006-09-19 15:56+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: LocFactoryEditor 1.6b34\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.6fc1\n"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "big5 (Chinese big5)"
-msgstr ""
+msgstr "big5 (big5 Trung)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr ""
+msgstr "ca (Ca-ta-lan)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "cs (Czech)"
-msgstr ""
+msgstr "cs (Séc)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr ""
+msgstr "da (Đan Mạch)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr ""
+msgstr "de (Đức)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr ""
+msgstr "en (Anh)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "es (Spanish)"
-msgstr ""
+msgstr "es (Tây Ban Nha)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "et (Estonian)"
-msgstr ""
+msgstr "et (Éx-tô-ni-a)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "eu (Basque)"
-msgstr ""
+msgstr "eu (Ba-x-quợ)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr ""
+msgstr "fi (Phần Lan)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr ""
+msgstr "fr (Pháp)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "hr (Croatian)"
-msgstr ""
+msgstr "hr (Cợ-rô-a-ti-a)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr ""
+msgstr "hu (Hung-ga-ri)"
 
-#. Type: multiselect
-#. Choices
-#: ../templates:1001
-msgid "ia (Interlingua)"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "it (Italian)"
-msgstr ""
+msgstr "it (Ý)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr ""
+msgstr "ja (Nhật)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "ko (Korean)"
-msgstr ""
+msgstr "ko (Hàn)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "lt (Lithuanian)"
-msgstr ""
+msgstr "lt (Li-tu-a-ni)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr ""
+msgstr "nl (Hoà Lan)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr ""
+msgstr "no (Na Uy)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "pl (Polish)"
-msgstr ""
+msgstr "pl (Ba Lan)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr ""
+msgstr "pt (Bồ Đào Nha)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr ""
+msgstr "pr_BR (Bồ Đào Nha ở Bra-xin)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "ro (Romanian)"
-msgstr ""
+msgstr "ro (Rô-ma-ni)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "ru (Russian)"
-msgstr ""
+msgstr "ru (Nga)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "sl (Slovenian)"
-msgstr ""
+msgstr "sl (Xlô-ven)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr ""
+msgstr "sr (Xéc-bi)"
 
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
-msgstr ""
+msgstr "sv (Thuỵ Điển)"
 
-#. Type: multiselect
-#. Choices
-#: ../templates:1001
-msgid "tr (Turkish)"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
+#.Type: multiselect
+#.Choices
 #: ../templates:1001
 msgid "uk (Ukrainian)"
-msgstr ""
+msgstr "uk (U-cợ-rainh)"
 
-#. Type: multiselect
-#. DefaultChoice
-#. You must NOT translate this string, but you can change its value.
-#. The comment between brackets is used to distinguish this msgid
-#. from the one in the Choices list; you do not have to worry about
-#. them, and have to simply choose a msgstr among the English values
-#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#. Type: select
-#. DefaultChoice
-#. You must NOT translate this string, but you can change its value.
-#. The comment between brackets is used to distinguish this msgid
-#. from the one in the Choices list; you do not have to worry about
-#. them, and have to simply choose a msgstr among the English values
-#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002 ../templates:5001
+#.Type: multiselect
+#.DefaultChoice
+#.You must NOT translate this string, but you can change its value.
+#.The comment between brackets is used to distinguish this msgid
+#.from the one in the Choices list; you do not have to worry about
+#.them, and have to simply choose a msgstr among the English values
+#.listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#.Type: select
+#.DefaultChoice
+#.You must NOT translate this string, but you can change its value.
+#.The comment between brackets is used to distinguish this msgid
+#.from the one in the Choices list; you do not have to worry about
+#.them, and have to simply choose a msgstr among the English values
+#.listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#: ../templates:1002
+#: ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr ""
+msgstr "en (English)"
 
-#. Type: multiselect
-#. Description
+#.Type: multiselect
+#.Description
 #: ../templates:1003
-#, fuzzy
 msgid "Languages to support:"
-msgstr "Bạn có muốn hỗ trợ những ngôn ngữ nào?"
+msgstr "Những ngôn ngữ cần hỗ trợ :"
 
-#. Type: multiselect
-#. Description
+#.Type: multiselect
+#.Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "For each supported language, Mailman stores default language specific texts "
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
-msgstr ""
-"Với mỗi ngôn ngữ được hỗ trợ, trình Mailman của Debian lưu các văn bản mặc "
-"định đặc trưng cho một ngôn ngữ nào đó vào </etc/mailman/MÃ/> (mã này là mã "
-"ngôn ngữ có hai chữ), xử lý chúng giống như tập tin cấu hình (conffile) dùng "
-"« ucf ». Có nghĩa là sẽ dùng khoảng 150kB cho mỗi ngôn ngữ được hỗ trợ trong "
-"hệ thống tập tin gốc."
+msgstr "Với mỗi ngôn ngữ được hỗ trợ, trình Mailman lưu một số văn bản mặc định đặc trưng cho ngôn ngữ vào « /etc/mailman/MÃ/ » (mã này là mã ngôn ngữ có hai chữ), xử lý chúng giống như tập tin cấu hình (conffile) dùng « ucf ». Có nghĩa là chiếm khoảng 150kB cho mỗi ngôn ngữ được hỗ trợ trong hệ thống tập tin gốc."
 
-#. Type: multiselect
-#. Description
+#.Type: multiselect
+#.Description
 #: ../templates:1003
 msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
-msgstr ""
-"Nếu bạn muốn dùng một bộ ngôn ngữ khác lần sau, thì chỉ hãy đơn giản chạy « "
+msgstr "Nếu bạn muốn dùng một bộ ngôn ngữ khác vào lúc sau, chỉ hãy chạy lệnh cấu hình lại gói « "
 "dpkg-reconfigure mailman »."
 
-#. Type: multiselect
-#. Description
+#.Type: multiselect
+#.Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
-msgstr ""
-"GHI CHÚ : các ngôn ngữ được hiệu lực trong hộp thư chung đã có, thì được "
-"hiệu lực lại một cách ép buộc khi bị bỏ chọn. Hơn nữa, trình Mailman cần đến "
-"ít nhất một ngôn ngữ để hiển thị thông điệp."
+msgstr "GHI CHÚ : các ngôn ngữ được hiệu lực trong hộp thư chung đã tồn tại bị hiệu lực lại một cách ép buộc khi bị bỏ chọn. Hơn nữa, trình Mailman cần thiết ít nhất một ngôn ngữ để hiển thị thông điệp."
 
-#. Type: boolean
-#. Description
+#.Type: boolean
+#.Description
 #: ../templates:3001
 msgid "Gate news to mail?"
-msgstr "Chuyển tiếp tin tới hộp?"
+msgstr "Chuyển tiếp tin tức tới thư ?"
 
-#. Type: boolean
-#. Description
+#.Type: boolean
+#.Description
 #: ../templates:3001
-#, fuzzy
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-"Bạn có muốn chuyển tiếp tin tới hộp, tức là gửi mọi thông điệp mà xuất hiện "
-"trong nhóm tin nào, tới một hộp thư chung không?"
+msgstr "Trình Mailman cho bạn có khả năng chuyển tiếp các tin tức tới thư, tức là gởi mọi bài xuất hiện trong nhóm tin Usenet cho hộp thư chung đã chọn."
 
-#. Type: boolean
-#. Description
+#.Type: boolean
+#.Description
 #: ../templates:3001
 msgid "Most people won't need this."
-msgstr "Hầu hết người sẽ không cần tùy chọn này."
+msgstr "Phần lớn người sẽ không cần tùy chọn này."
 
-#. Type: note
-#. Description
+#.Type: note
+#.Description
 #: ../templates:4001
 msgid "Missing site list"
 msgstr "Thiếu danh sách chỗ"
 
-#. Type: note
-#. Description
+#.Type: note
+#.Description
 #: ../templates:4001
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
-msgstr ""
-"Trình Mailman cần đến một danh sách chỗ, để gửi thư nhắc nhở mặt khẩu và thư "
-"quản lý khác. Phải tạo danh sách này trước khi có thể khởi chạy trình "
-"Mailman."
+msgstr "Trình Mailman cần thiết một « danh sách chỗ », để gửi thư nhắc nhở mặt khẩu v.v.. Phải tạo danh sách này trước khi có thể khởi chạy trình Mailman."
 
-#. Type: note
-#. Description
+#.Type: note
+#.Description
 #: ../templates:4001
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
-msgstr ""
-"Để tạo danh sách này, hãy chạy « newlist mailman » (danh sách mới mailman), "
-"và theo những hướng dẫn trên màn hình. Ghi chú rằng bạn cũng cần phải khởi "
-"chạy trình Mailman sau đó, dùng lệnh « /etc/init.d/mailman start »."
+msgstr "Để tạo danh sách này, hãy chạy lệnh « newlist mailman » (danh sách mới mailman), rồi theo những hướng dẫn trên màn hình. Ghi chú rằng bạn cũng cần phải khởi chạy trình Mailman sau đó, dùng lệnh « /etc/init.d/mailman start »."
 
-#. Type: select
-#. Description
+#.Type: select
+#.Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr ""
+msgstr "Ngôn ngữ mặc định cho Mailman:"
 
-#. Type: select
-#. Description
+#.Type: select
+#.Description
 #: ../templates:5002
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
-msgstr ""
-"Trang Mạng sẽ được hiển thị bằng ngôn ngữ này, và thông thường, trình "
-"Mailman sẽ dùng ngôn ngữ này để liên lạc với người dùng."
+msgstr "Trang Mạng sẽ được hiển thị bằng ngôn ngữ này, và thông thường, trình Mailman sẽ dùng ngôn ngữ này để liên lạc với người dùng."
 
-#. Type: note
-#. Description
+#.Type: note
+#.Description
 #: ../templates:6001
 msgid "Old queue files present"
 msgstr "Có một số tập tin hàng đợi cũ"
 
-#. Type: note
-#. Description
+#.Type: note
+#.Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -352,42 +317,27 @@ msgid ""
 " - Let messages come in again.\n"
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
-msgstr ""
-"Thư mục </var/lib/mailman/qfiles> chứa một số tập tin. Nó cần phải là rỗng "
-"để cho phép việc cập nhật hoạt động cho đúng. Nếu những tập tin này chứa "
-"thông điệp chưa được xử lý mà vẫn đúng, bạn có thể cố quản lý chúng bằng "
-"cách:\n"
-" • ngăn cản thông điệp mới vào hàng đợi (trên cấp MTA: sắp hàng các thông "
-"điệp trong hàng đợi của MTA, hoặc từ chối hết với mã kiểu 4xx). Nếu chỗ bạn "
-"có trọng tải mailman hơi thấp, bạn có thể bỏ qua bước này.\n"
-" • Khởi chạy một bộ chạy hàng đợi mailman: « /etc/init.d/mailman start ». "
-"Cho phép nó chạy cho đến khi mọi thông điệp đã được quản lý.\n"
-"\tNếu chưa quản lý hết trong thời gian một cách hợp thời, hãy xem các bản "
-"ghi để cố xác định nguyên nhân.\n"
-"  • Dừng nó : « /etc/init.d/mailman stop ».\n"
-" • Thử lại việc nâng cấp.\n"
-" • Cho phép thông điệp lại vào.\n"
-" • Bạn cũng có thể quyết định đơn giản gỡ bỏ những tập tin này, mà sẽ làm "
-"cho trình Mailman quên (và mất) các thư tương ứng. Như thế thì bạn nên ngờ "
-"nhận được thư từ nhiều người dùng giận."
+msgstr "Thư mục « /var/lib/mailman/qfiles » chứa một số tập tin. Nó cần phải là rỗng để tiến trình cập nhật hoạt động cho đúng. Bạn có thể thử quản lý chúng bằng cách:\n"
+" • ngăn cản thư mới vào hàng đợi (trên cấp MTA)\n"
+" • khởi chạy một bộ chạy hàng đợi mailman: « /etc/init.d/mailman start ». "
+" • cho phép nó chạy cho đến khi mọi thư đã được xử lý.\n"
+"\tNếu chưa xử lý hết một cách hợp thời, hãy xem các bản ghi\n"
+"	để thử xác định nguyên nhân.\n"
+" • dừng nó : « /etc/init.d/mailman stop ».\n"
+" • thử lại việc nâng cấp.\n"
+" • cho phép các thư lại vào.\n"
+"Bạn cũng có thể quyết định đơn giản gỡ bỏ những tập tin này, mà sẽ làm cho trình Mailman quên (và mất) các thư tương ứng."
 
-#. Type: note
-#. Description
+#.Type: note
+#.Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
 "are messages on which Mailman has already abandoned any further processing "
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr ""
-"Nếu những tập tin này tương ứng với thông điệp đã giữ riêng cho người kiểm "
-"tra, bạn phải hoặc xoá bỏ hết hoặc gỡ bỏ hết ra nhóm giữ riêng đó. (Thông "
-"điệp đã giữ riêng cho người kiểm tra [tiếng Anh: shunted message] là thông "
-"điệp mà trình Mailman đã hủy bỏ xử lý vì gặp lỗi, thì giữ nó cho quản trị "
-"xem lại, vì nó thường được gây ra do lỗi Mailman hay trường hợp bất thường "
-"khác nào cần đến người kiểm tra."
+msgstr "Nếu những tập tin này tương ứng với thư đã giữ riêng cho người kiểm tra, bạn phải hoặc xoá bỏ chúng hoặc gỡ bỏ chúng ra nhóm giữ riêng đó. (Thư đã giữ riêng cho người kiểm tra [tiếng Anh: shunted message] là thư mà trình Mailman đã hủy bỏ xử lý vì gặp lỗi, còn giữ nó cho quản trị xem lại. Bạn cũng có khả năng sử dụng « /var/lib/mailman/bin/show_qfiles » để xem nội dung của các hàng đợi."
 
 #~ msgid "big5"
 #~ msgstr "big5"
@@ -480,16 +430,14 @@ msgstr ""
 #~ "The aliases you need for mailman in your MTA's configuration have "
 #~ "changed. Please run /var/lib/mailman/bin/genaliases to see the new "
 #~ "aliases you need."
-#~ msgstr ""
-#~ "Những bí danh bạn cần cho trình Mailman trong cấu hình MTA đã thay đổi. "
+#~ msgstr "Những bí danh bạn cần cho trình Mailman trong cấu hình MTA đã thay đổi. "
 #~ "Hãy chạy tập tin </var/lib/mailman/bin/genaliases> đề xem những bí danh "
 #~ "mới cần thiết."
 
 #~ msgid ""
 #~ "Until you do that, some features will stop working and mails will go out "
 #~ "with an invalid Return-Path."
-#~ msgstr ""
-#~ "Trước khi bạn làm như thế, một số tính năng sẽ không hoạt động, và thư sẽ "
+#~ msgstr "Trước khi bạn làm như thế, một số tính năng sẽ không hoạt động, và thư sẽ "
 #~ "đi ra với dòng đầu Return-Path (đường dẫn trả về) không hợp lệ."
 
 #~ msgid "List passwords broken"
@@ -499,8 +447,7 @@ msgstr ""
 #~ "List admin and moderator passwords are broken by this upgrade. Use /var/"
 #~ "lib/mailman/bin/change_pw to have new ones automatically generated and "
 #~ "emailed to the admins and moderators."
-#~ msgstr ""
-#~ "Mật khẩu của quản trị và điều tiết viên bị hỏng do việc nâng cấp này. Hãy "
+#~ msgstr "Mật khẩu của quản trị và điều tiết viên bị hỏng do việc nâng cấp này. Hãy "
 #~ "dùng </var/lib/mailman/bin/change_pw> để gây ra mật khẩu mới được tạo ra "
 #~ "tự động và được gửi trong thư cho các quản trị và điều tiết viên."
 
