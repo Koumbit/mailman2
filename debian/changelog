@@ -1,3 +1,11 @@
+mailman (1:2.1.9-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Updated patches.
+  * Deleting 03_documentation_source.patch. Integrated upstream.
+
+ -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 16:47:42 +0200
+
 mailman (1:2.1.8-3) UNRELEASED; urgency=low
 
   [ Paul Wise ]
