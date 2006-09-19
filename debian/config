@@ -44,13 +44,7 @@ used_languages="${RET}"
 db_fget mailman/used_languages scanned || true
 scanned="${RET}"
 
-if [ ! -z "$2" ] && dpkg --compare-versions $2 lt 2.1 ; then
-  # list_lists will fail when upgrading from pre 2.1; but with those
-  # versions not supporting i18n, english was the only used language.
-  db_set  mailman/site_languages "en"
-  db_set  mailman/used_languages "en"
-  db_fset mailman/used_languages scanned false
-elif  [ ! -x "/usr/sbin/list_lists" ] ; then
+if  [ ! -x "/usr/sbin/list_lists" ] ; then
   # For 1st time installers there is no used language.
   db_set  mailman/site_languages "en"
   db_set  mailman/used_languages ""
