@@ -123,12 +123,12 @@ binary-arch:	checkroot build
 		do dh_link usr/lib/$(package)/bin/$$bin usr/sbin/$$bin; done
 	mv debian/mailman/usr/sbin/arch debian/mailman/usr/sbin/mmarch
 	dh_installman
-	dh_installinit
+	dh_installinit --name=mailman
 	dh_installdebconf
 	dh_strip
 	dh_compress
 	dh_fixperms
-	chown -R root:root debian/mailman
+	chown -R root:root debian/mailman debian/mailman-common
 	chown -R root:list \
 		debian/mailman/{etc/$(package),var/lib/$(package),usr/lib/{$(package),cgi-bin/$(package)}}
 	chown list:list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}

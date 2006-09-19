@@ -1,1 +1,2 @@
 debian/contrib/apache.conf	/etc/mailman
+debian/README.Exim4.Debian	/usr/share/doc/mailman
