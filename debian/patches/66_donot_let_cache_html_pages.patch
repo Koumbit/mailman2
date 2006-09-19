@@ -1,12 +1,9 @@
-Patch: 66_donot_let_cache_html_pages.patch
-Author: László 'GCS' Böszörményi <gcs@lsc.hu>
-Add 'Pragma: no-cache' to HTML page outputs, so proxies like Squid
-do not cache them, and changes become visible immediately.
+Patch to prevent browser from caching pages.
 Index: Mailman/htmlformat.py
 ===================================================================
---- Mailman/htmlformat.py.orig	2006-08-15 15:14:43.000000000 +0800
-+++ Mailman/htmlformat.py	2006-08-15 15:14:51.000000000 +0800
-@@ -299,7 +299,8 @@
+--- Mailman/htmlformat.py.orig	2006-09-19 13:43:51.000000000 +0200
++++ Mailman/htmlformat.py	2006-09-19 15:47:16.000000000 +0200
+@@ -300,7 +300,8 @@
          charset = 'us-ascii'
          if self.language and Utils.IsLanguage(self.language):
              charset = Utils.GetCharSet(self.language)

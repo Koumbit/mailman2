@@ -4,23 +4,24 @@ listinfo.html does not use proper HTML tag nesting, and thus
 sensible browsers like iCal may choke on that -> fix that.
 Index: templates/ca/listinfo.html
 ===================================================================
---- templates/ca/listinfo.html.orig	2006-08-15 15:12:13.000000000 +0800
-+++ templates/ca/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/ca/listinfo.html.orig	2003-11-01 16:51:48.000000000 +0100
++++ templates/ca/listinfo.html	2006-09-19 15:44:40.000000000 +0200
 @@ -53,8 +53,9 @@
        </TR>
        
    <tr> 
 -    <td colspan="2">Per subscriure's ompli el seg&uuml;ent formulari. <MM-List-Subscription-Msg> 
+-      <ul>
 +    <td colspan="2">Per subscriure's ompli el seg&uuml;ent formulari.
-       <ul>
-+	  <MM-List-Subscription-Msg>
++	  <ul>
++	    <MM-List-Subscription-Msg>
          <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
            <TR> 
 Index: templates/cs/listinfo.html
 ===================================================================
---- templates/cs/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/cs/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/cs/listinfo.html.orig	2002-12-13 19:13:46.000000000 +0100
++++ templates/cs/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -33,8 +34,8 @@ Index: templates/cs/listinfo.html
  		<TR>
 Index: templates/da/listinfo.html
 ===================================================================
---- templates/da/listinfo.html.orig	2006-08-15 15:12:13.000000000 +0800
-+++ templates/da/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/da/listinfo.html.orig	2004-11-12 01:09:48.000000000 +0100
++++ templates/da/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -47,8 +48,8 @@ Index: templates/da/listinfo.html
  		<TR>
 Index: templates/de/listinfo.html
 ===================================================================
---- templates/de/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/de/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/de/listinfo.html.orig	2004-01-06 10:58:28.000000000 +0100
++++ templates/de/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Abonnieren Sie <MM-List-Name>, indem Sie das folgende Formular
@@ -61,8 +62,8 @@ Index: templates/de/listinfo.html
  		<TR>
 Index: templates/en/listinfo.html
 ===================================================================
---- templates/en/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/en/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/en/listinfo.html.orig	2002-11-16 07:10:36.000000000 +0100
++++ templates/en/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Subscribe to <MM-List-Name> by filling out the following
@@ -75,8 +76,8 @@ Index: templates/en/listinfo.html
  		<TR>
 Index: templates/es/listinfo.html
 ===================================================================
---- templates/es/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/es/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/es/listinfo.html.orig	2005-06-08 23:33:19.000000000 +0200
++++ templates/es/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -64,8 +64,8 @@
  	  <P>
  	    Suscr&iacute;base a <MM-List-Name> rellenando los datos del
@@ -89,8 +90,8 @@ Index: templates/es/listinfo.html
  		<TR>
 Index: templates/et/listinfo.html
 ===================================================================
---- templates/et/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/et/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/et/listinfo.html.orig	2004-11-03 22:46:58.000000000 +0100
++++ templates/et/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -58,8 +58,8 @@
  	<td colspan="2">
  	  <P>
@@ -101,24 +102,10 @@ Index: templates/et/listinfo.html
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-Index: templates/eu/listinfo.html
-===================================================================
---- templates/eu/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/eu/listinfo.html	2006-08-15 15:14:47.000000000 +0800
-@@ -62,8 +62,8 @@
- 	<td colspan="2">
- 	  <P>
- 	    <MM-List-Name> posta zerrendan izena eman, ondoko eskaera-orria betez.
--	  <MM-List-Subscription-Msg>
- 	  <ul>
-+	  <MM-List-Subscription-Msg>
- 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
- 		WIDTH="70%" HEIGHT= "112">
- 		<TR>
 Index: templates/fi/listinfo.html
 ===================================================================
---- templates/fi/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/fi/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/fi/listinfo.html.orig	2002-04-02 07:43:47.000000000 +0200
++++ templates/fi/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -131,36 +118,22 @@ Index: templates/fi/listinfo.html
  		<TR>
 Index: templates/fr/listinfo.html
 ===================================================================
---- templates/fr/listinfo.html.orig	2006-08-15 15:12:14.000000000 +0800
-+++ templates/fr/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/fr/listinfo.html.orig	2003-09-26 05:36:56.000000000 +0200
++++ templates/fr/listinfo.html	2006-09-19 15:44:05.000000000 +0200
 @@ -61,8 +61,8 @@
        <p> 	    
  	Abonnez-vous &agrave; <MM-List-Name> en remplissant le formulaire 
  	      suivant. 	  
 -	<MM-List-Subscription-Msg> 	 
        <ul>    
-+	<MM-List-Subscription-Msg> 	 
++	<MM-List-Subscription-Msg>
          <table border="0" cellspacing="2" cellpadding="2" width="70%"
   height="112">
              <tr>
-Index: templates/hr/listinfo.html
-===================================================================
---- templates/hr/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/hr/listinfo.html	2006-08-15 15:14:47.000000000 +0800
-@@ -63,8 +63,8 @@
- 	  <P>
- 	    Pretplatite se na <MM-List-Name> ispunjavanjem sljede�e 
- 	      forme.
--	  <MM-List-Subscription-Msg>
- 	  <ul>
-+	  <MM-List-Subscription-Msg>
- 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
- 		WIDTH="70%" HEIGHT= "112">
- 		<TR>
 Index: templates/hu/listinfo.html
 ===================================================================
---- templates/hu/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/hu/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/hu/listinfo.html.orig	2002-12-20 05:28:00.000000000 +0100
++++ templates/hu/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -59,11 +59,10 @@
  	<td colspan="2">
  	  <P>
@@ -176,8 +149,8 @@ Index: templates/hu/listinfo.html
  		<TR>
 Index: templates/it/listinfo.html
 ===================================================================
---- templates/it/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/it/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/it/listinfo.html.orig	2002-11-25 21:29:47.000000000 +0100
++++ templates/it/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -190,8 +163,8 @@ Index: templates/it/listinfo.html
  		<TR>
 Index: templates/ja/listinfo.html
 ===================================================================
---- templates/ja/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/ja/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/ja/listinfo.html.orig	2004-01-23 01:58:03.000000000 +0100
++++ templates/ja/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -65,8 +65,8 @@
  	  <P>
  	    <MM-List-Name> �ؤ������, 
@@ -204,8 +177,8 @@ Index: templates/ja/listinfo.html
  		<TR>
 Index: templates/ko/listinfo.html
 ===================================================================
---- templates/ko/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/ko/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/ko/listinfo.html.orig	2002-03-28 19:32:11.000000000 +0100
++++ templates/ko/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -218,8 +191,8 @@ Index: templates/ko/listinfo.html
  		<TR>
 Index: templates/lt/listinfo.html
 ===================================================================
---- templates/lt/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/lt/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/lt/listinfo.html.orig	2002-12-26 20:48:42.000000000 +0100
++++ templates/lt/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -61,8 +61,8 @@
  	<td colspan="2">
  	  <P>
@@ -230,24 +203,10 @@ Index: templates/lt/listinfo.html
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-Index: templates/nl/listinfo.html
-===================================================================
---- templates/nl/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/nl/listinfo.html	2006-08-15 15:14:47.000000000 +0800
-@@ -57,8 +57,8 @@
- 	<td colspan="2">
- 	  <P>
- 	    Om je aan te melden op de <MM-List-Name> Mailing lijst vul het onderstaande formulier in.
--	  <MM-List-Subscription-Msg>
- 	  <ul>
-+	  <MM-List-Subscription-Msg>
- 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
- 		WIDTH="70%" HEIGHT= "112">
- 		<TR>
 Index: templates/no/listinfo.html
 ===================================================================
---- templates/no/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/no/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/no/listinfo.html.orig	2002-11-19 10:20:43.000000000 +0100
++++ templates/no/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -260,8 +219,8 @@ Index: templates/no/listinfo.html
  		<TR>
 Index: templates/pl/listinfo.html
 ===================================================================
---- templates/pl/listinfo.html.orig	2006-08-15 15:12:15.000000000 +0800
-+++ templates/pl/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/pl/listinfo.html.orig	2003-12-30 19:10:06.000000000 +0100
++++ templates/pl/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -65,8 +65,8 @@
            W celu zapisania si� na list� <MM-List-Name> nale�y wype�ni� 
            poni�szy formularz.
@@ -274,8 +233,8 @@ Index: templates/pl/listinfo.html
  		<TR>
 Index: templates/pt/listinfo.html
 ===================================================================
---- templates/pt/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/pt/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/pt/listinfo.html.orig	2003-04-09 07:09:57.000000000 +0200
++++ templates/pt/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	<td colspan="2">
  	  <P>
@@ -288,8 +247,8 @@ Index: templates/pt/listinfo.html
  		<TR>
 Index: templates/pt_BR/listinfo.html
 ===================================================================
---- templates/pt_BR/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/pt_BR/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/pt_BR/listinfo.html.orig	2004-11-03 21:33:27.000000000 +0100
++++ templates/pt_BR/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -64,8 +64,8 @@
  	  <P>
  	    Para se inscrever na lista <MM-List-Name>, preencha o seguinte
@@ -302,8 +261,8 @@ Index: templates/pt_BR/listinfo.html
  		<TR>
 Index: templates/ro/listinfo.html
 ===================================================================
---- templates/ro/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/ro/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/ro/listinfo.html.orig	2003-12-13 17:35:54.000000000 +0100
++++ templates/ro/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -60,8 +60,8 @@
  	  <P>
  	    V� pute�i abona la lista de discu�ii <MM-List-Name> complet�nd formularul
@@ -316,8 +275,8 @@ Index: templates/ro/listinfo.html
  		<TR>
 Index: templates/ru/listinfo.html
 ===================================================================
---- templates/ru/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/ru/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/ru/listinfo.html.orig	2003-09-22 05:59:48.000000000 +0200
++++ templates/ru/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -51,8 +51,8 @@
          <td colspan="2">
            <P>
@@ -330,8 +289,8 @@ Index: templates/ru/listinfo.html
                  <TR>
 Index: templates/sl/listinfo.html
 ===================================================================
---- templates/sl/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/sl/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/sl/listinfo.html.orig	2003-10-04 04:57:36.000000000 +0200
++++ templates/sl/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    Na seznam <MM-List-Name> se prijavite tako, da izpolnite
@@ -342,40 +301,10 @@ Index: templates/sl/listinfo.html
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-Index: templates/sr/listinfo.html
-===================================================================
---- templates/sr/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/sr/listinfo.html	2006-08-15 15:14:47.000000000 +0800
-@@ -52,8 +52,9 @@
-       </TR>
-       <tr>
- 	<td colspan="2">
--	  <P> Укључујете се попуњавајући следећи формулар:<MM-List-Subscription-Msg> 
-+	  <P> Укључујете се попуњавајући следећи формулар:
-       <ul>
-+	  <MM-List-Subscription-Msg>
-         <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
- 		WIDTH="70%" HEIGHT= "112">
-           <TR> 
-Index: templates/sv/listinfo.html
-===================================================================
---- templates/sv/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/sv/listinfo.html	2006-08-15 15:14:47.000000000 +0800
-@@ -56,8 +56,9 @@
-       </TR>
-       <tr>
- 	<td colspan="2">
--	  <P>Du kan anm&auml;la dig till <MM-List-Name> genom att fylla i n&ouml;dv&auml;ndig information nedan. 	  <MM-List-Subscription-Msg>
-+	  <P>Du kan anm&auml;la dig till <MM-List-Name> genom att fylla i n&ouml;dv&auml;ndig information nedan.
- 	  <ul>
-+	<MM-List-Subscription-Msg>
- 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
- 		WIDTH="70%" HEIGHT= "112">
- 		<TR>
 Index: templates/tr/listinfo.html
 ===================================================================
---- templates/tr/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/tr/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/tr/listinfo.html.orig	2004-04-26 18:50:11.000000000 +0200
++++ templates/tr/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -63,8 +63,8 @@
  	  <P>
  	    <MM-List-Name> listesine a�a��daki formu doldurarak �ye
@@ -388,8 +317,8 @@ Index: templates/tr/listinfo.html
  		<TR>
 Index: templates/uk/listinfo.html
 ===================================================================
---- templates/uk/listinfo.html.orig	2006-08-15 15:12:16.000000000 +0800
-+++ templates/uk/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/uk/listinfo.html.orig	2005-03-02 01:27:09.000000000 +0100
++++ templates/uk/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -62,8 +62,8 @@
  	<td colspan="2">
  	  <P>
@@ -402,8 +331,8 @@ Index: templates/uk/listinfo.html
  		<TR>
 Index: templates/zh_CN/listinfo.html
 ===================================================================
---- templates/zh_CN/listinfo.html.orig	2006-08-15 15:12:17.000000000 +0800
-+++ templates/zh_CN/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/zh_CN/listinfo.html.orig	2005-05-14 06:13:41.000000000 +0200
++++ templates/zh_CN/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -60,8 +60,8 @@
  	<td colspan="2">
  	  <P>
@@ -416,8 +345,8 @@ Index: templates/zh_CN/listinfo.html
  		<TR>
 Index: templates/zh_TW/listinfo.html
 ===================================================================
---- templates/zh_TW/listinfo.html.orig	2006-08-15 15:12:17.000000000 +0800
-+++ templates/zh_TW/listinfo.html	2006-08-15 15:14:47.000000000 +0800
+--- templates/zh_TW/listinfo.html.orig	2005-03-23 03:04:15.000000000 +0100
++++ templates/zh_TW/listinfo.html	2006-09-19 14:04:57.000000000 +0200
 @@ -60,8 +60,8 @@
  	<td colspan="2">
  	  <P>
@@ -425,6 +354,85 @@ Index: templates/zh_TW/listinfo.html
 -	  <MM-List-Subscription-Msg>
  	  <ul>
 +	  <MM-List-Subscription-Msg>
+ 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
+ 		WIDTH="70%" HEIGHT= "112">
+ 		<TR>
+Index: templates/eu/listinfo.html
+===================================================================
+--- templates/eu/listinfo.html.orig	2003-12-01 17:07:41.000000000 +0100
++++ templates/eu/listinfo.html	2006-09-19 15:27:32.000000000 +0200
+@@ -62,8 +62,8 @@
+ 	<td colspan="2">
+ 	  <P>
+ 	    <MM-List-Name> posta zerrendan izena eman, ondoko eskaera-orria betez.
+-	  <MM-List-Subscription-Msg>
+ 	  <ul>
++	      <MM-List-Subscription-Msg>
+ 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
+ 		WIDTH="70%" HEIGHT= "112">
+ 		<TR>
+Index: templates/hr/listinfo.html
+===================================================================
+--- templates/hr/listinfo.html.orig	2004-02-17 23:27:49.000000000 +0100
++++ templates/hr/listinfo.html	2006-09-19 15:28:12.000000000 +0200
+@@ -63,8 +63,8 @@
+ 	  <P>
+ 	    Pretplatite se na <MM-List-Name> ispunjavanjem sljede�e 
+ 	      forme.
+-	  <MM-List-Subscription-Msg>
+ 	  <ul>
++	      <MM-List-Subscription-Msg>
+ 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
+ 		WIDTH="70%" HEIGHT= "112">
+ 		<TR>
+Index: templates/nl/listinfo.html
+===================================================================
+--- templates/nl/listinfo.html.orig	2006-07-21 07:46:44.000000000 +0200
++++ templates/nl/listinfo.html	2006-09-19 15:40:55.000000000 +0200
+@@ -59,8 +59,8 @@
+ 	<td colspan="2">
+ 	  <P>
+ 	    Om u aan te melden bij <MM-List-Name> vult u onderstaand formulier in.
+-	  <MM-List-Subscription-Msg>
+ 	  <ul>
++	      <MM-List-Subscription-Msg>
+ 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
+ 		WIDTH="70%" HEIGHT= "112">
+ 		<TR>
+@@ -132,4 +132,4 @@
+   </table>
+ <MM-Mailman-Footer>
+ </BODY>
+-</HTML>
+\ No newline at end of file
++</HTML>
+Index: templates/sr/listinfo.html
+===================================================================
+--- templates/sr/listinfo.html.orig	2003-09-22 05:52:35.000000000 +0200
++++ templates/sr/listinfo.html	2006-09-19 15:45:03.000000000 +0200
+@@ -52,8 +52,9 @@
+       </TR>
+       <tr>
+ 	<td colspan="2">
+-	  <P> Укључујете се попуњавајући следећи формулар:<MM-List-Subscription-Msg> 
++	  <P> Укључујете се попуњавајући следећи формулар:
+       <ul>
++	    <MM-List-Subscription-Msg>
+         <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
+ 		WIDTH="70%" HEIGHT= "112">
+           <TR> 
+Index: templates/sv/listinfo.html
+===================================================================
+--- templates/sv/listinfo.html.orig	2002-12-24 15:07:17.000000000 +0100
++++ templates/sv/listinfo.html	2006-09-19 15:43:00.000000000 +0200
+@@ -56,8 +56,9 @@
+       </TR>
+       <tr>
+ 	<td colspan="2">
+-	  <P>Du kan anm&auml;la dig till <MM-List-Name> genom att fylla i n&ouml;dv&auml;ndig information nedan. 	  <MM-List-Subscription-Msg>
++	  <P>Du kan anm&auml;la dig till <MM-List-Name> genom att fylla i n&ouml;dv&auml;ndig information nedan.
+ 	  <ul>
++	      <MM-List-Subscription-Msg>
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
