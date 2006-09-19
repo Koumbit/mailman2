@@ -113,7 +113,7 @@ binary-arch:	checkroot build
 	# link it back to /var/lib/mailman/locks
 	dh_link var/lock/mailman var/lib/$(package)/locks
 
-	dh_installlogrotate
+	dh_installlogrotate --name=mailman
 
 	install -m 0644 debian/mm_cfg.py debian/mailman-common/usr/lib/mailman/Mailman/mm_cfg.py.dist
 
