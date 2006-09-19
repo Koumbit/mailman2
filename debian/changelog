@@ -31,8 +31,9 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
 
   [ Hector Garcia ]
   * Updated vi.po. Translated by Clytie Siddall. (Closes: #388202)
+  * Updated ja.po. Translated by Kenshi Muto. (Closes: #388206)
 
- -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 13:09:54 +0200
+ -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 13:11:21 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 

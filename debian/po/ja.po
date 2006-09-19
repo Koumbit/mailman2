@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 17:20+0200\n"
-"PO-Revision-Date: 2006-02-07 18:12+0900\n"
+"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"PO-Revision-Date: 2006-09-19 16:42+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,181 +27,169 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "big5 (Chinese big5)"
-msgstr ""
+msgstr "big5 (中国語 big5)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr ""
+msgstr "ca (カタルニア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "cs (Czech)"
-msgstr ""
+msgstr "cs (チェコ語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr ""
+msgstr "da (デンマーク語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr ""
+msgstr "de (ドイツ語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr ""
+msgstr "en (英語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "es (Spanish)"
-msgstr ""
+msgstr "es (スペイン語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "et (Estonian)"
-msgstr ""
+msgstr "et (エストニア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "eu (Basque)"
-msgstr ""
+msgstr "eu (バスク語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr ""
+msgstr "fi (フィンランド語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr ""
+msgstr "fr (フランス語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hr (Croatian)"
-msgstr ""
+msgstr "hr (クロアチア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../templates:1001
-msgid "ia (Interlingua)"
-msgstr ""
+msgstr "hu (ハンガリー語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "it (Italian)"
-msgstr ""
+msgstr "it (イタリア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr ""
+msgstr "ja (日本語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ko (Korean)"
-msgstr ""
+msgstr "ko (韓国語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "lt (Lithuanian)"
-msgstr ""
+msgstr "lt (リトアニア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr ""
+msgstr "nl (オランダ語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr ""
+msgstr "no (ノルウェー語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pl (Polish)"
-msgstr ""
+msgstr "pl (ポーランド語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr ""
+msgstr "pt (ポルトガル語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr ""
+msgstr "pt_BR (ブラジルポルトガル語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ro (Romanian)"
-msgstr ""
+msgstr "ro (ルーマニア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ru (Russian)"
-msgstr ""
+msgstr "ru (ロシア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sl (Slovenian)"
-msgstr ""
+msgstr "sl (スロヴェニア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr ""
+msgstr "sr (セルビア語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
-msgstr ""
-
-#. Type: multiselect
-#. Choices
-#: ../templates:1001
-msgid "tr (Turkish)"
-msgstr ""
+msgstr "sv (スウェーデン語)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "uk (Ukrainian)"
-msgstr ""
+msgstr "uk (ウクライナ語)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -219,29 +207,23 @@ msgstr ""
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr ""
+msgstr "ja (Japanese)"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid "Languages to support:"
-msgstr "どの言語をサポートしますか?"
+msgstr "サポートする言語:"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "For each supported language, Mailman stores default language specific texts "
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
-msgstr ""
-"サポートされている各言語のために、Debian Mailman はデフォルト言語固有のテキス"
-"トを /etc/mailman/言語/ に保有しています。このテキストは、ucf のヘルプなどに"
-"使われる設定ファイルを提供します。各サポート言語ごとにおよそ 150kB、ルート"
-"ファイルシステム上のスペースを費します。"
+msgstr "サポートされている各言語のために、Mailman はデフォルト言語固有のテキストを /etc/mailman/言語/ に保有しています。このテキストは、ucf のヘルプなどに使われる設定ファイルを提供します。各サポート言語ごとにおよそ 150kB、ルートファイルシステム上のスペースを費します。"
 
 #. Type: multiselect
 #. Description
@@ -256,15 +238,11 @@ msgstr ""
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
-msgstr ""
-"注意: 既存のメーリングリストで選択されている言語は、選択解除されたときに強制"
-"的に再度有効にされます。また、mailman は、そのメッセージを表示するために少な"
-"くとも 1 つの言語を必要とします。"
+msgstr "注意: 既存のメーリングリストで有効になっている言語は、選択解除されたときに強制的に再度有効にされます。また、mailman は、そのメッセージを表示するために少なくとも 1 つの言語を必要とします。"
 
 #. Type: boolean
 #. Description
@@ -275,13 +253,10 @@ msgstr "ニュースからメールへゲートしますか?"
 #. Type: boolean
 #. Description
 #: ../templates:3001
-#, fuzzy
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-"ニュースからメールにゲートしますか (つまり、ニュースグループに投稿されたすべ"
-"てのメッセージをメーリングリストに送ります)。"
+msgstr "Mailman はニュースをメールにゲート、つまり、Usenet ニュースグループに投稿されたすべてのメッセージをメーリングリストに送ることができます。"
 
 #. Type: boolean
 #. Description
@@ -323,7 +298,7 @@ msgstr ""
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr ""
+msgstr "Mailman のデフォルト言語"
 
 #. Type: select
 #. Description
@@ -344,7 +319,6 @@ msgstr "古いキューファイルが存在します"
 #. Type: note
 #. Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -359,153 +333,24 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"ディレクトリ /var/lib/mailman/qfiles がファイルを含んでいます。更新作業を正し"
-"く行うために、この中を空にする必要があります。これらのファイルがまだ処理され"
-"ていないものの正しいメッセージである場合、次のようにこの処理を試みることがで"
-"きます。- キューに新しいメッセージが入ってくるのを停止する (MTA レベルで:\n"
-" MTA のキューにこれらをキューするか、4xx コードを付けてこれらを拒否する)。\n"
-" あなたのサイトの mailman トラフィックが比較的少ないなら、このステップを\n"
-" 省略できる。\n"
-"- mailman キューランナーを起動する: /etc/init.d/mailman start - すべてのメッ"
-"セージが処理されるまで実行させておく。\n"
-" いつになっても処理が終わらない場合には、どのような問題が発生し解決したら\n"
-" よいかを理解するためにログを参照する。\n"
-"- キューランナーを停止する: /etc/init.d/mailman stop - 更新を再試行する - 再"
-"びメッセージをやってこさせる。Mailman に対応するメールを忘れさせる (そして失"
-"わせる)ことになりますが、単にファイルを削除すると決めることもできます (ユー"
-"ザーは怒るかもしれませんが)。"
+"ディレクトリ /var/lib/mailman/qfiles がファイルを含んでいます。更新作業を正しく行うために、この中を空にする必要があります。次のようにこの処理を試みることができます。\n"
+" - キューに新しいメッセージが入ってくるのを停止する (MTA レベルで)。\n"
+" - mailman キューランナーを起動する: /etc/init.d/mailman start\n"
+" - すべてのメッセージが処理されるまで実行させておく。\n"
+"   いつになっても処理が終わらない場合には、どのような問題が発生し解決したら\n"
+"   よいかを理解するためにログを参照する。\n"
+" - キューランナーを停止する: /etc/init.d/mailman stop\n"
+" - 更新を再試行する。\n"
+" - 再びメッセージをやってこさせる。\n"
+"Mailman に対応するメールを忘れさせる (そして失わせる)ことになりますが、単にファイルを削除すると決めることもできます。"
 
 #. Type: note
 #. Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
 "are messages on which Mailman has already abandoned any further processing "
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr ""
-"これらのファイルが分路されたメッセージに関連付けられている場合、両方を削除す"
-"るかあるいは主路に戻すかする必要があります。分路されたメッセージは、Mailman "
-"がエラー状態のためにすでにその後の処理を放棄してしまったメッセージです。これ"
-"は、Mailman のバグあるいはその他の目視が必要な異常な状況が元で通常発生したも"
-"のとして、管理者のレビュー用に保持されます。"
-
-#~ msgid "big5"
-#~ msgstr "big5"
-
-#~ msgid "ca"
-#~ msgstr "ca"
-
-#~ msgid "cs"
-#~ msgstr "cs"
-
-#~ msgid "da"
-#~ msgstr "da"
-
-#~ msgid "de"
-#~ msgstr "de"
-
-#~ msgid "en"
-#~ msgstr "en"
-
-#~ msgid "es"
-#~ msgstr "es"
-
-#~ msgid "et"
-#~ msgstr "et"
-
-#~ msgid "eu"
-#~ msgstr "eu"
-
-#~ msgid "fi"
-#~ msgstr "fi"
-
-#~ msgid "fr"
-#~ msgstr "fr"
-
-#~ msgid "hr"
-#~ msgstr "hr"
-
-#~ msgid "hu"
-#~ msgstr "hu"
-
-#~ msgid "it"
-#~ msgstr "it"
-
-#~ msgid "ja"
-#~ msgstr "ja"
-
-#~ msgid "ko"
-#~ msgstr "ko"
-
-#~ msgid "lt"
-#~ msgstr "lt"
-
-#~ msgid "nl"
-#~ msgstr "nl"
-
-#~ msgid "no"
-#~ msgstr "no"
-
-#~ msgid "pl"
-#~ msgstr "pl"
-
-#~ msgid "pt"
-#~ msgstr "pt"
-
-#~ msgid "pt_BR"
-#~ msgstr "pt_BR"
-
-#~ msgid "ro"
-#~ msgstr "ro"
-
-#~ msgid "ru"
-#~ msgstr "ru"
-
-#~ msgid "sl"
-#~ msgstr "sl"
-
-#~ msgid "sr"
-#~ msgstr "sr"
-
-#~ msgid "sv"
-#~ msgstr "sv"
-
-#~ msgid "uk"
-#~ msgstr "uk"
-
-#~ msgid "Administrator must update aliases"
-#~ msgstr "管理者はエイリアスを更新しなければなりません"
-
-#~ msgid ""
-#~ "The aliases you need for mailman in your MTA's configuration have "
-#~ "changed. Please run /var/lib/mailman/bin/genaliases to see the new "
-#~ "aliases you need."
-#~ msgstr ""
-#~ "あなたの MTA の設定にあった mailman に必要なエイリアスが変更されました。必"
-#~ "要な新しいエイリアスを調べるために /var/lib/mailman/bin/genaliases を実行"
-#~ "してください。"
-
-#~ msgid ""
-#~ "Until you do that, some features will stop working and mails will go out "
-#~ "with an invalid Return-Path."
-#~ msgstr ""
-#~ "これを行うまで、いくつかの機能は動作せず、メールは無効な Return-Path に送"
-#~ "られます。"
-
-#~ msgid "List passwords broken"
-#~ msgstr "リストのパスワードは壊れました"
-
-#~ msgid ""
-#~ "List admin and moderator passwords are broken by this upgrade. Use /var/"
-#~ "lib/mailman/bin/change_pw to have new ones automatically generated and "
-#~ "emailed to the admins and moderators."
-#~ msgstr ""
-#~ "リスト管理者およびモデレータのパスワードがこの更新で壊れました。新しいパス"
-#~ "ワードを自動生成して管理者およびモデレータにメールするために /var/lib/"
-#~ "mailman/bin/change_pw を使ってください。"
-
-#~ msgid "Which language should be the default for Mailman?"
-#~ msgstr "どの言語を Mailman のデフォルトにしたいですか?"
+msgstr "これらのファイルが分路されたメッセージに関連付けられている場合、両方を削除するかあるいは (/var/lib/mailman/bin/unshunt で) 主路に戻すかする必要があります。分路されたメッセージは、Mailman がエラー状態のためにすでにその後の処理を放棄してしまったメッセージですが、管理者のレビュー用に保持されます。キューの内容の調査には /var/lib/mailman/bin/show_qfiles を使用できます。"
