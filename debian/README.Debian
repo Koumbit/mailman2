@@ -46,17 +46,6 @@ if the list exists and the password is correct, it prints
 It is needed for integration with savannah (a sourceforge fork, which
 runs savannah.gnu.org).
 
-Python Bug
-----------
-Debian's Python policy has a problem where it gives an application no
-way to recompile its .py files when a new python version is
-installed.  This means that if you install Mailman with python 1.5.2,
-then upgrade to Python 2.1, the .py files will not be recompiled.
-This will cause performance degradation, if you experience this
-problem a "dpkg-reconfigure mailman" will fix this problem.  You
-should stop Mailman before running dpkg-reconfigure.  I am sorry, but
-there is no better way until Debian's Python policy is fixed.
-
 Qmail
 -----
 For those using qmail, please see the comments in
