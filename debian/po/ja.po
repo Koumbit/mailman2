@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 15:22+0200\n"
+"POT-Creation-Date: 2006-09-18 17:20+0200\n"
 "PO-Revision-Date: 2006-09-19 16:42+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -104,6 +104,13 @@ msgstr "hu (ハンガリー語)"
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+#, fuzzy
+msgid "ia (Interlingua)"
+msgstr "it (イタリア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
 msgid "it (Italian)"
 msgstr "it (イタリア語)"
 
@@ -188,6 +195,12 @@ msgstr "sv (スウェーデン語)"
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+msgid "tr (Turkish)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
 msgid "uk (Ukrainian)"
 msgstr "uk (ウクライナ語)"
 
@@ -223,7 +236,11 @@ msgid ""
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
-msgstr "サポートされている各言語のために、Mailman はデフォルト言語固有のテキストを /etc/mailman/言語/ に保有しています。このテキストは、ucf のヘルプなどに使われる設定ファイルを提供します。各サポート言語ごとにおよそ 150kB、ルートファイルシステム上のスペースを費します。"
+msgstr ""
+"サポートされている各言語のために、Mailman はデフォルト言語固有のテキストを /"
+"etc/mailman/言語/ に保有しています。このテキストは、ucf のヘルプなどに使われ"
+"る設定ファイルを提供します。各サポート言語ごとにおよそ 150kB、ルートファイル"
+"システム上のスペースを費します。"
 
 #. Type: multiselect
 #. Description
@@ -242,7 +259,10 @@ msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
-msgstr "注意: 既存のメーリングリストで有効になっている言語は、選択解除されたときに強制的に再度有効にされます。また、mailman は、そのメッセージを表示するために少なくとも 1 つの言語を必要とします。"
+msgstr ""
+"注意: 既存のメーリングリストで有効になっている言語は、選択解除されたときに強"
+"制的に再度有効にされます。また、mailman は、そのメッセージを表示するために少"
+"なくとも 1 つの言語を必要とします。"
 
 #. Type: boolean
 #. Description
@@ -256,7 +276,9 @@ msgstr "ニュースからメールへゲートしますか?"
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
-msgstr "Mailman はニュースをメールにゲート、つまり、Usenet ニュースグループに投稿されたすべてのメッセージをメーリングリストに送ることができます。"
+msgstr ""
+"Mailman はニュースをメールにゲート、つまり、Usenet ニュースグループに投稿され"
+"たすべてのメッセージをメーリングリストに送ることができます。"
 
 #. Type: boolean
 #. Description
@@ -333,7 +355,9 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"ディレクトリ /var/lib/mailman/qfiles がファイルを含んでいます。更新作業を正しく行うために、この中を空にする必要があります。次のようにこの処理を試みることができます。\n"
+"ディレクトリ /var/lib/mailman/qfiles がファイルを含んでいます。更新作業を正し"
+"く行うために、この中を空にする必要があります。次のようにこの処理を試みること"
+"ができます。\n"
 " - キューに新しいメッセージが入ってくるのを停止する (MTA レベルで)。\n"
 " - mailman キューランナーを起動する: /etc/init.d/mailman start\n"
 " - すべてのメッセージが処理されるまで実行させておく。\n"
@@ -342,7 +366,8 @@ msgstr ""
 " - キューランナーを停止する: /etc/init.d/mailman stop\n"
 " - 更新を再試行する。\n"
 " - 再びメッセージをやってこさせる。\n"
-"Mailman に対応するメールを忘れさせる (そして失わせる)ことになりますが、単にファイルを削除すると決めることもできます。"
+"Mailman に対応するメールを忘れさせる (そして失わせる)ことになりますが、単に"
+"ファイルを削除すると決めることもできます。"
 
 #. Type: note
 #. Description
@@ -353,4 +378,9 @@ msgid ""
 "are messages on which Mailman has already abandoned any further processing "
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr "これらのファイルが分路されたメッセージに関連付けられている場合、両方を削除するかあるいは (/var/lib/mailman/bin/unshunt で) 主路に戻すかする必要があります。分路されたメッセージは、Mailman がエラー状態のためにすでにその後の処理を放棄してしまったメッセージですが、管理者のレビュー用に保持されます。キューの内容の調査には /var/lib/mailman/bin/show_qfiles を使用できます。"
+msgstr ""
+"これらのファイルが分路されたメッセージに関連付けられている場合、両方を削除す"
+"るかあるいは (/var/lib/mailman/bin/unshunt で) 主路に戻すかする必要がありま"
+"す。分路されたメッセージは、Mailman がエラー状態のためにすでにその後の処理を"
+"放棄してしまったメッセージですが、管理者のレビュー用に保持されます。キューの"
+"内容の調査には /var/lib/mailman/bin/show_qfiles を使用できます。"

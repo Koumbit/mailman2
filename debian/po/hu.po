@@ -27,43 +27,43 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "big5 (Chinese big5)"
-msgstr ""
+msgstr "big5 (Kínai big5)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr ""
+msgstr "ca (Katalán)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "cs (Czech)"
-msgstr ""
+msgstr "cs (Cseh)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr ""
+msgstr "da (Dán)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr ""
+msgstr "de (Német)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr ""
+msgstr "en (Angol)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "es (Spanish)"
-msgstr ""
+msgstr "es (Spanyol)"
 
 #. Type: multiselect
 #. Choices
@@ -75,19 +75,19 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "eu (Basque)"
-msgstr ""
+msgstr "eu (Baszk)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr ""
+msgstr "fi (Finn)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr ""
+msgstr "fr (Francia)"
 
 #. Type: multiselect
 #. Choices
@@ -99,31 +99,32 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr ""
+msgstr "hu (Magyar)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+#, fuzzy
 msgid "ia (Interlingua)"
-msgstr ""
+msgstr "it (Olasz)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "it (Italian)"
-msgstr ""
+msgstr "it (Olasz)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr ""
+msgstr "ja (Japán)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ko (Korean)"
-msgstr ""
+msgstr "ko (Kóreai)"
 
 #. Type: multiselect
 #. Choices
@@ -135,61 +136,61 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr ""
+msgstr "nl (Holland)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr ""
+msgstr "no (Norvég)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pl (Polish)"
-msgstr ""
+msgstr "pl (Lengyel)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr ""
+msgstr "pt (Portugál)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr ""
+msgstr "pt_BR (Braziliai Portugál)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ro (Romanian)"
-msgstr ""
+msgstr "ro (Román)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ru (Russian)"
-msgstr ""
+msgstr "ru (Orosz)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sl (Slovenian)"
-msgstr ""
+msgstr "sl (Szlovák)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr ""
+msgstr "sr (Szerb)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
-msgstr ""
+msgstr "sv (Svéd)"
 
 #. Type: multiselect
 #. Choices
@@ -219,13 +220,13 @@ msgstr ""
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr ""
+msgstr "en (Angol)[ alapértelmezett nyelv ]"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
 msgid "Languages to support:"
-msgstr ""
+msgstr "Támogatni kívánt nyelvek:"
 
 #. Type: multiselect
 #. Description
@@ -244,6 +245,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
+"Ha meg szeretné változtatni a támogatott nyelvek listáját, futtassa a dpkg-"
+"reconfigure mailman parancsot."
 
 #. Type: multiselect
 #. Description
@@ -272,7 +275,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Most people won't need this."
-msgstr ""
+msgstr "A legtöbb felhasználónak nincs szüksége erre."
 
 #  Type: note
 #  Description
@@ -314,7 +317,7 @@ msgstr ""
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr ""
+msgstr "Alapértelmezett nyelv a Mailman-ben:"
 
 #. Type: select
 #. Description
@@ -323,12 +326,14 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
+"A weblap ezen a nyelven fog megjelenni és általában a Mailman ezt a nyelvet "
+"fogja használni a felhasználó felé."
 
 #. Type: note
 #. Description
 #: ../templates:6001
 msgid "Old queue files present"
-msgstr ""
+msgstr "Régi queue állományok vannak"
 
 #. Type: note
 #. Description

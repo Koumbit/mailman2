@@ -29,11 +29,15 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
     Python; Mailman is incompatible with the one in Python 2.4
     (closes: #384016)
 
-  [ Hector Garcia ]
+  [ Translations ]
   * Updated vi.po. Translated by Clytie Siddall. (Closes: #388202)
   * Updated ja.po. Translated by Kenshi Muto. (Closes: #388206)
+  * Updated nl.po. Translated by Kurt De Bree. (Closes: #388100)
+  * Updated ru.po. Translated by Yuri Kozlov. (Closes: #388111)
+  * Updated sv.po. Translated by Daniel Nylander. (Closes: #388090)
+  * Updated hu.po. Translated by Laszlo Boszormenyi.
 
- -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 13:11:21 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 19 Sep 2006 13:52:06 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
