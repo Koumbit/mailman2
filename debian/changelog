@@ -13,6 +13,11 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   [ Matej Vela ]
   * Rearrange find options in debian/postinst to prevent warnings.
 
+  [ Lionel Elie Mamane ]
+  * Use Mailman's fork of the Python email package instead of the one from
+    Python; Mailman is incompatible with the one in Python 2.4
+    (closes: #384016)
+
  -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 02:19:15 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
