@@ -37,7 +37,12 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Updated sv.po. Translated by Daniel Nylander. (Closes: #388090)
   * Updated hu.po. Translated by Laszlo Boszormenyi.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 19 Sep 2006 13:52:06 +0200
+  [ Hector Garcia ]
+  * Added 24_CVE-2006-2941 taken from Lionel's port to sarge
+  * Added 23_CVE-2006-3636 taken from Lionel's port to sarge
+  * Added 25_CVE-2006-4624 taken from Lionel's port to sarge
+
+ -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 23:11:32 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
