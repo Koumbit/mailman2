@@ -152,7 +152,7 @@ EOF
     done
     # Done with site language stuff
 
-    # Don't forget the qmail specific stuff (but why support non-free?)
+    # Don't forget the qmail specific stuff
     ucf --debconf-ok --three-way ${mm_dist}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py 2>/dev/null
     # Install postfix-to-mailman.py as well
     ucf --debconf-ok --three-way ${mm_dist}/postfix-to-mailman.py ${mm_etc}/postfix-to-mailman.py 2>/dev/null
@@ -176,7 +176,7 @@ EOF
 # reminded to re-enable their accounts.
 0 9 * * * list [ -x /usr/lib/mailman/cron/disabled ] && /usr/lib/mailman/cron/disabled
 #
-# Noon, mail digests for lists that do periodic as well as threshhold delivery.
+# Noon, mail digests for lists that do periodic as well as threshold delivery.
 0 12 * * * list [ -x /usr/lib/mailman/cron/senddigests ] && /usr/lib/mailman/cron/senddigests
 #
 # 5 AM on the first of each month, mail out password reminders.
@@ -185,7 +185,7 @@ EOF
 # Every 5 mins, try to gate news to mail.  You can comment this one out
 # if you don't want to allow gating, or don't have any going on right now,
 # or want to exclusively use a callback strategy instead of polling.
-# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * list [ -x /usr/lib/mailman/cron/gate_news ] && /usr/lib/mailman/cron/gate_news
+# */5 * * * * list [ -x /usr/lib/mailman/cron/gate_news ] && /usr/lib/mailman/cron/gate_news
 #
 # At 3:27am every night, regenerate the gzip'd archive file.  Only
 # turn this on if the internal archiver is used and
@@ -337,33 +337,10 @@ case "$1" in
 	fi
 	sg list -c "umask 002; /usr/lib/mailman/bin/update;"
 
-	if [ "$1" = "configure" -a "$2" != "" ] && dpkg --compare-versions "$2" lt "1.0b10"; then
-		echo
-		echo "You will need to manually update your mailing lists."
-		echo "For each mailing list you need to copy the file /etc/mailman/options.html to"
-		echo "/var/lib/mailman/lists/<listname>/options.html."
-		echo
-		echo "However, if you have edited this file via the Web interface, you will have to"
-		echo "merge your changes into this file, otherwise you will lose your changes."
-	fi
-
 	# fix permissions
 	find /var/lib/mailman/ -type d -exec chmod g+s \{\} \;
 	chmod o-rx /var/lib/mailman/archives/private
 	chown www-data /var/lib/mailman/archives/private
-
-
-	if [ "$1" = "configure" -a "$2" != "" ] && dpkg --compare-versions "$2" lt "1.0rel"; then
-		echo ""
-		echo "Please read /usr/share/doc/mailman/README.Debian to learn how"
-		echo "to integrate mailman best with your MTA and webserver"
-
-		echo -n "Press RETURN to continue..."
-		DEBIAN_FRONTEND=`echo "$DEBIAN_FRONTEND" | tr A-Z a-z`
-		if [ ! "$DEBIAN_FRONTEND" = "noninteractive" ]; then
-		    read foo
-		fi
-	fi
     ;;
 
     *)

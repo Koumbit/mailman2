@@ -14,20 +14,6 @@ if [ "$1" = "install" ]; then
 	fi
 fi
 
-if [ "$1" = "install" -o "$1" = "upgrade" ]; then
-	if [ -d /var/lib/mailman/logs -a ! -L /var/lib/mailman/logs ]; then
-		echo "Moving the current logs to /var/lib/mailman/logs.old"
-		echo "New logs will be generated in /var/log/mailman"
-		mv /var/lib/mailman/logs /var/lib/mailman/logs.old
-		mkdir /var/log/mailman && true
-		chown root:list /var/log/mailman
-		chmod 2775 /var/log/mailman
-		ln -s /var/log/mailman /var/lib/mailman/logs
-		echo -n "Press RETURN to continue"
-		read foo
-	fi
-fi
-
 #DEBHELPER#
 
 # make sure the qfiles directory is empty.
