@@ -31,7 +31,7 @@ Apache + suexec
 
 Since suexec forbids execution of CGIs with gid < 50 and www-data (the default
 for mailman cgi) is 33, you should execute the cgi with a gid of 50-99 or 65534.
-It cannot be any other gid since mailman cgi check that gid < 100 and != 65534.
+It cannot be any other gid since mailman cgi check that gid < 100 or == 65534.
 
 Savannah
 --------
@@ -92,4 +92,4 @@ List admin and moderator passwords will be broken. Use
 /var/lib/mailman/bin/change_pw to generate new ones and email them to
 the admins and moderators.
 
- -- Lionel Elie Mamane <lmamane@debian.org>, Sun Dec 25 13:20:37 2005
+ -- Lionel Elie Mamane <lmamane@debian.org>, dim, 27 aoû 2006 19:08:42 +0200

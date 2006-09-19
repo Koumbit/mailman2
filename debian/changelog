@@ -10,7 +10,10 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
     non-debconf prompting and two debconf templates.
   * Only use ucf on purge when it's available.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 02:09:00 +0200
+  [ Matej Vela ]
+  * Rearrange find options in debian/postinst to prevent warnings.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 22 Aug 2006 02:19:15 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
