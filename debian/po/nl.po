@@ -1,4 +1,4 @@
-# translation of mailman 0:2.1.8-1_templates.po to Dutch
+# translation of mailman_1:2.1.8-2_templates.po to Dutch
 # This file is distributed under the same license as the mailman package.
 #
 #    Translators, if you are not familiar with the PO format, gettext
@@ -19,14 +19,14 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 0:2.1.8-1\n"
+"Project-Id-Version: mailman_1:2.1.8-2\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-09-18 17:20+0200\n"
-"PO-Revision-Date: 2006-07-05 13:05+0100\n"
+"PO-Revision-Date: 2006-09-18 17:59+0100\n"
 "Last-Translator: Kurt De Bree <kdebree(AT)telenet(DOT)be>\n"
 "Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: multiselect
@@ -486,6 +486,9 @@ msgstr ""
 #~ msgid "uk"
 #~ msgstr "uk"
 
+#~ msgid "Which language should be the default for Mailman?"
+#~ msgstr "Welke taal wenst u als standaard taal in te stellen voor Mailman?"
+
 #~ msgid "Administrator must update aliases"
 #~ msgstr "Beheerder moet de aliasen bijwerken"
 
@@ -516,6 +519,3 @@ msgstr ""
 #~ "Lijstbeheerder- en -moderatorwachtwoorden zijn stuk door deze "
 #~ "opwaardering. Gebruik /var/lib/mailman/bin/change_pw om automatisch "
 #~ "nieuwe aan te maken en te versturen naar de beheerders en moderators."
-
-#~ msgid "Which language should be the default for Mailman?"
-#~ msgstr "Welke taal wenst u als standaard taal in te stellen voor Mailman?"

@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-09-18 17:20+0200\n"
-"PO-Revision-Date: 2006-01-29 23:24+0100\n"
+"PO-Revision-Date: 2006-09-18 16:29+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -27,169 +27,170 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "big5 (Chinese big5)"
-msgstr ""
+msgstr "big5 (Kinesiska big5)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr ""
+msgstr "ca (Katalanska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "cs (Czech)"
-msgstr ""
+msgstr "cs (Tjeckiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr ""
+msgstr "da (Danska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr ""
+msgstr "de (Tyska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr ""
+msgstr "en (Engelska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "es (Spanish)"
-msgstr ""
+msgstr "es (Spanska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "et (Estonian)"
-msgstr ""
+msgstr "et (Estniska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "eu (Basque)"
-msgstr ""
+msgstr "eu (Baskiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr ""
+msgstr "fi (Finska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr ""
+msgstr "fr (Franska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hr (Croatian)"
-msgstr ""
+msgstr "hr (Kroatiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr ""
+msgstr "hu (Ungerska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
+#, fuzzy
 msgid "ia (Interlingua)"
-msgstr ""
+msgstr "it (Italienska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "it (Italian)"
-msgstr ""
+msgstr "it (Italienska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr ""
+msgstr "ja (Japanska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ko (Korean)"
-msgstr ""
+msgstr "ko (Koreanska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "lt (Lithuanian)"
-msgstr ""
+msgstr "lt (Litauiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr ""
+msgstr "nl (Nederländska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr ""
+msgstr "no (Norska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pl (Polish)"
-msgstr ""
+msgstr "pl (Polska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr ""
+msgstr "pt (Portugisiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr ""
+msgstr "pt_BR (Brasiliansk portugisiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ro (Romanian)"
-msgstr ""
+msgstr "ro (Rumänska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ru (Russian)"
-msgstr ""
+msgstr "ru (Ryska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sl (Slovenian)"
-msgstr ""
+msgstr "sl (Slovenska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr ""
+msgstr "sr (Serbiska)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
-msgstr ""
+msgstr "sv (Svenska)"
 
 #. Type: multiselect
 #. Choices
@@ -201,7 +202,7 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "uk (Ukrainian)"
-msgstr ""
+msgstr "uk (Ukrainska)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -219,29 +220,27 @@ msgstr ""
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr ""
+msgstr "sv (Swedish)"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid "Languages to support:"
-msgstr "Vilka språk ska det finnas stöd för?"
+msgstr "Språk som stöds:"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "For each supported language, Mailman stores default language specific texts "
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"För varje språk som stöds av Debian lagrar Mailman specifik text för "
-"standardspråket i /etc/mailman/LANG/ och ger dem konfigurationsfilsliknande "
-"behandling med hjälp av ucf.  Detta betyder ungefär 150kB för varje språk "
-"som stöds."
+"Mailman lagrar specifik text för standardspråket i /etc/mailman/LANG/ för "
+"varje språk som stöds och ger dem konfigurationsfilsliknande behandling med "
+"hjälp av ucf.  Det här betyder att ungefär 150kB för varje språk som stöds "
+"används på rotfilsystemet."
 
 #. Type: multiselect
 #. Description
@@ -256,13 +255,12 @@ msgstr ""
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTERA: Aktiverade språk på existerande sändlistor kommer att tvingas att "
+"OBSERVERA: Aktiverade språk på existerande sändlistor kommer att tvingas att "
 "återaktiveras när de avmarkeras och mailman behöver åtminstone ett språk för "
 "att visa sina meddelanden."
 
@@ -275,13 +273,12 @@ msgstr "Hantera nyhetsgrupper till sändlistor?"
 #. Type: boolean
 #. Description
 #: ../templates:3001
-#, fuzzy
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Vill du hantera nyhetsgrupper till sändlistor, alltså, skicka alla "
-"meddelanden som dyker upp i en nyhetsgrupp till en sändlista."
+"Mailman tillåter att sända nyhetsgrupper till sändlistor, alltså, skicka "
+"alla meddelanden som dyker upp i en Usenet-nyhetsgrupp till en sändlista."
 
 #. Type: boolean
 #. Description
@@ -323,7 +320,7 @@ msgstr ""
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr ""
+msgstr "Standardspråk för Mailman:"
 
 #. Type: select
 #. Description
@@ -344,7 +341,6 @@ msgstr "Gamla köfiler existerar"
 #. Type: note
 #. Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -360,25 +356,22 @@ msgid ""
 "forget about (and lose) the corresponding emails."
 msgstr ""
 "Katalogen /var/lib/mailman/qfiles innehåller filer.  Den behöver tömmas för "
-"att uppgraderingen ska fungera korrekt. Om dessa filer ännu inte är "
-"behandlade men för övrigt är fina meddelanden kan du försöka att hantera dem "
-"med: - Stoppa nya meddelanden från att komma in i kön (på MTA-nivå:\n"
-"  köa dem i MTA:ns kö eller vägra ta emot dem med en 4xx-kod). Om\n"
-"  ditt system har en relativ låg trafik för Mailman kan du hoppa över detta\n"
-"  steg.\n"
-"- Starta en kökörare i Mailman: /etc/init.d/mailman start - Låt den kör "
-"tills alla meddelanden är hanterade\n"
-"  Om alla inte blir hanterade på ett korrekt sätt, se på loggarna\n"
-"  för att försöka förstå varför och lösa problemet.\n"
-"- Stoppa den: /etc/init.d/mailman stop - Försök uppgradera igen - Låt "
-"meddelanden komma in igen. Du kan också bestämma att helt enkelt ta bort "
-"filerna, vilken kommer att göra att Mailman glömmer (och förlorar) den "
-"korresponderande e-posten; förvänta dig arga användare."
+"att uppgraderingen ska fungera korrekt. Du kan försöka att hantera dem genom "
+"att:\n"
+" - Stoppa nya meddelanden från att komma in i kön (på MTA-nivå.\n"
+" - Starta en kökörare i Mailman: /etc/init.d/mailman start\n"
+" - Låt den kör tills alla meddelanden är hanterade.\n"
+"   Om alla inte blir hanterade på ett korrekt sätt, se på loggarna\n"
+"   för att försöka förstå varför och lösa problemet.\n"
+" - Stoppa den: /etc/init.d/mailman stop\n"
+" - Försök uppgradera igen.\n"
+" - Låt meddelanden komma in igen.\n"
+"Du kan också bestämma att helt enkelt ta bort filerna, vilken kommer att "
+"göra att Mailman glömmer (och förlorar) motsvarande e-post."
 
 #. Type: note
 #. Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -386,12 +379,12 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
-"Om dessa filer korresponderar med undanskyfflade meddelanden, behöver du "
-"antingen ta bort dem eller skyffla tillbaka dem. Undanskyfflade meddelanden "
-"är meddelanden som Mailman redan har övergivet all vidare behandling av på "
-"grund av en felsituation men som hålls kvar för granskning av "
-"administratören, eftersom de vanligtvis kommer från buggar i Mailman eller "
-"andra onormala situationer som behöver mänsklig inspektion."
+"Om dessa filer motsvarar de undanskyfflade meddelandena behöver du antingen "
+"ta bort dem eller skyffla tillbaka dem (med /var/lib/mailman/bin/unshunt). "
+"Undanskyfflade meddelanden är meddelanden som Mailman redan har övergivet "
+"all ytterligare behandling av på grund av en felsituation men som hålls kvar "
+"för granskning av administratören. Du kan använda /var/lib/mailman/bin/"
+"show_qfiles för att undersöka innehållet i köerna."
 
 #~ msgid "big5"
 #~ msgstr "big5"

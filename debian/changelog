@@ -23,7 +23,7 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Remove pre-sarge upgrading code; this eliminates a lot of cruft,
     non-debconf prompting and two debconf templates.
   * Only use ucf on purge when it's available.
-  
+
   * Tweak debconf templates according to best practices.
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
@@ -40,7 +40,15 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
     Python; Mailman is incompatible with the one in Python 2.4
     (closes: #384016)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 18 Sep 2006 17:11:52 +0200
+  [ Translations ]
+  * Updated vi.po. Translated by Clytie Siddall. (Closes: #388202)
+  * Updated ja.po. Translated by Kenshi Muto. (Closes: #388206)
+  * Updated nl.po. Translated by Kurt De Bree. (Closes: #388100)
+  * Updated ru.po. Translated by Yuri Kozlov. (Closes: #388111)
+  * Updated sv.po. Translated by Daniel Nylander. (Closes: #388090)
+  * Updated hu.po. Translated by Laszlo Boszormenyi.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 19 Sep 2006 13:52:06 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
