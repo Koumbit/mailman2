@@ -1,3 +1,4 @@
+etc/mailman
 usr/lib/mailman
 usr/sbin
 usr/share/lintian/overrides
