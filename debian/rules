@@ -65,8 +65,8 @@ binary-arch:	checkroot build
 	dh_installchangelogs NEWS
 	$(MAKE) doinstall prefix=$$(pwd)/debian/mailman/var/lib/$(package) \
 		var_prefix=$$(pwd)/debian/mailman/var/lib/$(package) \
-		icondir=$$(pwd)/debian/mailman/usr/share/images/mailman \
-		ICONDIR=$$(pwd)/debian/mailman/usr/share/images/mailman
+		icondir=$$(pwd)/debian/mailman-common/usr/share/images/mailman \
+		ICONDIR=$$(pwd)/debian/mailman-common/usr/share/images/mailman
 
 	#rmdir debian/$(package)/var/lib/mailman/pythonlib
 
@@ -90,9 +90,7 @@ binary-arch:	checkroot build
 
 	# Backwards compatibility link
 	dh_link usr/lib/mailman/mail/mailman usr/lib/mailman/mail/wrapper
-	dh_link usr/share/images/mailman usr/share/doc/mailman/images
 	rmdir debian/$(package)/var/lib/mailman/icons
-	dh_link usr/share/images/mailman var/lib/mailman/icons
 
         # move the templates to /etc/mailman
 	mv debian/mailman/var/lib/$(package)/templates debian/mailman/etc/mailman
