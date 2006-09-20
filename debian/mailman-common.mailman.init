@@ -39,7 +39,7 @@ fi
 
 case "$1" in
   start)
-    if /var/lib/mailman/bin/list_lists -b | fgrep -qx mailman; then
+    if [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
         log_warning_msg "Site list for mailman (usually named mailman) missing."
         log_warning_msg "Please create it; until then, mailman will refuse to start."
         exit 0;
