@@ -1,18 +1,8 @@
-mailman (1:2.1.8-3) UNRELEASED; urgency=low
-
-  [ Paul Wise ]
-  * Switch from dpatch to quilt and regenerate all patches
+mailman (1:2.1.8-4) UNRELEASED; urgency=low
 
   [ Thijs Kinkhorst ]
   * Split the mailman package into mailman (architecture dependent files),
     mailman-common (architecture independent), mailman-doc (documentation).
-
-  * Use LSB output functions in init script.
-  * Use chown root:list instead of deprecated root.list.
-  * Remove pre-sarge upgrading code; this eliminates a lot of cruft,
-    non-debconf prompting and two debconf templates.
-  * Only use ucf on purge when it's available.
-
   * Tweak debconf templates according to best practices.
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
@@ -20,14 +10,8 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
     (Closes: #276505).
   * Add Turkish and Interlingua to debconf choice.
 
-  [ Matej Vela ]
-  * Rearrange find options in debian/postinst to prevent warnings.
-
   [ Lionel Elie Mamane ]
   * Don't ship C sources with documentation; there is no reason for it.
-  * Use Mailman's fork of the Python email package instead of the one from
-    Python; Mailman is incompatible with the one in Python 2.4
-    (closes: #384016)
 
   [ Translations ]
   * Updated vi.po. Translated by Clytie Siddall. (Closes: #388202)
@@ -37,12 +21,34 @@ mailman (1:2.1.8-3) UNRELEASED; urgency=low
   * Updated sv.po. Translated by Daniel Nylander. (Closes: #388090)
   * Updated hu.po. Translated by Laszlo Boszormenyi.
 
+ -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 23:11:32 +0200
+
+mailman (1:2.1.8-3) unstable; urgency=high
+
+  [ Paul Wise ]
+  * Switch from dpatch to quilt and regenerate all patches
+
+  [ Thijs Kinkhorst ]
+  * Use LSB output functions in init script.
+  * Use chown root:list instead of deprecated root.list.
+  * Remove pre-sarge upgrading code; this eliminates a lot of cruft,
+    non-debconf prompting and two debconf templates.
+  * Only use ucf on purge when it's available.
+
+  [ Matej Vela ]
+  * Rearrange find options in debian/postinst to prevent warnings.
+
+  [ Lionel Elie Mamane ]
+  * Use Mailman's fork of the Python email package instead of the one from
+    Python; Mailman is incompatible with the one in Python 2.4
+    (closes: #384016)
+
   [ Hector Garcia ]
   * Added 24_CVE-2006-2941 taken from Lionel's port to sarge
   * Added 23_CVE-2006-3636 taken from Lionel's port to sarge
   * Added 25_CVE-2006-4624 taken from Lionel's port to sarge
 
- -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 23:11:32 +0200
+ -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 23:21:33 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
