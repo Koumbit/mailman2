@@ -9,9 +9,9 @@
 16_update_debian.patch -p0
 20_qmail_to_mailman.debian.patch -p0
 21_newlist_help.patch -p0
-23_CVE-2006-3636.dpatch -p0
-24_CVE-2006-2941.dpatch -p0
-25_CVE-2006-4624.dpatch -p0
+23_CVE-2006-3636.patch -p0
+24_CVE-2006-2941.patch -p0
+25_CVE-2006-4624.patch -p0
 30_pipermail_threads.patch -p0
 32_MIME_fixup.patch -p0
 51_nocompile.pyc.patch -p0
