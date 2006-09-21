@@ -60,11 +60,17 @@ binary-indep:	checkroot build
 	dh_install -i
 	dh_installdocs -i
 	dh_installchangelogs -i
-
+	
 	install -m 0644 debian/mm_cfg.py debian/mailman-common/usr/lib/mailman/Mailman/mm_cfg.py.dist
-
+	
 	dh_installlogrotate -i --name=mailman
 	dh_installman -i
+	dh_pycentral -pmailman
+	dh_python -pflumotion
+	
+	install -d debian/flumotion/usr/share/python/runtime.d
+	install debian/flumotion.rtupdate debian/flumotion/usr/share/python/runtime.d
+	
 	dh_installinit -i --name=mailman
 	dh_compress -i
 	dh_fixperms -i
