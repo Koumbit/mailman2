@@ -69,7 +69,7 @@ binary-indep:	checkroot build
 	dh_python -pmailman
 	
 	install -d debian/mailman/usr/share/python/runtime.d
-	install debian/mailman.rtupdate debian/flumotion/usr/share/python/runtime.d
+	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
 	
 	dh_installinit -i --name=mailman
 	dh_compress -i
