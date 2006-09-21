@@ -66,7 +66,7 @@ binary-indep:	checkroot build
 	dh_installlogrotate -i --name=mailman
 	dh_installman -i
 	dh_pycentral -pmailman
-	dh_python -pflumotion
+	dh_python -pmailman
 	
 	install -d debian/flumotion/usr/share/python/runtime.d
 	install debian/flumotion.rtupdate debian/flumotion/usr/share/python/runtime.d
