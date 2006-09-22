@@ -7,6 +7,7 @@ Build-Depends: debhelper (>= 5), autoconf, python-dev, quilt (>= 0.40), dpkg-dev
 Build-Depends-Indep:  python, python-central (>= 0.4.17)
 Standards-Version: 3.7.2
 XS-Python-Version: current
+XS-X-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
 
 Package: mailman
 Architecture: any
