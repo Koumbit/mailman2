@@ -106,12 +106,6 @@ binary-arch:	checkroot build-arch
 	chown -R root:list debian/mailman/usr/lib/{mailman,cgi-bin/mailman}
 	chmod g+s debian/mailman/usr/lib/cgi-bin/mailman/* \
 		debian/mailman/usr/lib/mailman/mail/mailman
-	# make lintian happy
-	install -m 0644 debian/lintian-overrides debian/mailman/usr/share/lintian/overrides/mailman
-
-# Move templates
-#	mv `find debian/mailman/etc/mailman -mindepth 1 -maxdepth 1 -type d` debian/mailman/usr/share/mailman
-
 	# create the resulting deb
 	dh_installdeb -a
 	dh_shlibdeps -a

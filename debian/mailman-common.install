@@ -13,3 +13,5 @@ misc/sitelist.cfg		/var/lib/mailman/data
 
 misc/paths.py			/usr/lib/mailman/bin
 misc/paths.py			/usr/lib/mailman/cron
+
+debian/lintian/mailman-common	/usr/share/lintian/overrides/
