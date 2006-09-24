@@ -4,19 +4,16 @@ Priority: optional
 Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
 Uploaders: Tollef Fog Heen <tfheen@debian.org>, Lionel Elie Mamane <lmamane@debian.org>, Thijs Kinkhorst <thijs@debian.org>, Hector Garcia <hector@debian.org>
 Build-Depends: debhelper (>= 5), autoconf, python-dev, quilt (>= 0.40), dpkg-dev (>= 1.13.19)
-Build-Depends-Indep:  python, python-central (>= 0.4.17)
 Standards-Version: 3.7.2
-XS-Python-Version: current
 XS-X-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
 
 Package: mailman
 Architecture: any
 Pre-Depends: debconf (>= 1.4.16) | debconf-2.0
-Depends: ${python:Depends}, mailman-common (= ${source:Version}), ${shlibs:Depends}, logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache2 | httpd, ucf (>= 0.28), pwgen, adduser, lsb-base
+Depends: mailman-common (= ${source:Version}), ${shlibs:Depends}, python (>= 2.2.2.91-1), logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache2 | httpd, ucf (>= 0.28), pwgen, adduser, lsb-base
 Recommends: mailman-doc
 Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
 Suggests: spamassassin, lynx, python2.3-korean-codecs | python2.2-korean-codecs, python-japanese-codecs, listadmin
-XB-Python-Version: ${python:Versions}
 Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,

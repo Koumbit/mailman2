@@ -23,10 +23,7 @@ mailman (1:2.1.8-4) UNRELEASED; urgency=low
   * Updated it.po: Translated by Luca Monducci. (Closes: #388657)
   * Updated cs.po: Translated by Miroslav Kure. (Closes: #388663)
 
-  [ Riccardo Setti ]
-  * Mailman is python-policy compliant.
-
- -- Hector Garcia <hector@debian.org>  Fri, 22 Sep 2006 13:26:54 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 24 Sep 2006 14:28:20 +0200
 
 mailman (1:2.1.8-3) unstable; urgency=high
 
