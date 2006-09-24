@@ -1,10 +1,3 @@
-etc/mailman
-usr/lib/mailman
-usr/sbin
+usr/lib/mailman/mail
 usr/share/lintian/overrides
-usr/share/mailman
 usr/lib/cgi-bin
-var/log/mailman
-var/lib/mailman/templates
-var/lock
-var/run/mailman

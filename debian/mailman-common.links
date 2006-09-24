@@ -1,2 +1,38 @@
 /usr/share/images/mailman	usr/share/doc/mailman/images
 /usr/share/images/mailman	var/lib/mailman/icons
+
+/etc/mailman/mm_cfg.py			usr/lib/mailman/Mailman/mm_cfg.py
+/etc/mailman/postfix-to-mailman.py	usr/lib/mailman/bin/postfix-to-mailman.py
+/etc/mailman/qmail-to-mailman.py	usr/lib/mailman/bin/qmail-to-mailman.py
+
+/usr/lib/mailman/mail/mailman		usr/lib/mailman/mail/wrapper
+
+/usr/lib/mailman/bin/list_lists		usr/sbin/list_lists
+/usr/lib/mailman/bin/find_member	usr/sbin/find_member
+/usr/lib/mailman/bin/config_list	usr/sbin/config_list
+/usr/lib/mailman/bin/mmsitepass		usr/sbin/mmsitepass
+/usr/lib/mailman/bin/newlist		usr/sbin/newlist
+/usr/lib/mailman/bin/rmlist		usr/sbin/rmlist
+/usr/lib/mailman/bin/add_members	usr/sbin/add_members
+/usr/lib/mailman/bin/list_members	usr/sbin/list_members
+/usr/lib/mailman/bin/remove_members	usr/sbin/remove_members
+/usr/lib/mailman/bin/clone_member	usr/sbin/clone_member
+/usr/lib/mailman/bin/sync_members	usr/sbin/sync_members
+/usr/lib/mailman/bin/check_db		usr/sbin/check_db
+/usr/lib/mailman/bin/check_perms	usr/sbin/check_perms
+/usr/lib/mailman/bin/list_admins	usr/sbin/list_admins
+/usr/lib/mailman/bin/withlist		usr/sbin/withlist
+/usr/lib/mailman/bin/arch		usr/sbin/mmarch
+
+/usr/lib/mailman/scripts	var/lib/mailman/scripts
+
+/usr/lib/mailman/bin		var/lib/mailman/bin
+/usr/lib/mailman/cron		var/lib/mailman/cron
+/usr/lib/mailman/mail		var/lib/mailman/mail
+/usr/lib/mailman/Mailman	var/lib/mailman/Mailman
+/usr/lib/cgi-bin/mailman	var/lib/mailman/cgi-bin
+
+/etc/mailman			var/lib/mailman/templates
+
+/var/log/mailman		var/lib/mailman/logs
+/var/lock/mailman		var/lib/mailman/locks

@@ -1,2 +1,15 @@
+debian/mm_cfg.py		/usr/lib/mailman/Mailman
 debian/contrib/apache.conf	/etc/mailman
 debian/README.Exim4.Debian	/usr/share/doc/mailman
+
+build/contrib/qmail-to-mailman.py	/usr/share/mailman
+debian/contrib/postfix-to-mailman.py	/usr/share/mailman
+
+debian/contrib/savannah		/usr/lib/mailman/Mailman/Cgi
+debian/contrib/SpamAssassin.py	/usr/lib/mailman/Mailman/Handlers
+debian/contrib/spamd.py		/usr/lib/mailman/Mailman/Handlers
+
+misc/sitelist.cfg		/var/lib/mailman/data
+
+misc/paths.py			/usr/lib/mailman/bin
+misc/paths.py			/usr/lib/mailman/cron
