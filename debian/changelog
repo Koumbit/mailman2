@@ -9,6 +9,8 @@ mailman (1:2.1.8-4) UNRELEASED; urgency=low
   * Name languages together with their ISO code in the debconf question
     (Closes: #276505).
   * Add Turkish and Interlingua to debconf choice.
+  * Remove python2.2-korean-codecs from Suggests, replace with
+    python-korean-codecs.
 
   [ Lionel Elie Mamane ]
   * Don't ship C sources with documentation; there is no reason for it.
@@ -23,7 +25,7 @@ mailman (1:2.1.8-4) UNRELEASED; urgency=low
   * Updated it.po: Translated by Luca Monducci. (Closes: #388657)
   * Updated cs.po: Translated by Miroslav Kure. (Closes: #388663)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 24 Sep 2006 14:28:20 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 24 Sep 2006 16:27:19 +0200
 
 mailman (1:2.1.8-3) unstable; urgency=high
 
