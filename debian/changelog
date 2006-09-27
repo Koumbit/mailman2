@@ -27,7 +27,7 @@ mailman (1:2.1.8-4) UNRELEASED; urgency=low
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sun, 24 Sep 2006 16:27:19 +0200
 
-mailman (1:2.1.8-3) unstable; urgency=high
+mailman (1:2.1.8-3) unstable; urgency=medium
 
   [ Paul Wise ]
   * Switch from dpatch to quilt and regenerate all patches
@@ -52,7 +52,7 @@ mailman (1:2.1.8-3) unstable; urgency=high
   * Added 23_CVE-2006-3636 taken from Lionel's port to sarge
   * Added 25_CVE-2006-4624 taken from Lionel's port to sarge
 
- -- Hector Garcia <hector@debian.org>  Tue, 19 Sep 2006 23:21:33 +0200
+ -- Hector Garcia <hector@debian.org>  Wed, 20 Sep 2006 20:22:17 +0200
 
 mailman (1:2.1.8-2) unstable; urgency=low
 
