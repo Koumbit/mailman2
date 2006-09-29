@@ -3,6 +3,8 @@ mailman (1:2.1.8-4) unstable; urgency=high
   * High-urgency upload to fix release-critical bug.
   * Add versioned depends on lsb-base (>= 3.0-6) to make sure a system
     has the lsb output functions (Closes: #390138).
+  * Remove python2.2-korean-codecs from Suggests, replace with
+    python-korean-codecs.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Fri, 29 Sep 2006 17:33:09 +0200
 
