@@ -1,4 +1,0 @@
-admin/www/*	/usr/share/doc/mailman/html
-templates/*	/usr/share/doc/mailman/examples
-debian/mm_cfg.py	/usr/share/doc/mailman/examples
-Mailman/Defaults.py	/usr/share/doc/mailman/examples

@@ -1,8 +1,6 @@
 mailman (1:2.1.8-5) UNRELEASED; urgency=low
 
   [ Thijs Kinkhorst ]
-  * Split the mailman package into mailman (architecture dependent files),
-    mailman-common (architecture independent), mailman-doc (documentation).
   * Tweak debconf templates according to best practices.
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
@@ -23,7 +21,7 @@ mailman (1:2.1.8-5) UNRELEASED; urgency=low
   * Updated it.po: Translated by Luca Monducci. (Closes: #388657)
   * Updated cs.po: Translated by Miroslav Kure. (Closes: #388663)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 29 Sep 2006 17:52:09 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed,  4 Oct 2006 10:22:35 +0200
 
 mailman (1:2.1.8-4) unstable; urgency=high
 
