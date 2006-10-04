@@ -1,0 +1,106 @@
+Patch: build_arch_indep.patch
+Author: Thijs Kinkhorst <thijs@debian.org>, based on work from Siggy Bentrup.
+Split the Makefile targets into arch-dep and arch-indep so we can install
+them into different packages.
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2006-09-24 15:11:22.000000000 +0200
++++ Makefile.in	2006-09-24 15:17:49.000000000 +0200
+@@ -55,8 +55,9 @@
+ ARCH_DEP_DIRS=	cgi-bin mail
+ 
+ # Directories make should decend into
+-SUBDIRS=	bin cron misc Mailman scripts src templates messages tests
+-
++ARCH_SUBDIRS  = src
++INDEP_SUBDIRS = bin cron misc Mailman scripts templates messages tests
++SUBDIRS       = $(ARCH_SUBDIRS) $(INDEP_SUBDIRS)
+ 
+ # Modes for directories and executables created by the install
+ # process.  Default to group-writable directories but
+@@ -73,21 +74,29 @@
+ 
+ # Rules
+ 
+-all: subdirs
++all: arch-subdirs indep-subdirs
+ 
+-subdirs: $(SUBDIRS)
+-	for d in $(SUBDIRS); \
++arch-subdirs: $(ARCH_SUBDIRS)
++	for d in $(ARCH_SUBDIRS); \
+ 	do \
+ 	    (cd $$d; $(MAKE)); \
+ 	done
+ 
+-install: doinstall update
++indep-subdirs: $(INDEP_SUBDIRS)
++	for d in $(INDEP_SUBDIRS); \
++	do \
++	    (cd $$d; $(MAKE)); \
++	done
+ 
+-doinstall: $(SUBDIRS)
+-	@echo "Creating architecture independent directories..."
+-	@for d in $(VAR_DIRS); \
++install: do-arch-install do-indep-install update
++# Backwards-compatibility:
++doinstall: do-arch-install do-indep-install
++
++do-arch-install: $(ARCH_SUBDIRS)
++	@echo "Creating architecture dependent directories..."
++	@for d in $(ARCH_DEP_DIRS); \
+ 	do \
+-	    dir=$(DESTDIR)$(var_prefix)/$$d; \
++	    dir=$(DESTDIR)$(exec_prefix)/$$d; \
+ 	    if test ! -d $$dir; then \
+ 		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+@@ -96,10 +105,16 @@
+ 	    else true; \
+ 	    fi; \
+ 	done
+-	chmod o-r $(DESTDIR)$(var_prefix)/archives/private
+-	@for d in $(ARCH_INDEP_DIRS); \
++	@for d in $(ARCH_SUBDIRS); \
+ 	do \
+-	    dir=$(DESTDIR)$(prefix)/$$d; \
++	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \
++	done
++
++do-indep-install: $(INDEP_SUBDIRS)
++	@echo "Creating architecture independent directories..."
++	@for d in $(VAR_DIRS); \
++	do \
++	    dir=$(DESTDIR)$(var_prefix)/$$d; \
+ 	    if test ! -d $$dir; then \
+ 		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+@@ -108,10 +123,10 @@
+ 	    else true; \
+ 	    fi; \
+ 	done
+-	@echo "Creating architecture dependent directories..."
+-	@for d in $(ARCH_DEP_DIRS); \
++	chmod o-r $(DESTDIR)$(var_prefix)/archives/private
++	@for d in $(ARCH_INDEP_DIRS); \
+ 	do \
+-	    dir=$(DESTDIR)$(exec_prefix)/$$d; \
++	    dir=$(DESTDIR)$(prefix)/$$d; \
+ 	    if test ! -d $$dir; then \
+ 		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+@@ -120,11 +135,11 @@
+ 	    else true; \
+ 	    fi; \
+ 	done
+-	@for d in $(SUBDIRS); \
++	@for d in $(INDEP_SUBDIRS); \
+ 	do \
+ 	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \
+ 	done
+-	#$(PYTHON) -c 'from compileall import *; compile_dir("$(DESTDIR)$(prefix)/Mailman")'
++	$(PYTHON) -c 'from compileall import *; compile_dir("$(DESTDIR)$(prefix)/Mailman")'
+ 
+ # Only run bin/update if we aren't installing in DESTDIR, as this
+ # means there are probably no lists to deal with, and it wouldn't

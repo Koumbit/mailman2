@@ -1,0 +1,26 @@
+#! /bin/sh -e
+#
+# prerm script for Debian python packages.
+# Written 1998 by Gregor Hoffleit <flight@debian.org>.
+#
+# $URL$
+# $Id$
+
+if [ "$1" = "failed-upgrade" ] ; then
+  if [ -x "/etc/init.d/mailman" ]; then
+    if [ -x /usr/sbin/invoke-rc.d ] ; then
+      invoke-rc.d mailman stop || true
+    else
+      /etc/init.d/mailman stop || true
+    fi
+  fi
+  chmod -x /usr/lib/mailman/bin/mailmanctl
+fi
+
+#DEBHELPER#
+
+PACKAGE=mailman
+
+dpkg --listfiles $PACKAGE |
+	awk '$0~/\.py$/ {print $0"c\n" $0"o"}' |
+	xargs rm -f >&2

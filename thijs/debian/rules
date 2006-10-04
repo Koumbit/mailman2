@@ -1,0 +1,123 @@
+#!/usr/bin/make -f
+# -*- makefile -*- made with the aid of debmake, by Christoph Lameter,
+# based on the sample debian/rules file for GNU hello by Ian Jackson.
+
+package=mailman
+PACKAGE=$(package)
+
+include /usr/share/quilt/quilt.make
+
+binaries=list_lists find_member config_list mmsitepass newlist rmlist	\
+	add_members list_members remove_members arch clone_member	\
+	sync_members check_db check_perms list_admins withlist
+
+#export DH_VERBOSE=1
+
+SHELL=/bin/bash
+
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+CFLAGS += -g
+endif
+ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+INSTALL_PROGRAM += -s
+endif
+ifeq (,$(findstring archonly,$(DEB_BUILD_OPTIONS)))
+build: build-arch build-indep
+else
+build: build-arch
+endif
+
+build-arch: patch Makefile
+	$(MAKE) arch-subdirs
+	touch build-arch
+build-indep: patch Makefile debian/po/templates.pot
+	$(MAKE) indep-subdirs
+	touch build-indep
+
+debian/po/templates.pot: debian/templates
+	@debconf-updatepo
+
+Makefile:
+	autoconf
+	./configure --prefix=/usr/lib/$(package) \
+		--with-var-prefix=/var/lib/$(package) \
+		--with-username=list --with-groupname=list \
+		--with-mail-gid=daemon --with-cgi-gid=www-data \
+		--without-permcheck --with-mailhost=localhost \
+		--with-urlhost=localhost
+
+clean: unpatch
+	dh_testdir
+	-$(MAKE) distclean
+	rm -rf build-indep build-arch Makefile debian/ucffiles debian/mailman.postinst.ucf
+	rm -f debian/mailman.postrm.ucf
+	dh_clean
+
+binary-indep:	checkroot build-indep
+	# install files
+	$(MAKE) do-indep-install DESTDIR=$$(pwd)/debian/mailman-common
+	dh_installdirs -i
+	dh_install -i
+	dh_installdocs -i
+	dh_installchangelogs -i
+	dh_installlogrotate -i --name=mailman
+	dh_installman -i
+	dh_installinit -i --name=mailman
+	mv debian/mailman-common/usr/lib/mailman/messages debian/mailman-common/var/lib/mailman
+	mv debian/mailman-common/usr/lib/mailman/icons/* debian/mailman-common/usr/share/images/mailman
+	rmdir debian/mailman-common/var/lib/mailman/{locks,logs} debian/mailman-common/usr/lib/mailman/icons
+	mv `find debian/mailman-common/usr/lib/mailman/templates/ -mindepth 1 -maxdepth 1 -type d` debian/mailman-common/usr/share/mailman
+	rmdir debian/mailman-common/usr/lib/mailman/templates
+	mv debian/mailman-common/usr/lib/mailman/tests debian/mailman-common/var/lib/mailman
+	dh_link -i
+	dh_compress -i
+	# Fix permissions
+	dh_fixperms -i
+	chown -R list:list debian/mailman-common/var/{lock/mailman,lib/mailman/qfiles,run/mailman,lib/mailman/spam}
+	chown root:list debian/mailman-common/var/log/mailman
+	find debian/mailman-common/var/lib/mailman -type d | xargs chmod 2775
+	find debian/mailman-common/var/lib/mailman/messages -type d | xargs chmod 755
+	chmod 2775 debian/mailman-common/var/log/mailman
+	chmod g+w debian/mailman-common/var/lock/mailman
+	chmod +x debian/mailman-common/usr/lib/mailman/Mailman/Cgi/*
+	chmod +x debian/mailman-common/usr/lib/mailman/Mailman/Archiver/pipermail.py
+	chmod o-x debian/mailman-common/var/lib/mailman/archives/private
+	chmod 0755 debian/mailman-common/usr/lib/mailman/cron/*
+	chmod 0644 debian/mailman-common/usr/lib/mailman/cron/crontab.in
+	# create ucffiles dynamically
+	find debian/mailman-common/usr/share/mailman -type f -printf '/etc/mailman/%P\n' > debian/ucffiles
+	# create the resulting debs
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+binary-arch:	checkroot build-arch
+	$(MAKE) do-arch-install DESTDIR=$$(pwd)/debian/mailman
+	dh_installdirs -a
+	dh_install -a
+	dh_installdocs -a ACKNOWLEDGMENTS README* TODO FAQ
+	dh_installchangelogs -a NEWS
+	dh_installdebconf -a
+	mv debian/mailman/usr/lib/mailman/cgi-bin debian/mailman/usr/lib/cgi-bin/mailman
+	dh_strip -a
+	dh_compress -a
+	dh_fixperms -a
+	chown -R root:list debian/mailman/usr/lib/{mailman,cgi-bin/mailman}
+	chmod g+s debian/mailman/usr/lib/cgi-bin/mailman/* \
+		debian/mailman/usr/lib/mailman/mail/mailman
+	# create the resulting deb
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+
+binary:		binary-indep binary-arch
+
+checkroot:
+	dh_testdir
+	dh_testroot
+
+.PHONY: binary binary-arch binary-indep clean checkroot

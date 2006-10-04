@@ -1,0 +1,18 @@
+Patch: 66_donot_let_cache_html_pages.patch
+Author: László 'GCS' Böszörményi <gcs@lsc.hu>
+Add 'Pragma: no-cache' to HTML page outputs, so proxies like Squid
+do not cache them, and changes become visible immediately.
+Index: Mailman/htmlformat.py
+===================================================================
+--- Mailman/htmlformat.py.orig	2006-08-15 15:14:43.000000000 +0800
++++ Mailman/htmlformat.py	2006-08-15 15:14:51.000000000 +0800
+@@ -299,7 +299,8 @@
+         charset = 'us-ascii'
+         if self.language and Utils.IsLanguage(self.language):
+             charset = Utils.GetCharSet(self.language)
+-        output = ['Content-Type: text/html; charset=%s\n' % charset]
++        output = ['Content-Type: text/html; charset=%s' % charset]
++        output.append('Cache-control: no-cache\n')
+         if not self.suppress_head:
+             kws.setdefault('bgcolor', self.bgcolor)
+             tab = ' ' * indent
