@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 17:20+0200\n"
+"POT-Creation-Date: 2006-10-06 16:25+0200\n"
 "PO-Revision-Date: 2006-09-18 16:29+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -26,8 +26,9 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "big5 (Chinese big5)"
-msgstr "big5 (Kinesiska big5)"
+#, fuzzy
+msgid "ar (Arabic)"
+msgstr "sr (Serbiska)"
 
 #. Type: multiselect
 #. Choices
@@ -203,6 +204,24 @@ msgstr ""
 #: ../templates:1001
 msgid "uk (Ukrainian)"
 msgstr "uk (Ukrainska)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "vi (Vietnamese)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_CN (Chinese - China)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_TW (Chinese - Taiwan)"
+msgstr ""
 
 #. Type: multiselect
 #. DefaultChoice
@@ -385,6 +404,9 @@ msgstr ""
 "all ytterligare behandling av på grund av en felsituation men som hålls kvar "
 "för granskning av administratören. Du kan använda /var/lib/mailman/bin/"
 "show_qfiles för att undersöka innehållet i köerna."
+
+#~ msgid "big5 (Chinese big5)"
+#~ msgstr "big5 (Kinesiska big5)"
 
 #~ msgid "big5"
 #~ msgstr "big5"
