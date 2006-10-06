@@ -33,199 +33,199 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "ar (Arabic)"
-msgstr ""
+msgstr "ar (Arabisch)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr ""
+msgstr "ca (Catalaans)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "cs (Czech)"
-msgstr ""
+msgstr "cs (Tsjechisch)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr ""
+msgstr "da (Deens)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr ""
+msgstr "de (Duits)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr ""
+msgstr "en (Engels)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "es (Spanish)"
-msgstr ""
+msgstr "es (Spaans)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "et (Estonian)"
-msgstr ""
+msgstr "et (Ests)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "eu (Basque)"
-msgstr ""
+msgstr "eu (Baskisch)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr ""
+msgstr "fi (Fins)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr ""
+msgstr "fr (Frans)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hr (Croatian)"
-msgstr ""
+msgstr "hr (Kroatisch)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr ""
+msgstr "hu (Hongaars)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ia (Interlingua)"
-msgstr ""
+msgstr "ia (Interlingua)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "it (Italian)"
-msgstr ""
+msgstr "it (Italiaans)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr ""
+msgstr "ja (Japans)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ko (Korean)"
-msgstr ""
+msgstr "ko (Koreaans)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "lt (Lithuanian)"
-msgstr ""
+msgstr "lt (Litouws)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr ""
+msgstr "nl (Nederlands)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr ""
+msgstr "no (Noors)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pl (Polish)"
-msgstr ""
+msgstr "pl (Pools)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr ""
+msgstr "pt (Portugees)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr ""
+msgstr "pt_BR (Brazilisch Portuees)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ro (Romanian)"
-msgstr ""
+msgstr "ro (Roemeens)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ru (Russian)"
-msgstr ""
+msgstr "ru (Russisch)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sl (Slovenian)"
-msgstr ""
+msgstr "sl (Sloveens)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr ""
+msgstr "sr (Servisch)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
-msgstr ""
+msgstr "sv (Zweeds)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "tr (Turkish)"
-msgstr ""
+msgstr "tr (Turks)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "uk (Ukrainian)"
-msgstr ""
+msgstr "uk (Oekraïens)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "vi (Vietnamese)"
-msgstr ""
+msgstr "vi (Vietnamees)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_CN (Chinese - China)"
-msgstr ""
+msgstr "zh_CN (Chinees - China)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr ""
+msgstr "zh_TW (Chinees - Taiwan)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -243,19 +243,17 @@ msgstr ""
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr ""
+msgstr "nl (Dutch)"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid "Languages to support:"
-msgstr "Voor welke talen wenst u ondersteuning?"
+msgstr "Te ondersteunen talen:"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-#, fuzzy
 msgid ""
 "For each supported language, Mailman stores default language specific texts "
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
@@ -263,8 +261,8 @@ msgid ""
 "file system."
 msgstr ""
 "Voor elke ondersteunde taal bewaart Debian Mailman standaard "
-"taalafhankelijke teksten in /etc/mailman/LANG/, wat hen een soort conffile-"
-"behandeling geeft met de hulp van ucf. Dit betekent ongeveer 150kB voor elke "
+"taalspecifieke teksten in /etc/mailman/TAAL/, wat hen een soort conffile-"
+"behandeling geeft met behulp van ucf. Dit betekent ongeveer 150kB voor elke "
 "ondersteunde taal op het hoofdbestandssysteem."
 
 #. Type: multiselect
@@ -285,7 +283,7 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"MERK OP: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
+"NB: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
 "opnieuw ingesteld indien u ze heeft uitgeschakeld; en mailman heeft ook ten "
 "minste één taal nodig om zijn boodschappen weer te geven."
 
@@ -298,13 +296,13 @@ msgstr "Nieuws doorsluizen naar e-mail?"
 #. Type: boolean
 #. Description
 #: ../templates:3001
-#, fuzzy
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Wilt u nieuws doorsluizen naar e-mail, d.w.z. alle boodschappen die "
-"verschijnen in een nieuwsgroep verzenden naar een mailinglijst."
+"Met Mailman kunt u nieuws doorsluiten naar e-mail, d.w.z. alle "
+"boodschappen die verschijnen in een nieuwsgroep verzenden naar een "
+"mailinglijst."
 
 #. Type: boolean
 #. Description
@@ -346,7 +344,7 @@ msgstr ""
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr ""
+msgstr "Standaardtaal voor Mailman:"
 
 #. Type: select
 #. Description
@@ -362,12 +360,11 @@ msgstr ""
 #. Description
 #: ../templates:6001
 msgid "Old queue files present"
-msgstr "Oude queue-bestanden zijn beschikbaar"
+msgstr "Oude queue-bestanden aanwezig"
 
 #. Type: note
 #. Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -382,29 +379,24 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"De map /var/lib/mailman/qfiles bevat bestanden. Ze moet leeg zijn om de "
-"opwaardering goed te laten werken. Als deze bestanden nog niet zijn "
-"behandeld, maar wel echte boodschappen zijn, dan kunt u ze proberen "
-"afhandelen door:\n"
-" - nieuwe boodschappen niet meer in de wachtrij te laten komen \n"
-"   (op het MTA-niveau: steek ze in de wachtrij van de MTA of weiger ze \n"
-"   met een 4xx-code). Als uw site relatief weinig mailman-verkeer heeft, \n"
-"   dan kunt u deze stap overslaan.\n"
-" - een mailman-wachtrijloper te starten: /etc/init.d/mailman start \n"
-" - laat het uitvoeren totdat alle boodschappen afgehandeld zijn\n"
+"De map /var/lib/mailman/qfiles bevat bestanden. Deze moet leeg zijn om de "
+"opwaardering goed te laten werken. Als dit waardevolle berichten zijn, "
+"kunt u ze proberen af te handelen door:\n"
+" - Nieuwe boodschappen niet meer in de wachtrij te laten komen \n"
+"   (op het MTA-niveau).\n"
+" - Een mailman-wachtrijloper te starten: /etc/init.d/mailman start \n"
+" - Laat deze uitvoeren totdat alle boodschappen afgehandeld zijn\n"
 "   Als ze niet tijdig worden afgehandeld, kijk dan in de logs\n"
 "   om te begrijpen waarom en los dat dan op.\n"
-" - stop het: /etc/init.d/mailman stop\n"
+" - Stop het weer: /etc/init.d/mailman stop\n"
 " - Probeer de opwaardering opnieuw.\n"
-" - Laat opnieuw boodschappen toekomen.\n"
+" - Laat boodschappen weer toe.\n"
 "U kunt ook beslissen om de bestanden eenvoudigweg te verwijderen. Mailman "
-"zal ze dan vergeten (en de overeenkomende e-mails verliezen); verwacht boze "
-"gebruikers."
+"zal dan de overeenkomende e-mails verliezen."
 
 #. Type: note
 #. Description
 #: ../templates:6001
-#, fuzzy
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -415,125 +407,6 @@ msgstr ""
 "Als deze bestanden overeenkomen met shunted boodschappen, dan moet u ze "
 "ofwel verwijderen ofwel unshunten (met /var/lib/mailman/bin/unshunt). "
 "Shunted boodschappen zijn boodschappen waarvan Mailman al elke verdere "
-"behandeling heeft gestopt door een fouttoestand. Maar ze worden bewaard voor "
-"nazicht door een beheerder omdat ze gewoonlijk ontstaan door Mailman-bugs of "
-"andere abnormale situaties die inspectie vereisen. U kunt /var/lib/mailman/"
+"behandeling heeft gestopt door een fouttoestand. U kunt /var/lib/mailman/"
 "bin/show_qfiles gebruiken om de inhoud van de queues te controleren."
 
-#~ msgid "big5"
-#~ msgstr "big5"
-
-#~ msgid "ca"
-#~ msgstr "ca"
-
-#~ msgid "cs"
-#~ msgstr "cs"
-
-#~ msgid "da"
-#~ msgstr "da"
-
-#~ msgid "de"
-#~ msgstr "de"
-
-#~ msgid "en"
-#~ msgstr "en"
-
-#~ msgid "es"
-#~ msgstr "es"
-
-#~ msgid "et"
-#~ msgstr "et"
-
-#~ msgid "eu"
-#~ msgstr "eu"
-
-#~ msgid "fi"
-#~ msgstr "fi"
-
-#~ msgid "fr"
-#~ msgstr "fr"
-
-#~ msgid "hr"
-#~ msgstr "hr"
-
-#~ msgid "hu"
-#~ msgstr "hu"
-
-#~ msgid "it"
-#~ msgstr "it"
-
-#~ msgid "ja"
-#~ msgstr "ja"
-
-#~ msgid "ko"
-#~ msgstr "ko"
-
-#~ msgid "lt"
-#~ msgstr "lt"
-
-#~ msgid "nl"
-#~ msgstr "nl"
-
-#~ msgid "no"
-#~ msgstr "no"
-
-#~ msgid "pl"
-#~ msgstr "pl"
-
-#~ msgid "pt"
-#~ msgstr "pt"
-
-#~ msgid "pt_BR"
-#~ msgstr "pt_BR"
-
-#~ msgid "ro"
-#~ msgstr "ro"
-
-#~ msgid "ru"
-#~ msgstr "ru"
-
-#~ msgid "sl"
-#~ msgstr "sl"
-
-#~ msgid "sr"
-#~ msgstr "sr"
-
-#~ msgid "sv"
-#~ msgstr "sv"
-
-#~ msgid "uk"
-#~ msgstr "uk"
-
-#~ msgid "Which language should be the default for Mailman?"
-#~ msgstr "Welke taal wenst u als standaard taal in te stellen voor Mailman?"
-
-#~ msgid "Administrator must update aliases"
-#~ msgstr "Beheerder moet de aliasen bijwerken"
-
-#~ msgid ""
-#~ "The aliases you need for mailman in your MTA's configuration have "
-#~ "changed. Please run /var/lib/mailman/bin/genaliases to see the new "
-#~ "aliases you need."
-#~ msgstr ""
-#~ "De aliasen die u nodig heeft voor mailman in uw configuratie van MTA zijn "
-#~ "gewijzigd. Voer /var/lib/mailman/bin/genaliases uit om de nieuwe aliassen "
-#~ "die u nodig heeft te bekijken."
-
-#~ msgid ""
-#~ "Until you do that, some features will stop working and mails will go out "
-#~ "with an invalid Return-Path."
-#~ msgstr ""
-#~ "Sommige mogelijkheden zullen niet meer werken totdat u dit doet en e-"
-#~ "mails zullen buiten gaan met een ongeldige Return-Path."
-
-#~ msgid "List passwords broken"
-#~ msgstr "Lijstwachtwoorden stuk"
-
-#~ msgid ""
-#~ "List admin and moderator passwords are broken by this upgrade. Use /var/"
-#~ "lib/mailman/bin/change_pw to have new ones automatically generated and "
-#~ "emailed to the admins and moderators."
-#~ msgstr ""
-#~ "Lijstbeheerder- en -moderatorwachtwoorden zijn stuk door deze "
-#~ "opwaardering. Gebruik /var/lib/mailman/bin/change_pw om automatisch "
-#~ "nieuwe aan te maken en te versturen naar de beheerders en moderators."
