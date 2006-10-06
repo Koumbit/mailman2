@@ -42,6 +42,7 @@ mailman_workaround:
   local_part_suffix_optional
   local_part_suffix = -bounces : -bounces+* : \
            -confirm+* : -join : -leave : \
+           -subscribe : -unsubscribe : \
            -owner : -request : -admin
   transport = mailman_transport
   group = MAILMAN_GROUP

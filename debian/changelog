@@ -8,6 +8,8 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
     (Closes: #276505).
   * Add new languages Turkish, Interlingua, Arabic, Vietnamese
     to debconf choice, change Chinese from big5 to zh_CN and zh_TW.
+  * Add subscribe/unsubscribe to example in README.Exim4.Debian,
+    thanks Brian Foley (Closes: #387457).
 
   [ Lionel Elie Mamane ]
   * Don't ship C sources with documentation; there is no reason for it.
@@ -24,10 +26,12 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
 
   [ Hector Garcia ]
   * New upstream release
-  	- Deleting included patches:
+    - Deleting included patches:
       24_CVE-2006-2941
       23_CVE-2006-3636
       25_CVE-2006-4624
+    - Fixes German translation (Closes: #273469) and comment typo
+      (Closes: #378509).
   * Updated patches.
   * Deleting 03_documentation_source.patch. Integrated upstream.
   * Deleting 68_translation_update_nl.patch. Too many upstream changes,
@@ -35,7 +39,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
     update it.
   * Renamed 58_fix_translations to 58_fix_es_translations
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri,  6 Oct 2006 16:25:38 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri,  6 Oct 2006 19:36:44 +0200
 
 mailman (1:2.1.8-4) unstable; urgency=high
 
