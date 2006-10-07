@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.8-3 italian debconf templates\n"
+"Project-Id-Version: mailman 2.1.8 italian debconf templates\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-10-06 16:25+0200\n"
-"PO-Revision-Date: 2006-09-19 21:12+0200\n"
+"PO-Revision-Date: 2006-10-07 10:07+0200\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,8 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-#, fuzzy
 msgid "ar (Arabic)"
-msgstr "sr (Serbo)"
+msgstr "ar (Arabo)"
 
 #. Type: multiselect
 #. Choices
@@ -97,9 +96,8 @@ msgstr "hu (Ungherese)"
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-#, fuzzy
 msgid "ia (Interlingua)"
-msgstr "it (Italiano)"
+msgstr "ia (Interlingua)"
 
 #. Type: multiselect
 #. Choices
@@ -189,7 +187,7 @@ msgstr "sv (Svedese)"
 #. Choices
 #: ../templates:1001
 msgid "tr (Turkish)"
-msgstr ""
+msgstr "tr (Turco)"
 
 #. Type: multiselect
 #. Choices
@@ -201,19 +199,19 @@ msgstr "uk (Ucraino)"
 #. Choices
 #: ../templates:1001
 msgid "vi (Vietnamese)"
-msgstr ""
+msgstr "vi (Vietnamita)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_CN (Chinese - China)"
-msgstr ""
+msgstr "zh_CN (Cinese - Cina)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr ""
+msgstr "zh_TW (Chinese - Taiwan)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -394,6 +392,3 @@ msgstr ""
 "elaborazione da parte di Mailman ha prodotto un errore e che sono in attesa "
 "della revisione da parte dell'amministratore. Per esaminare il contenuto "
 "delle code si può usare /var/lib/mailman/bin/show_qfiles."
-
-#~ msgid "big5 (Chinese big5)"
-#~ msgstr "big5 (Cinese big5)"

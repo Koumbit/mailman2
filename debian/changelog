@@ -23,6 +23,8 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
   * Updated hu.po. Translated by Laszlo Boszormenyi.
   * Updated it.po: Translated by Luca Monducci. (Closes: #388657)
   * Updated cs.po: Translated by Miroslav Kure. (Closes: #388663)
+  * Updated pt_BR.po: Translated by Andre Luis Lopes.
+  * Updated es.po: Translated by Javier Fernández-Sanguino Peña.
 
   [ Hector Garcia ]
   * New upstream release
@@ -39,7 +41,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
     update it.
   * Renamed 58_fix_translations to 58_fix_es_translations
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri,  6 Oct 2006 19:36:44 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat,  7 Oct 2006 14:38:43 +0200
 
 mailman (1:2.1.8-4) unstable; urgency=high
 
