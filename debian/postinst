@@ -172,16 +172,6 @@ db_stop || true
 
 case "$1" in
     configure|abort-upgrade|abort-remove|abort-deconfigure)
-	if [ -x /usr/bin/python ]; then
-	    for i in $DIRLIST; do
-		python -O $PYLIBDIR/compileall.py -q $i
-		python $PYLIBDIR/compileall.py -q $i
-		rm -f /usr/lib/$PACKAGE/Mailman/mm_cfg.pyc
-		rm -f /usr/lib/$PACKAGE/Mailman/mm_cfg.pyo
-		chmod -R go=rX $i
-	    done
-	fi 
-
         if [ -e /etc/mailname ]
 	    then 
             DOMAIN=$(head -n 1 /etc/mailname)

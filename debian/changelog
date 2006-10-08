@@ -41,7 +41,10 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
     update it.
   * Renamed 58_fix_translations to 58_fix_es_translations
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat,  7 Oct 2006 14:38:43 +0200
+  [ Riccardo Setti ]
+  * switched to the new python policy 
+
+ -- Riccardo Setti <giskard@debian.org>  Sun,  8 Oct 2006 14:26:22 +0200
 
 mailman (1:2.1.8-4) unstable; urgency=high
 

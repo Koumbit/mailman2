@@ -183,6 +183,7 @@ binary-arch:	checkroot build
 	chmod 2775 debian/mailman/var/log/mailman
 	chmod g+w debian/mailman/var/lock/mailman
 
+	dh_pysupport -a
 	dh_installdeb
 
 #	echo 'if [ "$$1" = purge ]; then' >> debian/mailman.postrm.ucf
