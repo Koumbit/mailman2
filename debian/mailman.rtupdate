@@ -3,7 +3,7 @@
 # this script stops mailman before a Python default runtime change and
 # restarts it afterwards
 
-DESC="Mailman MailingList Server"
+DESC="Mailman Streaming Server"
 NAME="mailman"
 SCRIPTNAME="/etc/init.d/$NAME"
 

@@ -183,7 +183,14 @@ binary-arch:	checkroot build
 	chmod 2775 debian/mailman/var/log/mailman
 	chmod g+w debian/mailman/var/lock/mailman
 
+#	Python Policy
 	dh_pysupport -a
+
+	install -d debian/mailman/usr/share/python/runtime.d
+	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
+	
+	egrep -rlZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
+
 	dh_installdeb
 
 #	echo 'if [ "$$1" = purge ]; then' >> debian/mailman.postrm.ucf
