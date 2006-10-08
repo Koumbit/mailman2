@@ -3,7 +3,7 @@ Section: mail
 Priority: optional
 Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
 Uploaders: Tollef Fog Heen <tfheen@debian.org>, Lionel Elie Mamane <lmamane@debian.org>, Thijs Kinkhorst <thijs@debian.org>, Hector Garcia <hector@debian.org>
-Build-Depends: debhelper (>= 5), autoconf, python-dev, python-support,  quilt (>= 0.40)
+Build-Depends: debhelper (>= 5), autoconf, python-dev, python-support (>= 0.4), quilt (>= 0.40)
 Standards-Version: 3.7.2
 XS-X-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
 
