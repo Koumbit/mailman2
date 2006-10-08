@@ -17,22 +17,20 @@ msgstr ""
 "Project-Id-Version: mailman_2.1.8-2\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-10-06 16:25+0200\n"
-"PO-Revision-Date: 2006-09-18 20:58+0400\n"
+"PO-Revision-Date: 2006-10-07 17:20+0400\n"
 "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-#, fuzzy
 msgid "ar (Arabic)"
-msgstr "sr (сербский)"
+msgstr "ar (арабский)"
 
 #. Type: multiselect
 #. Choices
@@ -109,9 +107,8 @@ msgstr "hu (венгерский)"
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-#, fuzzy
 msgid "ia (Interlingua)"
-msgstr "it (итальянский)"
+msgstr "ia (интерлингва)"
 
 #. Type: multiselect
 #. Choices
@@ -201,7 +198,7 @@ msgstr "sv (шведский)"
 #. Choices
 #: ../templates:1001
 msgid "tr (Turkish)"
-msgstr ""
+msgstr "tr (турецкий)"
 
 #. Type: multiselect
 #. Choices
@@ -213,19 +210,19 @@ msgstr "uk (украинский)"
 #. Choices
 #: ../templates:1001
 msgid "vi (Vietnamese)"
-msgstr ""
+msgstr "vi (вьетнамский)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_CN (Chinese - China)"
-msgstr ""
+msgstr "zh_CN (китайский в Китае)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr ""
+msgstr "zh_TW (китайский в Тайване)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -410,5 +407,3 @@ msgstr ""
 "администратором. Для просмотра содержимого очередей вы можете "
 "воспользоваться программой /var/lib/mailman/bin/show_qfiles."
 
-#~ msgid "big5 (Chinese big5)"
-#~ msgstr "big5 (китайский big5)"

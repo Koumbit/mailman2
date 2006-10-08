@@ -18,7 +18,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
   * Updated vi.po. Translated by Clytie Siddall. (Closes: #388202)
   * Updated ja.po. Translated by Kenshi Muto. (Closes: #388206, #391532)
   * Updated nl.po. Translated by Kurt De Bree. (Closes: #388100)
-  * Updated ru.po. Translated by Yuri Kozlov. (Closes: #388111)
+  * Updated ru.po. Translated by Yuri Kozlov. (Closes: #388111, #391597)
   * Updated sv.po. Translated by Daniel Nylander. (Closes: #388090)
   * Updated hu.po. Translated by Laszlo Boszormenyi.
   * Updated it.po: Translated by Luca Monducci. (Closes: #388657, #391568)
@@ -27,7 +27,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
   * Updated es.po: Translated by Javier Fernández-Sanguino Peña.
 
   [ Hector Garcia ]
-  * New upstream release
+  * New upstream bugfix release
     - Deleting included patches:
       24_CVE-2006-2941
       23_CVE-2006-3636
