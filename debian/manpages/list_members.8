@@ -3,7 +3,7 @@
 list_members \- List all the members of a Mailman list
 
 .SH SYNOPSIS
-list_members [-o file] [-r] [-d] [-p] [-h] listname
+list_members [\-o file] [\-r] [\-d] [\-p] [\-h] listname
 
 .SH OPTIONS
 
@@ -42,12 +42,12 @@ list.  Otherwise, addresses are printed in all lowercase.
 .TP
 \fB\-i\fR, \fB\-\-invalid\fR
 Print only the addresses in the membership list that are invalid.
-Ignores -r, -d, -n.
+Ignores \-r, \-d, \-n.
 
 .TP
 \fB\-u\fR, \fB\-\-unicode\fR
 Print addresses which are stored as Unicode objects instead of normal
-string objects.  Ignores -r, -d, -n.
+string objects.  Ignores \-r, \-d, \-n.
 
 .TP
 \fB\-h\fB, \fB\-\-help\fB
@@ -59,7 +59,7 @@ listname is the name of the mailing list to use.
 
 .SH NOTES
 
-Note that if neither -r or -d is supplied, both regular members are printed
+Note that if neither \-r or \-d is supplied, both regular members are printed
 first, followed by digest members, but no indication is given as to address
 status.
 
