@@ -137,8 +137,8 @@ binary-arch:	checkroot build
 		debian/mailman/{etc/$(package),var/lib/$(package),usr/lib/{$(package),cgi-bin/$(package)}}
 	chown list:list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}
 	chown root:list debian/mailman/var/log/mailman
-	find debian/mailman/var/lib/$(package) -type d | xargs chmod 2775
-	find debian/mailman/var/lib/$(package)/messages -type d | xargs chmod 755
+	find debian/mailman/var/lib/$(package) -type d -exec chmod 2775 {} \;
+	find debian/mailman/var/lib/$(package)/messages -type d -exec chmod 755 {} \;
 
 	# make lintian happy
 	install -m 0644 debian/lintian-overrides debian/mailman/usr/share/lintian/overrides/mailman
@@ -191,9 +191,8 @@ binary-arch:	checkroot build
 	
 
 	egrep -rlZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
-	for i in `find debian/mailman/usr/share/doc/mailman -name *.html` ; do chmod -x $$i ; done
-	for i in `find debian/mailman/usr/share/doc/mailman -name *.txt` ; do chmod -x $$i ; done
-	for i in  `ls debian/mailman/usr/share/doc/mailman/examples/ar/*txt` ; do chmod -x $$i; done
+	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
+	find debian/mailman/usr/share/doc/mailman -name "*.txt" -exec chmod -x {} \;
 
 	dh_installdeb
 
