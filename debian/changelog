@@ -1,5 +1,5 @@
-mailman (1:2.1.9-0) UNRELEASED; urgency=low
-  
+mailman (1:2.1.9-1) unstable; urgency=medium
+
   [ Hector Garcia ]
   * New upstream bugfix release
     - Deleting included patches:
@@ -23,7 +23,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
     to debconf choice, change Chinese from big5 to zh_CN and zh_TW.
   * Add subscribe/unsubscribe to example in README.Exim4.Debian,
     thanks Brian Foley (Closes: #387457).
-  
+
   [ Riccardo Setti ]
   * Switched to the new python policy (Closes: #380876).
 
@@ -43,7 +43,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
   * Updated es.po: Translated by Javier Fernández-Sanguino Peña.
   * Updated fr.po: Translated by Philippe Batailler. (Closes: #388651)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun,  8 Oct 2006 15:28:33 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon,  9 Oct 2006 16:59:10 +0200
 
 mailman (1:2.1.8-4) unstable; urgency=high
 
