@@ -25,6 +25,7 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
   * Updated cs.po: Translated by Miroslav Kure. (Closes: #388663)
   * Updated pt_BR.po: Translated by Andre Luis Lopes.
   * Updated es.po: Translated by Javier Fernández-Sanguino Peña.
+  * Updated fr.po: Translated by Philippe Batailler. (Closes: #388651)
 
   [ Hector Garcia ]
   * New upstream bugfix release
