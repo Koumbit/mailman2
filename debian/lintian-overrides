@@ -37,6 +37,9 @@ select-with-translated-default-field mailman/site_languages vi.utf-8
 select-with-translated-default-field mailman/site_languages cs.utf-8
 select-with-translated-default-field mailman/site_languages fr.utf-8
 select-with-translated-default-field mailman/site_languages it.utf-8
+select-with-translated-default-field mailman/site_languages es.utf-8
+select-with-translated-default-field mailman/site_languages nl.utf-8
+select-with-translated-default-field mailman/site_languages pt_br.utf-8
 select-with-translated-default-field mailman/default_server_language hu.utf-8
 select-with-translated-default-field mailman/default_server_language ja.utf-8
 select-with-translated-default-field mailman/default_server_language ru.utf-8
@@ -45,4 +48,7 @@ select-with-translated-default-field mailman/default_server_language vi.utf-8
 select-with-translated-default-field mailman/default_server_language cs.utf-8
 select-with-translated-default-field mailman/default_server_language fr.utf-8
 select-with-translated-default-field mailman/default_server_language it.utf-8
+select-with-translated-default-field mailman/default_server_language es.utf-8
+select-with-translated-default-field mailman/default_server_language nl.utf-8
+select-with-translated-default-field mailman/default_server_language pt_br.utf-8
 
