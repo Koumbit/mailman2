@@ -1,4 +1,17 @@
 mailman (1:2.1.9-0) UNRELEASED; urgency=low
+  
+  [ Hector Garcia ]
+  * New upstream bugfix release
+    - Deleting included patches:
+      24_CVE-2006-2941, 23_CVE-2006-3636, 25_CVE-2006-4624
+    - Fixes German translation (Closes: #273469) and comment typo
+      (Closes: #378509).
+  * Updated patches.
+  * Deleting 03_documentation_source.patch. Integrated upstream.
+  * Deleting 68_translation_update_nl.patch. Too many upstream changes,
+    doesn't apply any longer. Wrote to patch author in case it wants to
+    update it.
+  * Renamed 58_fix_translations to 58_fix_es_translations
 
   [ Thijs Kinkhorst ]
   * Tweak debconf templates according to best practices.
@@ -10,6 +23,9 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
     to debconf choice, change Chinese from big5 to zh_CN and zh_TW.
   * Add subscribe/unsubscribe to example in README.Exim4.Debian,
     thanks Brian Foley (Closes: #387457).
+  
+  [ Riccardo Setti ]
+  * Switched to the new python policy (Closes: #380876).
 
   [ Lionel Elie Mamane ]
   * Don't ship C sources with documentation; there is no reason for it.
@@ -26,24 +42,6 @@ mailman (1:2.1.9-0) UNRELEASED; urgency=low
   * Updated pt_BR.po: Translated by Andre Luis Lopes.
   * Updated es.po: Translated by Javier Fernández-Sanguino Peña.
   * Updated fr.po: Translated by Philippe Batailler. (Closes: #388651)
-
-  [ Hector Garcia ]
-  * New upstream bugfix release
-    - Deleting included patches:
-      24_CVE-2006-2941
-      23_CVE-2006-3636
-      25_CVE-2006-4624
-    - Fixes German translation (Closes: #273469) and comment typo
-      (Closes: #378509).
-  * Updated patches.
-  * Deleting 03_documentation_source.patch. Integrated upstream.
-  * Deleting 68_translation_update_nl.patch. Too many upstream changes,
-    doesn't apply any longer. Wrote to patch author in case it wants to
-    update it.
-  * Renamed 58_fix_translations to 58_fix_es_translations
-
-  [ Riccardo Setti ]
-  * Switched to the new python policy (Closes: #380876).
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sun,  8 Oct 2006 15:28:33 +0200
 
