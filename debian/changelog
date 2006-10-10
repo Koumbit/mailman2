@@ -1,10 +1,15 @@
 mailman (1:2.1.9-2) UNRELEASED; urgency=low
 
+  [ Thijs Kinkhorst ]
   * Drop disabled 73_list-id_strict_rfc patch; integrated upstream.
   * Clarify README.Debian about where to insert SpamAssassin integration
     (Closes: #369171).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 10 Oct 2006 11:42:39 +0200
+  [ Hector Garcia ]
+  * Removed 12_savannah_wrapper.patch Doesn't work and is not supported
+    upstream any longer (Closes: #287554).
+
+ -- Hector Garcia <hector@debian.org>  Tue, 10 Oct 2006 22:57:38 +0200
 
 mailman (1:2.1.9-1) unstable; urgency=medium
 

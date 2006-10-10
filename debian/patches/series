@@ -3,7 +3,6 @@
 07_snooze.patch -p0
 10_wrapper_uid.patch -p0
 11_handle_propfind.patch -p0
-12_savannah_wrapper.patch -p0
 15_mailmanctl_daemonize.patch -p0
 16_update_debian.patch -p0
 20_qmail_to_mailman.debian.patch -p0

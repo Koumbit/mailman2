@@ -143,9 +143,6 @@ binary-arch:	checkroot build
 	# make lintian happy
 	install -m 0644 debian/lintian-overrides debian/mailman/usr/share/lintian/overrides/mailman
 
-# Install savannah plugin
-	install -m 0644 debian/contrib/savannah debian/mailman/usr/lib/$(package)/Mailman/Cgi
-
 # Spamassassin plugin
 	install -m 0644 debian/contrib/SpamAssassin.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
 	install -m 0644 debian/contrib/spamd.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
