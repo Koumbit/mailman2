@@ -1,6 +1,8 @@
 mailman (1:2.1.9-2) UNRELEASED; urgency=low
 
-  * 
+  * Drop disabled 73_list-id_strict_rfc patch; integrated upstream.
+  * Clarify README.Debian about where to insert SpamAssassin integration
+    (Closes: #369171).
 
  -- Thijs Kinkhorst <thijs@debian.org>  Tue, 10 Oct 2006 11:42:39 +0200
 
