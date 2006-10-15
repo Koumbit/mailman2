@@ -10,13 +10,14 @@
 #
 #    Developers do not need to manually edit POT or PO files.
 #
+# Philippe Batailler <philippe.batailler@free.fr>, 2006
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-10-06 16:25+0200\n"
-"PO-Revision-Date: 2006-09-18 21:34+0200\n"
-"Last-Translator: Philippe Batailler <philippe.batailler@free.fr>\n"
+"PO-Revision-Date: 2006-10-10 21:19+0200\n"
+"Last-Translator: Florentin Duneau <fduneau@gmail.com>\n"
 "Language-Team: french <debian-l10n-french@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -26,7 +27,7 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "ar (Arabic)"
-msgstr ""
+msgstr "ar (arabe)"
 
 #. Type: multiselect
 #. Choices
@@ -104,7 +105,7 @@ msgstr "hu (hongrois)"
 #. Choices
 #: ../templates:1001
 msgid "ia (Interlingua)"
-msgstr ""
+msgstr "ia (interlangua)"
 
 #. Type: multiselect
 #. Choices
@@ -134,7 +135,7 @@ msgstr "lt (lituanien)"
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr "nl (hollandais)"
+msgstr "nl (néerlandais)"
 
 #. Type: multiselect
 #. Choices
@@ -194,7 +195,7 @@ msgstr "sv (suédois)"
 #. Choices
 #: ../templates:1001
 msgid "tr (Turkish)"
-msgstr ""
+msgstr "tr (turc)"
 
 #. Type: multiselect
 #. Choices
@@ -206,19 +207,19 @@ msgstr "uk (ukrainien)"
 #. Choices
 #: ../templates:1001
 msgid "vi (Vietnamese)"
-msgstr ""
+msgstr "vi (vietnamien)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_CN (Chinese - China)"
-msgstr ""
+msgstr "zh_CN (chinois simplifié)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr ""
+msgstr "zh_TW (chinois traditionnel)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -255,7 +256,7 @@ msgid ""
 msgstr ""
 "Mailman garde les textes de chaque langue reconnue dans /etc/mailman/LANG/. "
 "Ces fichiers sont alors gérés comme des fichiers de configuration grâce au "
-"programme « ucf » ; chaque langue occupe environ 150 ko sur le système de "
+"programme ucf. Chaque langue occupe environ 150 Ko sur le système de "
 "fichiers racine."
 
 #. Type: multiselect
@@ -265,8 +266,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Quand vous voudrez ajouter ou retirer des langues, il suffira d'exécuter "
-"« dpkg-reconfigure mailman »."
+"Quand vous voudrez ajouter ou retirer des langues, veuillez exécuter « dpkg-"
+"reconfigure mailman »."
 
 #. Type: multiselect
 #. Description
@@ -276,7 +277,7 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTE : les langues gérées par des listes de discussion existantes sont "
+"Notes : les langues gérées par des listes de discussion existantes sont "
 "automatiquement réactivées même si vous les désactivez ici. Mailman a besoin "
 "d'au moins une langue activée pour afficher ses messages."
 
@@ -284,7 +285,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Gate news to mail?"
-msgstr "Faut-il transformer des nouvelles en courriers électroniques ?"
+msgstr "Faut-il transformer les nouvelles en courriers électroniques ?"
 
 #. Type: boolean
 #. Description
@@ -293,15 +294,15 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Il est possible de transformer des nouvelles en courriers, c'est-à-dire "
-"envoyer tous les messages qui apparaissent dans un forum Usenet vers une "
-"liste de diffusion."
+"Il est possible de transformer les nouvelles (les « news ») en courriers, "
+"c'est-à-dire envoyer tous les messages qui apparaissent dans un forum Usenet "
+"vers une liste de diffusion."
 
 #. Type: boolean
 #. Description
 #: ../templates:3001
 msgid "Most people won't need this."
-msgstr "La plupart des utilisateurs n'ont pas besoin de cette fonction."
+msgstr "La plupart des utilisateurs n'ont pas besoin de cette fonctionnalité."
 
 #. Type: note
 #. Description
@@ -317,9 +318,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman a besoin d'une liste du site (« site list ») ; cette liste permet "
-"d'envoyer les rappels pour les mots de passe, etc. Elle doit être créée "
-"avant le lancement de Mailman."
+"Mailman a besoin d'une liste du site (« site list »). Elle permet d'envoyer "
+"les rappels pour les mots de passe, etc. Elle doit être créée avant le "
+"lancement de Mailman."
 
 #. Type: note
 #. Description
@@ -329,15 +330,15 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Pour créer cette liste, lancez « newlist mailman » et suivez les "
-"instructions qui apparaissent sur l'écran. Il est ensuite nécessaire de "
-"relancer mailman avec la commande « /etc/init.d/mailman start »."
+"Pour créer cette liste, exécuter « newlist mailman » et suivez les "
+"instructions qui apparaissent à l'écran. Il est ensuite nécessaire de "
+"redémarrer mailman avec la commande « /etc/init.d/mailman start »."
 
 #. Type: select
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr "Langue par défaut :"
+msgstr "Langue par défaut de Mailman :"
 
 #. Type: select
 #. Description
@@ -346,14 +347,14 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"La page web est affichée dans la langue choisie ; Mailman se sert aussi de "
+"La page web est affichée dans la langue choisie et Mailman se sert aussi de "
 "cette langue pour communiquer avec les utilisateurs."
 
 #. Type: note
 #. Description
 #: ../templates:6001
 msgid "Old queue files present"
-msgstr "Fichiers anciens dans les files d'attente"
+msgstr "Fichiers anciens dans la file d'attente"
 
 #. Type: note
 #. Description
@@ -373,19 +374,21 @@ msgid ""
 "forget about (and lose) the corresponding emails."
 msgstr ""
 "Le répertoire /var/lib/mailman/qfiles contient des fichiers. Il doit être "
-"vide pour que la mise à jour se passe correctement. Voici comment gérer ces "
-"fichiers :\n"
-" - Empêchez l'arrivée de nouveaux messages dans la file d'attente\n"
-"   (au niveau MTA).\n"
-" - Traitez la file d'attente de mailman : /etc/init.d/mailman start\n"
-" - Attendez que tous les messages soient traités.\n"
-"   Si cela prend trop de temps, lisez les journaux et essayez de\n"
-"   comprendre pourquoi.\n"
-" - Arrêtez mailman : /etc/init.d/mailman stop\n"
-" - Réessayez la mise à jour.\n"
-" - Autorisez l'arrivée des messages.\n"
-"Vous pouvez aussi supprimer ces fichiers. Mailman ignorera (et perdra) les "
-"messages correspondants."
+"vide pour que la mise à jour se déroule correctement. Si ces fichiers sont "
+"des messages qui n'ont pas encore été traités, vous pouvez procéder comme "
+"suit :\n"
+" - stoppez l'arrivée des nouveaux messages (au niveau MTA) ;\n"
+" - démarrez mailman avec « /etc/init.d/mailman start » pour vider la file "
+"d'attente ;\n"
+" - laissez-le s'exécuter jusqu'à ce que tous les messages soient traités ;\n"
+" - s'il n'a pas traité tous les messages dans un temps raisonnable, "
+"consultez les fichiers de journaux pour comprendre le dysfonctionnement et "
+"tenter de le résoudre ;\n"
+" - arrêtez mailman avec « /etc/init.d/mailman stop » ;\n"
+" - essayez de nouveau la mise à jour ;\n"
+" - autorisez de nouveau l'arrivée des messages (au niveau MTA).\n"
+"Vous pouvez aussi supprimer ces fichiers. Mailman ignorera les messages "
+"correspondants."
 
 #. Type: note
 #. Description
@@ -398,11 +401,8 @@ msgid ""
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
 "Si ces fichiers correspondent à des messages mis de côté, vous devez les "
-"détruire ou bien les traiter à nouveau (avec /var/lib/mailman/bin/unshunt). "
-"Les messages mis de côté sont des messages que mailman ne traitera plus car "
-"ils provoquent une erreur. Ils sont conservés pour étude. Vous pouvez "
-"utiliser /var/lib/mailman/bin/show_qfiles pour examiner le contenu des files "
+"détruire ou les traiter à nouveau (avec /var/lib/mailman/bin/unshunt). Les "
+"messages mis de côté sont des messages que mailman ne traitera plus car ils "
+"provoquent une erreur. Ils sont conservés pour étude. Vous pouvez utiliser /"
+"var/lib/mailman/bin/show_qfiles pour examiner le contenu de la file "
 "d'attente."
-
-#~ msgid "big5 (Chinese big5)"
-#~ msgstr "big5 (chinois big5)"
