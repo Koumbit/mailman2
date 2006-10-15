@@ -4,6 +4,7 @@ mailman (1:2.1.9-2) UNRELEASED; urgency=low
   * Drop disabled 73_list-id_strict_rfc patch; integrated upstream.
   * Clarify README.Debian about where to insert SpamAssassin integration
     (Closes: #369171).
+  * Fix buggy regexp in postinst.
 
   [ Hector Garcia ]
   * Removed 12_savannah_wrapper.patch Doesn't work and is not supported
@@ -12,7 +13,7 @@ mailman (1:2.1.9-2) UNRELEASED; urgency=low
   [ Translations ]
   * Updated French by Florentin Duneau (Closes: #393096).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 15 Oct 2006 11:02:39 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 15 Oct 2006 11:40:28 +0200
 
 mailman (1:2.1.9-1) unstable; urgency=medium
 
