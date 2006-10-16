@@ -4,10 +4,9 @@ on Tue, 16 Jun 1998 22:34:13 -0400.
 It was downloaded from:
 	http://www.list.org/
 
-Package was maintained by Gergely Madarasz <gorgo@caesar.elte.hu>
-Package now maintained by Tollef Fog Heen <tfheen@debian.org>
-                          Lionel Elie Mamane <lmamane@debian.org>
-                          Laszlo Boszormenyi <gcs@lsc.hu>
+It is maintained by the Mailman for Debian team. Our mailinglist
+and Subversion repository are found at Alioth:
+http://alioth.debian.org/projects/pkg-mailman/
 
 Copyright: GNU GPL 2
 
@@ -24,7 +23,6 @@ Manheimer and Barry Warsaw.
 Initial version of Mailman (v. 0.9) written by John Viega Dec 12-15
 1996.  Mailman 1.0b3, 2, and 1.1 developments by Ken Manheimer, 4/98
 and 5/98.  Autoconf support added 5/98 by Barry Warsaw.
-
 
 
 Modifications for Debian are copyright (C) 1998 Johnie Ingram, (C)
