@@ -161,7 +161,7 @@ EOF
     if [ -e /etc/mailman/mm_cfg.py ]; then
         db_get mailman/default_server_language || true
         if [ -n "$RET" ]; then
-            default_server_language=${RET}
+            default_server_language="$(echo $RET | sed -r 's/ \([^\)]*\)//g')"
             sed -e s/DEFAULT_SERVER_LANGUAGE.*=.*\'..\'/DEFAULT_SERVER_LANGUAGE\ =\ \'${default_server_language}\'/ ${mm_etc}/mm_cfg.py > ${mm_etc}/mm_cfg.py.$$
             mv -f ${mm_etc}/mm_cfg.py.$$ ${mm_etc}/mm_cfg.py
         fi
