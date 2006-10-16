@@ -47,7 +47,7 @@ instructions. Additional information may be available in
 Postfix
 _______
 For those using postfix who are able to devote a full subdomain
-lists.doma.in for use by mailman, please see the comments in
+lists.example.com for use by Mailman, please see the comments in
 /etc/mailman/postfix-to-mailman.py .
 
 SpamAssassin
