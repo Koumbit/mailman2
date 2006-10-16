@@ -12,8 +12,9 @@ mailman (1:2.1.9-2) UNRELEASED; urgency=low
 
   [ Translations ]
   * Updated French by Florentin Duneau (Closes: #393096).
+  * Updated Brazilian Portuguese by Felipe Augusto van de Wiel.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 15 Oct 2006 11:40:28 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 16 Oct 2006 12:34:33 +0200
 
 mailman (1:2.1.9-1) unstable; urgency=medium
 

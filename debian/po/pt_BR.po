@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: mailman_2.1.3-2\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-10-06 16:25+0200\n"
-"PO-Revision-Date: 2006-10-06 20:55-0300\n"
+"PO-Revision-Date: 2006-10-16 00:53-0200\n"
 "Last-Translator: André Luís Lopes <andrelop@debian.org>\n"
 "Language-Team: Debian-BR Project <debian-l10n-portuguese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "ar (Arabic)"
-msgstr "ar (Arábico"
+msgstr "ar (Arábico)"
 
 #. Type: multiselect
 #. Choices
@@ -257,7 +257,7 @@ msgstr ""
 "Para cada idioma suportado, o Mailman armazena textos específicos do "
 "idioma padrão em /etc/mailman/LANG/ dando aos mesmos tratamento de "
 "conffile com a ajuda do ucf. Isso significa aproximadamente 150kB "
-"para cada idioma suportado no sistema de arquivos raíz."
+"para cada idioma suportado no sistema de arquivos raiz."
 
 #. Type: multiselect
 #. Description
@@ -278,7 +278,7 @@ msgid ""
 "messages."
 msgstr ""
 "NOTA: Idiomas habilitados em listas de discussões existentes são "
-"forçadamente rehabilitados quando deselecionados e o mailman precisa "
+"forçadamente reabilitados quando deselecionados e o mailman precisa "
 "de pelo menos um idioma para exibir suas mensagens."
 
 #. Type: boolean
@@ -399,7 +399,7 @@ msgid ""
 msgstr ""
 "Caso esses arquivos sejam correspondentes a mensagens substituídas "
 "(shunted), você precisa removê-las ou abrí-las (com "
-"/var/lib/mailman/bin/unshut). Mensagens substituídas são mensagens "
+"/var/lib/mailman/bin/unshunt). Mensagens substituídas são mensagens "
 "para as quais o Mailman já abandonou qualquer processamento adicional "
 "devido a uma condição de erro, mas que são mantidas para revisão "
 "administrativa. Você pode utilizar /var/lib/mailman/bin/show_qfiles "
