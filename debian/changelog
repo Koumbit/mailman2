@@ -6,6 +6,8 @@ mailman (1:2.1.9-2) unstable; urgency=medium
   * Drop disabled 73_list-id_strict_rfc patch; integrated upstream.
   * Clarify README.Debian about where to insert SpamAssassin integration
     (Closes: #369171).
+  * Add 72_fblast_add_shebang patch; this script is set as executable
+    thus needs an interpreter on the first line.
 
   [ Hector Garcia ]
   * Removed 12_savannah_wrapper.patch. Doesn't work and is not supported
@@ -15,7 +17,7 @@ mailman (1:2.1.9-2) unstable; urgency=medium
   * Updated French by Florentin Duneau (Closes: #393096).
   * Updated Brazilian Portuguese by Felipe Augusto van de Wiel.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 17 Oct 2006 09:54:25 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 17 Oct 2006 10:14:57 +0200
 
 mailman (1:2.1.9-1) unstable; urgency=medium
 

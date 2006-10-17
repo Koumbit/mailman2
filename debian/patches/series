@@ -24,6 +24,7 @@
 67_update_handle_old_versions.patch -p0
 70_invalid_utf8_dos.patch -p0
 71_date_overflows.patch -p0
+72_fblast_add_shebang.patch -p0
 74_admin_non-ascii_emails.patch -p0
 77_header_folding_in_attachments.patch -p0
 78_DeprecationWarning.patch -p0
