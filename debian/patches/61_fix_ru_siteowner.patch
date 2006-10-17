@@ -1,5 +1,6 @@
 Patch: 61_fix_ru_siteowner.patch
 Author: László 'GCS' Böszörményi <gcs@lsc.hu>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578766&group_id=103&atid=300103
 Correct siteowner variable in ru template for newer Mailman versions.
 Index: templates/ru/newlist.txt
 ===================================================================

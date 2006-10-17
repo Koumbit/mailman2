@@ -1,7 +1,6 @@
 Patch: 56_fix_de_broken_links.patch
 Author: based on work by Ralf Doeblitz <r.doeblitz@asco.de> (see bug #233048)
-update is called from the Debian maintainer scripts and prints
-non-appropriate output.  Change that.
+Submitted upstream: via email to translation maintainer
 Index: messages/de/LC_MESSAGES/mailman.po
 ===================================================================
 --- messages/de/LC_MESSAGES/mailman.po.orig	2006-08-15 15:12:18.000000000 +0800

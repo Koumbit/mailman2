@@ -1,5 +1,6 @@
 Patch: 72_fblast_add_shebang.patch
 Author: Thijs Kinkhorst <thijs@debian.org>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578740&group_id=103&atid=300103
 This script may be called directly from the command line, is set as executable,
 thus needs a shebang line.
 Index: tests/fblast.py

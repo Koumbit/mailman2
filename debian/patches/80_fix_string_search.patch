@@ -1,5 +1,6 @@
 Patch: fix_admin.py.patch
-Author: Riccardo Setti <giskard@debian.prg>
+Author: Riccardo Setti <giskard@debian.org>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1532081&group_id=103&atid=300103
 Improve the search method in the admin page wich list members (Closes: #359721)
 Index: Mailman/Cgi/admin.py
 ===================================================================
