@@ -1,5 +1,6 @@
 Patch: build_arch_indep.patch
 Author: Thijs Kinkhorst <thijs@debian.org>, based on work from Siggy Bentrup.
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1564527&group_id=103&atid=300103
 Split the Makefile targets into arch-dep and arch-indep so we can install
 them into different packages.
 Index: Makefile.in
