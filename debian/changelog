@@ -1,7 +1,7 @@
-mailman (1:2.1.9-2) UNRELEASED; urgency=medium
+mailman (1:2.1.9-2) unstable; urgency=medium
 
   [ Thijs Kinkhorst ]
-  * Medium urgency upload for important upgrading bug.
+  * Medium urgency upload for RC upgrading bug.
   * Fix buggy sedding in postinst (Closes: #392995).
   * Drop disabled 73_list-id_strict_rfc patch; integrated upstream.
   * Clarify README.Debian about where to insert SpamAssassin integration
@@ -15,7 +15,7 @@ mailman (1:2.1.9-2) UNRELEASED; urgency=medium
   * Updated French by Florentin Duneau (Closes: #393096).
   * Updated Brazilian Portuguese by Felipe Augusto van de Wiel.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 16 Oct 2006 15:44:44 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 17 Oct 2006 09:54:25 +0200
 
 mailman (1:2.1.9-1) unstable; urgency=medium
 
