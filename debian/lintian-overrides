@@ -27,28 +27,3 @@ non-standard-dir-perm var/lock/mailman/ 0775 != 0755
 non-standard-dir-perm var/lib/mailman/pythonlib/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/pythonlib/email/ 2775 != 0755
 
-# We override this because we use the default field translation
-# in accordance with developer's reference 6.5.4.4 
-select-with-translated-default-field mailman/site_languages hu.utf-8
-select-with-translated-default-field mailman/site_languages ja.utf-8
-select-with-translated-default-field mailman/site_languages ru.utf-8
-select-with-translated-default-field mailman/site_languages sv.utf-8
-select-with-translated-default-field mailman/site_languages vi.utf-8
-select-with-translated-default-field mailman/site_languages cs.utf-8
-select-with-translated-default-field mailman/site_languages fr.utf-8
-select-with-translated-default-field mailman/site_languages it.utf-8
-select-with-translated-default-field mailman/site_languages es.utf-8
-select-with-translated-default-field mailman/site_languages nl.utf-8
-select-with-translated-default-field mailman/site_languages pt_br.utf-8
-select-with-translated-default-field mailman/default_server_language hu.utf-8
-select-with-translated-default-field mailman/default_server_language ja.utf-8
-select-with-translated-default-field mailman/default_server_language ru.utf-8
-select-with-translated-default-field mailman/default_server_language sv.utf-8
-select-with-translated-default-field mailman/default_server_language vi.utf-8
-select-with-translated-default-field mailman/default_server_language cs.utf-8
-select-with-translated-default-field mailman/default_server_language fr.utf-8
-select-with-translated-default-field mailman/default_server_language it.utf-8
-select-with-translated-default-field mailman/default_server_language es.utf-8
-select-with-translated-default-field mailman/default_server_language nl.utf-8
-select-with-translated-default-field mailman/default_server_language pt_br.utf-8
-
