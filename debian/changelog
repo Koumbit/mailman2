@@ -1,8 +1,9 @@
 mailman (1:2.1.9-3) UNRELEASED; urgency=low
 
-  * 
+  [ Translations ]
+  * Updated Vietnamese by Clytie Siddall (Closes: 395851).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 17 Oct 2006 10:21:50 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 30 Oct 2006 11:43:43 +0100
 
 mailman (1:2.1.9-2) unstable; urgency=medium
 
