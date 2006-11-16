@@ -75,7 +75,7 @@ binary-arch:	checkroot build
 
 	cd debian/mailman/var/lib/$(package) ; \
 	   mv cgi-bin ../../../usr/lib/cgi-bin/mailman ; \
-	   for i in Mailman bin cron mail scripts; do \
+	   for i in Mailman bin cron mail scripts python-lib; do \
 		mv $$i ../../../usr/lib/$(package); \
 	   done
 
