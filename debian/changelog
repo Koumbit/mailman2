@@ -1,8 +1,5 @@
 mailman (1:2.1.9-3) UNRELEASED; urgency=low
 
-  [ Translations ]
-  * Updated Vietnamese by Clytie Siddall (Closes: 395851).
-
   [ Lionel Elie Mamane ]
   * Follow requirements/requests of upgrade to new python policy more
     narrowly: build-depend on newer version of python-support, add
@@ -11,7 +8,14 @@ mailman (1:2.1.9-3) UNRELEASED; urgency=low
   * Move python-lib directory to /usr/lib/mailman/, like Mailman code;
     /var/lib/mailman is grossly wrong.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Thu, 16 Nov 2006 18:29:12 +0100
+  [ Thijs Kinkhorst ]
+  * Add subscribe/unsubscribe aliases to second half of example in
+    README.Exim4.Debian, thanks Ian Wienand (Closes: 387457).
+  
+  [ Translations ]
+  * Updated Vietnamese by Clytie Siddall (Closes: 395851).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 27 Nov 2006 14:44:20 +0100
 
 mailman (1:2.1.9-2) unstable; urgency=medium
 
