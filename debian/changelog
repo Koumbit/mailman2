@@ -9,8 +9,9 @@ mailman (1:2.1.9-3) UNRELEASED; urgency=low
     /var/lib/mailman is grossly wrong.
 
   [ Thijs Kinkhorst ]
-  * Add subscribe/unsubscribe aliases to second half of example in
-    README.Exim4.Debian, thanks Ian Wienand (Closes: 387457).
+  * Add subscribe/unsubscribe aliases to second half of example, and a
+    note about chgrp when creating a new list through the web interface.
+    Both in README.Exim4.Debian, thanks Ian Wienand (Closes: 387457).
   
   [ Translations ]
   * Updated Vietnamese by Clytie Siddall (Closes: 395851).
