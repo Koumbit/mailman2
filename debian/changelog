@@ -12,11 +12,12 @@ mailman (1:2.1.9-3) UNRELEASED; urgency=low
   * Add subscribe/unsubscribe aliases to second half of example, and a
     note about chgrp when creating a new list through the web interface.
     Both in README.Exim4.Debian, thanks Ian Wienand (Closes: 387457).
-  
+
   [ Translations ]
   * Updated Vietnamese by Clytie Siddall (Closes: 395851).
+  * Updated German by Holger Wansing (Closes: 400963).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 27 Nov 2006 14:44:20 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 29 Nov 2006 23:06:03 +0100
 
 mailman (1:2.1.9-2) unstable; urgency=medium
 
