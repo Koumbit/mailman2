@@ -1,4 +1,4 @@
-mailman (1:2.1.9-3) UNRELEASED; urgency=medium
+mailman (1:2.1.9-3) unstable; urgency=medium
 
   [ Lionel Elie Mamane ]
   * Follow requirements/requests of upgrade to new python policy more
@@ -12,12 +12,13 @@ mailman (1:2.1.9-3) UNRELEASED; urgency=medium
   * Add subscribe/unsubscribe aliases to second half of example, and a
     note about chgrp when creating a new list through the web interface.
     Both in README.Exim4.Debian, thanks Ian Wienand (Closes: 387457).
+  * Remove lintian overrides that are not needed with recent Lintians.
 
   [ Translations ]
   * Updated Vietnamese by Clytie Siddall (Closes: 395851).
   * Updated German by Holger Wansing (Closes: 400963).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 Dec 2006 13:20:57 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 Dec 2006 15:18:12 +0100
 
 mailman (1:2.1.9-2) unstable; urgency=medium
 
