@@ -1,12 +1,12 @@
-mailman (1:2.1.9-3) UNRELEASED; urgency=low
+mailman (1:2.1.9-3) UNRELEASED; urgency=medium
 
   [ Lionel Elie Mamane ]
   * Follow requirements/requests of upgrade to new python policy more
     narrowly: build-depend on newer version of python-support, add
     XS-Python-Version/XB-Python-Version fields to control, give path to
-    private python modules to dh_pysupport.
+    private python modules to dh_pysupport (Closes: #394181).
   * Move python-lib directory to /usr/lib/mailman/, like Mailman code;
-    /var/lib/mailman is grossly wrong.
+    /var/lib/mailman is grossly wrong (Closes: #400005).
 
   [ Thijs Kinkhorst ]
   * Add subscribe/unsubscribe aliases to second half of example, and a
@@ -17,7 +17,7 @@ mailman (1:2.1.9-3) UNRELEASED; urgency=low
   * Updated Vietnamese by Clytie Siddall (Closes: 395851).
   * Updated German by Holger Wansing (Closes: 400963).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Wed, 29 Nov 2006 23:06:03 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 Dec 2006 13:20:57 +0100
 
 mailman (1:2.1.9-2) unstable; urgency=medium
 
