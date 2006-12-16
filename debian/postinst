@@ -24,6 +24,16 @@ fi
 
 if [ "$1" = "configure" ]; then
 
+    ## Special magick to upgrade from versions between 1:2.1.8-3 and 1:2.1.9-2
+    if [ -d /var/lib/mailman/pythonlib ] && [ ! -h /var/lib/mailman/pythonlib ]; then
+	# It had better already be empty!
+	rmdir /var/lib/mailman/pythonlib
+    fi
+    if [ ! -h /var/lib/mailman/pythonlib ]; then
+	ln -s /usr/lib/mailman/pythonlib /var/lib/mailman/pythonlib
+    fi
+    ## End special magick to upgrade
+
     mm_etc=/etc/mailman
     mm_dist=/usr/share/mailman
 
