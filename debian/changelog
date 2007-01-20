@@ -1,7 +1,7 @@
 mailman (1:2.1.9-5) unstable; urgency=medium
 
   * Ship bin/export.py from upstream SVN to make automatic upgrades to
-    lenny possible.
+    lenny possible. (closes: #407260)
 
  -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 20 Jan 2007 05:04:11 +0100
 
