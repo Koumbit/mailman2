@@ -1,10 +1,11 @@
-Patch: 21_newlist_help.patch
-Author: Tollef Fog Heen <tfheen@debian.org>
-make newlist be a bit friendlier.
-Index: bin/newlist
-===================================================================
---- bin/newlist.orig	2006-08-15 15:12:18.000000000 +0800
-+++ bin/newlist	2006-08-15 15:14:32.000000000 +0800
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## Patch: 21_newlist_help.patch
+## Author: Tollef Fog Heen <tfheen@debian.org>
+## DP: make newlist be a bit friendlier.
+@DPATCH@
+diff -urNad mailman-2.1.9~/bin/newlist mailman-2.1.9/bin/newlist
+--- mailman-2.1.9~/bin/newlist	2007-01-20 03:44:12.000000000 +0100
++++ mailman-2.1.9/bin/newlist	2007-01-26 11:53:19.853900943 +0100
 @@ -87,6 +87,9 @@
  defined in your Defaults.py file or overridden by settings in mm_cfg.py).
  
@@ -28,7 +29,7 @@ Index: bin/newlist
  
  def main():
 +    gid = grp.getgrnam(mm_cfg.MAILMAN_GROUP)[2]
-+    if os.getgid() != gid:
++    if os.getgid() != gid and gid not in os.getgroups():
 +        os.setgid(gid)
      try:
          opts, args = getopt.getopt(sys.argv[1:], 'hql:u:e:',

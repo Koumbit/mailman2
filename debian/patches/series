@@ -6,7 +6,7 @@
 15_mailmanctl_daemonize.patch -p0
 16_update_debian.patch -p0
 20_qmail_to_mailman.debian.patch -p0
-21_newlist_help.patch -p0
+21_newlist_help.patch -p1
 30_pipermail_threads.patch -p0
 32_MIME_fixup.patch -p0
 51_nocompile.pyc.patch -p0
