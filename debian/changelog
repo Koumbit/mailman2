@@ -1,9 +1,14 @@
 mailman (1:2.1.9-6) UNRELEASED; urgency=low
 
+  [ Lionel Elie Mamane ]
   * Allow people that have list as a supplementary group to create new
     mailing lists.  (see bug#309339)
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 26 Jan 2007 11:58:36 +0100
+  [ Thijs Kinkhorst ]
+  * Fix path-typo in apache.conf dedicated virtual host example,
+    thanks Alberto Furia (Closes: #409180).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu,  1 Feb 2007 00:29:46 +0100
 
 mailman (1:2.1.9-5) unstable; urgency=medium
 
