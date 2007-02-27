@@ -1,5 +1,6 @@
 00_stolen_from_HEAD.patch -p0
 01_defaults.debian.patch -p0
+02_HyperDatabase_mapkeys.patch -p0
 07_snooze.patch -p0
 10_wrapper_uid.patch -p0
 11_handle_propfind.patch -p0

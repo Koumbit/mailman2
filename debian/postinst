@@ -4,6 +4,8 @@
 # Written 1998 by Gregor Hoffleit <flight@debian.org>.
 # Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
 # mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
+# Other modifications 2004-2007 by other maintainers of the Debian package:
+#      Lionel Elie Mamane, Thijs Kinkhorst, Riccardo Setti, Matej Vela, Hector Garcia, László Böszörményi, Bernd S. Brentrup, ...
 #
 # $URL$
 # $Id$
@@ -56,6 +58,7 @@ if [ "$1" = "configure" ]; then
 
     # At present ALL directories in /etc/mailman are language directories
     # but this may change in the future, better check.
+    # Furthermore, the administrator may have have added other directories
     for dir in $(find ${mm_etc} -maxdepth 1 -mindepth 1 -type d -printf '%P\n'); do
       if [ -f ${mm_dist}/${dir}/options.html ]; then
         old_languages="${old_languages} ${dir}"
@@ -215,5 +218,10 @@ case "$1" in
         exit 1
     ;;
 esac
+
+if [ "$1" = "configure" ] && dpkg --compare-versions "$2" lt "1:2.1.9-6"; then
+    /var/lib/mailman/bin/withlist --all -q -r unicodify_archives
+fi
+
 
 #DEBHELPER#

@@ -1,14 +1,17 @@
-mailman (1:2.1.9-6) UNRELEASED; urgency=low
+mailman (1:2.1.9-6) unstable; urgency=medium
 
   [ Lionel Elie Mamane ]
   * Allow people that have list as a supplementary group to create new
     mailing lists.  (see bug#309339)
+  * Upgrade subject and author indexes of current archiving volume to
+    Unicode strings; possible slight data loss (non-ASCII characters
+    transcoded wrongly) (closes: #412142)
 
   [ Thijs Kinkhorst ]
   * Fix path-typo in apache.conf dedicated virtual host example,
     thanks Alberto Furia (Closes: #409180).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Thu,  1 Feb 2007 00:29:46 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Feb 2007 21:02:45 +0100
 
 mailman (1:2.1.9-5) unstable; urgency=medium
 

@@ -1,0 +1,38 @@
+mailman (1:2.1.9-6) unstable; urgency=medium
+
+  * This version will automatically upgrade indexes of the current
+    archiving volume to the new Unicode format, which can lead to a slight
+    corruption / data loss in the form of non-ASCII characters not being
+    transcoded correctly.
+
+    If you kept single-mbox archives of your mailing list additionally to
+    the HTML ones (even if this mbox archive was not downloadable from the
+    web), you are probably better off regenerating the archives from
+    scratch with:
+     cd /var/lib/mailman/lists
+     for list in *; do /var/lib/mailman/bin/arch --wipe "${list}" ; done
+    This will use information in the original email to make a better guess
+    at the encoding of the subject and author of a post to the list.
+
+
+    Details:
+
+    Seome previous versions tried to use Unicode for new entries, mixing
+    them with old 8 bit character string entries left over from even older
+    versions, leading to a cascade of events that broke archiving for
+    mailing lists completely for the rest of the archiving volume period
+    (often the calendar month).
+
+    As the old entries were stored as strings without encoding
+    information, there is no way to automatically reliably convert those
+    to Unicode. The upgrade code will try, in order:
+     - the default Python encoding (usually ASCII)
+     - UTF-8
+     - windows-1252, a superset of iso-8859-1
+    You can change the default Python encoding by creating a file called
+    sitecustomize.py in python's loadpath with e.g.:
+     import sys
+     sys.setdefaultencoding('iso-8859-8')
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Feb 2007 21:30:49 +0100
+
