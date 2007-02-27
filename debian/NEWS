@@ -17,11 +17,11 @@ mailman (1:2.1.9-6) unstable; urgency=medium
 
     Details:
 
-    Seome previous versions tried to use Unicode for new entries, mixing
+    Some previous versions tried to use Unicode for new entries, mixing
     them with old 8 bit character string entries left over from even older
     versions, leading to a cascade of events that broke archiving for
-    mailing lists completely for the rest of the archiving volume period
-    (often the calendar month).
+    some mailing lists completely for the rest of the archiving volume
+    period (often the calendar month).
 
     As the old entries were stored as strings without encoding
     information, there is no way to automatically reliably convert those
