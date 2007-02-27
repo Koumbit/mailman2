@@ -59,6 +59,7 @@ binary-indep:	checkroot build
 
 binary-arch:	checkroot build
 	dh_testdir
+	chmod +x debian/unicodify_archives.py
 	dh_install
 	dh_installdirs
 	dh_installdocs ACKNOWLEDGMENTS README* TODO FAQ
