@@ -6,12 +6,15 @@ mailman (1:2.1.9-6) unstable; urgency=medium
   * Upgrade subject and author indexes of current archiving volume to
     Unicode strings; possible slight data loss (non-ASCII characters
     transcoded wrongly) (closes: #412142)
+  * Correct path to Mailman private modules dir in dh_pysupport invocation
+    (the absolute symlinks won't work in the building area), and add
+    private pythonlib dir.
 
   [ Thijs Kinkhorst ]
   * Fix path-typo in apache.conf dedicated virtual host example,
     thanks Alberto Furia (Closes: #409180).
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Feb 2007 21:02:45 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Feb 2007 22:38:07 +0100
 
 mailman (1:2.1.9-5) unstable; urgency=medium
 

@@ -182,11 +182,11 @@ binary-arch:	checkroot build
 	chmod g+w debian/mailman/var/lock/mailman
 
 #	Python Policy
-	dh_pysupport -a `find debian/mailman/var/lib/mailman/Mailman/ -type d`
+	dh_pysupport -a `find debian/mailman/usr/lib/mailman/Mailman/ debian/mailman/usr/lib/mailman/pythonlib/ -type d`
 
 	install -d debian/mailman/usr/share/python/runtime.d
 	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
-	
+
 
 	egrep -rlZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
 	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
