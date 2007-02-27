@@ -1,4 +1,4 @@
-#! @PYTHON@
+#! /usr/bin/python
 #
 # Copyright (C) 2007 Lionel Elie Mamane <lmamane@debian.org>
 #
