@@ -219,7 +219,7 @@ case "$1" in
     ;;
 esac
 
-if [ "$1" = "configure" ] && dpkg --compare-versions "$2" lt "1:2.1.9-6"; then
+if [ "$1" = "configure" ] && dpkg --compare-versions "$2" lt-nl "1:2.1.9-6"; then
     /var/lib/mailman/bin/withlist --all -q -r unicodify_archives
 fi
 
