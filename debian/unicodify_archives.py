@@ -54,10 +54,9 @@ def unicodify_archives(mlist):
     else:
         from Mailman.Archiver import HyperArch
         h = HyperArch.HyperArchive(mlist)
-        currentVolume = h.dateToVolName(time.time())
-        if currentVolume in h.archives:
+        for archive in h.archives:
             for hdr in ('subject', 'author'):
-                h.database.mapKeys(unicodify_fst, currentVolume, hdr)
+                h.database.mapKeys(unicodify_fst, archive, hdr)
         h.close()
 
 

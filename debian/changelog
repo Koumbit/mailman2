@@ -1,3 +1,10 @@
+mailman (1:2.1.9-7) unstable; urgency=low
+
+  * Upgrade subject and author indexes of _all_ archiving volumes to
+    Unicode strings. (completely closes: #412142)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Wed, 28 Feb 2007 21:59:36 +0100
+
 mailman (1:2.1.9-6) unstable; urgency=medium
 
   [ Lionel Elie Mamane ]
