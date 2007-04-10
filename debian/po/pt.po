@@ -19,13 +19,13 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "ar (Arabic)"
-msgstr "ar (Arábico)"
+msgstr "ar (ArÃ¡bico)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr "ca (Catalão)"
+msgstr "ca (CatalÃ£o)"
 
 #. Type: multiselect
 #. Choices
@@ -37,19 +37,19 @@ msgstr "cs (Checo)"
 #. Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr "da (Dinamarquês)"
+msgstr "da (DinamarquÃªs)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr "de (Alemão)"
+msgstr "de (AlemÃ£o)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr "en (Inglês)"
+msgstr "en (InglÃªs)"
 
 #. Type: multiselect
 #. Choices
@@ -61,7 +61,7 @@ msgstr "es (Espanhol)"
 #. Choices
 #: ../templates:1001
 msgid "et (Estonian)"
-msgstr "et (Estónio)"
+msgstr "et (EstÃ³nio)"
 
 #. Type: multiselect
 #. Choices
@@ -73,13 +73,13 @@ msgstr "eu (Basco)"
 #. Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr "fi (Finlandês)"
+msgstr "fi (FinlandÃªs)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr "fr (Françês)"
+msgstr "fr (FranÃ§Ãªs)"
 
 #. Type: multiselect
 #. Choices
@@ -91,13 +91,13 @@ msgstr "hr (Croata)"
 #. Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr "hu (Húngaro)"
+msgstr "hu (HÃºngaro)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ia (Interlingua)"
-msgstr "ia (Interlíngua)"
+msgstr "ia (InterlÃ­ngua)"
 
 #. Type: multiselect
 #. Choices
@@ -109,7 +109,7 @@ msgstr "it (Italiano)"
 #. Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr "ja (Japonês)"
+msgstr "ja (JaponÃªs)"
 
 #. Type: multiselect
 #. Choices
@@ -127,13 +127,13 @@ msgstr "lt (Lituano)"
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr "nl (Holandês)"
+msgstr "nl (HolandÃªs)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr "no (Norueguês)"
+msgstr "no (NorueguÃªs)"
 
 #. Type: multiselect
 #. Choices
@@ -145,13 +145,13 @@ msgstr "pl (Polaco)"
 #. Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr "pt (Português)"
+msgstr "pt (PortuguÃªs)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr "pt_BR (Português do Brasil)"
+msgstr "pt_BR (PortuguÃªs do Brasil)"
 
 #. Type: multiselect
 #. Choices
@@ -175,7 +175,7 @@ msgstr "sl (Esloveno)"
 #. Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr "sr (Sérvio)"
+msgstr "sr (SÃ©rvio)"
 
 #. Type: multiselect
 #. Choices
@@ -205,13 +205,13 @@ msgstr "vi (Vietnamita)"
 #. Choices
 #: ../templates:1001
 msgid "zh_CN (Chinese - China)"
-msgstr "zh_CN (Chinês - China)"
+msgstr "zh_CN (ChinÃªs - China)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr "zh_TW (Chinês - Formosa)"
+msgstr "zh_TW (ChinÃªs - Formosa)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -229,7 +229,7 @@ msgstr "zh_TW (Chinês - Formosa)"
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr "pt (Português)"
+msgstr "pt (PortuguÃªs)"
 
 #. Type: multiselect
 #. Description
@@ -246,8 +246,8 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Para cada idioma suportado, o Mailman guarda o idioma textos específicos do "
-"idioma por omissão em /etc/mailman/LANG/ dando-lhes tratamento como ao "
+"Para cada idioma suportado, o Mailman guarda o idioma textos especÃ­ficos do "
+"idioma por omissÃ£o em /etc/mailman/LANG/ dando-lhes tratamento como ao "
 "conffile com a ajuda do ucf.  Isto significa aproximadamente 150kB para cada "
 "idioma suportado no sistema de ficheiros raiz."
 
@@ -258,7 +258,7 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Se você necessitar de um conjunto diferente de idiomas noutra altura, apenas "
+"Se vocÃª necessitar de um conjunto diferente de idiomas noutra altura, apenas "
 "execute dpkg-reconfigure mailman."
 
 #. Type: multiselect
@@ -269,8 +269,8 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTA: Os idiomas habilitados em listas de correio existentes são "
-"forçadamente re-habilitados quando os deseleccionar e o mailman necessita "
+"NOTA: Os idiomas habilitados em listas de correio existentes sÃ£o "
+"forÃ§adamente re-habilitados quando os deseleccionar e o mailman necessita "
 "de pelo menos um idioma para mostrar estas mensagens."
 
 #. Type: boolean
@@ -286,14 +286,14 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"O Mailman permite redireccionar as news para o e-mail, isto é, enviar todas "
+"O Mailman permite redireccionar as news para o e-mail, isto Ã©, enviar todas "
 "as mensagens que aparecem num newsgroup Usenet para a lista de correio."
 
 #. Type: boolean
 #. Description
 #: ../templates:3001
 msgid "Most people won't need this."
-msgstr "A maioria das pessoas não necessitará disto."
+msgstr "A maioria das pessoas nÃ£o necessitarÃ¡ disto."
 
 #. Type: note
 #. Description
@@ -309,8 +309,8 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"O Mailman necessita do chamado \"site list\", que é a lista a partir da qual "
-"os alertas de palavra-chave são enviados.  Esta lista necessita ser criada "
+"O Mailman necessita do chamado \"site list\", que Ã© a lista a partir da qual "
+"os alertas de palavra-chave sÃ£o enviados.  Esta lista necessita ser criada "
 "antes do mailman iniciar."
 
 #. Type: note
@@ -321,15 +321,15 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Para criar a lista, corra \"newlist mailman\" e siga as instruções no ecrã.  "
-"Note que após isso também tem de iniciar o mailman, utilizando /etc/init.d/"
+"Para criar a lista, corra \"newlist mailman\" e siga as instruÃ§Ãµes no ecrÃ£.  "
+"Note que apÃ³s isso tambÃ©m tem de iniciar o mailman, utilizando /etc/init.d/"
 "mailman start."
 
 #. Type: select
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr "Idioma por omissão para o Mailman:"
+msgstr "Idioma por omissÃ£o para o Mailman:"
 
 #. Type: select
 #. Description
@@ -338,14 +338,14 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"A página web será mostrada neste idioma, e em geral, o Mailman irá utilizar "
+"A pÃ¡gina web serÃ¡ mostrada neste idioma, e em geral, o Mailman irÃ¡ utilizar "
 "este idioma para comunicar com o utilizador."
 
 #. Type: note
 #. Description
 #: ../templates:6001
 msgid "Old queue files present"
-msgstr "Estão presentes ficheiros da fila antiga"
+msgstr "EstÃ£o presentes ficheiros da fila antiga"
 
 #. Type: note
 #. Description
@@ -364,17 +364,17 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"O directório /var/lib/mailman/qfiles contém ficheiros. Necessita estar vazio "
-"para a actualização funcionar correctamente. Você pode lidar com eles assim:\n"
-" - Parar novas mensagens de entrar (ao nível do MTA).\n"
-" - Iniciar uma execução da fila do mailman: /etc/init.d/mailman start\n"
-" - Deixa-lo correr até as mensagens serem lidadas.\n"
-"   Se não forem todos lidados a tempo, veja os logs para tentar perceber\n"
-"   porquê e resolver a causa.\n"
+"O directÃ³rio /var/lib/mailman/qfiles contÃ©m ficheiros. Necessita estar vazio "
+"para a actualizaÃ§Ã£o funcionar correctamente. VocÃª pode lidar com eles assim:\n"
+" - Parar novas mensagens de entrar (ao nÃ­vel do MTA).\n"
+" - Iniciar uma execuÃ§Ã£o da fila do mailman: /etc/init.d/mailman start\n"
+" - Deixa-lo correr atÃ© as mensagens serem lidadas.\n"
+"   Se nÃ£o forem todos lidados a tempo, veja os logs para tentar perceber\n"
+"   porquÃª e resolver a causa.\n"
 " - Para-lo: /etc/inid.d/mailman stop\n"
-" - Tentar novamente a actualização.\n"
+" - Tentar novamente a actualizaÃ§Ã£o.\n"
 " - Deixar as mensagens entrar novamente.\n"
-"Pode também decidir simplesmente remover os ficheiros, o que fará o Mailman "
+"Pode tambÃ©m decidir simplesmente remover os ficheiros, o que farÃ¡ o Mailman "
 "esquecer acerca (e perder) os mails correspondentes."
 
 #. Type: note
@@ -387,9 +387,9 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
-"Se estes ficheiros correspondem a mensagens 'shunted', você tem de apagá-las "
+"Se estes ficheiros correspondem a mensagens 'shunted', vocÃª tem de apagÃ¡-las "
 "ou fazer unshunt (com /var/lib/mailman/bin/unshunt). Mensagens 'shunted' "
-"são mensagens nas quais o Mailman já abandonou qualquer processamento por "
-"causa de uma condição de erro, mas são mantidas para revisão pelo "
-"administrador. Você pode utilizar var/lib/mailman/bin/show_qfiles para "
-"examinar o conteúdo das filas."
+"sÃ£o mensagens nas quais o Mailman jÃ¡ abandonou qualquer processamento por "
+"causa de uma condiÃ§Ã£o de erro, mas sÃ£o mantidas para revisÃ£o pelo "
+"administrador. VocÃª pode utilizar var/lib/mailman/bin/show_qfiles para "
+"examinar o conteÃºdo das filas."
