@@ -26,16 +26,6 @@ fi
 
 if [ "$1" = "configure" ]; then
 
-    ## Special magick to upgrade from versions between 1:2.1.8-3 and 1:2.1.9-2
-    if [ -d /var/lib/mailman/pythonlib ] && [ ! -h /var/lib/mailman/pythonlib ]; then
-	# It had better already be empty!
-	rmdir /var/lib/mailman/pythonlib
-    fi
-    if [ ! -h /var/lib/mailman/pythonlib ]; then
-	ln -s /usr/lib/mailman/pythonlib /var/lib/mailman/pythonlib
-    fi
-    ## End special magick to upgrade
-
     mm_etc=/etc/mailman
     mm_dist=/usr/share/mailman
 
@@ -155,12 +145,6 @@ if [ "$1" = "configure" ]; then
 EOF
     fi
 
-    # This should be removed after etch is released, it crept in in 2.1.5-1
-    if grep -q "gate_news]" /etc/cron.d/mailman; then
-        sed -e 's/gate_news]/gate_news ]/' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
-        mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
-    fi
-
     db_get mailman/gate_news || true
     if [ "$RET" = "false" ]; then
 	# Comment out any lines containing the words "gate_news"
@@ -218,10 +202,5 @@ case "$1" in
         exit 1
     ;;
 esac
-
-if [ "$1" = "configure" ] && dpkg --compare-versions "$2" lt-nl "1:2.1.9-7"; then
-    /var/lib/mailman/bin/withlist --all -q -r unicodify_archives
-fi
-
 
 #DEBHELPER#
