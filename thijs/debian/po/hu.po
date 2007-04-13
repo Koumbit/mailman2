@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.4-1\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 17:20+0200\n"
+"POT-Creation-Date: 2006-10-06 16:25+0200\n"
 "PO-Revision-Date: 2004-02-20 20:06+0100\n"
 "Last-Translator: László 'GCS' Böszörményi <gcs@lsc.hu>\n"
 "Language-Team: \n"
@@ -26,8 +26,9 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "big5 (Chinese big5)"
-msgstr "big5 (Kínai big5)"
+#, fuzzy
+msgid "ar (Arabic)"
+msgstr "sr (Szerb)"
 
 #. Type: multiselect
 #. Choices
@@ -205,6 +206,24 @@ msgid "uk (Ukrainian)"
 msgstr ""
 
 #. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "vi (Vietnamese)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_CN (Chinese - China)"
+msgstr ""
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_TW (Chinese - Taiwan)"
+msgstr ""
+
+#. Type: multiselect
 #. DefaultChoice
 #. You must NOT translate this string, but you can change its value.
 #. The comment between brackets is used to distinguish this msgid
@@ -363,3 +382,6 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
+
+#~ msgid "big5 (Chinese big5)"
+#~ msgstr "big5 (Kínai big5)"

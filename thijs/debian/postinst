@@ -4,6 +4,8 @@
 # Written 1998 by Gregor Hoffleit <flight@debian.org>.
 # Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
 # mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
+# Other modifications 2004-2007 by other maintainers of the Debian package:
+#      Lionel Elie Mamane, Thijs Kinkhorst, Riccardo Setti, Matej Vela, Hector Garcia, László Böszörményi, Bernd S. Brentrup, ...
 #
 # $URL$
 # $Id$
@@ -46,6 +48,7 @@ if [ "$1" = "configure" ]; then
 
     # At present ALL directories in /etc/mailman are language directories
     # but this may change in the future, better check.
+    # Furthermore, the administrator may have have added other directories
     for dir in $(find ${mm_etc} -maxdepth 1 -mindepth 1 -type d -printf '%P\n'); do
       if [ -f ${mm_dist}/${dir}/options.html ]; then
         old_languages="${old_languages} ${dir}"
@@ -142,12 +145,6 @@ if [ "$1" = "configure" ]; then
 EOF
     fi
 
-    # This should be removed after etch is released, it crept in in 2.1.5-1
-    if grep -q "gate_news]" /etc/cron.d/mailman; then
-        sed -e 's/gate_news]/gate_news ]/' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
-        mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
-    fi
-
     db_get mailman/gate_news || true
     if [ "$RET" = "false" ]; then
 	# Comment out any lines containing the words "gate_news"
@@ -161,7 +158,7 @@ EOF
     if [ -e /etc/mailman/mm_cfg.py ]; then
         db_get mailman/default_server_language || true
         if [ -n "$RET" ]; then
-            default_server_language=${RET}
+            default_server_language="$(echo $RET | sed -r 's/ \([^\)]*\)//g')"
             sed -e s/DEFAULT_SERVER_LANGUAGE.*=.*\'..\'/DEFAULT_SERVER_LANGUAGE\ =\ \'${default_server_language}\'/ ${mm_etc}/mm_cfg.py > ${mm_etc}/mm_cfg.py.$$
             mv -f ${mm_etc}/mm_cfg.py.$$ ${mm_etc}/mm_cfg.py
         fi
@@ -172,16 +169,6 @@ db_stop || true
 
 case "$1" in
     configure|abort-upgrade|abort-remove|abort-deconfigure)
-	if [ -x /usr/bin/python ]; then
-	    for i in $DIRLIST; do
-		python -O $PYLIBDIR/compileall.py -q $i
-		python $PYLIBDIR/compileall.py -q $i
-		rm -f /usr/lib/$PACKAGE/Mailman/mm_cfg.pyc
-		rm -f /usr/lib/$PACKAGE/Mailman/mm_cfg.pyo
-		chmod -R go=rX $i
-	    done
-	fi 
-
         if [ -e /etc/mailname ]
 	    then 
             DOMAIN=$(head -n 1 /etc/mailname)
@@ -197,8 +184,8 @@ case "$1" in
 
 	if grep -q mm_defaults /etc/mailman/mm_cfg.py; then
 		echo "Changing mm_defaults to Defaults in mm_cfg.py"
-                echo "Fixing host name in /etc/mm_cfg.py"
-		sed s/mm_defaults/Defaults/ "s/'localhost'/$DOMAIN/g" "s/http://localhost/$DOMAIN/g" </etc/mailman/mm_cfg.py >/etc/mailman/mm_cfg.py.new
+		echo "Fixing host name in /etc/mm_cfg.py"
+		sed s/mm_defaults/Defaults/ "s/'localhost'/$DOMAIN/g" "s#http://localhost#http://$DOMAIN#g" </etc/mailman/mm_cfg.py >/etc/mailman/mm_cfg.py.new
 		mv /etc/mailman/mm_cfg.py /etc/mailman/mm_cfg.py.old
 		mv /etc/mailman/mm_cfg.py.new /etc/mailman/mm_cfg.py
 	fi

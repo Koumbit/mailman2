@@ -39,19 +39,6 @@ Since suexec forbids execution of CGIs with gid < 50 and www-data (the default
 for mailman cgi) is 33, you should execute the cgi with a gid of 50-99 or 65534.
 It cannot be any other gid since mailman cgi check that gid < 100 or == 65534.
 
-Savannah
---------
-Mailman now includes a savannah plugin, courtesy of Guillaume Morin.
-His description of it:
-
-if the list does not exist it just prints 0
-if the list exists but the password is false, it just prints 2
-if the list exists and the password is correct, it prints
-1 adminemail 0/1 (value of advertised)
-
-It is needed for integration with savannah (a sourceforge fork, which
-runs savannah.gnu.org).
-
 Qmail
 -----
 For those using qmail, please see the comments in
@@ -62,7 +49,7 @@ instructions. Additional information may be available in
 Postfix
 _______
 For those using postfix who are able to devote a full subdomain
-lists.doma.in for use by mailman, please see the comments in
+lists.example.com for use by Mailman, please see the comments in
 /etc/mailman/postfix-to-mailman.py .
 
 SpamAssassin
@@ -73,8 +60,8 @@ the handler, adding
 
 GLOBAL_PIPELINE.insert(1, 'SpamAssassin')
 
-to your mm_cfg.py should enable it. You can read more documentation about
-howto configure SpamAssassin and Mailman together at
+at the bottom of your mm_cfg.py should enable it. You can read more
+documentation about how to configure SpamAssassin and Mailman together at
 http://www.daa.com.au/~james/articles/mailman-spamassassin/
 The current version of this handler used in this package is released on
 2003 May 6 by James Henstridge <james@daa.com.au>.

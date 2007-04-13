@@ -1,10 +1,12 @@
 etc/mailman
+etc/logrotate.d
 usr/lib/mailman/bin
 usr/lib/mailman/mail
 
 usr/sbin
 
 usr/share/doc/mailman
+usr/share/doc/mailman/examples/stock
 usr/share/images/mailman
 
 var/lib/mailman/archives/private

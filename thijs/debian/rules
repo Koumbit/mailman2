@@ -75,8 +75,8 @@ binary-indep:	checkroot build-indep
 	dh_fixperms -i
 	chown -R list:list debian/mailman-common/var/{lock/mailman,lib/mailman/qfiles,run/mailman,lib/mailman/spam}
 	chown root:list debian/mailman-common/var/log/mailman
-	find debian/mailman-common/var/lib/mailman -type d | xargs chmod 2775
-	find debian/mailman-common/var/lib/mailman/messages -type d | xargs chmod 755
+	find debian/mailman-common/var/lib/mailman -type d -exec chmod 2775 {} \;
+	find debian/mailman-common/var/lib/mailman/messages -type d -exec chmod 755 {} \;
 	chmod 2775 debian/mailman-common/var/log/mailman
 	chmod g+w debian/mailman-common/var/lock/mailman
 	chmod +x debian/mailman-common/usr/lib/mailman/Mailman/Cgi/*
@@ -95,6 +95,7 @@ binary-indep:	checkroot build-indep
 binary-arch:	checkroot build-arch
 	$(MAKE) do-arch-install DESTDIR=$$(pwd)/debian/mailman
 	dh_installdirs -a
+	chmod +x debian/unicodify_archives.py
 	dh_install -a
 	dh_installdocs -a ACKNOWLEDGMENTS README* TODO FAQ
 	dh_installchangelogs -a NEWS
@@ -106,6 +107,16 @@ binary-arch:	checkroot build-arch
 	chown -R root:list debian/mailman/usr/lib/{mailman,cgi-bin/mailman}
 	chmod g+s debian/mailman/usr/lib/cgi-bin/mailman/* \
 		debian/mailman/usr/lib/mailman/mail/mailman
+	#     Python Policy
+	dh_pysupport -a `find debian/mailman/usr/lib/mailman/Mailman/ debian/mailman/usr/lib/mailman/pythonlib/ -type d`
+
+	install -d debian/mailman/usr/share/python/runtime.d
+	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
+
+	egrep -rlZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
+	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
+	find debian/mailman/usr/share/doc/mailman -name "*.txt" -exec chmod -x {} \;
+
 	# create the resulting deb
 	dh_installdeb -a
 	dh_shlibdeps -a

@@ -73,7 +73,7 @@ two functions:
 Now, from the command line you can print the list's posting address by running
 the following from the command line:
 
-  % bin/withlist -r listaddr mylist
+  % bin/withlist \-r listaddr mylist
   Loading list: mylist (unlocked)
   Importing listaddr ...
   Running listaddr.listaddr() ...
@@ -81,7 +81,7 @@ the following from the command line:
 
 And you can print the list's request address by running:
 
-  % bin/withlist -r listaddr.requestaddr mylist
+  % bin/withlist \-r listaddr.requestaddr mylist
   Loading list: mylist (unlocked)
   Importing listaddr ...
   Running listaddr.requestaddr() ...
@@ -101,7 +101,7 @@ called `changepw.py':
           print 'No address matched:', addr
 
  and run this from the command line:
- % bin/withlist -l -r changepw mylist somebody@somewhere.org foobar
+ % bin/withlist \-l \-r changepw mylist somebody@somewhere.org foobar
 .PP
 
 .SH AUTHOR

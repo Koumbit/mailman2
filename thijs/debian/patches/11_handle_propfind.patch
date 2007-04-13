@@ -1,5 +1,6 @@
 Patch: 11_handle_propfind.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578756&group_id=103&atid=300103
 Don't fall flat on our face if we get a request type which we
 don't understand.
 Index: scripts/driver

@@ -1,29 +1,139 @@
-mailman (1:2.1.8-5) UNRELEASED; urgency=low
+mailman (1:2.1.9-8) UNRELEASED; urgency=low
+
+  * Added Portuguese debconf translation by Miguel Figueiredo
+    (Closes: #414365).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 04 Apr 2007 13:38:59 +0200
+
+mailman (1:2.1.9-7) unstable; urgency=low
+
+  * Upgrade subject and author indexes of _all_ archiving volumes to
+    Unicode strings. (completely closes: #412142)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Wed, 28 Feb 2007 21:59:36 +0100
+
+mailman (1:2.1.9-6) unstable; urgency=medium
+
+  [ Lionel Elie Mamane ]
+  * Allow people that have list as a supplementary group to create new
+    mailing lists.  (see bug#309339)
+  * Upgrade subject and author indexes of current archiving volume to
+    Unicode strings; possible slight data loss (non-ASCII characters
+    transcoded wrongly) (closes: #412142)
+  * Correct path to Mailman private modules dir in dh_pysupport invocation
+    (the absolute symlinks won't work in the building area), and add
+    private pythonlib dir.
 
   [ Thijs Kinkhorst ]
-  * Split the mailman package into mailman (architecture dependent files),
-    mailman-common (architecture independent), mailman-doc (documentation).
+  * Fix path-typo in apache.conf dedicated virtual host example,
+    thanks Alberto Furia (Closes: #409180).
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Tue, 27 Feb 2007 22:38:07 +0100
+
+mailman (1:2.1.9-5) unstable; urgency=medium
+
+  * Ship bin/export.py from upstream SVN to make automatic upgrades to
+    lenny possible. (closes: #407260)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 20 Jan 2007 05:04:11 +0100
+
+mailman (1:2.1.9-4) unstable; urgency=medium
+
+  [ Lionel Elie Mamane ]
+  * Manually replace empty /var/lib/mailman/pythonlib/ by symlink to
+    /usr/lib/mailman/pythonlib/ (closes: #403312)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Sat, 16 Dec 2006 09:55:21 +0100
+
+mailman (1:2.1.9-3) unstable; urgency=medium
+
+  [ Lionel Elie Mamane ]
+  * Follow requirements/requests of upgrade to new python policy more
+    narrowly: build-depend on newer version of python-support, add
+    XS-Python-Version/XB-Python-Version fields to control, give path to
+    private python modules to dh_pysupport (Closes: #394181).
+  * Move python-lib directory to /usr/lib/mailman/, like Mailman code;
+    /var/lib/mailman is grossly wrong (Closes: #400005).
+
+  [ Thijs Kinkhorst ]
+  * Add subscribe/unsubscribe aliases to second half of example, and a
+    note about chgrp when creating a new list through the web interface.
+    Both in README.Exim4.Debian, thanks Ian Wienand (Closes: 387457).
+  * Remove lintian overrides that are not needed with recent Lintians.
+
+  [ Translations ]
+  * Updated Vietnamese by Clytie Siddall (Closes: 395851).
+  * Updated German by Holger Wansing (Closes: 400963).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 Dec 2006 15:18:12 +0100
+
+mailman (1:2.1.9-2) unstable; urgency=medium
+
+  [ Thijs Kinkhorst ]
+  * Medium urgency upload for RC upgrading bug.
+  * Fix buggy sedding in postinst (Closes: #392995).
+  * Drop disabled 73_list-id_strict_rfc patch; integrated upstream.
+  * Clarify README.Debian about where to insert SpamAssassin integration
+    (Closes: #369171).
+  * Add 72_fblast_add_shebang patch; this script is set as executable
+    thus needs an interpreter on the first line.
+
+  [ Hector Garcia ]
+  * Removed 12_savannah_wrapper.patch. Doesn't work and is not supported
+    upstream any longer (Closes: #287554).
+
+  [ Translations ]
+  * Updated French by Florentin Duneau (Closes: #393096).
+  * Updated Brazilian Portuguese by Felipe Augusto van de Wiel.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 17 Oct 2006 10:14:57 +0200
+
+mailman (1:2.1.9-1) unstable; urgency=medium
+
+  [ Hector Garcia ]
+  * New upstream bugfix release
+    - Deleting included patches:
+      24_CVE-2006-2941, 23_CVE-2006-3636, 25_CVE-2006-4624
+    - Fixes German translation (Closes: #273469) and comment typo
+      (Closes: #378509).
+  * Updated patches.
+  * Deleting 03_documentation_source.patch. Integrated upstream.
+  * Deleting 68_translation_update_nl.patch. Too many upstream changes,
+    doesn't apply any longer. Wrote to patch author in case it wants to
+    update it.
+  * Renamed 58_fix_translations to 58_fix_es_translations
+
+  [ Thijs Kinkhorst ]
   * Tweak debconf templates according to best practices.
   * Update debconf templates, eliminates two, changes some, introduces
     new line numbering from debconf-updatepo.
   * Name languages together with their ISO code in the debconf question
     (Closes: #276505).
-  * Add Turkish and Interlingua to debconf choice.
+  * Add new languages Turkish, Interlingua, Arabic, Vietnamese
+    to debconf choice, change Chinese from big5 to zh_CN and zh_TW.
+  * Add subscribe/unsubscribe to example in README.Exim4.Debian,
+    thanks Brian Foley (Closes: #387457).
+
+  [ Riccardo Setti ]
+  * Switched to the new python policy (Closes: #380876).
 
   [ Lionel Elie Mamane ]
   * Don't ship C sources with documentation; there is no reason for it.
 
   [ Translations ]
   * Updated vi.po. Translated by Clytie Siddall. (Closes: #388202)
-  * Updated ja.po. Translated by Kenshi Muto. (Closes: #388206)
+  * Updated ja.po. Translated by Kenshi Muto. (Closes: #388206, #391532)
   * Updated nl.po. Translated by Kurt De Bree. (Closes: #388100)
-  * Updated ru.po. Translated by Yuri Kozlov. (Closes: #388111)
+  * Updated ru.po. Translated by Yuri Kozlov. (Closes: #388111, #391597)
   * Updated sv.po. Translated by Daniel Nylander. (Closes: #388090)
   * Updated hu.po. Translated by Laszlo Boszormenyi.
-  * Updated it.po: Translated by Luca Monducci. (Closes: #388657)
+  * Updated it.po: Translated by Luca Monducci. (Closes: #388657, #391568)
   * Updated cs.po: Translated by Miroslav Kure. (Closes: #388663)
+  * Updated pt_BR.po: Translated by Andre Luis Lopes.
+  * Updated es.po: Translated by Javier Fernández-Sanguino Peña.
+  * Updated fr.po: Translated by Philippe Batailler. (Closes: #388651)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 29 Sep 2006 17:52:09 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon,  9 Oct 2006 16:59:10 +0200
 
 mailman (1:2.1.8-4) unstable; urgency=high
 

@@ -18,9 +18,3 @@ if [ "$1" = "failed-upgrade" ] ; then
 fi
 
 #DEBHELPER#
-
-PACKAGE=mailman
-
-dpkg --listfiles $PACKAGE |
-	awk '$0~/\.py$/ {print $0"c\n" $0"o"}' |
-	xargs rm -f >&2

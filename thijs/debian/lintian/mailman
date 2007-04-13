@@ -12,20 +12,3 @@ setgid-binary usr/lib/cgi-bin/mailman/rmlist 2755 root/list
 setgid-binary usr/lib/cgi-bin/mailman/roster 2755 root/list
 setgid-binary usr/lib/cgi-bin/mailman/subscribe 2755 root/list
 setgid-binary usr/lib/cgi-bin/mailman/savannah 2755 root/list
-
-# We override this because we use the default field translation
-# in accordance with developer's reference 6.5.4.4 
-select-with-translated-default-field mailman/site_languages cs.utf-8
-select-with-translated-default-field mailman/site_languages hu.utf-8
-select-with-translated-default-field mailman/site_languages it.utf-8
-select-with-translated-default-field mailman/site_languages ja.utf-8
-select-with-translated-default-field mailman/site_languages ru.utf-8
-select-with-translated-default-field mailman/site_languages sv.utf-8
-select-with-translated-default-field mailman/site_languages vi.utf-8
-select-with-translated-default-field mailman/default_server_language cs.utf-8
-select-with-translated-default-field mailman/default_server_language hu.utf-8
-select-with-translated-default-field mailman/default_server_language it.utf-8
-select-with-translated-default-field mailman/default_server_language ja.utf-8
-select-with-translated-default-field mailman/default_server_language ru.utf-8
-select-with-translated-default-field mailman/default_server_language sv.utf-8
-select-with-translated-default-field mailman/default_server_language vi.utf-8

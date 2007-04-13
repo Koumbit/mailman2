@@ -1,1 +1,2 @@
 debian/lintian/mailman		/usr/share/lintian/overrides/
+debian/unicodify_archives.py var/lib/mailman/bin/

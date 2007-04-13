@@ -4,10 +4,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 1:2.1.8-3\n"
+"Project-Id-Version: mailman 1:2.1.9-0\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-09-18 17:20+0200\n"
-"PO-Revision-Date: 2006-09-19 15:56+0930\n"
+"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"PO-Revision-Date: 2006-10-28 17:42+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,8 +19,8 @@ msgstr ""
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-msgid "big5 (Chinese big5)"
-msgstr "big5 (big5 Trung)"
+msgid "ar (Arabic)"
+msgstr "ar (A Rập)"
 
 #. Type: multiselect
 #. Choices
@@ -97,9 +97,8 @@ msgstr "hu (Hung-ga-ri)"
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
-#, fuzzy
 msgid "ia (Interlingua)"
-msgstr "it (Ý)"
+msgstr "ia (Interlingua)"
 
 #. Type: multiselect
 #. Choices
@@ -189,13 +188,31 @@ msgstr "sv (Thuỵ Điển)"
 #. Choices
 #: ../templates:1001
 msgid "tr (Turkish)"
-msgstr ""
+msgstr "tr (Thổ Nhĩ Kỳ)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "uk (Ukrainian)"
 msgstr "uk (U-cợ-rainh)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "vi (Vietnamese)"
+msgstr "vi (Việt)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_CN (Chinese - China)"
+msgstr "zh_CN (Trung Quốc)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_TW (Chinese - Taiwan)"
+msgstr "zh_TW (Trung - Đài Loan)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -213,13 +230,13 @@ msgstr "uk (U-cợ-rainh)"
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr "en (English)"
+msgstr "vi (Vietnamese)"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
 msgid "Languages to support:"
-msgstr "Những ngôn ngữ cần hỗ trợ :"
+msgstr "Ngôn ngữ cần hỗ trợ :"
 
 #. Type: multiselect
 #. Description
@@ -378,6 +395,9 @@ msgstr ""
 "Mailman đã hủy bỏ xử lý vì gặp lỗi, còn giữ nó cho quản trị xem lại. Bạn "
 "cũng có khả năng sử dụng « /var/lib/mailman/bin/show_qfiles » để xem nội "
 "dung của các hàng đợi."
+
+#~ msgid "big5 (Chinese big5)"
+#~ msgstr "big5 (big5 Trung)"
 
 #~ msgid "big5"
 #~ msgstr "big5"

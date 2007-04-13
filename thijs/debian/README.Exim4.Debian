@@ -10,6 +10,14 @@ POSTFIX_MAP_CMD = 'chgrp Debian-exim'
 
 and list all your Mailman domains in "POSTFIX_STYLE_VIRTUAL_DOMAINS".
 
+Please note that the chgrp command above will not work when creating a
+list in the web interface: the user www-data will not be allowed to do
+this. You can circumvent this problem by creating new lists with the
+'newlist' command line command or using instead:
+POSTFIX_MAP_CMD = 'chmod o+r'
+This will allow local users (with shell access to the list server) to
+see the list of all Mailman mailing lists, but not much more.
+
 Put this in your exim4 main configuration (if you use a split config,
 for example /etc/exim4/conf.d/main/04_local_mailman_macros)
 
@@ -42,6 +50,7 @@ mailman_workaround:
   local_part_suffix_optional
   local_part_suffix = -bounces : -bounces+* : \
            -confirm+* : -join : -leave : \
+           -subscribe : -unsubscribe : \
            -owner : -request : -admin
   transport = mailman_transport
   group = MAILMAN_GROUP
@@ -55,6 +64,7 @@ mailman_router:
   local_part_suffix_optional
   local_part_suffix = -bounces : -bounces+* : \
                       -confirm+* : -join : -leave : \
+                      -subscribe : -unsubscribe : \
                       -owner : -request : -admin
   transport = mailman_transport
   group = MAILMAN_GROUP
@@ -79,3 +89,5 @@ mailman_transport:
 ----------------------  END EXIM4 TRANSPORT  -------------------------
 
 You are done!
+
+ -- Lionel Elie Mamane <lmamane@debian.org>, Wed, 29 Nov 2006 19:53:13 +0100
