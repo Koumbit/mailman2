@@ -1,0 +1,25 @@
+--- Mailman/Archiver/HyperDatabase.py	2005-08-27 03:40:17.000000000 +0200
++++ Mailman/Archiver/HyperDatabase.py	2007-02-27 20:33:41.103527160 +0100
+@@ -324,15 +343,22 @@
+ 
+     def clearIndex(self, archive, index):
+         self.__openIndices(archive)
+         if hasattr(self.threadIndex, 'clear'):
+             self.threadIndex.clear()
+             return
+         finished=0
+         try:
+             key, msgid=self.threadIndex.first()
+         except KeyError: finished=1
+         while not finished:
+             del self.threadIndex[key]
+             try:
+                 key, msgid=self.threadIndex.next()
+             except KeyError: finished=1
++
++    def mapKeys(self, f, archive, index):
++        self.__openIndices(archive)
++        index = getattr(self, index + 'Index')
++        d = index.dict
++        index.dict = dict(zip(map(f, d.keys()), d.values()))
++        index.__dirty = 1
