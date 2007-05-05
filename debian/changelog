@@ -2,8 +2,10 @@ mailman (1:2.1.9-8) UNRELEASED; urgency=low
 
   * Added Portuguese debconf translation by Miguel Figueiredo
     (Closes: #414365).
+  * Make sure Mailman can be properly purged (Closes: #421676).
+  * Remove obsolete upgrading code.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Wed, 04 Apr 2007 13:38:59 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 05 May 2007 17:47:29 +0200
 
 mailman (1:2.1.9-7) unstable; urgency=low
 

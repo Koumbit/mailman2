@@ -23,4 +23,5 @@ if [ "$1" = purge ]; then
   rm -rf /etc/mailman
   rm -rf /var/log/mailman
 #  rm -rf /var/lib/mailman
+  rm -f /var/lib/mailman/data/last_mailman_version
 fi
