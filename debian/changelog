@@ -4,8 +4,10 @@ mailman (1:2.1.9-8) UNRELEASED; urgency=low
     (Closes: #414365).
   * Make sure Mailman can be properly purged (Closes: #421676).
   * Remove obsolete upgrading code.
+  * Do not break upgrades in case python is temporarily unavailable
+    (Closes: #419563).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat, 05 May 2007 17:47:29 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 16 May 2007 11:48:55 +0200
 
 mailman (1:2.1.9-7) unstable; urgency=low
 
