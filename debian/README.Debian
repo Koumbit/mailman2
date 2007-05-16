@@ -45,7 +45,7 @@ instructions. Additional information may be available in
 /usr/share/doc/mailman/README.QMAIL.gz
 
 Postfix
-_______
+-------
 For those using postfix who are able to devote a full subdomain
 lists.example.com for use by Mailman, please see the comments in
 /etc/mailman/postfix-to-mailman.py .
@@ -63,6 +63,15 @@ documentation about how to configure SpamAssassin and Mailman together at
 http://www.daa.com.au/~james/articles/mailman-spamassassin/
 The current version of this handler used in this package is released on
 2003 May 6 by James Henstridge <james@daa.com.au>.
+
+Purging Mailman will wipe lists and archives
+--------------------------------------------
+
+If you purge the mailman package, please note that this will wipe all
+lists and archives you may have. We believe this to be consistent behaviour,
+because someone purging a package is essentially requesting that they
+completely do not want that package anymore and no traces should be left.
+
 
 Upgrading from Mailman 2.x (where x < 1)
 ----------------------------------------

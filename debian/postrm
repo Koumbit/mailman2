@@ -22,6 +22,5 @@ if [ "$1" = purge ]; then
   rm -f /etc/cron.d/mailman 
   rm -rf /etc/mailman
   rm -rf /var/log/mailman
-#  rm -rf /var/lib/mailman
-  rm -f /var/lib/mailman/data/last_mailman_version
+  rm -rf /var/lib/mailman
 fi
