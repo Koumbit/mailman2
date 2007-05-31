@@ -1,24 +1,68 @@
---- Mailman/Archiver/HyperDatabase.py	2005-08-27 03:40:17.000000000 +0200
-+++ Mailman/Archiver/HyperDatabase.py	2007-02-27 20:33:41.103527160 +0100
-@@ -324,15 +343,22 @@
+Index: Mailman/Archiver/HyperDatabase.py
+===================================================================
+--- Mailman/Archiver/HyperDatabase.py.orig	2005-08-27 03:40:17.000000000 +0200
++++ Mailman/Archiver/HyperDatabase.py	2007-05-31 16:52:04.873846892 +0200
+@@ -54,7 +54,7 @@
+     SortedDictionary.
+     """
  
-     def clearIndex(self, archive, index):
-         self.__openIndices(archive)
-         if hasattr(self.threadIndex, 'clear'):
-             self.threadIndex.clear()
-             return
-         finished=0
+-    def __init__(self, path):
++    def __init__(self, path, sort = True):
+         self.current_index = 0
+         self.path = path
+         self.lockfile = LockFile.LockFile(self.path + ".lock")
+@@ -62,7 +62,7 @@
+         self.__dirty = 0
+         self.dict = {}
+         self.sorted = []
+-        self.load()
++        self.load(sort)
+ 
+     def __repr__(self):
+         return "DumbBTree(%s)" % self.path
+@@ -163,7 +163,7 @@
+     def __len__(self):
+         return len(self.sorted)
+ 
+-    def load(self):
++    def load(self, sort):
          try:
-             key, msgid=self.threadIndex.first()
-         except KeyError: finished=1
-         while not finished:
-             del self.threadIndex[key]
+             fp = open(self.path)
+             try:
+@@ -176,7 +176,7 @@
+         except EOFError:
+             pass
+         else:
+-            self.__sort(dirty=1)
++            if sort: self.__sort(dirty=1)
+ 
+     def close(self):
+         omask = os.umask(007)
+@@ -234,7 +234,7 @@
+         self.__openIndices(archive)
+         self.__super_addArticle(archive, article, subject, author, date)
+ 
+-    def __openIndices(self, archive):
++    def __openIndices(self, archive, sort = True):
+         if self.__currentOpenArchive == archive:
+             return
+         self.__closeIndices()
+@@ -248,7 +248,7 @@
+         finally:
+             os.umask(omask)
+         for i in ('date', 'author', 'subject', 'article', 'thread'):
+-            t = DumbBTree(os.path.join(arcdir, archive + '-' + i))
++            t = DumbBTree(os.path.join(arcdir, archive + '-' + i), sort)
+             setattr(self, i + 'Index', t)
+         self.__currentOpenArchive = archive
+ 
+@@ -336,3 +336,10 @@
              try:
                  key, msgid=self.threadIndex.next()
              except KeyError: finished=1
 +
 +    def mapKeys(self, f, archive, index):
-+        self.__openIndices(archive)
++        self.__openIndices(archive, False)
 +        index = getattr(self, index + 'Index')
 +        d = index.dict
 +        index.dict = dict(zip(map(f, d.keys()), d.values()))

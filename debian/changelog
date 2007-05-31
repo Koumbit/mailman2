@@ -1,5 +1,6 @@
 mailman (1:2.1.9-8) UNRELEASED; urgency=low
 
+  [ Thijs Kinkhorst ]
   * Added Portuguese debconf translation by Miguel Figueiredo
     (Closes: #414365).
   * Make sure Mailman can be properly purged (Closes: #421676).
@@ -7,7 +8,11 @@ mailman (1:2.1.9-8) UNRELEASED; urgency=low
   * Do not break upgrades in case python is temporarily unavailable
     (Closes: #419563).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Wed, 16 May 2007 11:48:55 +0200
+  [ Lionel Elie Mamane ]
+  * Avoid implicit-sort-on-load of indexes being converted to Unicode
+    (hopefully really closes: #412142 now)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Thu, 31 May 2007 16:56:25 +0200
 
 mailman (1:2.1.9-7) unstable; urgency=low
 
