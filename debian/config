@@ -97,7 +97,7 @@ fi
 
 db_input low mailman/gate_news || true
 
-if [ ! -e /etc/mailman/mm_cfg.py -o ! -x /var/lib/mailman/bin/list_lists ] || \
+if [ ! -e /etc/mailman/mm_cfg.py || ! -x /var/lib/mailman/bin/list_lists ] || \
     [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
     db_input critical mailman/create_site_list || true
 fi
