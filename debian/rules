@@ -44,7 +44,7 @@ Makefile:
 
 clean: unpatch
 	dh_testdir
-	-$(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf build-stamp Makefile debian/ucffiles debian/mailman.postinst.ucf
 	rm -f debian/mailman.postrm.ucf
 	dh_clean
