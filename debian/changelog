@@ -1,8 +1,9 @@
 mailman (1:2.1.9-9) UNRELEASED; urgency=low
 
-  * 
+  * Drop suggests for obsolete python-*-codecs and drop versioned
+    dependencies for pre-oldstable versions.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 11 Jun 2007 21:00:41 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon,  9 Jul 2007 15:17:05 +0200
 
 mailman (1:2.1.9-8) unstable; urgency=low
 

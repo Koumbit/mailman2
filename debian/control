@@ -11,10 +11,9 @@ XS-Python-Version: current
 
 Package: mailman
 Architecture: any
-Pre-Depends: debconf (>= 1.4.16) | debconf-2.0
-Depends: ${shlibs:Depends}, ${python:Depends}, logrotate, cron (>= 3.0pl1-42), exim4 | mail-transport-agent, apache2 | httpd, ucf (>= 0.28), pwgen, adduser, lsb-base (>= 3.0-6)
-Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
-Suggests: spamassassin, lynx, python-korean-codecs, python-japanese-codecs, listadmin
+Pre-Depends: debconf | debconf-2.0
+Depends: ${shlibs:Depends}, ${python:Depends}, logrotate, cron, exim4 | mail-transport-agent, apache2 | httpd, ucf, pwgen, adduser, lsb-base (>= 3.0-6)
+Suggests: spamassassin, lynx, listadmin
 XB-Python-Version: ${python:Versions}
 Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
