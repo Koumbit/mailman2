@@ -1,4 +1,4 @@
-.TH NEWLIST 8 2006-08-09
+.TH NEWLIST 8 2007-07-14
 .SH NAME
 newlist \- Create a new, unpopulated mailing list.
 
@@ -46,30 +46,30 @@ the list you are creating.
 You also specify the domain to create your new list in by typing the command
 like so:
 
-    newlist \-\-urlhost=www.mydom.ain mylist
+    newlist \-\-urlhost=www.example.com mylist
 
-where `www.mydom.ain' should be the base hostname for the URL to this virtual
-hosts's lists.  E.g. with this setting people will view the general list
-overviews at http://www.mydom.ain/mailman/listinfo.  Also, www.mydom.ain
-should be a key in the VIRTUAL_HOSTS mapping in mm_cfg.py/Defaults.py if
-the email hostname to be automatically determined.
+where `www.example.com' should be the base hostname for the URL to this
+virtual hosts's lists.  E.g. with this setting people will view the general
+list overviews at http://www.example.com/mailman/listinfo.  Also,
+www.example.com should be a key in the VIRTUAL_HOSTS mapping in
+mm_cfg.py/Defaults.py if the email hostname to be automatically determined.
 
 If you want the email hostname to be different from the one looked up by the
 VIRTUAL_HOSTS or if urlhost is not registered in VIRTUAL_HOSTS, you can specify
 `emailhost' like so:
 
-    newlist \-\-urlhost=www.mydom.ain \-\-emailhost=mydom.ain mylist
+    newlist \-\-urlhost=www.example.com \-\-emailhost=example.com mylist
 
-where `mydom.ain' is the mail domain name. If you don't specify emailhost but
-urlhost is not in the virtual host list, then mm_cfg.DEFAULT_EMAIL_HOST will
-be used for the email interface.
+where `example.com' is the mail domain name. If you don't specify emailhost
+but urlhost is not in the virtual host list, then mm_cfg.DEFAULT_EMAIL_HOST
+will be used for the email interface.
 
 For backward compatibility, you can also specify the domain to create your
 new list in by spelling the listname like so:
 
-    mylist@www.mydom.ain
+    mylist@www.example.com
 
-where www.mydom.ain is used for `urlhost' but it will also be used for
+where www.example.com is used for `urlhost' but it will also be used for
 `emailhost' if it is not found in the virtual host table. Note
 `\-\-urlhost' and `\-\-emailhost' have precedence to this notation.
 
@@ -85,8 +85,8 @@ owner@example.com, not just owner.
 
 .SH AUTHOR
 Author of Mailman is the Mailman Cabal, see http://www.list.org/ for
-information.  This manpage is written by Tollef Fog Heen
-<tfheen@debian.org> for Debian GNU/Linux.
+information. This manpage is written by Tollef Fog Heen
+<tfheen@debian.org> for Debian, but may be used by others.
 
 .SH SEE ALSO
 Mailman documentation on http://www.list.org/ and in

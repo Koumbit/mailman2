@@ -1,4 +1,4 @@
-.TH SYNC_MEMBERS 8 2006-08-09
+.TH SYNC_MEMBERS 8 2007-07-14
 .SH NAME
 sync_members \- Synchronize a mailing list's membership with a flat file.
 
@@ -26,30 +26,30 @@ done to the list.
 \fB\-w\fB=\fI{ yes | no }\fI, \fB\-\-welcome\-msg\fB=\fI{ yes | no }\fI
 Sets whether or not to send the newly added members a welcome message,
 overriding whatever the list's `send_welcome_msg' setting is.  With
-\fB\-w=yes\fB or \fB\-w\fB, the welcome message is sent.  With
-\fB\-w=no\fB, no message is sent.
+\-w=yes or \-w, the welcome message is sent.  With
+\-w=no, no message is sent.
 
 .TP
 \fB\-g\fB=\fI{ yes | no }\fI, \fB\-\-goodbye\-msg\fB=\fI{ yes | no }\fI
 Sets whether or not to send the goodbye message to removed members,
 overriding whatever the list's `send_goodbye_msg' setting is.  With
-\fB\-g=yes\fB or \fB\-g\fB, the goodbye message is sent.  With
-\fB\-g=no\fB, no message is sent.
+\-g=yes or \-g, the goodbye message is sent.  With
+\-g=no, no message is sent.
 
 .TP
 \fB\-d\fB=\fI{ yes | no }\fI, \fB\-\-digest\fB=\fI{ yes | no }\fI
 Selects whether to make newly added members receive messages in
-digests.  With \fB\-d=yes\fB or \fB\-d\fB, they become digest members.
-With \fB\-d=no\fB (or if no \-d option given) they are added as
+digests.  With \-d=yes or \-d, they become digest members.
+With \-d=no (or if no \-d option given) they are added as
 regular members.
 
 .TP
 \fB\-a\fB=\fI{ yes | no }\fI, \fB\-\-notifyadmin\fB=\fI{ yes | no }\fI
 Specifies whether the admin should be notified for each subscription
 or unsubscription.  If you're adding a lot of addresses, you
-definitely want to turn this off!  With \fB\-a=yes\fB or \fB\-a\fB,
-the admin is notified.  With \fB\-a=no\fB, the admin is not notified.
-With no \fB\-a\fB option, the default for the list is used.
+definitely want to turn this off!  With \-a=yes or \-a,
+the admin is notified.  With \-a=no, the admin is not notified.
+With no \-a option, the default for the list is used.
 
 .TP
 \fB\-f\fB=\fIfilename\fI, \fB\-\-file\fB=\fIfilename\fI
@@ -59,15 +59,15 @@ against.  Email addresses must appear one per line.  If filename is
 
 .TP
 \fB\-h\fB, \fB\-\-help\fB
-Print a small help text and exit
+Print a small help text and exit.
 .PP
 
 listname specifies the list to synchronize.
 
 .SH AUTHOR
 Author of Mailman is the Mailman Cabal, see http://www.list.org/ for
-information.  This manpage is written by Tollef Fog Heen
-<tfheen@debian.org> for Debian
+information. This manpage is written by Tollef Fog Heen
+<tfheen@debian.org> for Debian, but may be used by others.
 
 .SH SEE ALSO
 Mailman documentation on http://www.list.org/ and in

@@ -1,4 +1,4 @@
-.TH withlist 8 2004-03-24
+.TH withlist 8 2007-07-14
 .SH NAME
 withlist \- General framework for interacting with a mailing list object.
 
@@ -56,7 +56,7 @@ will be a list of all the results.
 Suppress all status messages.
 .TP
 \fB\-h\fB, \fB\-\-help\fB
-Print a small help text and exit
+Print a small help text and exit.
 .PP
 
 .SH EXAMPLES
@@ -77,7 +77,7 @@ the following from the command line:
   Loading list: mylist (unlocked)
   Importing listaddr ...
   Running listaddr.listaddr() ...
-  mylist@myhost.com
+  mylist@example.com
 
 And you can print the list's request address by running:
 
@@ -85,7 +85,7 @@ And you can print the list's request address by running:
   Loading list: mylist (unlocked)
   Importing listaddr ...
   Running listaddr.requestaddr() ...
-  mylist-request@myhost.com
+  mylist-request@example.com
 
 As another example, say you wanted to change the password for a particular
 user on a particular list.  You could put the following function in a file
@@ -101,13 +101,13 @@ called `changepw.py':
           print 'No address matched:', addr
 
  and run this from the command line:
- % bin/withlist \-l \-r changepw mylist somebody@somewhere.org foobar
+ % bin/withlist \-l \-r changepw mylist somebody@example.org foobar
 .PP
 
 .SH AUTHOR
 Author of Mailman is the Mailman Cabal, see http://www.list.org/ for
-information.  This manpage is written for Debian by Bernd S. Brentrup
-<bsb@debian.org>.
+information. This manpage is written for Debian by Bernd S. Brentrup
+<bsb@debian.org>, but may be used by others.
 
 .SH SEE ALSO
 Mailman documentation on http://www.list.org/ and in
