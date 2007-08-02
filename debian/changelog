@@ -3,8 +3,9 @@ mailman (1:2.1.9-9) UNRELEASED; urgency=low
   * Drop suggests for obsolete python-*-codecs and drop versioned
     dependencies for pre-oldstable versions.
   * Fix formatting of man pages (Closes: #432848).
+  * Fix some bashisms in Debian packaging scripts.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat, 14 Jul 2007 18:34:11 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 02 Aug 2007 14:08:03 +0200
 
 mailman (1:2.1.9-8) unstable; urgency=low
 

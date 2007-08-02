@@ -51,7 +51,7 @@ if  [ ! -x "/usr/sbin/list_lists" ] ; then
   db_fset mailman/used_languages scanned false
 else
   if [ "${scanned}" != "true" ] ; then
-    echo -n "Looking for enabled languages (this may take some time) ..."
+    printf "Looking for enabled languages (this may take some time) ..."
     unset used_languages
     for l in $(get_used_languages); do
       used_languages=${used_languages:+${used_languages} }$l
@@ -59,7 +59,7 @@ else
     db_set  mailman/used_languages "${used_languages}"
     db_fset mailman/used_languages scanned true
     db_fset mailman/used_languages seen false
-    echo " done."
+    printf " done.\n"
   fi
   # Install only languages selected by the administrator
   # forcing used languages to be always available.
