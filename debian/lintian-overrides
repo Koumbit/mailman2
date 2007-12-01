@@ -10,7 +10,7 @@ setgid-binary usr/lib/cgi-bin/mailman/private 2755 root/list
 setgid-binary usr/lib/cgi-bin/mailman/rmlist 2755 root/list
 setgid-binary usr/lib/cgi-bin/mailman/roster 2755 root/list
 setgid-binary usr/lib/cgi-bin/mailman/subscribe 2755 root/list
-non-standard-dir-perm var/log/mailman/ 2775 != 0755
+non-standard-dir-perm var/log/mailman/ 2770 != 0755
 non-standard-dir-perm var/lib/mailman/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/archives/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/archives/private/ 2774 != 0755
