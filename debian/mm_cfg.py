@@ -14,7 +14,8 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software 
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301 USA
 
 
 """This is the module which takes your site-specific settings.
@@ -85,18 +86,18 @@ DEFAULT_SEND_REMINDERS = 0
 #-------------------------------------------------------------
 # Uncomment this if you configured your MTA such that it
 # automatically recognizes newly created lists.
-# (see /usr/share/doc/mailman/README.{EXIM,...})
+# (see /usr/share/doc/mailman/README.Exim4.Debian)
 # MTA=None   # Misnomer, suppresses alias output on newlist
 
 #-------------------------------------------------------------
 # Uncomment if you use Postfix virtual domains, but be sure to
-# read /usr/share/doc/mailman/README.POSTFIX first.
+# see /usr/share/doc/mailman/README.Debian first.
 # MTA='Postfix'
 
 #-------------------------------------------------------------
 # Uncomment if you want to filter mail with SpamAssassin. For
 # more information please visit this website:
-# http://www.daa.com.au/~james/articles/mailman-spamassassin/
+# http://www.jamesh.id.au/articles/mailman-spamassassin/
 # GLOBAL_PIPELINE.insert(1, 'SpamAssassin')
 
 # Note - if you're looking for something that is imported from mm_cfg, but you
