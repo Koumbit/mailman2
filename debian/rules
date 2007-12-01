@@ -101,18 +101,10 @@ binary-arch:	checkroot build
 	# link it back to /var/lib/mailman/templates
 	dh_link etc/mailman var/lib/$(package)/templates
 
-	# remove the log directory and link it to /var/log/mailman
-	rmdir debian/mailman/var/lib/$(package)/logs 
-	dh_link var/log/mailman var/lib/$(package)/logs
 
 	# move the pending subscriptions database so it doesnt overwrite the
 	# old one when installing
 
-        # move the locks to /var/lock
-	mv debian/mailman/var/lib/$(package)/locks debian/mailman/var/lock/mailman
-
-	# link it back to /var/lib/mailman/locks
-	dh_link var/lock/mailman var/lib/$(package)/locks
 
 	dh_installlogrotate
 
@@ -136,7 +128,7 @@ binary-arch:	checkroot build
 	chown -R root:root debian/mailman
 	chown -R root:list \
 		debian/mailman/{etc/$(package),var/lib/$(package),usr/lib/{$(package),cgi-bin/$(package)}}
-	chown list:list debian/mailman/var/{lock/mailman,lib/mailman/qfiles,run/mailman}
+	chown list:list debian/mailman/var/{lib/mailman/qfiles,run/mailman}
 	chown root:list debian/mailman/var/log/mailman
 	find debian/mailman/var/lib/$(package) -type d -exec chmod 2775 {} \;
 	find debian/mailman/var/lib/$(package)/messages -type d -exec chmod 755 {} \;
@@ -178,8 +170,6 @@ binary-arch:	checkroot build
 	chmod o-x debian/mailman/var/lib/$(package)/archives/private
 	chmod 0755 debian/mailman/usr/lib/$(package)/cron/*
 	chmod 0644 debian/mailman/usr/lib/$(package)/cron/{crontab.in,paths.py}
-	chmod 2770 debian/mailman/var/log/mailman
-	chmod g+w debian/mailman/var/lock/mailman
 
 #	Python Policy
 	dh_pysupport -a `find debian/mailman/usr/lib/mailman/Mailman/ debian/mailman/usr/lib/mailman/pythonlib/ -type d`
@@ -191,6 +181,23 @@ binary-arch:	checkroot build
 	egrep -rlZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
 	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
 	find debian/mailman/usr/share/doc/mailman -name "*.txt" -exec chmod -x {} \;
+       
+        # Create the /var/lo{g,ck} links last, and wih ln -s, because they need to be
+	# absolute links. Relative links cause trouble for people making multiple levels,
+	# e.g. when /var/log is symlinked to somewhere else. They need to be last because
+	# otherwise dh_link will revert them back to relative ones.
+	#
+	# move the locks to /var/lock
+	mv debian/mailman/var/lib/$(package)/locks debian/mailman/var/lock/mailman
+	# link it back to /var/lib/mailman/locks
+	ln -s /var/lock/mailman debian/mailman/var/lib/$(package)/locks
+	# remove the log directory and link it to /var/log/mailman
+	rmdir debian/mailman/var/lib/$(package)/logs 
+	ln -s /var/log/mailman debian/mailman/var/lib/$(package)/logs
+	chown list:list debian/mailman/var/lock/mailman
+	chown root:list debian/mailman/var/log/mailman
+	chmod 2770 debian/mailman/var/log/mailman
+	chmod g+w debian/mailman/var/lock/mailman
 
 	dh_installdeb
 

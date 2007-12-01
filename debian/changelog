@@ -11,8 +11,11 @@ mailman (1:2.1.9-9) UNRELEASED; urgency=low
     since that is the supported way of rotating logs (Closes: #424620).
   * Fix pidfile location in mailman.init, thanks Peter Rabbitson
     (Closes: #439325).
+  * Make symlinks to /var/lo{g,ck}/mailman absolute, because the relative
+    ones cause trouble on systems where people move these things around
+    (Closes: #408855, #413604).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat,  1 Dec 2007 17:23:53 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun,  2 Dec 2007 00:19:43 +0100
 
 mailman (1:2.1.9-8) unstable; urgency=low
 
