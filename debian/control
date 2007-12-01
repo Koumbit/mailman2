@@ -6,8 +6,8 @@ Uploaders: Tollef Fog Heen <tfheen@debian.org>, Lionel Elie Mamane <lmamane@debi
 Build-Depends: debhelper (>= 5), autoconf, python-dev, python-support, quilt (>= 0.40)
 Standards-Version: 3.7.2
 Homepage: http://www.list.org/
-XS-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
-XS-Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman
+Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman
 XS-Python-Version: current
 
 Package: mailman
