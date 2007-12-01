@@ -178,7 +178,7 @@ binary-arch:	checkroot build
 	chmod o-x debian/mailman/var/lib/$(package)/archives/private
 	chmod 0755 debian/mailman/usr/lib/$(package)/cron/*
 	chmod 0644 debian/mailman/usr/lib/$(package)/cron/{crontab.in,paths.py}
-	chmod 2775 debian/mailman/var/log/mailman
+	chmod 2770 debian/mailman/var/log/mailman
 	chmod g+w debian/mailman/var/lock/mailman
 
 #	Python Policy

@@ -4,8 +4,11 @@ mailman (1:2.1.9-9) UNRELEASED; urgency=low
     dependencies for pre-oldstable versions.
   * Fix formatting of man pages (Closes: #432848).
   * Fix some bashisms in Debian packaging scripts.
+  * Do not make /var/log/mailman world-readable, because it can contain
+    a bit of semi-private information. Thanks Alexander Gerasiov.
+    (Closes: #450927)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Thu, 02 Aug 2007 14:08:03 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat,  1 Dec 2007 16:15:44 +0100
 
 mailman (1:2.1.9-8) unstable; urgency=low
 
