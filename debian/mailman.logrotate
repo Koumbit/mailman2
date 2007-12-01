@@ -7,7 +7,7 @@
 	delaycompress
         sharedscripts
         postrotate
-            [ -f '/var/run/mailman/mailman.pid' ] && kill -HUP $(cat /var/run/mailman/mailman.pid) || exit 0
+            [ -f '/var/run/mailman/mailman.pid' ] && /usr/lib/mailman/bin/mailmanctl reopen || exit 0
         endscript
 }
 
@@ -20,7 +20,7 @@
 	delaycompress
         sharedscripts
         postrotate
-            [ -f '/var/run/mailman/mailman.pid' ] && kill -HUP $(cat /var/run/mailman/mailman.pid) || exit 0
+            [ -f '/var/run/mailman/mailman.pid' ] && /usr/lib/mailman/bin/mailmanctl reopen || exit 0
         endscript
 }
 
@@ -33,7 +33,7 @@
 	delaycompress
         sharedscripts
         postrotate
-            [ -f '/var/run/mailman/mailman.pid' ] && kill -HUP $(cat /var/run/mailman/mailman.pid) || exit 0
+            [ -f '/var/run/mailman/mailman.pid' ] && /usr/lib/mailman/bin/mailmanctl reopen || exit 0
         endscript
 }
 
@@ -46,6 +46,6 @@
 	delaycompress
         sharedscripts
         postrotate
-            [ -f '/var/run/mailman/mailman.pid' ] && kill -HUP $(cat /var/run/mailman/mailman.pid) || exit 0
+            [ -f '/var/run/mailman/mailman.pid' ] && /usr/lib/mailman/bin/mailmanctl reopen || exit 0
         endscript
 }
