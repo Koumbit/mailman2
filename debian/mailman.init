@@ -21,7 +21,7 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/usr/lib/mailman/bin/mailmanctl
-PIDFILE=/var/lib/mailman/data/master-qrunner.pid
+PIDFILE=/var/run/mailman/mailman.pid
 
 test -x $DAEMON || exit 0
 

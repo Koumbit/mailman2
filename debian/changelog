@@ -9,8 +9,10 @@ mailman (1:2.1.9-9) UNRELEASED; urgency=low
     (Closes: #450927)
   * After logrotate, call 'mailmanctl reopen' instead of sending SIGHUP
     since that is the supported way of rotating logs (Closes: #424620).
+  * Fix pidfile location in mailman.init, thanks Peter Rabbitson
+    (Closes: #439325).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat,  1 Dec 2007 17:07:06 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat,  1 Dec 2007 17:23:53 +0100
 
 mailman (1:2.1.9-8) unstable; urgency=low
 
