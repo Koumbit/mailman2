@@ -1,4 +1,4 @@
-mailman (1:2.1.9-9) UNRELEASED; urgency=low
+mailman (1:2.1.9-9) unstable; urgency=low
 
   * Drop suggests for obsolete python-*-codecs and drop versioned
     dependencies for pre-oldstable versions.
@@ -14,8 +14,10 @@ mailman (1:2.1.9-9) UNRELEASED; urgency=low
   * Make symlinks to /var/lo{g,ck}/mailman absolute, because the relative
     ones cause trouble on systems where people move these things around
     (Closes: #408855, #413604).
+  * Checked for policy 3.7.3, no changes required. Additional packaging
+    cleanups.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun,  2 Dec 2007 00:19:43 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 04 Dec 2007 09:12:39 +0100
 
 mailman (1:2.1.9-8) unstable; urgency=low
 
