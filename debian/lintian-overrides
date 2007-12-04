@@ -22,4 +22,6 @@ non-standard-dir-perm var/lib/mailman/qfiles/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/tests/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/tests/bounces/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/tests/msgs/ 2775 != 0755
-non-standard-dir-perm var/lock/mailman/ 0775 != 0755
+non-standard-dir-perm var/lock/mailman/ 2775 != 0755
+symlink-should-be-relative var/lib/mailman/locks /var/lock/mailman
+symlink-should-be-relative var/lib/mailman/logs /var/log/mailman

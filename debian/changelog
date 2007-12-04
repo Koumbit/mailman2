@@ -13,7 +13,8 @@ mailman (1:2.1.9-9) unstable; urgency=low
     (Closes: #439325).
   * Make symlinks to /var/lo{g,ck}/mailman absolute, because the relative
     ones cause trouble on systems where people move these things around
-    (Closes: #408855, #413604).
+    (Closes: #408855, #413604). Override lintian since this is allowed by
+    policy.
   * Checked for policy 3.7.3, no changes required. Additional packaging
     cleanups.
 
