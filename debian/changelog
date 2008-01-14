@@ -1,8 +1,9 @@
-mailman (1:2.1.9-10) UNRELEASED; urgency=low
+mailman (1:2.1.9-10) unstable; urgency=low
 
+  * Be quiet when logrotation succeeds, prevents Cron spam (closes: #456954).
   * Fix typo in postinst message (closes: #458981).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 04 Dec 2007 10:40:46 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 14 Jan 2008 12:10:05 +0100
 
 mailman (1:2.1.9-9) unstable; urgency=low
 
