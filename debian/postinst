@@ -183,8 +183,8 @@ case "$1" in
 	fi
 
 	if grep -q mm_defaults /etc/mailman/mm_cfg.py; then
-		printf "Changing mm_defaults to Defaults in mm_cfg.py\n"
-		printf "Fixing host name in /etc/mm_cfg.py\n"
+		printf "Changing mm_defaults to Defaults in /etc/mailman/mm_cfg.py\n"
+		printf "Fixing host name in /etc/mailman/mm_cfg.py\n"
 		sed s/mm_defaults/Defaults/ "s/'localhost'/$DOMAIN/g" "s#http://localhost#http://$DOMAIN#g" </etc/mailman/mm_cfg.py >/etc/mailman/mm_cfg.py.new
 		mv /etc/mailman/mm_cfg.py /etc/mailman/mm_cfg.py.old
 		mv /etc/mailman/mm_cfg.py.new /etc/mailman/mm_cfg.py

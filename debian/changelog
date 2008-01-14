@@ -1,6 +1,6 @@
 mailman (1:2.1.9-10) UNRELEASED; urgency=low
 
-  * 
+  * Fix typo in postinst message (closes: #458981).
 
  -- Thijs Kinkhorst <thijs@debian.org>  Tue, 04 Dec 2007 10:40:46 +0100
 
