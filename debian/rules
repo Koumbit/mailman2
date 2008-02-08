@@ -113,7 +113,6 @@ binary-arch:	checkroot build
 	rm debian/$(package)/usr/lib/$(package)/Mailman/mm_cfg.py
 	dh_link etc/$(package)/mm_cfg.py \
 		usr/lib/$(package)/Mailman/mm_cfg.py
-	cp -a admin/www debian/mailman/usr/share/doc/$(package)/html
 	for bin in $(binaries); \
 		do dh_link usr/lib/$(package)/bin/$$bin usr/sbin/$$bin; done
 	mv debian/mailman/usr/sbin/arch debian/mailman/usr/sbin/mmarch

@@ -1,14 +1,13 @@
 Patch: 70_invalid_utf8_dos.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Avoid DOS if attachement filename is invalid Unicode string
-Index: Mailman/Handlers/Scrubber.py
-===================================================================
---- Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:14:15.000000000 +0800
-+++ Mailman/Handlers/Scrubber.py	2006-08-15 15:14:54.000000000 +0800
-@@ -302,7 +302,10 @@
-             finally:
+diff -Nur Mailman/Handlers/Scrubber.py mailman-2.1.10b3/Mailman/Handlers/Scrubber.py
+--- Mailman/Handlers/Scrubber.py	2008-02-02 23:29:26.000000000 +0100
++++ Mailman/Handlers/Scrubber.py	2008-02-08 23:33:16.000000000 +0100
+@@ -317,7 +317,10 @@
                  os.umask(omask)
              desc = part.get('content-description', _('not available'))
+             desc = Utils.oneline(desc, lcset)
 -            filename = part.get_filename(_('not available'))
 +            try:
 +                filename = part.get_filename(_('not available'))
@@ -17,7 +16,7 @@ Index: Mailman/Handlers/Scrubber.py
              filename = Utils.oneline(filename, lcset)
              replace_payload_by_text(part, _("""\
  A non-text attachment was scrubbed...
-@@ -412,7 +415,10 @@
+@@ -439,7 +442,10 @@
      ctype = msg.get_content_type()
      # i18n file name is encoded
      lcset = Utils.GetCharSet(mlist.preferred_language)
@@ -26,18 +25,6 @@ Index: Mailman/Handlers/Scrubber.py
 +        filename = Utils.oneline(msg.get_filename(''), lcset)
 +    except UnicodeDecodeError:
 +        filename = ''
-     fnext = os.path.splitext(filename)[1]
+     filename, fnext = os.path.splitext(filename)
      # For safety, we should confirm this is valid ext for content-type
      # but we can use fnext if we introduce fnext filtering
-@@ -438,7 +444,10 @@
-     try:
-         # Now base the filename on what's in the attachment, uniquifying it if
-         # necessary.
--        filename = msg.get_filename()
-+        try:
-+            filename = msg.get_filename()
-+        except UnicodeDecodeError:
-+            filename = None
-         if not filename or mm_cfg.SCRUBBER_DONT_USE_ATTACHMENT_FILENAME:
-             filebase = 'attachment'
-         else:

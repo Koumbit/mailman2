@@ -13,7 +13,6 @@
 51_nocompile.pyc.patch -p0
 52_check_perms_lstat.patch -p0
 53_disable_addons.patch -p0
-56_fix_de_broken_links.patch -p0
 58_fix_es_translation.patch -p0
 59_fix_missing_language_crash.patch -p0
 61_fix_ru_siteowner.patch -p0
@@ -31,5 +30,4 @@
 78_DeprecationWarning.patch -p0
 79_archiver_slash.patch -p0
 80_fix_string_search.patch -p0
-81_backport_export.dpatch -p1
 99_js_templates.patch -p0

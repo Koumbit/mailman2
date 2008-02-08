@@ -1,3 +1,15 @@
+mailman (1:2.1.10~b3-1) unstable; urgency=low
+
+  * New upstream beta release.
+    + Restricts XSS by list admins, CVE-2008-0564.
+    + Obsoletes 56_fix_de_broken_links.patch.
+    + Obsoletes 81_backport_export.dpatch.
+    + Makes list handling case sensitivity consistent (closes: #446257).
+    + Archives do not drop headerless mime parts (Closes: #450399).
+    + check_perms checks more perms (Closes: #260224).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 08 Feb 2008 23:55:06 +0100
+
 mailman (1:2.1.9-10) unstable; urgency=low
 
   * Be quiet when logrotation succeeds, prevents Cron spam (closes: #456954).
