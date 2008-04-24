@@ -30,4 +30,5 @@
 78_DeprecationWarning.patch -p0
 79_archiver_slash.patch -p0
 80_fix_string_search.patch -p0
+81_fix_subscribe_2.1.10.patch -p0
 99_js_templates.patch -p0

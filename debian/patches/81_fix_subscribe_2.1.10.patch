@@ -1,0 +1,20 @@
+Patch: 81_fix_subscribe_2.1.10
+Author: Mark Sapiro (Mailman upstream)
+2.1.10 caused a regression in cmd_subscribe so that email subscribe to the
+-subscribe or -join address or the -request address with a bare 'subscribe'
+command results in the message being shunted. Will be fixed in the next
+upstream release.
+
+--- Mailman/Commands/cmd_subscribe.py	2008-03-20 03:07:51 +0000
++++ Mailman/Commands/cmd_subscribe.py	2008-04-23 14:32:48 +0000
+@@ -71,7 +71,8 @@
+             return STOP
+         argnum += 1
+     # Fix the password/digest issue
+-    if digest is None and password.lower() in ('digest', 'nodigest'):
++    if (digest is None
++            and password and password.lower() in ('digest', 'nodigest')):
+         if password.lower() == 'digest':
+             digest = 1
+         else:
+
