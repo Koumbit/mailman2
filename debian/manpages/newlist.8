@@ -1,17 +1,18 @@
-.TH NEWLIST 8 2007-07-14
+.TH NEWLIST 8 2008-06-14
 .SH NAME
 newlist \- Create a new, unpopulated mailing list.
 
 .SH SYNOPSIS
-newlist [options] listname listadmin-addr admin-password
+newlist [options] [listname] [listadmin-addr] [admin-password]
 
 .SH OPTIONS
 
 .PP
 .TP
 \fB\-l\fR \fIlanguage\fR, \fB\-\-language\fR=\fIlanguage\fR
-Make the list's preferred language `\fIlanguage\fR', which must be a two
-letter language code.
+Make the list's preferred language `\fIlanguage\fR', which must be 
+the (mostly two letter) language code as found under
+/usr/share/mailman.
 .TP
 \fB\-u\fR \fIurlhost\fR, \fB\-\-urlhost=\fR\fIurlhost\fR
 Gives the list's web interface host name.
