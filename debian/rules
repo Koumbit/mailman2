@@ -177,7 +177,7 @@ binary-arch:	checkroot build
 	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
 
 
-	egrep -rlZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
+	egrep -rslZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
 	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
 	find debian/mailman/usr/share/doc/mailman -name "*.txt" -exec chmod -x {} \;
        
