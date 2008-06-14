@@ -4,8 +4,8 @@ update is called from the Debian maintainer scripts and
 prints non-appropriate output.  Change that.
 Index: bin/update
 ===================================================================
---- bin/update.orig	2006-08-15 15:12:18.000000000 +0800
-+++ bin/update	2006-08-15 15:14:30.000000000 +0800
+--- a/bin/update.orig	2006-08-15 15:12:18.000000000 +0800
++++ b/bin/update	2006-08-15 15:14:30.000000000 +0800
 @@ -300,8 +300,7 @@
          else:
              # directory

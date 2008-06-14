@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Pipermail non-appropriate output.  Change that.
 Index: Mailman/Archiver/pipermail.py
 ===================================================================
---- Mailman/Archiver/pipermail.py.orig	2006-08-15 15:12:18.000000000 +0800
-+++ Mailman/Archiver/pipermail.py	2006-08-15 15:14:34.000000000 +0800
+--- a/Mailman/Archiver/pipermail.py.orig	2006-08-15 15:12:18.000000000 +0800
++++ b/Mailman/Archiver/pipermail.py	2006-08-15 15:14:34.000000000 +0800
 @@ -122,9 +122,9 @@
          parentID = article.parentID
          if parentID is not None and self.articleIndex.has_key(parentID):

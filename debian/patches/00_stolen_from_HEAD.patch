@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Handle empty queue files.
 Index: Mailman/Handlers/Scrubber.py
 ===================================================================
---- Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:12:19.000000000 +0800
-+++ Mailman/Handlers/Scrubber.py	2006-08-15 15:14:15.000000000 +0800
+--- a/Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:12:19.000000000 +0800
++++ b/Mailman/Handlers/Scrubber.py	2006-08-15 15:14:15.000000000 +0800
 @@ -370,6 +370,8 @@
                      t = u.encode('ascii', 'replace')
                  try:

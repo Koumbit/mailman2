@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Set sane defaults in Defaults.py.in
 Index: Mailman/Defaults.py.in
 ===================================================================
---- Mailman/Defaults.py.in.orig	2006-08-15 15:12:19.000000000 +0800
-+++ Mailman/Defaults.py.in	2006-08-15 15:14:18.000000000 +0800
+--- a/Mailman/Defaults.py.in.orig	2006-08-15 15:12:19.000000000 +0800
++++ b/Mailman/Defaults.py.in	2006-08-15 15:14:18.000000000 +0800
 @@ -54,7 +54,7 @@
  # disable Mailman's logo footer altogther, hack
  # Mailman/htmlformat.py:MailmanLogo(), which also contains the hardcoded links

@@ -4,8 +4,8 @@ Don't fold headers into message/rfc822 attachments.
 This avoids breaking signatures.
 Index: Mailman/Generator.py
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ Mailman/Generator.py	2006-08-15 15:14:57.000000000 +0800
+--- a//dev/null	1970-01-01 00:00:00.000000000 +0000
++++ b/Mailman/Generator.py	2006-08-15 15:14:57.000000000 +0800
 @@ -0,0 +1,55 @@
 +# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 +#                    2005 Lionel Elie Mamane <lionel@mamane.lu>
@@ -64,8 +64,8 @@ Index: Mailman/Generator.py
 +
 Index: Mailman/Mailbox.py
 ===================================================================
---- Mailman/Mailbox.py.orig	2006-08-15 15:12:10.000000000 +0800
-+++ Mailman/Mailbox.py	2006-08-15 15:14:57.000000000 +0800
+--- a/Mailman/Mailbox.py.orig	2006-08-15 15:12:10.000000000 +0800
++++ b/Mailman/Mailbox.py	2006-08-15 15:14:57.000000000 +0800
 @@ -22,10 +22,10 @@
  
  import email
@@ -89,8 +89,8 @@ Index: Mailman/Mailbox.py
          # to be appended to the mbox.
 Index: Mailman/Message.py
 ===================================================================
---- Mailman/Message.py.orig	2006-08-15 15:12:10.000000000 +0800
-+++ Mailman/Message.py	2006-08-15 15:14:57.000000000 +0800
+--- a/Mailman/Message.py.orig	2006-08-15 15:12:10.000000000 +0800
++++ b/Mailman/Message.py	2006-08-15 15:14:57.000000000 +0800
 @@ -22,6 +22,8 @@
  """
  

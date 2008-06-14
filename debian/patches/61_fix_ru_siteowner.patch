@@ -4,8 +4,8 @@ Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=157
 Correct siteowner variable in ru template for newer Mailman versions.
 Index: templates/ru/newlist.txt
 ===================================================================
---- templates/ru/newlist.txt.orig	2006-08-15 15:12:17.000000000 +0800
-+++ templates/ru/newlist.txt	2006-08-15 15:14:44.000000000 +0800
+--- a/templates/ru/newlist.txt.orig	2006-08-15 15:12:17.000000000 +0800
++++ b/templates/ru/newlist.txt	2006-08-15 15:14:44.000000000 +0800
 @@ -37,4 +37,4 @@
  пользователя.
  

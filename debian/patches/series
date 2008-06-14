@@ -1,34 +1,34 @@
-00_stolen_from_HEAD.patch -p0
-01_defaults.debian.patch -p0
-02_HyperDatabase_mapkeys.patch -p0
-07_snooze.patch -p0
-10_wrapper_uid.patch -p0
-11_handle_propfind.patch -p0
-15_mailmanctl_daemonize.patch -p0
-16_update_debian.patch -p0
-20_qmail_to_mailman.debian.patch -p0
-21_newlist_help.patch -p1
-30_pipermail_threads.patch -p0
-32_MIME_fixup.patch -p0
-51_nocompile.pyc.patch -p0
-52_check_perms_lstat.patch -p0
-53_disable_addons.patch -p0
-58_fix_es_translation.patch -p0
-59_fix_missing_language_crash.patch -p0
-61_fix_ru_siteowner.patch -p0
-62_new_list_bad_pending_requests.patch -p0
-63_update_default_server_language.patch -p0
-64_correct_html_nesting.patch -p0
-65_handle_templates_directories.patch -p0
-66_donot_let_cache_html_pages.patch -p0
-67_update_handle_old_versions.patch -p0
-70_invalid_utf8_dos.patch -p0
-71_date_overflows.patch -p0
-72_fblast_add_shebang.patch -p0
-74_admin_non-ascii_emails.patch -p0
-77_header_folding_in_attachments.patch -p0
-78_DeprecationWarning.patch -p0
-79_archiver_slash.patch -p0
-80_fix_string_search.patch -p0
-81_fix_subscribe_2.1.10.patch -p0
-99_js_templates.patch -p0
+00_stolen_from_HEAD.patch
+01_defaults.debian.patch
+02_HyperDatabase_mapkeys.patch
+07_snooze.patch
+10_wrapper_uid.patch
+11_handle_propfind.patch
+15_mailmanctl_daemonize.patch
+16_update_debian.patch
+20_qmail_to_mailman.debian.patch
+21_newlist_help.patch
+30_pipermail_threads.patch
+32_MIME_fixup.patch
+51_nocompile.pyc.patch
+52_check_perms_lstat.patch
+53_disable_addons.patch
+58_fix_es_translation.patch
+59_fix_missing_language_crash.patch
+61_fix_ru_siteowner.patch
+62_new_list_bad_pending_requests.patch
+63_update_default_server_language.patch
+64_correct_html_nesting.patch
+65_handle_templates_directories.patch
+66_donot_let_cache_html_pages.patch
+67_update_handle_old_versions.patch
+70_invalid_utf8_dos.patch
+71_date_overflows.patch
+72_fblast_add_shebang.patch
+74_admin_non-ascii_emails.patch
+77_header_folding_in_attachments.patch
+78_DeprecationWarning.patch
+79_archiver_slash.patch
+80_fix_string_search.patch
+81_fix_subscribe_2.1.10.patch
+99_js_templates.patch

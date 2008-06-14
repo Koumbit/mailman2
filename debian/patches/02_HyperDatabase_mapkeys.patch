@@ -1,7 +1,7 @@
 Index: Mailman/Archiver/HyperDatabase.py
 ===================================================================
---- Mailman/Archiver/HyperDatabase.py.orig	2005-08-27 03:40:17.000000000 +0200
-+++ Mailman/Archiver/HyperDatabase.py	2007-05-31 16:52:04.873846892 +0200
+--- a/Mailman/Archiver/HyperDatabase.py.orig	2005-08-27 03:40:17.000000000 +0200
++++ b/Mailman/Archiver/HyperDatabase.py	2007-05-31 16:52:04.873846892 +0200
 @@ -54,7 +54,7 @@
      SortedDictionary.
      """

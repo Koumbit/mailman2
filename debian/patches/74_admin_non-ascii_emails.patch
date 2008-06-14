@@ -3,8 +3,8 @@ Author: Lionel Elie Mamane <lionel@mamane.lu>
 Don't assume emails are ASCII
 Index: Mailman/Cgi/admin.py
 ===================================================================
---- Mailman/Cgi/admin.py.orig	2006-08-15 15:12:11.000000000 +0800
-+++ Mailman/Cgi/admin.py	2006-08-15 15:14:56.000000000 +0800
+--- a/Mailman/Cgi/admin.py.orig	2006-08-15 15:12:11.000000000 +0800
++++ b/Mailman/Cgi/admin.py	2006-08-15 15:14:56.000000000 +0800
 @@ -866,7 +866,12 @@
      chunksz = mlist.admin_member_chunksize
      # The email addresses had /better/ be ASCII, but might be encoded in the

@@ -4,8 +4,8 @@ Do some javascript magic to automatically select the password
 field when appropriate.
 Index: templates/cs/admlogin.html
 ===================================================================
---- templates/cs/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/cs/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/cs/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/cs/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -21,8 +21,8 @@ Index: templates/cs/admlogin.html
      <TR>
 Index: templates/cs/private.html
 ===================================================================
---- templates/cs/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/cs/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/cs/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/cs/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -36,8 +36,8 @@ Index: templates/cs/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/da/admlogin.html
 ===================================================================
---- templates/da/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/da/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/da/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/da/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -53,8 +53,8 @@ Index: templates/da/admlogin.html
      <TR>
 Index: templates/da/private.html
 ===================================================================
---- templates/da/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/da/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/da/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/da/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -68,8 +68,8 @@ Index: templates/da/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/de/admlogin.html
 ===================================================================
---- templates/de/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/de/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/de/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/de/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -85,8 +85,8 @@ Index: templates/de/admlogin.html
      <TR>
 Index: templates/de/private.html
 ===================================================================
---- templates/de/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/de/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/de/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/de/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -100,8 +100,8 @@ Index: templates/de/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/en/admlogin.html
 ===================================================================
---- templates/en/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/en/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/en/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/en/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -117,8 +117,8 @@ Index: templates/en/admlogin.html
      <TR>
 Index: templates/en/listinfo.html
 ===================================================================
---- templates/en/listinfo.html.orig	2006-09-19 16:14:06.000000000 +0200
-+++ templates/en/listinfo.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/en/listinfo.html.orig	2006-09-19 16:14:06.000000000 +0200
++++ b/templates/en/listinfo.html	2006-09-19 16:15:38.000000000 +0200
 @@ -4,7 +4,7 @@
      <TITLE><MM-List-Name> Info Page</TITLE>
    
@@ -130,8 +130,8 @@ Index: templates/en/listinfo.html
        <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/en/private.html
 ===================================================================
---- templates/en/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/en/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/en/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/en/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -145,8 +145,8 @@ Index: templates/en/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/es/admlogin.html
 ===================================================================
---- templates/es/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/es/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/es/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/es/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -162,8 +162,8 @@ Index: templates/es/admlogin.html
      <TR>
 Index: templates/es/private.html
 ===================================================================
---- templates/es/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/es/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/es/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/es/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -177,8 +177,8 @@ Index: templates/es/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/et/admlogin.html
 ===================================================================
---- templates/et/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/et/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/et/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/et/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -194,8 +194,8 @@ Index: templates/et/admlogin.html
      <TR>
 Index: templates/et/private.html
 ===================================================================
---- templates/et/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/et/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/et/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/et/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -209,8 +209,8 @@ Index: templates/et/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/eu/admlogin.html
 ===================================================================
---- templates/eu/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/eu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/eu/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/eu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -226,8 +226,8 @@ Index: templates/eu/admlogin.html
      <TR>
 Index: templates/eu/private.html
 ===================================================================
---- templates/eu/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/eu/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/eu/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/eu/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -243,8 +243,8 @@ Index: templates/eu/private.html
      <TR>
 Index: templates/fi/admlogin.html
 ===================================================================
---- templates/fi/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ templates/fi/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/fi/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ b/templates/fi/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -2,9 +2,10 @@
  <html>
  <head>
@@ -260,8 +260,8 @@ Index: templates/fi/admlogin.html
      <TR>
 Index: templates/fi/private.html
 ===================================================================
---- templates/fi/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/fi/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/fi/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/fi/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -2,8 +2,9 @@
  <html>
  <head>
@@ -275,8 +275,8 @@ Index: templates/fi/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/fr/admlogin.html
 ===================================================================
---- templates/fr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/fr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/fr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/fr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -292,8 +292,8 @@ Index: templates/fr/admlogin.html
      <TR>
 Index: templates/fr/private.html
 ===================================================================
---- templates/fr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/fr/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/fr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/fr/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -2,8 +2,9 @@
  <head>
      <title>Authentification pour l'acc&egrave;s aux archives priv&eacute;es de
@@ -307,8 +307,8 @@ Index: templates/fr/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/hu/admlogin.html
 ===================================================================
---- templates/hu/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/hu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/hu/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/hu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -324,8 +324,8 @@ Index: templates/hu/admlogin.html
      <TR>
 Index: templates/hu/private.html
 ===================================================================
---- templates/hu/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/hu/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/hu/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/hu/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -339,8 +339,8 @@ Index: templates/hu/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/it/admlogin.html
 ===================================================================
---- templates/it/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/it/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/it/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/it/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -356,8 +356,8 @@ Index: templates/it/admlogin.html
      <TR>
 Index: templates/it/private.html
 ===================================================================
---- templates/it/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/it/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/it/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/it/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -371,8 +371,8 @@ Index: templates/it/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/ja/admlogin.html
 ===================================================================
---- templates/ja/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/ja/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/ja/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/ja/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -388,8 +388,8 @@ Index: templates/ja/admlogin.html
      <TR>
 Index: templates/ja/private.html
 ===================================================================
---- templates/ja/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/ja/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/ja/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/ja/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -403,8 +403,8 @@ Index: templates/ja/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/ko/admlogin.html
 ===================================================================
---- templates/ko/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/ko/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/ko/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/ko/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -420,8 +420,8 @@ Index: templates/ko/admlogin.html
      <TR>
 Index: templates/ko/private.html
 ===================================================================
---- templates/ko/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/ko/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/ko/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/ko/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -435,8 +435,8 @@ Index: templates/ko/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/lt/admlogin.html
 ===================================================================
---- templates/lt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/lt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/lt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/lt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -452,8 +452,8 @@ Index: templates/lt/admlogin.html
      <TR>
 Index: templates/lt/private.html
 ===================================================================
---- templates/lt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/lt/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/lt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/lt/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -467,8 +467,8 @@ Index: templates/lt/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/nl/admlogin.html
 ===================================================================
---- templates/nl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/nl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/nl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/nl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -491,8 +491,8 @@ Index: templates/nl/admlogin.html
 +</html>
 Index: templates/nl/private.html
 ===================================================================
---- templates/nl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/nl/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/nl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/nl/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -515,8 +515,8 @@ Index: templates/nl/private.html
 +</html>
 Index: templates/no/admlogin.html
 ===================================================================
---- templates/no/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/no/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/no/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/no/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -532,8 +532,8 @@ Index: templates/no/admlogin.html
      <TR>
 Index: templates/no/private.html
 ===================================================================
---- templates/no/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/no/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/no/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/no/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -547,8 +547,8 @@ Index: templates/no/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/pl/admlogin.html
 ===================================================================
---- templates/pl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/pl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/pl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/pl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
    <title>Uwierzytelnienie %(who)s %(listname)s</title>
@@ -564,8 +564,8 @@ Index: templates/pl/admlogin.html
      <TR>
 Index: templates/pl/private.html
 ===================================================================
---- templates/pl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/pl/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/pl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/pl/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -579,8 +579,8 @@ Index: templates/pl/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/pt/admlogin.html
 ===================================================================
---- templates/pt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/pt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/pt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/pt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -596,8 +596,8 @@ Index: templates/pt/admlogin.html
      <TR>
 Index: templates/pt/private.html
 ===================================================================
---- templates/pt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/pt/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/pt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/pt/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -611,8 +611,8 @@ Index: templates/pt/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/pt_BR/admlogin.html
 ===================================================================
---- templates/pt_BR/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/pt_BR/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/pt_BR/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/pt_BR/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -628,8 +628,8 @@ Index: templates/pt_BR/admlogin.html
      <TR>
 Index: templates/pt_BR/private.html
 ===================================================================
---- templates/pt_BR/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/pt_BR/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/pt_BR/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/pt_BR/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -643,8 +643,8 @@ Index: templates/pt_BR/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/ru/admlogin.html
 ===================================================================
---- templates/ru/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/ru/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/ru/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/ru/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -660,8 +660,8 @@ Index: templates/ru/admlogin.html
      <TR>
 Index: templates/ru/private.html
 ===================================================================
---- templates/ru/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/ru/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/ru/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/ru/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -675,8 +675,8 @@ Index: templates/ru/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/sr/admlogin.html
 ===================================================================
---- templates/sr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/sr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/sr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/sr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,11 @@
  <html>
  <head>
@@ -694,8 +694,8 @@ Index: templates/sr/admlogin.html
      <TR>
 Index: templates/sr/private.html
 ===================================================================
---- templates/sr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/sr/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/sr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/sr/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,11 @@
  ﻿<html>
  <head>
@@ -713,8 +713,8 @@ Index: templates/sr/private.html
      <TR>
 Index: templates/sv/admlogin.html
 ===================================================================
---- templates/sv/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/sv/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/sv/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/sv/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -730,8 +730,8 @@ Index: templates/sv/admlogin.html
      <TR>
 Index: templates/sv/private.html
 ===================================================================
---- templates/sv/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/sv/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/sv/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/sv/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -747,8 +747,8 @@ Index: templates/sv/private.html
      <TR>
 Index: templates/uk/admlogin.html
 ===================================================================
---- templates/uk/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/uk/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/uk/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/uk/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -764,8 +764,8 @@ Index: templates/uk/admlogin.html
      <TR>
 Index: templates/uk/private.html
 ===================================================================
---- templates/uk/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/uk/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/uk/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/uk/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -779,8 +779,8 @@ Index: templates/uk/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/zh_CN/admlogin.html
 ===================================================================
---- templates/zh_CN/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/zh_CN/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/zh_CN/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/zh_CN/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -796,8 +796,8 @@ Index: templates/zh_CN/admlogin.html
      <TR>
 Index: templates/zh_CN/private.html
 ===================================================================
---- templates/zh_CN/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/zh_CN/private.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/zh_CN/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/zh_CN/private.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -811,8 +811,8 @@ Index: templates/zh_CN/private.html
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: templates/zh_TW/admlogin.html
 ===================================================================
---- templates/zh_TW/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ templates/zh_TW/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- a/templates/zh_TW/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ b/templates/zh_TW/admlogin.html	2006-09-19 16:15:38.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>

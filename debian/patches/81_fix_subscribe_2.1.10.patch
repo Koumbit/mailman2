@@ -5,8 +5,8 @@ Author: Mark Sapiro (Mailman upstream)
 command results in the message being shunted. Will be fixed in the next
 upstream release.
 
---- Mailman/Commands/cmd_subscribe.py	2008-03-20 03:07:51 +0000
-+++ Mailman/Commands/cmd_subscribe.py	2008-04-23 14:32:48 +0000
+--- a/Mailman/Commands/cmd_subscribe.py	2008-03-20 03:07:51 +0000
++++ b/Mailman/Commands/cmd_subscribe.py	2008-04-23 14:32:48 +0000
 @@ -71,7 +71,8 @@
              return STOP
          argnum += 1

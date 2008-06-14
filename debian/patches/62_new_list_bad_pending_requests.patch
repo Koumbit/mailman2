@@ -4,8 +4,8 @@ Only mail 'pending admin requests' if the database for the
 particular list exists, so we do not send out '-1' requests.
 Index: Mailman/ListAdmin.py
 ===================================================================
---- Mailman/ListAdmin.py.orig	2006-08-15 15:12:17.000000000 +0800
-+++ Mailman/ListAdmin.py	2006-08-15 15:14:45.000000000 +0800
+--- a/Mailman/ListAdmin.py.orig	2006-08-15 15:12:17.000000000 +0800
++++ b/Mailman/ListAdmin.py	2006-08-15 15:14:45.000000000 +0800
 @@ -130,8 +130,11 @@
  
      def NumRequestsPending(self):

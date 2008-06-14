@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Use lstat instead of stat in check_perms
 Index: bin/check_perms
 ===================================================================
---- bin/check_perms.orig	2006-08-15 15:12:18.000000000 +0800
-+++ bin/check_perms	2006-08-15 15:14:38.000000000 +0800
+--- a/bin/check_perms.orig	2006-08-15 15:12:18.000000000 +0800
++++ b/bin/check_perms	2006-08-15 15:14:38.000000000 +0800
 @@ -80,7 +80,7 @@
      return os.stat(path)[ST_MODE]
  

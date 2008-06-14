@@ -3,8 +3,8 @@ Author: Paul Wise <pabs3@bonedaddy.net>
 Fix crash when a language is missing
 Index: Mailman/htmlformat.py
 ===================================================================
---- Mailman/htmlformat.py.orig	2006-09-19 16:12:12.000000000 +0200
-+++ Mailman/htmlformat.py	2006-09-19 16:13:47.000000000 +0200
+--- a/Mailman/htmlformat.py.orig	2006-09-19 16:12:12.000000000 +0200
++++ b/Mailman/htmlformat.py	2006-09-19 16:13:47.000000000 +0200
 @@ -298,7 +298,7 @@
  
      def Format(self, indent=0, **kws):

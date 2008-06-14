@@ -2,8 +2,8 @@ Patch: 70_invalid_utf8_dos.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Avoid DOS if attachement filename is invalid Unicode string
 diff -Nur Mailman/Handlers/Scrubber.py mailman-2.1.10b3/Mailman/Handlers/Scrubber.py
---- Mailman/Handlers/Scrubber.py	2008-02-02 23:29:26.000000000 +0100
-+++ Mailman/Handlers/Scrubber.py	2008-02-08 23:33:16.000000000 +0100
+--- a/Mailman/Handlers/Scrubber.py	2008-02-02 23:29:26.000000000 +0100
++++ b/Mailman/Handlers/Scrubber.py	2008-02-08 23:33:16.000000000 +0100
 @@ -317,7 +317,10 @@
                  os.umask(omask)
              desc = part.get('content-description', _('not available'))
