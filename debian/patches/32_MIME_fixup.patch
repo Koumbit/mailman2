@@ -1,11 +1,11 @@
 Patch: 32_MIME_fixup.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Handle empty queue files.
-Index: Mailman/Handlers/Decorate.py
+Index: mailman-2.1.10/Mailman/Handlers/Decorate.py
 ===================================================================
---- a/Mailman/Handlers/Decorate.py.orig	2006-08-15 15:12:18.000000000 +0800
-+++ b/Mailman/Handlers/Decorate.py	2006-08-15 15:14:35.000000000 +0800
-@@ -182,6 +182,7 @@
+--- mailman-2.1.10.orig/Mailman/Handlers/Decorate.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Handlers/Decorate.py	2008-06-15 18:49:45.000000000 +0200
+@@ -191,6 +191,7 @@
      del msg['content-transfer-encoding']
      del msg['content-disposition']
      msg['Content-Type'] = 'multipart/mixed'

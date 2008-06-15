@@ -1,10 +1,10 @@
 Patch: 15_mailmanctl_daemonize.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Daemonize mailmanctl properly
-Index: bin/mailmanctl
+Index: mailman-2.1.10/bin/mailmanctl
 ===================================================================
---- a/bin/mailmanctl.orig	2006-08-15 15:12:18.000000000 +0800
-+++ b/bin/mailmanctl	2006-08-15 15:14:29.000000000 +0800
+--- mailman-2.1.10.orig/bin/mailmanctl	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/bin/mailmanctl	2008-06-15 18:49:42.000000000 +0200
 @@ -417,6 +417,13 @@
          # won't be opening any terminal devices, don't do the ultra-paranoid
          # suggestion of doing a second fork after the setsid() call.

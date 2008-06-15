@@ -1,10 +1,10 @@
 Patch: 30_pipermail_threads.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Pipermail non-appropriate output.  Change that.
-Index: Mailman/Archiver/pipermail.py
+Index: mailman-2.1.10/Mailman/Archiver/pipermail.py
 ===================================================================
---- a/Mailman/Archiver/pipermail.py.orig	2006-08-15 15:12:18.000000000 +0800
-+++ b/Mailman/Archiver/pipermail.py	2006-08-15 15:14:34.000000000 +0800
+--- mailman-2.1.10.orig/Mailman/Archiver/pipermail.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Archiver/pipermail.py	2008-06-15 18:49:44.000000000 +0200
 @@ -122,9 +122,9 @@
          parentID = article.parentID
          if parentID is not None and self.articleIndex.has_key(parentID):

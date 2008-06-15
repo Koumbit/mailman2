@@ -1,10 +1,10 @@
 Patch: 65_handle_templates_directories.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Skip directories when updating
-Index: bin/update
+Index: mailman-2.1.10/bin/update
 ===================================================================
---- a/bin/update.orig	2006-08-15 15:14:46.000000000 +0800
-+++ b/bin/update	2006-08-15 15:14:50.000000000 +0800
+--- mailman-2.1.10.orig/bin/update	2008-06-15 18:49:50.000000000 +0200
++++ mailman-2.1.10/bin/update	2008-06-15 18:49:52.000000000 +0200
 @@ -127,7 +127,7 @@
          try:
              fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))

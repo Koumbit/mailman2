@@ -1,16 +1,16 @@
 Patch: 00_stolen_from_HEAD.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Handle empty queue files.
-Index: Mailman/Handlers/Scrubber.py
+Index: mailman-2.1.10/Mailman/Handlers/Scrubber.py
 ===================================================================
---- a/Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:12:19.000000000 +0800
-+++ b/Mailman/Handlers/Scrubber.py	2006-08-15 15:14:15.000000000 +0800
-@@ -370,6 +370,8 @@
-                     t = u.encode('ascii', 'replace')
+--- mailman-2.1.10.orig/Mailman/Handlers/Scrubber.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Handlers/Scrubber.py	2008-06-15 18:49:38.000000000 +0200
+@@ -385,6 +385,8 @@
+                     t = unicode(t, 'ascii', 'replace')
                  try:
                      # Should use HTML-Escape, or try generalizing to UTF-8
 +                    if len(charset) == 0:
 +                        charset = 'us-ascii'
                      t = t.encode(charset, 'replace')
-                 except (UnicodeError, LookupError, ValueError):
-                     t = t.encode(lcset, 'replace')
+                 except (UnicodeError, LookupError, ValueError,
+                         AssertionError):

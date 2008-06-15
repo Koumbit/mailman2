@@ -3,9 +3,10 @@
 ## Author: Tollef Fog Heen <tfheen@debian.org>
 ## DP: make newlist be a bit friendlier.
 @DPATCH@
-diff -urNad mailman-2.1.9~/bin/newlist mailman-2.1.9/bin/newlist
---- mailman-2.1.9~/bin/newlist	2007-01-20 03:44:12.000000000 +0100
-+++ mailman-2.1.9/bin/newlist	2007-01-26 11:53:19.853900943 +0100
+Index: mailman-2.1.10/bin/newlist
+===================================================================
+--- mailman-2.1.10.orig/bin/newlist	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/bin/newlist	2008-06-15 18:49:44.000000000 +0200
 @@ -87,6 +87,9 @@
  defined in your Defaults.py file or overridden by settings in mm_cfg.py).
  
@@ -34,7 +35,7 @@ diff -urNad mailman-2.1.9~/bin/newlist mailman-2.1.9/bin/newlist
      try:
          opts, args = getopt.getopt(sys.argv[1:], 'hql:u:e:',
                                     ['help', 'quiet', 'language=',
-@@ -199,7 +206,7 @@
+@@ -203,7 +210,7 @@
          except Errors.BadListNameError, s:
              usage(1, _('Illegal list name: %(s)s'))
          except Errors.EmailAddressError, s:

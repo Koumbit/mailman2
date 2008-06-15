@@ -1,8 +1,8 @@
 Patch to prevent browser from caching pages.
-Index: Mailman/htmlformat.py
+Index: mailman-2.1.10/Mailman/htmlformat.py
 ===================================================================
---- a/Mailman/htmlformat.py.orig	2006-09-19 13:43:51.000000000 +0200
-+++ b/Mailman/htmlformat.py	2006-09-19 15:47:16.000000000 +0200
+--- mailman-2.1.10.orig/Mailman/htmlformat.py	2008-06-15 18:49:48.000000000 +0200
++++ mailman-2.1.10/Mailman/htmlformat.py	2008-06-15 18:49:52.000000000 +0200
 @@ -300,7 +300,8 @@
          charset = 'us-ascii'
          if self.language and Utils.IsLanguage(self.language):

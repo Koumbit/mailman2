@@ -1,11 +1,11 @@
 Patch: 74_admin_non-ascii_emails.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Don't assume emails are ASCII
-Index: Mailman/Cgi/admin.py
+Index: mailman-2.1.10/Mailman/Cgi/admin.py
 ===================================================================
---- a/Mailman/Cgi/admin.py.orig	2006-08-15 15:12:11.000000000 +0800
-+++ b/Mailman/Cgi/admin.py	2006-08-15 15:14:56.000000000 +0800
-@@ -866,7 +866,12 @@
+--- mailman-2.1.10.orig/Mailman/Cgi/admin.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Cgi/admin.py	2008-06-15 18:49:55.000000000 +0200
+@@ -867,7 +867,12 @@
      chunksz = mlist.admin_member_chunksize
      # The email addresses had /better/ be ASCII, but might be encoded in the
      # database as Unicodes.

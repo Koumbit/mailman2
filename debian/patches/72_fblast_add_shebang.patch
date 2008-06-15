@@ -3,10 +3,10 @@ Author: Thijs Kinkhorst <thijs@debian.org>
 Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578740&group_id=103&atid=300103
 This script may be called directly from the command line, is set as executable,
 thus needs a shebang line.
-Index: tests/fblast.py
+Index: mailman-2.1.10/tests/fblast.py
 ===================================================================
---- a/tests/fblast.py.orig	2006-10-17 10:08:34.000000000 +0200
-+++ b/tests/fblast.py	2006-10-17 10:09:07.000000000 +0200
+--- mailman-2.1.10.orig/tests/fblast.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/tests/fblast.py	2008-06-15 18:49:55.000000000 +0200
 @@ -1,3 +1,4 @@
 +#! /usr/bin/env python
  """Throw email at Mailman as fast as you can.

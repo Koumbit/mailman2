@@ -2,10 +2,10 @@ Patch: 77_header_folding_in_attachments.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Don't fold headers into message/rfc822 attachments.
 This avoids breaking signatures.
-Index: Mailman/Generator.py
+Index: mailman-2.1.10/Mailman/Generator.py
 ===================================================================
---- a//dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ b/Mailman/Generator.py	2006-08-15 15:14:57.000000000 +0800
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mailman-2.1.10/Mailman/Generator.py	2008-06-15 18:49:56.000000000 +0200
 @@ -0,0 +1,55 @@
 +# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 +#                    2005 Lionel Elie Mamane <lionel@mamane.lu>
@@ -62,10 +62,10 @@ Index: Mailman/Generator.py
 +        """Clone this generator with maxheaderlen set for children"""
 +        return self.__class__(fp, self._mangle_from_, self.__children_maxheaderlen, self.__children_maxheaderlen)
 +
-Index: Mailman/Mailbox.py
+Index: mailman-2.1.10/Mailman/Mailbox.py
 ===================================================================
---- a/Mailman/Mailbox.py.orig	2006-08-15 15:12:10.000000000 +0800
-+++ b/Mailman/Mailbox.py	2006-08-15 15:14:57.000000000 +0800
+--- mailman-2.1.10.orig/Mailman/Mailbox.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Mailbox.py	2008-06-15 18:49:56.000000000 +0200
 @@ -22,10 +22,10 @@
  
  import email
@@ -87,10 +87,10 @@ Index: Mailman/Mailbox.py
          g.flatten(msg, unixfrom=True)
          # Add one more trailing newline for separation with the next message
          # to be appended to the mbox.
-Index: Mailman/Message.py
+Index: mailman-2.1.10/Mailman/Message.py
 ===================================================================
---- a/Mailman/Message.py.orig	2006-08-15 15:12:10.000000000 +0800
-+++ b/Mailman/Message.py	2006-08-15 15:14:57.000000000 +0800
+--- mailman-2.1.10.orig/Mailman/Message.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Message.py	2008-06-15 18:49:56.000000000 +0200
 @@ -22,6 +22,8 @@
  """
  
@@ -108,7 +108,7 @@ Index: Mailman/Message.py
  
  COMMASPACE = ', '
  
-@@ -199,6 +202,16 @@
+@@ -207,6 +210,16 @@
          except (UnicodeError, LookupError, ValueError):
              return failobj
  

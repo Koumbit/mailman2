@@ -2,10 +2,10 @@ Patch: 16_update_debian.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 update is called from the Debian maintainer scripts and
 prints non-appropriate output.  Change that.
-Index: bin/update
+Index: mailman-2.1.10/bin/update
 ===================================================================
---- a/bin/update.orig	2006-08-15 15:12:18.000000000 +0800
-+++ b/bin/update	2006-08-15 15:14:30.000000000 +0800
+--- mailman-2.1.10.orig/bin/update	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/bin/update	2008-06-15 18:49:43.000000000 +0200
 @@ -300,8 +300,7 @@
          else:
              # directory

@@ -2,10 +2,10 @@ Patch: 67_update_handle_old_versions.patch
 Author: Bastian Kleineidam <calvin@debian.org>
 Handle the case of upgrading from Mailman 2.0 where we have
 pending subscriptions.
-Index: bin/update
+Index: mailman-2.1.10/bin/update
 ===================================================================
---- a/bin/update.orig	2006-08-15 15:14:50.000000000 +0800
-+++ b/bin/update	2006-08-15 15:14:52.000000000 +0800
+--- mailman-2.1.10.orig/bin/update	2008-06-15 18:49:52.000000000 +0200
++++ mailman-2.1.10/bin/update	2008-06-15 18:49:53.000000000 +0200
 @@ -514,9 +514,11 @@
      file20 = os.path.join(mm_cfg.DATA_DIR, 'pending_subscriptions.db')
      file214 = os.path.join(mm_cfg.DATA_DIR, 'pending.pck')

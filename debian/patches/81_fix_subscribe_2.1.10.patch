@@ -5,8 +5,10 @@ Author: Mark Sapiro (Mailman upstream)
 command results in the message being shunted. Will be fixed in the next
 upstream release.
 
---- a/Mailman/Commands/cmd_subscribe.py	2008-03-20 03:07:51 +0000
-+++ b/Mailman/Commands/cmd_subscribe.py	2008-04-23 14:32:48 +0000
+Index: mailman-2.1.10/Mailman/Commands/cmd_subscribe.py
+===================================================================
+--- mailman-2.1.10.orig/Mailman/Commands/cmd_subscribe.py	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/Mailman/Commands/cmd_subscribe.py	2008-06-15 18:49:58.000000000 +0200
 @@ -71,7 +71,8 @@
              return STOP
          argnum += 1
@@ -17,4 +19,3 @@ upstream release.
          if password.lower() == 'digest':
              digest = 1
          else:
-

@@ -2,10 +2,10 @@ Patch: 99_js_templates.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Do some javascript magic to automatically select the password
 field when appropriate.
-Index: templates/cs/admlogin.html
+Index: mailman-2.1.10/templates/cs/admlogin.html
 ===================================================================
---- a/templates/cs/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/cs/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/cs/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/cs/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -19,10 +19,10 @@ Index: templates/cs/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/cs/private.html
+Index: mailman-2.1.10/templates/cs/private.html
 ===================================================================
---- a/templates/cs/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/cs/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/cs/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/cs/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -34,10 +34,10 @@ Index: templates/cs/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/da/admlogin.html
+Index: mailman-2.1.10/templates/da/admlogin.html
 ===================================================================
---- a/templates/da/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/da/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/da/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/da/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -51,10 +51,10 @@ Index: templates/da/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/da/private.html
+Index: mailman-2.1.10/templates/da/private.html
 ===================================================================
---- a/templates/da/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/da/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/da/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/da/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -66,10 +66,10 @@ Index: templates/da/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/de/admlogin.html
+Index: mailman-2.1.10/templates/de/admlogin.html
 ===================================================================
---- a/templates/de/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/de/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/de/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/de/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -83,10 +83,10 @@ Index: templates/de/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/de/private.html
+Index: mailman-2.1.10/templates/de/private.html
 ===================================================================
---- a/templates/de/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/de/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/de/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/de/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -98,10 +98,10 @@ Index: templates/de/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/en/admlogin.html
+Index: mailman-2.1.10/templates/en/admlogin.html
 ===================================================================
---- a/templates/en/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/en/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/en/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/en/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -115,10 +115,10 @@ Index: templates/en/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/en/listinfo.html
+Index: mailman-2.1.10/templates/en/listinfo.html
 ===================================================================
---- a/templates/en/listinfo.html.orig	2006-09-19 16:14:06.000000000 +0200
-+++ b/templates/en/listinfo.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/en/listinfo.html	2008-06-15 18:49:50.000000000 +0200
++++ mailman-2.1.10/templates/en/listinfo.html	2008-06-15 18:49:59.000000000 +0200
 @@ -4,7 +4,7 @@
      <TITLE><MM-List-Name> Info Page</TITLE>
    
@@ -128,10 +128,10 @@ Index: templates/en/listinfo.html
  
      <P>
        <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/en/private.html
+Index: mailman-2.1.10/templates/en/private.html
 ===================================================================
---- a/templates/en/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/en/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/en/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/en/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -143,10 +143,10 @@ Index: templates/en/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/es/admlogin.html
+Index: mailman-2.1.10/templates/es/admlogin.html
 ===================================================================
---- a/templates/es/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/es/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/es/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/es/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -160,10 +160,10 @@ Index: templates/es/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/es/private.html
+Index: mailman-2.1.10/templates/es/private.html
 ===================================================================
---- a/templates/es/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/es/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/es/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/es/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -175,10 +175,10 @@ Index: templates/es/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/et/admlogin.html
+Index: mailman-2.1.10/templates/et/admlogin.html
 ===================================================================
---- a/templates/et/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/et/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/et/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/et/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -192,10 +192,10 @@ Index: templates/et/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/et/private.html
+Index: mailman-2.1.10/templates/et/private.html
 ===================================================================
---- a/templates/et/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/et/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/et/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/et/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -207,10 +207,10 @@ Index: templates/et/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/eu/admlogin.html
+Index: mailman-2.1.10/templates/eu/admlogin.html
 ===================================================================
---- a/templates/eu/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/eu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/eu/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/eu/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -224,10 +224,10 @@ Index: templates/eu/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/eu/private.html
+Index: mailman-2.1.10/templates/eu/private.html
 ===================================================================
---- a/templates/eu/private.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/eu/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/eu/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/eu/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -241,10 +241,10 @@ Index: templates/eu/private.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/fi/admlogin.html
+Index: mailman-2.1.10/templates/fi/admlogin.html
 ===================================================================
---- a/templates/fi/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
-+++ b/templates/fi/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/fi/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/fi/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -2,9 +2,10 @@
  <html>
  <head>
@@ -258,10 +258,10 @@ Index: templates/fi/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/fi/private.html
+Index: mailman-2.1.10/templates/fi/private.html
 ===================================================================
---- a/templates/fi/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/fi/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/fi/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/fi/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -2,8 +2,9 @@
  <html>
  <head>
@@ -273,10 +273,10 @@ Index: templates/fi/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/fr/admlogin.html
+Index: mailman-2.1.10/templates/fr/admlogin.html
 ===================================================================
---- a/templates/fr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/fr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/fr/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/fr/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -290,10 +290,10 @@ Index: templates/fr/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/fr/private.html
+Index: mailman-2.1.10/templates/fr/private.html
 ===================================================================
---- a/templates/fr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/fr/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/fr/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/fr/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -2,8 +2,9 @@
  <head>
      <title>Authentification pour l'acc&egrave;s aux archives priv&eacute;es de
@@ -305,10 +305,10 @@ Index: templates/fr/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/hu/admlogin.html
+Index: mailman-2.1.10/templates/hu/admlogin.html
 ===================================================================
---- a/templates/hu/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/hu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/hu/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/hu/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -322,10 +322,10 @@ Index: templates/hu/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/hu/private.html
+Index: mailman-2.1.10/templates/hu/private.html
 ===================================================================
---- a/templates/hu/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/hu/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/hu/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/hu/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -337,10 +337,10 @@ Index: templates/hu/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/it/admlogin.html
+Index: mailman-2.1.10/templates/it/admlogin.html
 ===================================================================
---- a/templates/it/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/it/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/it/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/it/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -354,10 +354,10 @@ Index: templates/it/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/it/private.html
+Index: mailman-2.1.10/templates/it/private.html
 ===================================================================
---- a/templates/it/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/it/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/it/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/it/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -369,10 +369,10 @@ Index: templates/it/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/ja/admlogin.html
+Index: mailman-2.1.10/templates/ja/admlogin.html
 ===================================================================
---- a/templates/ja/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/ja/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/ja/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/ja/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -386,10 +386,10 @@ Index: templates/ja/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/ja/private.html
+Index: mailman-2.1.10/templates/ja/private.html
 ===================================================================
---- a/templates/ja/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/ja/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/ja/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/ja/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -401,10 +401,10 @@ Index: templates/ja/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/ko/admlogin.html
+Index: mailman-2.1.10/templates/ko/admlogin.html
 ===================================================================
---- a/templates/ko/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/ko/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/ko/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/ko/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -418,10 +418,10 @@ Index: templates/ko/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/ko/private.html
+Index: mailman-2.1.10/templates/ko/private.html
 ===================================================================
---- a/templates/ko/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/ko/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/ko/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/ko/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -433,10 +433,10 @@ Index: templates/ko/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/lt/admlogin.html
+Index: mailman-2.1.10/templates/lt/admlogin.html
 ===================================================================
---- a/templates/lt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/lt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/lt/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/lt/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -450,10 +450,10 @@ Index: templates/lt/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/lt/private.html
+Index: mailman-2.1.10/templates/lt/private.html
 ===================================================================
---- a/templates/lt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/lt/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/lt/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/lt/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -465,10 +465,10 @@ Index: templates/lt/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/nl/admlogin.html
+Index: mailman-2.1.10/templates/nl/admlogin.html
 ===================================================================
---- a/templates/nl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/nl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/nl/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/nl/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -489,10 +489,10 @@ Index: templates/nl/admlogin.html
 -</html>
 \ No newline at end of file
 +</html>
-Index: templates/nl/private.html
+Index: mailman-2.1.10/templates/nl/private.html
 ===================================================================
---- a/templates/nl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/nl/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/nl/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/nl/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -513,10 +513,10 @@ Index: templates/nl/private.html
 -</html>
 \ No newline at end of file
 +</html>
-Index: templates/no/admlogin.html
+Index: mailman-2.1.10/templates/no/admlogin.html
 ===================================================================
---- a/templates/no/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/no/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/no/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/no/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -530,10 +530,10 @@ Index: templates/no/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/no/private.html
+Index: mailman-2.1.10/templates/no/private.html
 ===================================================================
---- a/templates/no/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/no/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/no/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/no/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -545,10 +545,10 @@ Index: templates/no/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/pl/admlogin.html
+Index: mailman-2.1.10/templates/pl/admlogin.html
 ===================================================================
---- a/templates/pl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/pl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/pl/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/pl/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
    <title>Uwierzytelnienie %(who)s %(listname)s</title>
@@ -562,10 +562,10 @@ Index: templates/pl/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/pl/private.html
+Index: mailman-2.1.10/templates/pl/private.html
 ===================================================================
---- a/templates/pl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/pl/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/pl/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/pl/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -577,10 +577,10 @@ Index: templates/pl/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/pt/admlogin.html
+Index: mailman-2.1.10/templates/pt/admlogin.html
 ===================================================================
---- a/templates/pt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/pt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/pt/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/pt/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -594,10 +594,10 @@ Index: templates/pt/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/pt/private.html
+Index: mailman-2.1.10/templates/pt/private.html
 ===================================================================
---- a/templates/pt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/pt/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/pt/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/pt/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -609,10 +609,10 @@ Index: templates/pt/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/pt_BR/admlogin.html
+Index: mailman-2.1.10/templates/pt_BR/admlogin.html
 ===================================================================
---- a/templates/pt_BR/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/pt_BR/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/pt_BR/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/pt_BR/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -626,10 +626,10 @@ Index: templates/pt_BR/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/pt_BR/private.html
+Index: mailman-2.1.10/templates/pt_BR/private.html
 ===================================================================
---- a/templates/pt_BR/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/pt_BR/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/pt_BR/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/pt_BR/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -641,10 +641,10 @@ Index: templates/pt_BR/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/ru/admlogin.html
+Index: mailman-2.1.10/templates/ru/admlogin.html
 ===================================================================
---- a/templates/ru/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/ru/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/ru/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/ru/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -658,10 +658,10 @@ Index: templates/ru/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/ru/private.html
+Index: mailman-2.1.10/templates/ru/private.html
 ===================================================================
---- a/templates/ru/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/ru/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/ru/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/ru/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -673,10 +673,10 @@ Index: templates/ru/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/sr/admlogin.html
+Index: mailman-2.1.10/templates/sr/admlogin.html
 ===================================================================
---- a/templates/sr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/sr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/sr/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/sr/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,11 @@
  <html>
  <head>
@@ -692,10 +692,10 @@ Index: templates/sr/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/sr/private.html
+Index: mailman-2.1.10/templates/sr/private.html
 ===================================================================
---- a/templates/sr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/sr/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/sr/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/sr/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,11 @@
  ﻿<html>
  <head>
@@ -711,10 +711,10 @@ Index: templates/sr/private.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/sv/admlogin.html
+Index: mailman-2.1.10/templates/sv/admlogin.html
 ===================================================================
---- a/templates/sv/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/sv/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/sv/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/sv/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -728,10 +728,10 @@ Index: templates/sv/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/sv/private.html
+Index: mailman-2.1.10/templates/sv/private.html
 ===================================================================
---- a/templates/sv/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/sv/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/sv/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/sv/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -745,10 +745,10 @@ Index: templates/sv/private.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/uk/admlogin.html
+Index: mailman-2.1.10/templates/uk/admlogin.html
 ===================================================================
---- a/templates/uk/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/uk/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/uk/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/uk/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -762,10 +762,10 @@ Index: templates/uk/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/uk/private.html
+Index: mailman-2.1.10/templates/uk/private.html
 ===================================================================
---- a/templates/uk/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/uk/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/uk/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/uk/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -777,10 +777,10 @@ Index: templates/uk/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/zh_CN/admlogin.html
+Index: mailman-2.1.10/templates/zh_CN/admlogin.html
 ===================================================================
---- a/templates/zh_CN/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/zh_CN/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/zh_CN/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/zh_CN/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -794,10 +794,10 @@ Index: templates/zh_CN/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: templates/zh_CN/private.html
+Index: mailman-2.1.10/templates/zh_CN/private.html
 ===================================================================
---- a/templates/zh_CN/private.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/zh_CN/private.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/zh_CN/private.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/zh_CN/private.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,8 +1,9 @@
  <html>
  <head>
@@ -809,10 +809,10 @@ Index: templates/zh_CN/private.html
  <FORM METHOD=POST ACTION="%(action)s">
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-Index: templates/zh_TW/admlogin.html
+Index: mailman-2.1.10/templates/zh_TW/admlogin.html
 ===================================================================
---- a/templates/zh_TW/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
-+++ b/templates/zh_TW/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+--- mailman-2.1.10.orig/templates/zh_TW/admlogin.html	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/templates/zh_TW/admlogin.html	2008-06-15 18:49:59.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>

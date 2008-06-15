@@ -1,9 +1,10 @@
 Patch: 53_disable_addons.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Disable some modules which are pulled in from other Debian packages.
-diff -Nur misc/Makefile.in mailman-2.1.10b3/misc/Makefile.in
---- a/misc/Makefile.in	2008-02-02 23:29:26.000000000 +0100
-+++ b/misc/Makefile.in	2008-02-08 23:19:31.000000000 +0100
+Index: mailman-2.1.10/misc/Makefile.in
+===================================================================
+--- mailman-2.1.10.orig/misc/Makefile.in	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/misc/Makefile.in	2008-06-15 18:49:47.000000000 +0200
 @@ -57,7 +57,10 @@
  JACODECSPKG=	JapaneseCodecs-1.4.11
  KOCODECSPKG=	KoreanCodecs-2.0.5
@@ -16,9 +17,10 @@ diff -Nur misc/Makefile.in mailman-2.1.10b3/misc/Makefile.in
  
  # Modes for directories and executables created by the install
  # process.  Default to group-writable directories but
-diff -Nur misc/paths.py.in mailman-2.1.10b3/misc/paths.py.in
---- a/misc/paths.py.in	2008-02-02 23:29:26.000000000 +0100
-+++ b/misc/paths.py.in	2008-02-08 23:21:01.000000000 +0100
+Index: mailman-2.1.10/misc/paths.py.in
+===================================================================
+--- mailman-2.1.10.orig/misc/paths.py.in	2008-04-21 20:28:22.000000000 +0200
++++ mailman-2.1.10/misc/paths.py.in	2008-06-15 18:49:47.000000000 +0200
 @@ -71,13 +71,19 @@
  # files would be imported automatically.  But because we inhibit the importing
  # of the site module, we need to be explicit about importing these codecs.

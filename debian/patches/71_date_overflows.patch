@@ -1,10 +1,10 @@
 Patch: 71_date_overflows.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 React sensibly on integer overflow in date handling
-Index: Mailman/Handlers/Scrubber.py
+Index: mailman-2.1.10/Mailman/Handlers/Scrubber.py
 ===================================================================
---- a/Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:14:54.000000000 +0800
-+++ b/Mailman/Handlers/Scrubber.py	2006-08-15 15:14:55.000000000 +0800
+--- mailman-2.1.10.orig/Mailman/Handlers/Scrubber.py	2008-06-15 18:49:54.000000000 +0200
++++ mailman-2.1.10/Mailman/Handlers/Scrubber.py	2008-06-15 18:49:54.000000000 +0200
 @@ -143,7 +143,7 @@
                       }.get(parts[3], 0)
              day = int(parts[4])
