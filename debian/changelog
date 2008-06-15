@@ -4,7 +4,7 @@ mailman (1:2.1.10-3) UNRELEASED; urgency=low
     Jacobo Tarrio (Closes: #482137).
   * Some tweaks to newlist.8 (Closes: #485382).
   * Make quilt usage more dpkg source format 3.0 compatible
-    (see #485253).
+    and refresh all patches (Closes: #485253).
   * Checked for policy 3.8.0, no changes necessary.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sat, 14 Jun 2008 12:37:04 +0200
