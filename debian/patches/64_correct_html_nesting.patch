@@ -6,18 +6,16 @@ Index: mailman-2.1.10/templates/ca/listinfo.html
 ===================================================================
 --- mailman-2.1.10.orig/templates/ca/listinfo.html	2008-04-21 20:28:22.000000000 +0200
 +++ mailman-2.1.10/templates/ca/listinfo.html	2008-06-15 18:49:50.000000000 +0200
-@@ -53,8 +53,9 @@
-       </TR>
-       
-   <tr> 
--    <td colspan="2">Per subscriure's ompli el seg&uuml;ent formulari. <MM-List-Subscription-Msg> 
--      <ul>
-+    <td colspan="2">Per subscriure's ompli el seg&uuml;ent formulari.
-+	  <ul>
-+	    <MM-List-Subscription-Msg>
-         <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
+@@ -62,8 +62,8 @@
+ 	  <P>
+ 	    Ompliu el formulari seg&uuml;ent per a
+ 	      subscriure-us a <MM-List-Name>.
+-	  <MM-List-Subscription-Msg>
+       <ul>
++	  <MM-List-Subscription-Msg>
+ 
+ 	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
-           <TR> 
 Index: mailman-2.1.10/templates/cs/listinfo.html
 ===================================================================
 --- mailman-2.1.10.orig/templates/cs/listinfo.html	2008-04-21 20:28:22.000000000 +0200

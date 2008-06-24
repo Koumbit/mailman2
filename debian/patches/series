@@ -13,9 +13,7 @@
 51_nocompile.pyc.patch
 52_check_perms_lstat.patch
 53_disable_addons.patch
-58_fix_es_translation.patch
 59_fix_missing_language_crash.patch
-61_fix_ru_siteowner.patch
 62_new_list_bad_pending_requests.patch
 63_update_default_server_language.patch
 64_correct_html_nesting.patch
@@ -24,11 +22,9 @@
 67_update_handle_old_versions.patch
 70_invalid_utf8_dos.patch
 71_date_overflows.patch
-72_fblast_add_shebang.patch
 74_admin_non-ascii_emails.patch
 77_header_folding_in_attachments.patch
 78_DeprecationWarning.patch
 79_archiver_slash.patch
 80_fix_string_search.patch
-81_fix_subscribe_2.1.10.patch
 99_js_templates.patch
