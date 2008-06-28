@@ -397,13 +397,6 @@ Index: mailman-2.1.10/templates/nl/listinfo.html
  	      <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2"
  		WIDTH="70%" HEIGHT= "112">
  		<TR>
-@@ -132,4 +132,4 @@
-   </table>
- <MM-Mailman-Footer>
- </BODY>
--</HTML>
-\ No newline at end of file
-+</HTML>
 Index: mailman-2.1.10/templates/sr/listinfo.html
 ===================================================================
 --- mailman-2.1.10.orig/templates/sr/listinfo.html	2008-04-21 20:28:22.000000000 +0200

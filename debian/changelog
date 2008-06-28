@@ -13,8 +13,9 @@ mailman (1:2.1.11~rc2-1) UNRELEASED; urgency=low
   * Make quilt usage more dpkg source format 3.0 compatible
     and refresh all patches (Closes: #485253).
   * Checked for policy 3.8.0, no changes necessary.
+  * Fix a number of buglets in 99_js_templates.patch.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 24 Jun 2008 21:58:40 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 28 Jun 2008 23:21:55 +0200
 
 mailman (1:2.1.10-2) unstable; urgency=low
 
