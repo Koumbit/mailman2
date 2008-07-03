@@ -14,6 +14,8 @@ mailman (1:2.1.11~rc2-1) UNRELEASED; urgency=low
     and refresh all patches (Closes: #485253).
   * Checked for policy 3.8.0, no changes necessary.
   * Fix a number of buglets in 99_js_templates.patch.
+  * Don't install stop symlinks in runlevels 0 and 6; the default
+    sigterm functions very well to stop qrunner.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sat, 28 Jun 2008 23:21:55 +0200
 
