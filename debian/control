@@ -6,8 +6,8 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>, Thijs Kinkhorst <thijs@debia
 Build-Depends: debhelper (>= 6), autoconf, python-dev, python-support, quilt (>= 0.40)
 Standards-Version: 3.8.0
 Homepage: http://www.list.org/
-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
-Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman
+Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman/trunk
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman/trunk
 XS-Python-Version: current
 
 Package: mailman
