@@ -1,6 +1,6 @@
-diff -Nur mailman-2.1.11rc2.orig/templates/ar/private.html mailman-2.1.11rc2/templates/ar/private.html
---- mailman-2.1.11rc2.orig/templates/ar/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ar/private.html	2008-06-28 23:16:54.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ar/private.html mailman-2.1.11/templates/ar/private.html
+--- mailman-2.1.11.orig/templates/ar/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ar/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
      <title>التحقق من الشخصية للأرشيف الخاص بالقائمة %(realname)s</title>
@@ -14,9 +14,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ar/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ca/admlogin.html mailman-2.1.11rc2/templates/ca/admlogin.html
---- mailman-2.1.11rc2.orig/templates/ca/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ca/admlogin.html	2008-06-28 23:18:49.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ca/admlogin.html mailman-2.1.11/templates/ca/admlogin.html
+--- mailman-2.1.11.orig/templates/ca/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -30,9 +30,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ca/admlogin.html mailman-2.1.11rc2/te
  %(message)s  
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ca/private.html mailman-2.1.11rc2/templates/ca/private.html
---- mailman-2.1.11rc2.orig/templates/ca/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ca/private.html	2008-06-28 23:17:06.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ca/private.html mailman-2.1.11/templates/ca/private.html
+--- mailman-2.1.11.orig/templates/ca/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -46,9 +46,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ca/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/cs/admlogin.html mailman-2.1.11rc2/templates/cs/admlogin.html
---- mailman-2.1.11rc2.orig/templates/cs/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/cs/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/cs/admlogin.html mailman-2.1.11/templates/cs/admlogin.html
+--- mailman-2.1.11.orig/templates/cs/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/cs/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -62,9 +62,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/cs/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/cs/private.html mailman-2.1.11rc2/templates/cs/private.html
---- mailman-2.1.11rc2.orig/templates/cs/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/cs/private.html	2008-06-28 23:17:13.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/cs/private.html mailman-2.1.11/templates/cs/private.html
+--- mailman-2.1.11.orig/templates/cs/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/cs/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -78,9 +78,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/cs/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/da/admlogin.html mailman-2.1.11rc2/templates/da/admlogin.html
---- mailman-2.1.11rc2.orig/templates/da/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/da/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/da/admlogin.html mailman-2.1.11/templates/da/admlogin.html
+--- mailman-2.1.11.orig/templates/da/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/da/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -94,9 +94,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/da/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/da/private.html mailman-2.1.11rc2/templates/da/private.html
---- mailman-2.1.11rc2.orig/templates/da/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/da/private.html	2008-06-28 23:17:20.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/da/private.html mailman-2.1.11/templates/da/private.html
+--- mailman-2.1.11.orig/templates/da/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/da/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -110,9 +110,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/da/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/de/admlogin.html mailman-2.1.11rc2/templates/de/admlogin.html
---- mailman-2.1.11rc2.orig/templates/de/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/de/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/de/admlogin.html mailman-2.1.11/templates/de/admlogin.html
+--- mailman-2.1.11.orig/templates/de/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/de/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -126,9 +126,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/de/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/de/private.html mailman-2.1.11rc2/templates/de/private.html
---- mailman-2.1.11rc2.orig/templates/de/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/de/private.html	2008-06-28 23:17:27.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/de/private.html mailman-2.1.11/templates/de/private.html
+--- mailman-2.1.11.orig/templates/de/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/de/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -142,9 +142,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/de/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/en/admlogin.html mailman-2.1.11rc2/templates/en/admlogin.html
---- mailman-2.1.11rc2.orig/templates/en/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/en/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/en/admlogin.html mailman-2.1.11/templates/en/admlogin.html
+--- mailman-2.1.11.orig/templates/en/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/en/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -158,9 +158,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/en/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/en/listinfo.html mailman-2.1.11rc2/templates/en/listinfo.html
---- mailman-2.1.11rc2.orig/templates/en/listinfo.html	2008-06-28 23:09:42.000000000 +0200
-+++ mailman-2.1.11rc2/templates/en/listinfo.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/en/listinfo.html mailman-2.1.11/templates/en/listinfo.html
+--- mailman-2.1.11.orig/templates/en/listinfo.html	2008-07-07 23:21:28.000000000 +0200
++++ mailman-2.1.11/templates/en/listinfo.html	2008-07-07 23:21:40.000000000 +0200
 @@ -4,7 +4,7 @@
      <TITLE><MM-List-Name> Info Page</TITLE>
    
@@ -170,9 +170,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/en/listinfo.html mailman-2.1.11rc2/te
  
      <P>
        <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-diff -Nur mailman-2.1.11rc2.orig/templates/en/private.html mailman-2.1.11rc2/templates/en/private.html
---- mailman-2.1.11rc2.orig/templates/en/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/en/private.html	2008-06-28 23:17:36.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/en/private.html mailman-2.1.11/templates/en/private.html
+--- mailman-2.1.11.orig/templates/en/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/en/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -186,9 +186,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/en/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/es/admlogin.html mailman-2.1.11rc2/templates/es/admlogin.html
---- mailman-2.1.11rc2.orig/templates/es/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/es/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/es/admlogin.html mailman-2.1.11/templates/es/admlogin.html
+--- mailman-2.1.11.orig/templates/es/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/es/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -202,9 +202,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/es/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/es/private.html mailman-2.1.11rc2/templates/es/private.html
---- mailman-2.1.11rc2.orig/templates/es/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/es/private.html	2008-06-28 23:17:43.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/es/private.html mailman-2.1.11/templates/es/private.html
+--- mailman-2.1.11.orig/templates/es/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/es/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -218,9 +218,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/es/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/et/admlogin.html mailman-2.1.11rc2/templates/et/admlogin.html
---- mailman-2.1.11rc2.orig/templates/et/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/et/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/et/admlogin.html mailman-2.1.11/templates/et/admlogin.html
+--- mailman-2.1.11.orig/templates/et/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/et/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -234,9 +234,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/et/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/et/private.html mailman-2.1.11rc2/templates/et/private.html
---- mailman-2.1.11rc2.orig/templates/et/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/et/private.html	2008-06-28 23:11:24.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/et/private.html mailman-2.1.11/templates/et/private.html
+--- mailman-2.1.11.orig/templates/et/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/et/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -250,9 +250,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/et/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/eu/admlogin.html mailman-2.1.11rc2/templates/eu/admlogin.html
---- mailman-2.1.11rc2.orig/templates/eu/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/eu/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/eu/admlogin.html mailman-2.1.11/templates/eu/admlogin.html
+--- mailman-2.1.11.orig/templates/eu/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/eu/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -266,9 +266,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/eu/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/eu/private.html mailman-2.1.11rc2/templates/eu/private.html
---- mailman-2.1.11rc2.orig/templates/eu/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/eu/private.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/eu/private.html mailman-2.1.11/templates/eu/private.html
+--- mailman-2.1.11.orig/templates/eu/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/eu/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -282,9 +282,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/eu/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/fi/admlogin.html mailman-2.1.11rc2/templates/fi/admlogin.html
---- mailman-2.1.11rc2.orig/templates/fi/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/fi/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/fi/admlogin.html mailman-2.1.11/templates/fi/admlogin.html
+--- mailman-2.1.11.orig/templates/fi/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/fi/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <html>
  <head>
@@ -298,9 +298,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/fi/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/fi/private.html mailman-2.1.11rc2/templates/fi/private.html
---- mailman-2.1.11rc2.orig/templates/fi/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/fi/private.html	2008-06-28 23:11:41.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/fi/private.html mailman-2.1.11/templates/fi/private.html
+--- mailman-2.1.11.orig/templates/fi/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/fi/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <html>
  <head>
@@ -314,9 +314,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/fi/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/fr/admlogin.html mailman-2.1.11rc2/templates/fr/admlogin.html
---- mailman-2.1.11rc2.orig/templates/fr/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/fr/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/fr/admlogin.html mailman-2.1.11/templates/fr/admlogin.html
+--- mailman-2.1.11.orig/templates/fr/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/fr/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -330,9 +330,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/fr/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/fr/private.html mailman-2.1.11rc2/templates/fr/private.html
---- mailman-2.1.11rc2.orig/templates/fr/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/fr/private.html	2008-06-28 23:17:50.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/fr/private.html mailman-2.1.11/templates/fr/private.html
+--- mailman-2.1.11.orig/templates/fr/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/fr/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
      <title>Authentification pour l'acc&egrave;s aux archives priv&eacute;es de
@@ -346,9 +346,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/fr/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/gl/admlogin.html mailman-2.1.11rc2/templates/gl/admlogin.html
---- mailman-2.1.11rc2.orig/templates/gl/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/gl/admlogin.html	2008-06-28 23:19:14.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/gl/admlogin.html mailman-2.1.11/templates/gl/admlogin.html
+--- mailman-2.1.11.orig/templates/gl/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/gl/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -362,9 +362,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/gl/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/gl/private.html mailman-2.1.11rc2/templates/gl/private.html
---- mailman-2.1.11rc2.orig/templates/gl/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/gl/private.html	2008-06-28 23:12:13.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/gl/private.html mailman-2.1.11/templates/gl/private.html
+--- mailman-2.1.11.orig/templates/gl/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/gl/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -378,9 +378,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/gl/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/he/admlogin.html mailman-2.1.11rc2/templates/he/admlogin.html
---- mailman-2.1.11rc2.orig/templates/he/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/he/admlogin.html	2008-06-28 23:19:24.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/he/admlogin.html mailman-2.1.11/templates/he/admlogin.html
+--- mailman-2.1.11.orig/templates/he/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/he/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -394,9 +394,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/he/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/he/private.html mailman-2.1.11rc2/templates/he/private.html
---- mailman-2.1.11rc2.orig/templates/he/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/he/private.html	2008-06-28 23:12:27.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/he/private.html mailman-2.1.11/templates/he/private.html
+--- mailman-2.1.11.orig/templates/he/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/he/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -410,9 +410,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/he/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/hr/admlogin.html mailman-2.1.11rc2/templates/hr/admlogin.html
---- mailman-2.1.11rc2.orig/templates/hr/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/hr/admlogin.html	2008-06-28 23:19:34.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/hr/admlogin.html mailman-2.1.11/templates/hr/admlogin.html
+--- mailman-2.1.11.orig/templates/hr/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/hr/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -426,9 +426,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/hr/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/hr/private.html mailman-2.1.11rc2/templates/hr/private.html
---- mailman-2.1.11rc2.orig/templates/hr/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/hr/private.html	2008-06-28 23:12:41.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/hr/private.html mailman-2.1.11/templates/hr/private.html
+--- mailman-2.1.11.orig/templates/hr/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/hr/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -442,9 +442,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/hr/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/hu/admlogin.html mailman-2.1.11rc2/templates/hu/admlogin.html
---- mailman-2.1.11rc2.orig/templates/hu/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/hu/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/hu/admlogin.html mailman-2.1.11/templates/hu/admlogin.html
+--- mailman-2.1.11.orig/templates/hu/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/hu/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -458,9 +458,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/hu/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/hu/private.html mailman-2.1.11rc2/templates/hu/private.html
---- mailman-2.1.11rc2.orig/templates/hu/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/hu/private.html	2008-06-28 23:12:53.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/hu/private.html mailman-2.1.11/templates/hu/private.html
+--- mailman-2.1.11.orig/templates/hu/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/hu/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -474,9 +474,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/hu/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ia/admlogin.html mailman-2.1.11rc2/templates/ia/admlogin.html
---- mailman-2.1.11rc2.orig/templates/ia/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ia/admlogin.html	2008-06-28 23:19:54.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ia/admlogin.html mailman-2.1.11/templates/ia/admlogin.html
+--- mailman-2.1.11.orig/templates/ia/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ia/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -490,9 +490,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ia/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ia/private.html mailman-2.1.11rc2/templates/ia/private.html
---- mailman-2.1.11rc2.orig/templates/ia/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ia/private.html	2008-06-28 23:13:06.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ia/private.html mailman-2.1.11/templates/ia/private.html
+--- mailman-2.1.11.orig/templates/ia/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ia/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -506,9 +506,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ia/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/it/admlogin.html mailman-2.1.11rc2/templates/it/admlogin.html
---- mailman-2.1.11rc2.orig/templates/it/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/it/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/it/admlogin.html mailman-2.1.11/templates/it/admlogin.html
+--- mailman-2.1.11.orig/templates/it/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/it/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -522,9 +522,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/it/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/it/private.html mailman-2.1.11rc2/templates/it/private.html
---- mailman-2.1.11rc2.orig/templates/it/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/it/private.html	2008-06-28 23:13:16.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/it/private.html mailman-2.1.11/templates/it/private.html
+--- mailman-2.1.11.orig/templates/it/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/it/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -538,9 +538,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/it/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ja/admlogin.html mailman-2.1.11rc2/templates/ja/admlogin.html
---- mailman-2.1.11rc2.orig/templates/ja/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ja/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ja/admlogin.html mailman-2.1.11/templates/ja/admlogin.html
+--- mailman-2.1.11.orig/templates/ja/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ja/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -554,9 +554,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ja/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ja/private.html mailman-2.1.11rc2/templates/ja/private.html
---- mailman-2.1.11rc2.orig/templates/ja/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ja/private.html	2008-06-28 23:13:29.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ja/private.html mailman-2.1.11/templates/ja/private.html
+--- mailman-2.1.11.orig/templates/ja/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ja/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -570,9 +570,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ja/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ko/admlogin.html mailman-2.1.11rc2/templates/ko/admlogin.html
---- mailman-2.1.11rc2.orig/templates/ko/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ko/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ko/admlogin.html mailman-2.1.11/templates/ko/admlogin.html
+--- mailman-2.1.11.orig/templates/ko/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ko/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -586,9 +586,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ko/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ko/private.html mailman-2.1.11rc2/templates/ko/private.html
---- mailman-2.1.11rc2.orig/templates/ko/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ko/private.html	2008-06-28 23:13:41.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ko/private.html mailman-2.1.11/templates/ko/private.html
+--- mailman-2.1.11.orig/templates/ko/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ko/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -602,9 +602,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ko/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/lt/admlogin.html mailman-2.1.11rc2/templates/lt/admlogin.html
---- mailman-2.1.11rc2.orig/templates/lt/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/lt/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/lt/admlogin.html mailman-2.1.11/templates/lt/admlogin.html
+--- mailman-2.1.11.orig/templates/lt/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/lt/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -618,9 +618,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/lt/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/lt/private.html mailman-2.1.11rc2/templates/lt/private.html
---- mailman-2.1.11rc2.orig/templates/lt/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/lt/private.html	2008-06-28 23:13:52.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/lt/private.html mailman-2.1.11/templates/lt/private.html
+--- mailman-2.1.11.orig/templates/lt/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/lt/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -634,9 +634,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/lt/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/nl/admlogin.html mailman-2.1.11rc2/templates/nl/admlogin.html
---- mailman-2.1.11rc2.orig/templates/nl/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/nl/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/nl/admlogin.html mailman-2.1.11/templates/nl/admlogin.html
+--- mailman-2.1.11.orig/templates/nl/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/nl/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -650,9 +650,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/nl/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/nl/private.html mailman-2.1.11rc2/templates/nl/private.html
---- mailman-2.1.11rc2.orig/templates/nl/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/nl/private.html	2008-06-28 23:14:02.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/nl/private.html mailman-2.1.11/templates/nl/private.html
+--- mailman-2.1.11.orig/templates/nl/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/nl/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -666,9 +666,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/nl/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/no/admlogin.html mailman-2.1.11rc2/templates/no/admlogin.html
---- mailman-2.1.11rc2.orig/templates/no/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/no/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/no/admlogin.html mailman-2.1.11/templates/no/admlogin.html
+--- mailman-2.1.11.orig/templates/no/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/no/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -682,9 +682,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/no/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/no/private.html mailman-2.1.11rc2/templates/no/private.html
---- mailman-2.1.11rc2.orig/templates/no/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/no/private.html	2008-06-28 23:14:11.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/no/private.html mailman-2.1.11/templates/no/private.html
+--- mailman-2.1.11.orig/templates/no/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/no/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -698,9 +698,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/no/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/pl/admlogin.html mailman-2.1.11rc2/templates/pl/admlogin.html
---- mailman-2.1.11rc2.orig/templates/pl/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/pl/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/pl/admlogin.html mailman-2.1.11/templates/pl/admlogin.html
+--- mailman-2.1.11.orig/templates/pl/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/pl/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
    <title>Uwierzytelnienie %(who)s %(listname)s</title>
@@ -714,9 +714,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/pl/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/pl/private.html mailman-2.1.11rc2/templates/pl/private.html
---- mailman-2.1.11rc2.orig/templates/pl/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/pl/private.html	2008-06-28 23:14:20.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/pl/private.html mailman-2.1.11/templates/pl/private.html
+--- mailman-2.1.11.orig/templates/pl/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/pl/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -730,9 +730,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/pl/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/pt/admlogin.html mailman-2.1.11rc2/templates/pt/admlogin.html
---- mailman-2.1.11rc2.orig/templates/pt/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/pt/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/pt/admlogin.html mailman-2.1.11/templates/pt/admlogin.html
+--- mailman-2.1.11.orig/templates/pt/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/pt/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -746,9 +746,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/pt/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/pt/private.html mailman-2.1.11rc2/templates/pt/private.html
---- mailman-2.1.11rc2.orig/templates/pt/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/pt/private.html	2008-06-28 23:14:39.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/pt/private.html mailman-2.1.11/templates/pt/private.html
+--- mailman-2.1.11.orig/templates/pt/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/pt/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -762,14 +762,14 @@ diff -Nur mailman-2.1.11rc2.orig/templates/pt/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/pt_BR/admlogin.html mailman-2.1.11rc2/templates/pt_BR/admlogin.html
---- mailman-2.1.11rc2.orig/templates/pt_BR/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/pt_BR/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/pt_BR/admlogin.html mailman-2.1.11/templates/pt_BR/admlogin.html
+--- mailman-2.1.11.orig/templates/pt_BR/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/pt_BR/admlogin.html	2008-07-07 23:22:53.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
-   <title>Autentica��o de %(who)s na lista %(listname)s</title>
-+<script>function sf(){document.f.adminpw.focus();}</script>
+   <title>Autentica&ccedil;&atilde;o de %(who)s na lista %(listname)s</title>
++  <script>function sf(){document.f.adminpw.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
 -<FORM METHOD=POST ACTION="%(path)s">
@@ -778,14 +778,14 @@ diff -Nur mailman-2.1.11rc2.orig/templates/pt_BR/admlogin.html mailman-2.1.11rc2
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/pt_BR/private.html mailman-2.1.11rc2/templates/pt_BR/private.html
---- mailman-2.1.11rc2.orig/templates/pt_BR/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/pt_BR/private.html	2008-06-28 23:14:30.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/pt_BR/private.html mailman-2.1.11/templates/pt_BR/private.html
+--- mailman-2.1.11.orig/templates/pt_BR/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/pt_BR/private.html	2008-07-07 23:23:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
-     <title>Autentica��o para acesso aos arquivos privados da %(realname)s</title>
-+<script>function sf(){document.f.username.focus();}</script>
+     <title>Autentica&ccedil;&atilde;o para acesso aos arquivos privados da %(realname)s</title>
++    <script>function sf(){document.f.username.focus();}</script>
  </head>
 -<body bgcolor="#ffffff">
 -<FORM METHOD=POST ACTION="%(action)s">
@@ -794,9 +794,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/pt_BR/private.html mailman-2.1.11rc2/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ro/admlogin.html mailman-2.1.11rc2/templates/ro/admlogin.html
---- mailman-2.1.11rc2.orig/templates/ro/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ro/admlogin.html	2008-06-28 23:20:21.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ro/admlogin.html mailman-2.1.11/templates/ro/admlogin.html
+--- mailman-2.1.11.orig/templates/ro/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ro/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
    <title>%(listname)s: Autentificare - %(who)s</title>
@@ -810,9 +810,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ro/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ro/private.html mailman-2.1.11rc2/templates/ro/private.html
---- mailman-2.1.11rc2.orig/templates/ro/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ro/private.html	2008-06-28 23:14:56.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ro/private.html mailman-2.1.11/templates/ro/private.html
+--- mailman-2.1.11.orig/templates/ro/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ro/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -2,9 +2,10 @@
  <head>
      <title>Autentificare la arhivele private %(realname)s</title>
@@ -826,9 +826,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ro/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ru/admlogin.html mailman-2.1.11rc2/templates/ru/admlogin.html
---- mailman-2.1.11rc2.orig/templates/ru/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ru/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ru/admlogin.html mailman-2.1.11/templates/ru/admlogin.html
+--- mailman-2.1.11.orig/templates/ru/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ru/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -842,9 +842,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ru/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/ru/private.html mailman-2.1.11rc2/templates/ru/private.html
---- mailman-2.1.11rc2.orig/templates/ru/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/ru/private.html	2008-06-28 23:15:07.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/ru/private.html mailman-2.1.11/templates/ru/private.html
+--- mailman-2.1.11.orig/templates/ru/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ru/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -858,9 +858,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/ru/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sk/admlogin.html mailman-2.1.11rc2/templates/sk/admlogin.html
---- mailman-2.1.11rc2.orig/templates/sk/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sk/admlogin.html	2008-06-28 23:20:32.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sk/admlogin.html mailman-2.1.11/templates/sk/admlogin.html
+--- mailman-2.1.11.orig/templates/sk/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sk/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -874,9 +874,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sk/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sk/private.html mailman-2.1.11rc2/templates/sk/private.html
---- mailman-2.1.11rc2.orig/templates/sk/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sk/private.html	2008-06-28 23:15:20.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sk/private.html mailman-2.1.11/templates/sk/private.html
+--- mailman-2.1.11.orig/templates/sk/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sk/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -890,9 +890,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sk/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sl/admlogin.html mailman-2.1.11rc2/templates/sl/admlogin.html
---- mailman-2.1.11rc2.orig/templates/sl/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sl/admlogin.html	2008-06-28 23:20:42.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sl/admlogin.html mailman-2.1.11/templates/sl/admlogin.html
+--- mailman-2.1.11.orig/templates/sl/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sl/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -906,9 +906,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sl/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sl/private.html mailman-2.1.11rc2/templates/sl/private.html
---- mailman-2.1.11rc2.orig/templates/sl/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sl/private.html	2008-06-28 23:15:32.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sl/private.html mailman-2.1.11/templates/sl/private.html
+--- mailman-2.1.11.orig/templates/sl/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sl/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -922,9 +922,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sl/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sr/admlogin.html mailman-2.1.11rc2/templates/sr/admlogin.html
---- mailman-2.1.11rc2.orig/templates/sr/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sr/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sr/admlogin.html mailman-2.1.11/templates/sr/admlogin.html
+--- mailman-2.1.11.orig/templates/sr/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sr/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,11 @@
  <html>
  <head>
@@ -940,9 +940,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sr/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sr/private.html mailman-2.1.11rc2/templates/sr/private.html
---- mailman-2.1.11rc2.orig/templates/sr/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sr/private.html	2008-06-28 23:15:41.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sr/private.html mailman-2.1.11/templates/sr/private.html
+--- mailman-2.1.11.orig/templates/sr/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sr/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,11 @@
  ﻿<html>
  <head>
@@ -958,9 +958,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sr/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sv/admlogin.html mailman-2.1.11rc2/templates/sv/admlogin.html
---- mailman-2.1.11rc2.orig/templates/sv/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sv/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sv/admlogin.html mailman-2.1.11/templates/sv/admlogin.html
+--- mailman-2.1.11.orig/templates/sv/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sv/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -974,9 +974,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sv/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/sv/private.html mailman-2.1.11rc2/templates/sv/private.html
---- mailman-2.1.11rc2.orig/templates/sv/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/sv/private.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/sv/private.html mailman-2.1.11/templates/sv/private.html
+--- mailman-2.1.11.orig/templates/sv/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/sv/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -990,9 +990,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/sv/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/tr/admlogin.html mailman-2.1.11rc2/templates/tr/admlogin.html
---- mailman-2.1.11rc2.orig/templates/tr/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/tr/admlogin.html	2008-06-28 23:20:59.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/tr/admlogin.html mailman-2.1.11/templates/tr/admlogin.html
+--- mailman-2.1.11.orig/templates/tr/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/tr/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1006,9 +1006,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/tr/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/tr/private.html mailman-2.1.11rc2/templates/tr/private.html
---- mailman-2.1.11rc2.orig/templates/tr/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/tr/private.html	2008-06-28 23:15:55.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/tr/private.html mailman-2.1.11/templates/tr/private.html
+--- mailman-2.1.11.orig/templates/tr/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/tr/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1022,9 +1022,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/tr/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/uk/admlogin.html mailman-2.1.11rc2/templates/uk/admlogin.html
---- mailman-2.1.11rc2.orig/templates/uk/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/uk/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/uk/admlogin.html mailman-2.1.11/templates/uk/admlogin.html
+--- mailman-2.1.11.orig/templates/uk/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/uk/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1038,9 +1038,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/uk/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/uk/private.html mailman-2.1.11rc2/templates/uk/private.html
---- mailman-2.1.11rc2.orig/templates/uk/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/uk/private.html	2008-06-28 23:16:05.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/uk/private.html mailman-2.1.11/templates/uk/private.html
+--- mailman-2.1.11.orig/templates/uk/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/uk/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1054,9 +1054,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/uk/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/vi/admlogin.html mailman-2.1.11rc2/templates/vi/admlogin.html
---- mailman-2.1.11rc2.orig/templates/vi/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/vi/admlogin.html	2008-06-28 23:21:13.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/vi/admlogin.html mailman-2.1.11/templates/vi/admlogin.html
+--- mailman-2.1.11.orig/templates/vi/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/vi/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1070,9 +1070,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/vi/admlogin.html mailman-2.1.11rc2/te
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/vi/private.html mailman-2.1.11rc2/templates/vi/private.html
---- mailman-2.1.11rc2.orig/templates/vi/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/vi/private.html	2008-06-28 23:16:21.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/vi/private.html mailman-2.1.11/templates/vi/private.html
+--- mailman-2.1.11.orig/templates/vi/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/vi/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1086,9 +1086,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/vi/private.html mailman-2.1.11rc2/tem
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/zh_CN/admlogin.html mailman-2.1.11rc2/templates/zh_CN/admlogin.html
---- mailman-2.1.11rc2.orig/templates/zh_CN/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/zh_CN/admlogin.html	2008-06-28 23:09:25.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/zh_CN/admlogin.html mailman-2.1.11/templates/zh_CN/admlogin.html
+--- mailman-2.1.11.orig/templates/zh_CN/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/zh_CN/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1102,9 +1102,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/zh_CN/admlogin.html mailman-2.1.11rc2
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/zh_CN/private.html mailman-2.1.11rc2/templates/zh_CN/private.html
---- mailman-2.1.11rc2.orig/templates/zh_CN/private.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/zh_CN/private.html	2008-06-28 23:16:34.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/zh_CN/private.html mailman-2.1.11/templates/zh_CN/private.html
+--- mailman-2.1.11.orig/templates/zh_CN/private.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/zh_CN/private.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
@@ -1118,9 +1118,9 @@ diff -Nur mailman-2.1.11rc2.orig/templates/zh_CN/private.html mailman-2.1.11rc2/
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-diff -Nur mailman-2.1.11rc2.orig/templates/zh_TW/admlogin.html mailman-2.1.11rc2/templates/zh_TW/admlogin.html
---- mailman-2.1.11rc2.orig/templates/zh_TW/admlogin.html	2008-06-23 20:08:20.000000000 +0200
-+++ mailman-2.1.11rc2/templates/zh_TW/admlogin.html	2008-06-28 23:21:17.000000000 +0200
+diff -Nur mailman-2.1.11.orig/templates/zh_TW/admlogin.html mailman-2.1.11/templates/zh_TW/admlogin.html
+--- mailman-2.1.11.orig/templates/zh_TW/admlogin.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/zh_TW/admlogin.html	2008-07-07 23:21:40.000000000 +0200
 @@ -1,9 +1,10 @@
  <html>
  <head>
