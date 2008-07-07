@@ -1,23 +1,23 @@
 mailman (1:2.1.11-1) UNRELEASED; urgency=low
 
-  * New upstream release. Incorporates the following
-    Debian patches:
+  * New upstream release. Incorporates the following Debian patches:
     - 81_fix_subscribe_2.1.10.patch
     - 61_fix_ru_siteowner.patch
     - 72_fblast_add_shebang.patch
     - 58_fix_es_translation.patch
 
-  * Update Galician debconf translation, thanks
-    Jacobo Tarrio (Closes: #482137).
+  * Update Galician debconf translation, thanks Jacobo Tarrio
+    (Closes: #482137).
   * Some tweaks to newlist.8 (Closes: #485382).
-  * Make quilt usage more dpkg source format 3.0 compatible
-    and refresh all patches (Closes: #485253).
+  * Make quilt usage more dpkg source format 3.0 compatible and
+    refresh all patches (Closes: #485253).
   * Checked for policy 3.8.0, no changes necessary.
   * Fix a number of buglets in 99_js_templates.patch.
   * Don't install stop symlinks in runlevels 0 and 6; the default
     sigterm functions very well to stop qrunner.
-  * Clarify that MTA="None" is right when using
-    postfix-to-mailman.py (Closes: #488644).
+  * Clarify that MTA="None" is right when using postfix-to-mailman.py
+    (Closes: #488644).
+  * Remove pidfile after successful qrunner shutdown (Closes: #482880).
 
  -- Thijs Kinkhorst <thijs@debian.org>  Mon, 07 Jul 2008 23:58:33 +0200
 
