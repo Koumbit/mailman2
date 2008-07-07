@@ -86,12 +86,14 @@ DEFAULT_SEND_REMINDERS = 0
 #-------------------------------------------------------------
 # Uncomment this if you configured your MTA such that it
 # automatically recognizes newly created lists.
-# (see /usr/share/doc/mailman/README.Exim4.Debian)
+# (see /usr/share/doc/mailman/README.Exim4.Debian or
+# /usr/share/mailman/postfix-to-mailman.py)
 # MTA=None   # Misnomer, suppresses alias output on newlist
 
 #-------------------------------------------------------------
-# Uncomment if you use Postfix virtual domains, but be sure to
-# see /usr/share/doc/mailman/README.Debian first.
+# Uncomment if you use Postfix virtual domains (but not
+# postfix-to-mailman.py), but be sure to see
+# /usr/share/doc/mailman/README.Debian first.
 # MTA='Postfix'
 
 #-------------------------------------------------------------
