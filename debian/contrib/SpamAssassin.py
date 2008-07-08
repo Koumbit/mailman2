@@ -78,7 +78,7 @@ def process(mlist, msg, msgdata):
     if MEMBER_BONUS != 0:
         for sender in msg.get_senders():
             if mlist.isMember(sender) or \
-                   matches_p(sender, mlist.accept_these_nonmembers):
+                   matches_p(sender, mlist.accept_these_nonmembers, mlist.internal_name()):
                 score -= MEMBER_BONUS
                 break
 

@@ -1,3 +1,10 @@
+mailman (1:2.1.11-2) UNRELEASED; urgency=low
+
+  * Fix SpamAssassin handler to cope with changed behaviour
+    of matches_p() (Closes: #488584).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue,  8 Jul 2008 09:43:15 +0200
+
 mailman (1:2.1.11-1) unstable; urgency=low
 
   * New upstream release.
