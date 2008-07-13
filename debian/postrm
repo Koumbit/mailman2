@@ -4,6 +4,8 @@
 
 #DEBHELPER#
 
+find /usr/lib/mailman -name *.pyc -print0 | xargs -0 rm -f
+
 if [ "$1" = purge ]; then
   # HACK: At present there is no way to ask ucf for registered files
   #       except for directly querying its database.
@@ -17,6 +19,8 @@ if [ "$1" = purge ]; then
     printf ". done.\n" >&2
   fi
 fi
+
+rm -rf /var/lock/mailman
 
 if [ "$1" = purge ]; then
   rm -f /etc/cron.d/mailman 

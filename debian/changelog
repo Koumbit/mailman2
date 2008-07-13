@@ -1,7 +1,9 @@
-mailman (1:2.1.11-2) UNRELEASED; urgency=low
+mailman (1:2.1.11-2) unstable; urgency=low
 
   * Fix SpamAssassin handler to cope with changed behaviour
     of matches_p() (Closes: #488584).
+  * Remove *.pyc from /usr/lb/mailman, and any stale locks on
+    package remove (Closes: #458414).
 
  -- Thijs Kinkhorst <thijs@debian.org>  Tue,  8 Jul 2008 09:43:15 +0200
 
