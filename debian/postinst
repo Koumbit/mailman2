@@ -16,14 +16,6 @@ PACKAGE=mailman
 DIRLIST="/usr/lib/mailman/Mailman /usr/lib/mailman/bin /usr/lib/mailman/cron /usr/lib/mailman/scripts"
 PYLIBDIR="/usr/lib/python`python -c 'import sys; print sys.version[:3]'`"
 
-if md5sum -c /dev/null 2>/dev/null; [ "$?" = 3 ]; then
-    # We are using dpkg's md5sum
-    md5sum="md5sum -v"
-else
-    # We are using coreutils' md5sum (hopefully)
-    md5sum=md5sum
-fi
-
 if [ "$1" = "configure" ]; then
 
     mm_etc=/etc/mailman
@@ -67,11 +59,7 @@ if [ "$1" = "configure" ]; then
         md5sums=$(tempfile --prefix=mm_${lang})
         grep "^[[:xdigit:]]{32}[[:space:]]\+${mm_etc}/$lang/" /var/lib/ucf/hashfile >${md5sums} || true
           # Language files are under ucf control, check md5sums
-          # LEM: The ":\?" is there to accomodate both md5sum from dpkg (in sarge)
-          #      and md5sum from coreutils (in etch and onwards).
-          #      It breaks with md5sum-from-dpkg if a filename ends with ":",
-          #      but this is not expected to happen.
-          for file in $(${md5sum} -c ${md5sums} 2>&1 | sed -n 's/:\? *OK$//p'); do 
+          for file in $(md5sum -c ${md5sums} 2>&1 | sed -n 's/: *OK$//p'); do 
             ucf --debconf-ok --purge ${file}
             rm -f ${file} ${file}.dpkg-dist
             printf . >&2
