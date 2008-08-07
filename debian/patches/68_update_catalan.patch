@@ -1,0 +1,126 @@
+Patch: 68_update_catalan.patch
+Author: Jordi Mallach <jordi@debian.org>
+
+Update Catalan translation.
+Applied upstream.
+
+--- mailman-2.1.11.orig/messages/ca/LC_MESSAGES/mailman.po	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/messages/ca/LC_MESSAGES/mailman.po	2008-08-07 13:29:17.000000000 +0200
+@@ -1630,7 +1630,7 @@
+ "            subscribed."
+ msgstr ""
+ "%(newaddr)s ja està subscrita a\n"
+-"            la llista %(realname). Pot ser que estigueu intentant confirmar\n"
++"            la llista %(realname)s. Pot ser que estigueu intentant confirmar\n"
+ "            una sol·licitud per a una adreça que ja ha estat subscrita."
+ 
+ #: Mailman/Cgi/confirm.py:541
+@@ -2201,7 +2201,7 @@
+ "            %(mailmanlink)s mailing lists on %(hostname)s."
+ msgstr ""
+ "<p>Actualment no hi ha llistes de correu %(mailmanlink)s\n"
+-"            públiques a (hostname)s."
++"            públiques a %(hostname)s."
+ 
+ #: Mailman/Cgi/listinfo.py:110
+ msgid ""
+@@ -2381,7 +2381,7 @@
+ msgstr ""
+ "%(newaddr)s té l'accés prohibit a la llista de correu.\n"
+ "                      Si penseu que la restricció és errònia,\n"
+-"                      contacteu amb el propietari de la llista a %(listowner)s."
++"                      contacteu amb el propietari de la llista a %(owneraddr)s."
+ 
+ #: Mailman/Cgi/options.py:417
+ msgid "Member name successfully changed. "
+@@ -2945,7 +2945,7 @@
+ msgstr ""
+ "L'adreça de correu electrònic que has donat té l'accés prohibit a la llista de correu.\n"
+ "Si penses que la restricció és errònia, per favor,\n"
+-"contacte amb l'amo de la llista a %(listowner)s."
++"contacte amb l'amo de la llista a %(owneraddr)s."
+ 
+ #: Mailman/Commands/cmd_confirm.py:74
+ msgid ""
+@@ -6452,7 +6452,7 @@
+ "                rule will be ignored."
+ msgstr ""
+ "El patró de filtre de capçalera\n"
+-"                «%(pattern)s» no és una expressió regular vàlida. S'ignoraràe\n"
++"                «%(safepattern)s» no és una expressió regular vàlida. S'ignoraràe\n"
+ "                la regla."
+ 
+ #: Mailman/Gui/Topics.py:36
+@@ -6573,7 +6573,7 @@
+ "The topic pattern '%(safepattern)s' is not a\n"
+ "                legal regular expression.  It will be discarded."
+ msgstr ""
+-"El patró de tema «%(pattern)s» no és\n"
++"El patró de tema «%(safepattern)s» no és\n"
+ "                una expressió regular vàlida. Es descartarà."
+ 
+ #: Mailman/Gui/Usenet.py:25
+@@ -7508,7 +7508,7 @@
+ 
+ #: Mailman/MailList.py:1024
+ msgid "%(realname)s unsubscribe notification"
+-msgstr "Notificació de la cancel·lació de la subscripció a %(realname)"
++msgstr "Notificació de la cancel·lació de la subscripció a %(realname)s"
+ 
+ #: Mailman/MailList.py:1214
+ msgid "subscriptions to %(name)s require administrator approval"
+@@ -11088,7 +11088,7 @@
+ #: cron/checkdbs:123
+ #, fuzzy
+ msgid "%(realname)s moderator request check result"
+-msgstr "%(count)d %(realname)s peticions de moderador en espera "
++msgstr "%(realname)s peticions de moderador en espera "
+ 
+ #: cron/checkdbs:143
+ msgid "Pending subscriptions:"
+--- mailman-2.1.11.orig/templates/ca/listinfo.html	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/listinfo.html	2008-08-07 13:26:15.000000000 +0200
+@@ -102,7 +102,7 @@
+       <tr>
+         <TD BGCOLOR="#dddddd">En quina llengua voleu
+ que es mostrin els vostres missatges?</TD>
+-        <TD>  </TD></TR>
++        <TD> <MM-list-langs></TD></TR>
+       <mm-digest-question-start>
+       <tr>
+ 	<td>Voleu rebre el correu de la llista compilat en un sol missatge enviat a diari?
+--- mailman-2.1.11.orig/templates/ca/masthead.txt	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/masthead.txt	2008-08-07 13:26:15.000000000 +0200
+@@ -1,4 +1,4 @@
+-Envieu les aportacions de %(real_name) a la llista de correu a
++Envieu les aportacions de %(real_name)s a la llista de correu a
+ 	%(got_list_email)s
+ 
+ Per a subscriure-us o cancel·lar subscripcions a través de la web, aneu
+--- mailman-2.1.11.orig/templates/ca/nomoretoday.txt	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/nomoretoday.txt	2008-08-07 13:29:46.000000000 +0200
+@@ -1,6 +1,6 @@
+ S'ha rebut un missatge de la vostra adreça «%(sender)s» amb una
+ sol·licitud de resposta automàtica de la llista de correu %(listname)s.
+-Avui ja s'han rebut %(num) missatges com aquest des de la vostra adreça.
++Avui ja s'han rebut %(num)s missatges com aquest des de la vostra adreça.
+ Per a evitar problemes com ara bucles de correu entre els robots de
+ correu, avui no se us enviarà cap més resposta de correu.  Torneu-ho a
+ intentar demà.
+--- mailman-2.1.11.orig/templates/ca/postack.txt	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/postack.txt	2008-08-07 13:26:15.000000000 +0200
+@@ -1,4 +1,4 @@
+-La llista de correu %(listname) ha rebut correctament el vostre missatge
++La llista de correu %(listname)s ha rebut correctament el vostre missatge
+ anomenat
+ 
+     %(subject)s
+--- mailman-2.1.11.orig/templates/ca/refuse.txt	2008-06-30 18:29:46.000000000 +0200
++++ mailman-2.1.11/templates/ca/refuse.txt	2008-08-07 13:30:15.000000000 +0200
+@@ -1,5 +1,5 @@
+ El moderador de la llista ha rebutjat la vostra sol·licitud a la llista
+-de correu %(listname):
++de correu %(listname)s:
+ 
+     %(request)s
+ 
