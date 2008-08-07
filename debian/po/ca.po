@@ -2,14 +2,15 @@
 # Copyright (C) 2004 Free Software Foundation, Inc.
 # Aleix Badia i Bosch <abadia@ica.es>, 2004
 # Josep Monés i Teixidor <jmones@puntbarra.com>, 2004
+# David Planella Molas <david.planella@gmail.com>, 2008
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
 "Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2006-10-06 16:25+0200\n"
-"PO-Revision-Date: 2004-01-31 17:56GMT\n"
-"Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
+"PO-Revision-Date: 2008-08-07 12:07+0200\n"
+"Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,199 +20,199 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "ar (Arabic)"
-msgstr ""
+msgstr "ar (àrab)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ca (Catalan)"
-msgstr ""
+msgstr "ca (català)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "cs (Czech)"
-msgstr ""
+msgstr "cs (txec)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "da (Danish)"
-msgstr ""
+msgstr "da (danès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "de (German)"
-msgstr ""
+msgstr "de (alemany)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "en (English)"
-msgstr ""
+msgstr "en (anglès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "es (Spanish)"
-msgstr ""
+msgstr "es (espanyol)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "et (Estonian)"
-msgstr ""
+msgstr "et (estonià)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "eu (Basque)"
-msgstr ""
+msgstr "eu (basc)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fi (Finnish)"
-msgstr ""
+msgstr "fi (finès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "fr (French)"
-msgstr ""
+msgstr "fr (francès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hr (Croatian)"
-msgstr ""
+msgstr "hr (croat)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "hu (Hungarian)"
-msgstr ""
+msgstr "hu (hongarès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ia (Interlingua)"
-msgstr ""
+msgstr "ia (interlingua)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "it (Italian)"
-msgstr ""
+msgstr "it (italià)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ja (Japanese)"
-msgstr ""
+msgstr "ja (japonès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ko (Korean)"
-msgstr ""
+msgstr "ko (coreà)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "lt (Lithuanian)"
-msgstr ""
+msgstr "lt (lituà)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "nl (Dutch)"
-msgstr ""
+msgstr "nl (holandès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "no (Norwegian)"
-msgstr ""
+msgstr "no (noruec)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pl (Polish)"
-msgstr ""
+msgstr "pl (polac)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt (Portuguese)"
-msgstr ""
+msgstr "pt (portuguès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "pt_BR (Brasilian Portuguese)"
-msgstr ""
+msgstr "pt_BR (portuguès del Brasil)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ro (Romanian)"
-msgstr ""
+msgstr "ro (romanès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "ru (Russian)"
-msgstr ""
+msgstr "ru (rus)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sl (Slovenian)"
-msgstr ""
+msgstr "sl (eslovè)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sr (Serbian)"
-msgstr ""
+msgstr "sr (serbi)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "sv (Swedish)"
-msgstr ""
+msgstr "sv (suec)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "tr (Turkish)"
-msgstr ""
+msgstr "tr (turc)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "uk (Ukrainian)"
-msgstr ""
+msgstr "us (ucraïnès)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "vi (Vietnamese)"
-msgstr ""
+msgstr "vi (vietnamita)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_CN (Chinese - China)"
-msgstr ""
+msgstr "zh_CN (xinès - Xina)"
 
 #. Type: multiselect
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr ""
+msgstr "zh_TW (xinès - Taiwan)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -229,13 +230,13 @@ msgstr ""
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr ""
+msgstr "ca (Catalan)"
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
 msgid "Languages to support:"
-msgstr ""
+msgstr "Llengües a implementar:"
 
 #. Type: multiselect
 #. Description
@@ -245,7 +246,7 @@ msgid ""
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
-msgstr ""
+msgstr "Per a cada llengua implementada, el Mailman n'emmagatzemarà els textos específics al directori /etc/mailman/LANG/, els quals es tractaran com a fitxers conffile a través de l'ucf. Això significa que s'utilitzaran aproximadament 150kB al sistema de fitxers arrel per a cada llengua implementada."
 
 #. Type: multiselect
 #. Description
@@ -253,7 +254,7 @@ msgstr ""
 msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
-msgstr ""
+msgstr "Si us cal un altre conjunt de llengües més endavant, simplement haureu d'executar l'ordre «dpkg-reconfigure mailman»."
 
 #. Type: multiselect
 #. Description
@@ -262,7 +263,7 @@ msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
-msgstr ""
+msgstr "NOTA: es forçarà l'habilitació d'aquelles llengues que no ho estiguin però que ja s'hagin habilitat en llistes de correu existents anteriorment i en cas que el mailman requereixi almenys una llengua per a mostrar els seus missatges."
 
 #. Type: boolean
 #. Description
@@ -273,13 +274,10 @@ msgstr "S'envien les notícies al correu?"
 #. Type: boolean
 #. Description
 #: ../templates:3001
-#, fuzzy
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-"Voleu que s'enviïn les notícies al correu, és a dir, que s'enviïn tots els "
-"missatges d'un grup de discussió a una llista de correu."
+msgstr "El Mailman permet fer de passarel·la de notícies a correu, és a dir, enviar tots aquells missatges que apareixen en un grup de notícies d'Usenet a una llista de correu."
 
 #. Type: boolean
 #. Description
@@ -308,20 +306,17 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-#, fuzzy
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
-msgstr ""
-"Per crear una llista executeu \"newlist mailman\" i seguiu les instruccions "
-"que apareguin per pantalla"
+msgstr "Executeu «newlist mailman» per a crear una llista, i seguiu les instruccions que apareguin per pantalla. Tingueu en compte que haureu d'iniciar el mailman després de crear-la (amb l'ordre «/etc/init.d/mailman start»)."
 
 #. Type: select
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr ""
+msgstr "Llengua per defecte del Mailman:"
 
 #. Type: select
 #. Description
@@ -329,13 +324,13 @@ msgstr ""
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
-msgstr ""
+msgstr "La pàgina web es mostrarà en aquesta llengua, i, en general, el Mailman també l'utilitzarà per a comunicar-se amb l'usuari."
 
 #. Type: note
 #. Description
 #: ../templates:6001
 msgid "Old queue files present"
-msgstr ""
+msgstr "Hi ha fitxers de cua antics existents"
 
 #. Type: note
 #. Description
@@ -354,6 +349,17 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
+"El directori /var/lib/mailman/qfiles conté fitxers, però ha d'estar buit perquè l'actualització funcioni correctament. Podeu intentar gestionar-los de la manera següent:\n"
+" - Atureu la recepció de missatges (al nivell del MTA).\n"
+" - Inicieu un gestor de cua del mailman: /etc/init.d/mailman start\n"
+" - Deixeu que s'executi fins que tots els missatges s'hagin gestionat.\n"
+"   En cas que no s'hagin gestionat en un interval de temps acceptable,\n"
+"   comproveu els fitxers de registre per a entendre el perquè i\n"
+"   resoldre-ho.\n"
+" - Atureu el procés: /etc/init.d/mailman stop\n"
+" - Torneu a intentar dur a terme l'actualització.\n"
+" - Torneu a habilitar la recepció de missatges.\n"
+"També podeu suprimir els fitxers, amb la qual cosa es perdran els correus corresponents."
 
 #. Type: note
 #. Description
@@ -364,4 +370,4 @@ msgid ""
 "are messages on which Mailman has already abandoned any further processing "
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr ""
+msgstr "Si aquests fitxers es corresponen amb missatges abandonats, haureu de suprimir-los o bé activar-los (amb l'ordre /var/lib/mailman/bin/unshunt). Els missatges abandonats són aquells que el Mailman ja no processarà degut a un error, però que es desen perquè els pugui revisar un administrador. Podeu utilitzar l'ordre /var/lib/mailman/bin/show_qfiles per a examinar els continguts de les cues."
