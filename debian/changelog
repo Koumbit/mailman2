@@ -1,11 +1,12 @@
-mailman (1:2.1.11-3) UNRELEASED; urgency=low
+mailman (1:2.1.11-3) unstable; urgency=low
 
   * Updated Catalan debconf translation, thanks David Planella Molas
     (Closes: #494110).
   * Added patch 68_update_catalan to update Catalan program translation,
     thanks Jordi Mallach (Closes: #492297).
+  * Add a README.source file referring to quilt.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Thu, 07 Aug 2008 13:32:45 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 11 Aug 2008 16:06:19 +0200
 
 mailman (1:2.1.11-2) unstable; urgency=low
 
