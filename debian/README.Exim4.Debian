@@ -51,7 +51,7 @@ mailman_workaround:
   local_part_suffix = -bounces : -bounces+* : \
            -confirm+* : -join : -leave : \
            -subscribe : -unsubscribe : \
-           -owner : -request : -admin
+           -owner : -request : -admin : -loop
   transport = mailman_transport
   group = MAILMAN_GROUP
 
@@ -65,7 +65,7 @@ mailman_router:
   local_part_suffix = -bounces : -bounces+* : \
                       -confirm+* : -join : -leave : \
                       -subscribe : -unsubscribe : \
-                      -owner : -request : -admin
+                      -owner : -request : -admin : -loop
   transport = mailman_transport
   group = MAILMAN_GROUP
 ----------------------  END EXIM4 ROUTER  ----------------------------
@@ -90,4 +90,4 @@ mailman_transport:
 
 You are done!
 
- -- Lionel Elie Mamane <lmamane@debian.org>, Wed, 29 Nov 2006 19:53:13 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>, Mon, 20 Oct 2008 18:45:58 +0200

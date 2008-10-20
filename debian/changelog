@@ -1,3 +1,10 @@
+mailman (1:2.1.11-4) unstable; urgency=low
+
+  * Add -loop to list of accepted suffixes for routers in
+    README.Exim4.Debian
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 20 Oct 2008 18:47:44 +0200
+
 mailman (1:2.1.11-3) unstable; urgency=low
 
   * Updated Catalan debconf translation, thanks David Planella Molas
