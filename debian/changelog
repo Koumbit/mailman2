@@ -1,9 +1,13 @@
 mailman (1:2.1.11-4) unstable; urgency=low
 
+  [ Lionel Elie Mamane ]
   * Add -loop to list of accepted suffixes for routers in
     README.Exim4.Debian
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Mon, 20 Oct 2008 18:47:44 +0200
+  [ Thijs Kinkhorst ]
+  * Add mischief to logrotate configuration (closes: #504700).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 07 Nov 2008 09:40:53 +0100
 
 mailman (1:2.1.11-3) unstable; urgency=low
 

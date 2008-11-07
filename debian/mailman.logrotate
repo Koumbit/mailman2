@@ -11,6 +11,19 @@
         endscript
 }
 
+/var/log/mailman/mischief {
+	monthly
+	missingok
+	create 0664 list www-data
+	rotate 4
+	compress
+	delaycompress
+	sharedscripts
+	postrotate
+	    [ -f '/var/run/mailman/mailman.pid' ] && /usr/lib/mailman/bin/mailmanctl -q reopen || exit 0
+	endscript
+}
+
 /var/log/mailman/digest {
 	monthly
 	missingok
