@@ -30,7 +30,7 @@ MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
 # User and group for Mailman, should match your --with-mail-gid
 # switch to Mailman's configure script.
 MAILMAN_USER=list
-MAILMAN_GROUP=daemon
+MAILMAN_GROUP=list
 ----------------------  END EXIM4 MAIN    ----------------------------
 
 
@@ -58,7 +58,7 @@ mailman_workaround:
 # Mailman lists
 mailman_router:
   domains = +local_domains
-  condition = ${lookup{$local_part@$domain}lsearch{MAILMAN_HOME/data/virtual-mailman}{1}{0}}
+  condition = ${lookup{$local_part}lsearch{MAILMAN_HOME/data/aliases}{1}{0}}
   require_files = MAILMAN_HOME/lists/$local_part/config.pck
   driver = accept
   local_part_suffix_optional

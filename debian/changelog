@@ -6,8 +6,10 @@ mailman (1:2.1.11-4) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
   * Add mischief to logrotate configuration (closes: #504700).
+  * Update Mailman group and aliases path in README.Exim4.Debian,
+    thanks Kris Popendorf (closes: #504695).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 07 Nov 2008 09:40:53 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 07 Nov 2008 09:44:27 +0100
 
 mailman (1:2.1.11-3) unstable; urgency=low
 
