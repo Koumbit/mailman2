@@ -1,4 +1,4 @@
-mailman (1:2.1.11-4) unstable; urgency=low
+mailman (1:2.1.11-4) unstable; urgency=medium
 
   [ Lionel Elie Mamane ]
   * Add -loop to list of accepted suffixes for routers in
