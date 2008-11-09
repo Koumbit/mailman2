@@ -47,6 +47,7 @@ fi
 case "$1" in
   start)
     SITE_LIST=$( grep '^MAILMAN_SITE_LIST' /etc/mailman/mm_cfg.py | cut -d"'" -f 2 )
+    [ -z "$SITE_LIST" ] && SITE_LIST='mailman'
     if [ "$(/var/lib/mailman/bin/list_lists -b | grep ^${SITE_LIST}$ )" = "" ]; then
         log_warning_msg "Site list for mailman (usually named mailman) missing."
         log_warning_msg "Please create it; until then, mailman will refuse to start."

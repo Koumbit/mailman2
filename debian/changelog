@@ -1,3 +1,9 @@
+mailman (1:2.1.11-5) unstable; urgency=high
+
+  * Make init script also cope with non-specified site list.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 09 Nov 2008 11:26:46 +0100
+
 mailman (1:2.1.11-4) unstable; urgency=medium
 
   [ Lionel Elie Mamane ]
