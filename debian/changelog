@@ -1,3 +1,10 @@
+mailman (1:2.1.11-6) unstable; urgency=high
+
+  * Further site list detection improvements, thanks Adeodato Simó
+    for his suggestions.
+
+ -- Thijs Kinkhorst <thijs@escher.loeki.tv>  Sun, 16 Nov 2008 13:12:34 +0100
+
 mailman (1:2.1.11-5) unstable; urgency=high
 
   * Make init script also cope with non-specified site list.
