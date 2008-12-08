@@ -1,3 +1,10 @@
+mailman (1:2.1.11-7) UNRELEADED; urgency=low
+
+  * Clarify POSTFIX_STYLE_VIRTUAL_DOMAINS syntax, thanks Tomas Pospisek
+    (closes: #507519).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 08 Dec 2008 15:17:46 +0100
+
 mailman (1:2.1.11-6) unstable; urgency=high
 
   * Further site list detection improvements, thanks Adeodato Simó

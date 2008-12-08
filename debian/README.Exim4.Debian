@@ -8,7 +8,9 @@ MTA = 'Postfix'
 POSTFIX_ALIAS_CMD = '/bin/true'
 POSTFIX_MAP_CMD = 'chgrp Debian-exim'
 
-and list all your Mailman domains in "POSTFIX_STYLE_VIRTUAL_DOMAINS".
+and list all your Mailman domains in "POSTFIX_STYLE_VIRTUAL_DOMAINS":
+
+POSTFIX_STYLE_VIRTUAL_DOMAINS = [ 'example.com', 'example.org' ]
 
 Please note that the chgrp command above will not work when creating a
 list in the web interface: the user www-data will not be allowed to do
