@@ -1,9 +1,15 @@
-mailman (1:2.1.11-7) UNRELEADED; urgency=low
+mailman (1:2.1.11-7) UNRELEASED; urgency=low
 
+  [ Thijs Kinkhorst ]
   * Clarify POSTFIX_STYLE_VIRTUAL_DOMAINS syntax, thanks Tomas Pospisek
     (closes: #507519).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 08 Dec 2008 15:17:46 +0100
+  [ Lionel Elie Mamane ]
+  * README.Exim4.Debian: Do lookup whole email (with domain, not only
+    localpart) in virtual_mailman data file
+    (bug introduced in 1:2.1.11-4)
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Wed, 10 Dec 2008 21:37:35 +0100
 
 mailman (1:2.1.11-6) unstable; urgency=high
 
