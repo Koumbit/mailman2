@@ -39,7 +39,7 @@ MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
 # User and group for Mailman, should match your --with-mail-gid
 # switch to Mailman's configure script.
 MAILMAN_USER=list
-MAILMAN_GROUP=list
+MAILMAN_GROUP=daemon
 ----------------------  END EXIM4 MAIN    ----------------------------
 
 
@@ -99,4 +99,4 @@ mailman_transport:
 
 You are done!
 
- -- Lionel Elie Mamane <lmamane@debian.org>, Wed, 10 Dec 2008 22:03:31 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>, Wed, 10 Dec 2008 22:33:27 +0100
