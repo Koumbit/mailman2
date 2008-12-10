@@ -8,8 +8,12 @@ mailman (1:2.1.11-7) UNRELEASED; urgency=low
   * README.Exim4.Debian: Do lookup whole email (with domain, not only
     localpart) in virtual_mailman data file
     (bug introduced in 1:2.1.11-4)
+  * README.Exim4.Debian: explain how to regenerate the aliases list
+    manually (for people switching their existing configuration to the
+    recommended one, or switching MTAs, as opposed to setting up a fresh
+    system).
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Wed, 10 Dec 2008 21:37:35 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>  Wed, 10 Dec 2008 22:04:39 +0100
 
 mailman (1:2.1.11-6) unstable; urgency=high
 

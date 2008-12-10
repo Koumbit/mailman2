@@ -20,6 +20,13 @@ POSTFIX_MAP_CMD = 'chmod o+r'
 This will allow local users (with shell access to the list server) to
 see the list of all Mailman mailing lists, but not much more.
 
+If you have created lists before making those changes to mm_cfg.py
+(and you are not going to create others before running the system in
+production), you need to run /var/lib/mailman/bin/genaliases once; it
+will be done automatically every time you create / delete a mailing
+list in the future.
+
+
 Put this in your exim4 main configuration (if you use a split config,
 for example /etc/exim4/conf.d/main/04_local_mailman_macros)
 
@@ -92,4 +99,4 @@ mailman_transport:
 
 You are done!
 
- -- Lionel Elie Mamane <lmamane@debian.org>, Mon, 20 Oct 2008 18:45:58 +0200
+ -- Lionel Elie Mamane <lmamane@debian.org>, Wed, 10 Dec 2008 22:03:31 +0100
