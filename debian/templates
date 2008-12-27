@@ -62,7 +62,7 @@ _Description: Default language for Mailman:
 Template: mailman/queue_files_present
 Type: select
 __Choices: abort installation, continue regardless
-_DefaultChoice: abort installation
+DefaultChoice: abort installation
 _Description: Old queue files present
  The directory /var/lib/mailman/qfiles contains files. It needs to be
  empty for the upgrade to work properly. You can try to handle them by:
