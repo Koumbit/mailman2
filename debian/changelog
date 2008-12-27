@@ -1,3 +1,14 @@
+mailman (1:2.1.11-8) unstable; urgency=low
+
+  * Do not stop installation when queue files are present, and this is
+    an upgrade from the same version that was already installed. Based
+    on a patch by Marcin Owsiany (closes: #468569).
+  * When queue files present, offer the administrator the option to
+    continue regardless at their own risk. This unfortunately requires
+    some extra strings to be translated.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 27 Dec 2008 15:10:35 +0100
+
 mailman (1:2.1.11-7) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
