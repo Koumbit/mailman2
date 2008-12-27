@@ -1,0 +1,50 @@
+#!/bin/sh -e
+# $URL$
+# $Id$
+
+. /usr/share/debconf/confmodule
+
+if [ "$1" = "install" ]; then
+	if ! id -g list > /dev/null 2>&1 ; then
+		addgroup --system list
+	fi
+	if ! id -u list > /dev/null 2>&1 ; then
+		adduser --system --home /var/list --ingroup list list
+		chsh -s /bin/sh list
+	fi
+fi
+
+#DEBHELPER#
+
+abort_install()
+{
+    db_fset mailman/queue_files_present seen false || true
+    db_input critical mailman/queue_files_present || true
+    db_go
+    db_get mailman/queue_files_present
+    if [ "$RET" = "abort installation" ]; then
+        exit 1
+    fi
+}
+
+# make sure the qfiles directory is empty.
+if [ -d /var/lib/mailman/qfiles ] && \
+	[ "$(find /var/lib/mailman/qfiles -type f | wc -l)" -ne 0 ]; then
+    # Check if the queue files were created by the same version as the one we're about to install
+    if [ -r /var/lib/mailman/.version ]; then
+	# First check the stamp file.
+	# It is more general because it will show the previous version in the
+	# case that /var/lib/mailman is on permanent storage (e.g. a SAN) and
+	# we are being installed for the first time.
+        previous_version=$(cat /var/lib/mailman/.version)
+    else
+        # Fall back to reading dpkg-provided argument (in case previous version did not leave the stamp file)
+        previous_version="$2"
+    fi
+    if [ "@VERSION@" != "${previous_version}" ]; then
+        # we don't know which version the files are from
+        abort_install
+    fi
+fi
+
+exit 0

@@ -4,6 +4,7 @@
 
 package=mailman
 PACKAGE=$(package)
+VERSION=$(shell dpkg-parsechangelog | awk '$$1 == "Version:" {print $$2}')
 
 include /usr/share/quilt/quilt.make
 
@@ -25,6 +26,7 @@ endif
 build: patch build-stamp
 build-stamp: Makefile debian/po/templates.pot
 	$(MAKE) 
+	sed 's,@VERSION@,$(VERSION),g' < debian/preinst.in > debian/preinst
 	touch build-stamp
 
 debian/po/templates.pot: debian/templates
@@ -47,6 +49,7 @@ clean: unpatch
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf build-stamp Makefile debian/ucffiles debian/mailman.postinst.ucf
 	rm -f debian/mailman.postrm.ucf
+	rm -f debian/preinst
 	dh_clean
 	chmod +x debian/{prerm,postinst}
 
@@ -101,6 +104,9 @@ binary-arch:	checkroot build
 	# link it back to /var/lib/mailman/templates
 	dh_link etc/mailman var/lib/$(package)/templates
 
+	# note the current version to avoid aborting on same-version
+	# reinstallations - see the preinst script
+	echo "$(VERSION)" > debian/mailman/var/lib/$(package)/.version
 
 	# move the pending subscriptions database so it doesnt overwrite the
 	# old one when installing
