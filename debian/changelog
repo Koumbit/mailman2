@@ -6,6 +6,7 @@ mailman (1:2.1.11-8) unstable; urgency=low
   * When queue files present, offer the administrator the option to
     continue regardless at their own risk. This unfortunately requires
     some extra strings to be translated.
+  * Update Dutch translation.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sat, 27 Dec 2008 15:10:35 +0100
 
