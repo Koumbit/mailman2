@@ -7,8 +7,8 @@
 #
 ### BEGIN INIT INFO
 # Provides:          mailman-qrunner
-# Required-Start:    $syslog mail-transport-agent $local_fs $remote_fs $named $network 
-# Required-Stop:     $syslog mail-transport-agent $local_fs $remote_fs $named $network
+# Required-Start:    $syslog $local_fs $remote_fs $named $network 
+# Required-Stop:     $syslog $local_fs $remote_fs $named $network
 # Should-Start:      
 # Should-Stop:       
 # Default-Start:     2 3 4 5
