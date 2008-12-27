@@ -85,5 +85,5 @@ _Description: Old queue files present
  examine the contents of the queues.
  .
  You have the option to continue installation regardless of this problem, at
- the risk of losing the messages in question or breaking your mailman setup.
+ the risk of losing the messages in question or breaking your Mailman setup.
 
