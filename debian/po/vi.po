@@ -1,12 +1,12 @@
 # Vietnamese Translation for Mailman.
 # Copyright © 2006 Free Software Foundation, Inc.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2006.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman 1:2.1.9-0\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-10-28 17:42+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -311,8 +311,8 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Trình Mailman cần thiết một « danh sách chỗ », để gửi thư nhắc nhở mặt khẩu "
-"v.v.. Phải tạo danh sách này trước khi có thể khởi chạy trình Mailman."
+"Trình Mailman cần thiết một « danh sách chỗ », để gửi thư nhắc nhở mặt khẩu v."
+"v.. Phải tạo danh sách này trước khi có thể khởi chạy trình Mailman."
 
 #. Type: note
 #. Description
@@ -342,15 +342,29 @@ msgstr ""
 "Trang Mạng sẽ được hiển thị bằng ngôn ngữ này, và thông thường, trình "
 "Mailman sẽ dùng ngôn ngữ này để liên lạc với người dùng."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Có một số tập tin hàng đợi cũ"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -379,9 +393,9 @@ msgstr ""
 "Bạn cũng có thể quyết định đơn giản gỡ bỏ những tập tin này, mà sẽ làm cho "
 "trình Mailman quên (và mất) các thư tương ứng."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -393,8 +407,16 @@ msgstr ""
 "phải hoặc xoá bỏ chúng hoặc gỡ bỏ chúng ra nhóm giữ riêng đó. (Thư đã giữ "
 "riêng cho người kiểm tra [tiếng Anh: shunted message] là thư mà trình "
 "Mailman đã hủy bỏ xử lý vì gặp lỗi, còn giữ nó cho quản trị xem lại. Bạn "
-"cũng có khả năng sử dụng « /var/lib/mailman/bin/show_qfiles » để xem nội "
-"dung của các hàng đợi."
+"cũng có khả năng sử dụng « /var/lib/mailman/bin/show_qfiles » để xem nội dung "
+"của các hàng đợi."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""
 
 #~ msgid "big5 (Chinese big5)"
 #~ msgstr "big5 (big5 Trung)"

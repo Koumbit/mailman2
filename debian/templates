@@ -83,4 +83,7 @@ _Description: Old queue files present
  any further processing because of an error condition, but that are
  kept for admin review. You can use /var/lib/mailman/bin/show_qfiles to
  examine the contents of the queues.
+ .
+ You have the option to continue installation regardless of this problem, at
+ the risk of losing the messages in question or breaking your mailman setup.
 

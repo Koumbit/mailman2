@@ -20,8 +20,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman_1:2.1.9-0\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-10-06 18:10+0100\n"
 "Last-Translator: Kurt De Bree <kdebree(AT)telenet(DOT)be>\n"
 "Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
@@ -260,10 +260,10 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Voor elke ondersteunde taal bewaart Mailman standaard "
-"taalafhankelijke teksten in /etc/mailman/LANG/, en behandelt hen met behulp "
-"van ucf als ware het conffiles. Dit betekent dat op het hoofdbestandssysteem "
-"elke ondersteunde taal ongeveer 150kB in beslag neemt."
+"Voor elke ondersteunde taal bewaart Mailman standaard taalafhankelijke "
+"teksten in /etc/mailman/LANG/, en behandelt hen met behulp van ucf als ware "
+"het conffiles. Dit betekent dat op het hoofdbestandssysteem elke "
+"ondersteunde taal ongeveer 150kB in beslag neemt."
 
 #. Type: multiselect
 #. Description
@@ -272,8 +272,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Als u op een later tijdstip een andere verzameling talen wilt, voer dan 'dpkg-"
-"reconfigure mailman' uit."
+"Als u op een later tijdstip een andere verzameling talen wilt, voer dan "
+"'dpkg-reconfigure mailman' uit."
 
 #. Type: multiselect
 #. Description
@@ -284,8 +284,8 @@ msgid ""
 "messages."
 msgstr ""
 "NB: talen die in gebruik zijn op reeds bestaande mailinglijsten worden "
-"opnieuw geactiveerd indien u ze heeft uitgeschakeld; en mailman heeft ook ten "
-"minste één taal nodig om zijn boodschappen weer te geven."
+"opnieuw geactiveerd indien u ze heeft uitgeschakeld; en mailman heeft ook "
+"ten minste één taal nodig om zijn boodschappen weer te geven."
 
 #. Type: boolean
 #. Description
@@ -324,9 +324,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman heeft een zogenaamde \"site-lijst\" nodig, dit is de lijst van waaruit "
-"wachtwoordherinneringen en dergelijke worden verstuurd. Deze lijst moet "
-"aangemaakt worden voordat mailman wordt opgestart."
+"Mailman heeft een zogenaamde \"site-lijst\" nodig, dit is de lijst van "
+"waaruit wachtwoordherinneringen en dergelijke worden verstuurd. Deze lijst "
+"moet aangemaakt worden voordat mailman wordt opgestart."
 
 #. Type: note
 #. Description
@@ -356,15 +356,29 @@ msgstr ""
 "De webpagina's zullen in deze taal worden getoond en Mailman zal in het "
 "algemeen deze taal gebruiken om te communiceren met de gebruiker."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Oude wachtrij-bestanden zijn aanwezig"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -379,9 +393,9 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"De map /var/lib/mailman/qfiles bevat bestanden, maar deze moet leeg zijn om de "
-"opwaardering goed te laten werken. U kunt proberen de wachtende bestanden te laten "
-"afhandelen door:\n"
+"De map /var/lib/mailman/qfiles bevat bestanden, maar deze moet leeg zijn om "
+"de opwaardering goed te laten werken. U kunt proberen de wachtende bestanden "
+"te laten afhandelen door:\n"
 " - Nieuwe berichten niet meer laten binnenkomen (op het MTA-niveau).\n"
 " - Een mailman-wachtrijloper te starten: /etc/init.d/mailman start\n"
 " - Laat de verwerking lopen tot alle berichten zijn afgehandeld.\n"
@@ -393,9 +407,9 @@ msgstr ""
 "U kunt ook beslissen om de bestanden eenvoudigweg te verwijderen. Mailman "
 "zal dan de overeenkomende e-mails verliezen."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -407,5 +421,13 @@ msgstr ""
 "ofwel verwijderen ofwel \"unshunten\" (met /var/lib/mailman/bin/unshunt). "
 "Shunted boodschappen zijn boodschappen waarvan Mailman al elke verdere "
 "verwerking heeft gestopt door een fouttoestand. Maar ze worden bewaard voor "
-"controle door een beheerder. U kunt /var/lib/mailman/bin/show_qfiles gebruiken "
-"om de inhoud van de queues te controleren."
+"controle door een beheerder. U kunt /var/lib/mailman/bin/show_qfiles "
+"gebruiken om de inhoud van de queues te controleren."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""

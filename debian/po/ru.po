@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.8-2\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-10-07 17:20+0400\n"
 "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -24,7 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Type: multiselect
 #. Choices
@@ -353,15 +354,29 @@ msgstr ""
 "На этом языке будет отображаться веб страница, и вообще, Mailman будет "
 "использовать этот язык для общения с пользователем."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Найдены старые файлы очереди"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -390,9 +405,9 @@ msgstr ""
 "Также вы можете просто удалить эти файлы, и Mailman забудет (и потеряет) "
 "соответствующие почтовые сообщения."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -407,3 +422,10 @@ msgstr ""
 "администратором. Для просмотра содержимого очередей вы можете "
 "воспользоваться программой /var/lib/mailman/bin/show_qfiles."
 
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""

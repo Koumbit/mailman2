@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-10-07 15:59+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -349,15 +349,29 @@ msgstr ""
 "Web ページはこの言語で表示されます。また、概して Mailman はユーザとのやり取り"
 "にこの言語を使います。"
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "古いキューファイルが存在します"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -386,9 +400,9 @@ msgstr ""
 "Mailman に対応するメールを忘れさせる (そして失わせる)ことになりますが、単に"
 "ファイルを削除すると決めることもできます。"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -401,6 +415,14 @@ msgstr ""
 "す。分路されたメッセージは、Mailman がエラー状態のためにすでにその後の処理を"
 "放棄してしまったメッセージですが、管理者のレビュー用に保持されます。キューの"
 "内容の調査には /var/lib/mailman/bin/show_qfiles を使用できます。"
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""
 
 #~ msgid "big5 (Chinese big5)"
 #~ msgstr "big5 (中国語 big5)"

@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-10-10 21:19+0200\n"
 "Last-Translator: Florentin Duneau <fduneau@gmail.com>\n"
 "Language-Team: french <debian-l10n-french@lists.debian.org>\n"
@@ -350,15 +350,29 @@ msgstr ""
 "La page web est affichée dans la langue choisie et Mailman se sert aussi de "
 "cette langue pour communiquer avec les utilisateurs."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Fichiers anciens dans la file d'attente"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -390,9 +404,9 @@ msgstr ""
 "Vous pouvez aussi supprimer ces fichiers. Mailman ignorera les messages "
 "correspondants."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -406,3 +420,11 @@ msgstr ""
 "provoquent une erreur. Ils sont conservés pour étude. Vous pouvez utiliser /"
 "var/lib/mailman/bin/show_qfiles pour examiner le contenu de la file "
 "d'attente."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""

@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2008-08-07 12:07+0200\n"
 "Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
@@ -246,7 +246,12 @@ msgid ""
 "in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
-msgstr "Per a cada llengua implementada, el Mailman n'emmagatzemarà els textos específics al directori /etc/mailman/LANG/, els quals es tractaran com a fitxers conffile a través de l'ucf. Això significa que s'utilitzaran aproximadament 150kB al sistema de fitxers arrel per a cada llengua implementada."
+msgstr ""
+"Per a cada llengua implementada, el Mailman n'emmagatzemarà els textos "
+"específics al directori /etc/mailman/LANG/, els quals es tractaran com a "
+"fitxers conffile a través de l'ucf. Això significa que s'utilitzaran "
+"aproximadament 150kB al sistema de fitxers arrel per a cada llengua "
+"implementada."
 
 #. Type: multiselect
 #. Description
@@ -254,7 +259,9 @@ msgstr "Per a cada llengua implementada, el Mailman n'emmagatzemarà els textos 
 msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
-msgstr "Si us cal un altre conjunt de llengües més endavant, simplement haureu d'executar l'ordre «dpkg-reconfigure mailman»."
+msgstr ""
+"Si us cal un altre conjunt de llengües més endavant, simplement haureu "
+"d'executar l'ordre «dpkg-reconfigure mailman»."
 
 #. Type: multiselect
 #. Description
@@ -263,7 +270,11 @@ msgid ""
 "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
-msgstr "NOTA: es forçarà l'habilitació d'aquelles llengues que no ho estiguin però que ja s'hagin habilitat en llistes de correu existents anteriorment i en cas que el mailman requereixi almenys una llengua per a mostrar els seus missatges."
+msgstr ""
+"NOTA: es forçarà l'habilitació d'aquelles llengues que no ho estiguin però "
+"que ja s'hagin habilitat en llistes de correu existents anteriorment i en "
+"cas que el mailman requereixi almenys una llengua per a mostrar els seus "
+"missatges."
 
 #. Type: boolean
 #. Description
@@ -277,7 +288,10 @@ msgstr "S'envien les notícies al correu?"
 msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
-msgstr "El Mailman permet fer de passarel·la de notícies a correu, és a dir, enviar tots aquells missatges que apareixen en un grup de notícies d'Usenet a una llista de correu."
+msgstr ""
+"El Mailman permet fer de passarel·la de notícies a correu, és a dir, enviar "
+"tots aquells missatges que apareixen en un grup de notícies d'Usenet a una "
+"llista de correu."
 
 #. Type: boolean
 #. Description
@@ -310,7 +324,10 @@ msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
-msgstr "Executeu «newlist mailman» per a crear una llista, i seguiu les instruccions que apareguin per pantalla. Tingueu en compte que haureu d'iniciar el mailman després de crear-la (amb l'ordre «/etc/init.d/mailman start»)."
+msgstr ""
+"Executeu «newlist mailman» per a crear una llista, i seguiu les instruccions "
+"que apareguin per pantalla. Tingueu en compte que haureu d'iniciar el "
+"mailman després de crear-la (amb l'ordre «/etc/init.d/mailman start»)."
 
 #. Type: select
 #. Description
@@ -324,17 +341,33 @@ msgstr "Llengua per defecte del Mailman:"
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
-msgstr "La pàgina web es mostrarà en aquesta llengua, i, en general, el Mailman també l'utilitzarà per a comunicar-se amb l'usuari."
+msgstr ""
+"La pàgina web es mostrarà en aquesta llengua, i, en general, el Mailman "
+"també l'utilitzarà per a comunicar-se amb l'usuari."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Hi ha fitxers de cua antics existents"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -349,7 +382,9 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"El directori /var/lib/mailman/qfiles conté fitxers, però ha d'estar buit perquè l'actualització funcioni correctament. Podeu intentar gestionar-los de la manera següent:\n"
+"El directori /var/lib/mailman/qfiles conté fitxers, però ha d'estar buit "
+"perquè l'actualització funcioni correctament. Podeu intentar gestionar-los "
+"de la manera següent:\n"
 " - Atureu la recepció de missatges (al nivell del MTA).\n"
 " - Inicieu un gestor de cua del mailman: /etc/init.d/mailman start\n"
 " - Deixeu que s'executi fins que tots els missatges s'hagin gestionat.\n"
@@ -359,15 +394,30 @@ msgstr ""
 " - Atureu el procés: /etc/init.d/mailman stop\n"
 " - Torneu a intentar dur a terme l'actualització.\n"
 " - Torneu a habilitar la recepció de missatges.\n"
-"També podeu suprimir els fitxers, amb la qual cosa es perdran els correus corresponents."
+"També podeu suprimir els fitxers, amb la qual cosa es perdran els correus "
+"corresponents."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
 "are messages on which Mailman has already abandoned any further processing "
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr "Si aquests fitxers es corresponen amb missatges abandonats, haureu de suprimir-los o bé activar-los (amb l'ordre /var/lib/mailman/bin/unshunt). Els missatges abandonats són aquells que el Mailman ja no processarà degut a un error, però que es desen perquè els pugui revisar un administrador. Podeu utilitzar l'ordre /var/lib/mailman/bin/show_qfiles per a examinar els continguts de les cues."
+msgstr ""
+"Si aquests fitxers es corresponen amb missatges abandonats, haureu de "
+"suprimir-los o bé activar-los (amb l'ordre /var/lib/mailman/bin/unshunt). "
+"Els missatges abandonats són aquells que el Mailman ja no processarà degut a "
+"un error, però que es desen perquè els pugui revisar un administrador. Podeu "
+"utilitzar l'ordre /var/lib/mailman/bin/show_qfiles per a examinar els "
+"continguts de les cues."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""

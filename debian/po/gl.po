@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2008-05-20 23:29+0100\n"
 "Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -342,15 +342,29 @@ msgstr ""
 "A páxina web hase amosar nese idioma, e, en xeral, Mailman ha empregar ese "
 "idioma para se comunicar co usuario."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Existen ficheiros de cola antigos"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -378,9 +392,9 @@ msgstr ""
 "Tamén pode, simplemente, eliminar os ficheiros, o que ha facer que Mailman "
 "esqueza (e perda) as mensaxes correspondentes."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -393,3 +407,11 @@ msgstr ""
 "son mensaxes que Mailman renunciou a procesar debido a un erro, pero que se "
 "conservan para que os administradores lles boten unha ollada. Pode empregar /"
 "var/lib/mailman/bin/show_qfiles para examinar o contido das colas."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""

@@ -5,7 +5,7 @@
 #    this format, e.g. by running:
 #         info -n '(gettext)PO Files'
 #         info -n '(gettext)Header Entry'
-#e
+# e
 #    Some information specific to po-debconf are available at
 #            /usr/share/doc/po-debconf/README-trans
 #         or http://www.debian.org/intl/l10n/po-debconf/README-trans
@@ -14,12 +14,11 @@
 # Jens Nachtigall <nachtigall@web.de>, 2004, 2005, 2006.
 # Holger Wansing <linux@wansing-online.de>, 2006.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman 4.5.14-19\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-11-29 21:30+0100\n"
 "Last-Translator: Holger Wansing <linux@wansing-online.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -299,9 +298,9 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Mailman erlaubt Newsgroup-Nachrichten an Mailinglisten weiterzuleiten, das heißt "
-"alle Nachrichten, die in einer Usetnet-Newsgroup erscheinen, zu einer Mailingliste "
-"zu senden."
+"Mailman erlaubt Newsgroup-Nachrichten an Mailinglisten weiterzuleiten, das "
+"heißt alle Nachrichten, die in einer Usetnet-Newsgroup erscheinen, zu einer "
+"Mailingliste zu senden."
 
 #. Type: boolean
 #. Description
@@ -323,9 +322,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman benötigt eine so genannte Site-Liste, welches die Mailingliste "
-"ist, von der die Passwort-Erinnerungen und Ähnliches abgesendet werden. "
-"Diese Liste muss erstellt werden, bevor mailman überhaupt erst startet."
+"Mailman benötigt eine so genannte Site-Liste, welches die Mailingliste ist, "
+"von der die Passwort-Erinnerungen und Ähnliches abgesendet werden. Diese "
+"Liste muss erstellt werden, bevor mailman überhaupt erst startet."
 
 #. Type: note
 #. Description
@@ -355,15 +354,29 @@ msgstr ""
 "Die Web-Seite wird in dieser Sprache angezeigt und generell wird Mailman "
 "diese Sprache benutzen, um mit dem Benutzer zu kommunizieren."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Alte Dateien befinden sich in der Warteschlange"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -396,9 +409,9 @@ msgstr ""
 "würde dazu führen, dass Mailman die dazugehörigen E-Mails vergisst (und "
 "verliert)."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -410,6 +423,14 @@ msgstr ""
 "Sie die Dateien entweder löschen oder den »zwischengeparkt«-Status aufheben "
 "(mit »/var/lib/mailman/bin/unshunt«). Zwischengeparkte Nachrichten sind "
 "Nachrichten, welche Mailman nicht weiter verarbeitet, da ein Fehler "
-"aufgetreten ist. Sie wurden jedoch gespeichert, damit der Administrator "
-"sie begutachten kann. Sie können »/var/lib/mailman/bin/show_qfiles« benutzen, "
-"um den Inhalt der Warteschlangen zu untersuchen."
+"aufgetreten ist. Sie wurden jedoch gespeichert, damit der Administrator sie "
+"begutachten kann. Sie können »/var/lib/mailman/bin/show_qfiles« benutzen, um "
+"den Inhalt der Warteschlangen zu untersuchen."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""

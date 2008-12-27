@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.3-2\n"
-"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
+"POT-Creation-Date: 2008-12-27 14:54+0100\n"
 "PO-Revision-Date: 2006-10-16 00:53-0200\n"
 "Last-Translator: André Luís Lopes <andrelop@debian.org>\n"
 "Language-Team: Debian-BR Project <debian-l10n-portuguese@lists.debian.org>\n"
@@ -254,10 +254,10 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Para cada idioma suportado, o Mailman armazena textos específicos do "
-"idioma padrão em /etc/mailman/LANG/ dando aos mesmos tratamento de "
-"conffile com a ajuda do ucf. Isso significa aproximadamente 150kB "
-"para cada idioma suportado no sistema de arquivos raiz."
+"Para cada idioma suportado, o Mailman armazena textos específicos do idioma "
+"padrão em /etc/mailman/LANG/ dando aos mesmos tratamento de conffile com a "
+"ajuda do ucf. Isso significa aproximadamente 150kB para cada idioma "
+"suportado no sistema de arquivos raiz."
 
 #. Type: multiselect
 #. Description
@@ -278,8 +278,8 @@ msgid ""
 "messages."
 msgstr ""
 "NOTA: Idiomas habilitados em listas de discussões existentes são "
-"forçadamente reabilitados quando deselecionados e o mailman precisa "
-"de pelo menos um idioma para exibir suas mensagens."
+"forçadamente reabilitados quando deselecionados e o mailman precisa de pelo "
+"menos um idioma para exibir suas mensagens."
 
 #. Type: boolean
 #. Description
@@ -294,9 +294,9 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"O Mailman permite uma ligação notícias (news) para mensagens, ou seja. "
-"envia todas as mensagens que aparecerem em um grupo de notícias Usenet "
-"para uma lista de discussão."
+"O Mailman permite uma ligação notícias (news) para mensagens, ou seja. envia "
+"todas as mensagens que aparecerem em um grupo de notícias Usenet para uma "
+"lista de discussão."
 
 #. Type: boolean
 #. Description
@@ -347,18 +347,32 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"A página Web será exibida neste idioma e, de uma forma geral, o "
-"Mailman utilizará este idioma para se comunicar com o usuário."
+"A página Web será exibida neste idioma e, de uma forma geral, o Mailman "
+"utilizará este idioma para se comunicar com o usuário."
 
-#. Type: note
-#. Description
+#. Type: select
+#. Choices
+#. Type: select
+#. DefaultChoice
+#: ../templates:6001 ../templates:6002
+msgid "abort installation"
+msgstr ""
+
+#. Type: select
+#. Choices
 #: ../templates:6001
+msgid "continue regardless"
+msgstr ""
+
+#. Type: select
+#. Description
+#: ../templates:6003
 msgid "Old queue files present"
 msgstr "Arquivos de fila antigos presentes"
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -373,9 +387,9 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"O diretório /var/lib/mailman/qfiles contém arquivos. O mesmo precisa "
-"estar vazio para que a atualização funcione corretamente. Você pode "
-"tentar gerenciá-los da seguinte forma:\n"
+"O diretório /var/lib/mailman/qfiles contém arquivos. O mesmo precisa estar "
+"vazio para que a atualização funcione corretamente. Você pode tentar "
+"gerenciá-los da seguinte forma:\n"
 " - Faça com que as mensagens parem de chegar (no nível do MTA).\n"
 " - Inicie um mailman queue runner: /etc/init.d/mailman start\n"
 " - Deixe-o em execução até que todas as mensagens sejam gerenciadas.\n"
@@ -384,12 +398,12 @@ msgstr ""
 " - Pare-o: /etc/init.d/mailman stop\n"
 " - Tente a atualização novamente.\n"
 " - Deixe as mensagens chegarem novamente.\n"
-"Você pode também optar por simplesmente remover os arquivos, o que "
-"fará com que o Mailman esqueça (e perca) as mensagens correspondentes."
+"Você pode também optar por simplesmente remover os arquivos, o que fará com "
+"que o Mailman esqueça (e perca) as mensagens correspondentes."
 
-#. Type: note
+#. Type: select
 #. Description
-#: ../templates:6001
+#: ../templates:6003
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -398,9 +412,16 @@ msgid ""
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
 "Caso esses arquivos sejam correspondentes a mensagens substituídas "
-"(shunted), você precisa removê-las ou abrí-las (com "
-"/var/lib/mailman/bin/unshunt). Mensagens substituídas são mensagens "
-"para as quais o Mailman já abandonou qualquer processamento adicional "
-"devido a uma condição de erro, mas que são mantidas para revisão "
-"administrativa. Você pode utilizar /var/lib/mailman/bin/show_qfiles "
-"para examinar o conteúdo das filas."
+"(shunted), você precisa removê-las ou abrí-las (com /var/lib/mailman/bin/"
+"unshunt). Mensagens substituídas são mensagens para as quais o Mailman já "
+"abandonou qualquer processamento adicional devido a uma condição de erro, "
+"mas que são mantidas para revisão administrativa. Você pode utilizar /var/"
+"lib/mailman/bin/show_qfiles para examinar o conteúdo das filas."
+
+#. Type: select
+#. Description
+#: ../templates:6003
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your mailman setup."
+msgstr ""
