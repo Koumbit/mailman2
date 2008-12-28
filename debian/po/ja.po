@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2006-10-07 15:59+0900\n"
+"PO-Revision-Date: 2008-12-28 21:29+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -355,13 +355,13 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "インストールを中止"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "かまわずに継続"
 
 #. Type: select
 #. Description
@@ -422,7 +422,4 @@ msgstr ""
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
-msgstr ""
-
-#~ msgid "big5 (Chinese big5)"
-#~ msgstr "big5 (中国語 big5)"
+msgstr "該当メッセージを失ったり Mailman セットアップを壊したりというリスクは付きますが、この問題にかまわずにインストールを続けることを選択可能です。"
