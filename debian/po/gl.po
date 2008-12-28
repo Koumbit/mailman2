@@ -1,18 +1,22 @@
+# translation of gl.po_[koEpJb].po to galician
 # Galician translation of mailman's debconf templates
 # This file is distributed under the same license as the mailman package.
-# Jacobo Tarrio <jtarrio@debian.org>, 2008.
 #
+# Jacobo Tarrio <jtarrio@debian.org>, 2008.
+# Marce Villarino <mvillarino@users.sourceforge.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2008-05-20 23:29+0100\n"
-"Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"PO-Revision-Date: 2008-12-28 14:33+0100\n"
+"Last-Translator: Marce Villarino <mvillarino@users.sourceforge.net>\n"
+"Language-Team: galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Type: multiselect
 #. Choices
@@ -245,7 +249,7 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Para cada idioma soportado, Mailman armacena os textos por defecto "
+"Para cada idioma soportado, Mailman almacena os textos predeterminados "
 "específicos de cada idioma en /etc/mailman/IDIOMA/, dándolles un tratamento "
 "equivalente ao dos ficheiros de configuración coa axuda de ucf. Isto implica "
 "que se han usar aproximadamente 150 kB no sistema de ficheiros raíz por cada "
@@ -271,13 +275,13 @@ msgid ""
 msgstr ""
 "NOTA: Os idiomas activados nas listas de correo existentes reactívanse "
 "obrigatoriamente se se deseleccionan, e ademáis mailman precisa de alomenos "
-"un idioma no que amosar as mensaxes."
+"un idioma no que mostrar as mensaxes."
 
 #. Type: boolean
 #. Description
 #: ../templates:3001
 msgid "Gate news to mail?"
-msgstr "¿Facer unha pasarela de novas a email?"
+msgstr "Desexa facer unha pasarela de novas a correo?"
 
 #. Type: boolean
 #. Description
@@ -286,8 +290,8 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Mailman permite crear unha pasarela de novas a email; é dicir, enviar "
-"tódalas mensaxes que aparecen nun grupo de novas de Usenet a unha lista de "
+"Mailman permite crear unha pasarela de novas a correo, é dicir, enviar "
+"todas as mensaxes que aparecen nun grupo de novas de Usenet a unha lista de "
 "correo."
 
 #. Type: boolean
@@ -330,7 +334,7 @@ msgstr ""
 #. Description
 #: ../templates:5002
 msgid "Default language for Mailman:"
-msgstr "Idioma por defecto para Mailman:"
+msgstr "Idioma predeterminado para Mailman:"
 
 #. Type: select
 #. Description
@@ -339,8 +343,8 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"A páxina web hase amosar nese idioma, e, en xeral, Mailman ha empregar ese "
-"idioma para se comunicar co usuario."
+"A páxina web hase mostrar neste idioma e, en xeral, Mailman ha empregalo "
+"para se comunicar co usuario."
 
 #. Type: select
 #. Choices
@@ -348,19 +352,19 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "cancelar a instalación"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "continuar de calquera maneira"
 
 #. Type: select
 #. Description
 #: ../templates:6003
 msgid "Old queue files present"
-msgstr "Existen ficheiros de cola antigos"
+msgstr "Existen ficheiros de fila antigos"
 
 #. Type: select
 #. Description
@@ -382,11 +386,11 @@ msgstr ""
 "O directorio /var/lib/mailman/qfiles contén ficheiros. É preciso que estea "
 "baleiro para que funcione a actualización. Pode xestionalos deste xeito:\n"
 " - Impida que cheguen novas mensaxes (ao nivel do MTA).\n"
-" - Poña en marcha a cola de mailman: /etc/init.d/mailman start\n"
-" - Deixe que funcione ata que tódalas mensaxes estean xestionadas.\n"
-"   Se non se xestionan todas nun tempo razonable, consulte os rexistros\n"
+" - Poña en marcha a fila de mailman: /etc/init.d/mailman start\n"
+" - Deixe que funcione até que todas as mensaxes estean xestionadas.\n"
+"   Se non se xestionan todas nun tempo razonábel, consulte os rexistros\n"
 "   para ver a causa e solucionala.\n"
-" - Deteña a cola: /etc/init.d/mailman stop\n"
+" - Deteña a fila: /etc/init.d/mailman stop\n"
 " - Volva tentar a actualización.\n"
 " - Deixe que cheguen as mensaxes outra vez.\n"
 "Tamén pode, simplemente, eliminar os ficheiros, o que ha facer que Mailman "
@@ -402,11 +406,11 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
-"Se eses ficheiros se corresponden a mensaxes apartadas, ha ter que borralas "
+"Se estes ficheiros se corresponden a mensaxes apartadas, ha ter que borralas "
 "ou repoñelas (mediante /var/lib/mailman/bin/unshunt). As mensaxes apartadas "
 "son mensaxes que Mailman renunciou a procesar debido a un erro, pero que se "
 "conservan para que os administradores lles boten unha ollada. Pode empregar /"
-"var/lib/mailman/bin/show_qfiles para examinar o contido das colas."
+"var/lib/mailman/bin/show_qfiles para examinar o contido das filas."
 
 #. Type: select
 #. Description
@@ -415,3 +419,6 @@ msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
+"Pode continuar coa instalación malia este problema, co risco de perder as "
+"mensaxes en cuestión ou estragar a configuración de Mailman."
+
