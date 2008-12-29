@@ -1,14 +1,14 @@
 # Italian (it) translation of debconf templates for mailman
 # Copyright (C) 2006 Software in the Public Interest
 # This file is distributed under the same license as the mailman package.
-# Luca Monducci <luca.mo@tiscali.it>, 2004-2006.
+# Luca Monducci <luca.mo@tiscali.it>, 2004-2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman 2.1.8 italian debconf templates\n"
+"Project-Id-Version: mailman 2.1.11 italian debconf templates\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2006-10-07 10:07+0200\n"
+"PO-Revision-Date: 2008-12-29 11:17+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,7 @@ msgstr "zh_CN (Cinese - Cina)"
 #. Choices
 #: ../templates:1001
 msgid "zh_TW (Chinese - Taiwan)"
-msgstr "zh_TW (Chinese - Taiwan)"
+msgstr "zh_TW (Cinese - Taiwan)"
 
 #. Type: multiselect
 #. DefaultChoice
@@ -246,9 +246,9 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Per ciascuna lingua supportata Mailman memorizza i messaggi predefiniti in /"
-"etc/mailman/LANG/ trattandoli, con l'aiuto di ucf, come conffile. Questo "
-"comporta circa 150 kB per ogni lingua supportata nella root del filesystem."
+"Per ciascuna lingua supportata, Mailman memorizza i messaggi predefiniti in "
+"/etc/mailman/LANG/ trattandoli, con l'aiuto di ucf, come conffile. Questo "
+"comporta circa 150 kB per ogni lingua supportata nel file system di root."
 
 #. Type: multiselect
 #. Description
@@ -268,9 +268,9 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTA: Le lingue attivate per le liste estenti sono forzatamente ri-attivate "
-"se deselezionate, mailman necessita almeno una lingua in cui mostrare i "
-"propri messaggi."
+"NOTA: Le lingue attivate per le mailing list esistenti sono forzatamente "
+"riattivate se deselezionate, mailman necessita almeno una lingua in cui "
+"mostrare i propri messaggi."
 
 #. Type: boolean
 #. Description
@@ -285,8 +285,8 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Mailman è in grado di fare da ponte fra news e email, cioè inviare tutti i "
-"messaggi che appaiono in un newsgroup Usenet a una lista di messaggi."
+"Mailman è in grado di fare da ponte fra news ed email, cioè inviare tutti i "
+"messaggi che appaiono in un newsgroup Usenet a una mailing list."
 
 #. Type: boolean
 #. Description
@@ -308,8 +308,8 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman necessita di una cosiddetta \"site list\", cioè di una lista da cui "
-"prendere i dati per inviare i promemoria della password. Questa lista deve "
+"Mailman necessita di una cosiddetta \"site list\", cioè di un elenco da cui "
+"prendere i dati per inviare i promemoria della password. Questo elenco deve "
 "essere creata prima dell'avvio di mailman."
 
 #. Type: note
@@ -320,7 +320,7 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Per creare la lista eseguire \"newlist mailman\" e seguire le istruzioni "
+"Per creare l'elenco eseguire \"newlist mailman\" e seguire le istruzioni "
 "sullo schermo. Ricordarsi che poi è necessario attivare mailman usando /etc/"
 "init.d/mailman start."
 
@@ -346,13 +346,13 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "interrompi l'installazione"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "continua ugualmente"
 
 #. Type: select
 #. Description
@@ -378,8 +378,8 @@ msgid ""
 "forget about (and lose) the corresponding emails."
 msgstr ""
 "La directory /var/lib/mailman/qfiles contiene dei file, per il corretto "
-"funzionamento dell'aggiornamento deve essere vuota. Si può provare a gestire "
-"questi file così:\n"
+"funzionamento dell'aggiornamento deve essere vuota. È possibile gestirli "
+"in questo modo:\n"
 " - Fermare l'arrivo di nuovi messaggi (a livello del MTA).\n"
 " - Avviare il gestore della coda di mailman: /etc/init.d/mailman start\n"
 " - Lasciarlo in esecuzione fino a quando tutti i messaggi sono stati\n"
@@ -388,7 +388,7 @@ msgstr ""
 " - Fermare il gestore della coda: /etc/init.d/mailman stop\n"
 " - Riprovare l'aggiornamento.\n"
 " - Riattivare l'arrivo dei messaggi.\n"
-"I file possono anche essere semplicemente cancellati, però questo comporta "
+"I file possono anche essere semplicemente eliminati, però questo comporta "
 "la perdita dei messaggi."
 
 #. Type: select
@@ -401,11 +401,12 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
-"Se i file corrispondono a messaggi sospesi è possibile rimuoverli oppure "
-"revocarne la sospensione. I messaggi sospesi sono messaggi la cui "
-"elaborazione da parte di Mailman ha prodotto un errore e che sono in attesa "
-"della revisione da parte dell'amministratore. Per esaminare il contenuto "
-"delle code si può usare /var/lib/mailman/bin/show_qfiles."
+"Se i file corrispondono a messaggi sospesi è possibile eliminarli oppure "
+"revocarne la sospensione (con /var/lib/mailman/bin/unshunt). I messaggi "
+"sospesi sono messaggi la cui elaborazione da parte di Mailman ha prodotto un "
+"errore e che sono in attesa della revisione da parte dell'amministratore. "
+"Per esaminare il contenuto delle code si può usare /var/lib/mailman/bin/"
+"show_qfiles."
 
 #. Type: select
 #. Description
@@ -414,3 +415,6 @@ msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
+"È possibile continuare l'installazione senza preoccuparsi di questo problema "
+"col rischio di perdere i messaggi in questione oppure interrompere la "
+"configurazione di Mailman."
