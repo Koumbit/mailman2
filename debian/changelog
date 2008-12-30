@@ -6,9 +6,11 @@ mailman (1:2.1.11-9) UNRELEASED; urgency=low
   * Updated Galician, thanks Marce Villarino (closes: #510002).
   * Updated French, thanks Christian Perrier (closes: #510016).
   * Updated Italian, thanks Luca Monducci (closes: #510107).
-  * Updated Swedish, thanks Martin Bagge (closes: #510052).
+  * Updated Swedish, thanks Martin Bagge and Daniel Nylander
+    (closes: #510052, #510206).
+  * Updated Czech, thanks Miroslav Kure (closes: #510230).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 29 Dec 2008 12:14:23 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 30 Dec 2008 21:50:58 +0100
 
 mailman (1:2.1.11-8) unstable; urgency=low
 

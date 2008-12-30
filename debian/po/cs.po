@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2006-10-06 17:28+0200\n"
+"PO-Revision-Date: 2008-12-30 18:54+0100\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -267,7 +267,7 @@ msgid ""
 "reconfigure mailman."
 msgstr ""
 "Budete-li chtít později změnit seznam podporovaných jazyků, jednoduše "
-"spusťte \"dpkg-reconfigure mailman\"."
+"spusťte „dpkg-reconfigure mailman“."
 
 #. Type: multiselect
 #. Description
@@ -319,7 +319,7 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Mailman potřebuje takzvanou \"administrativní adresu\", což je adresa, ze "
+"Mailman potřebuje takzvanou „administrativní adresu“, což je adresa, ze "
 "které posílá například upomínání hesel a podobně. Tato adresa musí být "
 "vytvořena před startem mailmanu."
 
@@ -331,7 +331,7 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Pro vytvoření adresy spusťte \"newlist mailman\" a následujte instrukce na "
+"Pro vytvoření adresy spusťte „newlist mailman“ a následujte instrukce na "
 "obrazovce. Poté musíte mailman spustit příkazem /etc/init.d/mailman start."
 
 #. Type: select
@@ -356,13 +356,13 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "přerušit instalaci"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "pokračovat"
 
 #. Type: select
 #. Description
@@ -426,3 +426,5 @@ msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
+"I přes tento problém můžete v instalaci pokračovat, nicméně riskujete "
+"ztrátu zmíněných zpráv, případně nefunkční nastavení Mailmanu."
