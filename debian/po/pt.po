@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mailman 2.1.9-5\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2007-03-10 12:28+0000\n"
+"PO-Revision-Date: 2008-12-28 10:31+0000\n"
 "Last-Translator: Miguel Figueiredo <elmig@debianpt.org>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Choices
 #: ../templates:1001
 msgid "ar (Arabic)"
-msgstr "ar (Arábico)"
+msgstr "ar (Arábe)"
 
 #. Type: multiselect
 #. Choices
@@ -229,7 +229,7 @@ msgstr "zh_TW (Chinês - Formosa)"
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
 #: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
-msgstr "pt (Português)"
+msgstr "pt (Portuguese)"
 
 #. Type: multiselect
 #. Description
@@ -246,10 +246,10 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Para cada idioma suportado, o Mailman guarda o idioma textos específicos do "
-"idioma por omissão em /etc/mailman/LANG/ dando-lhes tratamento como ao "
-"conffile com a ajuda do ucf.  Isto significa aproximadamente 150kB para cada "
-"idioma suportado no sistema de ficheiros raiz."
+"Para cada idioma suportado, o Mailman guarda os textos específicos do idioma "
+"por omissão em /etc/mailman/LANG/ dando-lhes um tratamento tipo conffile com "
+"a ajuda do ucf.  Isto significa aproximadamente 150kB para cada idioma "
+"suportado no sistema de ficheiros raiz."
 
 #. Type: multiselect
 #. Description
@@ -321,7 +321,7 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Para criar a lista, corra \"newlist mailman\" e siga as instruções no ecrã.  "
+"Para criar a lista, corra \"newlist mailman\" e siga as instruções no ecrã. "
 "Note que após isso também tem de iniciar o mailman, utilizando /etc/init.d/"
 "mailman start."
 
@@ -347,13 +347,13 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "abortar a instalação"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "continuar de qualquer forma"
 
 #. Type: select
 #. Description
@@ -416,3 +416,6 @@ msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
+"Tem a opção de continuar a instalação independentemente deste problema, com "
+"o risco de perder as mensagens em questão ou estragar a configuração do seu "
+"Mailman."

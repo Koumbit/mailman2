@@ -1,4 +1,4 @@
-mailman (1:2.1.11-9) UNRELEASED; urgency=low
+mailman (1:2.1.11-9) unstable; urgency=high
 
   [ Debconf Translations ]
   * Updated Spanish, thanks Javier Fernández-Sanguino (closes: #510023).
@@ -10,8 +10,9 @@ mailman (1:2.1.11-9) UNRELEASED; urgency=low
     (closes: #510206).
   * Updated Czech, thanks Miroslav Kure (closes: #510230).
   * Updated German, thanks Holger Wansing (closes: #510361).
+  * Updated Portuguese, thanks Miguel Figueiredo (closes: 510556).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Thu, 01 Jan 2009 13:50:13 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 03 Jan 2009 14:12:57 +0100
 
 mailman (1:2.1.11-8) unstable; urgency=low
 
