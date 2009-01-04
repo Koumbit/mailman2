@@ -12,13 +12,14 @@
 #
 # Ilgiz Kalmetev <translator@ilgiz.pp.ru>, 2003.
 # Yuri Kozlov <kozlov.y@gmail.com>, 2006.
+# Sergey Alyoshin <alyoshin.s@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: mailman_2.1.8-2\n"
+"Project-Id-Version: mailman_1:2.1.11-8\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2006-10-07 17:20+0400\n"
-"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"PO-Revision-Date: 2008-12-27 22:22+0300\n"
+"Last-Translator: Sergey Alyoshin <alyoshin.s@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -260,7 +261,7 @@ msgid ""
 msgstr ""
 "Для каждого поддерживаемого языка Mailman хранит текст с заданным языком по "
 "умолчанию в каталоге /etc/mailman/LANG/, давая настроить конфигурационные "
-"файлы типа обращения за помощью в ucf. Это занимает приблизительно 150Кб в "
+"файлы типа обращения за помощью в ucf. Это занимает приблизительно 150 кБ в "
 "корневой файловой системе на каждый поддерживаемый язык."
 
 #. Type: multiselect
@@ -281,8 +282,8 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"ЗАМЕЧАНИЕ: При повторной настройке в списке отмечены языки, которые уже "
-"включены у существующих списков рассылки, и для mailman требуется по крайней "
+"ЗАМЕЧАНИЕ: При повторной настройке в списке отмечаются языки, которые уже "
+"отмечены в существующих списках рассылки, и Mailman требует по крайней "
 "мере один язык для отображения своих сообщений."
 
 #. Type: boolean
@@ -299,7 +300,7 @@ msgid ""
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
 "Mailman позволяет шлюзовать новости в почту, то есть отправлять все "
-"сообщения, которые приходят из групп новостей Usenet в список почтовой "
+"сообщения, которые приходят из групп новостей Usenet, в список почтовой "
 "рассылки."
 
 #. Type: boolean
@@ -322,9 +323,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"Для работы mailman нужен так называемый \"список рассылки сайта\", "
+"Для работы Mailman нужен так называемый \"список рассылки сайта\", "
 "являющийся списком рассылки, из которого отправляются напоминания паролей. "
-"Этот список рассылки должен быть создан до запуска mailman."
+"Этот список рассылки должен быть создан до запуска Mailman."
 
 #. Type: note
 #. Description
@@ -336,7 +337,7 @@ msgid ""
 msgstr ""
 "Чтобы создать список рассылки, выполните команду \"newlist mailman\" и "
 "следуйте инструкциям на экране. Заметим, что после этого вы также должны "
-"запустить mailman с помощью команды /etc/init.d/mailman start."
+"запустить Mailman с помощью команды /etc/init.d/mailman start."
 
 #. Type: select
 #. Description
@@ -351,7 +352,7 @@ msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
 msgstr ""
-"На этом языке будет отображаться веб страница, и вообще, Mailman будет "
+"На этом языке будет отображаться веб-страница, и Mailman будет "
 "использовать этот язык для общения с пользователем."
 
 #. Type: select
@@ -360,13 +361,13 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "прервать установку"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "продолжить"
 
 #. Type: select
 #. Description
@@ -395,7 +396,7 @@ msgstr ""
 "процедуры обновления он должен быть пуст. Вы можете попытаться разобрать "
 "их:\n"
 "- Остановить появление новых сообщений в очереди (на уровне MTA).\n"
-"- Запустить обработчик очереди mailman: /etc/init.d/mailman start\n"
+"- Запустить обработчик очереди Mailman: /etc/init.d/mailman start\n"
 "- Дождаться пока все сообщения не будут обработаны.\n"
 "   Если они не обработаются за приемлемое время, посмотрите в файлы\n"
 "   журнала, чтобы попытаться понять в чём причина и решите проблему.\n"
@@ -429,3 +430,5 @@ msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
+"У вас есть возможность, не смотря на эту проблему, продолжить установку, "
+"рискуя потерять сообщения в вопросах или сломать вашу настройку Mailman."
