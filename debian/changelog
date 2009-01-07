@@ -1,3 +1,10 @@
+mailman (1:2.1.11-10) unstable; urgency=low
+
+  [ Debconf Translations ]
+  * Updated Catalan, thanks David Planella.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 07 Jan 2009 23:09:56 +0100
+
 mailman (1:2.1.11-9) unstable; urgency=high
 
   [ Debconf Translations ]

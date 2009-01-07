@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
 "POT-Creation-Date: 2008-12-27 15:15+0100\n"
-"PO-Revision-Date: 2008-08-07 12:07+0200\n"
+"PO-Revision-Date: 2009-01-06 17:15+0100\n"
 "Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -271,16 +271,15 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTA: es forçarà l'habilitació d'aquelles llengues que no ho estiguin però "
-"que ja s'hagin habilitat en llistes de correu existents anteriorment i en "
-"cas que el mailman requereixi almenys una llengua per a mostrar els seus "
-"missatges."
+"NOTA: les llengües habilitades en llistes de correu existents es tornaran a"
+" habilitar quan no estiguin seleccionades i en cas que el Mailman "
+"requereixi almenys una llengua per a mostrar els seus missatges."
 
 #. Type: boolean
 #. Description
 #: ../templates:3001
 msgid "Gate news to mail?"
-msgstr "S'envien les notícies al correu?"
+msgstr "Voleu establir una pasarel·la de notícies a correu?"
 
 #. Type: boolean
 #. Description
@@ -290,7 +289,7 @@ msgid ""
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
 "El Mailman permet fer de passarel·la de notícies a correu, és a dir, enviar "
-"tots aquells missatges que apareixen en un grup de notícies d'Usenet a una "
+"tots aquells missatges que apareixen en un grup de notícies de l'Usenet a una "
 "llista de correu."
 
 #. Type: boolean
@@ -303,7 +302,7 @@ msgstr "En la majoria de casos no és necessari."
 #. Description
 #: ../templates:4001
 msgid "Missing site list"
-msgstr "Falta la llista del lloc"
+msgstr "Manca la llista del lloc"
 
 #. Type: note
 #. Description
@@ -313,8 +312,8 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"El Mailman necessita una llista anomenada \"llista del lloc\" des d'on "
-"enviar els recordatoris de contrasenya i similars.  Aquesta llista s'ha de "
+"El Mailman necessita una llista anomenada «llista del lloc» des d'on "
+"enviar els recordatoris de contrasenya i similars. Aquesta llista s'ha de "
 "crear abans d'iniciar l'execució del programa."
 
 #. Type: note
@@ -325,9 +324,9 @@ msgid ""
 "screen.  Note that you also need to start mailman after that, using /etc/"
 "init.d/mailman start."
 msgstr ""
-"Executeu «newlist mailman» per a crear una llista, i seguiu les instruccions "
-"que apareguin per pantalla. Tingueu en compte que haureu d'iniciar el "
-"mailman després de crear-la (amb l'ordre «/etc/init.d/mailman start»)."
+"Executeu «newlist mailman» per a crear la llista i seguiu les instruccions "
+"que apareguin a la pantalla. Tingueu en compte que haureu d'iniciar el "
+"Mailman després de crear-la (amb l'ordre «/etc/init.d/mailman start»)."
 
 #. Type: select
 #. Description
@@ -351,19 +350,19 @@ msgstr ""
 #. DefaultChoice
 #: ../templates:6001 ../templates:6002
 msgid "abort installation"
-msgstr ""
+msgstr "cancel·la la instal·lació"
 
 #. Type: select
 #. Choices
 #: ../templates:6001
 msgid "continue regardless"
-msgstr ""
+msgstr "continua de totes maneres"
 
 #. Type: select
 #. Description
 #: ../templates:6003
 msgid "Old queue files present"
-msgstr "Hi ha fitxers de cua antics existents"
+msgstr "Hi ha fitxers de cua antics"
 
 #. Type: select
 #. Description
@@ -382,10 +381,10 @@ msgid ""
 "You can also decide to simply remove the files, which will make Mailman "
 "forget about (and lose) the corresponding emails."
 msgstr ""
-"El directori /var/lib/mailman/qfiles conté fitxers, però ha d'estar buit "
+"El directori /var/lib/mailman/qfiles conté fitxers, però hauria d'estar buit "
 "perquè l'actualització funcioni correctament. Podeu intentar gestionar-los "
 "de la manera següent:\n"
-" - Atureu la recepció de missatges (al nivell del MTA).\n"
+" - Atureu la recepció de missatges (al nivell de l'MTA).\n"
 " - Inicieu un gestor de cua del mailman: /etc/init.d/mailman start\n"
 " - Deixeu que s'executi fins que tots els missatges s'hagin gestionat.\n"
 "   En cas que no s'hagin gestionat en un interval de temps acceptable,\n"
@@ -407,9 +406,9 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
-"Si aquests fitxers es corresponen amb missatges abandonats, haureu de "
+"Si aquests fitxers es corresponen amb missatges relegats, haureu de "
 "suprimir-los o bé activar-los (amb l'ordre /var/lib/mailman/bin/unshunt). "
-"Els missatges abandonats són aquells que el Mailman ja no processarà degut a "
+"Els missatges relegats són aquells que el Mailman ja no processarà degut a "
 "un error, però que es desen perquè els pugui revisar un administrador. Podeu "
 "utilitzar l'ordre /var/lib/mailman/bin/show_qfiles per a examinar els "
 "continguts de les cues."
@@ -421,3 +420,6 @@ msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
+"Teniu la opció de continuar la instal·lació tot i aquest problema, però "
+"tingueu en compte que hi ha el risc de perdre els missatges en qüestió o bé "
+"de malmetre la instal·lació del Mailman."
