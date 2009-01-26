@@ -1,3 +1,10 @@
+mailman (1:2.1.11-11) unstable; urgency=high
+
+  [ Debconf Translations ]
+  * Updated Vietnamese, thanks Clytie Siddall (closes: #513097).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 26 Jan 2009 13:42:33 +0100
+
 mailman (1:2.1.11-10) unstable; urgency=low
 
   [ Debconf Translations ]
