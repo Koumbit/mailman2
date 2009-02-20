@@ -1,6 +1,6 @@
 Patch: 07_snooze.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Snooze a bit to avoid eating too much CPU if you get an SMTP error.
+Snooze a bit to avoid eating too much CPU if you get an SMTP error (Closes: #175173)
 Index: mailman-2.1.10/Mailman/Queue/OutgoingRunner.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/Queue/OutgoingRunner.py	2008-04-21 20:28:22.000000000 +0200

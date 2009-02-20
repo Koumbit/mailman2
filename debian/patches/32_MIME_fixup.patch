@@ -1,6 +1,6 @@
 Patch: 32_MIME_fixup.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Handle empty queue files.
+Handle empty queue files (Closes: #223906)
 Index: mailman-2.1.10/Mailman/Handlers/Decorate.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/Handlers/Decorate.py	2008-04-21 20:28:22.000000000 +0200

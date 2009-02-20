@@ -1,6 +1,6 @@
 Patch: 70_invalid_utf8_dos.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
-Avoid DOS if attachement filename is invalid Unicode string
+Avoid DOS if attachement filename is invalid Unicode string (Closes: #327732, CVE-2005-3573)
 Index: mailman-2.1.10/Mailman/Handlers/Scrubber.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/Handlers/Scrubber.py	2008-06-15 18:49:38.000000000 +0200

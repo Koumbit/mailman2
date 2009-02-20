@@ -1,6 +1,6 @@
 Patch: 15_mailmanctl_daemonize.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Daemonize mailmanctl properly
+Daemonize mailmanctl properly (Closes: #175175)
 Index: mailman-2.1.10/bin/mailmanctl
 ===================================================================
 --- mailman-2.1.10.orig/bin/mailmanctl	2008-04-21 20:28:22.000000000 +0200

@@ -1,7 +1,7 @@
 Patch: 67_update_handle_old_versions.patch
 Author: Bastian Kleineidam <calvin@debian.org>
 Handle the case of upgrading from Mailman 2.0 where we have
-pending subscriptions.
+pending subscriptions (Closes: #280529)
 Index: mailman-2.1.10/bin/update
 ===================================================================
 --- mailman-2.1.10.orig/bin/update	2008-06-15 18:49:52.000000000 +0200

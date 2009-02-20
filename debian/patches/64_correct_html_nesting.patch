@@ -1,3 +1,8 @@
+Patch: 64_correct_html_nesting.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Fix the subscription form template with iCab (Closes: #249212)
+http://archives.lists.indymedia.org/listwork/2004-May/009962.html
+http://archives.lists.indymedia.org/listwork/2004-May/009964.html
 diff -Nur mailman-2.1.11.orig/templates/ca/listinfo.html mailman-2.1.11/templates/ca/listinfo.html
 --- mailman-2.1.11.orig/templates/ca/listinfo.html	2008-06-30 18:29:46.000000000 +0200
 +++ mailman-2.1.11/templates/ca/listinfo.html	2008-07-07 23:18:36.000000000 +0200

@@ -1,3 +1,7 @@
+Patch: 99_js_templates.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Make the password field be focused on page entry, if you have JS
+enabled.  Again thanks to Md.
 diff -Nur mailman-2.1.11.orig/templates/ar/private.html mailman-2.1.11/templates/ar/private.html
 --- mailman-2.1.11.orig/templates/ar/private.html	2008-06-30 18:29:46.000000000 +0200
 +++ mailman-2.1.11/templates/ar/private.html	2008-07-07 23:21:40.000000000 +0200

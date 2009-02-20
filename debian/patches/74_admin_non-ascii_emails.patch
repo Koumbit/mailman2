@@ -1,6 +1,6 @@
 Patch: 74_admin_non-ascii_emails.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
-Don't assume emails are ASCII
+Don't assume emails are ASCII (Closes: #315358)
 Index: mailman-2.1.10/Mailman/Cgi/admin.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/Cgi/admin.py	2008-04-21 20:28:22.000000000 +0200

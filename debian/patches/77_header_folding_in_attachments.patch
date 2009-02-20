@@ -1,7 +1,7 @@
 Patch: 77_header_folding_in_attachments.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Don't fold headers into message/rfc822 attachments.
-This avoids breaking signatures.
+This avoids breaking signatures (Closes: #244673)
 Index: mailman-2.1.10/Mailman/Generator.py
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000

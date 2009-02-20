@@ -1,6 +1,6 @@
 Patch: 00_stolen_from_HEAD.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Handle empty queue files.
+Handle empty queue files (Closes: #212643)
 Index: mailman-2.1.10/Mailman/Handlers/Scrubber.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/Handlers/Scrubber.py	2008-04-21 20:28:22.000000000 +0200

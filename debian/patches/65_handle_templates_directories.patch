@@ -1,6 +1,6 @@
 Patch: 65_handle_templates_directories.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Skip directories when updating
+Skip directories when updating (Closes: #284771)
 Index: mailman-2.1.10/bin/update
 ===================================================================
 --- mailman-2.1.10.orig/bin/update	2008-06-15 18:49:50.000000000 +0200

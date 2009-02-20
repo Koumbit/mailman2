@@ -2,7 +2,7 @@ Patch: 11_handle_propfind.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578756&group_id=103&atid=300103
 Don't fall flat on our face if we get a request type which we
-don't understand.
+don't understand (Closes: #202821)
 Index: mailman-2.1.10/scripts/driver
 ===================================================================
 --- mailman-2.1.10.orig/scripts/driver	2008-04-21 20:28:22.000000000 +0200

@@ -1,9 +1,7 @@
 Patch: 68_update_catalan.patch
 Author: Jordi Mallach <jordi@debian.org>
-
-Update Catalan translation.
+Update Catalan translation (Closes: #492297)
 Applied upstream.
-
 --- mailman-2.1.11.orig/messages/ca/LC_MESSAGES/mailman.po	2008-06-30 18:29:46.000000000 +0200
 +++ mailman-2.1.11/messages/ca/LC_MESSAGES/mailman.po	2008-08-07 13:29:17.000000000 +0200
 @@ -1630,7 +1630,7 @@

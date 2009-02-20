@@ -1,4 +1,6 @@
-Patch to prevent browser from caching pages.
+Patch: 66_donot_let_cache_html_pages.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Patch to prevent browser from caching pages (Closes: #281284)
 Index: mailman-2.1.10/Mailman/htmlformat.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/htmlformat.py	2008-06-15 18:49:48.000000000 +0200

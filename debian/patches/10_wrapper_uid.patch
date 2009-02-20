@@ -1,6 +1,6 @@
 Patch: 10_wrapper_uid.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Makes sure we're called with the right UID and GID
+Makes sure we're called with the right UID and GID (Closes: #36010, #89564, #89848, 89818)
 Index: mailman-2.1.10/src/cgi-wrapper.c
 ===================================================================
 --- mailman-2.1.10.orig/src/cgi-wrapper.c	2008-04-21 20:28:22.000000000 +0200

@@ -1,6 +1,6 @@
 Patch: 30_pipermail_threads.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Pipermail non-appropriate output.  Change that.
+Pipermail non-appropriate output, change that (Closes: #167758)
 Index: mailman-2.1.10/Mailman/Archiver/pipermail.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/Archiver/pipermail.py	2008-04-21 20:28:22.000000000 +0200

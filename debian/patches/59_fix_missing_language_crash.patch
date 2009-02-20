@@ -1,6 +1,6 @@
 Patch: fix_missing_language_crash.patch
 Author: Paul Wise <pabs3@bonedaddy.net>
-Fix crash when a language is missing
+Fix crash when a language is missing (Closes: #257606)
 Index: mailman-2.1.10/Mailman/htmlformat.py
 ===================================================================
 --- mailman-2.1.10.orig/Mailman/htmlformat.py	2008-04-21 20:28:22.000000000 +0200
