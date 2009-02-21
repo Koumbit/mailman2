@@ -19,7 +19,6 @@
 64_correct_html_nesting.patch
 65_handle_templates_directories.patch
 66_donot_let_cache_html_pages.patch
-67_update_handle_old_versions.patch
 68_update_catalan.patch
 70_invalid_utf8_dos.patch
 71_date_overflows.patch
