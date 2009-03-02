@@ -1,10 +1,10 @@
 Patch: 66_donot_let_cache_html_pages.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Patch to prevent browser from caching pages (Closes: #281284)
-Index: mailman-2.1.10/Mailman/htmlformat.py
+Index: mailman-2.1.12/Mailman/htmlformat.py
 ===================================================================
---- mailman-2.1.10.orig/Mailman/htmlformat.py	2008-06-15 18:49:48.000000000 +0200
-+++ mailman-2.1.10/Mailman/htmlformat.py	2008-06-15 18:49:52.000000000 +0200
+--- mailman-2.1.12.orig/Mailman/htmlformat.py	2009-03-02 20:50:11.000000000 +0100
++++ mailman-2.1.12/Mailman/htmlformat.py	2009-03-02 20:50:18.000000000 +0100
 @@ -300,7 +300,8 @@
          charset = 'us-ascii'
          if self.language and Utils.IsLanguage(self.language):

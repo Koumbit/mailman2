@@ -3,11 +3,11 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578756&group_id=103&atid=300103
 Don't fall flat on our face if we get a request type which we
 don't understand (Closes: #202821)
-Index: mailman-2.1.10/scripts/driver
+Index: mailman-2.1.12/scripts/driver
 ===================================================================
---- mailman-2.1.10.orig/scripts/driver	2008-04-21 20:28:22.000000000 +0200
-+++ mailman-2.1.10/scripts/driver	2008-06-15 18:49:41.000000000 +0200
-@@ -95,6 +95,15 @@
+--- mailman-2.1.12.orig/scripts/driver	2009-03-02 20:41:55.000000000 +0100
++++ mailman-2.1.12/scripts/driver	2009-03-02 20:50:00.000000000 +0100
+@@ -98,6 +98,15 @@
          module = getattr(pkg, scriptname)
          main = getattr(module, 'main')
          try:

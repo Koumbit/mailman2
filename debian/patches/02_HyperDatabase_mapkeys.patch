@@ -1,10 +1,10 @@
 Patch: 02_HyperDatabase_mapkeys.patch
 Author: Lionel Elie Mamane <lmamane@debian.org>
 Added to support unicodify_archives (Closes: #412142)
-Index: mailman-2.1.10/Mailman/Archiver/HyperDatabase.py
+Index: mailman-2.1.12/Mailman/Archiver/HyperDatabase.py
 ===================================================================
---- mailman-2.1.10.orig/Mailman/Archiver/HyperDatabase.py	2008-04-21 20:28:22.000000000 +0200
-+++ mailman-2.1.10/Mailman/Archiver/HyperDatabase.py	2008-06-15 18:49:40.000000000 +0200
+--- mailman-2.1.12.orig/Mailman/Archiver/HyperDatabase.py	2009-03-02 20:41:56.000000000 +0100
++++ mailman-2.1.12/Mailman/Archiver/HyperDatabase.py	2009-03-02 20:49:56.000000000 +0100
 @@ -54,7 +54,7 @@
      SortedDictionary.
      """

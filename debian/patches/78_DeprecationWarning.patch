@@ -1,11 +1,11 @@
 Patch: 78_DeprecationWarning.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Shut up DeprecationWarning in Python 2.4 (Closes: #341699)
-Index: mailman-2.1.10/Mailman/Handlers/Scrubber.py
+Index: mailman-2.1.12/Mailman/Handlers/Scrubber.py
 ===================================================================
---- mailman-2.1.10.orig/Mailman/Handlers/Scrubber.py	2008-06-15 18:49:54.000000000 +0200
-+++ mailman-2.1.10/Mailman/Handlers/Scrubber.py	2008-06-15 18:49:57.000000000 +0200
-@@ -26,6 +26,7 @@
+--- mailman-2.1.12.orig/Mailman/Handlers/Scrubber.py	2009-03-02 20:50:20.000000000 +0100
++++ mailman-2.1.12/Mailman/Handlers/Scrubber.py	2009-03-02 20:50:24.000000000 +0100
+@@ -25,6 +25,7 @@
  import errno
  import binascii
  import tempfile

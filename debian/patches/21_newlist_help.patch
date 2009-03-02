@@ -1,11 +1,11 @@
 Patch: 21_newlist_help.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 make newlist be a bit friendlier (Closes: #309339, #170362)
-Index: mailman-2.1.10/bin/newlist
+Index: mailman-2.1.12/bin/newlist
 ===================================================================
---- mailman-2.1.10.orig/bin/newlist	2008-04-21 20:28:22.000000000 +0200
-+++ mailman-2.1.10/bin/newlist	2008-06-15 18:49:44.000000000 +0200
-@@ -87,6 +87,9 @@
+--- mailman-2.1.12.orig/bin/newlist	2009-03-02 20:41:54.000000000 +0100
++++ mailman-2.1.12/bin/newlist	2009-03-02 20:50:04.000000000 +0100
+@@ -88,12 +88,16 @@
  defined in your Defaults.py file or overridden by settings in mm_cfg.py).
  
  Note that listnames are forced to lowercase.
@@ -15,10 +15,9 @@ Index: mailman-2.1.10/bin/newlist
  """
  
  import sys
-@@ -94,6 +97,7 @@
+ import os
  import getpass
  import getopt
- import sha
 +import grp
  
  import paths

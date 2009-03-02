@@ -2,10 +2,10 @@ Patch: 62_new_list_bad_pending_requests.patch
 Author: Richard Mortimer <richm@oldelvet.org.uk>
 Only mail 'pending admin requests' if the database for the
 particular list exists, so we do not send out '-1' requests.
-Index: mailman-2.1.10/Mailman/ListAdmin.py
+Index: mailman-2.1.12/Mailman/ListAdmin.py
 ===================================================================
---- mailman-2.1.10.orig/Mailman/ListAdmin.py	2008-04-21 20:28:22.000000000 +0200
-+++ mailman-2.1.10/Mailman/ListAdmin.py	2008-06-15 18:49:49.000000000 +0200
+--- mailman-2.1.12.orig/Mailman/ListAdmin.py	2009-03-02 20:41:51.000000000 +0100
++++ mailman-2.1.12/Mailman/ListAdmin.py	2009-03-02 20:50:12.000000000 +0100
 @@ -130,8 +130,11 @@
  
      def NumRequestsPending(self):

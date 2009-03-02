@@ -1,10 +1,10 @@
 Patch: 01_defaults.debian.dpatch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Set sane defaults in Defaults.py.in
-Index: mailman-2.1.10/Mailman/Defaults.py.in
+Index: mailman-2.1.12/Mailman/Defaults.py.in
 ===================================================================
---- mailman-2.1.10.orig/Mailman/Defaults.py.in	2008-04-21 20:28:22.000000000 +0200
-+++ mailman-2.1.10/Mailman/Defaults.py.in	2008-06-15 18:49:39.000000000 +0200
+--- mailman-2.1.12.orig/Mailman/Defaults.py.in	2009-03-02 20:41:57.000000000 +0100
++++ mailman-2.1.12/Mailman/Defaults.py.in	2009-03-02 20:49:55.000000000 +0100
 @@ -54,7 +54,7 @@
  # disable Mailman's logo footer altogther, hack
  # Mailman/htmlformat.py:MailmanLogo(), which also contains the hardcoded links
@@ -23,7 +23,7 @@ Index: mailman-2.1.10/Mailman/Defaults.py.in
  
  # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
  # sites may have the former in their mm_cfg.py files.  If so, we'll believe
-@@ -1323,7 +1323,7 @@
+@@ -1352,7 +1352,7 @@
  MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
  
  # Other useful files

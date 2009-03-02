@@ -19,12 +19,10 @@
 64_correct_html_nesting.patch
 65_handle_templates_directories.patch
 66_donot_let_cache_html_pages.patch
-68_update_catalan.patch
 70_invalid_utf8_dos.patch
 71_date_overflows.patch
 74_admin_non-ascii_emails.patch
 77_header_folding_in_attachments.patch
 78_DeprecationWarning.patch
 79_archiver_slash.patch
-80_fix_string_search.patch
 99_js_templates.patch

@@ -1,10 +1,10 @@
 Patch: fix_missing_language_crash.patch
 Author: Paul Wise <pabs3@bonedaddy.net>
 Fix crash when a language is missing (Closes: #257606)
-Index: mailman-2.1.10/Mailman/htmlformat.py
+Index: mailman-2.1.12/Mailman/htmlformat.py
 ===================================================================
---- mailman-2.1.10.orig/Mailman/htmlformat.py	2008-04-21 20:28:22.000000000 +0200
-+++ mailman-2.1.10/Mailman/htmlformat.py	2008-06-15 18:49:48.000000000 +0200
+--- mailman-2.1.12.orig/Mailman/htmlformat.py	2009-03-02 20:41:51.000000000 +0100
++++ mailman-2.1.12/Mailman/htmlformat.py	2009-03-02 20:50:11.000000000 +0100
 @@ -298,7 +298,7 @@
  
      def Format(self, indent=0, **kws):
