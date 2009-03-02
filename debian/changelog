@@ -3,9 +3,16 @@ mailman (1:2.1.12-1) UNRELEASED; urgency=low
   * New upstream release.
     + Minimum Python version is now 2.4.
     + Patches obsoleted (incorporated or not useful anymore):
-      11_handle_propfind.patch, 67_update_handle_old_versions,
-      68_update_catalan, 78_DeprecationWarning.patch,
-      80_fix_string_search; refresh all others.
+      00_stolen_from_HEAD,
+      11_handle_propfind.patch,
+      32_MIME_fixup,
+      62_new_list_bad_pending_requests,
+      67_update_handle_old_versions,
+      68_update_catalan,
+      78_DeprecationWarning,
+      80_fix_string_search.
+      Refresh all others. Many thanks to Mark Sapiro and
+      Paul Wise for the help in cleaning this up.
   * Various packaging cleanups, upgrade debhelper to level 7.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Mon, 02 Mar 2009 19:56:25 +0100

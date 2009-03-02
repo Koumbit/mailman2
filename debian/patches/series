@@ -1,4 +1,3 @@
-00_stolen_from_HEAD.patch
 01_defaults.debian.patch
 02_HyperDatabase_mapkeys.patch
 07_snooze.patch
@@ -8,12 +7,10 @@
 20_qmail_to_mailman.debian.patch
 21_newlist_help.patch
 30_pipermail_threads.patch
-32_MIME_fixup.patch
 51_nocompile.pyc.patch
 52_check_perms_lstat.patch
 53_disable_addons.patch
 59_fix_missing_language_crash.patch
-62_new_list_bad_pending_requests.patch
 63_update_default_server_language.patch
 64_correct_html_nesting.patch
 65_handle_templates_directories.patch
