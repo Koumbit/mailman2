@@ -2,8 +2,10 @@ Source: mailman
 Section: mail
 Priority: optional
 Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
-Uploaders: Lionel Elie Mamane <lmamane@debian.org>, Thijs Kinkhorst <thijs@debian.org>, Hector Garcia <hector@debian.org>
-Build-Depends: debhelper (>= 6), autoconf, python-dev, python-support, quilt
+Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
+ Thijs Kinkhorst <thijs@debian.org>,
+ Hector Garcia <hector@debian.org>
+Build-Depends: debhelper (>= 7), autoconf, python-dev, python-support, quilt
 Standards-Version: 3.8.0
 Homepage: http://www.list.org/
 Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman/trunk
@@ -13,7 +15,9 @@ XS-Python-Version: current
 Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
-Depends: ${shlibs:Depends}, ${python:Depends}, logrotate, cron, exim4 | mail-transport-agent, apache2 | httpd, ucf, pwgen, adduser, lsb-base
+Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends}
+ logrotate, cron, ucf, pwgen, adduser, lsb-base,
+ exim4 | mail-transport-agent, apache2 | httpd
 Suggests: spamassassin, lynx, listadmin
 XB-Python-Version: ${python:Versions}
 Description: Powerful, web-based mailing list manager
