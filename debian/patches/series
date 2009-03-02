@@ -3,7 +3,6 @@
 02_HyperDatabase_mapkeys.patch
 07_snooze.patch
 10_wrapper_uid.patch
-11_handle_propfind.patch
 15_mailmanctl_daemonize.patch
 16_update_debian.patch
 20_qmail_to_mailman.debian.patch
@@ -23,6 +22,5 @@
 71_date_overflows.patch
 74_admin_non-ascii_emails.patch
 77_header_folding_in_attachments.patch
-78_DeprecationWarning.patch
 79_archiver_slash.patch
 99_js_templates.patch
