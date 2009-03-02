@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2008-12-27 15:15+0100\n"
+"POT-Creation-Date: 2009-03-02 22:08+0100\n"
 "PO-Revision-Date: 2009-01-06 17:15+0100\n"
 "Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
@@ -271,9 +271,9 @@ msgid ""
 "when deselected and mailman needs at least one language for displaying its "
 "messages."
 msgstr ""
-"NOTA: les llengües habilitades en llistes de correu existents es tornaran a"
-" habilitar quan no estiguin seleccionades i en cas que el Mailman "
-"requereixi almenys una llengua per a mostrar els seus missatges."
+"NOTA: les llengües habilitades en llistes de correu existents es tornaran a "
+"habilitar quan no estiguin seleccionades i en cas que el Mailman requereixi "
+"almenys una llengua per a mostrar els seus missatges."
 
 #. Type: boolean
 #. Description
@@ -289,8 +289,8 @@ msgid ""
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
 "El Mailman permet fer de passarel·la de notícies a correu, és a dir, enviar "
-"tots aquells missatges que apareixen en un grup de notícies de l'Usenet a una "
-"llista de correu."
+"tots aquells missatges que apareixen en un grup de notícies de l'Usenet a "
+"una llista de correu."
 
 #. Type: boolean
 #. Description
@@ -312,9 +312,9 @@ msgid ""
 "password reminders and such are sent out from.  This list needs to be "
 "created before mailman will start."
 msgstr ""
-"El Mailman necessita una llista anomenada «llista del lloc» des d'on "
-"enviar els recordatoris de contrasenya i similars. Aquesta llista s'ha de "
-"crear abans d'iniciar l'execució del programa."
+"El Mailman necessita una llista anomenada «llista del lloc» des d'on enviar "
+"els recordatoris de contrasenya i similars. Aquesta llista s'ha de crear "
+"abans d'iniciar l'execució del programa."
 
 #. Type: note
 #. Description
@@ -346,9 +346,7 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#. Type: select
-#. DefaultChoice
-#: ../templates:6001 ../templates:6002
+#: ../templates:6001
 msgid "abort installation"
 msgstr "cancel·la la instal·lació"
 
@@ -360,13 +358,13 @@ msgstr "continua de totes maneres"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid "Old queue files present"
 msgstr "Hi ha fitxers de cua antics"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -398,7 +396,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -406,16 +404,16 @@ msgid ""
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
 msgstr ""
-"Si aquests fitxers es corresponen amb missatges relegats, haureu de "
-"suprimir-los o bé activar-los (amb l'ordre /var/lib/mailman/bin/unshunt). "
-"Els missatges relegats són aquells que el Mailman ja no processarà degut a "
-"un error, però que es desen perquè els pugui revisar un administrador. Podeu "
+"Si aquests fitxers es corresponen amb missatges relegats, haureu de suprimir-"
+"los o bé activar-los (amb l'ordre /var/lib/mailman/bin/unshunt). Els "
+"missatges relegats són aquells que el Mailman ja no processarà degut a un "
+"error, però que es desen perquè els pugui revisar un administrador. Podeu "
 "utilitzar l'ordre /var/lib/mailman/bin/show_qfiles per a examinar els "
 "continguts de les cues."
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."

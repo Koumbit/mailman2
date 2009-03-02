@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman_1:2.1.9-0\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2008-12-27 15:15+0100\n"
+"POT-Creation-Date: 2009-03-02 22:08+0100\n"
 "PO-Revision-Date: 2008-12-27 15:16+0100\n"
 "Last-Translator: Thijs Kinkhorst <thijs@debian.org>\n"
 "Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
@@ -358,9 +358,7 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#. Type: select
-#. DefaultChoice
-#: ../templates:6001 ../templates:6002
+#: ../templates:6001
 msgid "abort installation"
 msgstr "installatie afbreken"
 
@@ -372,13 +370,13 @@ msgstr "desalniettemin doorgaan"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid "Old queue files present"
 msgstr "Oude wachtrij-bestanden zijn aanwezig"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -409,7 +407,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -426,7 +424,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."

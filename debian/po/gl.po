@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2008-12-27 15:15+0100\n"
+"POT-Creation-Date: 2009-03-02 22:08+0100\n"
 "PO-Revision-Date: 2008-12-28 14:33+0100\n"
 "Last-Translator: Marce Villarino <mvillarino@users.sourceforge.net>\n"
 "Language-Team: galician <proxecto@trasno.net>\n"
@@ -290,9 +290,8 @@ msgid ""
 "Mailman allows to gate news to mail, that is, send all the messages which "
 "appear in a Usenet newsgroup to a mailing list."
 msgstr ""
-"Mailman permite crear unha pasarela de novas a correo, é dicir, enviar "
-"todas as mensaxes que aparecen nun grupo de novas de Usenet a unha lista de "
-"correo."
+"Mailman permite crear unha pasarela de novas a correo, é dicir, enviar todas "
+"as mensaxes que aparecen nun grupo de novas de Usenet a unha lista de correo."
 
 #. Type: boolean
 #. Description
@@ -348,9 +347,7 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#. Type: select
-#. DefaultChoice
-#: ../templates:6001 ../templates:6002
+#: ../templates:6001
 msgid "abort installation"
 msgstr "cancelar a instalación"
 
@@ -362,13 +359,13 @@ msgstr "continuar de calquera maneira"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid "Old queue files present"
 msgstr "Existen ficheiros de fila antigos"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -398,7 +395,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -414,11 +411,10 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
 "Pode continuar coa instalación malia este problema, co risco de perder as "
 "mensaxes en cuestión ou estragar a configuración de Mailman."
-

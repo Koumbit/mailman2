@@ -1,31 +1,31 @@
 # mailman debconf translation to spanish
 # Copyright (C) 2003,2004 Software in the Public Interest
 # This file is distributed under the same license as the mailman package.
-#
+# 
 # Changes:
 # - Initial translation
 #        Carlos Valdivia Yagüe <valyag@dat.etsit.upm.es>, 2003, 2004
 # - Translation update
 #        Javier Fernandez-Sanguino <jfs@debian.org> 2006
-#
+# 
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
 #    this format, e.g. by running:
 #         info -n '(gettext)PO Files'
 #         info -n '(gettext)Header Entry'
-#
+# 
 #    Some information specific to po-debconf are available at
 #            /usr/share/doc/po-debconf/README-trans
 #         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
+# 
 #    Developers do not need to manually edit POT or PO files.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: maiman 2.1.4-3\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2008-12-27 15:15+0100\n"
+"POT-Creation-Date: 2009-03-02 22:08+0100\n"
 "PO-Revision-Date: 2008-12-28 18:43+0100\n"
 "Last-Translator: Javier Fernandez-Sanguino <jfs@debian.org>\n"
 "Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -362,9 +362,7 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#. Type: select
-#. DefaultChoice
-#: ../templates:6001 ../templates:6002
+#: ../templates:6001
 msgid "abort installation"
 msgstr "abortar la instalación"
 
@@ -376,13 +374,13 @@ msgstr "continuar en cualquier caso"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid "Old queue files present"
 msgstr "Se han encontrado ficheros de colas antigüos"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -414,19 +412,27 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
 "are messages on which Mailman has already abandoned any further processing "
 "because of an error condition, but that are kept for admin review. You can "
 "use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr "Tendrá que borrar o tratar (con «/var/lib/mailman/bin/unshunt») los mensajes si corresponden a mensajes rechazados. Los mensajes rechazados son aquellos que Mailman ha dejado de procesar debido a una condición de error y se guardan para que el administrador los revise. Puede mostrar los contenidos de la cola ejecutando «/var/lib/mailman/bin/show_qfiles»."
+msgstr ""
+"Tendrá que borrar o tratar (con «/var/lib/mailman/bin/unshunt») los mensajes "
+"si corresponden a mensajes rechazados. Los mensajes rechazados son aquellos "
+"que Mailman ha dejado de procesar debido a una condición de error y se "
+"guardan para que el administrador los revise. Puede mostrar los contenidos "
+"de la cola ejecutando «/var/lib/mailman/bin/show_qfiles»."
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
-msgstr "Puede elegir continuar la instalación sin tener en cuenta este problema pero corre el riesgo de perder los mensajes antes descritos o romper su instalación de Mailman."
+msgstr ""
+"Puede elegir continuar la instalación sin tener en cuenta este problema pero "
+"corre el riesgo de perder los mensajes antes descritos o romper su "
+"instalación de Mailman."

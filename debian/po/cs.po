@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2008-12-27 15:15+0100\n"
+"POT-Creation-Date: 2009-03-02 22:08+0100\n"
 "PO-Revision-Date: 2008-12-30 18:54+0100\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -352,9 +352,7 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#. Type: select
-#. DefaultChoice
-#: ../templates:6001 ../templates:6002
+#: ../templates:6001
 msgid "abort installation"
 msgstr "přerušit instalaci"
 
@@ -366,13 +364,13 @@ msgstr "pokračovat"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid "Old queue files present"
 msgstr "Ve frontě jsou přítomny staré soubory"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -404,7 +402,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -421,10 +419,10 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
 msgstr ""
-"I přes tento problém můžete v instalaci pokračovat, nicméně riskujete "
-"ztrátu zmíněných zpráv, případně nefunkční nastavení Mailmanu."
+"I přes tento problém můžete v instalaci pokračovat, nicméně riskujete ztrátu "
+"zmíněných zpráv, případně nefunkční nastavení Mailmanu."

@@ -15,7 +15,7 @@ XS-Python-Version: current
 Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
-Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
  logrotate, cron, ucf, pwgen, adduser, lsb-base,
  exim4 | mail-transport-agent, apache2 | httpd
 Suggests: spamassassin, lynx, listadmin

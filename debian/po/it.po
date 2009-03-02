@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.11 italian debconf templates\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2008-12-27 15:15+0100\n"
+"POT-Creation-Date: 2009-03-02 22:08+0100\n"
 "PO-Revision-Date: 2008-12-29 11:17+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
@@ -246,8 +246,8 @@ msgid ""
 "ucf.  This means approximately 150kB for each supported language on the root "
 "file system."
 msgstr ""
-"Per ciascuna lingua supportata, Mailman memorizza i messaggi predefiniti in "
-"/etc/mailman/LANG/ trattandoli, con l'aiuto di ucf, come conffile. Questo "
+"Per ciascuna lingua supportata, Mailman memorizza i messaggi predefiniti in /"
+"etc/mailman/LANG/ trattandoli, con l'aiuto di ucf, come conffile. Questo "
 "comporta circa 150 kB per ogni lingua supportata nel file system di root."
 
 #. Type: multiselect
@@ -342,9 +342,7 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#. Type: select
-#. DefaultChoice
-#: ../templates:6001 ../templates:6002
+#: ../templates:6001
 msgid "abort installation"
 msgstr "interrompi l'installazione"
 
@@ -356,13 +354,13 @@ msgstr "continua ugualmente"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid "Old queue files present"
 msgstr "Vecchi file nella coda"
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -378,8 +376,8 @@ msgid ""
 "forget about (and lose) the corresponding emails."
 msgstr ""
 "La directory /var/lib/mailman/qfiles contiene dei file, per il corretto "
-"funzionamento dell'aggiornamento deve essere vuota. È possibile gestirli "
-"in questo modo:\n"
+"funzionamento dell'aggiornamento deve essere vuota. È possibile gestirli in "
+"questo modo:\n"
 " - Fermare l'arrivo di nuovi messaggi (a livello del MTA).\n"
 " - Avviare il gestore della coda di mailman: /etc/init.d/mailman start\n"
 " - Lasciarlo in esecuzione fino a quando tutti i messaggi sono stati\n"
@@ -388,12 +386,12 @@ msgstr ""
 " - Fermare il gestore della coda: /etc/init.d/mailman stop\n"
 " - Riprovare l'aggiornamento.\n"
 " - Riattivare l'arrivo dei messaggi.\n"
-"I file possono anche essere semplicemente eliminati, però questo comporta "
-"la perdita dei messaggi."
+"I file possono anche essere semplicemente eliminati, però questo comporta la "
+"perdita dei messaggi."
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -410,7 +408,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6003
+#: ../templates:6002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
