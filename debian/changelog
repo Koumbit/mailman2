@@ -13,9 +13,10 @@ mailman (1:2.1.12-1) UNRELEASED; urgency=low
       80_fix_string_search.
       Refresh all others. Many thanks to Mark Sapiro and
       Paul Wise for the help in cleaning this up.
+    + Fixes bounce handling NotAMemberError (closes: #517997).
   * Various packaging cleanups, upgrade debhelper to level 7.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 02 Mar 2009 19:56:25 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue,  3 Mar 2009 15:31:55 +0100
 
 mailman (1:2.1.11-11) unstable; urgency=high
 
