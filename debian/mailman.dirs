@@ -6,6 +6,4 @@ usr/share/images/mailman
 usr/lib/cgi-bin
 var/log/mailman
 var/lib/mailman/templates
-var/lock
-var/run/mailman
 etc/logrotate.d

@@ -128,7 +128,7 @@ binary-arch:	build
 	chown -R root:root debian/mailman
 	chown -R root:list \
 		debian/mailman/{etc/$(package),var/lib/$(package),usr/lib/{$(package),cgi-bin/$(package)}}
-	chown list:list debian/mailman/var/{lib/mailman/qfiles,run/mailman}
+	chown list:list debian/mailman/var/lib/mailman/qfiles
 	chown root:list debian/mailman/var/log/mailman
 	# set 2755 except messages/
 	find debian/mailman/var/lib/$(package) -path debian/mailman/var/lib/$(package)/messages -prune -o -type d -exec chmod 2775 {} \;
@@ -187,17 +187,13 @@ binary-arch:	build
 	# e.g. when /var/log is symlinked to somewhere else. They need to be last because
 	# otherwise dh_link will revert them back to relative ones.
 	#
-	# move the locks to /var/lock
-	mv debian/mailman/var/lib/$(package)/locks debian/mailman/var/lock/mailman
 	# link it back to /var/lib/mailman/locks
 	ln -s /var/lock/mailman debian/mailman/var/lib/$(package)/locks
 	# remove the log directory and link it to /var/log/mailman
 	rmdir debian/mailman/var/lib/$(package)/logs 
 	ln -s /var/log/mailman debian/mailman/var/lib/$(package)/logs
-	chown list:list debian/mailman/var/lock/mailman
 	chown root:list debian/mailman/var/log/mailman
 	chmod 2770 debian/mailman/var/log/mailman
-	chmod g+w debian/mailman/var/lock/mailman
 
 	dh_installdeb
 	dh_shlibdeps
