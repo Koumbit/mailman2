@@ -71,14 +71,14 @@ binary-arch:	build
 		icondir=$$(pwd)/debian/mailman/usr/share/images/mailman \
 		ICONDIR=$$(pwd)/debian/mailman/usr/share/images/mailman
 
-	#rmdir debian/$(package)/var/lib/mailman/pythonlib
+	rmdir debian/$(package)/var/lib/mailman/pythonlib
 
 # move the nonchanging directories to /usr/lib/mailman, except for
 # cgi-bin, which goes to /usr/lib/cgi-bin/mailman
 
 	cd debian/mailman/var/lib/$(package) ; \
 	   mv cgi-bin ../../../usr/lib/cgi-bin/mailman ; \
-	   for i in Mailman bin cron mail scripts pythonlib; do \
+	   for i in Mailman bin cron mail scripts ; do \
 		mv $$i ../../../usr/lib/$(package); \
 	   done
 
@@ -172,7 +172,7 @@ binary-arch:	build
 	chmod 0644 debian/mailman/usr/lib/$(package)/cron/{crontab.in,paths.py}
 
 #	Python Policy
-	dh_pysupport -a `find debian/mailman/usr/lib/mailman/Mailman/ debian/mailman/usr/lib/mailman/pythonlib/ -type d`
+	dh_pysupport -a `find debian/mailman/usr/lib/mailman/Mailman/ -type d`
 
 	install -d debian/mailman/usr/share/python/runtime.d
 	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
