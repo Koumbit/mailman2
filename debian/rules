@@ -72,6 +72,7 @@ binary-arch:	build
 		ICONDIR=$$(pwd)/debian/mailman/usr/share/images/mailman
 
 	rmdir debian/$(package)/var/lib/mailman/pythonlib
+	rm -r debian/$(package)/var/lib/mailman/tests
 
 # move the nonchanging directories to /usr/lib/mailman, except for
 # cgi-bin, which goes to /usr/lib/cgi-bin/mailman
