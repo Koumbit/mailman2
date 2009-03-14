@@ -189,6 +189,7 @@ binary-arch:	build
 	# otherwise dh_link will revert them back to relative ones.
 	#
 	# link it back to /var/lib/mailman/locks
+	rmdir debian/mailman/var/lib/$(package)/locks
 	ln -s /var/lock/mailman debian/mailman/var/lib/$(package)/locks
 	# remove the log directory and link it to /var/log/mailman
 	rmdir debian/mailman/var/lib/$(package)/logs 

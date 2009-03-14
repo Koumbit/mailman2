@@ -1,4 +1,4 @@
-mailman (1:2.1.12-1) UNRELEASED; urgency=low
+mailman (1:2.1.12-1) unstable; urgency=low
 
   * New upstream release.
     + Minimum Python version is now 2.4.
