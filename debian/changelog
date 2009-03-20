@@ -1,3 +1,10 @@
+mailman (1:2.1.12-2) UNRELEASED; urgency=low
+
+  [ Lionel Elie Mamane ]
+  * README.Exim4.Debian: add debug_print statements
+
+ -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 20 Mar 2009 09:30:35 +0100
+
 mailman (1:2.1.12-1) unstable; urgency=low
 
   * New upstream release.

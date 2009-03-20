@@ -26,6 +26,10 @@ production), you need to run /var/lib/mailman/bin/genaliases once; it
 will be done automatically every time you create / delete a mailing
 list in the future.
 
+And yes, the "Postfix" there is on purpose, it should not be replaced
+by "exim4". It causes mailman to (among others) create a list of
+mailman lists, including what virtual domain they should be in. That
+is the information that is used here; the rest is ignored.
 
 Put this in your exim4 main configuration (if you use a split config,
 for example /etc/exim4/conf.d/main/04_local_mailman_macros)
@@ -52,6 +56,7 @@ config, then for example /etc/exim4/conf.d/router/970_local_mailman)
 # But mailman doesn't put such addresses
 # in the aliases. Recognise these here.
 mailman_workaround:
+  debug_print = "R: mailman_workaround for $local_part@$domain"
   domains = +local_domains
   require_files = MAILMAN_HOME/lists/$local_part/config.pck
   driver = accept
@@ -66,6 +71,7 @@ mailman_workaround:
 
 # Mailman lists
 mailman_router:
+  debug_print = "R: mailman_router for $local_part@$domain"
   domains = +local_domains
   condition = ${lookup{$local_part@$domain}lsearch{MAILMAN_HOME/data/virtual-mailman}{1}{0}}
   require_files = MAILMAN_HOME/lists/$local_part/config.pck
@@ -84,6 +90,7 @@ config, then for example /etc/exim4/conf.d/transport/40_local_mailman)
 
 ---------------------- BEGIN EXIM4 TRANSPORT -------------------------
 mailman_transport:
+  debug_print = "T: mailman_transport for $local_part@$domain"
   driver = pipe
   command = MAILMAN_WRAP \
             '${if def:local_part_suffix \
@@ -99,4 +106,4 @@ mailman_transport:
 
 You are done!
 
- -- Lionel Elie Mamane <lmamane@debian.org>, Wed, 10 Dec 2008 22:33:27 +0100
+ -- Lionel Elie Mamane <lmamane@debian.org>, Fri, 20 Mar 2009 09:27:39 +0100
