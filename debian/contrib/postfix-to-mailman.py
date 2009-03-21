@@ -45,6 +45,7 @@
 #
 # /etc/postfix/main.cf:
 #    relay_domains = ... lists.example.com
+#    relay_recipient_maps = ... hash:/var/lib/mailman/data/virtual-mailman
 #    transport_maps = hash:/etc/postfix/transport
 #    mailman_destination_recipient_limit = 1
 #
@@ -57,7 +58,8 @@
 #   lists.example.com   mailman:
 #
 # /etc/mailman/mm_cfg.py
-#    MTA = None # No MTA alias processing required
+#    MTA = Postfix # So that mailman generates the recipients table
+#    POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com']
 #    # alias for postmaster, abuse and mailer-daemon
 #    DEB_LISTMASTER = 'postmaster@example.com'
 #
@@ -67,10 +69,13 @@
 # here. Typically a virtual domain lists.domain.com is used for
 # Mailman, and domain.com for regular email.
 #
-# With the sheer amount of spam using faked addresses it seems more
-# appropriate to me to just reject non-existing addresses.  The old
-# behavior sending a helpful bounce message is still configurable
-# by defining DEB_HELP_TEXT in mm_cfg.
+# The recipient map allows Postfix to know which addresses exists.
+# Thus, if someone tries to send a (spam?) message to an undefined
+# address in the domain connected to Mailman, Postfix will just refuse
+# it instead of sending a (backscatter?) bounce.
+#
+# When you are done, restart Postfix, and run /usr/lib/mailman/bin/genaliases
+# to generate the initial recipient map for the existing mailing-lists.
 
 # Exit codes accepted by postfix
 #  from postfix-2.0.16/src/global/sys_exits.h

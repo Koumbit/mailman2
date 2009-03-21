@@ -3,7 +3,11 @@ mailman (1:2.1.12-2) UNRELEASED; urgency=low
   [ Lionel Elie Mamane ]
   * README.Exim4.Debian: add debug_print statements
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 20 Mar 2009 09:30:35 +0100
+  [ Thijs Kinkhorst ]
+  * Apply patch from Tanguy Ortolo updating postfix-to-mailman
+    instructions to avoid backscatter mail (Closes: #520040).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 21 Mar 2009 20:10:13 +0100
 
 mailman (1:2.1.12-1) unstable; urgency=low
 
