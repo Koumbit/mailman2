@@ -61,7 +61,6 @@ binary-indep:	build
 binary-arch:	build
 	dh_testdir
 	dh_testroot
-	chmod +x debian/unicodify_archives.py
 	dh_install
 	dh_installdirs
 	dh_installdocs ACKNOWLEDGMENTS README* TODO FAQ
