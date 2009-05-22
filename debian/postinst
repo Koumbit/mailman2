@@ -170,6 +170,9 @@ case "$1" in
 		mv /etc/mailman/mm_cfg.py /etc/mailman/mm_cfg.py.old
 		mv /etc/mailman/mm_cfg.py.new /etc/mailman/mm_cfg.py
 	fi
+	if ! [ -d /var/lock/mailman ]; then
+	    install -d -o root -g list -m 2775 /var/lock/mailman
+	fi
 	sg list -c "umask 002; /usr/lib/mailman/bin/update;"
 
 	# fix permissions
