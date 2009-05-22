@@ -5,13 +5,14 @@ mailman (1:2.1.12-2) UNRELEASED; urgency=low
   * apply fix from upstream to 77_header_folding_in_attachments
     to fix bug it introduces: messages with lines starting with
     "From" are split into several messages in the archive.
+  * Use autoconf >= 2.50, not 2.13
 
   [ Thijs Kinkhorst ]
   * Apply patch from Tanguy Ortolo updating postfix-to-mailman
     instructions to avoid backscatter mail (Closes: #520040).
   * Remove obsolete unicodify_archives for upgrading sarge->etch.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 22 May 2009 08:52:19 +0200
+ -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 22 May 2009 09:01:11 +0200
 
 mailman (1:2.1.12-1) unstable; urgency=low
 

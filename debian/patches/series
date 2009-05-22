@@ -1,4 +1,5 @@
 01_defaults.debian.patch
+02_force_autoconf_2.50.patch
 07_snooze.patch
 10_wrapper_uid.patch
 15_mailmanctl_daemonize.patch
