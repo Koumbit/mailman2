@@ -2,10 +2,9 @@ Patch: 77_header_folding_in_attachments.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Don't fold headers into message/rfc822 attachments.
 This avoids breaking signatures (Closes: #244673)
-Index: mailman-2.1.12/Mailman/Generator.py
-===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ mailman-2.1.12/Mailman/Generator.py	2009-03-02 20:50:23.000000000 +0100
+=== added file 'Mailman/Generator.py'
+--- mailman-${VERSION}/Mailman/Generator.py	1970-01-01 00:00:00 +0000
++++ mailman-${VERSION}/Mailman/Generator.py	2009-05-21 20:54:34 +0000
 @@ -0,0 +1,55 @@
 +# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 +#                    2005 Lionel Elie Mamane <lionel@mamane.lu>
@@ -53,7 +52,7 @@ Index: mailman-2.1.12/Mailman/Generator.py
 +
 +       Headers will by default _not_ be folded in attachments.
 +    """
-+    def __init__(self, outfp, mangle_from_=False,
++    def __init__(self, outfp, mangle_from_=True,
 +                 maxheaderlen=78, children_maxheaderlen=0):
 +        email.Generator.Generator.__init__(self, outfp, mangle_from_=mangle_from_, maxheaderlen=maxheaderlen)
 +        self.__children_maxheaderlen = children_maxheaderlen
@@ -62,10 +61,23 @@ Index: mailman-2.1.12/Mailman/Generator.py
 +        """Clone this generator with maxheaderlen set for children"""
 +        return self.__class__(fp, self._mangle_from_, self.__children_maxheaderlen, self.__children_maxheaderlen)
 +
-Index: mailman-2.1.12/Mailman/Mailbox.py
-===================================================================
---- mailman-2.1.12.orig/Mailman/Mailbox.py	2009-03-02 20:41:45.000000000 +0100
-+++ mailman-2.1.12/Mailman/Mailbox.py	2009-03-02 20:50:23.000000000 +0100
+
+=== modified file 'Mailman/Handlers/SMTPDirect.py'
+--- mailman-${VERSION}/Mailman/Handlers/SMTPDirect.py	2005-12-30 18:50:08 +0000
++++ mailman-${VERSION}/Mailman/Handlers/SMTPDirect.py	2009-05-21 20:55:38 +0000
+@@ -360,7 +360,7 @@
+     msg['Sender'] = envsender
+     msg['Errors-To'] = envsender
+     # Get the plain, flattened text of the message, sans unixfrom
+-    msgtext = msg.as_string()
++    msgtext = msg.as_string(mangle_from_=False)
+     refused = {}
+     recips = msgdata['recips']
+     msgid = msg['message-id']
+
+=== modified file 'Mailman/Mailbox.py'
+--- mailman-${VERSION}/Mailman/Mailbox.py	2005-08-27 01:40:17 +0000
++++ mailman-${VERSION}/Mailman/Mailbox.py	2009-05-21 23:25:58 +0000
 @@ -22,10 +22,10 @@
  
  import email
@@ -87,10 +99,10 @@ Index: mailman-2.1.12/Mailman/Mailbox.py
          g.flatten(msg, unixfrom=True)
          # Add one more trailing newline for separation with the next message
          # to be appended to the mbox.
-Index: mailman-2.1.12/Mailman/Message.py
-===================================================================
---- mailman-2.1.12.orig/Mailman/Message.py	2009-03-02 20:41:45.000000000 +0100
-+++ mailman-2.1.12/Mailman/Message.py	2009-03-02 20:50:23.000000000 +0100
+
+=== modified file 'Mailman/Message.py'
+--- mailman-${VERSION}/Mailman/Message.py	2006-03-06 18:21:52 +0000
++++ mailman-${VERSION}/Mailman/Message.py	2009-05-21 20:54:55 +0000
 @@ -22,6 +22,8 @@
  """
  
@@ -108,20 +120,21 @@ Index: mailman-2.1.12/Mailman/Message.py
  
  COMMASPACE = ', '
  
-@@ -207,6 +210,16 @@
+@@ -199,6 +202,16 @@
          except (UnicodeError, LookupError, ValueError):
              return failobj
  
-+    def as_string(self, unixfrom=False):
++    def as_string(self, unixfrom=False, mangle_from_=True):
 +        """Return entire formatted message as a string using Mailman.Generator.
 +
 +        Operates like email.Message.Message.as_string, only
 +	using Mailman's Generator class. Only the top headers will get folded.
 +        """
 +        fp = StringIO()
-+        g = Generator(fp)
++        g = Generator(fp, mangle_from_=mangle_from_)
 +        g.flatten(self, unixfrom=unixfrom)
 +        return fp.getvalue()
  
  
  class UserNotification(Message):
+
