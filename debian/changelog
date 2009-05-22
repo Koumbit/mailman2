@@ -1,4 +1,4 @@
-mailman (1:2.1.12-2) UNRELEASED; urgency=low
+mailman (1:2.1.12-2) unstable; urgency=low
 
   [ Lionel Elie Mamane ]
   * README.Exim4.Debian: add debug_print statements
@@ -14,7 +14,7 @@ mailman (1:2.1.12-2) UNRELEASED; urgency=low
     instructions to avoid backscatter mail (Closes: #520040).
   * Remove obsolete unicodify_archives for upgrading sarge->etch.
 
- -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 22 May 2009 09:25:12 +0200
+ -- Lionel Elie Mamane <lmamane@debian.org>  Fri, 22 May 2009 11:09:49 +0200
 
 mailman (1:2.1.12-1) unstable; urgency=low
 
