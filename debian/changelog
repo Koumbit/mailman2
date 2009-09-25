@@ -4,8 +4,11 @@ mailman (1:2.1.12-3) UNRELEASED; urgency=low
     permissions are already set correctly in the deb. Thanks Paul
     Slootman (closes: #544046).
   * Add Slovak debconf translation, thanks Ivan Masár (closes: #531576).
+  * Update 30_pipermail_threads patch to use sequence ID instead of
+    message ID, avoids thread breakage in archives. Thanks
+    Mark Sapiro.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 25 Sep 2009 12:30:10 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 25 Sep 2009 12:36:37 +0200
 
 mailman (1:2.1.12-2) unstable; urgency=low
 
