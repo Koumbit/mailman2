@@ -167,7 +167,8 @@ binary-arch:	build
 	chmod -x debian/mailman/usr/lib/$(package)/scripts/paths.py \
 		debian/mailman/usr/lib/$(package)/Mailman/Cgi/*
 
-	chmod o-x debian/mailman/var/lib/$(package)/archives/private
+	chmod o-rx debian/mailman/var/lib/$(package)/archives/private
+	chgrp www-data debian/mailman/var/lib/$(package)/archives/private
 	chmod 0755 debian/mailman/usr/lib/$(package)/cron/*
 	chmod 0644 debian/mailman/usr/lib/$(package)/cron/{crontab.in,paths.py}
 

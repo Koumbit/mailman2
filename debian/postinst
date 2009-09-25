@@ -174,11 +174,6 @@ case "$1" in
 	    install -d -o root -g list -m 2775 /var/lock/mailman
 	fi
 	sg list -c "umask 002; /usr/lib/mailman/bin/update;"
-
-	# fix permissions
-	find /var/lib/mailman/ -type d -exec chmod g+s \{\} \;
-	chmod o-rx /var/lib/mailman/archives/private
-	chown www-data /var/lib/mailman/archives/private
     ;;
 
     *)
