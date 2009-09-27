@@ -4,10 +4,9 @@ Author: Tollef Fog Heen <tfheen@debian.org> and Mark Sapiro <mark@msapiro.net>
 Pipermail non-appropriate output.  Change that.
 Will be integrated into next upstream release:
 http://lists.alioth.debian.org/pipermail/pkg-mailman-hackers/2009-July/002754.html
-Index: Mailman/Archiver/pipermail.py
 ===================================================================
---- Mailman/Archiver/pipermail.py.orig	2006-08-15 15:12:18.000000000 +0800
-+++ Mailman/Archiver/pipermail.py	2006-08-15 15:14:34.000000000 +0800
+--- mailman-2.1.12.orig/Mailman/Archiver/pipermail.py.orig	2006-08-15 15:12:18.000000000 +0800
++++ mailman-2.1.12.orig/Mailman/Archiver/pipermail.py	2006-08-15 15:14:34.000000000 +0800
 @@ -122,9 +122,10 @@
          parentID = article.parentID
          if parentID is not None and self.articleIndex.has_key(parentID):
