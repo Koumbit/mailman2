@@ -7,8 +7,9 @@ mailman (1:2.1.12-3) UNRELEASED; urgency=low
   * Update 30_pipermail_threads patch to use sequence ID instead of
     message ID, avoids thread breakage in archives. Thanks
     Mark Sapiro.
+  * Checked for policy 3.8.3, no changes necessary.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Fri, 25 Sep 2009 12:36:37 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 27 Sep 2009 17:26:01 +0200
 
 mailman (1:2.1.12-2) unstable; urgency=low
 
