@@ -1,4 +1,4 @@
-mailman (1:2.1.12-3) UNRELEASED; urgency=low
+mailman (1:2.1.12-3) unstable; urgency=low
 
   * Remove potentially long running 'find' command in postinst, as
     permissions are already set correctly in the deb. Thanks Paul
@@ -9,7 +9,7 @@ mailman (1:2.1.12-3) UNRELEASED; urgency=low
     Mark Sapiro.
   * Checked for policy 3.8.3, no changes necessary.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 27 Sep 2009 17:26:01 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 27 Sep 2009 17:36:01 +0200
 
 mailman (1:2.1.12-2) unstable; urgency=low
 
