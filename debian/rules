@@ -73,7 +73,7 @@ binary-arch:	build
 	rmdir debian/$(package)/var/lib/mailman/pythonlib
 	rm -r debian/$(package)/var/lib/mailman/tests
 	# cruft: msgfmt.py is only used at build time
-	rm  debian/$(package)/usr/lib/mailman/bin/msgfmt.py
+	rm  debian/$(package)/var/lib/mailman/bin/msgfmt.py
 
 # move the nonchanging directories to /usr/lib/mailman, except for
 # cgi-bin, which goes to /usr/lib/cgi-bin/mailman
