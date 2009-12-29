@@ -2,31 +2,11 @@ Patch: 16_update_debian.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 update is called from the Debian maintainer scripts and
 prints non-appropriate output.  Change that.
-Index: mailman-2.1.12/bin/update
+Index: mailman-2.1.13/bin/update
 ===================================================================
---- mailman-2.1.12.orig/bin/update	2009-03-02 20:41:54.000000000 +0100
-+++ mailman-2.1.12/bin/update	2009-03-02 20:50:02.000000000 +0100
-@@ -299,8 +299,7 @@
-         else:
-             # directory
-             print _("""\
--    looks like you have a really recent CVS installation...
--    you're either one brave soul, or you already ran me""")
-+    Your installation seems up-to-date, great!""")
- 
- 
-     #
-@@ -322,8 +321,7 @@
-         %(newname)s""")
-         else: # directory
-             print _("""\
--    looks like you have a really recent CVS installation...
--    you're either one brave soul, or you already ran me""")
-+    Your installation seems up-to-date, great!""")
- 
-     #
-     # move the html archives there
-@@ -337,37 +335,6 @@
+--- mailman-2.1.13.orig/bin/update	2009-12-22 19:00:43.000000000 +0100
++++ mailman-2.1.13/bin/update	2009-12-29 19:57:40.000000000 +0100
+@@ -334,37 +334,6 @@
      # BAW: Is this still necessary?!
      mlist.Save()
      #
@@ -64,7 +44,7 @@ Index: mailman-2.1.12/bin/update
      #
      # Move all the templates to the en language subdirectory as required for
      # Mailman 2.1
-@@ -666,12 +633,12 @@
+@@ -669,12 +638,12 @@
                  'Mailman/HyperDatabase.py', 'Mailman/pipermail.py',
                  'Mailman/smtplib.py', 'Mailman/Cookie.py',
                  'bin/update_to_10b6', 'scripts/mailcmd',

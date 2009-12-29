@@ -1,8 +1,12 @@
-mailman (1:2.1.12-4) UNRELEASED; urgency=low
+mailman (1:2.1.13-1) UNRELEASED; urgency=low
 
+  * New upstream release. Patches incorporated:
+    - 16_update_debian (partially)
+    - 30_pipermail_threads
+    - 65_handle_templates_directories
   * Remove msgfmt.py, only used at build-time (closes: #555416).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 09 Nov 2009 22:08:22 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 29 Dec 2009 20:20:41 +0100
 
 mailman (1:2.1.12-3) unstable; urgency=low
 
