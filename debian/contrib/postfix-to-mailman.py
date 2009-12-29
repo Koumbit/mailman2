@@ -129,6 +129,7 @@ def main():
                 '-confirm',
                 '-join',
                 '-leave',
+                '-loop',
                 '-subscribe',
                 '-unsubscribe',
                 ):

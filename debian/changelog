@@ -5,8 +5,9 @@ mailman (1:2.1.13-1) UNRELEASED; urgency=low
     - 30_pipermail_threads
     - 65_handle_templates_directories
   * Remove msgfmt.py, only used at build-time (closes: #555416).
+  * Recognise -loop suffix in postfix-to-mailman.py (closes: #562700).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Tue, 29 Dec 2009 20:20:41 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 29 Dec 2009 20:32:14 +0100
 
 mailman (1:2.1.12-3) unstable; urgency=low
 
