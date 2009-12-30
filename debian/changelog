@@ -6,7 +6,6 @@ mailman (1:2.1.13-1) UNRELEASED; urgency=low
     - 65_handle_templates_directories
     - 77_header_folding_in_attachments
   * Remove msgfmt.py, only used at build-time (closes: #555416).
-  * Recognise -loop suffix in postfix-to-mailman.py (closes: #562700).
   * Remove adduser calls for 'list' user. Base-passwd guarantees it
     to be available, and trying to add it if it were not present may
     lead to inconsistencies regarding expectations for that user.
