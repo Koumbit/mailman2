@@ -4,16 +4,6 @@
 
 . /usr/share/debconf/confmodule
 
-if [ "$1" = "install" ]; then
-	if ! id -g list > /dev/null 2>&1 ; then
-		addgroup --system list
-	fi
-	if ! id -u list > /dev/null 2>&1 ; then
-		adduser --system --home /var/list --ingroup list list
-		chsh -s /bin/sh list
-	fi
-fi
-
 #DEBHELPER#
 
 abort_install()
