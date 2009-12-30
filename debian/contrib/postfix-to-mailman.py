@@ -52,7 +52,7 @@
 # /etc/postfix/master.cf
 #    mailman unix  -       n       n       -       -       pipe
 #      flags=FR user=list 
-#      argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${mailbox}
+#      argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${user}
 #
 # /etc/postfix/transport:
 #   lists.example.com   mailman:

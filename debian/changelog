@@ -9,8 +9,11 @@ mailman (1:2.1.13-1) UNRELEASED; urgency=low
   * Remove adduser calls for 'list' user. Base-passwd guarantees it
     to be available, and trying to add it if it were not present may
     lead to inconsistencies regarding expectations for that user.
+  * Document second parameter of postfix-to-mailman.py to be
+    ${mailbox}, effectively reverting inappropriate fix for #305762
+    (closes: #549224).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Wed, 30 Dec 2009 16:57:26 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 30 Dec 2009 22:04:23 +0100
 
 mailman (1:2.1.12-3) unstable; urgency=low
 
