@@ -1,4 +1,4 @@
-mailman (1:2.1.13-1) UNRELEASED; urgency=low
+mailman (1:2.1.13-1) unstable; urgency=low
 
   * New upstream release. Patches incorporated:
     - 16_update_debian (partially)
@@ -13,7 +13,7 @@ mailman (1:2.1.13-1) UNRELEASED; urgency=low
     ${mailbox}, effectively reverting inappropriate fix for #305762
     (closes: #549224).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Wed, 30 Dec 2009 22:04:23 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 31 Dec 2009 15:50:29 +0100
 
 mailman (1:2.1.12-3) unstable; urgency=low
 
