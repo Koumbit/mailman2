@@ -12,8 +12,8 @@ get_used_languages ()
   # time, but then no languages are used either.
   if python </dev/null 2>/dev/null ; then
     # list_lists may fail if mm_cfg is not yet installed
-    ( for ml in $(/usr/sbin/list_lists -b 2>/dev/null); do
-        ( /usr/sbin/config_list -o - ${ml} 2>/dev/null
+    ( for ml in $(list_lists -b 2>/dev/null); do
+        ( config_list -o - ${ml} 2>/dev/null
           cat <<EOF
 try: print '\n'.join(available_languages)
 except: pass
@@ -44,7 +44,7 @@ used_languages="${RET}"
 db_fget mailman/used_languages scanned || true
 scanned="${RET}"
 
-if  [ ! -x "/usr/sbin/list_lists" ] ; then
+if ! which list_lists >/dev/null 2>&1; then
   # For 1st time installers there is no used language.
   db_set  mailman/site_languages "en"
   db_set  mailman/used_languages ""
