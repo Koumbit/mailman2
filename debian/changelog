@@ -1,3 +1,12 @@
+mailman (1:2.1.13-2) UNRELEASED; urgency=low
+
+  * postfix-to-mailman.py: check for list existence before stripping off
+    administrative suffixes, making it also work for mailing list names
+    ending in e.g. -admin. Thanks Axel Beckert for the patch!
+    (Closes: #570548)
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 20 Feb 2010 14:58:26 +0100
+
 mailman (1:2.1.13-1) unstable; urgency=low
 
   * New upstream release. Patches incorporated:

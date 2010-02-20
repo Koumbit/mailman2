@@ -121,6 +121,14 @@ def main():
     # Assume normal posting to a mailing list
     mlist, func = local, 'post'
 
+    # Let Mailman decide if a list exists.
+    from Mailman.Utils import list_exists
+
+    if list_exists(mlist):
+        mm_pgm = os.path.join(paths.prefix, 'mail', 'mailman')
+        os.execv(mm_pgm, (mm_pgm, func, mlist))
+        # NOT REACHED
+
     # Check for control extension on local part
     for ext in ('-admin',
                 '-owner',
@@ -137,8 +145,6 @@ def main():
             func  = ext[1:]
             break
 
-    # Let Mailman decide if a list exists.
-    from Mailman.Utils import list_exists
     if list_exists(mlist):
         mm_pgm = os.path.join(paths.prefix, 'mail', 'mailman')
         os.execv(mm_pgm, (mm_pgm, func, mlist))
