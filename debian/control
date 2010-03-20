@@ -6,7 +6,7 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
  Thijs Kinkhorst <thijs@debian.org>,
  Hector Garcia <hector@debian.org>
 Build-Depends: debhelper (>= 7), autoconf, python-dev, python-support, quilt
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Homepage: http://www.list.org/
 Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman/trunk
