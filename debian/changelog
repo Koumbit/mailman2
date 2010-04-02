@@ -1,3 +1,9 @@
+mailman (1:2.1.13-3) UNRELEASED; urgency=low
+
+  * Drop unneeded Indexes option from shipped apache.conf.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Fri, 02 Apr 2010 21:26:48 +0200
+
 mailman (1:2.1.13-2) unstable; urgency=low
 
   * postfix-to-mailman.py: check for list existence before stripping off
