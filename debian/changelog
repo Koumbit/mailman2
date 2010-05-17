@@ -1,3 +1,13 @@
+mailman (1:2.1.11-11+lenny1) stable-proposed-updates; urgency=low
+
+  * Disable 32_MIME_fixup.patch. This has meanwhile been addressed
+    differently by upstream, and now has the effect of adding a
+    second Mime-Version header to some types of message. This in
+    turn is a trigger to some SPAM filters to ban the message.
+    (Closes: #581988, #310180).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 17 May 2010 22:51:56 +0200
+
 mailman (1:2.1.11-11) unstable; urgency=high
 
   [ Debconf Translations ]

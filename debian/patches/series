@@ -9,7 +9,6 @@
 20_qmail_to_mailman.debian.patch
 21_newlist_help.patch
 30_pipermail_threads.patch
-32_MIME_fixup.patch
 51_nocompile.pyc.patch
 52_check_perms_lstat.patch
 53_disable_addons.patch
