@@ -1,0 +1,75 @@
+Patch: 25_site_logo.patch
+Author: Paul Wise <pabs@debian.org>
+Allow each mailman site to have a custom text, link and logo. Also fix existing logo linkage.
+http://bugs.debian.org/267243
+http://sf.net/support/tracker.php?aid=1615748
+diff -urNad mailman-2.1.5/Mailman/Defaults.py.in /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/Defaults.py.in
+--- mailman-2.1.5/Mailman/Defaults.py.in	2005-01-05 15:11:16.000000000 +0800
++++ /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/Defaults.py.in	2005-01-05 15:13:10.000000000 +0800
+@@ -65,6 +65,12 @@
+ #MAILMAN_URL = 'http://www.list.org/'
+ #MAILMAN_URL = 'http://mailman.sf.net/'
+ 
++# The site logo/text presence, site text, site url and site logo
++SITE_LINK = No
++SITE_TEXT = ''
++SITE_URL = None
++SITE_LOGO = ''
++
+ # Mailman needs to know about (at least) two fully-qualified domain names
+ # (fqdn); 1) the hostname used in your urls, and 2) the hostname used in email
+ # addresses for your domain.  For example, if people visit your Mailman system
+diff -urNad mailman-2.1.5/Mailman/htmlformat.py /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/htmlformat.py
+--- mailman-2.1.5/Mailman/htmlformat.py	2005-01-05 15:11:16.000000000 +0800
++++ /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/htmlformat.py	2005-01-05 15:18:57.000000000 +0800
+@@ -618,24 +618,33 @@
+ 
+ def MailmanLogo():
+     t = Table(border=0, width='100%')
++
++    version = mm_cfg.VERSION
++    mmlink = _("Delivered by Mailman")
++    pylink = _("Python Powered")
++    gnulink = _("GNU's Not Unix")
++    if mm_cfg.SITE_LINK:
++        sitelink = mm_cfg.SITE_TEXT
++
+     if mm_cfg.IMAGE_LOGOS:
+-        def logo(file):
+-            return mm_cfg.IMAGE_LOGOS + file
+-        mmlink = '<img src="%s" alt="Delivered by Mailman" border=0>' \
+-                 '<br>version %s' % (logo(DELIVERED_BY), mm_cfg.VERSION)
+-        pylink = '<img src="%s" alt="Python Powered" border=0>' % \
+-                 logo(PYTHON_POWERED)
+-        gnulink = '<img src="%s" alt="GNU\'s Not Unix" border=0>' % \
+-                  logo(GNU_HEAD)
+-        t.AddRow([mmlink, pylink, gnulink])
+-    else:
+-        # use only textual links
+-        version = mm_cfg.VERSION
+-        mmlink = Link(MAILMAN_URL,
+-                      _('Delivered by Mailman<br>version %(version)s'))
+-        pylink = Link(PYTHON_URL, _('Python Powered'))
+-        gnulink = Link(GNU_URL, _("Gnu's Not Unix"))
+-        t.AddRow([mmlink, pylink, gnulink])
++        def logo(file, alt, base=mm_cfg.IMAGE_LOGOS):
++            return '<img src="%s" alt="%s" border="0" />' % \
++              (base + file, alt)
++        mmlink = logo(DELIVERED_BY, mmlink)
++        pylink = logo(PYTHON_POWERED, pylink)
++        gnulink = logo(GNU_HEAD, gnulink)
++        if mm_cfg.SITE_LINK:
++            sitelink = logo(mm_cfg.SITE_LOGO, sitelink, "")
++
++    mmlink = Link(MAILMAN_URL, mmlink + _('<br>version %(version)s'))
++    pylink = Link(PYTHON_URL, pylink)
++    gnulink = Link(GNU_URL, gnulink)
++    links = [mmlink, pylink, gnulink]
++    if mm_cfg.SITE_LINK:
++        if mm_cfg.SITE_URL:
++            sitelink = Link(mm_cfg.SITE_URL, sitelink)
++        links.append(sitelink)
++    t.AddRow(links)
+     return t
+ 
+ 
