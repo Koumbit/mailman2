@@ -6,8 +6,9 @@ mailman (1:2.1.13-3) UNRELEASED; urgency=low
   * Do not compress PDF's under /u/s/d/mailman (closes: #582259).
   * Back up ./configure before running autoconf, so it can be restored
     in clean as not to generate irrelevant diff.gz content.
+  * Switch to dpkg-source 3.0 (quilt) format.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 24 May 2010 17:15:37 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 24 May 2010 17:21:04 +0200
 
 mailman (1:2.1.13-2) unstable; urgency=low
 
