@@ -29,6 +29,7 @@ msgstr ""
 "PO-Revision-Date: 2008-12-28 18:43+0100\n"
 "Last-Translator: Javier Fernandez-Sanguino <jfs@debian.org>\n"
 "Language-Team: Debian L10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -276,8 +277,8 @@ msgid ""
 "If you need a different set of languages at a later time, just run dpkg-"
 "reconfigure mailman."
 msgstr ""
-"Sólo tiene que ejecutar «dpkg-reconfigure mailman» si necesita un conjunto de "
-"lenguajes distinto más adelante."
+"Sólo tiene que ejecutar «dpkg-reconfigure mailman» si necesita un conjunto "
+"de lenguajes distinto más adelante."
 
 #. Type: multiselect
 #. Description
@@ -341,8 +342,8 @@ msgid ""
 "init.d/mailman start."
 msgstr ""
 "Para crear la lista, ejecute «newlist mailman» y siga las instrucciones que "
-"aparecerán en pantalla. Posteriormente deberá reiniciar mailman, ejecutando «/"
-"etc/init.d/mailman start»."
+"aparecerán en pantalla. Posteriormente deberá reiniciar mailman, ejecutando "
+"«/etc/init.d/mailman start»."
 
 #. Type: select
 #. Description

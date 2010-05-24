@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: 2009-06-02 16:13+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -227,8 +228,7 @@ msgstr "zh_TW (tradičná čínština)"
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002
-#: ../templates:5001
+#: ../templates:1002 ../templates:5001
 msgid "en (English)[ default language ]"
 msgstr "en (angličtina)[ predvolený jazyk ]"
 
@@ -241,20 +241,38 @@ msgstr "Podporované jazyky:"
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-msgid "For each supported language, Mailman stores default language specific texts in /etc/mailman/LANG/ giving them conffile like treatment with the help of ucf.  This means approximately 150kB for each supported language on the root file system."
-msgstr "Pre každý podporovaný jazyk ukladá Mailman texty špecifické pre predvolený jazyk v /etc/mailman/LANG/ a s pomocou ucf sa s nimi zaobchádza ako s conf súbormi. To znamená približne 150 kB pre každý podporovaný jazyk na koreňovom súborovom systéme."
+msgid ""
+"For each supported language, Mailman stores default language specific texts "
+"in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
+"ucf.  This means approximately 150kB for each supported language on the root "
+"file system."
+msgstr ""
+"Pre každý podporovaný jazyk ukladá Mailman texty špecifické pre predvolený "
+"jazyk v /etc/mailman/LANG/ a s pomocou ucf sa s nimi zaobchádza ako s conf "
+"súbormi. To znamená približne 150 kB pre každý podporovaný jazyk na "
+"koreňovom súborovom systéme."
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-msgid "If you need a different set of languages at a later time, just run dpkg-reconfigure mailman."
-msgstr "Ak budete neskôr potrebovať odlišnú sadu jazykov, jednoducho spustite „dpkg-reconfigure mailman“."
+msgid ""
+"If you need a different set of languages at a later time, just run dpkg-"
+"reconfigure mailman."
+msgstr ""
+"Ak budete neskôr potrebovať odlišnú sadu jazykov, jednoducho spustite „dpkg-"
+"reconfigure mailman“."
 
 #. Type: multiselect
 #. Description
 #: ../templates:1003
-msgid "NOTE: Languages enabled on existing mailing lists are forcibly re-enabled when deselected and mailman needs at least one language for displaying its messages."
-msgstr "POZN.: Jazyky zapnuté na existujúcich konferenciách sa násilne znova zapnú jeď je ich výber zrušený a mailman potrebuje aspoň jeden jazyk na zobrazenie svojich správ."
+msgid ""
+"NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
+"when deselected and mailman needs at least one language for displaying its "
+"messages."
+msgstr ""
+"POZN.: Jazyky zapnuté na existujúcich konferenciách sa násilne znova zapnú "
+"jeď je ich výber zrušený a mailman potrebuje aspoň jeden jazyk na zobrazenie "
+"svojich správ."
 
 #. Type: boolean
 #. Description
@@ -265,8 +283,12 @@ msgstr "Brána news (nntp) na poštu?"
 #. Type: boolean
 #. Description
 #: ../templates:3001
-msgid "Mailman allows to gate news to mail, that is, send all the messages which appear in a Usenet newsgroup to a mailing list."
-msgstr "Mailman umožňuje prekladať novinky na poštu, t.j. posielať všetky správy, ktoré sa objavia v Usenetových skupinách do konferencie."
+msgid ""
+"Mailman allows to gate news to mail, that is, send all the messages which "
+"appear in a Usenet newsgroup to a mailing list."
+msgstr ""
+"Mailman umožňuje prekladať novinky na poštu, t.j. posielať všetky správy, "
+"ktoré sa objavia v Usenetových skupinách do konferencie."
 
 #. Type: boolean
 #. Description
@@ -283,14 +305,26 @@ msgstr "Chýba konferencia lokality"
 #. Type: note
 #. Description
 #: ../templates:4001
-msgid "Mailman needs a so-called \"site list\", which is the list from which password reminders and such are sent out from.  This list needs to be created before mailman will start."
-msgstr "Mailman potrebuje tzv. „konferenciu lokality“, čo je zoznam z ktorého sa posielajú pripomenutiahesiel a pod. Túto konferenciu je potrebné vytvoriť pred spustením Mailmanu."
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"Mailman potrebuje tzv. „konferenciu lokality“, čo je zoznam z ktorého sa "
+"posielajú pripomenutiahesiel a pod. Túto konferenciu je potrebné vytvoriť "
+"pred spustením Mailmanu."
 
 #. Type: note
 #. Description
 #: ../templates:4001
-msgid "To create the list, run \"newlist mailman\" and follow the instructions on-screen.  Note that you also need to start mailman after that, using /etc/init.d/mailman start."
-msgstr "Ak chcete túto konferenciu vytvoriť, spustite „newlist mailman“ a nsaledujte pokyny na obrazovke. Pamätajte, že následne musíte spustiť mailman použitím „/etc/init.d/mailman start“."
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"Ak chcete túto konferenciu vytvoriť, spustite „newlist mailman“ a nsaledujte "
+"pokyny na obrazovke. Pamätajte, že následne musíte spustiť mailman použitím "
+"„/etc/init.d/mailman start“."
 
 #. Type: select
 #. Description
@@ -301,8 +335,12 @@ msgstr "Predvolený jazyk pre Mailman:"
 #. Type: select
 #. Description
 #: ../templates:5002
-msgid "The web page will be shown in this language, and in general, Mailman will use this language to communicate with the user."
-msgstr "Webstránka sa zobrazí v tomto jazyku a vo všeobecnosti bude Mailman používať tento jazyk na komunikáciu s používateľom."
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+"Webstránka sa zobrazí v tomto jazyku a vo všeobecnosti bude Mailman používať "
+"tento jazyk na komunikáciu s používateľom."
 
 #. Type: select
 #. Choices
@@ -326,7 +364,8 @@ msgstr "Sú prítomné staré súbory frontu"
 #. Description
 #: ../templates:6002
 msgid ""
-"The directory /var/lib/mailman/qfiles contains files. It needs to be empty for the upgrade to work properly. You can try to handle them by:\n"
+"The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
+"for the upgrade to work properly. You can try to handle them by:\n"
 " - Stop new messages from coming in (at the MTA level).\n"
 " - Start a mailman queue runner: /etc/init.d/mailman start\n"
 " - Let it run until all messages are handled.\n"
@@ -335,9 +374,11 @@ msgid ""
 " - Stop it: /etc/init.d/mailman stop\n"
 " - Retry the upgrade.\n"
 " - Let messages come in again.\n"
-"You can also decide to simply remove the files, which will make Mailman forget about (and lose) the corresponding emails."
+"You can also decide to simply remove the files, which will make Mailman "
+"forget about (and lose) the corresponding emails."
 msgstr ""
-"Adresár /var/lib/mailman/qfiles obsahuje súbory. Aby aktualizácia fungovala, musí byť prázdny. Môžete skúsiť sa o ne postarať nasledovne:\n"
+"Adresár /var/lib/mailman/qfiles obsahuje súbory. Aby aktualizácia fungovala, "
+"musí byť prázdny. Môžete skúsiť sa o ne postarať nasledovne:\n"
 " - Zastaviť príjem nových správ (na úrovni MTA).\n"
 " - Spustiť spracovanie frontu mailman: /etc/init.d/mailman start\n"
 " - nechať ho bežať kým nebudú spracované všetky správy.\n"
@@ -346,17 +387,32 @@ msgstr ""
 " - Zastavte ho: /etc/init.d/mailman stop\n"
 " - Znova sa pokúste o aktualizáciu.\n"
 " - Opäť povoľte príchod nových správ.\n"
-"Tiež sa môžete rozhodnúť, že súbory jednoducho odstránite, a teda sa Mailman nikdy nedozvie (a stratia sa) o zodpovedajúcich emailoch."
+"Tiež sa môžete rozhodnúť, že súbory jednoducho odstránite, a teda sa Mailman "
+"nikdy nedozvie (a stratia sa) o zodpovedajúcich emailoch."
 
 #. Type: select
 #. Description
 #: ../templates:6002
-msgid "If these files correspond to shunted messages, you have to either delete them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages are messages on which Mailman has already abandoned any further processing because of an error condition, but that are kept for admin review. You can use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
-msgstr "Ak tieto súbory zodpovedajú odsunutým správam, musíte ich buď zmazať alebo zrušiť odsunutie (pomocou /var/lib/mailman/bin/unshunt). Odsunuté správy sú také, ktorých spracovanie Mailman už vzdal z dôvodu chyby, ale sú ponechané na kontrolu pre správcu. Na preskúmanie obsahu front môžete použiť /var/lib/mailman/bin/show_qfiles."
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
+"are messages on which Mailman has already abandoned any further processing "
+"because of an error condition, but that are kept for admin review. You can "
+"use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
+msgstr ""
+"Ak tieto súbory zodpovedajú odsunutým správam, musíte ich buď zmazať alebo "
+"zrušiť odsunutie (pomocou /var/lib/mailman/bin/unshunt). Odsunuté správy sú "
+"také, ktorých spracovanie Mailman už vzdal z dôvodu chyby, ale sú ponechané "
+"na kontrolu pre správcu. Na preskúmanie obsahu front môžete použiť /var/lib/"
+"mailman/bin/show_qfiles."
 
 #. Type: select
 #. Description
 #: ../templates:6002
-msgid "You have the option to continue installation regardless of this problem, at the risk of losing the messages in question or breaking your Mailman setup."
-msgstr "Máte možnosť pokračovať v inštalácii bez ohľadu na tento problém, pričom však riskujete stratu dotyčných správ alebo poškodenie svojej konfigurácie Mailmanu."
-
+msgid ""
+"You have the option to continue installation regardless of this problem, at "
+"the risk of losing the messages in question or breaking your Mailman setup."
+msgstr ""
+"Máte možnosť pokračovať v inštalácii bez ohľadu na tento problém, pričom "
+"však riskujete stratu dotyčných správ alebo poškodenie svojej konfigurácie "
+"Mailmanu."
