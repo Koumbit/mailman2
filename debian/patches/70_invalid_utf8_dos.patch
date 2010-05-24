@@ -1,11 +1,11 @@
 Patch: 70_invalid_utf8_dos.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Avoid DOS if attachement filename is invalid Unicode string (Closes: #327732, CVE-2005-3573)
-Index: mailman-2.1.12/Mailman/Handlers/Scrubber.py
+Index: b/Mailman/Handlers/Scrubber.py
 ===================================================================
---- mailman-2.1.12.orig/Mailman/Handlers/Scrubber.py	2009-03-02 20:49:54.000000000 +0100
-+++ mailman-2.1.12/Mailman/Handlers/Scrubber.py	2009-03-02 20:50:19.000000000 +0100
-@@ -320,7 +320,10 @@
+--- a/Mailman/Handlers/Scrubber.py	2010-05-24 17:50:44.000000000 +0200
++++ b/Mailman/Handlers/Scrubber.py	2010-05-24 17:51:12.000000000 +0200
+@@ -300,7 +300,10 @@
                  os.umask(omask)
              desc = part.get('content-description', _('not available'))
              desc = Utils.oneline(desc, lcset)
@@ -17,7 +17,7 @@ Index: mailman-2.1.12/Mailman/Handlers/Scrubber.py
              filename = Utils.oneline(filename, lcset)
              replace_payload_by_text(part, _("""\
  A non-text attachment was scrubbed...
-@@ -444,7 +447,10 @@
+@@ -422,7 +425,10 @@
      ctype = msg.get_content_type()
      # i18n file name is encoded
      lcset = Utils.GetCharSet(mlist.preferred_language)

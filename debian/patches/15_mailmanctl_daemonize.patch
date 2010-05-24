@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Daemonize mailmanctl properly (Closes: #175175)
 Index: b/bin/mailmanctl
 ===================================================================
---- a/bin/mailmanctl	2010-05-24 17:28:43.000000000 +0200
-+++ b/bin/mailmanctl	2010-05-24 17:28:50.000000000 +0200
+--- a/bin/mailmanctl	2010-05-24 17:50:50.000000000 +0200
++++ b/bin/mailmanctl	2010-05-24 17:51:01.000000000 +0200
 @@ -417,6 +417,13 @@
          # won't be opening any terminal devices, don't do the ultra-paranoid
          # suggestion of doing a second fork after the setsid() call.

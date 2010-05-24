@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Makes sure we're called with the right UID and GID (Closes: #36010, #89564, #89848, 89818)
 Index: b/src/cgi-wrapper.c
 ===================================================================
---- a/src/cgi-wrapper.c	2010-05-24 17:28:43.000000000 +0200
-+++ b/src/cgi-wrapper.c	2010-05-24 17:28:49.000000000 +0200
+--- a/src/cgi-wrapper.c	2010-05-24 17:50:51.000000000 +0200
++++ b/src/cgi-wrapper.c	2010-05-24 17:51:00.000000000 +0200
 @@ -42,7 +42,8 @@
          char* fake_argv[3];
  
@@ -17,8 +17,8 @@ Index: b/src/cgi-wrapper.c
           * don't contain anything useful.  `script' will always be the driver
 Index: b/src/mail-wrapper.c
 ===================================================================
---- a/src/mail-wrapper.c	2010-05-24 17:28:43.000000000 +0200
-+++ b/src/mail-wrapper.c	2010-05-24 17:28:49.000000000 +0200
+--- a/src/mail-wrapper.c	2010-05-24 17:50:51.000000000 +0200
++++ b/src/mail-wrapper.c	2010-05-24 17:51:00.000000000 +0200
 @@ -74,7 +74,8 @@
                  fatal(logident, MAIL_ILLEGAL_COMMAND,
                        "Illegal command: %s", argv[1]);

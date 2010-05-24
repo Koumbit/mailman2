@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Fix some paths in the qmail_to_mailman wrapper (Closes: #217573)
 Index: b/contrib/qmail-to-mailman.py
 ===================================================================
---- a/contrib/qmail-to-mailman.py	2010-05-24 17:28:43.000000000 +0200
-+++ b/contrib/qmail-to-mailman.py	2010-05-24 17:28:51.000000000 +0200
+--- a/contrib/qmail-to-mailman.py	2010-05-24 17:50:50.000000000 +0200
++++ b/contrib/qmail-to-mailman.py	2010-05-24 17:51:03.000000000 +0200
 @@ -28,12 +28,12 @@
  #
  # INSTALLATION:

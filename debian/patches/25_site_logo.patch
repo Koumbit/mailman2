@@ -5,8 +5,8 @@ http://bugs.debian.org/267243
 http://sf.net/support/tracker.php?aid=1615748
 Index: b/Mailman/Defaults.py.in
 ===================================================================
---- a/Mailman/Defaults.py.in	2010-05-24 17:28:46.000000000 +0200
-+++ b/Mailman/Defaults.py.in	2010-05-24 17:28:53.000000000 +0200
+--- a/Mailman/Defaults.py.in	2010-05-24 17:50:58.000000000 +0200
++++ b/Mailman/Defaults.py.in	2010-05-24 17:51:04.000000000 +0200
 @@ -64,6 +64,12 @@
  #MAILMAN_URL = 'http://www.list.org/'
  #MAILMAN_URL = 'http://mailman.sf.net/'
@@ -22,8 +22,8 @@ Index: b/Mailman/Defaults.py.in
  # addresses for your domain.  For example, if people visit your Mailman system
 Index: b/Mailman/htmlformat.py
 ===================================================================
---- a/Mailman/htmlformat.py	2010-05-24 17:28:43.000000000 +0200
-+++ b/Mailman/htmlformat.py	2010-05-24 17:28:53.000000000 +0200
+--- a/Mailman/htmlformat.py	2010-05-24 17:50:49.000000000 +0200
++++ b/Mailman/htmlformat.py	2010-05-24 17:51:04.000000000 +0200
 @@ -622,24 +622,33 @@
  
  def MailmanLogo():

@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Don't do the compileall dance.  It'll just waste CPU cycles.
 Index: b/Makefile.in
 ===================================================================
---- a/Makefile.in	2010-05-24 17:28:43.000000000 +0200
-+++ b/Makefile.in	2010-05-24 17:28:54.000000000 +0200
+--- a/Makefile.in	2010-05-24 17:50:49.000000000 +0200
++++ b/Makefile.in	2010-05-24 17:51:05.000000000 +0200
 @@ -124,7 +124,7 @@
  	do \
  	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \

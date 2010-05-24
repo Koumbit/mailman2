@@ -4,8 +4,8 @@ update is called from the Debian maintainer scripts and
 prints non-appropriate output.  Change that.
 Index: b/bin/update
 ===================================================================
---- a/bin/update	2010-05-24 17:28:43.000000000 +0200
-+++ b/bin/update	2010-05-24 17:28:51.000000000 +0200
+--- a/bin/update	2010-05-24 17:50:50.000000000 +0200
++++ b/bin/update	2010-05-24 17:51:02.000000000 +0200
 @@ -334,37 +334,6 @@
      # BAW: Is this still necessary?!
      mlist.Save()

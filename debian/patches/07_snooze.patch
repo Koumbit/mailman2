@@ -3,8 +3,8 @@ Author: Tollef Fog Heen <tfheen@debian.org>
 Snooze a bit to avoid eating too much CPU if you get an SMTP error (Closes: #175173)
 Index: b/Mailman/Queue/OutgoingRunner.py
 ===================================================================
---- a/Mailman/Queue/OutgoingRunner.py	2010-05-24 17:28:44.000000000 +0200
-+++ b/Mailman/Queue/OutgoingRunner.py	2010-05-24 17:28:48.000000000 +0200
+--- a/Mailman/Queue/OutgoingRunner.py	2010-05-24 17:50:51.000000000 +0200
++++ b/Mailman/Queue/OutgoingRunner.py	2010-05-24 17:50:59.000000000 +0200
 @@ -89,6 +89,7 @@
                  syslog('error', 'Cannot connect to SMTP server %s on port %s',
                         mm_cfg.SMTPHOST, port)

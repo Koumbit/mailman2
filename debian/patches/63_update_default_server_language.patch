@@ -2,11 +2,11 @@ Patch: 63_update_default_server_language.patch
 Author: László 'GCS' Böszörményi <gcs@lsc.hu>
 Get the default language from the config file, and do not use the
 hardcoded English.
-Index: mailman-2.1.12/bin/update
+Index: b/bin/update
 ===================================================================
---- mailman-2.1.12.orig/bin/update	2009-03-02 20:50:02.000000000 +0100
-+++ mailman-2.1.12/bin/update	2009-03-02 20:50:13.000000000 +0100
-@@ -120,7 +120,7 @@
+--- a/bin/update	2010-05-24 17:51:02.000000000 +0200
++++ b/bin/update	2010-05-24 17:51:09.000000000 +0200
+@@ -121,7 +121,7 @@
      #
      # First, get rid of any lists/<list> template or lists/<list>/en template
      # that is identical to the global templates/* default.
@@ -15,7 +15,7 @@ Index: mailman-2.1.12/bin/update
          # BAW: get rid of old templates, e.g. admlogin.txt and
          # handle_opts.html
          try:
-@@ -154,14 +154,14 @@
+@@ -155,14 +155,14 @@
                  os.unlink(os.path.join(mlist.fullpath(), gtemplate + '.prev'))
          # Match against the lists/<list>/en/* templates
          try:
