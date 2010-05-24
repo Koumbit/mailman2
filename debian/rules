@@ -33,6 +33,7 @@ debian/po/templates.pot: debian/templates
 	@debconf-updatepo
 
 Makefile:
+	cp configure configure.orig
 	autoconf
 	./configure --prefix=/var/lib/$(package) --with-username=list \
 		--with-groupname=list \
@@ -49,6 +50,7 @@ clean: unpatch
 	rm -f debian/preinst
 	dh_clean
 	chmod +x debian/{prerm,postinst}
+	[ ! -f configure.orig ] || mv -f configure.orig configure
 
 binary-indep:	build
 	dh_testdir
