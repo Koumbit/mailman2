@@ -120,7 +120,7 @@ binary-arch:	build
 		do dh_link usr/lib/$(package)/bin/$$bin usr/sbin/$$bin; done
 	mv debian/mailman/usr/sbin/arch debian/mailman/usr/sbin/mmarch
 	dh_installman
-	dh_installinit -- start 20 2 3 4 5 . stop 20 1 .
+	dh_installinit -- start 20 2 3 4 5 . stop 20 .
 	dh_installdebconf
 	dh_installexamples templates/* debian/mm_cfg.py \
 		debian/mailman/usr/lib/$(package)/Mailman/Defaults.py
