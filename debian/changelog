@@ -1,9 +1,11 @@
 mailman (1:2.1.13-3) UNRELEASED; urgency=low
 
   * Drop unneeded Indexes option from shipped apache.conf.
+  * Eliminate update_rc.d warning by not passing runlevel 1 at stop.
   * Add 25_site_logo patch by Paul Wise (closes: #267243).
+  * Do not compress PDF's under /u/s/d/mailman (closes: #582259).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 24 May 2010 16:10:15 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 24 May 2010 16:29:08 +0200
 
 mailman (1:2.1.13-2) unstable; urgency=low
 

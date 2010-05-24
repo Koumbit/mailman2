@@ -125,7 +125,7 @@ binary-arch:	build
 	dh_installexamples templates/* debian/mm_cfg.py \
 		debian/mailman/usr/lib/$(package)/Mailman/Defaults.py
 	dh_strip
-	dh_compress
+	dh_compress -Xmailman-admin.pdf -Xmailman-install.pdf -Xmailman-member-es.pdf -Xmailman-member.pdf
 	dh_fixperms
 	chown -R root:root debian/mailman
 	chown -R root:list \
