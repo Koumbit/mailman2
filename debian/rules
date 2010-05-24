@@ -149,6 +149,9 @@ binary-arch:	build
 # apache default config
 	install -m 0644 debian/contrib/apache.conf debian/mailman/etc/mailman
 
+# Debian Powered icon
+	install -m 0644 debian/contrib/debianpowered.png debian/mailman/usr/share/images/mailman/
+
 # Move templates
 	mv `find debian/mailman/etc/mailman -mindepth 1 -maxdepth 1 -type d` debian/mailman/usr/share/mailman
 	cp build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman

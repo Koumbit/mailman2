@@ -12,10 +12,10 @@ Index: b/Mailman/Defaults.py.in
  #MAILMAN_URL = 'http://mailman.sf.net/'
  
 +# The site logo/text presence, site text, site url and site logo
-+SITE_LINK = No
-+SITE_TEXT = ''
-+SITE_URL = None
-+SITE_LOGO = ''
++SITE_LINK = Yes
++SITE_TEXT = 'Debian Powered'
++SITE_URL = 'http://www.debian.org/'
++SITE_LOGO = '/images/mailman/debianpowered.png'
 +
  # Mailman needs to know about (at least) two fully-qualified domain names
  # (fqdn); 1) the hostname used in your urls, and 2) the hostname used in email
