@@ -1,13 +1,12 @@
 Patch: 53_disable_addons.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Disable some modules which are pulled in from other Debian packages.
-Index: mailman-2.1.12/misc/Makefile.in
-===================================================================
---- mailman-2.1.12.orig/misc/Makefile.in	2009-03-02 20:41:52.000000000 +0100
-+++ mailman-2.1.12/misc/Makefile.in	2009-03-02 20:50:09.000000000 +0100
+diff -Nur mailman-2.1.13/misc/Makefile.in mailman-2.1.13/misc/Makefile.in
+--- mailman-2.1.13/misc/Makefile.in	2009-12-22 19:00:43.000000000 +0100
++++ mailman-2.1.13/misc/Makefile.in	2010-05-24 17:37:28.000000000 +0200
 @@ -57,7 +57,10 @@
- JACODECSPKG=	JapaneseCodecs-1.4.11
- KOCODECSPKG=	KoreanCodecs-2.0.5
+ JACODECSPKG=	@JACODECSPKG@
+ KOCODECSPKG=	@KOCODECSPKG@
  
 -PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
 +#Debian note (LEM): we take the Japanese and Korean codecs from other
@@ -17,10 +16,9 @@ Index: mailman-2.1.12/misc/Makefile.in
  
  # Modes for directories and executables created by the install
  # process.  Default to group-writable directories but
-Index: mailman-2.1.12/misc/paths.py.in
-===================================================================
---- mailman-2.1.12.orig/misc/paths.py.in	2009-03-02 20:41:52.000000000 +0100
-+++ mailman-2.1.12/misc/paths.py.in	2009-03-02 20:50:09.000000000 +0100
+diff -Nur mailman-2.1.13/misc/paths.py.in mailman-2.1.13/misc/paths.py.in
+--- mailman-2.1.13/misc/paths.py.in	2009-12-22 19:00:43.000000000 +0100
++++ mailman-2.1.13/misc/paths.py.in	2010-05-24 17:37:28.000000000 +0200
 @@ -67,13 +67,19 @@
  # files would be imported automatically.  But because we inhibit the importing
  # of the site module, we need to be explicit about importing these codecs.

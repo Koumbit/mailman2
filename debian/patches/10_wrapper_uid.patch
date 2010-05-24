@@ -1,10 +1,10 @@
 Patch: 10_wrapper_uid.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Makes sure we're called with the right UID and GID (Closes: #36010, #89564, #89848, 89818)
-Index: mailman-2.1.12/src/cgi-wrapper.c
+Index: b/src/cgi-wrapper.c
 ===================================================================
---- mailman-2.1.12.orig/src/cgi-wrapper.c	2009-03-02 20:41:55.000000000 +0100
-+++ mailman-2.1.12/src/cgi-wrapper.c	2009-03-02 20:49:59.000000000 +0100
+--- a/src/cgi-wrapper.c	2010-05-24 17:28:43.000000000 +0200
++++ b/src/cgi-wrapper.c	2010-05-24 17:28:49.000000000 +0200
 @@ -42,7 +42,8 @@
          char* fake_argv[3];
  
@@ -15,10 +15,10 @@ Index: mailman-2.1.12/src/cgi-wrapper.c
  
          /* For these CGI programs, we can ignore argc and argv since they
           * don't contain anything useful.  `script' will always be the driver
-Index: mailman-2.1.12/src/mail-wrapper.c
+Index: b/src/mail-wrapper.c
 ===================================================================
---- mailman-2.1.12.orig/src/mail-wrapper.c	2009-03-02 20:41:56.000000000 +0100
-+++ mailman-2.1.12/src/mail-wrapper.c	2009-03-02 20:49:59.000000000 +0100
+--- a/src/mail-wrapper.c	2010-05-24 17:28:43.000000000 +0200
++++ b/src/mail-wrapper.c	2010-05-24 17:28:49.000000000 +0200
 @@ -74,7 +74,8 @@
                  fatal(logident, MAIL_ILLEGAL_COMMAND,
                        "Illegal command: %s", argv[1]);

@@ -1,10 +1,10 @@
 Patch: 07_snooze.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Snooze a bit to avoid eating too much CPU if you get an SMTP error (Closes: #175173)
-Index: mailman-2.1.12/Mailman/Queue/OutgoingRunner.py
+Index: b/Mailman/Queue/OutgoingRunner.py
 ===================================================================
---- mailman-2.1.12.orig/Mailman/Queue/OutgoingRunner.py	2009-03-02 20:41:56.000000000 +0100
-+++ mailman-2.1.12/Mailman/Queue/OutgoingRunner.py	2009-03-02 20:49:57.000000000 +0100
+--- a/Mailman/Queue/OutgoingRunner.py	2010-05-24 17:28:44.000000000 +0200
++++ b/Mailman/Queue/OutgoingRunner.py	2010-05-24 17:28:48.000000000 +0200
 @@ -89,6 +89,7 @@
                  syslog('error', 'Cannot connect to SMTP server %s on port %s',
                         mm_cfg.SMTPHOST, port)

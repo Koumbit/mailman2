@@ -2,10 +2,10 @@ Patch: 16_update_debian.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 update is called from the Debian maintainer scripts and
 prints non-appropriate output.  Change that.
-Index: mailman-2.1.13/bin/update
+Index: b/bin/update
 ===================================================================
---- mailman-2.1.13.orig/bin/update	2009-12-22 19:00:43.000000000 +0100
-+++ mailman-2.1.13/bin/update	2009-12-29 19:57:40.000000000 +0100
+--- a/bin/update	2010-05-24 17:28:43.000000000 +0200
++++ b/bin/update	2010-05-24 17:28:51.000000000 +0200
 @@ -334,37 +334,6 @@
      # BAW: Is this still necessary?!
      mlist.Save()

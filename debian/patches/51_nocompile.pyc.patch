@@ -1,10 +1,10 @@
 Patch: 51_nocompile.pyc.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Don't do the compileall dance.  It'll just waste CPU cycles.
-Index: mailman-2.1.12/Makefile.in
+Index: b/Makefile.in
 ===================================================================
---- mailman-2.1.12.orig/Makefile.in	2009-03-02 20:41:52.000000000 +0100
-+++ mailman-2.1.12/Makefile.in	2009-03-02 20:50:07.000000000 +0100
+--- a/Makefile.in	2010-05-24 17:28:43.000000000 +0200
++++ b/Makefile.in	2010-05-24 17:28:54.000000000 +0200
 @@ -124,7 +124,7 @@
  	do \
  	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \

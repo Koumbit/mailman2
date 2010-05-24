@@ -1,10 +1,10 @@
 Patch: 20_qmail_to_mailman.debian.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Fix some paths in the qmail_to_mailman wrapper (Closes: #217573)
-Index: mailman-2.1.12/contrib/qmail-to-mailman.py
+Index: b/contrib/qmail-to-mailman.py
 ===================================================================
---- mailman-2.1.12.orig/contrib/qmail-to-mailman.py	2009-03-02 20:41:54.000000000 +0100
-+++ mailman-2.1.12/contrib/qmail-to-mailman.py	2009-03-02 20:50:03.000000000 +0100
+--- a/contrib/qmail-to-mailman.py	2010-05-24 17:28:43.000000000 +0200
++++ b/contrib/qmail-to-mailman.py	2010-05-24 17:28:51.000000000 +0200
 @@ -28,12 +28,12 @@
  #
  # INSTALLATION:

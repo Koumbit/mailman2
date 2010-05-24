@@ -2,10 +2,10 @@ Patch: 02_force_autoconf_2.50.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
 Get Debian's autoconf wrapper to use autoconf >= 2.50 (like upstream
 uses) and not autoconf 2.13.
-Index: mailman-2.1.12/configure.in
+Index: b/configure.in
 ===================================================================
---- mailman-2.1.12.orig/configure.in	2009-05-22 08:57:20.541033289 +0200
-+++ mailman-2.1.12/configure.in	2009-05-22 08:57:27.805439774 +0200
+--- a/configure.in	2010-05-24 17:28:44.000000000 +0200
++++ b/configure.in	2010-05-24 17:28:47.000000000 +0200
 @@ -16,7 +16,7 @@
  
  dnl Process this file with autoconf to produce a configure script.

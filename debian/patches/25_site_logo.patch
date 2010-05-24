@@ -3,10 +3,11 @@ Author: Paul Wise <pabs@debian.org>
 Allow each mailman site to have a custom text, link and logo. Also fix existing logo linkage.
 http://bugs.debian.org/267243
 http://sf.net/support/tracker.php?aid=1615748
-diff -urNad mailman-2.1.5/Mailman/Defaults.py.in /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/Defaults.py.in
---- mailman-2.1.5/Mailman/Defaults.py.in	2005-01-05 15:11:16.000000000 +0800
-+++ /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/Defaults.py.in	2005-01-05 15:13:10.000000000 +0800
-@@ -65,6 +65,12 @@
+Index: b/Mailman/Defaults.py.in
+===================================================================
+--- a/Mailman/Defaults.py.in	2010-05-24 17:28:46.000000000 +0200
++++ b/Mailman/Defaults.py.in	2010-05-24 17:28:53.000000000 +0200
+@@ -64,6 +64,12 @@
  #MAILMAN_URL = 'http://www.list.org/'
  #MAILMAN_URL = 'http://mailman.sf.net/'
  
@@ -19,10 +20,11 @@ diff -urNad mailman-2.1.5/Mailman/Defaults.py.in /tmp/dpep.h3m72C/mailman-2.1.5/
  # Mailman needs to know about (at least) two fully-qualified domain names
  # (fqdn); 1) the hostname used in your urls, and 2) the hostname used in email
  # addresses for your domain.  For example, if people visit your Mailman system
-diff -urNad mailman-2.1.5/Mailman/htmlformat.py /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/htmlformat.py
---- mailman-2.1.5/Mailman/htmlformat.py	2005-01-05 15:11:16.000000000 +0800
-+++ /tmp/dpep.h3m72C/mailman-2.1.5/Mailman/htmlformat.py	2005-01-05 15:18:57.000000000 +0800
-@@ -618,24 +618,33 @@
+Index: b/Mailman/htmlformat.py
+===================================================================
+--- a/Mailman/htmlformat.py	2010-05-24 17:28:43.000000000 +0200
++++ b/Mailman/htmlformat.py	2010-05-24 17:28:53.000000000 +0200
+@@ -622,24 +622,33 @@
  
  def MailmanLogo():
      t = Table(border=0, width='100%')

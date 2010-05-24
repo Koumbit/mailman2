@@ -1,10 +1,10 @@
 Patch: 52_check_perms_lstat.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
 Use lstat instead of stat in check_perms
-Index: mailman-2.1.12/bin/check_perms
+Index: b/bin/check_perms
 ===================================================================
---- mailman-2.1.12.orig/bin/check_perms	2009-03-02 20:41:52.000000000 +0100
-+++ mailman-2.1.12/bin/check_perms	2009-03-02 20:50:08.000000000 +0100
+--- a/bin/check_perms	2010-05-24 17:28:43.000000000 +0200
++++ b/bin/check_perms	2010-05-24 17:28:55.000000000 +0200
 @@ -82,7 +82,7 @@
      return os.stat(path)[ST_MODE]
  
