@@ -7,8 +7,9 @@ mailman (1:2.1.13-3) UNRELEASED; urgency=low
   * Back up ./configure before running autoconf, so it can be restored
     in clean as not to generate irrelevant diff.gz content.
   * Switch to dpkg-source 3.0 (quilt) format.
+  * Checked for policy 3.9.0, no changes needed.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Mon, 24 May 2010 17:21:04 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 30 Jun 2010 17:45:49 +0200
 
 mailman (1:2.1.13-2) unstable; urgency=low
 
