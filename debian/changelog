@@ -1,4 +1,4 @@
-mailman (1:2.1.13-3) UNRELEASED; urgency=low
+mailman (1:2.1.13-3) unstable; urgency=low
 
   * Drop unneeded Indexes option from shipped apache.conf.
   * Eliminate update_rc.d warning by not passing runlevel 1 at stop.
@@ -9,7 +9,7 @@ mailman (1:2.1.13-3) UNRELEASED; urgency=low
   * Switch to dpkg-source 3.0 (quilt) format.
   * Checked for policy 3.9.0, no changes needed.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Wed, 30 Jun 2010 17:45:49 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 13 Jul 2010 21:35:40 +0200
 
 mailman (1:2.1.13-2) unstable; urgency=low
 
