@@ -1,3 +1,10 @@
+mailman (1:2.1.13-4) UNRELEASED; urgency=low
+
+  * Fix permissions on /var/lib/mailman/archives/private, so
+    archiving works again. Problem introduced in 1:2.1.12-3.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Jul 2010 16:21:50 +0200
+
 mailman (1:2.1.13-3) unstable; urgency=low
 
   * Drop unneeded Indexes option from shipped apache.conf.
