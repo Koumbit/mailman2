@@ -1,9 +1,11 @@
-mailman (1:2.1.13-4) UNRELEASED; urgency=low
+mailman (1:2.1.13-4) UNRELEASED; urgency=medium
 
   * Fix permissions on /var/lib/mailman/archives/private, so
     archiving works again. Problem introduced in 1:2.1.12-3.
+  * Fix invocation of update-rc.d which yields an error when
+    not using dependency-based boot (closes: #590249).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Jul 2010 16:21:50 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 27 Jul 2010 22:53:41 +0200
 
 mailman (1:2.1.13-3) unstable; urgency=low
 
