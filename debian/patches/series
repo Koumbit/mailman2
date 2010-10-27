@@ -18,4 +18,5 @@
 71_date_overflows.patch
 74_admin_non-ascii_emails.patch
 79_archiver_slash.patch
+83-CVE-2010-3089--bug599833.patch
 99_js_templates.patch
