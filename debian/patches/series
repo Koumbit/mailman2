@@ -2,7 +2,6 @@
 02_force_autoconf_2.50.patch
 07_snooze.patch
 10_wrapper_uid.patch
-15_mailmanctl_daemonize.patch
 16_update_debian.patch
 20_qmail_to_mailman.debian.patch
 21_newlist_help.patch
@@ -12,11 +11,9 @@
 53_disable_addons.patch
 59_fix_missing_language_crash.patch
 63_update_default_server_language.patch
-64_correct_html_nesting.patch
 66_donot_let_cache_html_pages.patch
 70_invalid_utf8_dos.patch
 71_date_overflows.patch
 74_admin_non-ascii_emails.patch
 79_archiver_slash.patch
-83-CVE-2010-3089--bug599833.patch
 99_js_templates.patch
