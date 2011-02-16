@@ -172,19 +172,6 @@ Index: b/templates/en/admlogin.html
  %(message)s
    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
      <TR>
-Index: b/templates/en/listinfo.html
-===================================================================
---- a/templates/en/listinfo.html	2010-05-24 17:51:09.000000000 +0200
-+++ b/templates/en/listinfo.html	2010-05-24 17:51:16.000000000 +0200
-@@ -4,7 +4,7 @@
-     <TITLE><MM-List-Name> Info Page</TITLE>
-   
-   </HEAD>
--  <BODY BGCOLOR="#ffffff">
-+  <BODY>
- 
-     <P>
-       <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
 Index: b/templates/en/private.html
 ===================================================================
 --- a/templates/en/private.html	2010-05-24 17:50:42.000000000 +0200
