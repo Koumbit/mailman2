@@ -27,4 +27,5 @@
 78_DeprecationWarning.patch
 79_archiver_slash.patch
 80_fix_string_search.patch
+83-CVE-2010-3089--bug599833.patch
 99_js_templates.patch

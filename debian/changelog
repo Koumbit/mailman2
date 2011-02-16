@@ -1,3 +1,11 @@
+mailman (1:2.1.11-11+lenny2) stable-security; urgency=high
+
+  * Upload to lenny-security.
+  * CVE-2010-3089: cross-site scripting (XSS) vulnerabilities
+    which can be exploited by list administrators (Closes: 599833).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 16 Feb 2011 20:17:19 +0100
+
 mailman (1:2.1.11-11+lenny1) stable-proposed-updates; urgency=low
 
   * Disable 32_MIME_fixup.patch. This has meanwhile been addressed
