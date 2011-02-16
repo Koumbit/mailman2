@@ -1,3 +1,11 @@
+mailman (1:2.1.14-1) UNRELEASED; urgency=low
+
+  * New upstream release. Patches incorporated:
+    - 15_mailmanctl_daemonize.patch
+    - 83-CVE-2010-3089--bug599833.patch
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 16 Feb 2011 19:38:26 +0100
+
 mailman (1:2.1.13-4.1) unstable; urgency=high
 
   * Non-maintainer upload.
