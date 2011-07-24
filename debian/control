@@ -16,8 +16,8 @@ Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
 Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
- logrotate, cron, ucf, pwgen, lsb-base,
- exim4 | mail-transport-agent, apache2 | httpd
+ logrotate, cron, ucf, pwgen, lsb-base, apache2 | httpd
+Recommends: exim4 | mail-transport-agent
 Suggests: spamassassin, lynx, listadmin
 XB-Python-Version: ${python:Versions}
 Description: Powerful, web-based mailing list manager
