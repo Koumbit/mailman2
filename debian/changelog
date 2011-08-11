@@ -1,9 +1,13 @@
 mailman (1:2.1.14-2) UNRELEASED; urgency=low
 
+  [ Thijs Kinkhorst ]
   * Move mail-transport-agent to Recommends, since Mailman can be
     configured to run with a remote MTA (closes: #616292).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 24 Jul 2011 17:09:01 +0200
+  [ Thorsten Glaser ]
+  * Add myself to Uploaders, as suggested by Thijs
+
+ -- Thorsten Glaser <tg@mirbsd.de>  Thu, 11 Aug 2011 09:20:54 +0200
 
 mailman (1:2.1.14-1) unstable; urgency=medium
 

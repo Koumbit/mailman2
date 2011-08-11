@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
 Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
  Thijs Kinkhorst <thijs@debian.org>,
+ Thorsten Glaser <tg@mirbsd.de>,
  Hector Garcia <hector@debian.org>
 Build-Depends: debhelper (>= 7), autoconf, python-dev, python-support
 Standards-Version: 3.9.1
