@@ -6,12 +6,12 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
  Thijs Kinkhorst <thijs@debian.org>,
  Thorsten Glaser <tg@mirbsd.de>,
  Hector Garcia <hector@debian.org>
-Build-Depends: debhelper (>= 7), autoconf, python-dev, python-support
+Build-Depends: debhelper (>= 7), autoconf, python-dev (>= 2.6.6-3~)
 Standards-Version: 3.9.1
 Homepage: http://www.list.org/
 Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman/trunk
-XS-Python-Version: current
+X-Python-Version: >= 2.4
 
 Package: mailman
 Architecture: any
@@ -20,7 +20,6 @@ Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
  logrotate, cron, ucf, pwgen, lsb-base, apache2 | httpd
 Recommends: exim4 | mail-transport-agent
 Suggests: spamassassin, lynx, listadmin
-XB-Python-Version: ${python:Versions}
 Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
  much like Majordomo and Smartmail. Unlike most similar products,
@@ -33,4 +32,3 @@ Description: Powerful, web-based mailing list manager
  has all of the features you expect from such a product, plus
  integrated support for the web (including web based archiving),
  automated bounce handling and integrated spam prevention.
-

@@ -23,7 +23,7 @@ endif
 
 build: build-stamp
 build-stamp: Makefile debian/po/templates.pot
-	$(MAKE) 
+	$(MAKE)
 	sed 's,@VERSION@,$(VERSION),g' < debian/preinst.in > debian/preinst
 	touch build-stamp
 
@@ -178,7 +178,7 @@ binary-arch:	build
 	chmod 0644 debian/mailman/usr/lib/$(package)/cron/{crontab.in,paths.py}
 
 #	Python Policy
-	dh_pysupport -a `find debian/mailman/usr/lib/mailman/Mailman/ -type d`
+	dh_python2 -a $$(find debian/mailman/usr/lib/mailman/Mailman/ -type d)
 
 	install -d debian/mailman/usr/share/python/runtime.d
 	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
@@ -187,7 +187,7 @@ binary-arch:	build
 	egrep -rslZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
 	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
 	find debian/mailman/usr/share/doc/mailman -name "*.txt" -exec chmod -x {} \;
-       
+
         # Create the /var/lo{g,ck} links last, and wih ln -s, because they need to be
 	# absolute links. Relative links cause trouble for people making multiple levels,
 	# e.g. when /var/log is symlinked to somewhere else. They need to be last because
@@ -197,7 +197,7 @@ binary-arch:	build
 	rmdir debian/mailman/var/lib/$(package)/locks
 	ln -s /var/lock/mailman debian/mailman/var/lib/$(package)/locks
 	# remove the log directory and link it to /var/log/mailman
-	rmdir debian/mailman/var/lib/$(package)/logs 
+	rmdir debian/mailman/var/lib/$(package)/logs
 	ln -s /var/log/mailman debian/mailman/var/lib/$(package)/logs
 	chown root:list debian/mailman/var/log/mailman
 	chmod 2770 debian/mailman/var/log/mailman

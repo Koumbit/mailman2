@@ -5,9 +5,11 @@ mailman (1:2.1.14-2) UNRELEASED; urgency=low
     configured to run with a remote MTA (closes: #616292).
 
   [ Thorsten Glaser ]
-  * Add myself to Uploaders, as suggested by Thijs
+  * Add myself to Uploaders, as suggested by Thijs.
+  * Apply patch from Barry Warsaw to switch from python-support
+    to dh_python2. (LP: #788514) (Closes: #637398)
 
- -- Thorsten Glaser <tg@mirbsd.de>  Thu, 11 Aug 2011 09:20:54 +0200
+ -- Thorsten Glaser <tg@mirbsd.de>  Thu, 11 Aug 2011 09:23:12 +0200
 
 mailman (1:2.1.14-1) unstable; urgency=medium
 
