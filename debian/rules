@@ -21,7 +21,9 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 INSTALL_PROGRAM += -s
 endif
 
-build: build-stamp
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
 build-stamp: Makefile debian/po/templates.pot
 	$(MAKE)
 	sed 's,@VERSION@,$(VERSION),g' < debian/preinst.in > debian/preinst

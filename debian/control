@@ -7,7 +7,7 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
  Thorsten Glaser <tg@mirbsd.de>,
  Hector Garcia <hector@debian.org>
 Build-Depends: debhelper (>= 7), autoconf, python-dev (>= 2.6.6-3~)
-Standards-Version: 3.9.1
+Standards-Version: 3.9.2
 Homepage: http://www.list.org/
 Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-mailman/trunk
