@@ -180,7 +180,7 @@ binary-arch:	build
 	chmod 0644 debian/mailman/usr/lib/$(package)/cron/{crontab.in,paths.py}
 
 #	Python Policy
-	dh_python2 -a $$(find debian/mailman/usr/lib/mailman/Mailman/ -type d)
+	dh_python2 -a /usr/lib/mailman/Mailman
 
 	install -d debian/mailman/usr/share/python/runtime.d
 	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
