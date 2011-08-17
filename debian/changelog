@@ -1,4 +1,4 @@
-mailman (1:2.1.14-2) UNRELEASED; urgency=low
+mailman (1:2.1.14-2) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
   * Move mail-transport-agent to Recommends, since Mailman can be
@@ -10,7 +10,7 @@ mailman (1:2.1.14-2) UNRELEASED; urgency=low
   * Apply patch from Barry Warsaw to switch from python-support
     to dh_python2. (LP: #788514) (Closes: #637398)
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 14 Aug 2011 12:36:58 +0000
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 17 Aug 2011 12:00:50 +0000
 
 mailman (1:2.1.14-1) unstable; urgency=medium
 
