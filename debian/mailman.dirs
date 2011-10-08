@@ -7,3 +7,4 @@ usr/lib/cgi-bin
 var/log/mailman
 var/lib/mailman/templates
 etc/logrotate.d
+etc/cron.d

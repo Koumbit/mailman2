@@ -86,17 +86,6 @@ done
 db_subst mailman/default_server_language site_languages "${site_languages}"
 db_input high mailman/default_server_language || true
 
-if [ -f "${crontab}" ]; then
-  COMMENT=`awk '/^.*gate_news/ { print substr($1,1,1) } ' < ${crontab}`
-  if [ "$COMMENT" = "#" ]; then
-    db_set mailman/gate_news false
-  else
-    db_set mailman/gate_news true
-  fi
-fi
-
-db_input low mailman/gate_news || true
-
 if [ ! -e /etc/mailman/mm_cfg.py ] || [ ! -x /var/lib/mailman/bin/list_lists ] || \
     [ "$(/var/lib/mailman/bin/list_lists -b | grep ^mailman$ )" = "" ]; then
     db_input critical mailman/create_site_list || true

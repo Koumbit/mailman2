@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2009-03-02 22:08+0100\n"
+"POT-Creation-Date: 2011-10-08 15:13+0000\n"
 "PO-Revision-Date: 2009-06-02 16:13+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -228,7 +228,7 @@ msgstr "zh_TW (tradičná čínština)"
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002 ../templates:5001
+#: ../templates:1002 ../templates:4001
 msgid "en (English)[ default language ]"
 msgstr "en (angličtina)[ predvolený jazyk ]"
 
@@ -274,37 +274,15 @@ msgstr ""
 "jeď je ich výber zrušený a mailman potrebuje aspoň jeden jazyk na zobrazenie "
 "svojich správ."
 
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Gate news to mail?"
-msgstr "Brána news (nntp) na poštu?"
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid ""
-"Mailman allows to gate news to mail, that is, send all the messages which "
-"appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-"Mailman umožňuje prekladať novinky na poštu, t.j. posielať všetky správy, "
-"ktoré sa objavia v Usenetových skupinách do konferencie."
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Most people won't need this."
-msgstr "Väčšina ľudí to nebude potrebovať."
-
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid "Missing site list"
 msgstr "Chýba konferencia lokality"
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -316,7 +294,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
@@ -328,13 +306,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid "Default language for Mailman:"
 msgstr "Predvolený jazyk pre Mailman:"
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
@@ -344,25 +322,25 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "abort installation"
 msgstr "zrušiť inštaláciu"
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "continue regardless"
 msgstr "pokračovať napriek tomu"
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid "Old queue files present"
 msgstr "Sú prítomné staré súbory frontu"
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -392,7 +370,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -408,7 +386,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
@@ -416,3 +394,16 @@ msgstr ""
 "Máte možnosť pokračovať v inštalácii bez ohľadu na tento problém, pričom "
 "však riskujete stratu dotyčných správ alebo poškodenie svojej konfigurácie "
 "Mailmanu."
+
+#~ msgid "Gate news to mail?"
+#~ msgstr "Brána news (nntp) na poštu?"
+
+#~ msgid ""
+#~ "Mailman allows to gate news to mail, that is, send all the messages which "
+#~ "appear in a Usenet newsgroup to a mailing list."
+#~ msgstr ""
+#~ "Mailman umožňuje prekladať novinky na poštu, t.j. posielať všetky správy, "
+#~ "ktoré sa objavia v Usenetových skupinách do konferencie."
+
+#~ msgid "Most people won't need this."
+#~ msgstr "Väčšina ľudí to nebude potrebovať."

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2009-03-02 22:08+0100\n"
+"POT-Creation-Date: 2011-10-08 15:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -228,7 +229,7 @@ msgstr ""
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002 ../templates:5001
+#: ../templates:1002 ../templates:4001
 msgid "en (English)[ default language ]"
 msgstr ""
 
@@ -265,35 +266,15 @@ msgid ""
 "messages."
 msgstr ""
 
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Gate news to mail?"
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid ""
-"Mailman allows to gate news to mail, that is, send all the messages which "
-"appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Most people won't need this."
-msgstr ""
-
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid "Missing site list"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -302,7 +283,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
@@ -311,13 +292,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid "Default language for Mailman:"
 msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
@@ -325,25 +306,25 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "abort installation"
 msgstr ""
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "continue regardless"
 msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid "Old queue files present"
 msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -361,7 +342,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -372,7 +353,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."

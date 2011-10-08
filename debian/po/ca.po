@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman_2.1.2-7_templates\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2009-03-02 22:08+0100\n"
+"POT-Creation-Date: 2011-10-08 15:13+0000\n"
 "PO-Revision-Date: 2009-01-06 17:15+0100\n"
 "Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Debian L10n Catalan <debian-l10n-catalan@lists.debian.org>\n"
@@ -229,7 +229,7 @@ msgstr "zh_TW (xinès - Taiwan)"
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002 ../templates:5001
+#: ../templates:1002 ../templates:4001
 msgid "en (English)[ default language ]"
 msgstr "ca (Catalan)"
 
@@ -276,38 +276,15 @@ msgstr ""
 "habilitar quan no estiguin seleccionades i en cas que el Mailman requereixi "
 "almenys una llengua per a mostrar els seus missatges."
 
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Gate news to mail?"
-msgstr "Voleu establir una pasarel·la de notícies a correu?"
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid ""
-"Mailman allows to gate news to mail, that is, send all the messages which "
-"appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-"El Mailman permet fer de passarel·la de notícies a correu, és a dir, enviar "
-"tots aquells missatges que apareixen en un grup de notícies de l'Usenet a "
-"una llista de correu."
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Most people won't need this."
-msgstr "En la majoria de casos no és necessari."
-
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid "Missing site list"
 msgstr "Manca la llista del lloc"
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -319,7 +296,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
@@ -331,13 +308,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid "Default language for Mailman:"
 msgstr "Llengua per defecte del Mailman:"
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
@@ -347,25 +324,25 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "abort installation"
 msgstr "cancel·la la instal·lació"
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "continue regardless"
 msgstr "continua de totes maneres"
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid "Old queue files present"
 msgstr "Hi ha fitxers de cua antics"
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -397,7 +374,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -414,7 +391,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
@@ -422,3 +399,17 @@ msgstr ""
 "Teniu la opció de continuar la instal·lació tot i aquest problema, però "
 "tingueu en compte que hi ha el risc de perdre els missatges en qüestió o bé "
 "de malmetre la instal·lació del Mailman."
+
+#~ msgid "Gate news to mail?"
+#~ msgstr "Voleu establir una pasarel·la de notícies a correu?"
+
+#~ msgid ""
+#~ "Mailman allows to gate news to mail, that is, send all the messages which "
+#~ "appear in a Usenet newsgroup to a mailing list."
+#~ msgstr ""
+#~ "El Mailman permet fer de passarel·la de notícies a correu, és a dir, "
+#~ "enviar tots aquells missatges que apareixen en un grup de notícies de "
+#~ "l'Usenet a una llista de correu."
+
+#~ msgid "Most people won't need this."
+#~ msgstr "En la majoria de casos no és necessari."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr-new\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2009-03-02 22:08+0100\n"
+"POT-Creation-Date: 2011-10-08 15:13+0000\n"
 "PO-Revision-Date: 2008-12-28 17:18+0100\n"
 "Last-Translator: Florentin Duneau <fduneau@gmail.com>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -232,7 +232,7 @@ msgstr "zh_TW (chinois traditionnel)"
 #. from the one in the Choices list; you do not have to worry about
 #. them, and have to simply choose a msgstr among the English values
 #. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
-#: ../templates:1002 ../templates:5001
+#: ../templates:1002 ../templates:4001
 msgid "en (English)[ default language ]"
 msgstr "fr (French)"
 
@@ -278,38 +278,15 @@ msgstr ""
 "automatiquement réactivées même si vous les désactivez ici. Mailman a besoin "
 "d'au moins une langue activée pour afficher ses messages."
 
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Gate news to mail?"
-msgstr "Faut-il transformer les nouvelles en courriers électroniques ?"
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid ""
-"Mailman allows to gate news to mail, that is, send all the messages which "
-"appear in a Usenet newsgroup to a mailing list."
-msgstr ""
-"Il est possible de transformer les nouvelles (les « news ») en courriers, "
-"c'est-à-dire envoyer tous les messages qui apparaissent dans un forum Usenet "
-"vers une liste de diffusion."
-
-#. Type: boolean
-#. Description
-#: ../templates:3001
-msgid "Most people won't need this."
-msgstr "La plupart des utilisateurs n'ont pas besoin de cette fonctionnalité."
-
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid "Missing site list"
 msgstr "Pas de liste du site"
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "Mailman needs a so-called \"site list\", which is the list from which "
 "password reminders and such are sent out from.  This list needs to be "
@@ -321,7 +298,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:3001
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
 "screen.  Note that you also need to start mailman after that, using /etc/"
@@ -333,13 +310,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid "Default language for Mailman:"
 msgstr "Langue par défaut de Mailman :"
 
 #. Type: select
 #. Description
-#: ../templates:5002
+#: ../templates:4002
 msgid ""
 "The web page will be shown in this language, and in general, Mailman will "
 "use this language to communicate with the user."
@@ -349,25 +326,25 @@ msgstr ""
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "abort installation"
 msgstr "Interrompre l'installation"
 
 #. Type: select
 #. Choices
-#: ../templates:6001
+#: ../templates:5001
 msgid "continue regardless"
 msgstr "Continuer malgré tout"
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid "Old queue files present"
 msgstr "Fichiers anciens dans la file d'attente"
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
 "for the upgrade to work properly. You can try to handle them by:\n"
@@ -401,7 +378,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "If these files correspond to shunted messages, you have to either delete "
 "them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
@@ -418,7 +395,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../templates:6002
+#: ../templates:5002
 msgid ""
 "You have the option to continue installation regardless of this problem, at "
 "the risk of losing the messages in question or breaking your Mailman setup."
@@ -426,3 +403,18 @@ msgstr ""
 "Vous pouvez continuer l'installation en ignorant ce problème ce qui pourrait "
 "provoquer la perte de ces messages ou déstabiliser cette installation de "
 "Mailman."
+
+#~ msgid "Gate news to mail?"
+#~ msgstr "Faut-il transformer les nouvelles en courriers électroniques ?"
+
+#~ msgid ""
+#~ "Mailman allows to gate news to mail, that is, send all the messages which "
+#~ "appear in a Usenet newsgroup to a mailing list."
+#~ msgstr ""
+#~ "Il est possible de transformer les nouvelles (les « news ») en courriers, "
+#~ "c'est-à-dire envoyer tous les messages qui apparaissent dans un forum "
+#~ "Usenet vers une liste de diffusion."
+
+#~ msgid "Most people won't need this."
+#~ msgstr ""
+#~ "La plupart des utilisateurs n'ont pas besoin de cette fonctionnalité."

@@ -26,15 +26,6 @@ Template: mailman/used_languages
 Type: string
 Description: for internal use: holding result of scan
 
-Template: mailman/gate_news
-Type: boolean
-Default: false
-_Description: Gate news to mail?
- Mailman allows to gate news to mail, that is, send all the messages
- which appear in a Usenet newsgroup to a mailing list.
- .
- Most people won't need this.
-
 Template: mailman/create_site_list
 Type: note
 _Description: Missing site list

@@ -89,7 +89,6 @@ binary-arch:	build
 		mv $$i ../../../usr/lib/$(package); \
 	   done
 
-
 	# link them back to /var/lib/mailman
 	for i in debian/mailman/usr/lib/$(package)/*; do \
 	   dh_link usr/lib/$(package)/`basename $$i` var/lib/$(package)/`basename $$i`; \
@@ -115,7 +114,8 @@ binary-arch:	build
 	echo "$(VERSION)" > debian/mailman/var/lib/$(package)/.version
 
 	dh_installlogrotate
-
+	dh_installcron
+	
 	install -m 0644 debian/mm_cfg.py debian/mailman/usr/lib/mailman/Mailman/mm_cfg.py.dist
 
 	rm debian/$(package)/usr/lib/$(package)/Mailman/mm_cfg.py

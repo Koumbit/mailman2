@@ -1,10 +1,12 @@
 mailman (1:2.1.14-3) unstable; urgency=low
 
   * Make man page descruptions match more keywords (closes: #597112).
-  * Add cull_bad_shunt command to default cron job (closes: #615204).
-  * Import dpkg buildflags, also enabling hardening flags.
+  * Add cull_bad_shunt command to default cron job (closes: #615204)
+    and improve cron job handling in the package.
+  * Import dpkg buildflags, also enabling hardening features.
+  * Remove gate_news debconf question.
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat, 08 Oct 2011 16:56:00 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 08 Oct 2011 17:27:51 +0200
 
 mailman (1:2.1.14-2) unstable; urgency=low
 
