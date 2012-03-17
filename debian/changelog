@@ -1,3 +1,10 @@
+mailman (1:2.1.14-4) unstable; urgency=low
+
+  * Ensure CPPFLAGS and LDFLAGS are actually used during build,
+    thanks Simon Ruderich for the patch! (closes: #663590)
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 17 Mar 2012 18:13:48 +0100
+
 mailman (1:2.1.14-3) unstable; urgency=low
 
   * Make man page descruptions match more keywords (closes: #597112).
