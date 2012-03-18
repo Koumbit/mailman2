@@ -7,8 +7,10 @@ mailman (1:2.1.14-4) unstable; urgency=low
   * Add Danish debconf translation, thanks Joe Dalton (closes: #659467).
   * Add 'su root list' statements to logrotate config, to cope
     with logrotate >= 3.8; thanks Joël Bertrand (closes: #653766).
+  * Avoid config file prompt for mailman crontab entry if this
+    file was unmodified (closes: #655837).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Mar 2012 13:11:52 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Mar 2012 14:12:49 +0100
 
 mailman (1:2.1.14-3) unstable; urgency=low
 
