@@ -2,6 +2,7 @@ mailman (1:2.1.14-4) unstable; urgency=low
 
   * Ensure CPPFLAGS and LDFLAGS are actually used during build,
     thanks Simon Ruderich for the patch! (closes: #663590)
+    Additionally, enable all available hardening features.
   * Checked for policy 3.9.3, add DEP3 patch headers.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Mar 2012 12:32:00 +0100

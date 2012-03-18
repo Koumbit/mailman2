@@ -17,6 +17,7 @@ SHELL=/bin/bash
 # the '-include' is for compatibility with squeeze.
 # replace with 'include' after squeeze support is over, or
 # replace with 'include /usr/share/dpkg/default.mk' to replace vars above
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 DPKG_EXPORT_BUILDFLAGS = 1
 -include /usr/share/dpkg/buildflags.mk
 
