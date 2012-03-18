@@ -1,6 +1,7 @@
 Description: Use CPPFLAGS/LDFLAGS from environment (dpkg-buildflags).
  Necessary for hardening flags.
 Author: Simon Ruderich <simon@ruderich.org>
+Forwarded: https://bugs.launchpad.net/mailman/+bug/637652
 Last-Update: 2012-03-12
 
 --- mailman-2.1.14.orig/src/Makefile.in
