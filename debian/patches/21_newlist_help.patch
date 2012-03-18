@@ -1,6 +1,8 @@
-Patch: 21_newlist_help.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-make newlist be a bit friendlier (Closes: #309339, #170362)
+Description: make newlist be a bit friendlier (Closes: #309339, #170362)
+Bug-Debian: #309339, #170362
+Forwarded: no
+
 Index: b/bin/newlist
 ===================================================================
 --- a/bin/newlist	2010-05-24 17:50:50.000000000 +0200

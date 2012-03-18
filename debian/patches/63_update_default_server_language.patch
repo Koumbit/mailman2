@@ -1,7 +1,8 @@
-Patch: 63_update_default_server_language.patch
 Author: László 'GCS' Böszörményi <gcs@lsc.hu>
-Get the default language from the config file, and do not use the
-hardcoded English.
+Description: Get the default language from the config file, and do not use the
+ hardcoded English.
+Forwarded: no
+
 Index: b/bin/update
 ===================================================================
 --- a/bin/update	2010-05-24 17:51:02.000000000 +0200

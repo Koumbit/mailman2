@@ -1,6 +1,7 @@
-Patch: 01_defaults.debian.dpatch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Set sane defaults in Defaults.py.in
+Description: Set sane defaults in Defaults.py.in
+Forwarded: not-needed
+
 Index: b/Mailman/Defaults.py.in
 ===================================================================
 --- a/Mailman/Defaults.py.in	2010-05-24 17:50:52.000000000 +0200

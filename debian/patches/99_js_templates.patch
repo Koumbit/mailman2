@@ -1,7 +1,8 @@
-Patch: 99_js_templates.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Make the password field be focused on page entry, if you have JS
-enabled.  Again thanks to Md.
+Description: Make the password field be focused on page entry, if you have JS
+ enabled.  Again thanks to Md.
+Forwarded: no
+
 Index: b/templates/ar/private.html
 ===================================================================
 --- a/templates/ar/private.html	2010-05-24 17:50:43.000000000 +0200

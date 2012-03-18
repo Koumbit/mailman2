@@ -1,6 +1,8 @@
-Patch: 79_archiver_slash.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
-Some non-pipermail archivers require _no_ final slash (Closes: #350388)
+Description: Some non-pipermail archivers require _no_ final slash (Closes: #350388)
+Bug-Debian: #350388
+Forwarded: no
+
 Index: b/Mailman/Archiver/Archiver.py
 ===================================================================
 --- a/Mailman/Archiver/Archiver.py	2010-05-24 17:50:44.000000000 +0200

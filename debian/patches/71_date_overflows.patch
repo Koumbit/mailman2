@@ -1,6 +1,8 @@
-Patch: 71_date_overflows.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
-React sensibly on integer overflow in date handling (Closes: #326024, CVE-2005-4153)
+Description: React sensibly on integer overflow in date handling (Closes: #326024, CVE-2005-4153)
+Bug-Debian: #326024
+Forwarded: no
+
 Index: b/Mailman/Handlers/Scrubber.py
 ===================================================================
 --- a/Mailman/Handlers/Scrubber.py	2010-05-24 17:51:12.000000000 +0200

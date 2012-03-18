@@ -1,6 +1,8 @@
-Patch: 74_admin_non-ascii_emails.patch
 Author: Lionel Elie Mamane <lionel@mamane.lu>
-Don't assume emails are ASCII (Closes: #315358)
+Description: Don't assume emails are ASCII (Closes: #315358)
+Bug-Debian: #315358
+Forwarded: no
+
 Index: b/Mailman/Cgi/admin.py
 ===================================================================
 --- a/Mailman/Cgi/admin.py	2010-05-24 17:50:44.000000000 +0200

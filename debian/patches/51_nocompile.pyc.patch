@@ -1,6 +1,7 @@
-Patch: 51_nocompile.pyc.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Don't do the compileall dance.  It'll just waste CPU cycles.
+Description: Don't do the compileall dance.  It'll just waste CPU cycles.
+Forwarded: not-needed
+
 Index: b/Makefile.in
 ===================================================================
 --- a/Makefile.in	2010-05-24 17:50:49.000000000 +0200

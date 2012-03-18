@@ -1,6 +1,8 @@
-Patch: fix_missing_language_crash.patch
 Author: Paul Wise <pabs3@bonedaddy.net>
-Fix crash when a language is missing (Closes: #257606)
+Description: Fix crash when a language is missing (Closes: #257606)
+Bug-Debian: #257606
+Forwarded: no
+
 Index: b/Mailman/htmlformat.py
 ===================================================================
 --- a/Mailman/htmlformat.py	2010-05-24 17:51:04.000000000 +0200

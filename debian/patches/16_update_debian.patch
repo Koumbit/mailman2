@@ -1,7 +1,8 @@
-Patch: 16_update_debian.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-update is called from the Debian maintainer scripts and
-prints non-appropriate output.  Change that.
+Description: update is called from the Debian maintainer scripts and
+ prints non-appropriate output.  Change that.
+Forwarded: not-needed
+
 Index: b/bin/update
 ===================================================================
 --- a/bin/update	2010-05-24 17:50:50.000000000 +0200

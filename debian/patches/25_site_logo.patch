@@ -1,8 +1,8 @@
-Patch: 25_site_logo.patch
 Author: Paul Wise <pabs@debian.org>
-Allow each mailman site to have a custom text, link and logo. Also fix existing logo linkage.
-http://bugs.debian.org/267243
-http://sf.net/support/tracker.php?aid=1615748
+Description: Allow each mailman site to have a custom text, link and logo. Also fix existing logo linkage.
+Bug-Debian: http://bugs.debian.org/267243
+Forwarded: http://sf.net/support/tracker.php?aid=1615748
+
 Index: b/Mailman/Defaults.py.in
 ===================================================================
 --- a/Mailman/Defaults.py.in	2010-05-24 17:50:58.000000000 +0200

@@ -1,6 +1,8 @@
-Patch: 10_wrapper_uid.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Makes sure we're called with the right UID and GID (Closes: #36010, #89564, #89848, 89818)
+Description: Makes sure we're called with the right UID and GID (Closes: #36010, #89564, #89848, 89818)
+Bug-Debian: #36010, #89564, #89848, 89818
+Forwarded: no
+
 Index: b/src/cgi-wrapper.c
 ===================================================================
 --- a/src/cgi-wrapper.c	2010-05-24 17:50:51.000000000 +0200

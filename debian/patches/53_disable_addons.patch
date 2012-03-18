@@ -1,6 +1,7 @@
-Patch: 53_disable_addons.patch
 Author: Tollef Fog Heen <tfheen@debian.org>
-Disable some modules which are pulled in from other Debian packages.
+Description: Disable some modules which are pulled in from other Debian packages.
+Forwarded: not-needed
+
 Index: b/misc/Makefile.in
 ===================================================================
 --- a/misc/Makefile.in	2010-05-24 17:50:48.000000000 +0200
