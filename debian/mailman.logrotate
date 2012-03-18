@@ -1,4 +1,5 @@
 /var/log/mailman/vette /var/log/mailman/error /var/log/mailman/bounce {
+	su root list
 	weekly
 	missingok
 	create 0664 list list
@@ -12,6 +13,7 @@
 }
 
 /var/log/mailman/mischief {
+	su root list
 	monthly
 	missingok
 	create 0664 list www-data
@@ -25,6 +27,7 @@
 }
 
 /var/log/mailman/digest {
+	su root list
 	monthly
 	missingok
 	create 0664 list list
@@ -38,6 +41,7 @@
 }
 
 /var/log/mailman/subscribe /var/log/mailman/post {
+	su root list
 	monthly
 	missingok
 	create 0664 list list
@@ -51,6 +55,7 @@
 }
 
 /var/log/mailman/qrunner /var/log/mailman/fromusenet /var/log/mailman/locks /var/log/mailman/smtp /var/log/mailman/smtp-failure {
+	su root list
 	daily
 	missingok
 	create 0664 list list
