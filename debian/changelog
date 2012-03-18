@@ -4,8 +4,9 @@ mailman (1:2.1.14-4) unstable; urgency=low
     thanks Simon Ruderich for the patch! (closes: #663590)
     Additionally, enable all available hardening features.
   * Checked for policy 3.9.3, add DEP3 patch headers.
+  * Add Danish debconf translation, thanks Joe Dalton (closes: #659467).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Mar 2012 12:32:00 +0100
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 18 Mar 2012 13:09:50 +0100
 
 mailman (1:2.1.14-3) unstable; urgency=low
 
