@@ -1,7 +1,7 @@
 Author: Tollef Fog Heen <tfheen@debian.org>
 Description: Make the password field be focused on page entry, if you have JS
  enabled.  Again thanks to Md.
-Forwarded: no
+Forwarded: https://bugs.launchpad.net/mailman/+bug/266054
 
 Index: b/templates/ar/private.html
 ===================================================================
