@@ -1,7 +1,9 @@
 Author: Tollef Fog Heen <tfheen@debian.org>
 Description: Snooze a bit to avoid eating too much CPU if you get an SMTP error (Closes: #175173)
 Bug-Debian: #175173
-Forwarded: no
+Forwarded: https://bugs.launchpad.net/mailman/+bug/966531
+Applied-Upstream: 2.1.15
+
 
 Index: b/Mailman/Queue/OutgoingRunner.py
 ===================================================================
