@@ -14,7 +14,6 @@
 66_donot_let_cache_html_pages.patch
 70_invalid_utf8_dos.patch
 71_date_overflows.patch
-74_admin_non-ascii_emails.patch
 79_archiver_slash.patch
 80_CVE-2011-0707_confirm_xss.patch
 99_js_templates.patch
