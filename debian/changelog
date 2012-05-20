@@ -1,4 +1,4 @@
-mailman (1:2.1.15~rc1-1) UNRELEASED; urgency=low
+mailman (1:2.1.15~rc1-1) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
   * New upstream release candidate.
