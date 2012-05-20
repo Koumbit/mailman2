@@ -24,7 +24,8 @@ low priority debconf question, so you can change it through debconf or by
 editing the crontab by hand.
 
 An example Apache configuration is included in /etc/mailman/apache.conf.
-It can be copied to or symlinked from e.g. the /etc/apache2/conf.d/ directory.
+It can be copied to or symlinked from e.g. the /etc/apache2/conf.d/ directory
+(or /etc/apache2/conf-available/mailman in Apache 2.4 and up).
 
 Apache + suexec
 ---------------
