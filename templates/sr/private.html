@@ -1,9 +1,11 @@
 ﻿<html>
 <head>
     <title>Пријава за улаз у приватну архиву листе: %(realname)s </title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
-<body bgcolor="#ffffff">
-<FORM METHOD=POST ACTION="%(action)s">
+	<script>function sf(){document.f.username.focus();}</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body bgcolor="#ffffff" onLoad="sf()">
+<FORM METHOD=POST ACTION="%(action)s" name="f">
 %(message)s
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
     <TR>
@@ -32,6 +34,22 @@
   <p>&quot;Колачићи&quot; се користе у Mailman-овом административном интерфејсу 
     да не бисте морали да се после сваке акције поново пријављујете. &quot;Колачић&quot; 
     неће више важити послије вашег одјављивања са административног интерфејса. 
+      <p>
+    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+    <TR>
+      <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER">
+	<B><FONT COLOR="#000000" SIZE="+1">Password Reminder</FONT></B>
+      </TD>
+    </TR>
+    <tr>
+      <td>If you don't remember your password, enter your email address
+          above and click the <em>Remind</em> button and your
+          password will be emailed to you.</td>
+    </tr>
+    <tr>
+      <td><center><INPUT name="login-remind" type="SUBMIT" value="Remind" ></center></td>
+    </tr>
+  </TABLE>
 </FORM>
 </body>
 </html>

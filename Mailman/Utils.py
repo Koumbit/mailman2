@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -212,10 +212,11 @@ def LCDomain(addr):
 
 
 # TBD: what other characters should be disallowed?
-_badchars = re.compile(r'[][()<>|;^,\000-\037\177-\377]')
-# characters in addition to _badchars which are not allowed in
-# unquoted local parts.
-_specials = re.compile(r'[:\\"]')
+_badchars = re.compile(r'[][()<>|:;^,\\"\000-\037\177-\377]')
+# Strictly speaking, some of the above are allowed in quoted local parts, but
+# this can open the door to certain web exploits so we don't allow them.
+# Only characters allowed in domain parts.
+_valid_domain = re.compile('[-a-z0-9]', re.IGNORECASE)
 
 def ValidateEmail(s):
     """Verify that an email address isn't grossly evil."""
@@ -230,10 +231,10 @@ def ValidateEmail(s):
         raise Errors.MMBadEmailError, s
     if len(domain_parts) < 2:
         raise Errors.MMBadEmailError, s
-    if not (user.startswith('"') and user.endswith('"')):
-        # local part is not quoted so it can't contain specials
-        if _specials.search(user):
-            raise Errors.MMBadEmailError, s
+    # domain parts may only contain ascii letters, digits and hyphen
+    for p in domain_parts:
+        if len(_valid_domain.sub('', p)) > 0:
+            raise Errors.MMHostileAddress, s
 
 
 
@@ -426,6 +427,12 @@ def check_global_password(response, siteadmin=True):
 
 _ampre = re.compile('&amp;((?:#[0-9]+|[a-z]+);)', re.IGNORECASE)
 def websafe(s):
+    if mm_cfg.BROKEN_BROWSER_WORKAROUND:
+        # Archiver can pass unicode here. Just skip them as the
+        # archiver escapes non-ascii anyway.
+        if isinstance(s, str):
+            for k in mm_cfg.BROKEN_BROWSER_REPLACEMENTS:
+                s = s.replace(k, mm_cfg.BROKEN_BROWSER_REPLACEMENTS[k])
     # Don't double escape html entities
     return _ampre.sub(r'&\1', cgi.escape(s, quote=True))
 
@@ -593,7 +600,7 @@ ADMINDATA = {
     'set':         (3, 3),
     'subscribe':   (0, 3),
     'unsubscribe': (0, 1),
-    'who':         (0, 2),
+    'who':         (0, 1),
     }
 
 # Given a Message.Message object, test for administrivia (eg subscribe,

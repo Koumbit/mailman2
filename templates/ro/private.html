@@ -2,9 +2,10 @@
 <head>
     <title>Autentificare la arhivele private %(realname)s</title>
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-2">
+    <script>function sf(){document.f.username.focus();}</script>
 </head>
-<body bgcolor="#ffffff">
-<FORM METHOD=POST ACTION="%(action)s">
+<body bgcolor="#ffffff" onLoad="sf()">
+<FORM METHOD=POST ACTION="%(action)s" name="f">
 %(message)s
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
     <TR>
@@ -37,6 +38,22 @@
       explicit, la apăsarea linkului <em>Logout</em>, sub linkul <em>Alte activităţi
       administrative</em> (care va apare de îndată ce vă autentificaţi cu succes).
 
+      <p>
+    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+    <TR>
+      <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER">
+	<B><FONT COLOR="#000000" SIZE="+1">Password Reminder</FONT></B>
+      </TD>
+    </TR>
+    <tr>
+      <td>If you don't remember your password, enter your email address
+          above and click the <em>Remind</em> button and your
+          password will be emailed to you.</td>
+    </tr>
+    <tr>
+      <td><center><INPUT name="login-remind" type="SUBMIT" value="Remind" ></center></td>
+    </tr>
+  </TABLE>
 </FORM>
 </body>
 </html>

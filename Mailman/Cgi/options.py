@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -298,8 +298,14 @@ def main():
         # the user is a member.  If so, add it to the list.
         onlists = []
         for gmlist in lists_of_member(mlist, user) + [mlist]:
+            extra = ''
             url = gmlist.GetOptionsURL(user)
             link = Link(url, gmlist.real_name)
+            if gmlist.getDeliveryStatus(user) <> MemberAdaptor.ENABLED:
+                extra += ', ' + _('nomail')
+            if user in gmlist.getDigestMemberKeys():
+                extra += ', ' + _('digest')
+            link = HTMLFormatObject(link, 0) + extra
             onlists.append((gmlist.real_name, link))
         onlists.sort()
         items = OrderedList(*[link for name, link in onlists])
@@ -434,8 +440,8 @@ address.  Upon confirmation, any other mailing list containing the address
             options_page(mlist, doc, user, cpuser, userlang)
             print doc.Format()
             return
-        newpw = cgidata.getvalue('newpw')
-        confirmpw = cgidata.getvalue('confpw')
+        newpw = cgidata.getvalue('newpw', '').strip()
+        confirmpw = cgidata.getvalue('confpw', '').strip()
         if not newpw or not confirmpw:
             options_page(mlist, doc, user, cpuser, userlang,
                          _('Passwords may not be blank'))

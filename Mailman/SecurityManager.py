@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -83,6 +83,7 @@ class SecurityManager:
         # self.password is really a SecurityManager attribute, but it's set in
         # MailList.InitVars().
         self.mod_password = None
+        self.post_password = None
         # Non configurable
         self.passwords = {}
 
@@ -106,6 +107,9 @@ class SecurityManager:
             secret = self.getMemberPassword(user)
             userdata = urllib.quote(Utils.ObscureEmail(user), safe='')
             key += 'user+%s' % userdata
+        elif authcontext == mm_cfg.AuthListPoster:
+            secret = self.post_password
+            key += 'poster'
         elif authcontext == mm_cfg.AuthListModerator:
             secret = self.mod_password
             key += 'moderator'
@@ -200,6 +204,11 @@ class SecurityManager:
                 key, secret = self.AuthContextInfo(ac)
                 if secret and sha_new(response).hexdigest() == secret:
                     return ac
+            elif ac == mm_cfg.AuthListPoster:
+                # The list poster password must be sha'd
+                key, secret = self.AuthContextInfo(ac)
+                if secret and sha_new(response).hexdigest() == secret:
+                    return ac
             elif ac == mm_cfg.AuthUser:
                 if user is not None:
                     try:
@@ -245,8 +254,13 @@ class SecurityManager:
         c[key] = binascii.hexlify(marshal.dumps((issued, mac)))
         # The path to all Mailman stuff, minus the scheme and host,
         # i.e. usually the string `/mailman'
-        path = urlparse(self.web_page_url)[2]
+        parsed = urlparse(self.web_page_url)
+        path = parsed[2]
         c[key]['path'] = path
+        # Make sure to set the 'secure' flag on the cookie if mailman is
+        # accessed by an https url.
+        if parsed[0] == 'https':
+            c[key]['secure'] = True
         # We use session cookies, so don't set `expires' or `max-age' keys.
         # Set the RFC 2109 required header.
         c[key]['version'] = 1
@@ -305,6 +319,8 @@ class SecurityManager:
                          for u in usernames]:
                 ok = self.__checkone(c, authcontext, user)
                 if ok:
+                    # Refresh the cookie
+                    print self.MakeCookie(authcontext, user)
                     return True
             return False
         else:
@@ -336,6 +352,9 @@ class SecurityManager:
         # Make sure the issued timestamp makes sense
         now = time.time()
         if now < issued:
+            return False
+        if (mm_cfg.AUTHENTICATION_COOKIE_LIFETIME and
+                issued + mm_cfg.AUTHENTICATION_COOKIE_LIFETIME < now):
             return False
         # Calculate what the mac ought to be based on the cookie's timestamp
         # and the shared secret.

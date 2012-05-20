@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -112,6 +112,19 @@ def main():
         Auth.loginpage(mlist, 'admindb', msg=msg)
         return
 
+    # Add logout function. Note that admindb may be accessed with
+    # site-wide admin, moderator and list admin privileges.
+    # site admin may have site or admin cookie. (or both?)
+    # See if this is a logout request
+    if len(parts) >= 2 and parts[1] == 'logout':
+        if mlist.AuthContextInfo(mm_cfg.AuthSiteAdmin)[0] == 'site':
+            print mlist.ZapCookie(mm_cfg.AuthSiteAdmin)
+        if mlist.AuthContextInfo(mm_cfg.AuthListModerator)[0]:
+            print mlist.ZapCookie(mm_cfg.AuthListModerator)
+        print mlist.ZapCookie(mm_cfg.AuthListAdmin)
+        Auth.loginpage(mlist, 'admindb', frontpage=1)
+        return
+
     # Set up the results document
     doc = Document()
     doc.set_language(mlist.preferred_language)
@@ -167,20 +180,24 @@ def main():
             process_form(mlist, doc, cgidata)
         # Now print the results and we're done.  Short circuit for when there
         # are no pending requests, but be sure to save the results!
+        admindburl = mlist.GetScriptURL('admindb', absolute=1)
         if not mlist.NumRequestsPending():
             title = _('%(realname)s Administrative Database')
             doc.SetTitle(title)
             doc.AddItem(Header(2, title))
             doc.AddItem(_('There are no pending requests.'))
             doc.AddItem(' ')
-            doc.AddItem(Link(mlist.GetScriptURL('admindb', absolute=1),
+            doc.AddItem(Link(admindburl,
                              _('Click here to reload this page.')))
+            # Put 'Logout' link before the footer
+            doc.AddItem(Link('%s/logout' % admindburl,
+                '<div align="right"><font size="+2"><b>%s</b></font></div>' %
+                _('Logout')))
             doc.AddItem(mlist.GetMailmanFooter())
             print doc.Format()
             mlist.Save()
             return
 
-        admindburl = mlist.GetScriptURL('admindb', absolute=1)
         form = Form(admindburl)
         # Add the instructions template
         if details == 'instructions':
@@ -249,6 +266,10 @@ def main():
                     _('Discard all messages marked <em>Defer</em>')
                     ))
             form.AddItem(Center(SubmitButton('submit', _('Submit All Data'))))
+        # Put 'Logout' link before the footer
+        doc.AddItem(Link('%s/logout' % admindburl,
+            '<div align="right"><font size="+2"><b>%s</b></font></div>' %
+            _('Logout')))
         doc.AddItem(mlist.GetMailmanFooter())
         print doc.Format()
         # Commit all changes
@@ -610,11 +631,20 @@ def show_post_requests(mlist, id, info, total, count, form):
     else:
         body = EMPTYSTRING.join(lines)
     # Get message charset and try encode in list charset
-    mcset = msg.get_param('charset', 'us-ascii').lower()
+    # We get it from the first text part.
+    # We need to replace invalid characters here or we can throw an uncaught
+    # exception in doc.Format().
+    for part in msg.walk():
+        if part.get_content_maintype() == 'text':
+            # Watchout for charset= with no value.
+            mcset = part.get_content_charset() or 'us-ascii'
+            break
+    else:
+        mcset = 'us-ascii'
     lcset = Utils.GetCharSet(mlist.preferred_language)
     if mcset <> lcset:
         try:
-            body = unicode(body, mcset).encode(lcset)
+            body = unicode(body, mcset).encode(lcset, 'replace')
         except (LookupError, UnicodeError, ValueError):
             pass
     hdrtxt = NL.join(['%s: %s' % (k, v) for k, v in msg.items()])

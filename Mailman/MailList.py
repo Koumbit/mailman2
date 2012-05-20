@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -314,7 +314,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.new_member_options = mm_cfg.DEFAULT_NEW_MEMBER_OPTIONS
 
         # This stuff is configurable
-        self.respond_to_post_requests = 1
+        self.respond_to_post_requests = mm_cfg.DEFAULT_RESPOND_TO_POST_REQUESTS
         self.advertised = mm_cfg.DEFAULT_LIST_ADVERTISED
         self.max_num_recipients = mm_cfg.DEFAULT_MAX_NUM_RECIPIENTS
         self.max_message_size = mm_cfg.DEFAULT_MAX_MESSAGE_SIZE
@@ -339,6 +339,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.umbrella_member_suffix = \
                 mm_cfg.DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX
         self.regular_exclude_lists = mm_cfg.DEFAULT_REGULAR_EXCLUDE_LISTS
+        self.regular_exclude_ignore = mm_cfg.DEFAULT_REGULAR_EXCLUDE_IGNORE
         self.regular_include_lists = mm_cfg.DEFAULT_REGULAR_INCLUDE_LISTS
         self.send_reminders = mm_cfg.DEFAULT_SEND_REMINDERS
         self.send_welcome_msg = mm_cfg.DEFAULT_SEND_WELCOME_MSG
@@ -599,8 +600,16 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             # file doesn't exist, we'll get an EnvironmentError with errno set
             # to ENOENT (EnvironmentError is the base class of IOError and
             # OSError).
+            # We test strictly less than here because the resolution is whole
+            # seconds and we have seen cases of the file being updated by
+            # another process in the same second.
+            # Even this is not sufficient in shared file system environments
+            # if there is time skew between servers.  In those cases, the test
+            # could be
+            # if mtime + MAX_SKEW < self.__timestamp:
+            # or the "if ...: return" just deleted.
             mtime = os.path.getmtime(dbfile)
-            if mtime <= self.__timestamp:
+            if mtime < self.__timestamp:
                 # File is not newer
                 return None, None
             fp = open(dbfile)
@@ -618,8 +627,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 return None, e
         finally:
             fp.close()
-        # Update timestamp
-        self.__timestamp = mtime
+        # Update the timestamp.  We use current time here rather than mtime
+        # so the test above might succeed the next time.
+        self.__timestamp = int(time.time())
         return dict, None
 
     def Load(self, check_version=True):
@@ -810,6 +820,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         subj = self.GetConfirmJoinSubject(listname, cookie)
         del msg['subject']
         msg['Subject'] = subj
+        del msg['auto-submitted']
+        msg['Auto-Submitted'] = 'auto-generated'
         msg.send(self)
 
     def AddMember(self, userdesc, remote=None):
@@ -911,6 +923,14 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             del msg['subject']
             msg['Subject'] = self.GetConfirmJoinSubject(realname, cookie)
             msg['Reply-To'] = self.GetRequestEmail(cookie)
+            # Is this confirmation a reply to an email subscribe from this
+            # address?
+            if remote.lower().endswith(email.lower()):
+                autosub = 'auto-replied'
+            else:
+                autosub = 'auto-generated'
+            del msg['auto-submitted']
+            msg['Auto-Submitted'] = autosub
             msg.send(self)
             who = formataddr((name, email))
             syslog('subscribe', '%s: pending %s %s',
@@ -1258,7 +1278,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                     except IndexError:
                         subpart = None
                     if subpart:
-                        s = StringIO(subpart.get_payload())
+                        s = StringIO(subpart.get_payload(decode=True))
                         while True:
                             line = s.readline()
                             if not line:
@@ -1267,8 +1287,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                                 continue
                             i = line.find(':')
                             if i > 0:
-                                if (line[:i].lower() == 'approve' or
-                                    line[:i].lower() == 'approved'):
+                                if (line[:i].strip().lower() == 'approve' or
+                                    line[:i].strip().lower() == 'approved'):
                                     # then
                                     approved = line[i+1:].strip()
                             break
@@ -1293,7 +1313,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 # Most likely because the message has already been disposed of
                 # via the admindb page.
                 syslog('error', 'Could not process HELD_MESSAGE: %s', id)
-            return (op,)
+            return op, action
         elif op == Pending.RE_ENABLE:
             member = data[1]
             self.setDeliveryStatus(member, MemberAdaptor.ENABLED)
@@ -1332,6 +1352,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         del msg['subject']
         msg['Subject'] = self.GetConfirmLeaveSubject(realname, cookie)
         msg['Reply-To'] = self.GetRequestEmail(cookie)
+        del msg['auto-submitted']
+        msg['Auto-Submitted'] = 'auto-generated'
         msg.send(self)
 
 

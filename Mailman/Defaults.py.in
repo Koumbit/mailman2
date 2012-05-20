@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -104,6 +104,13 @@ MAILMAN_SITE_LIST = 'mailman'
 # the site.  Set this value to Yes to allow site admin cookies.
 ALLOW_SITE_ADMIN_COOKIES = No
 
+# If the following is set to a non-zero value, web authentication cookies will
+# expire that many seconds following their last use.
+AUTHENTICATION_COOKIE_LIFETIME = 0
+
+# Form lifetime is set against Cross Site Request Forgery.
+FORM_LIFETIME = hours(1)
+
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
 # name of the temporary file that the program should operate on.
@@ -196,6 +203,31 @@ WEB_ALINK_COLOR = ''                              # If true, forces ALINK=
 WEB_VLINK_COLOR = ''                              # If true, forces VLINK=
 WEB_HIGHLIGHT_COLOR = '#dddddd'                   # If true, alternating rows
                                                   # in listinfo & admin display
+
+# User entered data is escaped for redisplay in web responses to avoid Cross
+# Site Scripting (XSS) attacks. The normal escaping replaces the characters
+# <, >, & and " with the respective HTML entities &lt;, &gt;, &amp; and
+# &quot;.  There are apparently some older, broken browsers that misinterpret
+# certain non-ascii characters as <, > or ".  The following two settings
+# control whether additional characters are escaped, and what characters are
+# replaced with what.  Note that in character sets that represent some
+# characters as multi-byte sequences, enabling the escaping of additional
+# characters can replace part of a multi-byte sequence with an HTML entity,
+# thus breaking an otherwise harmless character.
+#
+# Enable the replacement of additional characters when escaping strings for
+# the web.
+BROKEN_BROWSER_WORKAROUND = No
+#
+# If the above setting is Yes, the following dictionary definition determines
+# what additional characters are replaced with what.
+BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
+                               '\x9b': '&#8250;',  # single right angle quote
+                               '\xbc': '&#188;',   # < plus high order bit
+                               '\xbe': '&#190;',   # > plus high order bit
+                               '\xa2': '&#162;',   # " plus high order bit
+                              }
+
 
 
 #####
@@ -690,7 +722,7 @@ VERP_CONFIRM_FORMAT = '%(addr)s+%(cookie)s'
 # To: "local_part@host" <local_part@host>
 # and may even fold the header when replying, so we skip everything up to '<'
 # if any and include ($s) so dot will match the newline in a folded header.
-VERP_CONFIRM_REGEXP = r'(?s)^(.*<)?(?P<addr>.+)\+(?P<cookie>[^@+]+)@.*$'
+VERP_CONFIRM_REGEXP = r'(?s)^(.*<)?(?P<addr>.+)\+(?P<cookie>[0-9a-f]{40})@.*$'
 
 # Set this to Yes to enable VERP-like (more user friendly) confirmations
 VERP_CONFIRMATIONS = No
@@ -703,6 +735,36 @@ VERP_CONFIRMATIONS = No
 # be set fairly high.  Set to 0 for no limit (probably useful only for
 # debugging).
 MAX_AUTORESPONSES_PER_DAY = 10
+
+
+
+#####
+# Backscatter mitigation
+#####
+
+# This controls whether a message to the -request address without any
+# commands or a message to -confirm whose To: address doesn't match
+# VERP_CONFIRM_REGEXP above is responded to or just logged.
+DISCARD_MESSAGE_WITH_NO_COMMAND = Yes
+
+# This controls how much of the original message is included in automatic
+# responses to email commands.  The values are:
+# 0 - Do not include any unprocessed or ignored commands.  Do not include
+#     the original message.
+# 1 - Do not include any unprocessed or ignored commands.  Include only the
+#     headers from the original message.
+# 2 - Include unprocessed and ignored commands.  Include the complete original
+#     message.
+#
+# In order to minimize the effect of backscatter due to spam sent to
+# administrative addresses, it is recommended to set this to 0, however the
+# default is 2 for backwards compatibility.
+RESPONSE_INCLUDE_LEVEL = 2
+
+# This sets the default for respond_to_post_requests for new lists.  It is
+# set to Yes for backwards compatibility, but it is recommended that serious
+# consideration be given to setting it to No.
+DEFAULT_RESPOND_TO_POST_REQUESTS = Yes
 
 
 
@@ -965,6 +1027,7 @@ DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX = "-owner"
 # Exclude/include (sibling) lists for non-digest delivery.
 DEFAULT_REGULAR_EXCLUDE_LISTS = []
 DEFAULT_REGULAR_INCLUDE_LISTS = []
+DEFAULT_REGULAR_EXCLUDE_IGNORE = True
 ALLOW_CROSS_DOMAIN_SIBLING = False
 
 # This variable controls whether monthly password reminders are sent.
@@ -1330,6 +1393,9 @@ OPTINFO = {'hide'    : ConcealSubscription,
            'notmetoo': DontReceiveOwnPosts,
            'digest'  : 0,
            'plain'   : DisableMime,
+           'noremind': SuppressPasswordReminder,
+           'nmtopics': ReceiveNonmatchingTopics,
+           'mod'     : Moderate,
            'nodupes' : DontReceiveDuplicates
            }
 
@@ -1341,6 +1407,11 @@ OPTINFO = {'hide'    : ConcealSubscription,
 #   option settings
 # - List creator, someone who can create and delete lists, but cannot
 #   (necessarily) configure the list.
+# - List poster, someone who can pre-approve her/his own posts to the list by
+#   including an Approved: or X-Approved: header or first body line pseudo-
+#   header containing the poster password. The list admin and moderator
+#   passwords can also be used for this purpose, but the poster password can
+#   only be used for this and nothing else.
 # - List moderator, someone who can tend to pending requests such as
 #   subscription requests, or held messages
 # - List administrator, someone who has total control over a list, can
@@ -1356,6 +1427,7 @@ AuthCreator = 2       # List Creator / Destroyer
 AuthListAdmin = 3     # List Administrator (total control over list)
 AuthListModerator = 4 # List Moderator (can only handle held requests)
 AuthSiteAdmin = 5     # Site Administrator (total control over everything)
+AuthListPoster = 6    # List poster (Approved: <pw> header in posts only)
 
 # Useful directories
 LIST_DATA_DIR   = os.path.join(VAR_PREFIX, 'lists')
@@ -1420,6 +1492,7 @@ add_language('eu',    _('Euskara'),             'iso-8859-15', 'ltr') # Basque
 add_language('fi',    _('Finnish'),             'iso-8859-1',  'ltr')
 add_language('fr',    _('French'),              'iso-8859-1',  'ltr')
 add_language('gl',    _('Galician'),            'utf-8',       'ltr')
+add_language('el',    _('Greek'),               'iso-8859-7',  'ltr')
 add_language('he',    _('Hebrew'),              'utf-8',       'rtl')
 add_language('hr',    _('Croatian'),            'iso-8859-2',  'ltr')
 add_language('hu',    _('Hungarian'),           'iso-8859-2',  'ltr')

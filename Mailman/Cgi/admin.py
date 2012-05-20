@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -41,6 +41,7 @@ from Mailman.htmlformat import *
 from Mailman.Cgi import Auth
 from Mailman.Logging.Syslog import syslog
 from Mailman.Utils import sha_new
+from Mailman.CSRFcheck import csrf_check
 
 # Set up i18n
 _ = i18n._
@@ -54,6 +55,8 @@ try:
 except NameError:
     True = 1
     False = 0
+
+AUTH_CONTEXTS = (mm_cfg.AuthListAdmin, mm_cfg.AuthSiteAdmin)
 
 
 
@@ -83,6 +86,19 @@ def main():
     # If the user is not authenticated, we're done.
     cgidata = cgi.FieldStorage(keep_blank_values=1)
 
+    # CSRF check
+    safe_params = ['VARHELP', 'adminpw', 'admlogin',
+                   'letter', 'chunk', 'findmember']
+    params = cgidata.keys()
+    if set(params) - set(safe_params):
+        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+    else:
+        csrf_checked = True
+    # if password is present, void cookie to force password authentication.
+    if cgidata.getvalue('adminpw'):
+        os.environ['HTTP_COOKIE'] = ''
+        csrf_checked = True
+
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthSiteAdmin),
                                  cgidata.getvalue('adminpw', '')):
@@ -107,6 +123,9 @@ def main():
 
     # Is this a log-out request?
     if category == 'logout':
+        # site-wide admin should also be able to logout.
+        if mlist.AuthContextInfo(mm_cfg.AuthSiteAdmin)[0] == 'site':
+            print mlist.ZapCookie(mm_cfg.AuthSiteAdmin)
         print mlist.ZapCookie(mm_cfg.AuthListAdmin)
         Auth.loginpage(mlist, 'admin', frontpage=1)
         return
@@ -171,8 +190,12 @@ def main():
         signal.signal(signal.SIGTERM, sigterm_handler)
 
         if cgidata.keys():
-            # There are options to change
-            change_options(mlist, category, subcat, cgidata, doc)
+            if csrf_checked:
+                # There are options to change
+                change_options(mlist, category, subcat, cgidata, doc)
+            else:
+                doc.addError(
+                  _('The form lifetime has expired. (request forgery check)'))
             # Let the list sanity check the changed values
             mlist.CheckValues()
         # Additional sanity checks
@@ -184,16 +207,20 @@ def main():
                 non-digest delivery or your mailing list will basically be
                 unusable.'''), tag=_('Warning: '))
 
-        if not mlist.digestable and mlist.getDigestMemberKeys():
+        dm = mlist.getDigestMemberKeys()
+        if not mlist.digestable and dm:
             doc.addError(
                 _('''You have digest members, but digests are turned
-                off. Those people will not receive mail.'''),
+                off. Those people will not receive mail.
+                Affected member(s) %(dm)r.'''),
                 tag=_('Warning: '))
-        if not mlist.nondigestable and mlist.getRegularMemberKeys():
+        rm = mlist.getRegularMemberKeys()
+        if not mlist.nondigestable and rm:
             doc.addError(
                 _('''You have regular list members but non-digestified mail is
                 turned off.  They will receive non-digestified mail until you
-                fix this problem.'''), tag=_('Warning: '))
+                fix this problem. Affected member(s) %(rm)r.'''),
+                tag=_('Warning: '))
         # Glom up the results page and print it out
         show_results(mlist, doc, category, subcat, cgidata)
         print doc.Format()
@@ -355,7 +382,7 @@ def option_help(mlist, varhelp):
         url = '%s/%s/%s' % (mlist.GetScriptURL('admin'), category, subcat)
     else:
         url = '%s/%s' % (mlist.GetScriptURL('admin'), category)
-    form = Form(url)
+    form = Form(url, mlist=mlist, contexts=AUTH_CONTEXTS)
     valtab = Table(cellspacing=3, cellpadding=4, width='100%')
     add_options_table_item(mlist, category, subcat, valtab, item, detailsp=0)
     form.AddItem(valtab)
@@ -401,9 +428,10 @@ def show_results(mlist, doc, category, subcat, cgidata):
         encoding = 'multipart/form-data'
     if subcat:
         form = Form('%s/%s/%s' % (adminurl, category, subcat),
-                    encoding=encoding)
+                    encoding=encoding, mlist=mlist, contexts=AUTH_CONTEXTS)
     else:
-        form = Form('%s/%s' % (adminurl, category), encoding=encoding)
+        form = Form('%s/%s' % (adminurl, category), 
+                    encoding=encoding, mlist=mlist, contexts=AUTH_CONTEXTS)
     # This holds the two columns of links
     linktable = Table(valign='top', width='100%')
     linktable.AddRow([Center(Bold(_("Configuration Categories"))),
@@ -1251,6 +1279,22 @@ and also provide the email addresses of the list moderators in the
                    PasswordBox('confirmmodpw', size=20)])
     # Add these tables to the overall password table
     table.AddRow([atable, mtable])
+    table.AddRow([_("""\
+In addition to the above passwords you may specify a password for
+pre-approving posts to the list. Either of the above two passwords can
+be used in an Approved: header or first body line pseudo-header to
+pre-approve a post that would otherwise be held for moderation. In
+addition, the password below, if set, can be used for that purpose and
+no other.""")])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=2)
+    # Set up the post password table
+    ptable = Table(border=0, cellspacing=3, cellpadding=4,
+                   bgcolor=mm_cfg.WEB_ADMINPW_COLOR)
+    ptable.AddRow([Label(_('Enter new poster password:')),
+                   PasswordBox('newpostpw', size=20)])
+    ptable.AddRow([Label(_('Confirm poster password:')),
+                   PasswordBox('confirmpostpw', size=20)])
+    table.AddRow([ptable])
     return table
 
 
@@ -1281,6 +1325,17 @@ def change_options(mlist, category, subcat, cgidata, doc):
             # password doesn't get you into these pages.
         else:
             doc.addError(_('Moderator passwords did not match'))
+    # Handle changes to the list poster password.  Do this before checking
+    # the new admin password, since the latter will force a reauthentication.
+    new = cgidata.getvalue('newpostpw', '').strip()
+    confirm = cgidata.getvalue('confirmpostpw', '').strip()
+    if new or confirm:
+        if new == confirm:
+            mlist.post_password = sha_new(new).hexdigest()
+            # No re-authentication necessary because the poster's
+            # password doesn't get you into these pages.
+        else:
+            doc.addError(_('Poster passwords did not match'))
     # Handle changes to the list administrator password
     new = cgidata.getvalue('newpw', '').strip()
     confirm = cgidata.getvalue('confirmpw', '').strip()

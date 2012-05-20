@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -215,8 +215,6 @@ def process(mlist, msg, msgdata):
         # Add this header if we're archiving
         if mlist.archive:
             archiveurl = mlist.GetBaseArchiveURL()
-            if archiveurl.endswith('/'):
-                archiveurl = archiveurl[:-1]
             headers['List-Archive'] = '<%s>' % archiveurl
     # First we delete any pre-existing headers because the RFC permits only
     # one copy of each, and we want to be sure it's ours.
@@ -274,7 +272,7 @@ def prefix_subject(mlist, msg, msgdata):
     else:
         old_style = mm_cfg.OLD_STYLE_PREFIXING
     subject = re.sub(prefix_pattern, '', subject)
-    rematch = re.match('((RE|AW|SV|VS)(\[\d+\])?:\s*)+', subject, re.I)
+    rematch = re.match('((RE|AW|SV|VS)\s*(\[\d+\])?\s*:\s*)+', subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
         recolon = 'Re:'

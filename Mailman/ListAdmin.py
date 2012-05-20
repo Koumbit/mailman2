@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -221,6 +221,8 @@ class ListAdmin:
         # an additional dictionary of message metadata
         #
         msgsubject = msg.get('subject', _('(no subject)'))
+        if not sender:
+            sender = _('<missing>')
         data = time.time(), sender, msgsubject, reason, filename, msgdata
         self.__db[id] = (HELDMSG, data)
         return id
@@ -388,6 +390,7 @@ class ListAdmin:
                self.internal_name(), addr)
         # Possibly notify the administrator in default list language
         if self.admin_immed_notify:
+            i18n.set_language(self.preferred_language)
             realname = self.real_name
             subject = _(
                 'New subscription request to list %(realname)s from %(addr)s')
@@ -404,6 +407,8 @@ class ListAdmin:
             msg = Message.UserNotification(owneraddr, owneraddr, subject, text,
                                            self.preferred_language)
             msg.send(self, **{'tomoderators': 1})
+            # Restore the user's preferred language.
+            i18n.set_language(lang)
 
     def __handlesubscription(self, record, value, comment):
         stime, addr, fullname, password, digest, lang = record
