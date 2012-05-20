@@ -193,6 +193,7 @@ binary-arch:	build
 	egrep -rslZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
 	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;
 	find debian/mailman/usr/share/doc/mailman -name "*.txt" -exec chmod -x {} \;
+	find debian/mailman/usr/share/doc/mailman -name '.svn' -exec rm -rf {} \; || true
 
         # Create the /var/lo{g,ck} links last, and wih ln -s, because they need to be
 	# absolute links. Relative links cause trouble for people making multiple levels,
