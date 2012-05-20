@@ -5,8 +5,8 @@ Forwarded: no
 
 Index: b/src/cgi-wrapper.c
 ===================================================================
---- a/src/cgi-wrapper.c	2010-05-24 17:50:51.000000000 +0200
-+++ b/src/cgi-wrapper.c	2010-05-24 17:51:00.000000000 +0200
+--- a/src/cgi-wrapper.c	2012-05-20 14:21:35.746868411 +0200
++++ b/src/cgi-wrapper.c	2012-05-20 14:21:39.958889298 +0200
 @@ -42,7 +42,8 @@
          char* fake_argv[3];
  
@@ -19,8 +19,8 @@ Index: b/src/cgi-wrapper.c
           * don't contain anything useful.  `script' will always be the driver
 Index: b/src/mail-wrapper.c
 ===================================================================
---- a/src/mail-wrapper.c	2010-05-24 17:50:51.000000000 +0200
-+++ b/src/mail-wrapper.c	2010-05-24 17:51:00.000000000 +0200
+--- a/src/mail-wrapper.c	2012-05-20 14:21:35.746868411 +0200
++++ b/src/mail-wrapper.c	2012-05-20 14:21:39.958889298 +0200
 @@ -74,7 +74,8 @@
                  fatal(logident, MAIL_ILLEGAL_COMMAND,
                        "Illegal command: %s", argv[1]);

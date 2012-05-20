@@ -5,9 +5,9 @@ Forwarded: no
 
 Index: b/Mailman/htmlformat.py
 ===================================================================
---- a/Mailman/htmlformat.py	2010-05-24 17:51:08.000000000 +0200
-+++ b/Mailman/htmlformat.py	2010-05-24 17:51:11.000000000 +0200
-@@ -300,7 +300,8 @@
+--- a/Mailman/htmlformat.py	2012-05-20 14:21:40.878893858 +0200
++++ b/Mailman/htmlformat.py	2012-05-20 14:21:42.038899614 +0200
+@@ -302,7 +302,8 @@
          charset = 'us-ascii'
          if self.language and Utils.IsLanguage(self.language):
              charset = Utils.GetCharSet(self.language)

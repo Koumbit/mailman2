@@ -4,8 +4,8 @@ Forwarded: not-needed
 
 Index: b/Mailman/Defaults.py.in
 ===================================================================
---- a/Mailman/Defaults.py.in	2010-05-24 17:50:52.000000000 +0200
-+++ b/Mailman/Defaults.py.in	2010-05-24 17:50:58.000000000 +0200
+--- a/Mailman/Defaults.py.in	2012-05-20 14:21:35.818868768 +0200
++++ b/Mailman/Defaults.py.in	2012-05-20 14:21:39.730888293 +0200
 @@ -54,7 +54,7 @@
  # disable Mailman's logo footer altogther, hack
  # Mailman/htmlformat.py:MailmanLogo(), which also contains the hardcoded links
@@ -24,7 +24,7 @@ Index: b/Mailman/Defaults.py.in
  
  # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
  # sites may have the former in their mm_cfg.py files.  If so, we'll believe
-@@ -1355,7 +1355,7 @@
+@@ -1458,7 +1458,7 @@
  MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
  
  # Other useful files

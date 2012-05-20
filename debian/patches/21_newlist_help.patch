@@ -5,8 +5,8 @@ Forwarded: no
 
 Index: b/bin/newlist
 ===================================================================
---- a/bin/newlist	2010-05-24 17:50:50.000000000 +0200
-+++ b/bin/newlist	2010-05-24 17:51:04.000000000 +0200
+--- a/bin/newlist	2012-05-20 14:21:35.606867725 +0200
++++ b/bin/newlist	2012-05-20 14:21:40.650892733 +0200
 @@ -88,12 +88,16 @@
  defined in your Defaults.py file or overridden by settings in mm_cfg.py).
  

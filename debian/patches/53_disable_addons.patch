@@ -4,8 +4,8 @@ Forwarded: not-needed
 
 Index: b/misc/Makefile.in
 ===================================================================
---- a/misc/Makefile.in	2010-05-24 17:50:48.000000000 +0200
-+++ b/misc/Makefile.in	2010-05-24 17:51:07.000000000 +0200
+--- a/misc/Makefile.in	2012-05-20 14:21:35.426866830 +0200
++++ b/misc/Makefile.in	2012-05-20 14:21:41.570897293 +0200
 @@ -57,7 +57,10 @@
  JACODECSPKG=	@JACODECSPKG@
  KOCODECSPKG=	@KOCODECSPKG@
@@ -20,8 +20,8 @@ Index: b/misc/Makefile.in
  # process.  Default to group-writable directories but
 Index: b/misc/paths.py.in
 ===================================================================
---- a/misc/paths.py.in	2010-05-24 17:50:48.000000000 +0200
-+++ b/misc/paths.py.in	2010-05-24 17:51:07.000000000 +0200
+--- a/misc/paths.py.in	2012-05-20 14:21:35.426866830 +0200
++++ b/misc/paths.py.in	2012-05-20 14:21:41.570897293 +0200
 @@ -67,13 +67,19 @@
  # files would be imported automatically.  But because we inhibit the importing
  # of the site module, we need to be explicit about importing these codecs.

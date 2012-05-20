@@ -4,8 +4,8 @@ Forwarded: not-needed
 
 Index: b/bin/check_perms
 ===================================================================
---- a/bin/check_perms	2010-05-24 17:50:49.000000000 +0200
-+++ b/bin/check_perms	2010-05-24 17:51:06.000000000 +0200
+--- a/bin/check_perms	2012-05-20 14:21:35.462867016 +0200
++++ b/bin/check_perms	2012-05-20 14:21:41.342896168 +0200
 @@ -82,7 +82,7 @@
      return os.stat(path)[ST_MODE]
  

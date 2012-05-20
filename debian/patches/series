@@ -1,6 +1,4 @@
 01_defaults.debian.patch
-02_use_dpkg_buildflags.patch
-07_snooze.patch
 10_wrapper_uid.patch
 16_update_debian.patch
 20_qmail_to_mailman.debian.patch
@@ -9,9 +7,6 @@
 51_nocompile.pyc.patch
 52_check_perms_lstat.patch
 53_disable_addons.patch
-59_fix_missing_language_crash.patch
 63_update_default_server_language.patch
 66_donot_let_cache_html_pages.patch
 79_archiver_slash.patch
-80_CVE-2011-0707_confirm_xss.patch
-99_js_templates.patch

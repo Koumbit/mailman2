@@ -5,8 +5,8 @@ Forwarded: no
 
 Index: b/bin/update
 ===================================================================
---- a/bin/update	2010-05-24 17:51:02.000000000 +0200
-+++ b/bin/update	2010-05-24 17:51:09.000000000 +0200
+--- a/bin/update	2012-05-20 14:21:40.194890466 +0200
++++ b/bin/update	2012-05-20 14:21:41.810898489 +0200
 @@ -121,7 +121,7 @@
      #
      # First, get rid of any lists/<list> template or lists/<list>/en template

@@ -5,8 +5,8 @@ Forwarded: no
 
 Index: b/Mailman/Archiver/Archiver.py
 ===================================================================
---- a/Mailman/Archiver/Archiver.py	2010-05-24 17:50:44.000000000 +0200
-+++ b/Mailman/Archiver/Archiver.py	2010-05-24 17:51:15.000000000 +0200
+--- a/Mailman/Archiver/Archiver.py	2012-05-20 14:21:35.318872203 +0200
++++ b/Mailman/Archiver/Archiver.py	2012-05-20 14:21:42.266900742 +0200
 @@ -146,8 +146,6 @@
                  'listname': self.internal_name(),
                  'hostname': hostname
@@ -18,9 +18,9 @@ Index: b/Mailman/Archiver/Archiver.py
      def __archive_file(self, afn):
 Index: b/Mailman/Defaults.py.in
 ===================================================================
---- a/Mailman/Defaults.py.in	2010-05-24 17:51:04.000000000 +0200
-+++ b/Mailman/Defaults.py.in	2010-05-24 17:51:15.000000000 +0200
-@@ -216,7 +216,7 @@
+--- a/Mailman/Defaults.py.in	2012-05-20 14:21:40.878893858 +0200
++++ b/Mailman/Defaults.py.in	2012-05-20 14:21:42.266900742 +0200
+@@ -248,7 +248,7 @@
  # interpolate the name of the list into this.  You can also include a
  # "%(hostname)s" in the string, into which Mailman will interpolate
  # the host name (usually DEFAULT_URL_HOST).

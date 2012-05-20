@@ -5,8 +5,8 @@ Forwarded: not-needed
 
 Index: b/contrib/qmail-to-mailman.py
 ===================================================================
---- a/contrib/qmail-to-mailman.py	2010-05-24 17:50:50.000000000 +0200
-+++ b/contrib/qmail-to-mailman.py	2010-05-24 17:51:03.000000000 +0200
+--- a/contrib/qmail-to-mailman.py	2012-05-20 14:21:35.642867903 +0200
++++ b/contrib/qmail-to-mailman.py	2012-05-20 14:21:40.422891600 +0200
 @@ -28,12 +28,12 @@
  #
  # INSTALLATION:

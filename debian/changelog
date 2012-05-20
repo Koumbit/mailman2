@@ -1,18 +1,21 @@
 mailman (1:2.1.15~rc1-1) UNRELEASED; urgency=low
 
   [ Thijs Kinkhorst ]
-  * Remove obsolete patches:
+  * New upstream release candidate.
+  * Remove obsolete patches, applied upstream:
+    02_use_dpkg_buildflags.patch
+    07_snooze.patch
+    59_fix_missing_language_crash.patch
     70_invalid_utf8_dos.patch
     71_date_overflows.patch
     74_admin_non-ascii_emails.patch
+    80_CVE-2011-0707_confirm_xss.patch
+    99_js_templates.patch
 
   [ Thorsten Glaser ]
   * Update the watch file for Launchpad
 
-  [ Thijs Kinkhorst ]
-  * New upstream release
-
- -- Thijs Kinkhorst <thijs@speeltuin>  Sun, 20 May 2012 14:01:42 +0200
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 20 May 2012 14:01:42 +0200
 
 mailman (1:2.1.14-4) unstable; urgency=low
 
