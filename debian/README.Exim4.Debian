@@ -40,6 +40,10 @@ for example /etc/exim4/conf.d/main/04_local_mailman_macros)
 MAILMAN_HOME=/var/lib/mailman
 MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
 
+# Where to store messages sent to mailman-loop - used if the
+# mailman-owner address bounces.
+MAILMAN_LOOP=MAILMAN_HOME/data/owner-bounces.mbox
+
 # User and group for Mailman, should match your --with-mail-gid
 # switch to Mailman's configure script.
 MAILMAN_USER=list
@@ -83,6 +87,15 @@ mailman_router:
                       -owner : -request : -admin : -loop
   transport = mailman_transport
   group = MAILMAN_GROUP
+
+# We need to handle the mailman-loop separately from the other addresses
+# since the loop action is not handled by the wrapper.
+mailman_loop_router:
+  debug_print = "R: mailman_loop for $local_part@$domain"
+  driver = accept
+  domains = +local_domains
+  local_parts = mailman-loop
+  transport = mailman_loop_transport
 ----------------------  END EXIM4 ROUTER  ----------------------------
 
 Put this in your exim4 transport configuration (if you use a split
@@ -102,6 +115,15 @@ mailman_transport:
   user = MAILMAN_USER
   group = MAILMAN_GROUP
   freeze_exec_fail = true
+
+mailman_loop_transport:
+  driver = appendfile
+  file = MAILMAN_LOOP
+  delivery_date_add
+  envelope_to_add
+  return_path_add
+  user = MAILMAN_USER
+  group = MAILMAN_GROUP
 ----------------------  END EXIM4 TRANSPORT  -------------------------
 
 You are done!
