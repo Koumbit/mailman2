@@ -40,16 +40,15 @@ for example /etc/exim4/conf.d/main/04_local_mailman_macros)
 MAILMAN_HOME=/var/lib/mailman
 MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
 
-# Where to store messages sent to mailman-loop - used if the
-# mailman-owner address bounces.
-MAILMAN_LOOP=MAILMAN_HOME/data/owner-bounces.mbox
-
 # User and group for Mailman, should match your --with-mail-gid
 # switch to Mailman's configure script.
 MAILMAN_USER=list
 MAILMAN_GROUP=daemon
-----------------------  END EXIM4 MAIN    ----------------------------
 
+# Where to store messages sent to mailman-loop - used if the
+# mailman-owner addressbounces.
+MAILMAN_LOOP=MAILMAN_HOME/data/owner-bounces.mbox
+----------------------  END EXIM4 MAIN    ----------------------------
 
 Put this in your exim4 router configuration (if you use a split
 config, then for example /etc/exim4/conf.d/router/970_local_mailman)
@@ -69,8 +68,20 @@ mailman_workaround:
   local_part_suffix = -bounces : -bounces+* : \
            -confirm+* : -join : -leave : \
            -subscribe : -unsubscribe : \
-           -owner : -request : -admin : -loop
+           -owner : -request : -admin
   transport = mailman_transport
+  group = MAILMAN_GROUP
+
+# We need to handle the mailman-loop separately from the other addresses
+# since the loop action is not handled by the wrapper.
+mailman_loop_router:
+  debug_print = "R: mailman_loop for $local_part@$domain"
+  domains = +local_domains
+  require_files = MAILMAN_HOME/lists/$local_part/config.pck
+  driver = accept
+  local_parts = mailman
+  transport = mailman_loop_transport
+  local_part_suffix = -loop
   group = MAILMAN_GROUP
 
 # Mailman lists
@@ -84,18 +95,9 @@ mailman_router:
   local_part_suffix = -bounces : -bounces+* : \
                       -confirm+* : -join : -leave : \
                       -subscribe : -unsubscribe : \
-                      -owner : -request : -admin : -loop
+                      -owner : -request : -admin
   transport = mailman_transport
   group = MAILMAN_GROUP
-
-# We need to handle the mailman-loop separately from the other addresses
-# since the loop action is not handled by the wrapper.
-mailman_loop_router:
-  debug_print = "R: mailman_loop for $local_part@$domain"
-  driver = accept
-  domains = +local_domains
-  local_parts = mailman-loop
-  transport = mailman_loop_transport
 ----------------------  END EXIM4 ROUTER  ----------------------------
 
 Put this in your exim4 transport configuration (if you use a split
