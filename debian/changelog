@@ -1,3 +1,11 @@
+mailman (1:2.1.15~rc1-2) UNRELEASED; urgency=low
+
+  * Improve Exim4 instructions, thanks Andrew Hodgson.
+  * Remove obsolete PRIVATE_ARCHIVE_URL variable, thanks Matthew Hall
+    (closes: #676481).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 07 Jun 2012 17:13:25 +0200
+
 mailman (1:2.1.15~rc1-1) unstable; urgency=low
 
   [ Thijs Kinkhorst ]
