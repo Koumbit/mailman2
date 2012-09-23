@@ -1,3 +1,9 @@
+mailman (1:2.1.15-2) UNRELEASED; urgency=low
+
+  * Prevent losing stderr in the init script when there are many lists.
+
+ -- Thorsten Glaser <tg@mirbsd.de>  Sun, 23 Sep 2012 22:11:28 +0200
+
 mailman (1:2.1.15-1) unstable; urgency=low
 
   * New upstream release.

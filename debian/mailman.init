@@ -44,15 +44,21 @@ if ! [ -x /usr/bin/python ]; then
 	exit 0;
 fi
 
+# Just a newline.
+nl='
+'
+
 case "$1" in
   start)
     SITE_LIST=$( sed -rne "s/^[[:space:]]*MAILMAN_SITE_LIST[[:space:]]*=[[:space:]]*(['\"])([^'\"]+)\\1/\\2/p" /etc/mailman/mm_cfg.py )
     [ -n "$SITE_LIST" ] || SITE_LIST='mailman'
-    if ! /var/lib/mailman/bin/list_lists -b | grep -q "^${SITE_LIST}$"; then
+    case "$nl$(/var/lib/mailman/bin/list_lists -b)" in
+    (*$nl$SITE_LIST$nl*) ;;
+    (*)
         log_warning_msg "Site list for mailman missing (looking for list named '${SITE_LIST}')."
         log_warning_msg "Please create it; until then, mailman will refuse to start."
-        exit 0;
-    fi
+        exit 0 ;;
+    esac
     log_daemon_msg "Starting Mailman master qrunner" "mailmanctl"
     if $DAEMON -s -q start; then
         log_end_msg 0
