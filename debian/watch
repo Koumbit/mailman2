@@ -1,3 +1,4 @@
 version=3
 # this matches only version numbers without suffix (rc, beta etc):
+opts="dversionmangle=s/^[0-9]+://" \
 https://launchpad.net/mailman/2.1 /\d+\.\d+\.?\d*/\+download/mailman-(\d+\.\d+\.?\d*)\.tgz
