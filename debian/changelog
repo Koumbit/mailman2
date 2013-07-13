@@ -1,7 +1,12 @@
 mailman (1:2.1.15-2) UNRELEASED; urgency=low
 
+  [ Thorsten Glaser ]
   * Prevent losing stderr in the init script when there are many lists.
   * debian/watch: mangle the epoch away so DDPO is green again.
+
+  [ Thijs Kinkhorst ]
+  * Updates to Russian debconf templates, thanks Ivan Krylov!
+    (closes: #710268).
 
  -- Thorsten Glaser <tg@mirbsd.de>  Sat, 29 Sep 2012 16:40:14 +0200
 
