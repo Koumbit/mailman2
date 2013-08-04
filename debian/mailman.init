@@ -52,7 +52,7 @@ case "$1" in
   start)
     SITE_LIST=$( sed -rne "s/^[[:space:]]*MAILMAN_SITE_LIST[[:space:]]*=[[:space:]]*(['\"])([^'\"]+)\\1/\\2/p" /etc/mailman/mm_cfg.py )
     [ -n "$SITE_LIST" ] || SITE_LIST='mailman'
-    case "$nl$(/var/lib/mailman/bin/list_lists -b)" in
+    case "$nl$(/var/lib/mailman/bin/list_lists -b)$nl" in
     (*$nl$SITE_LIST$nl*) ;;
     (*)
         log_warning_msg "Site list for mailman missing (looking for list named '${SITE_LIST}')."
