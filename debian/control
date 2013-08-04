@@ -7,9 +7,9 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
  Thorsten Glaser <tg@mirbsd.de>,
  Hector Garcia <hector@debian.org>
 Build-Depends: debhelper (>= 7), autoconf, python-dev (>= 2.6.6-3~)
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 Homepage: http://www.list.org/
-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman/trunk
+Vcs-Svn: svn://anonscm.debian.org/pkg-mailman/trunk
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-mailman/trunk/
 X-Python-Version: >= 2.4
 
@@ -17,8 +17,8 @@ Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
 Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
- logrotate, cron, ucf, pwgen, lsb-base, apache2 | httpd
-Recommends: exim4 | mail-transport-agent
+ logrotate (>= 3.8.0), cron, ucf, pwgen, lsb-base, apache2 | httpd
+Recommends: default-mta | mail-transport-agent
 Suggests: spamassassin, lynx, listadmin
 Description: Powerful, web-based mailing list manager
  The GNU Mailing List Manager, which manages email discussion lists
