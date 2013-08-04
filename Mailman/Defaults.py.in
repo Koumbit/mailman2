@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -108,8 +108,32 @@ ALLOW_SITE_ADMIN_COOKIES = No
 # expire that many seconds following their last use.
 AUTHENTICATION_COOKIE_LIFETIME = 0
 
+# The following must be set to Yes to enable the 'author is list' feature.
+# See DEFAULT_AUTHOR_IS_LIST below.
+ALLOW_AUTHOR_IS_LIST = No
+
 # Form lifetime is set against Cross Site Request Forgery.
 FORM_LIFETIME = hours(1)
+
+# If the following is set to a non-empty string, this string in combination
+# with the time, list name and the IP address of the requestor is used to
+# create a hidden hash as part of the subscribe form on the listinfo page.
+# This hash is checked upon form submission and the subscribe fails if it
+# doesn't match.  I.e. the form posted must be first retrieved from the
+# listinfo CGI by the same IP that posts it.  The subscribe also fails if
+# the time the form was retrieved is more than the above FORM_LIFETIME or less
+# than the below SUBSCRIBE_FORM_MIN_TIME before submission.
+# Important: If you have any static subscribe forms on your web site, setting
+# this option will break them.  With this option set, subscribe forms must be
+# dynamically generated to include the hidden data.  See the code block
+# beginning with "if mm_cfg.SUBSCRIBE_FORM_SECRET:" in Mailman/Cgi/listinfo.py
+# for the details of the hidden data.
+SUBSCRIBE_FORM_SECRET = None
+
+# If SUBSCRIBE_FORM_SECRET is not None, this is the minimum time the user must
+# take after retrieving the form before submitting it.  Set to 0 to skip this
+# test.
+SUBSCRIBE_FORM_MIN_TIME = seconds(5)
 
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
@@ -227,6 +251,13 @@ BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
                                '\xbe': '&#190;',   # > plus high order bit
                                '\xa2': '&#162;',   # " plus high order bit
                               }
+#
+# Shall the admindb held message summary display the grouping and sorting
+# option radio buttons?  Set this in mm_cfg.py to one of the following:
+# SSENDER -> Default to grouped and sorted by sender.
+# SSENDERTIME -> Default to grouped by sender and sorted by time.
+# STIME -> Default to ungrouped and sorted by time.
+DISPLAY_HELD_SUMMARY_SORT_BUTTONS = No
 
 
 
@@ -528,7 +559,10 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # footer or scrubbing attachments or even reply-to munging can break these
 # signatures.  It is generally felt that these signatures have value, even if
 # broken and even if the outgoing message is resigned.  However, some sites
-# may wish to remove these headers by setting this to Yes.
+# may wish to remove these headers.  Possible values and meanings are:
+# No, 0, False -> do not remove headers.
+# 1 -> remove headers only if the list's author_is_list setting is Yes.
+# Yes, 2, True -> always remove headers.
 REMOVE_DKIM_HEADERS = No
 
 # All `normal' messages which are delivered to the entire list membership go
@@ -844,6 +878,12 @@ BAD_SHUNT_ARCHIVE_DIRECTORY = None
 # affects both message pickles and MailList config.pck files.
 SYNC_AFTER_WRITE = No
 
+# This is the name used for the mailmanctl master lock file. In a clustered
+# load sharing environment with a shared 'locks' directory, it is desirable
+# to have separate locks for each host mailmanctl. This can be used to enable
+# that.
+MASTER_LOCK_FILE = 'master-qrunner'
+
 
 
 #####
@@ -1038,6 +1078,10 @@ DEFAULT_SEND_WELCOME_MSG = Yes
 
 # Send goodbye messages to unsubscribed members?
 DEFAULT_SEND_GOODBYE_MSG = Yes
+
+# Rewrite the From: header of posts replacing the posters address with
+# that of the list.  Also see REMOVE_DKIM_HEADERS above.
+DEFAULT_AUTHOR_IS_LIST = No
 
 # Wipe sender information, and make it look like the list-admin
 # address sends all messages
@@ -1370,6 +1414,11 @@ UNSUBSCRIBE = 5
 ACCEPT = 6
 HOLD = 7
 
+# admindb summary sort button settings.  All must evaluate to True.
+SSENDER = 1
+SSENDERTIME = 2
+STIME = 3
+
 # Standard text field width
 TEXTFIELDWIDTH = 40
 
@@ -1489,6 +1538,7 @@ add_language('en',    _('English (USA)'),       'us-ascii',    'ltr')
 add_language('es',    _('Spanish (Spain)'),     'iso-8859-1',  'ltr')
 add_language('et',    _('Estonian'),            'iso-8859-15', 'ltr')
 add_language('eu',    _('Euskara'),             'iso-8859-15', 'ltr') # Basque
+add_language('fa',    _('Persian'),             'utf-8',       'rtl')
 add_language('fi',    _('Finnish'),             'iso-8859-1',  'ltr')
 add_language('fr',    _('French'),              'iso-8859-1',  'ltr')
 add_language('gl',    _('Galician'),            'utf-8',       'ltr')

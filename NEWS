@@ -5,6 +5,141 @@ Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.16rc2 (xx-Aug-2013)
+
+  New Features
+
+    - There is a new list attribute author_is_list to rewrite the From: header
+      of posts replacing the posters address with that of the list for
+      compatability with DMARC and or ADSP.  There is a new mm_cfg.py setting
+      DEFAULT_AUTHOR_IS_LIST to control the default for new lists, and the
+      existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
+      those headers only for author_is_list = Yes lists.  This feature must be
+      enabled by setting ALLOW_AUTHOR_IS_LIST to Yes in mm_cfg.py.
+
+    - There is a new DISPLAY_HELD_SUMMARY_SORT_BUTTONS setting which if set
+      in mm_cfg.py will display a set of radio buttons in the admindb held
+      message summary to select how the held messages are sorted and grouped
+      for display. The exact setting determines the default grouping and
+      sorting.  See the description in Defaults.py for details.
+
+    - Setting digest_size_threshhold to zero now means no digests will be
+      sent based on size instead of a digest being sent with every post.
+      (LP: #558274)
+
+    - There is a new mm_cfg.py setting SUBSCRIBE_FORM_SECRET which will put
+      a dynamically generated, hidden hash in the listinfo subscribe form and
+      check it upon submission.  Setting this will prevent automated processes
+      (bots) from successfully POSTing web subscribes without first retrieving
+      and parsing the form from the listinfo page.  The form must also be
+      submitted no later than FORM_LIFETIME nor no earlier than
+      SUBSCRIBE_FORM_MIN_TIME after retrieval.  Note that enabling this will
+      break any static subscribe forms on your site.  See the description in
+      Defaults.py for more info.  (LP: #1082746)
+
+    - add_members now has an option to add members with mail delivery disabled
+      by admin.  (LP: #1070574)
+
+    - IncomingRunner now logs rejected messages to the vette log.
+      (LP: #1068837)
+
+    - The name of the mailmanctl master lock file is now congigurable via the
+      mm_cfg.py setting MASTER_LOCK_FILE.  (LP: #1082308)
+
+    - list_lists now has an option to list only lists with public archives.
+      (LP: #1082711)
+
+  Contributed programs
+
+    - A new import_majordomo_into_mailman.pl script has been contributed by
+      Geoff Mayes.  (LP: #1129742)
+
+    - A new "sitemap" bash script has been contributed by Tomasz Chmielewski
+      <mangoo@wpkg.org> to generate a sitemap.xml file of an installation's
+      public archives for submission to search engines.
+
+  i18n
+
+    - A Farsi (Persian) translation has been added thanks to Javad Hoseini and
+      Mahyar Moghimi.
+
+    - Fixed several misspelled or garbled string replacements in the Spanish
+      message catalog.  (LP: #1160138)
+
+    - pt_BR message catalog has two new and an updated message per Hugo Koji
+      Kobayashi.  (LP: #1138578)
+
+    - German message catalog has been updated per Ralf Hildebrandt.
+
+    - Corrected typo in templates/it/private.html.
+
+  Bug Fixes and other patches
+
+    - Fixed cron/disabled to send a fresh cookie when notifying disabled
+      members.  (LP: #1203200)
+
+    - Added "message_id" to the interpolation dictionary for the Article.html
+      template.  (LP: #725498)
+
+    - Changed the admin GUI to report only the bad entries in a list of email
+      addresses if any are bad.  (LP: #558253)
+
+    - Added logging for template errors in HyperArch.py.  (LP: #558254)
+
+    - Added more explanation to the bad owner address message from
+      bin/newlist.  (LP: #1200763)
+
+    - Fixed a bug causing the admin web interface to fail CSRF checking if
+      the list name contains a '+' character.  (LP: #1190802)
+
+    - Fixed bin/mailmanctl -s to not remove the master lock if it can't be
+      determined to be truly stale.  (LP: #1189558)
+
+    - It is no longer possible to add 'invalid' addresses to the ban_list
+      and the *_these_nonmembers filters from the check boxes on the admindb
+      interface.  (LP: #1187201)
+
+    - Backported recognition for mail.ru DSNs and minor bug fixes from
+      lp:flufl.bounce.  (LP: #1074592, LP: #1079249 and #1079254)
+
+    - Defended against buggy web servers that don't include an empty
+      QUERY_STRING in the CGI environment.  (LP: #1160647)
+
+    - The Switchboard.finish() method now logs the text of the exception when
+      it fails to unlink/preserve a .bak file.  (LP: #1165589)
+
+    - The pending (un)subscriptions waiting approval are now sorted by email
+      address in the admindb interface as intended.  (LP: #1164160)
+
+    - The subscribe log entry for a bin/add_members subscribe now identifies
+      bin/add_members as the source.  (LP: #1161642)
+
+    - Fixed a bug where the Subject: of the user notification of a
+      bin/remove_members unsubscribe was not in the user's language.
+      (LP: #1161445)
+
+    - Fixed a bug where BounceRunner could create and leave behind zero length
+      bounce-events files.  (LP: #1161610)
+
+    - Added recognition for another Yahoo bounce format.  (LP: #1157961)
+
+    - Changed configure's method for getting Python's include directory from
+      distutils.sysconfig.get_config_var('CONFINCLUDEPY') to
+      distutils.sysconfig.get_python_inc().  (LP: #1098162)
+
+    - Added an Auto-Generated: header to password reminders.  (LP: #558240)
+
+    - Fixed a bug where non-ascii characters in the real name in a subscription
+      request could throw a UnicodeEncodeError upon subscription approval and
+      perhaps in other situations too.  (LP: #1047100)
+
+    - The query fragments send_unsub_notifications_to_list_owner and
+      send_unsub_ack_to_this_batch will now assume default values if not set
+      in mass unsubscribe URLs.  (LP: #1032378)
+
+    - Replaced utf-8 encoded characters in newly added German templates with
+      HTML entities. (LP: #1018208)
+
 2.1.15 (13-Jun-2012)
 
   Security

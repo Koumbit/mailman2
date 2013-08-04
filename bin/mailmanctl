@@ -1,6 +1,6 @@
 #! @PYTHON@
 
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -117,7 +117,7 @@ COMMASPACE = ', '
 DOT = '.'
 
 # Locking contantsa
-LOCKFILE = os.path.join(mm_cfg.LOCK_DIR, 'master-qrunner')
+LOCKFILE = os.path.join(mm_cfg.LOCK_DIR, mm_cfg.MASTER_LOCK_FILE)
 # Since we wake up once per day and refresh the lock, the LOCK_LIFETIME
 # needn't be (much) longer than SNOOZE.  We pad it 6 hours just to be safe.
 LOCK_LIFETIME = mm_cfg.days(1) + mm_cfg.hours(6)
@@ -199,7 +199,8 @@ def acquire_lock_1(force):
         lock.lock(0.1)
         return lock
     except LockFile.TimeOutError:
-        if not force:
+        # If we're not forcing or the lock can't be determined to be stale.
+        if not force or qrunner_state():
             raise
         # Force removal of lock first
         lock._disown()
