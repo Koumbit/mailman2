@@ -19,9 +19,7 @@ aliases, you'll need to specify a user=list line or something like that in
 the system_aliases director.
 
 gate-news is commented out in the default crontab, since most people will be
-less interested in gating news-to-mail and vice versa.  This is asked by a
-low priority debconf question, so you can change it through debconf or by
-editing the crontab by hand.
+less interested in gating news-to-mail and vice versa.
 
 An example Apache configuration is included in /etc/mailman/apache.conf.
 It can be copied to or symlinked from e.g. the /etc/apache2/conf.d/ directory

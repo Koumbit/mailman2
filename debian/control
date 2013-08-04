@@ -18,7 +18,7 @@ Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
 Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
- logrotate (>= 3.8.0), cron, ucf, pwgen, lsb-base, apache2 | httpd
+ logrotate (>= 3.8.0), cron, ucf, lsb-base, apache2 | httpd
 Recommends: default-mta | mail-transport-agent
 Suggests: spamassassin, lynx, listadmin
 Description: Powerful, web-based mailing list manager
