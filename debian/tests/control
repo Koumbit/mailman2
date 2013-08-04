@@ -1,0 +1,3 @@
+Tests: mailman
+Depends: @, apache2-mpm-prefork, elinks, postfix, procmail
+Restrictions: needs-root

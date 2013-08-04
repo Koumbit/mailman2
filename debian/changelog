@@ -8,6 +8,7 @@ mailman (1:2.1.16~rc2-1) unstable; urgency=low
   * Updates to Russian debconf templates, thanks Ivan Krylov!
     (closes: #710268).
   * Needs at least version 3.8.0 of logrotate (closes: #687215).
+  * Add autopkgtests, thanks Yolanda Robla! (closes: #710095)
   * Packaging cleanup: checked for policy 3.9.4, update Vcs URL,
     recommend default-mta instead of exim4.
 
