@@ -5,17 +5,23 @@ Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.16rc2 (xx-Aug-2013)
+2.1.16 (16-Oct-2013)
 
   New Features
 
-    - There is a new list attribute author_is_list to rewrite the From: header
-      of posts replacing the posters address with that of the list for
-      compatability with DMARC and or ADSP.  There is a new mm_cfg.py setting
-      DEFAULT_AUTHOR_IS_LIST to control the default for new lists, and the
+    - There is a new list attribute from_is_list to either rewrite the From:
+      header of posts replacing the posters address with that of the list or
+      wrap the message in an outer message From: the list for compatability
+      with DMARC and or ADSP.  There is a new mm_cfg.py setting
+      DEFAULT_FROM_IS_LIST to control the default for new lists, and the
       existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
-      those headers only for author_is_list = Yes lists.  This feature must be
-      enabled by setting ALLOW_AUTHOR_IS_LIST to Yes in mm_cfg.py.
+      those headers only for certain from_is_list lists.  This feature must
+      be enabled by setting ALLOW_FROM_IS_LIST to Yes in mm_cfg.py.  See the 
+      description of these settings in Defaults.py for more detail.  This
+      feature is experimental in 2.1.16, and it is subject to change or to
+      become just one of the two methods in a subsequent release. People 
+      interested in this feature are encouraged to try it and report their
+      experiences to the mailman-users@python.org list.
 
     - There is a new DISPLAY_HELD_SUMMARY_SORT_BUTTONS setting which if set
       in mm_cfg.py will display a set of radio buttons in the admindb held
@@ -60,6 +66,10 @@ Here is a history of user visible changes to Mailman.
 
   i18n
 
+    - The Danish translation has been updated thanks to Tom Christensen.
+
+    - Fixed a string in the Czech message catalog.  (LP: #1234567)
+
     - A Farsi (Persian) translation has been added thanks to Javad Hoseini and
       Mahyar Moghimi.
 
@@ -74,6 +84,9 @@ Here is a history of user visible changes to Mailman.
     - Corrected typo in templates/it/private.html.
 
   Bug Fixes and other patches
+
+    - Fixed a crash in SpamDetect.py which caused messages with unparseable
+      RFC 2047 encoded headers to be shunted.  (LP: #1235101)
 
     - Fixed cron/disabled to send a fresh cookie when notifying disabled
       members.  (LP: #1203200)
