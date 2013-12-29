@@ -1,0 +1,126 @@
+Author: Thorsten Glaser <tg@debian.org>
+Description: Switch mailman to UTF-8 (release goal)
+Bug-Debian: #398777
+Forwarded: no
+
+--- a/Mailman/Defaults.py.in
++++ b/Mailman/Defaults.py.in
+@@ -410,7 +410,7 @@ ARCHIVER_OBSCURES_EMAILADDRS = Yes
+ # is used in MIME to refer to a method of converting a sequence of
+ # octets into a sequence of characters.  If you change the default
+ # charset, you might need to add it to VERBATIM_ENCODING below.
+-DEFAULT_CHARSET = None
++DEFAULT_CHARSET = 'utf-8'
+ 
+ # Most character set encodings require special HTML entity characters to be
+ # quoted, otherwise they won't look right in the Pipermail archives.  However
+@@ -419,7 +419,7 @@ DEFAULT_CHARSET = None
+ # encodings where the octet 0x26 does not always represent the & character.
+ # This variable contains a list of such characters sets which are not
+ # HTML-quoted in the archives.
+-VERBATIM_ENCODING = ['iso-2022-jp']
++VERBATIM_ENCODING = ['utf-8', 'iso-2022-jp']
+ 
+ # When the archive is public, should Mailman also make the raw Unix mbox file
+ # publically available?
+@@ -1537,7 +1537,7 @@ def _(s):
+ LC_DESCRIPTIONS = {}
+ 
+ def add_language(code, description, charset, direction='ltr'):
+-    LC_DESCRIPTIONS[code] = (description, charset, direction)
++    LC_DESCRIPTIONS[code] = (description, 'utf-8', direction)
+ 
+ add_language('ar',    _('Arabic'),              'utf-8',       'rtl')
+ add_language('ast',   _('Asturian'),            'iso-8859-1',  'ltr')
+--- a/messages/Makefile.in
++++ b/messages/Makefile.in
+@@ -68,7 +68,7 @@ PROG=		@PYTHON@ build/bin/pygettext.py
+ 
+ .SUFFIXES:	.po .mo
+ .po.mo:
+-	-$(MSGFMT) -o $@ $<
++	-msgconv -t utf-8 $< | tee $<.utf-8 | msgfmt -o $@ -
+ 
+ # Rules
+ 
+@@ -107,7 +107,7 @@ doinstall: mofiles
+ 	    po=$(srcdir)/$$d/LC_MESSAGES/mailman.po; \
+ 	    mo=$(srcdir)/$$d/LC_MESSAGES/mailman.mo; \
+ 	    dir=$(DESTDIR)$(prefix)/messages/$$d/LC_MESSAGES; \
+-	    $(INSTALL) -m $(FILEMODE) $$po $$dir; \
++	    $(INSTALL) -m $(FILEMODE) $$po.utf-8 $$dir/mailman.po; \
+  	    $(INSTALL) -m $(FILEMODE) $$mo $$dir; \
+ 	done
+ 
+@@ -117,6 +117,7 @@ finish:
+ 
+ clean:
+ 	-rm -f */LC_MESSAGES/mailman.mo
++	-rm -f */LC_MESSAGES/mailman.po.utf-8
+ 
+ fileclean:
+ 	-rm -f marked.files docstring.files
+--- a/templates/Makefile.in
++++ b/templates/Makefile.in
+@@ -60,12 +60,60 @@ INSTALL_PROGRAM=$(INSTALL) -m $(EXEMODE)
+ all:
+ 
+ install:
++	# charsets taken from Mailman/Defaults.py.in (all calls to add_language)
++	CHARSET_ar=utf-8; \
++	CHARSET_ast=iso-8859-1; \
++	CHARSET_ca=utf-8; \
++	CHARSET_cs=iso-8859-2; \
++	CHARSET_da=iso-8859-1; \
++	CHARSET_de=iso-8859-1; \
++	CHARSET_en=us-ascii; \
++	CHARSET_es=iso-8859-1; \
++	CHARSET_et=iso-8859-15; \
++	CHARSET_eu=iso-8859-15; \
++	CHARSET_fa=utf-8; \
++	CHARSET_fi=iso-8859-1; \
++	CHARSET_fr=iso-8859-1; \
++	CHARSET_gl=utf-8; \
++	CHARSET_el=iso-8859-7; \
++	CHARSET_he=utf-8; \
++	CHARSET_hr=iso-8859-2; \
++	CHARSET_hu=iso-8859-2; \
++	CHARSET_ia=iso-8859-15; \
++	CHARSET_it=iso-8859-1; \
++	CHARSET_ja=euc-jp; \
++	CHARSET_ko=euc-kr; \
++	CHARSET_lt=iso-8859-13; \
++	CHARSET_nl=iso-8859-1; \
++	CHARSET_no=iso-8859-1; \
++	CHARSET_pl=iso-8859-2; \
++	CHARSET_pt=iso-8859-1; \
++	CHARSET_pt_BR=iso-8859-1; \
++	CHARSET_ro=iso-8859-2; \
++	CHARSET_ru=koi8-r; \
++	CHARSET_sk=utf-8; \
++	CHARSET_sl=iso-8859-2; \
++	CHARSET_sr=utf-8; \
++	CHARSET_sv=iso-8859-1; \
++	CHARSET_tr=iso-8859-9; \
++	CHARSET_uk=utf-8; \
++	CHARSET_vi=utf-8; \
++	CHARSET_zh_CN=utf-8; \
++	CHARSET_zh_TW=utf-8; \
+ 	for d in $(LANGUAGES); \
+ 	do \
++	    eval cs='$$CHARSET_'$$d; \
++	    test -n "$$cs" || cs=cp1252; \
+ 	    $(srcdir)/../mkinstalldirs $(DESTDIR)$(TEMPLATEDIR)/$$d; \
+ 	    for f in $(srcdir)/$$d/*.html $(srcdir)/$$d/*.txt; \
+ 	    do \
+-	    	$(INSTALL) -m $(FILEMODE) $$f $(DESTDIR)$(TEMPLATEDIR)/$$d; \
++		bn=$$(basename $$f); \
++		if ! iconv -f $$cs -t utf-8 <$$f; then \
++			echo >&2 Warning: broken encoding in $$f; \
++			iconv -c -f cp1252 -t utf-8 <$$f; \
++		fi >$$f.utf-8; \
++	    	$(INSTALL) -m $(FILEMODE) $$f.utf-8 $(DESTDIR)$(TEMPLATEDIR)/$$d/$$bn; \
++		rm -f $$f.utf-8; \
+ 	    done; \
+ 	done
+ 
