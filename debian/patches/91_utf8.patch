@@ -62,11 +62,12 @@ Forwarded: no
  	-rm -f marked.files docstring.files
 --- a/templates/Makefile.in
 +++ b/templates/Makefile.in
-@@ -60,12 +60,60 @@ INSTALL_PROGRAM=$(INSTALL) -m $(EXEMODE)
+@@ -60,12 +60,61 @@ INSTALL_PROGRAM=$(INSTALL) -m $(EXEMODE)
  all:
  
  install:
 +	# charsets taken from Mailman/Defaults.py.in (all calls to add_language)
++	# except gl which pretends to be utf-8 but isnâ€™t (except one file which we patch)
 +	CHARSET_ar=utf-8; \
 +	CHARSET_ast=iso-8859-1; \
 +	CHARSET_ca=utf-8; \
@@ -80,7 +81,7 @@ Forwarded: no
 +	CHARSET_fa=utf-8; \
 +	CHARSET_fi=iso-8859-1; \
 +	CHARSET_fr=iso-8859-1; \
-+	CHARSET_gl=utf-8; \
++	CHARSET_gl=iso-8859-1; \
 +	CHARSET_el=iso-8859-7; \
 +	CHARSET_he=utf-8; \
 +	CHARSET_hr=iso-8859-2; \
@@ -124,3 +125,23 @@ Forwarded: no
  	    done; \
  	done
  
+--- a/templates/gl/listinfo.html
++++ b/templates/gl/listinfo.html
+@@ -32,7 +32,7 @@
+ 	    <tr>
+ 	      <td colspan="2">
+ 		<P><MM-List-Info></P>
+-	  <p>  Se desexa ver os env&iacute;os anteriores Ã¡ rolda,
++	  <p>  Se desexa ver os env&iacute;os anteriores á rolda,
+ 	       pode visitar os arquivos de <MM-Archive><MM-List-Name>
+ 		  </MM-Archive>.
+ 	      <MM-Restricted-List-Message>
+@@ -61,7 +61,7 @@
+       <tr>
+ 	<td colspan="2">
+ 	  <P>
+-	    Para se subscribir a <MM-List-Name> sÃ³ ten de cubrir os datos do
++	    Para se subscribir a <MM-List-Name> só ten de cubrir os datos do
+ 	    formulario seguinte:
+ 	  <MM-List-Subscription-Msg>
+ 	  <ul>
