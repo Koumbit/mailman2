@@ -1,3 +1,11 @@
+mailman (1:2.1.16-2) unstable; urgency=medium
+
+  * Upload to unstable, as requested by Thijs; we did not encounter
+    any unexpected trouble with the version in experimental, and it
+    does fix an RC bug as well as a release goal.
+
+ -- Thorsten Glaser <tg@mirbsd.de>  Mon, 03 Feb 2014 14:00:37 +0100
+
 mailman (1:2.1.16-1exp2) experimental; urgency=low
 
   * Try harder to use UTF-8
@@ -837,7 +845,7 @@ mailman (2.1.5-6) unstable; urgency=high
   * Added debian/patches/04_CAN-2005-0202.dpatch:
     Mailman/Cgi/private.py, true_path(): fix the removal of '..' and '.' from
     private mail archive paths to prohibit path traversal (the former version
-    transformed ".....///" to "../") (closes: #294467) 
+    transformed ".....///" to "../") (closes: #294467)
     (References: CAN-2005-0202)
   * Tighten build-deps on dpatch. (closes: #291289)
   * Update Czech debconf translation. (closes: #293002)
@@ -857,7 +865,7 @@ mailman (2.1.5-5) unstable; urgency=high
     pending subscriptions.  This should hopefully fix #280529.  Thanks to
     Bastian Kleinedam for the patch.  (closes: #280529)
   * Skip directories when updating templates, to make the life easier for
-    people who have their configuration in Subversion or Arch.  
+    people who have their configuration in Subversion or Arch.
     (closes: #284771)
   * Remove 55_options_traceback.dpatch as this problem seems to have been
     fixed upstream and it causes other problems.  (closes: #285839)
@@ -946,7 +954,7 @@ mailman (2.1.5-1) unstable; urgency=high
   * Rename Catalan translation (closes: #255874)
   * Apply patch from Pabs to fix crash if enabling missing language
     (closes: 257606)
-  * Chicken out if the queue is not empty when upgrading.  
+  * Chicken out if the queue is not empty when upgrading.
     (closes: #248438)
   * Make sure the files in the cron.d are executable before running them.
     Also, call the scripts directly rather than using python $SCRIPT.
@@ -957,7 +965,7 @@ mailman (2.1.5-1) unstable; urgency=high
   * Consolidate logrotate scripts (closes: #235006).
   * Update Spanish debconf translation, thanks to Carlos Valdivia Yague.
     (closes: #247830)
-  * Add Czech debconf translation, thanks to Miroslav Kure.  
+  * Add Czech debconf translation, thanks to Miroslav Kure.
     (closes: #244421)
 
  -- Tollef Fog Heen <tfheen@debian.org>  Wed, 18 Aug 2004 19:21:48 +0200
@@ -975,7 +983,7 @@ mailman (2.1.4-5) unstable; urgency=high
 mailman (2.1.4-4) unstable; urgency=medium
 
   * Urgency medium because RC bugs are fixed.
-  * Fix README.Debian concerning URLs (bsb, closes: #235835). 
+  * Fix README.Debian concerning URLs (bsb, closes: #235835).
   * Add fix for missing installation of Danish templates (by GCS)
   * config: don't try to list_lists when upgrading from pre 2.1
     (bsb, closes: #242945).
@@ -1053,7 +1061,7 @@ mailman (2.1.4-2) unstable; urgency=low
 mailman (2.1.4-1) unstable; urgency=medium
 
   * New upstream release (closes: #227968, #228212)
-  * Try handling empty files in queue a little more gracefully 
+  * Try handling empty files in queue a little more gracefully
     (closes: #223906)
   * Actually move the pid file and fix logrotate script a bit more
     (closes: #223525, #228060)
@@ -1087,7 +1095,7 @@ mailman (2.1.3-2) unstable; urgency=low
   * Fix test in config script for list_lists (closes: #206728)
   * Try to fix permissions of /var/lib/mailman/archives, so they'll work
     with both public and private archives.  (closes: #214264)
-  * Make mailman reopen the log files after they are rotated. 
+  * Make mailman reopen the log files after they are rotated.
     (closes: #216478)
   * Move qrunner lock file to /var/run
   * Add a few missing symlinks to /usr/sbin (closes: #218799)
@@ -1097,7 +1105,7 @@ mailman (2.1.3-2) unstable; urgency=low
     create the site list. (closes: #191539)
   * Make /var/lib/mailman/icons a symlink to images (closes: #199172)
   * Fix qmail-to-mailman.py (closes: #217573)
-  * Have Mailman.Utils.get_domain use URL_HOST, not EMAIL_HOST 
+  * Have Mailman.Utils.get_domain use URL_HOST, not EMAIL_HOST
     (closes: #214211) (I hope :)
 
  -- Tollef Fog Heen <tfheen@debian.org>  Sat,  6 Dec 2003 15:03:19 +0100
@@ -1109,7 +1117,7 @@ mailman (2.1.3-1) unstable; urgency=low
   * Band-aid around stupid galeon issuing PROPFIND requests (closes: #202821)
   * Fix error in Dutch translation which made Mailman barf on big mails on
     Dutch-language lists. (closes: #204196)
-  * Add DEFAULT_{URL,EMAIL}_HOST to mm_cfg.py if missing (really 
+  * Add DEFAULT_{URL,EMAIL}_HOST to mm_cfg.py if missing (really
     closes: #200882)
   * Add small note recommending to stop Mailman before dpkg-reconfiguring
     it. (closes: #204949)
@@ -1161,11 +1169,11 @@ mailman (2.1.2-3) unstable; urgency=low
     said directory from debian/dirs (closes: #197253)
   * Add conflicts with sendmail < 8.12.6 (closes: #197500)
   * Add import string to spamd.py (closes: #192124)
-  * Add /usr/lib/mailman/cgi-bin as a symlink to /usr/lib/ 
+  * Add /usr/lib/mailman/cgi-bin as a symlink to /usr/lib/
     (closes: #197812)
   * Add pt_BR debconf translation (closes: #198369)
   * Add spanish debconf translation (closes: #199151)
-  * Stop shipping the python email module ourselves. 
+  * Stop shipping the python email module ourselves.
     (closes: #198789, #199155, #198743)
   * Make localhost default URL_HOST and EMAIL_HOST (closes: #197237)
 
@@ -1177,7 +1185,7 @@ mailman (2.1.2-2) unstable; urgency=low
   * Move #UCF# in postinst to be before confmodule is sourced (closes: #197113)
   * Make sure /usr/lib/mailman/Mailman/mm_cfg.py is a symlink to
     /etc/mailman/mm_cfg.py
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Fri, 13 Jun 2003 00:43:50 +0200
 
 mailman (2.1.2-1) unstable; urgency=low
@@ -1238,7 +1246,7 @@ mailman (2.1.1-2) unstable; urgency=low
 
 mailman (2.1.1-1) unstable; urgency=low
 
-  * New upstream release, fixes XSS probles, fixes sync_members dying 
+  * New upstream release, fixes XSS probles, fixes sync_members dying
     (closes: #180097)
   * Un-crackify postinst. (closes: #178627, #175840)
   * Fix some more permissions. (closes: #178757)
@@ -1332,7 +1340,7 @@ mailman (2.0.10-1) unstable; urgency=low
 mailman (2.0.9-2) unstable; urgency=low
 
   * Add qmail blurb to README.Debian
-  * Fix a strange character in the postinst, one of those 0xa0 chars. 
+  * Fix a strange character in the postinst, one of those 0xa0 chars.
 
  -- Tollef Fog Heen <tfheen@debian.org>  Thu, 18 Apr 2002 11:54:07 +0200
 
@@ -1363,7 +1371,7 @@ mailman (2.0.8-4) unstable; urgency=low
  -- Tollef Fog Heen <tfheen@debian.org>  Mon, 11 Mar 2002 21:44:00 +0100
 
 mailman (2.0.8-3) unstable; urgency=low
-  
+
   * Support upgrading of lists with spaces in their names.  (closes:
     #122913)
   * Merge changelog from stable
@@ -1427,7 +1435,7 @@ mailman (2.0.6-4) unstable; urgency=low
   * Fix typo in postinst (closes: #117888, #117860)
   * Fix typo in templates
   * Fix python in preinst, use id instead.  (closes: #118024)
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Fri,  2 Nov 2001 16:24:16 +0100
 
 mailman (2.0.6-3) unstable; urgency=low
@@ -1448,7 +1456,7 @@ mailman (2.0.6-3) unstable; urgency=low
   * Add debconf note explaining that gate_news is now commented
     out. (closes: #116677)
   * Change dependencies to just depend on python instead of python-base.
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Tue, 30 Oct 2001 10:03:37 +0100
 
 mailman (2.0.6-2) unstable; urgency=low
@@ -1540,7 +1548,7 @@ mailman (2.0.3-6) unstable; urgency=low
   * fixed a few typos in the copyright file.
   * added support for per-user monthly notifications (see README.Debian),
     forwarded upstream.  (closes: #76042, #54027)
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Sat, 24 Mar 2001 02:04:07 +0100
 
 mailman (2.0.3-5) unstable; urgency=low
@@ -1564,7 +1572,7 @@ mailman (2.0.3-3) unstable; urgency=low
     which I forgot to close.
   * Mailman has supported having nobody as the CGI user for some time
     (closes: #36010)
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Fri, 16 Mar 2001 11:06:44 +0100
 
 mailman (2.0.3-2) unstable; urgency=low
@@ -1598,14 +1606,14 @@ mailman (2.0.2-1) unstable; urgency=low
   * subscribe.py should return a HeadlessDocument, not a Document, else
     one gets really non-valid HTML. (closes: #78941)
   * Added man pages (closes: #57231)
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Sat, 10 Mar 2001 18:31:24 +0100
 
 mailman (2.0final-1) unstable; urgency=low
 
   * New upstream version (Closes: #75640, #65955)
   * Fix default private archive url (Closes: #74766, #74112, #76114, #77448)
-  * Add / to the default url (Closes: #68619, #69167, #71006, #71208, 
+  * Add / to the default url (Closes: #68619, #69167, #71006, #71208,
        #71464, #71475)
 
  -- Gergely Madarasz <gorgo@sztaki.hu>  Sun, 26 Nov 2000 18:37:05 +0100
@@ -1620,7 +1628,7 @@ mailman (2.0beta5-1) unstable; urgency=low
 mailman (2.0beta4-1) unstable; urgency=low
 
   * New upstream version
-  * Update logrotate config file 
+  * Update logrotate config file
 
  -- Gergely Madarasz <gorgo@sztaki.hu>  Fri,  7 Jul 2000 12:05:03 +0200
 
@@ -1635,7 +1643,7 @@ mailman (2.0beta2-1) unstable; urgency=low
 
   * New upstream version
   * Update the conffiles list
-  * Update the default mm_cfg.py 
+  * Update the default mm_cfg.py
 
  -- Gergely Madarasz <gorgo@sztaki.hu>  Mon, 29 May 2000 16:06:45 +0200
 
@@ -1647,19 +1655,19 @@ mailman (1.1-9) stable; urgency=medium
  -- Tollef Fog Heen <tfheen@debian.org>  Fri,  7 Dec 2001 13:53:11 +0100
 
 mailman (1.1-8) stable; urgency=medium
-  
+
   * Fix maintainer field
   * Completely fix previous security flaw
   * Fix dedent in Mailman/SecurityManager.py (closes: #107768)
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Mon, 6 Aug 2001 16:27:32 +0200
-  
+
 mailman (1.1-7) stable; urgency=medium
-  
+
   * Fix possible (but rare) security problem if site password was blank
-  
+
  -- Tollef Fog Heen <tfheen@debian.org>  Fri, 3 Aug 2001 21:51:32 +0200
-  
+
 mailman (1.1-6) frozen unstable; urgency=high
 
   * Fix archiver security problem (Closes: #64841)
@@ -1811,7 +1819,7 @@ mailman (1.0b11-2) unstable; urgency=low
 
   * Fix problem with python and exim, depend on python (>= 1.5.2)
   * No need for list user, but check for existence of the list group
-    and create if not found. Change su to sg in the postinst 
+    and create if not found. Change su to sg in the postinst
     accordingly (addresses #33701 and #36015)
   * Loosen up the cgi-s gid check (#36010)
   * Fix some lintian errors and warnings, not cleaned up completely yet
@@ -1879,7 +1887,7 @@ mailman (1.0b7-2) unstable; urgency=low
 
 mailman (1.0b7-1) unstable; urgency=low
 
-  * Don't check caller gid in mail-wrapper 
+  * Don't check caller gid in mail-wrapper
   * New maintainer
   * New upstream version
 
