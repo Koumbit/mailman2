@@ -9,8 +9,8 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
 Build-Depends: debhelper (>= 7), autoconf, python-dev (>= 2.6.6-3~), gettext
 Standards-Version: 3.9.4
 Homepage: http://www.list.org/
-Vcs-Svn: svn://anonscm.debian.org/pkg-mailman/branches/experimental
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-mailman/branches/experimental/
+Vcs-Svn: svn://anonscm.debian.org/pkg-mailman/trunk
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-mailman/trunk/
 X-Python-Version: >= 2.4
 XS-Testsuite: autopkgtest
 
