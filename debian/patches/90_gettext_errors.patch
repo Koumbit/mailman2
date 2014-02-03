@@ -1,0 +1,263 @@
+Author: Thorsten Glaser <tg@debian.org>
+Description: Fix bugs in translation files
+Forwarded: no
+
+--- a/messages/es/LC_MESSAGES/mailman.po
++++ b/messages/es/LC_MESSAGES/mailman.po
+@@ -11460,7 +11460,6 @@ msgid ""
+ "\n"
+ "This script is provided for convenience purposes only.  It isn't supported.\n"
+ msgstr ""
+-"\n"
+ "Reduce el espacio usado en disco de los archivos de pipermail.\n"
+ "\n"
+ "Sintaxis: %(PROGRAM)s [opciones] fichero ...\n"
+@@ -11486,7 +11485,7 @@ msgstr ""
+ "guión cuando esté satisfecho con los resultados.\n"
+ "\n"
+ "Este guión se suministra únicamente por motivos de conveniencia. No\n"
+-"está soportado."
++"está soportado.\n"
+ 
+ #: bin/remove_members:20
+ #, fuzzy
+@@ -11630,7 +11629,7 @@ msgstr ""
+ "\n"
+ "Opciones:\n"
+ "    -v / --verbose\n"
+-"         Muestra que es lo que está haciendo el guión."
++"         Muestra que es lo que está haciendo el guión.\n"
+ 
+ #: bin/reset_pw.py:77
+ msgid "Changing passwords for list: %(listname)s"
+@@ -11750,7 +11749,7 @@ msgstr ""
+ "     -h / --help\n"
+ "        Muestra este texto y termina.\n"
+ "\n"
+-"Ejemplo: show_qfiles qfiles/shunt/*.pck"
++"Ejemplo: show_qfiles qfiles/shunt/*.pck\n"
+ 
+ #: bin/sync_members:19
+ msgid ""
+--- a/messages/fr/LC_MESSAGES/mailman.po
++++ b/messages/fr/LC_MESSAGES/mailman.po
+@@ -7290,7 +7290,7 @@ msgid ""
+ "                Incomplete filter rules will be ignored."
+ msgstr ""
+ "Les règles de filtrage d'en têtes requièrent un motif.\n"
+-"\t\t Les règles de filtrage incomplètes seront ignorées.\n"
++"\t\t Les règles de filtrage incomplètes seront ignorées."
+ 
+ #: Mailman/Gui/Privacy.py:500
+ msgid ""
+--- a/messages/hr/LC_MESSAGES/mailman.po
++++ b/messages/hr/LC_MESSAGES/mailman.po
+@@ -1776,7 +1776,7 @@ msgstr ""
+ "    proces potvrde.\n"
+ "\n"
+ "    <p>Ili stisnite <em>Zanemari odbaci</em> da biste zanemarili ovu "
+-"promjenu adrese\n"
++"promjenu adrese"
+ 
+ #: Mailman/Cgi/confirm.py:602
+ msgid "Change address"
+@@ -1812,7 +1812,7 @@ msgstr ""
+ "            <em>%(subject)s</em> u zaglavlju nije pronaðena.  Vjerovatno je\n"
+ "            tome razlog taj ¹to je moderator liste veæ odobrio ili odbacio "
+ "poruku.\n"
+-"            Niste bili u moguænosti zanemariti istu na vrijeme.\n"
++"            Niste bili u moguænosti zanemariti istu na vrijeme."
+ 
+ #: Mailman/Cgi/confirm.py:657
+ msgid "Posted message canceled"
+@@ -4628,7 +4628,7 @@ msgstr ""
+ msgid ""
+ "Remove message attachments that have a matching content\n"
+ "             type."
+-msgstr "Ukloni privitke poruka koji se podudaraju s tipovima sadr¾aja.\n"
++msgstr "Ukloni privitke poruka koji se podudaraju s tipovima sadr¾aja."
+ 
+ #: Mailman/Gui/ContentFilter.py:82
+ msgid ""
+--- a/messages/ia/LC_MESSAGES/mailman.po
++++ b/messages/ia/LC_MESSAGES/mailman.po
+@@ -68,7 +68,7 @@ msgstr "Texto%(sz)s"
+ 
+ #: Mailman/Archiver/HyperArch.py:913
+ msgid "figuring article archives\n"
+-msgstr "recerca in le archivo pro iste articulo"
++msgstr "recerca in le archivo pro iste articulo\n"
+ 
+ #: Mailman/Archiver/HyperArch.py:923
+ msgid "April"
+@@ -1539,7 +1539,7 @@ msgstr ""
+ "lista\n"
+ "            <em>%(listname)s</em>, ma illo debe esser approbate per le\n"
+ "            moderator del lista. Tu requesta ha essite reinviate al "
+-"moderator,            e tu essera notificate super su decision.\n"
++"moderator,            e tu essera notificate super su decision."
+ 
+ #: Mailman/Cgi/confirm.py:371 Mailman/Cgi/confirm.py:436
+ #: Mailman/Cgi/confirm.py:525 Mailman/Cgi/confirm.py:762
+@@ -1891,7 +1891,7 @@ msgstr ""
+ "            Tu ha rehabilitate con successo tu abonamento al\n"
+ "            lista %(listname)s.  Tu pote nunc <a\n"
+ "            href=\"%(optionsurl)s\">visitar tu pagina de optiones de "
+-"abonato</a>.\n"
++"abonato</a>."
+ 
+ #: Mailman/Cgi/confirm.py:784
+ msgid "Re-enable mailing list membership"
+@@ -2565,7 +2565,7 @@ msgstr ""
+ "Tu ha essite disabonate con successo del lista %(fqdn_listname)s.\n"
+ "            Si tu recipeva summarios, tu forsan va reciper ancora uno.\n"
+ "            Si tu ha alicun question super tu disabonamento, per favor\n"
+-"            contacta le proprietarios del lista a %(owneraddr)s.\n"
++"            contacta le proprietarios del lista a %(owneraddr)s."
+ 
+ #: Mailman/Cgi/options.py:676
+ msgid ""
+@@ -3206,11 +3206,11 @@ msgstr "Plus informationes: %(listurl)s"
+ 
+ #: Mailman/Commands/cmd_join.py:17
+ msgid "The `join' command is synonymous with `subscribe'.\n"
+-msgstr "Le commando 'join' (in anglese) es synonyme con 'subscribe'."
++msgstr "Le commando 'join' (in anglese) es synonyme con 'subscribe'.\n"
+ 
+ #: Mailman/Commands/cmd_leave.py:17
+ msgid "The `leave' command is synonymous with `unsubscribe'.\n"
+-msgstr "Le commando 'leave' (in anglese) es synonyme a 'unsubscribe'."
++msgstr "Le commando 'leave' (in anglese) es synonyme a 'unsubscribe'.\n"
+ 
+ #: Mailman/Commands/cmd_lists.py:17
+ msgid ""
+@@ -3303,7 +3303,7 @@ msgstr ""
+ 
+ #: Mailman/Commands/cmd_remove.py:17
+ msgid "The `remove' command is synonymous with `unsubscribe'.\n"
+-msgstr "Le commando 'remove' (in anglese) es synonyme con 'unsubscribe'."
++msgstr "Le commando 'remove' (in anglese) es synonyme con 'unsubscribe'.\n"
+ 
+ #: Mailman/Commands/cmd_set.py:26
+ msgid ""
+@@ -3598,7 +3598,7 @@ msgstr "fixa option de rememoration"
+ 
+ #: Mailman/Commands/cmd_stop.py:17
+ msgid "stop is synonymous with the end command.\n"
+-msgstr "'stop' es synonyme con le commando 'end' (fin)."
++msgstr "'stop' es synonyme con le commando 'end' (fin).\n"
+ 
+ #: Mailman/Commands/cmd_subscribe.py:17
+ msgid ""
+@@ -10976,7 +10976,7 @@ msgstr ""
+ "\n"
+ "Optiones:\n"
+ "    -v / --verbose\n"
+-"        Imprime lo que le scripto face."
++"        Imprime lo que le scripto face.\n"
+ 
+ #: bin/reset_pw.py:77
+ msgid "Changing passwords for list: %(listname)s"
+--- /dev/null
++++ b/messages/checkpo.sh
+@@ -0,0 +1,6 @@
++#!/bin/sh
++rv=0
++for x in */LC_MESSAGES/*.po; do
++	msgfmt -o - "$x" >/dev/null || rv=1
++done
++exit $rv
+--- a/messages/ja/LC_MESSAGES/mailman.po
++++ b/messages/ja/LC_MESSAGES/mailman.po
+@@ -2175,7 +2175,7 @@ msgstr ""
+ "¤¢¤Ê¤¿¤¬ÊÝÂ¸¤·¤¿¥Ú¡¼¥¸¤Ë¤Ï, ¥æ¡¼¥¶¤ò¥¯¥í¥¹¥µ¥¤¥È¥¹¥¯¥ê¥×¥È¹¶·â¤Ë\n"
+ "¤µ¤é¤¹¤è¤¦¤Êµ¿¤ï¤·¤¤ HTML¥³¡¼¥É¤¬´Þ¤Þ¤ì¤Æ¤¤¤Þ¤¹.¤½¤Î¤¿¤á, ÊÑ¹¹¤ÏµÑ²¼¤·¤Þ¤·"
+ "¤¿. ¤â¤·, ¤É¤¦¤·¤Æ¤âÊÑ¹¹¤¬É¬Í×¤Ç¤¢¤ì¤Ð, \n"
+-"Mailman ¥µ¡¼¥Ð¤Ë¥·¥§¥ë¥¢¥¯¥»¥¹¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó.\n"
++"Mailman ¥µ¡¼¥Ð¤Ë¥·¥§¥ë¥¢¥¯¥»¥¹¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó."
+ 
+ #: Mailman/Cgi/edithtml.py:172
+ msgid "See "
+@@ -5516,7 +5516,7 @@ msgstr ""
+ "°ìÊý¤Ç¤¢¤ë¥á¡¼¥ë¥ê¡¼¥À¤Ï¤³¤Î¥Ø¥Ã¥À¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¤È´üÂÔ¤Ï¤º¤ì¤ÎÆ°ºî¤ò¤¹¤ë.\n"
+ "(Îã¤¨¤Ð, Å¾Á÷¤·¤¿¤È¤­¤Ë¥¢¥É¥ì¥¹¤¬¶õÇò¤Ë¤Ê¤ë¤È¤«, ¡ÖÁ´°÷¤ËÊÖ¿®¡×¤·¤¿¤È¤­¤Ë\n"
+ "¤³¤Î¥¨¥é¡¼ÄÌÃÎ¥¢¥É¥ì¥¹¤Ë¤âÁ÷¿®¤¹¤ë¤È¤«) ½¾¤Ã¤Æ, ¤³¤³¤ÇÌµ¸ú¤Ë¤Ç¤­¤ë¤è¤¦¤Ë¤·"
+-"¤¿.\n"
++"¤¿."
+ 
+ #: Mailman/Gui/General.py:463
+ msgid ""
+@@ -5553,7 +5553,7 @@ msgstr ""
+ "¤¿. ¤â¤·, ¤É¤¦¤·¤Æ¤âÊÑ¹¹¤¬É¬Í×¤Ç¤¢¤ì¤Ð, \n"
+ "Mailman ¥µ¡¼¥Ð¤Ë¥·¥§¥ë¥¢¥¯¥»¥¹¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó.\n"
+ "ÊÑ¹¹¤Ë¤Ï bin/withlist Ëô¤Ï bin/config_list ¤ò»È¤Ã¤Æ\n"
+-"mlist.info ¤òÀßÄê¤·¤Þ¤¹.\n"
++"mlist.info ¤òÀßÄê¤·¤Þ¤¹."
+ 
+ #: Mailman/Gui/General.py:512
+ msgid ""
+@@ -6362,7 +6362,7 @@ msgstr ""
+ "»Ê²ñ¥×¥í¥»¥¹¤ÏÉ¬Í×¤È¤·¤Þ¤»¤ó. 1¹Ô¤Ë¤Ä¤­1¤Ä¤Î¥¢¥É¥ì¥¹¤ò\n"
+ "µ­Æþ¤·¤Æ¤¯¤À¤µ¤¤; Àµµ¬É½¸½¤ò»È¤¦¤Ë¤Ï¹Ô¤ÎºÇ½é¤ò ^ ¤Ç»Ï¤á¤Æ¤¯¤À¤µ¤¤.\n"
+ "¹Ô¤ÎºÇ½é¤ò @ Ê¸»ú¤Ë¤·¤Æ, ¸å¤Ë¤³¤Î Mailman ¥·¥¹¥Æ¥à¤Î¥ê¥¹¥ÈÌ¾¤òÂ³¤±¤ë¤È,\n"
+-"¤½¤Î¥ê¥¹¥È²ñ°÷Á´°÷¤¬¾µÇ§¤µ¤ì¤Þ¤¹.\n"
++"¤½¤Î¥ê¥¹¥È²ñ°÷Á´°÷¤¬¾µÇ§¤µ¤ì¤Þ¤¹."
+ 
+ #: Mailman/Gui/Privacy.py:257
+ msgid ""
+@@ -8571,7 +8571,7 @@ msgstr ""
+ "·Ù¹ð: ¸ÂÄê¸ø³«ÊÝÂ¸½ñ¸Ë¥Ç¥£¥ì¥¯¥È¥ê¤¬ other-executable (o+x) ¤Ë\n"
+ "      ¤Ê¤Ã¤Æ¤¤¤Þ¤¹. ¤¢¤Ê¤¿¤Î¥·¥¹¥Æ¥à¤Î¥·¥§¥ë¥æ¡¼¥¶¤¬¤³¤ÎÊÝÂ¸½ñ¸Ë\n"
+ "      ¤òÆÉ¤à¤³¤È¤¬¤Ç¤­¤Þ¤¹. ¥¤¥ó¥¹¥È¡¼¥ë¥Þ¥Ë¥å¥¢¥ë¤Ë¤Ï, ¤³¤ì¤ò\n"
+-"      ¤É¤¦¤·¤¿¤é½¤Àµ¤Ç¤­¤ë¤«½ñ¤¤¤Æ¤¢¤ê¤Þ¤¹¤Î¤Ç, »²¹Í¤Ë¤·¤Æ¤¯¤À¤µ¤¤.\n"
++"      ¤É¤¦¤·¤¿¤é½¤Àµ¤Ç¤­¤ë¤«½ñ¤¤¤Æ¤¢¤ê¤Þ¤¹¤Î¤Ç, »²¹Í¤Ë¤·¤Æ¤¯¤À¤µ¤¤."
+ 
+ #: bin/check_perms:240
+ msgid "mbox file must be at least 0660:"
+--- a/messages/nl/LC_MESSAGES/mailman.po
++++ b/messages/nl/LC_MESSAGES/mailman.po
+@@ -2267,6 +2267,7 @@ msgstr ""
+ "wijziging\n"
+ "is daarom geweigerd.  Als u toch deze wijzigingen wilt aanbrengen, heeft u\n"
+ "shell access nodig voor uw Mailman server.\n"
++"             "
+ 
+ #: Mailman/Cgi/edithtml.py:172
+ msgid "See "
+@@ -3771,7 +3772,7 @@ msgstr ""
+ "        en zonder aanhalingstekens!) uw lidmaatschapsadres. Als u het \n"
+ "        wachtwoord van de lijstbeheerder of moderator opgeeft, zullen ook "
+ "de\n"
+-"        verborgen leden worden vermeld."
++"        verborgen leden worden vermeld.\n"
+ 
+ #: Mailman/Commands/cmd_who.py:46
+ msgid ""
+@@ -5999,6 +6000,7 @@ msgstr ""
+ "Deze wijziiging kan gemaakt worden met bin/withlist of met bin/config_list "
+ "door het\n"
+ "instellen van mlist.info.\n"
++"                        "
+ 
+ #: Mailman/Gui/General.py:512
+ msgid ""
+--- a/messages/pl/LC_MESSAGES/mailman.po
++++ b/messages/pl/LC_MESSAGES/mailman.po
+@@ -1389,7 +1389,7 @@ msgid ""
+ "    confirmation step."
+ msgstr ""
+ "Wprowad¼ kod potwierdzaj±cy,\n"
+-"    który otrzyma³e¶ w emailu. Nastêpnie naci¶nij <em>OK</em>,\n"
++"    który otrzyma³e¶ w emailu. Nastêpnie naci¶nij <em>OK</em>,"
+ 
+ #: Mailman/Cgi/confirm.py:214
+ msgid "Confirmation string:"
+@@ -1629,7 +1629,7 @@ msgstr ""
+ "    Naci¶nij <em>Wypisz</em>, aby potwierdziæ\n"
+ "    wypisanie siê.\n"
+ "\n"
+-"    <p>Kliknij <em>Anuluj</em>, aby zrezygnowaæ.\n"
++"    <p>Kliknij <em>Anuluj</em>, aby zrezygnowaæ."
+ 
+ #: Mailman/Cgi/confirm.py:491 Mailman/Cgi/options.py:767
+ #: Mailman/Cgi/options.py:911 Mailman/Cgi/options.py:921

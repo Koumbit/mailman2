@@ -1,3 +1,18 @@
+mailman (1:2.1.16-1exp1) experimental; urgency=low
+
+  This version has changed the encoding of most strings, templates
+  and pages to UTF-8 to meet the Debian release goal of full UTF-8
+  support in all packages. It also no longer automatically converts
+  mails to ISO-8859-1.
+
+  If you have been using any nōn-ASCII strings in places such as
+  the mailing list description, these were be stored wrongly in the
+  list configuration file (config.pck), so you will need to change
+  those (e.g. via the webinterface) again in order to have them be
+  displayed correctly.
+
+ -- Thorsten Glaser <tg@mirbsd.de>  Sun, 29 Dec 2013 14:35:50 +0000
+
 mailman (1:2.1.9-6) unstable; urgency=medium
 
   * This version will automatically upgrade indexes of the current
