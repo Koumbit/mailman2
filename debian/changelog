@@ -2,10 +2,14 @@ mailman (1:2.1.18-1) unstable; urgency=medium
 
   * New upstream release.
     - Adds DMARC support. (Closes: #746592)
+    - Drop obsolete patches:
+      20_qmail_to_mailman.debian.patch
+      80_sync_members_unicode.patch
   * Add lsb-release to debian/tests/control. (Closes: #734180)
   * Fix ownership on /var/lib/mailman/archives/private as upstream
     suggests, also reflecting group ownership for public archives.
     Thanks Luca Capello! (closes: #603904)
+  * Checked for policy 3.6.5, no changes.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Thu, 10 Jul 2014 19:27:46 +0200
 
