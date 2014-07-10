@@ -8,6 +8,5 @@
 63_update_default_server_language.patch
 66_donot_let_cache_html_pages.patch
 79_archiver_slash.patch
-80_sync_members_unicode.patch
 90_gettext_errors.patch
 91_utf8.patch
