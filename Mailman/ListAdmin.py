@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -243,7 +243,11 @@ class ListAdmin:
                 if e.errno <> errno.ENOENT: raise
                 return LOST
             try:
-                msg = cPickle.load(fp)
+                if path.endswith('.pck'):
+                    msg = cPickle.load(fp)
+                else:
+                    assert path.endswith('.txt'), '%s not .pck or .txt' % path
+                    msg = fp.read()
             finally:
                 fp.close()
             # Save the plain text to a .msg file, not a .pck file
@@ -252,8 +256,11 @@ class ListAdmin:
             outpath = head + '.msg'
             outfp = open(outpath, 'w')
             try:
-                g = Generator(outfp)
-                g.flatten(msg, 1)
+                if path.endswith('.pck'):
+                    g = Generator(outfp)
+                    g.flatten(msg, 1)
+                else:
+                    outfp.write(msg)
             finally:
                 outfp.close()
         # Now handle updates to the database
@@ -285,7 +292,8 @@ class ListAdmin:
             # message directly here can lead to a huge delay in web
             # turnaround.  Log the moderation and add a header.
             msg['X-Mailman-Approved-At'] = email.Utils.formatdate(localtime=1)
-            syslog('vette', 'held message approved, message-id: %s',
+            syslog('vette', '%s: held message approved, message-id: %s',
+                   self.internal_name(),
                    msg.get('message-id', 'n/a'))
             # Stick the message back in the incoming queue for further
             # processing.

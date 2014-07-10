@@ -1,4 +1,4 @@
-# Copyright (C) 2013 by the Free Software Foundation, Inc.
+# Copyright (C) 2013-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,6 +17,9 @@
 
 """Wrap the message in an outer message/rfc822 part and transfer/add
 some headers from the original.
+
+Also, in the case of Munge From, replace the From: and Reply-To: in the
+original message.
 """
 
 import copy
@@ -35,7 +38,19 @@ KEEPERS = ('to',
 
 
 def process(mlist, msg, msgdata):
-    if not mm_cfg.ALLOW_FROM_IS_LIST or mlist.from_is_list != 2:
+    # This is the negation of we're wrapping because dmarc_moderation_action
+    # is wrap this message or from_is_list applies and is wrap.
+    if not (msgdata.get('from_is_list') == 2 or
+            (mlist.from_is_list == 2 and msgdata.get('from_is_list') == 0)):
+        # Now see if we need to add a From: and/or Reply-To: without wrapping.
+        a_h = msgdata.get('add_header')
+        if a_h:
+            if a_h.get('From'):
+                del msg['from']
+                msg['From'] = a_h.get('From')
+            if a_h.get('Reply-To'):
+                del msg['reply-to']
+                msg['Reply-To'] = a_h.get('Reply-To')
         return
 
     # There are various headers in msg that we don't want, so we basically

@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -64,7 +64,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s', listname, e)
+        syslog('error', 'confirm: No such list "%s": %s', listname, e)
         return
 
     # Set the language for the list
@@ -258,7 +258,8 @@ def subscription_prompt(mlist, doc, cookie, userdesc):
 
     <p>Or hit <em>Cancel my subscription request</em> if you no longer want to
     subscribe to this list.""") + '<p><hr>'
-    if mlist.subscribe_policy in (2, 3):
+    if (mlist.subscribe_policy in (2, 3) and
+            not getattr(userdesc, 'invitation', False)):
         # Confirmation is required
         result = _("""Your confirmation is required in order to continue with
         the subscription request to the mailing list <em>%(listname)s</em>.

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -77,8 +77,8 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         admin_overview(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'admin.py access for non-existent list: %s',
-               listname)
+        syslog('error', 'admin: No such list "%s": %s\n',
+               listname, e)
         return
     # Now that we know what list has been requested, all subsequent admin
     # pages are shown in that list's preferred language.
@@ -1152,7 +1152,8 @@ def membership_options(mlist, subcat, cgidata, doc, form):
                 continue
             start = chunkmembers[i*chunksz]
             end = chunkmembers[min((i+1)*chunksz, last)-1]
-            link = Link(url + 'chunk=%d' % i, _('from %(start)s to %(end)s'))
+            link = Link(url + 'chunk=%d' % i + findfrag,
+                        _('from %(start)s to %(end)s'))
             buttons.append(link)
         buttons = UnorderedList(*buttons)
         container.AddItem(footer + buttons.Format() + '<p>')

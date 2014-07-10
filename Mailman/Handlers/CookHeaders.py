@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -65,7 +65,10 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     return Header(s, charset, maxlinelen, header_name, continuation_ws)
 
 def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
-    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list == 2:
+    if ((msgdata.get('from_is_list') == 2 or
+        (msgdata.get('from_is_list') == 0 and mlist.from_is_list == 2)) and 
+        not msgdata.get('_fasttrack')
+       ) or name.lower() in ('from', 'reply-to'):
         msgdata.setdefault('add_header', {})[name] = value
     elif repl or not msg.has_key(name):
         if delete:
@@ -116,18 +119,17 @@ def process(mlist, msg, msgdata):
     change_header('Precedence', 'list',
                   mlist, msg, msgdata, repl=False)
     # Do we change the from so the list takes ownership of the email
-    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list:
+    if (msgdata.get('from_is_list') or mlist.from_is_list) and not fasttrack:
         realname, email = parseaddr(msg['from'])
-        replies = getaddresses(msg.get('reply-to', ''))
-        reply_addrs = [x[1].lower() for x in replies]
-        if reply_addrs:
-            if email.lower() not in reply_addrs:
-                rt = msg['reply-to'] + ', ' + msg['from']
+        if not realname:
+            if mlist.isMember(email):
+                realname = mlist.getMemberName(email) or email
             else:
-                rt = msg['reply-to']
-        else:
-            rt = msg['from']
-        change_header('Reply-To', rt, mlist, msg, msgdata)
+                realname = email
+        # Remove domain from realname if it looks like an email address
+        realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
+        # Remember the original From: here for adding to Reply-To: below.
+        o_from = parseaddr(msg['from'])
         change_header('From',
                       formataddr(('%s via %s' % (realname, mlist.real_name),
                                  mlist.GetListEmail())),
@@ -135,6 +137,9 @@ def process(mlist, msg, msgdata):
         if mlist.from_is_list != 2:
             del msg['sender']
         #MAS ?? mlist.include_sender_header = 0
+    else:
+        # Use this as a flag
+        o_from = None
     # Reply-To: munging.  Do not do this if the message is "fast tracked",
     # meaning it is internally crafted and delivered to a specific user.  BAW:
     # Yuck, I really hate this feature but I've caved under the sheer pressure
@@ -164,6 +169,9 @@ def process(mlist, msg, msgdata):
             orig = msg.get_all('reply-to', [])
             for pair in getaddresses(orig):
                 add(pair)
+        # We also need to put the old From: in Reply-To: in all cases.
+        if o_from:
+            add(o_from)
         # Set Reply-To: header to point back to this list.  Add this last
         # because some folks think that some MUAs make it easier to delete
         # addresses from the right than from the left.
@@ -187,24 +195,32 @@ def process(mlist, msg, msgdata):
         # Cc header.  BAW: should we force it into a Reply-To header in the
         # above code?
         # Also skip Cc if this is an anonymous list as list posting address
-        # is already in From and Reply-To in this case and similarly for
-        # an 'author is list' list.
-        if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list and not (mlist.from_is_list and
-                                                 mm_cfg.ALLOW_FROM_IS_LIST):
+        # is already in From and Reply-To in this case.
+        # We do add the Cc in cases where From: header munging is being done
+        # because even though the list address is in From:, the Reply-To:
+        # poster will override it. Brain dead MUAs may then address the list
+        # twice on a 'reply all', but reasonable MUAs should do the right
+        # thing.
+        if (mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 and
+            not mlist.anonymous_list):
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
             d = {}
-            for pair in getaddresses(msg.get_all('cc', [])):
-                add(pair)
+            # AvoidDuplicates may have set a new Cc: in msgdata.add_header,
+            # so check that.
+            if (msgdata.has_key('add_header') and
+                    msgdata['add_header'].has_key('Cc')):
+                for pair in getaddresses([msgdata['add_header']['Cc']]):
+                    add(pair)
+            else:
+                for pair in getaddresses(msg.get_all('cc', [])):
+                    add(pair)
             i18ndesc = uheader(mlist, mlist.description, 'Cc')
             add((str(i18ndesc), mlist.GetListEmail()))
-            # We don't worry about what AvoidDuplicates may have done with a
-            # Cc: header or using change_header here since we never get here
-            # if from_is_list is allowed and True.
-            del msg['Cc']
-            msg['Cc'] = COMMASPACE.join([formataddr(pair) for pair in new])
+            change_header('Cc',
+                          COMMASPACE.join([formataddr(pair) for pair in new]),
+                          mlist, msg, msgdata)
     # Add list-specific headers as defined in RFC 2369 and RFC 2919, but only
     # if the message is being crafted for a specific list (e.g. not for the
     # password reminders).

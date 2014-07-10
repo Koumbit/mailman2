@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman v2.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Fri Sep 27 16:41:21 2013\n"
+"POT-Creation-Date: Fri May  2 21:50:40 2014\n"
 "PO-Revision-Date: 2007-04-05 21:33+0300\n"
 "Last-Translator: Dov Zamir <linux@zamirfamily.com>\n"
 "Language-Team: Hebrew\n"
@@ -187,7 +187,7 @@ msgstr "מעדכן קבצי אינדקס עבור הארכיון [%(archive)s]"
 msgid "  Thread"
 msgstr "  שיחה"
 
-#: Mailman/Archiver/pipermail.py:579
+#: Mailman/Archiver/pipermail.py:583
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
@@ -221,7 +221,7 @@ msgid " The last bounce received from you was dated %(date)s"
 msgstr " ההחזר האחרון שהתקבל ממך היה בתאריך %(date)s"
 
 #: Mailman/Bouncer.py:322 Mailman/Deliverer.py:144
-#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:317
+#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:333
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:240
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
@@ -270,7 +270,7 @@ msgstr ""
 "                אחרת רשימת הדיוור לא תהיה שימושית כלל."
 
 #: Mailman/Cgi/admin.py:209 Mailman/Cgi/admin.py:217 Mailman/Cgi/admin.py:224
-#: Mailman/Cgi/admin.py:1497 Mailman/Gui/GUIBase.py:207
+#: Mailman/Cgi/admin.py:1498 Mailman/Gui/GUIBase.py:207
 msgid "Warning: "
 msgstr "אזהרה: "
 
@@ -548,25 +548,26 @@ msgstr "השהה"
 #: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:352
 #: Mailman/Cgi/admindb.py:411 Mailman/Cgi/admindb.py:463
 #: Mailman/Cgi/admindb.py:704 Mailman/Gui/ContentFilter.py:37
-#: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:297
+#: Mailman/Gui/Privacy.py:221 Mailman/Gui/Privacy.py:244
+#: Mailman/Gui/Privacy.py:355
 msgid "Reject"
 msgstr "דחה"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Gui/Privacy.py:216
-#: Mailman/Gui/Privacy.py:297
+#: Mailman/Cgi/admin.py:794 Mailman/Gui/Privacy.py:221
+#: Mailman/Gui/Privacy.py:355
 msgid "Hold"
 msgstr "החזק"
 
 #: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:353
 #: Mailman/Cgi/admindb.py:412 Mailman/Cgi/admindb.py:463
 #: Mailman/Cgi/admindb.py:704 Mailman/Commands/cmd_confirm.py:93
-#: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:216
-#: Mailman/Gui/Privacy.py:297
+#: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:221
+#: Mailman/Gui/Privacy.py:245 Mailman/Gui/Privacy.py:355
 msgid "Discard"
 msgstr "מחק"
 
 #: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:463
-#: Mailman/Gui/Privacy.py:297
+#: Mailman/Gui/Privacy.py:244 Mailman/Gui/Privacy.py:355
 msgid "Accept"
 msgstr "אשר"
 
@@ -803,29 +804,29 @@ msgid ""
 "        range listed below:</em>"
 msgstr "<p><em>כדי להציג מנוים נוספים, לחץ על הקישור המתאים למטה:/em>"
 
-#: Mailman/Cgi/admin.py:1155
+#: Mailman/Cgi/admin.py:1156
 msgid "from %(start)s to %(end)s"
 msgstr "מ-%(start)s ל-%(end)s"
 
-#: Mailman/Cgi/admin.py:1168
+#: Mailman/Cgi/admin.py:1169
 msgid "Subscribe these users now or invite them?"
 msgstr "רשום או הזמן מנוים אלה כרגע?"
 
-#: Mailman/Cgi/admin.py:1170
+#: Mailman/Cgi/admin.py:1171
 msgid "Invite"
 msgstr "הזמן"
 
-#: Mailman/Cgi/admin.py:1170 Mailman/Cgi/listinfo.py:183
+#: Mailman/Cgi/admin.py:1171 Mailman/Cgi/listinfo.py:183
 msgid "Subscribe"
 msgstr "רשום"
 
-#: Mailman/Cgi/admin.py:1176
+#: Mailman/Cgi/admin.py:1177
 msgid "Send welcome messages to new subscribees?"
 msgstr "שלח ברכת הצטרפות למנוים חדשים?"
 
-#: Mailman/Cgi/admin.py:1178 Mailman/Cgi/admin.py:1187
-#: Mailman/Cgi/admin.py:1220 Mailman/Cgi/admin.py:1228
-#: Mailman/Cgi/confirm.py:292 Mailman/Cgi/create.py:353
+#: Mailman/Cgi/admin.py:1179 Mailman/Cgi/admin.py:1188
+#: Mailman/Cgi/admin.py:1221 Mailman/Cgi/admin.py:1229
+#: Mailman/Cgi/confirm.py:293 Mailman/Cgi/create.py:353
 #: Mailman/Cgi/create.py:388 Mailman/Cgi/create.py:426
 #: Mailman/Cgi/rmlist.py:230 Mailman/Gui/Archive.py:33
 #: Mailman/Gui/Autoresponse.py:54 Mailman/Gui/Autoresponse.py:62
@@ -834,27 +835,27 @@ msgstr "שלח ברכת הצטרפות למנוים חדשים?"
 #: Mailman/Gui/Bounce.py:155 Mailman/Gui/ContentFilter.py:74
 #: Mailman/Gui/ContentFilter.py:116 Mailman/Gui/ContentFilter.py:120
 #: Mailman/Gui/Digest.py:46 Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84
-#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:161
-#: Mailman/Gui/General.py:175 Mailman/Gui/General.py:181
-#: Mailman/Gui/General.py:259 Mailman/Gui/General.py:286
-#: Mailman/Gui/General.py:313 Mailman/Gui/General.py:324
-#: Mailman/Gui/General.py:327 Mailman/Gui/General.py:337
-#: Mailman/Gui/General.py:342 Mailman/Gui/General.py:348
-#: Mailman/Gui/General.py:368 Mailman/Gui/General.py:400
-#: Mailman/Gui/General.py:423 Mailman/Gui/General.py:440
+#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:158
+#: Mailman/Gui/General.py:223 Mailman/Gui/General.py:229
+#: Mailman/Gui/General.py:307 Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:361 Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:375 Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:390 Mailman/Gui/General.py:396
+#: Mailman/Gui/General.py:416 Mailman/Gui/General.py:448
+#: Mailman/Gui/General.py:471 Mailman/Gui/General.py:488
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
-#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:197
-#: Mailman/Gui/Privacy.py:312 Mailman/Gui/Privacy.py:331
-#: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
-#: Mailman/Gui/Usenet.py:105
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:202
+#: Mailman/Gui/Privacy.py:273 Mailman/Gui/Privacy.py:370
+#: Mailman/Gui/Privacy.py:389 Mailman/Gui/Usenet.py:52
+#: Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93 Mailman/Gui/Usenet.py:105
 msgid "No"
 msgstr "לא"
 
-#: Mailman/Cgi/admin.py:1178 Mailman/Cgi/admin.py:1187
-#: Mailman/Cgi/admin.py:1220 Mailman/Cgi/admin.py:1228
-#: Mailman/Cgi/confirm.py:292 Mailman/Cgi/create.py:353
+#: Mailman/Cgi/admin.py:1179 Mailman/Cgi/admin.py:1188
+#: Mailman/Cgi/admin.py:1221 Mailman/Cgi/admin.py:1229
+#: Mailman/Cgi/confirm.py:293 Mailman/Cgi/create.py:353
 #: Mailman/Cgi/create.py:388 Mailman/Cgi/create.py:426
 #: Mailman/Cgi/rmlist.py:230 Mailman/Gui/Archive.py:33
 #: Mailman/Gui/Autoresponse.py:54 Mailman/Gui/Autoresponse.py:62
@@ -863,36 +864,36 @@ msgstr "לא"
 #: Mailman/Gui/ContentFilter.py:74 Mailman/Gui/ContentFilter.py:116
 #: Mailman/Gui/ContentFilter.py:120 Mailman/Gui/Digest.py:46
 #: Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84 Mailman/Gui/Digest.py:89
-#: Mailman/Gui/General.py:175 Mailman/Gui/General.py:181
-#: Mailman/Gui/General.py:259 Mailman/Gui/General.py:286
-#: Mailman/Gui/General.py:313 Mailman/Gui/General.py:324
-#: Mailman/Gui/General.py:327 Mailman/Gui/General.py:337
-#: Mailman/Gui/General.py:342 Mailman/Gui/General.py:348
-#: Mailman/Gui/General.py:368 Mailman/Gui/General.py:400
-#: Mailman/Gui/General.py:423 Mailman/Gui/General.py:440
+#: Mailman/Gui/General.py:223 Mailman/Gui/General.py:229
+#: Mailman/Gui/General.py:307 Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:361 Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:375 Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:390 Mailman/Gui/General.py:396
+#: Mailman/Gui/General.py:416 Mailman/Gui/General.py:448
+#: Mailman/Gui/General.py:471 Mailman/Gui/General.py:488
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
-#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:197
-#: Mailman/Gui/Privacy.py:312 Mailman/Gui/Privacy.py:331
-#: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
-#: Mailman/Gui/Usenet.py:105
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:202
+#: Mailman/Gui/Privacy.py:273 Mailman/Gui/Privacy.py:370
+#: Mailman/Gui/Privacy.py:389 Mailman/Gui/Usenet.py:52
+#: Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93 Mailman/Gui/Usenet.py:105
 msgid "Yes"
 msgstr "כן"
 
-#: Mailman/Cgi/admin.py:1185
+#: Mailman/Cgi/admin.py:1186
 msgid "Send notifications of new subscriptions to the list owner?"
 msgstr "שלח הודעות על מנויים חדשים לבעל הרשימה?"
 
-#: Mailman/Cgi/admin.py:1193 Mailman/Cgi/admin.py:1234
+#: Mailman/Cgi/admin.py:1194 Mailman/Cgi/admin.py:1235
 msgid "Enter one address per line below..."
 msgstr "הקלד כתובת אחת בכל שורה למטה..."
 
-#: Mailman/Cgi/admin.py:1198 Mailman/Cgi/admin.py:1239
+#: Mailman/Cgi/admin.py:1199 Mailman/Cgi/admin.py:1240
 msgid "...or specify a file to upload:"
 msgstr "...או ציין קובץ לעלות:"
 
-#: Mailman/Cgi/admin.py:1203
+#: Mailman/Cgi/admin.py:1204
 msgid ""
 "Below, enter additional text to be added to the\n"
 "    top of your invitation or the subscription notification.  Include at "
@@ -902,19 +903,19 @@ msgstr ""
 "הקלד טקסט נוסף שיתווסף לראש ההזמנה או להודעת ההצטרפות.\n"
 "    יש לכלול לפחות שורה אחת ריקה בסוף..."
 
-#: Mailman/Cgi/admin.py:1218
+#: Mailman/Cgi/admin.py:1219
 msgid "Send unsubscription acknowledgement to the user?"
 msgstr "שלח אישור ביטול מנוי למשתמש?"
 
-#: Mailman/Cgi/admin.py:1226
+#: Mailman/Cgi/admin.py:1227
 msgid "Send notifications to the list owner?"
 msgstr "שלח הודעות אל בעל הרשימה?"
 
-#: Mailman/Cgi/admin.py:1248
+#: Mailman/Cgi/admin.py:1249
 msgid "Change list ownership passwords"
 msgstr "שנה את סיסמאות של בעלי הרשימה"
 
-#: Mailman/Cgi/admin.py:1251
+#: Mailman/Cgi/admin.py:1252
 msgid ""
 "The <em>list administrators</em> are the people who have ultimate control "
 "over\n"
@@ -948,23 +949,23 @@ msgstr ""
 "וגם לספק את הכתובות של מפקחי הרשימה\n"
 "<a href=\"%(adminurl)s/כללי\">בקטע האפשריות הכלליות</a>."
 
-#: Mailman/Cgi/admin.py:1270
+#: Mailman/Cgi/admin.py:1271
 msgid "Enter new administrator password:"
 msgstr "הקלד סיסמת ניהול חדשה:"
 
-#: Mailman/Cgi/admin.py:1272
+#: Mailman/Cgi/admin.py:1273
 msgid "Confirm administrator password:"
 msgstr "אישור סיסמת ניהול:"
 
-#: Mailman/Cgi/admin.py:1277
+#: Mailman/Cgi/admin.py:1278
 msgid "Enter new moderator password:"
 msgstr "הקלד סימת פיקוח חדשה:"
 
-#: Mailman/Cgi/admin.py:1279
+#: Mailman/Cgi/admin.py:1280
 msgid "Confirm moderator password:"
 msgstr "אשר סיסמת פיקוח:"
 
-#: Mailman/Cgi/admin.py:1283
+#: Mailman/Cgi/admin.py:1284
 msgid ""
 "In addition to the above passwords you may specify a password for\n"
 "pre-approving posts to the list. Either of the above two passwords can\n"
@@ -974,96 +975,96 @@ msgid ""
 "no other."
 msgstr ""
 
-#: Mailman/Cgi/admin.py:1294
+#: Mailman/Cgi/admin.py:1295
 #, fuzzy
 msgid "Enter new poster password:"
 msgstr "הקלד סימת פיקוח חדשה:"
 
-#: Mailman/Cgi/admin.py:1296
+#: Mailman/Cgi/admin.py:1297
 #, fuzzy
 msgid "Confirm poster password:"
 msgstr "אשר סיסמת פיקוח:"
 
-#: Mailman/Cgi/admin.py:1305
+#: Mailman/Cgi/admin.py:1306
 msgid "Submit Your Changes"
 msgstr "הגש את השינויים"
 
-#: Mailman/Cgi/admin.py:1328
+#: Mailman/Cgi/admin.py:1329
 msgid "Moderator passwords did not match"
 msgstr "סיסמאות הפיקוח אינן זהות"
 
-#: Mailman/Cgi/admin.py:1339
+#: Mailman/Cgi/admin.py:1340
 #, fuzzy
 msgid "Poster passwords did not match"
 msgstr "הסיסמאות לא זהות."
 
-#: Mailman/Cgi/admin.py:1349
+#: Mailman/Cgi/admin.py:1350
 msgid "Administrator passwords did not match"
 msgstr "סיסמאות הניהול אינן זהות"
 
-#: Mailman/Cgi/admin.py:1399
+#: Mailman/Cgi/admin.py:1400
 msgid "Already a member"
 msgstr "הנו כבר מנוי"
 
-#: Mailman/Cgi/admin.py:1402
+#: Mailman/Cgi/admin.py:1403
 msgid "&lt;blank line&gt;"
 msgstr "&lt;שורה ריקה&gt;"
 
-#: Mailman/Cgi/admin.py:1403 Mailman/Cgi/admin.py:1406
+#: Mailman/Cgi/admin.py:1404 Mailman/Cgi/admin.py:1407
 #: Mailman/Cgi/admindb.py:919
 msgid "Bad/Invalid email address"
 msgstr "כתובת דואר אלקטרוני לא חוקית/לא תקינה"
 
-#: Mailman/Cgi/admin.py:1409
+#: Mailman/Cgi/admin.py:1410
 msgid "Hostile address (illegal characters)"
 msgstr "כתובת אויינת (תווים לא חוקיים)"
 
-#: Mailman/Cgi/admin.py:1412 bin/add_members:149 bin/clone_member:136
-#: bin/sync_members:264
+#: Mailman/Cgi/admin.py:1413 bin/add_members:149 bin/clone_member:136
+#: bin/sync_members:268
 msgid "Banned address (matched %(pattern)s)"
 msgstr "כתובת חסומה (התאים ל-%(pattern)s)"
 
-#: Mailman/Cgi/admin.py:1418
+#: Mailman/Cgi/admin.py:1419
 msgid "Successfully invited:"
 msgstr "הוזמן בהצלחה:"
 
-#: Mailman/Cgi/admin.py:1420
+#: Mailman/Cgi/admin.py:1421
 msgid "Successfully subscribed:"
 msgstr "נרשם בהצלחה:"
 
-#: Mailman/Cgi/admin.py:1425
+#: Mailman/Cgi/admin.py:1426
 msgid "Error inviting:"
 msgstr "שגיאה בהזמנה:"
 
-#: Mailman/Cgi/admin.py:1427
+#: Mailman/Cgi/admin.py:1428
 msgid "Error subscribing:"
 msgstr "שגיאה ברישום:"
 
-#: Mailman/Cgi/admin.py:1458
+#: Mailman/Cgi/admin.py:1459
 msgid "Successfully Unsubscribed:"
 msgstr "מנוי בוטל בהצלחה:"
 
-#: Mailman/Cgi/admin.py:1463
+#: Mailman/Cgi/admin.py:1464
 msgid "Cannot unsubscribe non-members:"
 msgstr "לא יכול לבטל מנוי למי שאינו מנוי:"
 
-#: Mailman/Cgi/admin.py:1471
+#: Mailman/Cgi/admin.py:1472
 msgid "Bad moderation flag value"
 msgstr "ערך דגל פיקוח לא תקין"
 
-#: Mailman/Cgi/admin.py:1493
+#: Mailman/Cgi/admin.py:1494
 msgid "Not subscribed"
 msgstr "אינו מנוי"
 
-#: Mailman/Cgi/admin.py:1496
+#: Mailman/Cgi/admin.py:1497
 msgid "Ignoring changes to deleted member: %(user)s"
 msgstr "מתעלם משינויים למנוי שנמחק: %(user)s"
 
-#: Mailman/Cgi/admin.py:1536
+#: Mailman/Cgi/admin.py:1537
 msgid "Successfully Removed:"
 msgstr "הוסר בהצלחה:"
 
-#: Mailman/Cgi/admin.py:1540
+#: Mailman/Cgi/admin.py:1541
 msgid "Error Unsubscribing:"
 msgstr "שגיאה בביטול המנוי:"
 
@@ -1425,7 +1426,7 @@ msgstr ""
 "    <p>או לחץ <em>בטל את בקשת המנוי שלך</em>, אם אתה כבר לא רוצה להרשם "
 "לרשימה זו."
 
-#: Mailman/Cgi/confirm.py:263
+#: Mailman/Cgi/confirm.py:264
 msgid ""
 "Your confirmation is required in order to continue with\n"
 "        the subscription request to the mailing list <em>%(listname)s</em>.\n"
@@ -1457,39 +1458,39 @@ msgstr ""
 "        <p>או, אם שינית את דעתך ואינל רוצה עוד להרשם לרשימה זו,\n"
 "        אפשר ללחוץ על <em>בטל את בקשת המנוי שלך</em>."
 
-#: Mailman/Cgi/confirm.py:281
+#: Mailman/Cgi/confirm.py:282
 msgid "Your email address:"
 msgstr "כתובת דוא\"ל שלך:"
 
-#: Mailman/Cgi/confirm.py:282
+#: Mailman/Cgi/confirm.py:283
 msgid "Your real name:"
 msgstr "שמך האמיתי:"
 
-#: Mailman/Cgi/confirm.py:291
+#: Mailman/Cgi/confirm.py:292
 msgid "Receive digests?"
 msgstr "לקבל תקצירים?"
 
-#: Mailman/Cgi/confirm.py:300
+#: Mailman/Cgi/confirm.py:301
 msgid "Preferred language:"
 msgstr "שפה מועדפת:"
 
-#: Mailman/Cgi/confirm.py:305
+#: Mailman/Cgi/confirm.py:306
 msgid "Subscribe to list %(listname)s"
 msgstr "הרשם לרשימה %(listname)s"
 
-#: Mailman/Cgi/confirm.py:306
+#: Mailman/Cgi/confirm.py:307
 msgid "Cancel my subscription request"
 msgstr "בטל את בקשת המנוי שלך"
 
-#: Mailman/Cgi/confirm.py:323
+#: Mailman/Cgi/confirm.py:324
 msgid "You have canceled your subscription request."
 msgstr "ביטלת את בקשת המנוי שלך."
 
-#: Mailman/Cgi/confirm.py:361
+#: Mailman/Cgi/confirm.py:362
 msgid "Awaiting moderator approval"
 msgstr "ממתין לאישור מפקח"
 
-#: Mailman/Cgi/confirm.py:364
+#: Mailman/Cgi/confirm.py:365
 msgid ""
 "            You have successfully confirmed your subscription request to "
 "the\n"
@@ -1504,8 +1505,8 @@ msgstr ""
 "            אבל עדיין נדרש אישור סופי מאת מפקח הרשימה לפני שהמנוי יהיה תקף.\n"
 "            בקשתך הועברה אל מפקח הרשימה ותקבל הודעה בדבר החלטתו."
 
-#: Mailman/Cgi/confirm.py:371 Mailman/Cgi/confirm.py:436
-#: Mailman/Cgi/confirm.py:525 Mailman/Cgi/confirm.py:762
+#: Mailman/Cgi/confirm.py:372 Mailman/Cgi/confirm.py:437
+#: Mailman/Cgi/confirm.py:526 Mailman/Cgi/confirm.py:763
 msgid ""
 "Invalid confirmation string.  It is\n"
 "            possible that you are attempting to confirm a request for an\n"
@@ -1514,11 +1515,11 @@ msgstr ""
 "מחרוזת אישור לא חוקית. יתכן שאתה מנסה לאשר בקשה\n"
 "            עבור כתובת שכבר נמחקה."
 
-#: Mailman/Cgi/confirm.py:375
+#: Mailman/Cgi/confirm.py:376
 msgid "You are already a member of this mailing list!"
 msgstr "אתה כבר מנוי לרשימת דיוור זו!"
 
-#: Mailman/Cgi/confirm.py:378
+#: Mailman/Cgi/confirm.py:379
 msgid ""
 "You are currently banned from subscribing to\n"
 "            this list.  If you think this restriction is erroneous, please\n"
@@ -1527,7 +1528,7 @@ msgstr ""
 "אתה כרגע חסום מלהרשם לרשימה זו. אם לדעתך מגבלה זו שגויה,\n"
 "        נא ליצור קשר עם בעל הרשימה בכתובת %(owneraddr)s."
 
-#: Mailman/Cgi/confirm.py:382
+#: Mailman/Cgi/confirm.py:383
 msgid ""
 "            You were not invited to this mailing list.  The invitation has\n"
 "            been discarded, and both list administrators have been\n"
@@ -1536,11 +1537,11 @@ msgstr ""
 "            לא הוזמנת לרשימת דיוור זו. ההזמנה נזרקה\n"
 "            ומנהלי הרשימה קיבלו הודעה בהתאם."
 
-#: Mailman/Cgi/confirm.py:392
+#: Mailman/Cgi/confirm.py:393
 msgid "Subscription request confirmed"
 msgstr "בקשת המנוי אושרה"
 
-#: Mailman/Cgi/confirm.py:396
+#: Mailman/Cgi/confirm.py:397
 msgid ""
 "            You have successfully confirmed your subscription request for\n"
 "            \"%(addr)s\" to the %(listname)s mailing list.  A separate\n"
@@ -1560,15 +1561,15 @@ msgstr ""
 "            <a href=\"%(optionsurl)s\">לגשת לעמוד הכניסה\n"
 "            שלך</a>."
 
-#: Mailman/Cgi/confirm.py:414
+#: Mailman/Cgi/confirm.py:415
 msgid "You have canceled your unsubscription request."
 msgstr "ביטלת את בקשת ביטול המנוי שלך."
 
-#: Mailman/Cgi/confirm.py:442
+#: Mailman/Cgi/confirm.py:443
 msgid "Unsubscription request confirmed"
 msgstr "בקשת ביטול המנוי אושרה"
 
-#: Mailman/Cgi/confirm.py:446
+#: Mailman/Cgi/confirm.py:447
 msgid ""
 "            You have successfully unsubscribed from the %(listname)s "
 "mailing\n"
@@ -1580,15 +1581,15 @@ msgstr ""
 "            עכשיו אתה יכול <a href=\"%(listinfourl)s\">לבקר בעמוד\n"
 "            המידע הראשי של הרשימה</a>."
 
-#: Mailman/Cgi/confirm.py:457
+#: Mailman/Cgi/confirm.py:458
 msgid "Confirm unsubscription request"
 msgstr "אשר בקשת ביטול המנוי"
 
-#: Mailman/Cgi/confirm.py:472 Mailman/Cgi/confirm.py:574
+#: Mailman/Cgi/confirm.py:473 Mailman/Cgi/confirm.py:575
 msgid "<em>Not available</em>"
 msgstr "<em>לא זמין</em>"
 
-#: Mailman/Cgi/confirm.py:475
+#: Mailman/Cgi/confirm.py:476
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    unsubscription request from the mailing list <em>%(listname)s</em>.  "
@@ -1616,20 +1617,20 @@ msgstr ""
 "\n"
 "    <p>או לחץ <em>בטל ומחק</em>, כדי לבטל את בקשת הסרה זו."
 
-#: Mailman/Cgi/confirm.py:491 Mailman/Cgi/options.py:767
+#: Mailman/Cgi/confirm.py:492 Mailman/Cgi/options.py:767
 #: Mailman/Cgi/options.py:911 Mailman/Cgi/options.py:921
 msgid "Unsubscribe"
 msgstr "הסר מנוי"
 
-#: Mailman/Cgi/confirm.py:492 Mailman/Cgi/confirm.py:603
+#: Mailman/Cgi/confirm.py:493 Mailman/Cgi/confirm.py:604
 msgid "Cancel and discard"
 msgstr "בטל ומחק"
 
-#: Mailman/Cgi/confirm.py:502
+#: Mailman/Cgi/confirm.py:503
 msgid "You have canceled your change of address request."
 msgstr "ביטלת את בקשת שינוי הכתובת שלך."
 
-#: Mailman/Cgi/confirm.py:531
+#: Mailman/Cgi/confirm.py:532
 msgid ""
 "%(newaddr)s is banned from subscribing to the\n"
 "            %(realname)s list.  If you think this restriction is erroneous,\n"
@@ -1639,7 +1640,7 @@ msgstr ""
 "        אם לדעתך הגבלה זו שגויה, נא ליצור קשר\n"
 "        עם בעל הרשימה בכתובת %(owneraddr)s."
 
-#: Mailman/Cgi/confirm.py:536
+#: Mailman/Cgi/confirm.py:537
 #, fuzzy
 msgid ""
 "%(newaddr)s is already a member of\n"
@@ -1650,11 +1651,11 @@ msgstr ""
 "מחרוזת אישור לא חוקית. יתכן שאתה מנסה לאשר בקשה\n"
 "            עבור כתובת שכבר נמחקה."
 
-#: Mailman/Cgi/confirm.py:543
+#: Mailman/Cgi/confirm.py:544
 msgid "Change of address request confirmed"
 msgstr "בקשת שינוי הכתובת אושרה"
 
-#: Mailman/Cgi/confirm.py:547
+#: Mailman/Cgi/confirm.py:548
 msgid ""
 "            You have successfully changed your address on the %(listname)s\n"
 "            mailing list from <b>%(oldaddr)s</b> to <b>%(newaddr)s</b>.  "
@@ -1666,15 +1667,15 @@ msgstr ""
 "            %(listname)s מ-<b>%(oldaddr)s</b> אל <b>%(newaddr)s</b>. אתה\n"
 "            עכשיו יכול <a href=\"%(optionsurl)s\"לגשת אל עמוד הכניסה</a> שלך."
 
-#: Mailman/Cgi/confirm.py:559
+#: Mailman/Cgi/confirm.py:560
 msgid "Confirm change of address request"
 msgstr "אשר בקשת שינוי כתובת"
 
-#: Mailman/Cgi/confirm.py:578
+#: Mailman/Cgi/confirm.py:579
 msgid "globally"
 msgstr "גלובלית"
 
-#: Mailman/Cgi/confirm.py:581
+#: Mailman/Cgi/confirm.py:582
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    change of address request for the mailing list <em>%(listname)s</em>.  "
@@ -1713,15 +1714,15 @@ msgstr ""
 "\n"
 "    <p>או לחץ <em>בטל ומחק</em> כדי לבטל את בקשת שינוי כתותבת זו."
 
-#: Mailman/Cgi/confirm.py:602
+#: Mailman/Cgi/confirm.py:603
 msgid "Change address"
 msgstr "שנה כתובת"
 
-#: Mailman/Cgi/confirm.py:611 Mailman/Cgi/confirm.py:727
+#: Mailman/Cgi/confirm.py:612 Mailman/Cgi/confirm.py:728
 msgid "Continue awaiting approval"
 msgstr "להמשיך להמתין לאישור"
 
-#: Mailman/Cgi/confirm.py:619
+#: Mailman/Cgi/confirm.py:620
 msgid ""
 "Okay, the list moderator will still have the\n"
 "    opportunity to approve or reject this message."
@@ -1729,11 +1730,11 @@ msgstr ""
 "OK, למפקח הרשימה עדיין תהיה הזדמנות\n"
 "    לאשר או לדחות הודעה זו."
 
-#: Mailman/Cgi/confirm.py:647
+#: Mailman/Cgi/confirm.py:648
 msgid "Sender discarded message via web."
 msgstr "השולח מחק את המסר דרך האתר."
 
-#: Mailman/Cgi/confirm.py:649
+#: Mailman/Cgi/confirm.py:650
 msgid ""
 "The held message with the Subject:\n"
 "            header <em>%(subject)s</em> could not be found.  The most "
@@ -1748,11 +1749,11 @@ msgstr ""
 "            ביותר לכך היא שמפקח הרשימה כבר אישר או מחק את המסר.\n"
 "            ולא הספקת לדחות אותו בעוד מועד."
 
-#: Mailman/Cgi/confirm.py:657
+#: Mailman/Cgi/confirm.py:658
 msgid "Posted message canceled"
 msgstr "המסר שנשלח נמחק"
 
-#: Mailman/Cgi/confirm.py:660
+#: Mailman/Cgi/confirm.py:661
 msgid ""
 "            You have successfully canceled the posting of your message with\n"
 "            the Subject: header <em>%(subject)s</em> to the mailing list\n"
@@ -1762,11 +1763,11 @@ msgstr ""
 "em>\n"
 "            אל רשימת הדיוור %(listname)s."
 
-#: Mailman/Cgi/confirm.py:671
+#: Mailman/Cgi/confirm.py:672
 msgid "Cancel held message posting"
 msgstr "בטל משלוח מסר ממתין"
 
-#: Mailman/Cgi/confirm.py:696
+#: Mailman/Cgi/confirm.py:697
 msgid ""
 "The held message you were referred to has\n"
 "        already been handled by the list administrator."
@@ -1774,7 +1775,7 @@ msgstr ""
 "המסר הממתין שהתייחסת עליו כבר טופל על ידי\n"
 "        מנהל הרשימה."
 
-#: Mailman/Cgi/confirm.py:710
+#: Mailman/Cgi/confirm.py:711
 msgid ""
 "Your confirmation is required in order to cancel the\n"
 "    posting of your message to the mailing list <em>%(listname)s</em>:\n"
@@ -1802,11 +1803,11 @@ msgstr ""
 "    או לחץ על <em>המשך להמתין לאישור</em> כדי להמשיך\n"
 "    להמתין להחלטת מפקח הרשימה לאשר או לדחות את המסר."
 
-#: Mailman/Cgi/confirm.py:726
+#: Mailman/Cgi/confirm.py:727
 msgid "Cancel posting"
 msgstr "בטל שילוח"
 
-#: Mailman/Cgi/confirm.py:738
+#: Mailman/Cgi/confirm.py:739
 msgid ""
 "You have canceled the re-enabling of your membership.  If\n"
 "    we continue to receive bounces from your address, it could be deleted "
@@ -1816,11 +1817,11 @@ msgstr ""
 "ביטלת את חידוש המנוי שלך. אם נמשיך\n"
 "    לקבל החזרות מהכתובת שלך, היא תמחק מרשימת דיוור זו."
 
-#: Mailman/Cgi/confirm.py:768
+#: Mailman/Cgi/confirm.py:769
 msgid "Membership re-enabled."
 msgstr "המנוי חודש."
 
-#: Mailman/Cgi/confirm.py:772
+#: Mailman/Cgi/confirm.py:773
 msgid ""
 "            You have successfully re-enabled your membership in the\n"
 "            %(listname)s mailing list.  You can now <a\n"
@@ -1832,11 +1833,11 @@ msgstr ""
 "            <a href=\"%(optionsurl)s\">בעמוד הגדרות המנוי שלך</a>.\n"
 "            "
 
-#: Mailman/Cgi/confirm.py:784
+#: Mailman/Cgi/confirm.py:785
 msgid "Re-enable mailing list membership"
 msgstr "מחדש מנוי ברשימת הדיוור"
 
-#: Mailman/Cgi/confirm.py:801
+#: Mailman/Cgi/confirm.py:802
 msgid ""
 "We're sorry, but you have already been unsubscribed\n"
 "        from this mailing list.  To re-subscribe, please visit the\n"
@@ -1846,11 +1847,11 @@ msgstr ""
 "        כדי להרשם מחדש, אנא בקר <a href=\"%(listinfourl)s\">בעמוד המידע של "
 "הרשימה</a>."
 
-#: Mailman/Cgi/confirm.py:816
+#: Mailman/Cgi/confirm.py:817
 msgid "<em>not available</em>"
 msgstr "<em>לא זמין</em>"
 
-#: Mailman/Cgi/confirm.py:820
+#: Mailman/Cgi/confirm.py:821
 #, fuzzy
 msgid ""
 "Your membership in the %(realname)s mailing list is\n"
@@ -1888,12 +1889,12 @@ msgstr ""
 "    הפעלת המנוי שלך.\n"
 "    הפעל מנוי מחדש"
 
-#: Mailman/Cgi/confirm.py:840
+#: Mailman/Cgi/confirm.py:841
 #, fuzzy
 msgid "Re-enable membership"
 msgstr "מחדש מנוי ברשימת הדיוור"
 
-#: Mailman/Cgi/confirm.py:841
+#: Mailman/Cgi/confirm.py:842
 msgid "Cancel"
 msgstr "בטל"
 
@@ -2725,6 +2726,11 @@ msgstr "כתובת דוא\"ל שלך:"
 msgid "Private archive file not found"
 msgstr "קובץ ארכיון פרטי לא נמצא"
 
+#: Mailman/Cgi/rmlist.py:65
+#, fuzzy
+msgid "No such list %(safelistname)s"
+msgstr "אין כזו רשימה: %(listname)s"
+
 #: Mailman/Cgi/rmlist.py:83
 msgid "You're being a sneaky list owner!"
 msgstr "הנך בעל רשימה חטטן!"
@@ -2758,6 +2764,11 @@ msgstr ""
 
 #: Mailman/Cgi/rmlist.py:190
 msgid "Permanently remove mailing list <em>%(realname)s</em>"
+msgstr "הסר לצמיתות את רשימת הדיוור <em>%(realname)s</em>"
+
+#: Mailman/Cgi/rmlist.py:191
+#, fuzzy
+msgid "Permanently remove mailing list %(realname)s"
 msgstr "הסר לצמיתות את רשימת הדיוור <em>%(realname)s</em>"
 
 #: Mailman/Cgi/rmlist.py:204
@@ -3664,162 +3675,162 @@ msgstr "מנוים ללא-תקצירים (רגילים):"
 msgid "Digest members:"
 msgstr "מנויי תקצירים:"
 
-#: Mailman/Defaults.py:1536
+#: Mailman/Defaults.py:1578
 msgid "Arabic"
 msgstr "Arabic"
 
-#: Mailman/Defaults.py:1537
+#: Mailman/Defaults.py:1579
 #, fuzzy
 msgid "Asturian"
 msgstr "Estonian"
 
-#: Mailman/Defaults.py:1538
+#: Mailman/Defaults.py:1580
 msgid "Catalan"
 msgstr "Catalan"
 
-#: Mailman/Defaults.py:1539
+#: Mailman/Defaults.py:1581
 msgid "Czech"
 msgstr "Czech"
 
-#: Mailman/Defaults.py:1540
+#: Mailman/Defaults.py:1582
 msgid "Danish"
 msgstr "Danish"
 
-#: Mailman/Defaults.py:1541
+#: Mailman/Defaults.py:1583
 msgid "German"
 msgstr "German"
 
-#: Mailman/Defaults.py:1542
+#: Mailman/Defaults.py:1584
 msgid "English (USA)"
 msgstr "English (USA)"
 
-#: Mailman/Defaults.py:1543
+#: Mailman/Defaults.py:1585
 msgid "Spanish (Spain)"
 msgstr "Spanish (Spain)"
 
-#: Mailman/Defaults.py:1544
+#: Mailman/Defaults.py:1586
 msgid "Estonian"
 msgstr "Estonian"
 
-#: Mailman/Defaults.py:1545
+#: Mailman/Defaults.py:1587
 msgid "Euskara"
 msgstr "Euskara"
 
-#: Mailman/Defaults.py:1546
+#: Mailman/Defaults.py:1588
 msgid "Persian"
 msgstr ""
 
-#: Mailman/Defaults.py:1547
+#: Mailman/Defaults.py:1589
 msgid "Finnish"
 msgstr "Finnish"
 
-#: Mailman/Defaults.py:1548
+#: Mailman/Defaults.py:1590
 msgid "French"
 msgstr "French"
 
-#: Mailman/Defaults.py:1549
+#: Mailman/Defaults.py:1591
 #, fuzzy
 msgid "Galician"
 msgstr "Italian"
 
-#: Mailman/Defaults.py:1550
+#: Mailman/Defaults.py:1592
 msgid "Greek"
 msgstr ""
 
-#: Mailman/Defaults.py:1551
+#: Mailman/Defaults.py:1593
 msgid "Hebrew"
 msgstr "עברית"
 
-#: Mailman/Defaults.py:1552
+#: Mailman/Defaults.py:1594
 msgid "Croatian"
 msgstr "Croatian"
 
-#: Mailman/Defaults.py:1553
+#: Mailman/Defaults.py:1595
 msgid "Hungarian"
 msgstr "Hungarian"
 
-#: Mailman/Defaults.py:1554
+#: Mailman/Defaults.py:1596
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: Mailman/Defaults.py:1555
+#: Mailman/Defaults.py:1597
 msgid "Italian"
 msgstr "Italian"
 
-#: Mailman/Defaults.py:1556
+#: Mailman/Defaults.py:1598
 msgid "Japanese"
 msgstr "Japanese"
 
-#: Mailman/Defaults.py:1557
+#: Mailman/Defaults.py:1599
 msgid "Korean"
 msgstr "Korean"
 
-#: Mailman/Defaults.py:1558
+#: Mailman/Defaults.py:1600
 msgid "Lithuanian"
 msgstr "Lithuanian"
 
-#: Mailman/Defaults.py:1559
+#: Mailman/Defaults.py:1601
 msgid "Dutch"
 msgstr "Dutch"
 
-#: Mailman/Defaults.py:1560
+#: Mailman/Defaults.py:1602
 msgid "Norwegian"
 msgstr "Norwegian"
 
-#: Mailman/Defaults.py:1561
+#: Mailman/Defaults.py:1603
 msgid "Polish"
 msgstr "Polish"
 
-#: Mailman/Defaults.py:1562
+#: Mailman/Defaults.py:1604
 msgid "Portuguese"
 msgstr "Portuguese"
 
-#: Mailman/Defaults.py:1563
+#: Mailman/Defaults.py:1605
 msgid "Portuguese (Brazil)"
 msgstr "Portuguese (Brazil)"
 
-#: Mailman/Defaults.py:1564
+#: Mailman/Defaults.py:1606
 msgid "Romanian"
 msgstr "Romanian"
 
-#: Mailman/Defaults.py:1565
+#: Mailman/Defaults.py:1607
 msgid "Russian"
 msgstr "Russian"
 
-#: Mailman/Defaults.py:1566
+#: Mailman/Defaults.py:1608
 #, fuzzy
 msgid "Slovak"
 msgstr "Slovanian"
 
-#: Mailman/Defaults.py:1567
+#: Mailman/Defaults.py:1609
 msgid "Slovenian"
 msgstr "Slovanian"
 
-#: Mailman/Defaults.py:1568
+#: Mailman/Defaults.py:1610
 msgid "Serbian"
 msgstr "Serbian"
 
-#: Mailman/Defaults.py:1569
+#: Mailman/Defaults.py:1611
 msgid "Swedish"
 msgstr "Swedish"
 
-#: Mailman/Defaults.py:1570
+#: Mailman/Defaults.py:1612
 msgid "Turkish"
 msgstr "Turkish"
 
-#: Mailman/Defaults.py:1571
+#: Mailman/Defaults.py:1613
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: Mailman/Defaults.py:1572
+#: Mailman/Defaults.py:1614
 msgid "Vietnamese"
 msgstr "Vietnamese"
 
-#: Mailman/Defaults.py:1573
+#: Mailman/Defaults.py:1615
 msgid "Chinese (China)"
 msgstr "Chinese (China)"
 
-#: Mailman/Defaults.py:1574
+#: Mailman/Defaults.py:1616
 msgid "Chinese (Taiwan)"
 msgstr "Chinese (Taiwan)"
 
@@ -4234,7 +4245,7 @@ msgstr ""
 "מספר הימים בין משלוחי הודעות <em>המנוי שלך מושהה</em>.\n"
 "             ערך זה חייב להיות מספר שלם."
 
-#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:284
+#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:332
 msgid "Notifications"
 msgstr "הודעות"
 
@@ -4984,36 +4995,103 @@ msgstr ""
 "                            (שם הרשימה %%05d) -> (שם הרשימה 00123)\n"
 "             "
 
-#: Mailman/Gui/General.py:161
-msgid "Mung From"
+#: Mailman/Gui/General.py:158 Mailman/Gui/Privacy.py:244
+msgid "Munge From"
 msgstr ""
 
-#: Mailman/Gui/General.py:161
+#: Mailman/Gui/General.py:158 Mailman/Gui/Privacy.py:244
 #, fuzzy
 msgid "Wrap Message"
 msgstr "ההודעה המקורית"
 
+#: Mailman/Gui/General.py:159
+msgid ""
+"Replace the From: header address with the list's posting\n"
+"             address to mitigate issues stemming from the original From:\n"
+"             domain's DMARC or similar policies."
+msgstr ""
+
 #: Mailman/Gui/General.py:162
 msgid ""
-"Replace the sender with the list address to conform with\n"
-"                 policies like ADSP and DMARC.  It replaces the poster's\n"
-"                 address in the From: header with the list address and adds "
+"Several protocols now in wide use attempt to ensure that use\n"
+"             of the domain in the author's address (ie, in the From: header\n"
+"             field) is authorized by that domain.  These protocols may be\n"
+"             incompatible with common list features such as footers, "
+"causing\n"
+"             participating email services to bounce list traffic merely\n"
+"             because of the address in the From: field.  <b>This has "
+"resulted\n"
+"             in members being unsubscribed despite being perfectly able to\n"
+"             receive mail.</b>\n"
+"             <p>\n"
+"             The following actions are applied to all list messages when\n"
+"             selected here.  To apply these actions only to messages where "
 "the\n"
-"                 poster to the Reply-To: header, but the anonymous_list and\n"
-"                 Reply-To: header munging settings below take priority.  If\n"
-"                 setting this to Yes, it is advised to set the MTA to DKIM "
-"sign\n"
-"                 all emails."
+"             domain in the From: header is determined to use such a "
+"protocol,\n"
+"             see the <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+"             dmarc_moderation_action</a> settings under Privacy options...\n"
+"             -&gt; Sender filters.\n"
+"             <p>Settings:<p>\n"
+"             <dl>\n"
+"             <dt>No</dt>\n"
+"             <dd>Do nothing special.  This is appropriate for anonymous "
+"lists.\n"
+"             It is appropriate for dedicated announcement lists, unless the\n"
+"             From: address of authorized posters might be in a domain with "
+"a\n"
+"             DMARC or similar policy. It is also appropriate if you choose "
+"to\n"
+"             use dmarc_moderation_action other than Accept for this list.</"
+"dd>\n"
+"             <dt>Munge From</dt>\n"
+"             <dd>This action replaces the poster's address in the From: "
+"header\n"
+"             with the list's posting address and adds the poster's address "
+"to\n"
+"             the addresses in the original Reply-To: header.</dd>\n"
+"             <dt>Wrap Message</dt>\n"
+"             <dd>Just wrap the message in an outer message with the From:\n"
+"             header containing the list's posting address and with the "
+"original\n"
+"             From: address added to the addresses in the original Reply-To:\n"
+"             header and with Content-Type: message/rfc822.  This is "
+"effectively\n"
+"             a one message MIME format digest.</dd>\n"
+"             </dl>\n"
+"             <p>The transformations for anonymous_list are applied before\n"
+"             any of these actions. It is not useful to apply actions other\n"
+"             than No to an anonymous list, and if you do so, the result may\n"
+"             be surprising.\n"
+"             <p>The Reply-To: header munging actions below interact with "
+"these\n"
+"             actions as follows:\n"
+"             <p> first_strip_reply_to = Yes will remove all the incoming\n"
+"             Reply-To: addresses but will still add the poster's address to\n"
+"             Reply-To: for all three settings of reply_goes_to_list which\n"
+"             respectively will result in just the poster's address, the\n"
+"             poster's address and the list posting address or the poster's\n"
+"             address and the explicit reply_to_address in the outgoing\n"
+"             Reply-To: header. If first_strip_reply_to = No the poster's\n"
+"             address in the original From: header, if not already included "
+"in\n"
+"             the Reply-To:, will be added to any existing Reply-To:\n"
+"             address(es).\n"
+"             <p>These actions, whether selected here or via <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+"             dmarc_moderation_action</a>, do not apply to messages in "
+"digests\n"
+"             or archives or sent to usenet via the Mail&lt;-&gt;News "
+"gateways.\n"
+"             <p>If <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+"             dmarc_moderation_action</a> applies to this message with an\n"
+"             action other than Accept, that action rather than this is\n"
+"             applied"
 msgstr ""
 
-#: Mailman/Gui/General.py:169
-msgid ""
-"<br>If this is set to Wrap Message, just wrap the message\n"
-"                 in an outer message From: the list with Content-Type:\n"
-"                 message/rfc822."
-msgstr ""
-
-#: Mailman/Gui/General.py:176
+#: Mailman/Gui/General.py:224
 msgid ""
 "Hide the sender of a message, replacing it with the list\n"
 "             address (Removes From, Sender and Reply-To fields)"
@@ -5021,11 +5099,11 @@ msgstr ""
 "הסתר את שולח המסר, והחלף אותו בכתובת הרשימה (מסיר את\n"
 "             שדות מאת, השולח והשב-אל)"
 
-#: Mailman/Gui/General.py:179
+#: Mailman/Gui/General.py:227
 msgid "<tt>Reply-To:</tt> header munging"
 msgstr "שינוי בלתי הפיך של כותרת <tt>השב-אל:</tt>"
 
-#: Mailman/Gui/General.py:182
+#: Mailman/Gui/General.py:230
 msgid ""
 "Should any existing <tt>Reply-To:</tt> header found in the\n"
 "             original message be stripped?  If so, this will be done\n"
@@ -5036,19 +5114,19 @@ msgstr ""
 "             המקורי? אם כן, זה יעשה בלי כל קשר לזה שדוור הוסיף כותרת\n"
 "             <tt>השב אל:</tt> מפורשת או לא."
 
-#: Mailman/Gui/General.py:188
+#: Mailman/Gui/General.py:236
 msgid "Explicit address"
 msgstr "כתובת מפורשת"
 
-#: Mailman/Gui/General.py:188
+#: Mailman/Gui/General.py:236
 msgid "Poster"
 msgstr "השולח"
 
-#: Mailman/Gui/General.py:188
+#: Mailman/Gui/General.py:236
 msgid "This list"
 msgstr "רשימה זו"
 
-#: Mailman/Gui/General.py:189
+#: Mailman/Gui/General.py:237
 msgid ""
 "Where are replies to list messages directed?\n"
 "             <tt>Poster</tt> is <em>strongly</em> recommended for most "
@@ -5058,7 +5136,7 @@ msgstr ""
 "לאן מענים למסרים של רשימה זו מיועדים?             <tt>השולח</tt> היא ההמלצה "
 "<em>החמה</em> עבור רוב רשימות דיוור."
 
-#: Mailman/Gui/General.py:194
+#: Mailman/Gui/General.py:242
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5134,11 +5212,11 @@ msgstr ""
 "             דיוור זה, בחר <tt>כתובת מפורשת</tt> וקבע את כתובת ה-\n"
 "             <tt>השב-אך:</tt> להצביע אל הרשימה המקבילה."
 
-#: Mailman/Gui/General.py:226
+#: Mailman/Gui/General.py:274
 msgid "Explicit <tt>Reply-To:</tt> header."
 msgstr "כותרת <tt>השב-אל:</tt> מפורשת."
 
-#: Mailman/Gui/General.py:228
+#: Mailman/Gui/General.py:276
 msgid ""
 "This is the address set in the <tt>Reply-To:</tt> header\n"
 "             when the <a\n"
@@ -5208,17 +5286,17 @@ msgstr ""
 "             <p>שים לב שאם המסר המקורי כולל כותרת <tt>השב-אל:</tt>, היא לא "
 "תשונה."
 
-#: Mailman/Gui/General.py:257
+#: Mailman/Gui/General.py:305
 msgid "Umbrella list settings"
 msgstr "הגדרות מיטרייה של רשימה"
 
-#: Mailman/Gui/General.py:260
+#: Mailman/Gui/General.py:308
 msgid ""
 "Send password reminders to, eg, \"-owner\" address instead of\n"
 "             directly to user."
 msgstr "שלח תזכורות סיסמא אל, למשל כתובת \"-owner\" במקום ישירות למשתמש."
 
-#: Mailman/Gui/General.py:263
+#: Mailman/Gui/General.py:311
 msgid ""
 "Set this to yes when this list is intended to cascade only\n"
 "             to other mailing lists.  When set, meta notices like\n"
@@ -5233,7 +5311,7 @@ msgstr ""
 "             תשלחנה אל כתובת המופקת מתוך הכתובת של המנוי.- הוא יקבל את\n"
 "             הסיומת \"umbrella_member_suffix\" מצורפת לשם חשבון המנוי."
 
-#: Mailman/Gui/General.py:271
+#: Mailman/Gui/General.py:319
 msgid ""
 "Suffix for use when this list is an umbrella for other\n"
 "             lists, according to setting of previous \"umbrella_list\"\n"
@@ -5242,7 +5320,7 @@ msgstr ""
 "הסיומת להשתמש כאשר רשימה זו היא מיטרייה עבור רשימות\n"
 "             אחרות, בהתאם להגדרה של \"רשימת מיטרייה\" הקודמת."
 
-#: Mailman/Gui/General.py:275
+#: Mailman/Gui/General.py:323
 msgid ""
 "When \"umbrella_list\" is set to indicate that this list has\n"
 "             other mailing lists as members, then administrative notices "
@@ -5265,11 +5343,11 @@ msgstr ""
 "             הטיפוסית היא `-owner'. להגדרה זו אין השפעה כלשהי כאשר הגדרת\n"
 "             \"רשימת מיטרייה\" בעלת ערך \"לא\"."
 
-#: Mailman/Gui/General.py:287
+#: Mailman/Gui/General.py:335
 msgid "Send monthly password reminders?"
 msgstr "שלח תזכורות סיסמא חודשיות?"
 
-#: Mailman/Gui/General.py:289
+#: Mailman/Gui/General.py:337
 msgid ""
 "Turn this on if you want password reminders to be sent once\n"
 "             per month to your members.  Note that members may disable "
@@ -5280,7 +5358,7 @@ msgstr ""
 "             חודשיות. שים לב שמנוים יכולים לקבוע את הערך ללא פעיל עבור "
 "התזכורות של עצמם."
 
-#: Mailman/Gui/General.py:294
+#: Mailman/Gui/General.py:342
 msgid ""
 "List-specific text prepended to new-subscriber welcome\n"
 "             message"
@@ -5288,7 +5366,7 @@ msgstr ""
 "טקסט מיוחד לרשימה שמקדימה את הודעת ברכת הצטרפות של מנויים\n"
 "             חדשים."
 
-#: Mailman/Gui/General.py:297
+#: Mailman/Gui/General.py:345
 msgid ""
 "This value, if any, will be added to the front of the\n"
 "             new-subscriber welcome message.  The rest of the welcome "
@@ -5324,11 +5402,11 @@ msgstr ""
 "                 <li>שורה ריקה מפרידה בין פיסקאות.\n"
 "             </ul>"
 
-#: Mailman/Gui/General.py:314
+#: Mailman/Gui/General.py:362
 msgid "Send welcome message to newly subscribed members?"
 msgstr "שלח הודעת \"ברכת המצטרף\" מנויים חדשים?"
 
-#: Mailman/Gui/General.py:315
+#: Mailman/Gui/General.py:363
 msgid ""
 "Turn this off only if you plan on subscribing people manually\n"
 "             and don't want them to know that you did so.  This option is "
@@ -5342,7 +5420,7 @@ msgstr ""
 "ממנהל\n"
 "             רשימות אחר אל דוור בצורה שקופה."
 
-#: Mailman/Gui/General.py:321
+#: Mailman/Gui/General.py:369
 msgid ""
 "Text sent to people leaving the list.  If empty, no special\n"
 "             text will be added to the unsubscribe message."
@@ -5350,11 +5428,11 @@ msgstr ""
 "טקסט שנשלח אל אנשים שעוזבים את הרשימה.  אם ריק, לא ייתווסף טקסט מיוחד\n"
 "             להודעת ביטול המנוי."
 
-#: Mailman/Gui/General.py:325
+#: Mailman/Gui/General.py:373
 msgid "Send goodbye message to members when they are unsubscribed?"
 msgstr "שלח הודעת פרידה לאנשים עם ביטול המנוי שלהם?"
 
-#: Mailman/Gui/General.py:328
+#: Mailman/Gui/General.py:376
 msgid ""
 "Should the list moderators get immediate notice of new\n"
 "             requests, as well as daily notices about collected ones?"
@@ -5362,7 +5440,7 @@ msgstr ""
 "האם מפקח הרשימה מקבל הודעה מידית בדבר בקשות חדשות,\n"
 "             בנוסף להודעות הנאספות ברמה היומית?"
 
-#: Mailman/Gui/General.py:331
+#: Mailman/Gui/General.py:379
 msgid ""
 "List moderators (and list administrators) are sent daily\n"
 "             reminders of requests pending approval, like subscriptions to "
@@ -5379,25 +5457,25 @@ msgstr ""
 "בקשות\n"
 "             חדשות."
 
-#: Mailman/Gui/General.py:338
+#: Mailman/Gui/General.py:386
 msgid ""
 "Should administrator get notices of subscribes and\n"
 "             unsubscribes?"
 msgstr "האם מנהלים צריכים לקבל הודעות על מנויים וביטול מינויים?"
 
-#: Mailman/Gui/General.py:343
+#: Mailman/Gui/General.py:391
 msgid "Send mail to poster when their posting is held for approval?"
 msgstr "שלח דואר אל השולח כאשר המסר שלו ממתין לאישור?"
 
-#: Mailman/Gui/General.py:346
+#: Mailman/Gui/General.py:394
 msgid "Additional settings"
 msgstr "הגדרות נוספות"
 
-#: Mailman/Gui/General.py:349
+#: Mailman/Gui/General.py:397
 msgid "Emergency moderation of all list traffic."
 msgstr "פיקוח חרום של כל תעבורת הרשימה."
 
-#: Mailman/Gui/General.py:350
+#: Mailman/Gui/General.py:398
 msgid ""
 "When this option is enabled, all list traffic is emergency\n"
 "             moderated, i.e. held for moderation.  Turn this option on when\n"
@@ -5410,7 +5488,7 @@ msgstr ""
 "תקופה\n"
 "             מתארכת של הודעות אויינות, וברצונך ליצור תקופת צינון."
 
-#: Mailman/Gui/General.py:362
+#: Mailman/Gui/General.py:410
 msgid ""
 "Default options for new members joining this list.<input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
@@ -5419,7 +5497,7 @@ msgstr ""
 "             <input·type=\"hidden\" name=\"new_member_options\"\n"
 "............·value=\"ignore\">"
 
-#: Mailman/Gui/General.py:365
+#: Mailman/Gui/General.py:413
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
 "             set of options is taken from this variable's setting."
@@ -5427,7 +5505,7 @@ msgstr ""
 "כאשר מנוי חדש נרשם לרשימה, קבוצת ההגדרות הראשנית שלו נלקחת\n"
 "             מערך משתנה זה."
 
-#: Mailman/Gui/General.py:369
+#: Mailman/Gui/General.py:417
 msgid ""
 "(Administrivia filter) Check postings and intercept ones\n"
 "             that seem to be administrative requests?"
@@ -5435,7 +5513,7 @@ msgstr ""
 "(מסנן מנהלתי) בדוק דיוור ויירט את אלה שנראים\n"
 "            כבקשות מנהלתיות?"
 
-#: Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:420
 msgid ""
 "Administrivia tests will check postings to see whether it's\n"
 "             really meant as an administrative request (like subscribe,\n"
@@ -5448,23 +5526,23 @@ msgstr ""
 "             בקשה מנהלתית (כמו הרשמה, ביטול הרשמה, וכו'), ותוסיף\n"
 "             אותו לתור בקשות המנהלתיות, תוך משלוח הודעה למנהל על הבקשה החדשה."
 
-#: Mailman/Gui/General.py:379
+#: Mailman/Gui/General.py:427
 msgid ""
 "Maximum length in kilobytes (KB) of a message body.  Use 0\n"
 "             for no limit."
 msgstr "אורך המירבי של גוף מסר בקילובייט (KB).  השתמש ב-0 ללא מוגבל."
 
-#: Mailman/Gui/General.py:383
+#: Mailman/Gui/General.py:431
 msgid ""
 "Maximum number of members to show on one page of the\n"
 "             Membership List."
 msgstr ""
 
-#: Mailman/Gui/General.py:387
+#: Mailman/Gui/General.py:435
 msgid "Host name this list prefers for email."
 msgstr "שם המארח המועדף עבור דוא\"ל של רשימה זו."
 
-#: Mailman/Gui/General.py:389
+#: Mailman/Gui/General.py:437
 msgid ""
 "The \"host_name\" is the preferred name for email to\n"
 "             mailman-related addresses on this host, and generally should "
@@ -5482,7 +5560,7 @@ msgstr ""
 "לו\n"
 "             כתובות שונות."
 
-#: Mailman/Gui/General.py:401
+#: Mailman/Gui/General.py:449
 msgid ""
 "Should messages from this mailing list include the\n"
 "                 <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</"
@@ -5494,7 +5572,7 @@ msgstr ""
 "             <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</a>\n"
 "             (קרי: <tt>List-*</tt>)? <em>כן</em> היא ההמלצה החמה."
 
-#: Mailman/Gui/General.py:406
+#: Mailman/Gui/General.py:454
 msgid ""
 "RFC 2369 defines a set of List-* headers that are\n"
 "                 normally added to every message sent to the list "
@@ -5534,11 +5612,11 @@ msgstr ""
 "             פעילות, אבל זה לא מומלץ (ולמעשה היכולת להעלים כותרות אלו עשויה "
 "להיעלם)."
 
-#: Mailman/Gui/General.py:424
+#: Mailman/Gui/General.py:472
 msgid "Should postings include the <tt>List-Post:</tt> header?"
 msgstr "האם דיוור להכיל את כותרת <tt>List-Post:</tt>?"
 
-#: Mailman/Gui/General.py:425
+#: Mailman/Gui/General.py:473
 msgid ""
 "The <tt>List-Post:</tt> header is one of the headers\n"
 "             recommended by\n"
@@ -5568,7 +5646,7 @@ msgstr ""
 "כותרות\n"
 "             <tt>List-*:</tt> אחרות.("
 
-#: Mailman/Gui/General.py:441
+#: Mailman/Gui/General.py:489
 #, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
@@ -5578,7 +5656,7 @@ msgstr ""
 "האם דוור ישלח לך, בעל הרשימה, הודעות החזרות\n"
 "             שמנוע ההחזרות לא גילה? <em>כן</em> מומלץ."
 
-#: Mailman/Gui/General.py:445
+#: Mailman/Gui/General.py:493
 msgid ""
 "<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
 "                 2822</a> defines the <tt>Sender</tt> header and defines it\n"
@@ -5600,7 +5678,7 @@ msgid ""
 "                 here."
 msgstr ""
 
-#: Mailman/Gui/General.py:463
+#: Mailman/Gui/General.py:511
 msgid ""
 "Discard held messages older than this number of days.\n"
 "            Use 0 for no automatic discarding."
@@ -5608,7 +5686,7 @@ msgstr ""
 "מחק מסרים ממתינים ישנים יותר ממספר ימים זה.\n"
 "             השתמש ב-0 שלא לבצע מחיקה אוטומטית."
 
-#: Mailman/Gui/General.py:473
+#: Mailman/Gui/General.py:521
 msgid ""
 "<b>real_name</b> attribute not\n"
 "            changed!  It must differ from the list's name by case\n"
@@ -5617,7 +5695,7 @@ msgstr ""
 "מאפיין <b>שם אמיתי</b> לא שונה!\n"
 "             מותר לו להיות שונה משם הרשימה בראשיות תווים בלבד."
 
-#: Mailman/Gui/General.py:501
+#: Mailman/Gui/General.py:549
 msgid ""
 "The <b>info</b> attribute you saved\n"
 "contains suspicious HTML that could potentially expose your users to cross-"
@@ -5631,7 +5709,7 @@ msgid ""
 "                        "
 msgstr ""
 
-#: Mailman/Gui/General.py:512
+#: Mailman/Gui/General.py:560
 #, fuzzy
 msgid ""
 "<b>admin_member_chunksize</b> attribute not\n"
@@ -5640,7 +5718,7 @@ msgstr ""
 "מאפיין <b>שם אמיתי</b> לא שונה!\n"
 "             מותר לו להיות שונה משם הרשימה בראשיות תווים בלבד."
 
-#: Mailman/Gui/General.py:522
+#: Mailman/Gui/General.py:570
 msgid ""
 "You cannot add a Reply-To: to an explicit\n"
 "            address if that address is blank.  Resetting these values."
@@ -6276,7 +6354,12 @@ msgstr ""
 "אותן לשימוש\n"
 "             שולחי דואר זבל."
 
-#: Mailman/Gui/Privacy.py:162
+#: Mailman/Gui/Privacy.py:163
+#, fuzzy
+msgid "/Quarantine"
+msgstr "רבעוני"
+
+#: Mailman/Gui/Privacy.py:167
 msgid ""
 "When a message is posted to the list, a series of\n"
 "            moderation steps are taken to decide whether a moderator must\n"
@@ -6344,15 +6427,15 @@ msgstr ""
 "\n"
 "             <p> שים לב שהתאמות לא לפי ביטויים רגולריים תמיד מתבצעים קודם."
 
-#: Mailman/Gui/Privacy.py:195
+#: Mailman/Gui/Privacy.py:200
 msgid "Member filters"
 msgstr "מסנני מנויים"
 
-#: Mailman/Gui/Privacy.py:198
+#: Mailman/Gui/Privacy.py:203
 msgid "By default, should new list member postings be moderated?"
 msgstr "כברירת מחדל, האם יש לפקח על מסרים ממנוים חדשים?"
 
-#: Mailman/Gui/Privacy.py:200
+#: Mailman/Gui/Privacy.py:205
 msgid ""
 "Each list member has a <em>moderation flag</em> which says\n"
 "             whether messages from the list member can be posted directly "
@@ -6392,13 +6475,13 @@ msgstr ""
 "             ידי השימוש ב<a href=\"%(adminurl)s/members\">מסכי ניהול מנויים</"
 "a>."
 
-#: Mailman/Gui/Privacy.py:217
+#: Mailman/Gui/Privacy.py:222
 msgid ""
 "Action to take when a moderated member posts to the\n"
 "             list."
 msgstr "הפעולה שיש לנקוט כאשר מנוי בר פיקוח שולח לרשימה."
 
-#: Mailman/Gui/Privacy.py:219
+#: Mailman/Gui/Privacy.py:224
 msgid ""
 "<ul><li><b>Hold</b> -- this holds the message for approval\n"
 "             by the list moderators.\n"
@@ -6427,7 +6510,7 @@ msgstr ""
 "למנוי.\n"
 "             </ul>"
 
-#: Mailman/Gui/Privacy.py:233
+#: Mailman/Gui/Privacy.py:238
 msgid ""
 "Text to include in any\n"
 "             <a href=\"?VARHELP/privacy/sender/member_moderation_action\"\n"
@@ -6438,11 +6521,96 @@ msgstr ""
 "             <a href=\"?VARHELP/privacy/sender/member_moderation_action\"\n"
 "             >הודעת דחייה</a> אל מנויים מפוקחים ששולחים אל רשימה זו."
 
-#: Mailman/Gui/Privacy.py:238
+#: Mailman/Gui/Privacy.py:246
+#, fuzzy
+msgid ""
+"Action to take when anyone posts to the\n"
+"             list from a domain with a DMARC Reject%(quarantine)s Policy."
+msgstr "הפעולה שיש לנקוט כאשר מנוי בר פיקוח שולח לרשימה."
+
+#: Mailman/Gui/Privacy.py:249
+#, fuzzy
+msgid ""
+"<ul><li><b>Munge From</b> -- applies the <a\n"
+"             href=\"?VARHELP=general/from_is_list\">from_is_list Munge From</"
+"a>\n"
+"             transformation to these messages.\n"
+"\n"
+"             <p><li><b>Wrap Message</b> -- applies the <a\n"
+"             href=\"?VARHELP=general/from_is_list\">from_is_list Wrap\n"
+"             Message</a> transformation to these messages.\n"
+"\n"
+"             <p><li><b>Reject</b> -- this automatically rejects the message "
+"by\n"
+"             sending a bounce notice to the post's author.  The text of the\n"
+"             bounce notice can be <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_notice\"\n"
+"             >configured by you</a>.\n"
+"\n"
+"             <p><li><b>Discard</b> -- this simply discards the message, "
+"with\n"
+"             no notice sent to the post's author.\n"
+"             </ul>\n"
+"\n"
+"             <p>This setting takes precedence over the <a\n"
+"             href=\"?VARHELP=general/from_is_list\"> from_is_list</a> "
+"setting\n"
+"             if the message is From: an affected domain and the setting is\n"
+"             other than Accept."
+msgstr ""
+"<ul><li><b>החזק</b> -- שומר את המסר לאישור של מפקחי הרשימה.\n"
+"\n"
+"             <p><li><b>דחה</b> -- מוחק את המסר מהרשימה אוטומטית על ידי "
+"משלוח\n"
+"             הודעת החזרה אל ממנוי המסר.  את הטקסט של הודעת החזרה ניתן "
+"<n             <a href=\"?VARHELP=privacy/sender/member_moderation_notice\"\n"
+"             >להגדיר על ידך</a>.\n"
+"\n"
+"             <p><li><b>מחק</b> -- זה פשוט מוחק את המסר בלי לשלוח הודעה "
+"למנוי.\n"
+"             </ul>"
+
+#: Mailman/Gui/Privacy.py:274
+msgid ""
+"Shall the above dmarc_moderation_action apply to messages\n"
+"               From: domains with DMARC p=quarantine as well as p=reject"
+msgstr ""
+
+#: Mailman/Gui/Privacy.py:277
+msgid ""
+"<ul><li><b>No</b> -- this applies dmarc_moderation_action to\n"
+"               only those posts From: a domain with DMARC p=reject.  This "
+"is\n"
+"               appropriate if you are concerned about bounced messages, but\n"
+"               want to apply dmarc_moderation_action to as few messages as\n"
+"               possible.\n"
+"               <p><li><b>Yes</b> -- this applies dmarc_moderation_action to\n"
+"               posts From: a domain with DMARC p=reject or p=quarantine.\n"
+"               </ul><p>If a message is From: a domain with DMARC "
+"p=quarantine\n"
+"               and dmarc_moderation_action is not applied (this set to No)\n"
+"               the message will likely not bounce, but will be delivered to\n"
+"               recipients' spam folders or other hard to find places."
+msgstr ""
+
+#: Mailman/Gui/Privacy.py:290
+#, fuzzy
+msgid ""
+"Text to include in any\n"
+"             <a href=\"?VARHELP=privacy/sender/dmarc_moderation_action\"\n"
+"             >rejection notice</a> to\n"
+"             be sent to anyone who posts to this list from a domain\n"
+"             with a DMARC Reject%(quarantine)s Policy."
+msgstr ""
+"הטקסט שיש לכתוב בכל\n"
+"             <a href=\"?VARHELP/privacy/sender/member_moderation_action\"\n"
+"             >הודעת דחייה</a> אל מנויים מפוקחים ששולחים אל רשימה זו."
+
+#: Mailman/Gui/Privacy.py:296
 msgid "Non-member filters"
 msgstr "מסננים של מי שאינו מנוי"
 
-#: Mailman/Gui/Privacy.py:241
+#: Mailman/Gui/Privacy.py:299
 msgid ""
 "List of non-member addresses whose postings should be\n"
 "             automatically accepted."
@@ -6450,7 +6618,7 @@ msgstr ""
 "רשימת כתובות של מי שאינו מנוי שיש לקבל את דיוור שלהם\n"
 "             באופן אוטומטי."
 
-#: Mailman/Gui/Privacy.py:248
+#: Mailman/Gui/Privacy.py:306
 #, fuzzy
 msgid ""
 "Postings from any of these non-members will be automatically\n"
@@ -6465,13 +6633,13 @@ msgstr ""
 "             כתובת אחת לכל שורה, התחל את השורה בתו ^ כדי לציין התאמה\n"
 "             לפי ביטוי רגולרי."
 
-#: Mailman/Gui/Privacy.py:257
+#: Mailman/Gui/Privacy.py:315
 msgid ""
 "List of non-member addresses whose postings will be\n"
 "             immediately held for moderation."
 msgstr "רשימה של מי שאינו מנוי שאת המסרים שלו יש לשמור מיד לפיקוח."
 
-#: Mailman/Gui/Privacy.py:260
+#: Mailman/Gui/Privacy.py:318
 msgid ""
 "Postings from any of these non-members will be immediately\n"
 "             and automatically held for moderation by the list moderators.\n"
@@ -6488,13 +6656,13 @@ msgstr ""
 "שורה,\n"
 "             כאשר התו ^ בראש השורה מסמלת התאמה של ביטוי רגולרי."
 
-#: Mailman/Gui/Privacy.py:268
+#: Mailman/Gui/Privacy.py:326
 msgid ""
 "List of non-member addresses whose postings will be\n"
 "             automatically rejected."
 msgstr "רשימה של כתובות של מי שאינו מנוי אשר הדיוור שלו יידחה אוטומטית."
 
-#: Mailman/Gui/Privacy.py:271
+#: Mailman/Gui/Privacy.py:329
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             rejected.  In other words, their messages will be bounced back "
@@ -6520,13 +6688,13 @@ msgstr ""
 "התאמה\n"
 "             לביטוי רגולרי."
 
-#: Mailman/Gui/Privacy.py:283
+#: Mailman/Gui/Privacy.py:341
 msgid ""
 "List of non-member addresses whose postings will be\n"
 "             automatically discarded."
 msgstr "רשימה של כתובות של מי שאינו מנוי אשר השילוחים שלהם יימחקו אוטומטית."
 
-#: Mailman/Gui/Privacy.py:286
+#: Mailman/Gui/Privacy.py:344
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             discarded.  That is, the message will be thrown away with no\n"
@@ -6549,14 +6717,14 @@ msgstr ""
 "             <p>יש לכתוב כתובת אחת לכל שורה כאשר תו ^ מסמן התאמה לביטוי "
 "רגולרי."
 
-#: Mailman/Gui/Privacy.py:298
+#: Mailman/Gui/Privacy.py:356
 msgid ""
 "Action to take for postings from non-members for which no\n"
 "             explicit action is defined."
 msgstr ""
 "הפעולה שיש לנקוט עבור מסרים ממי שאינו מנוי ושעבורו לא מוגדר פעולה מסוימת."
 
-#: Mailman/Gui/Privacy.py:301
+#: Mailman/Gui/Privacy.py:359
 msgid ""
 "When a post from a non-member is received, the message's\n"
 "             sender is matched against the list of explicitly\n"
@@ -6582,13 +6750,13 @@ msgstr ""
 "              <a href=\"?VARHELP=privacy/sender/discard_these_nonmembers\"\n"
 "·············>נמחקות</a>.  אם לא נמצאת התאמה לאף אחד מאלה, פעולה זו ננקטת."
 
-#: Mailman/Gui/Privacy.py:313
+#: Mailman/Gui/Privacy.py:371
 msgid ""
 "Should messages from non-members, which are automatically\n"
 "             discarded, be forwarded to the list moderator?"
 msgstr "האם יש להעביר מסרים ממי שאינו מנוי ונמחקים אוטומטית אל מפקח הרשימה?"
 
-#: Mailman/Gui/Privacy.py:317
+#: Mailman/Gui/Privacy.py:375
 msgid ""
 "Text to include in any rejection notice to be sent to\n"
 "             non-members who post to this list. This notice can include\n"
@@ -6599,17 +6767,17 @@ msgstr ""
 "             הודעה זו יכולה לכלול את כתובת בעל הרשימה לפי %%(listowner)s,\n"
 "             ומחליפה את הודעת ברירת המחדל הנוצרת פנימית."
 
-#: Mailman/Gui/Privacy.py:325
+#: Mailman/Gui/Privacy.py:383
 msgid ""
 "This section allows you to configure various filters based on\n"
 "            the recipient of the message."
 msgstr "פרק זה מאפר לך להגדיר מסננים שונים בהתאם לנמען המסר."
 
-#: Mailman/Gui/Privacy.py:328
+#: Mailman/Gui/Privacy.py:386
 msgid "Recipient filters"
 msgstr "מסנני נמענים"
 
-#: Mailman/Gui/Privacy.py:332
+#: Mailman/Gui/Privacy.py:390
 msgid ""
 "Must posts have list named in destination (to, cc) field\n"
 "             (or be among the acceptable alias names, specified below)?"
@@ -6617,7 +6785,7 @@ msgstr ""
 "האם למסרים חייב להיות שם הרשימה בשדות היעד (אל, העתק)\n"
 "             (או להיות אחת מבין השמות הנרדפים המקובלים הרשומים מטה)?"
 
-#: Mailman/Gui/Privacy.py:335
+#: Mailman/Gui/Privacy.py:393
 msgid ""
 "Many (in fact, most) spams do not explicitly name their\n"
 "             myriad destinations in the explicit destination addresses - in\n"
@@ -6657,7 +6825,7 @@ msgstr ""
 "\n"
 "             </ol>"
 
-#: Mailman/Gui/Privacy.py:353
+#: Mailman/Gui/Privacy.py:411
 msgid ""
 "Alias names (regexps) which qualify as explicit to or cc\n"
 "             destination names for this list."
@@ -6666,7 +6834,7 @@ msgstr ""
 "העתק\n"
 "             עבור רשימה זו."
 
-#: Mailman/Gui/Privacy.py:356
+#: Mailman/Gui/Privacy.py:414
 msgid ""
 "Alternate addresses that are acceptable when\n"
 "             `require_explicit_destination' is enabled.  This option takes "
@@ -6707,11 +6875,11 @@ msgstr ""
 "מול\n"
 "             הכתובת הנמען המלאה."
 
-#: Mailman/Gui/Privacy.py:374
+#: Mailman/Gui/Privacy.py:432
 msgid "Ceiling on acceptable number of recipients for a posting."
 msgstr "ערך התקרה של כמות הנמענים המקובלת למסרים."
 
-#: Mailman/Gui/Privacy.py:376
+#: Mailman/Gui/Privacy.py:434
 msgid ""
 "If a posting has this number, or more, of recipients, it is\n"
 "             held for admin approval.  Use 0 for no ceiling."
@@ -6719,7 +6887,7 @@ msgstr ""
 "אם למסר יש כמות זו, או יותר, של נמענים, הוא מוחזק לאישור המנהל. השתמש ב-0 "
 "ללא מוגבל."
 
-#: Mailman/Gui/Privacy.py:381
+#: Mailman/Gui/Privacy.py:439
 msgid ""
 "This section allows you to configure various anti-spam\n"
 "            filters posting filters, which can help reduce the amount of "
@@ -6730,15 +6898,16 @@ msgstr ""
 "קטע זה מאפשר לך להגדיר מסנני דואר זבל שונים, שעשויים לעזור\n"
 "             להוריד את כמות דואר זבל שמנויי הרשימה יקבלו בסופו של דבר."
 
-#: Mailman/Gui/Privacy.py:386
+#: Mailman/Gui/Privacy.py:444
 msgid "Header filters"
 msgstr "מסנני כותרת"
 
-#: Mailman/Gui/Privacy.py:389
+#: Mailman/Gui/Privacy.py:447
 msgid "Filter rules to match against the headers of a message."
 msgstr "חוקי סינון שמשמשים להתאמה מול כותרות מסרים."
 
-#: Mailman/Gui/Privacy.py:391
+#: Mailman/Gui/Privacy.py:449
+#, fuzzy
 msgid ""
 "Each header filter rule has two parts, a list of regular\n"
 "             expressions, one per line, and an action to take.  Mailman\n"
@@ -6754,7 +6923,7 @@ msgid ""
 "after\n"
 "             the first match.\n"
 "\n"
-"             Note that headers are collected from all the attachments \n"
+"             Note that headers are collected from all the attachments\n"
 "             (except for the mailman administrivia message) and\n"
 "             matched against the regular expressions. With this feature,\n"
 "             you can effectively sort out messages with dangerous file\n"
@@ -6777,15 +6946,15 @@ msgstr ""
 "קבצים או סיומת שמות קבצים\n"
 "             מסוכנים."
 
-#: Mailman/Gui/Privacy.py:408
+#: Mailman/Gui/Privacy.py:466
 msgid "Legacy anti-spam filters"
 msgstr "מסנני דואר זבל לגאסי"
 
-#: Mailman/Gui/Privacy.py:411
+#: Mailman/Gui/Privacy.py:469
 msgid "Hold posts with header value matching a specified regexp."
 msgstr "החזק מסרים בעלי ערכי כותרת המתאימים לביטוי רגולרי מסוים."
 
-#: Mailman/Gui/Privacy.py:412
+#: Mailman/Gui/Privacy.py:470
 msgid ""
 "Use this option to prohibit posts according to specific\n"
 "             header values.  The target value is a regular-expression for\n"
@@ -6818,7 +6987,13 @@ msgstr ""
 "זה במספר דרכים,\n"
 "             לדוגמא: על ידי השימוש בסוגריים או בתווי escape."
 
-#: Mailman/Gui/Privacy.py:492
+#: Mailman/Gui/Privacy.py:505
+msgid ""
+"dmarc_moderation_action must be >= the configured\n"
+"                           default value."
+msgstr ""
+
+#: Mailman/Gui/Privacy.py:555
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
@@ -6826,7 +7001,7 @@ msgstr ""
 "חוקי סינון כותרות חייבים תבנית.\n"
 "             חוקי סינון לא שלמים לא ייבדקו."
 
-#: Mailman/Gui/Privacy.py:500
+#: Mailman/Gui/Privacy.py:563
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
@@ -7640,7 +7815,20 @@ msgstr ""
 msgid "Content filtered message notification"
 msgstr "הודעה על סינון תוכן המסר"
 
-#: Mailman/Handlers/Moderate.py:163
+#: Mailman/Handlers/Moderate.py:70
+#, fuzzy
+msgid ""
+"You are not allowed to post to this mailing list From: a domain which\n"
+"publishes a DMARC policy of reject or quarantine, and your message has been\n"
+"automatically rejected.  If you think that your messages are being rejected "
+"in\n"
+"error, contact the mailing list owner at %(listowner)s."
+msgstr ""
+"אינך רשאי לשלוח אל רשימת דיוור זו, והמסר שלך נדחה אוטומטית.  אם לדעתך המסרים "
+"שלך\n"
+"נדחים ללא הצדקה, צור קשר עם מנהל רשימת הדיוור לפי %(listowner)s."
+
+#: Mailman/Handlers/Moderate.py:189
 msgid ""
 "You are not allowed to post to this mailing list, and your message has been\n"
 "automatically rejected.  If you think that your messages are being rejected "
@@ -7651,11 +7839,11 @@ msgstr ""
 "שלך\n"
 "נדחים ללא הצדקה, צור קשר עם מנהל רשימת הדיוור לפי %(listowner)s."
 
-#: Mailman/Handlers/Moderate.py:179
+#: Mailman/Handlers/Moderate.py:205
 msgid "Auto-discard notification"
 msgstr "הודעת מחיקה אוטומטית"
 
-#: Mailman/Handlers/Moderate.py:182
+#: Mailman/Handlers/Moderate.py:208
 msgid "The attached message has been automatically discarded."
 msgstr "ההודעה המצורפת נמחקה אוטומטית."
 
@@ -7744,11 +7932,11 @@ msgstr "דילגתי על תוכן מסוג %(partctype)s\n"
 msgid "-------------- next part --------------\n"
 msgstr "---------------·הקטע הבא·---------------\n"
 
-#: Mailman/Handlers/SpamDetect.py:55
+#: Mailman/Handlers/SpamDetect.py:56
 msgid "The message headers matched a filter rule"
 msgstr "כותרות המסר התאימו לחוק סינון"
 
-#: Mailman/Handlers/SpamDetect.py:119
+#: Mailman/Handlers/SpamDetect.py:123
 msgid "Message rejected by filter rule match"
 msgstr "המסר נדחה בגלל התאמה לחוק סינון"
 
@@ -7788,39 +7976,39 @@ msgstr "כותרת תחתונה של התקציר"
 msgid "End of "
 msgstr "סוף ה"
 
-#: Mailman/ListAdmin.py:299
+#: Mailman/ListAdmin.py:307
 msgid "Posting of your message titled \"%(subject)s\""
 msgstr "משלוח המסר שלך בשם \"%(subject)s\""
 
-#: Mailman/ListAdmin.py:300 Mailman/ListAdmin.py:422
+#: Mailman/ListAdmin.py:308 Mailman/ListAdmin.py:430
 msgid "[No reason given]"
 msgstr "[ללא נימוק]"
 
-#: Mailman/ListAdmin.py:338
+#: Mailman/ListAdmin.py:346
 msgid "Forward of moderated message"
 msgstr "העברה של מסר מפוקח"
 
-#: Mailman/ListAdmin.py:395
+#: Mailman/ListAdmin.py:403
 msgid "New subscription request to list %(realname)s from %(addr)s"
 msgstr "בקשת הרשמה חדשה לרשימה %(realname)s מאת %(addr)s"
 
-#: Mailman/ListAdmin.py:421
+#: Mailman/ListAdmin.py:429
 msgid "Subscription request"
 msgstr "בקשת מנוי"
 
-#: Mailman/ListAdmin.py:452
+#: Mailman/ListAdmin.py:460
 msgid "New unsubscription request from %(realname)s by %(addr)s"
 msgstr "בקשת מנוי מאת %(realname)s לפי %(addr)s"
 
-#: Mailman/ListAdmin.py:476
+#: Mailman/ListAdmin.py:484
 msgid "Unsubscription request"
 msgstr "בקשת ביטול מנוי"
 
-#: Mailman/ListAdmin.py:509
+#: Mailman/ListAdmin.py:517
 msgid "Original Message"
 msgstr "ההודעה המקורית"
 
-#: Mailman/ListAdmin.py:512
+#: Mailman/ListAdmin.py:520
 msgid "Request to mailing list %(realname)s rejected"
 msgstr "הבקשה אל רשימת הדיוור %(realname)s נדחתה"
 
@@ -7893,16 +8081,16 @@ msgstr ""
 msgid "Mailing list removal request for list %(listname)s"
 msgstr "בקשת מחיקת רשימת דיוור %(listname)s"
 
-#: Mailman/MTA/Postfix.py:320
+#: Mailman/MTA/Postfix.py:324
 msgid "checking permissions on %(file)s"
 msgstr "בודק הרשאות של הקובץ %(file)s"
 
-#: Mailman/MTA/Postfix.py:330
+#: Mailman/MTA/Postfix.py:334
 msgid "%(file)s permissions must be 066x (got %(octmode)s)"
 msgstr "ההרשאות של %(file)s צריכות להיות 066x (קיבלתי %(octmode)s)"
 
-#: Mailman/MTA/Postfix.py:332 Mailman/MTA/Postfix.py:359
-#: Mailman/MTA/Postfix.py:370 bin/check_perms:125 bin/check_perms:153
+#: Mailman/MTA/Postfix.py:336 Mailman/MTA/Postfix.py:363
+#: Mailman/MTA/Postfix.py:374 bin/check_perms:125 bin/check_perms:153
 #: bin/check_perms:163 bin/check_perms:174 bin/check_perms:199
 #: bin/check_perms:216 bin/check_perms:242 bin/check_perms:265
 #: bin/check_perms:284 bin/check_perms:298 bin/check_perms:318
@@ -7910,15 +8098,15 @@ msgstr "ההרשאות של %(file)s צריכות להיות 066x (קיבלתי 
 msgid "(fixing)"
 msgstr "(מתקן)"
 
-#: Mailman/MTA/Postfix.py:348
+#: Mailman/MTA/Postfix.py:352
 msgid "checking ownership of %(dbfile)s"
 msgstr "בודק בעלות של %(dbfile)s"
 
-#: Mailman/MTA/Postfix.py:356
+#: Mailman/MTA/Postfix.py:360
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "הבעלים של %(dbfile)s הוא %(owner)s (%(user)s צריך להיות הבעלים"
 
-#: Mailman/MTA/Postfix.py:368
+#: Mailman/MTA/Postfix.py:372
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
 msgstr "ההרשאות של %(dbfile)s צריכות להיות 066x (קיבלתי %(octmode)s)"
 
@@ -7930,31 +8118,31 @@ msgstr "דרוש אישורך כדי להצטרף לרשימת דיוור %(list
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
 msgstr "אישורך דרוש כדי לעזוב את רשימת דיוור %(listname)s"
 
-#: Mailman/MailList.py:904 Mailman/MailList.py:1334
+#: Mailman/MailList.py:908 Mailman/MailList.py:1339
 msgid " from %(remote)s"
 msgstr "מ- %(remote)s"
 
-#: Mailman/MailList.py:945
+#: Mailman/MailList.py:949
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "מנויים ל-%(realname)s מחייבים אישור מפקח"
 
-#: Mailman/MailList.py:1014 bin/add_members:252
+#: Mailman/MailList.py:1018 bin/add_members:252
 msgid "%(realname)s subscription notification"
 msgstr "הודעת מנוי של %(realname)s"
 
-#: Mailman/MailList.py:1033
+#: Mailman/MailList.py:1037
 msgid "unsubscriptions require moderator approval"
 msgstr "ביטולי מנויים מחייבים אישור מפקח"
 
-#: Mailman/MailList.py:1053
+#: Mailman/MailList.py:1058
 msgid "%(realname)s unsubscribe notification"
 msgstr "הודעת עזיבה של %(realname)s"
 
-#: Mailman/MailList.py:1243
+#: Mailman/MailList.py:1248
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr "מנויים ל-%(name)s מחייבים אישור מנהל"
 
-#: Mailman/MailList.py:1508
+#: Mailman/MailList.py:1513
 msgid "Last autoresponse notification for today"
 msgstr "מענה-אוטומטי אחרון להיום"
 
@@ -11075,11 +11263,11 @@ msgstr "לא חוקי :  %(addr)30s"
 msgid "You must fix the preceding invalid addresses first."
 msgstr "ראשית, עליך לתקן את הכתובת הלא חוקית הקודמת."
 
-#: bin/sync_members:260
+#: bin/sync_members:264
 msgid "Added  : %(s)s"
 msgstr "הוספתי  : %(s)s"
 
-#: bin/sync_members:280
+#: bin/sync_members:288
 msgid "Removed: %(s)s"
 msgstr "מחקתי: %(s)s"
 
@@ -12170,6 +12358,19 @@ msgstr ""
 "    --listname=שם-רשימה\n"
 "        שגר את התקציר עבור הרשימה הנתונה בלבד, אחרת התקצירים של כל הרשימות "
 "משוגרות.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>If <a\n"
+#~ "             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+#~ "             dmarc_moderation_action</a> applies to this message with an\n"
+#~ "             action other than Accept, that action rather than this is\n"
+#~ "             applied"
+#~ msgstr ""
+#~ "הטקסט שיש לכתוב בכל\n"
+#~ "             <a href=\"?VARHELP/privacy/sender/member_moderation_action"
+#~ "\"\n"
+#~ "             >הודעת דחייה</a> אל מנויים מפוקחים ששולחים אל רשימה זו."
 
 #~ msgid ""
 #~ "    looks like you have a really recent CVS installation...\n"

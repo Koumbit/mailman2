@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -158,6 +158,11 @@ class Privacy(GUIBase):
             ]
 
         adminurl = mlist.GetScriptURL('admin', absolute=1)
+    
+        if mlist.dmarc_quarantine_moderation_action:
+            quarantine = _('/Quarantine')
+        else:
+            quarantine = ''
         sender_rtn = [
             _("""When a message is posted to the list, a series of
             moderation steps are taken to decide whether a moderator must
@@ -234,6 +239,59 @@ class Privacy(GUIBase):
              <a href="?VARHELP/privacy/sender/member_moderation_action"
              >rejection notice</a> to
              be sent to moderated members who post to this list.""")),
+
+            ('dmarc_moderation_action', mm_cfg.Radio,
+             (_('Accept'), _('Munge From'), _('Wrap Message'), _('Reject'),
+                 _('Discard')), 0,
+             _("""Action to take when anyone posts to the
+             list from a domain with a DMARC Reject%(quarantine)s Policy."""),
+
+             _("""<ul><li><b>Munge From</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is_list Munge From</a>
+             transformation to these messages.
+
+             <p><li><b>Wrap Message</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is_list Wrap
+             Message</a> transformation to these messages.
+
+             <p><li><b>Reject</b> -- this automatically rejects the message by
+             sending a bounce notice to the post's author.  The text of the
+             bounce notice can be <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_notice"
+             >configured by you</a>.
+
+             <p><li><b>Discard</b> -- this simply discards the message, with
+             no notice sent to the post's author.
+             </ul>
+
+             <p>This setting takes precedence over the <a
+             href="?VARHELP=general/from_is_list"> from_is_list</a> setting
+             if the message is From: an affected domain and the setting is
+             other than Accept.""")),
+
+            ('dmarc_quarantine_moderation_action', mm_cfg.Radio,
+             (_('No'), _('Yes')), 0,
+             _("""Shall the above dmarc_moderation_action apply to messages
+               From: domains with DMARC p=quarantine as well as p=reject"""),
+
+             _("""<ul><li><b>No</b> -- this applies dmarc_moderation_action to
+               only those posts From: a domain with DMARC p=reject.  This is
+               appropriate if you are concerned about bounced messages, but
+               want to apply dmarc_moderation_action to as few messages as
+               possible.
+               <p><li><b>Yes</b> -- this applies dmarc_moderation_action to
+               posts From: a domain with DMARC p=reject or p=quarantine.
+               </ul><p>If a message is From: a domain with DMARC p=quarantine
+               and dmarc_moderation_action is not applied (this set to No)
+               the message will likely not bounce, but will be delivered to
+               recipients' spam folders or other hard to find places.""")),
+
+            ('dmarc_moderation_notice', mm_cfg.Text, (10, WIDTH), 1,
+             _("""Text to include in any
+             <a href="?VARHELP=privacy/sender/dmarc_moderation_action"
+             >rejection notice</a> to
+             be sent to anyone who posts to this list from a domain
+             with a DMARC Reject%(quarantine)s Policy.""")),
 
             _('Non-member filters'),
 
@@ -399,7 +457,7 @@ class Privacy(GUIBase):
              case, each rule is matched in turn, with processing stopped after
              the first match.
 
-             Note that headers are collected from all the attachments 
+             Note that headers are collected from all the attachments
              (except for the mailman administrivia message) and
              matched against the regular expressions. With this feature,
              you can effectively sort out messages with dangerous file
@@ -442,6 +500,11 @@ class Privacy(GUIBase):
         # an option.
         if property == 'subscribe_policy' and not mm_cfg.ALLOW_OPEN_SUBSCRIBE:
             val += 1
+        if (property == 'dmarc_moderation_action' and
+                val < mm_cfg.DEFAULT_DMARC_MODERATION_ACTION):
+            doc.addError(_("""dmarc_moderation_action must be >= the configured
+                           default value."""))
+            val = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
         setattr(mlist, property, val)
 
     # We need to handle the header_filter_rules widgets specially, but

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -389,6 +389,10 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # 2==Discard
         self.member_moderation_action = 0
         self.member_moderation_notice = ''
+        self.dmarc_moderation_action = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
+        self.dmarc_quarantine_moderation_action = (
+            mm_cfg.DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION)
+        self.dmarc_moderation_notice = ''
         self.accept_these_nonmembers = []
         self.hold_these_nonmembers = []
         self.reject_these_nonmembers = []
@@ -1047,7 +1051,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # And send an acknowledgement to the user...
         if userack:
             self.SendUnsubscribeAck(emailaddr, userlang)
-        # ...and to the administrator
+        # ...and to the administrator in the correct language.  (LP: #1308655)
+        i18n.set_language(self.preferred_language)
         if admin_notif:
             realname = self.real_name
             subject = _('%(realname)s unsubscribe notification')

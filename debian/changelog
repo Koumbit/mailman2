@@ -1,3 +1,10 @@
+mailman (1:2.1.18-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Adds DMARC support (closes: #746592).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Thu, 10 Jul 2014 19:27:46 +0200
+
 mailman (1:2.1.16-2) unstable; urgency=medium
 
   * Upload to unstable, as requested by Thijs; we did not encounter
