@@ -6,7 +6,7 @@ Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
  Thijs Kinkhorst <thijs@debian.org>,
  Thorsten Glaser <tg@mirbsd.de>,
  Hector Garcia <hector@debian.org>
-Build-Depends: debhelper (>= 7), autoconf, python-dev (>= 2.6.6-3~), gettext
+Build-Depends: debhelper (>= 7), autoconf, python-dev (>= 2.6.6-3~), gettext, python-dnspython
 Standards-Version: 3.9.5
 Homepage: http://www.list.org/
 Vcs-Svn: svn://anonscm.debian.org/pkg-mailman/trunk
@@ -18,7 +18,8 @@ Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
 Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
- logrotate (>= 3.8.0), cron, ucf, lsb-base, apache2 | httpd
+ logrotate (>= 3.8.0), cron, ucf, lsb-base, apache2 | httpd,
+ python-dnspython
 Recommends: default-mta | mail-transport-agent
 Suggests: spamassassin, lynx, listadmin
 Description: Powerful, web-based mailing list manager
