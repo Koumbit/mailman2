@@ -1,3 +1,13 @@
+mailman (1:2.1.18-2) unstable; urgency=high
+
+  * Fix security issue: path traversal through local_part.
+    Affects installations which use an Exim or Postfix transport
+    instead of fixed aliases; attacker needs to be able to place
+    files on the local filesystem.
+    (CVE-2015-2775, Closes: 781626)
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 06 Apr 2015 15:36:15 +0000
+
 mailman (1:2.1.18-1) unstable; urgency=medium
 
   * New upstream release.

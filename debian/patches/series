@@ -10,3 +10,4 @@
 79_archiver_slash.patch
 90_gettext_errors.patch
 91_utf8.patch
+92_CVE-2015-2775.patch
