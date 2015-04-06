@@ -1,3 +1,10 @@
+mailman (1:2.1.13-5) stable-security; urgency=high
+
+  * Upload to stable to fix security issue.
+  * CVE-2011-0707: Cross site scripting in subscriber names.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 16 Feb 2011 20:36:49 +0100
+
 mailman (1:2.1.13-4.1) unstable; urgency=high
 
   * Non-maintainer upload.
