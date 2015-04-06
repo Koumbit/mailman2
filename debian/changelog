@@ -1,3 +1,14 @@
+mailman (1:2.1.13-6) squeeze-lts; urgency=high
+
+  * Upload to squeeze-lts to fix security issue.
+  * Fix security issue: path traversal through local_part.
+    Affects installations which use an Exim or Postfix transport
+    instead of fixed aliases; attacker needs to be able to place
+    files on the local filesystem.
+    (CVE-2015-2775, Closes: 781626)
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 06 Apr 2015 18:31:36 +0200
+
 mailman (1:2.1.13-5) stable-security; urgency=high
 
   * Upload to stable to fix security issue.
