@@ -1,3 +1,13 @@
+mailman (1:2.1.15-1+deb7u1) wheezy-security; urgency=high
+
+  * Fix security issue: path traversal through local_part.
+    Affects installations which use an Exim or Postfix transport
+    instead of fixed aliases; attacker needs to be able to place
+    files on the local filesystem.
+    (CVE-2015-2775, Closes: 781626)
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Mon, 06 Apr 2015 18:17:34 +0200
+
 mailman (1:2.1.15-1) unstable; urgency=low
 
   * New upstream release.

@@ -10,3 +10,4 @@
 63_update_default_server_language.patch
 66_donot_let_cache_html_pages.patch
 79_archiver_slash.patch
+92_CVE-2015-2775.patch
