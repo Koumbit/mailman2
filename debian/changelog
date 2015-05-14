@@ -1,9 +1,10 @@
-mailman (1:2.1.20-1) UNRELEASED; urgency=medium
+mailman (1:2.1.20-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #779911)
     - Drop obsolete patches:
       92_CVE-2015-2775.patch
   * Checked for policy 3.9.6, no changes.
+  * Update to debhelper compat level 9.
   * Make postfix-to-mailman.py work with the full recipient email
     address, solving an issue when recipient_delimiter = "-".
     To take advantage of this, change "${user}" to "${recipient}"
