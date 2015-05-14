@@ -39,37 +39,8 @@ Forwarded: no
  
  #: bin/sync_members:19
  msgid ""
---- a/messages/fr/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/fr/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -7465,7 +7465,7 @@
- "                Incomplete filter rules will be ignored."
- msgstr ""
- "Les règles de filtrage d'en têtes requièrent un motif.\n"
--"\t\t Les règles de filtrage incomplètes seront ignorées.\n"
-+"\t\t Les règles de filtrage incomplètes seront ignorées."
- 
- #: Mailman/Gui/Privacy.py:563
- msgid ""
 --- a/messages/hr/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
 +++ b/messages/hr/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -1777,7 +1777,7 @@
- "    proces potvrde.\n"
- "\n"
- "    <p>Ili stisnite <em>Zanemari odbaci</em> da biste zanemarili ovu "
--"promjenu adrese\n"
-+"promjenu adrese"
- 
- #: Mailman/Cgi/confirm.py:603
- msgid "Change address"
-@@ -1813,7 +1813,7 @@
- "            <em>%(subject)s</em> u zaglavlju nije pronaðena.  Vjerovatno je\n"
- "            tome razlog taj ¹to je moderator liste veæ odobrio ili odbacio "
- "poruku.\n"
--"            Niste bili u moguænosti zanemariti istu na vrijeme.\n"
-+"            Niste bili u moguænosti zanemariti istu na vrijeme."
- 
- #: Mailman/Cgi/confirm.py:658
- msgid "Posted message canceled"
 @@ -4639,7 +4639,7 @@
  msgid ""
  "Remove message attachments that have a matching content\n"
@@ -79,85 +50,6 @@ Forwarded: no
  
  #: Mailman/Gui/ContentFilter.py:82
  msgid ""
---- a/messages/ia/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/ia/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -68,7 +68,7 @@
- 
- #: Mailman/Archiver/HyperArch.py:913
- msgid "figuring article archives\n"
--msgstr "recerca in le archivo pro iste articulo"
-+msgstr "recerca in le archivo pro iste articulo\n"
- 
- #: Mailman/Archiver/HyperArch.py:923
- msgid "April"
-@@ -1540,7 +1540,7 @@
- "lista\n"
- "            <em>%(listname)s</em>, ma illo debe esser approbate per le\n"
- "            moderator del lista. Tu requesta ha essite reinviate al "
--"moderator,            e tu essera notificate super su decision.\n"
-+"moderator,            e tu essera notificate super su decision."
- 
- #: Mailman/Cgi/confirm.py:372 Mailman/Cgi/confirm.py:437
- #: Mailman/Cgi/confirm.py:526 Mailman/Cgi/confirm.py:763
-@@ -1892,7 +1892,7 @@
- "            Tu ha rehabilitate con successo tu abonamento al\n"
- "            lista %(listname)s.  Tu pote nunc <a\n"
- "            href=\"%(optionsurl)s\">visitar tu pagina de optiones de "
--"abonato</a>.\n"
-+"abonato</a>."
- 
- #: Mailman/Cgi/confirm.py:785
- msgid "Re-enable mailing list membership"
-@@ -2566,7 +2566,7 @@
- "Tu ha essite disabonate con successo del lista %(fqdn_listname)s.\n"
- "            Si tu recipeva summarios, tu forsan va reciper ancora uno.\n"
- "            Si tu ha alicun question super tu disabonamento, per favor\n"
--"            contacta le proprietarios del lista a %(owneraddr)s.\n"
-+"            contacta le proprietarios del lista a %(owneraddr)s."
- 
- #: Mailman/Cgi/options.py:676
- msgid ""
-@@ -3217,11 +3217,11 @@
- 
- #: Mailman/Commands/cmd_join.py:17
- msgid "The `join' command is synonymous with `subscribe'.\n"
--msgstr "Le commando 'join' (in anglese) es synonyme con 'subscribe'."
-+msgstr "Le commando 'join' (in anglese) es synonyme con 'subscribe'.\n"
- 
- #: Mailman/Commands/cmd_leave.py:17
- msgid "The `leave' command is synonymous with `unsubscribe'.\n"
--msgstr "Le commando 'leave' (in anglese) es synonyme a 'unsubscribe'."
-+msgstr "Le commando 'leave' (in anglese) es synonyme a 'unsubscribe'.\n"
- 
- #: Mailman/Commands/cmd_lists.py:17
- msgid ""
-@@ -3314,7 +3314,7 @@
- 
- #: Mailman/Commands/cmd_remove.py:17
- msgid "The `remove' command is synonymous with `unsubscribe'.\n"
--msgstr "Le commando 'remove' (in anglese) es synonyme con 'unsubscribe'."
-+msgstr "Le commando 'remove' (in anglese) es synonyme con 'unsubscribe'.\n"
- 
- #: Mailman/Commands/cmd_set.py:26
- msgid ""
-@@ -3609,7 +3609,7 @@
- 
- #: Mailman/Commands/cmd_stop.py:17
- msgid "stop is synonymous with the end command.\n"
--msgstr "'stop' es synonyme con le commando 'end' (fin)."
-+msgstr "'stop' es synonyme con le commando 'end' (fin).\n"
- 
- #: Mailman/Commands/cmd_subscribe.py:17
- msgid ""
-@@ -11173,7 +11173,7 @@
- "\n"
- "Optiones:\n"
- "    -v / --verbose\n"
--"        Imprime lo que le scripto face."
-+"        Imprime lo que le scripto face.\n"
- 
- #: bin/reset_pw.py:77
- msgid "Changing passwords for list: %(listname)s"
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
 +++ b/messages/checkpo.sh	2014-07-10 20:00:53.000000000 +0200
 @@ -0,0 +1,6 @@
@@ -196,15 +88,6 @@ Forwarded: no
  
  #: Mailman/Gui/General.py:560
  msgid ""
-@@ -6519,7 +6519,7 @@
- "»Ê²ñ¥×¥í¥»¥¹¤ÏÉ¬Í×¤È¤·¤Þ¤»¤ó. 1¹Ô¤Ë¤Ä¤­1¤Ä¤Î¥¢¥É¥ì¥¹¤ò\n"
- "µ­Æþ¤·¤Æ¤¯¤À¤µ¤¤; Àµµ¬É½¸½¤ò»È¤¦¤Ë¤Ï¹Ô¤ÎºÇ½é¤ò ^ ¤Ç»Ï¤á¤Æ¤¯¤À¤µ¤¤.\n"
- "¹Ô¤ÎºÇ½é¤ò @ Ê¸»ú¤Ë¤·¤Æ, ¸å¤Ë¤³¤Î Mailman ¥·¥¹¥Æ¥à¤Î¥ê¥¹¥ÈÌ¾¤òÂ³¤±¤ë¤È,\n"
--"¤½¤Î¥ê¥¹¥È²ñ°÷Á´°÷¤¬¾µÇ§¤µ¤ì¤Þ¤¹.\n"
-+"¤½¤Î¥ê¥¹¥È²ñ°÷Á´°÷¤¬¾µÇ§¤µ¤ì¤Þ¤¹."
- 
- #: Mailman/Gui/Privacy.py:315
- msgid ""
 @@ -8751,7 +8751,7 @@
  "·Ù¹ð: ¸ÂÄê¸ø³«ÊÝÂ¸½ñ¸Ë¥Ç¥£¥ì¥¯¥È¥ê¤¬ other-executable (o+x) ¤Ë\n"
  "      ¤Ê¤Ã¤Æ¤¤¤Þ¤¹. ¤¢¤Ê¤¿¤Î¥·¥¹¥Æ¥à¤Î¥·¥§¥ë¥æ¡¼¥¶¤¬¤³¤ÎÊÝÂ¸½ñ¸Ë\n"
@@ -241,23 +124,3 @@ Forwarded: no
  
  #: Mailman/Gui/General.py:560
  msgid ""
---- a/messages/pl/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/pl/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -1390,7 +1390,7 @@
- "    confirmation step."
- msgstr ""
- "Wprowad¼ kod potwierdzaj±cy,\n"
--"    który otrzyma³e¶ w emailu. Nastêpnie naci¶nij <em>OK</em>,\n"
-+"    który otrzyma³e¶ w emailu. Nastêpnie naci¶nij <em>OK</em>,"
- 
- #: Mailman/Cgi/confirm.py:214
- msgid "Confirmation string:"
-@@ -1630,7 +1630,7 @@
- "    Naci¶nij <em>Wypisz</em>, aby potwierdziæ\n"
- "    wypisanie siê.\n"
- "\n"
--"    <p>Kliknij <em>Anuluj</em>, aby zrezygnowaæ.\n"
-+"    <p>Kliknij <em>Anuluj</em>, aby zrezygnowaæ."
- 
- #: Mailman/Cgi/confirm.py:492 Mailman/Cgi/options.py:767
- #: Mailman/Cgi/options.py:911 Mailman/Cgi/options.py:921
