@@ -4,6 +4,10 @@ mailman (1:2.1.20-1) UNRELEASED; urgency=medium
     - Drop obsolete patches:
       92_CVE-2015-2775.patch
   * Checked for policy 3.9.6, no changes.
+  * Make postfix-to-mailman.py work with the full recipient email
+    address, solving an issue when recipient_delimiter = "-".
+    To take advantage of this, change "${user}" to "${recipient}"
+    in Postfix' master.cf. Patch by Brian O'Connor (Closes: #578986)
 
  -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 May 2015 14:09:42 +0000
 

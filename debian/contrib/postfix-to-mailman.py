@@ -52,7 +52,7 @@
 # /etc/postfix/master.cf
 #    mailman unix  -       n       n       -       -       pipe
 #      flags=FR user=list 
-#      argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${user}
+#      argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${recipient}
 #
 # /etc/postfix/transport:
 #   lists.example.com   mailman:
@@ -100,7 +100,8 @@ def main():
         MailmanOwner = 'postmaster@localhost'
 
     try:
-        domain, local = [ a.lower() for a in sys.argv[1:] ]
+        domain, full = [ a.lower() for a in sys.argv[1:] ]
+        local = full.split("@")[0]
     except:
         # This might happen if we're not using Postfix or
         # /etc/postfix/master.cf is badly misconfigured
