@@ -236,9 +236,11 @@ def main():
         nomessages = not mlist.GetHeldMessageIds()
         if not (details or sender or msgid or nomessages):
             form.AddItem(Center(
+                '<label>' +
                 CheckBox('discardalldefersp', 0).Format() +
                 '&nbsp;' +
-                _('Discard all messages marked <em>Defer</em>')
+                _('Discard all messages marked <em>Defer</em>') +
+                '</label>'
                 ))
         # Add a link back to the overview, if we're not viewing the overview!
         adminurl = mlist.GetScriptURL('admin', absolute=1)
@@ -284,9 +286,11 @@ def main():
             form.AddItem('<hr>')
             if not (details or sender or msgid or nomessages):
                 form.AddItem(Center(
+                    '<label>' +
                     CheckBox('discardalldefersp', 0).Format() +
                     '&nbsp;' +
-                    _('Discard all messages marked <em>Defer</em>')
+                    _('Discard all messages marked <em>Defer</em>') +
+                    '</label>'
                     ))
             form.AddItem(Center(SubmitButton('submit', _('Submit All Data'))))
         # Put 'Logout' link before the footer
@@ -357,8 +361,10 @@ def show_pending_subs(mlist, form):
                                          mm_cfg.DISCARD),
                                  checked=0).Format()
         if addr not in mlist.ban_list:
-            radio += '<br>' + CheckBox('ban-%d' % id, 1).Format() + \
-                     '&nbsp;' + _('Permanently ban from this list')
+            radio += ('<br>' + '<label>' +
+                     CheckBox('ban-%d' % id, 1).Format() +
+                     '&nbsp;' + _('Permanently ban from this list') +
+                     '</label>')
         # While the address may be a unicode, it must be ascii
         paddr = addr.encode('us-ascii', 'replace')
         table.AddRow(['%s<br><em>%s</em>' % (paddr, Utils.websafe(fullname)),
@@ -466,15 +472,19 @@ def show_helds_overview(mlist, form, ssort=SSENDER):
         left.AddRow([btns])
         left.AddCellInfo(left.GetCurrentRowIndex(), 0, colspan=2)
         left.AddRow([
+            '<label>' +
             CheckBox('senderpreserve-' + qsender, 1).Format() +
             '&nbsp;' +
-            _('Preserve messages for the site administrator')
+            _('Preserve messages for the site administrator') +
+            '</label>'
             ])
         left.AddCellInfo(left.GetCurrentRowIndex(), 0, colspan=2)
         left.AddRow([
+            '<label>' +
             CheckBox('senderforward-' + qsender, 1).Format() +
             '&nbsp;' +
-            _('Forward messages (individually) to:')
+            _('Forward messages (individually) to:') +
+            '</label>'
             ])
         left.AddCellInfo(left.GetCurrentRowIndex(), 0, colspan=2)
         left.AddRow([
@@ -490,9 +500,11 @@ def show_helds_overview(mlist, form, ssort=SSENDER):
         if mlist.isMember(sender):
             if mlist.getMemberOption(sender, mm_cfg.Moderate):
                 left.AddRow([
+                    '<label>' +
                     CheckBox('senderclearmodp-' + qsender, 1).Format() +
                     '&nbsp;' +
-                    _("Clear this member's <em>moderate</em> flag")
+                    _("Clear this member's <em>moderate</em> flag") +
+                    '</label>'
                     ])
             else:
                 left.AddRow(
@@ -503,9 +515,11 @@ def show_helds_overview(mlist, form, ssort=SSENDER):
                             mlist.reject_these_nonmembers +
                             mlist.discard_these_nonmembers):
             left.AddRow([
+                '<label>' +
                 CheckBox('senderfilterp-' + qsender, 1).Format() +
                 '&nbsp;' +
-                _('Add <b>%(esender)s</b> to one of these sender filters:')
+                _('Add <b>%(esender)s</b> to one of these sender filters:') +
+                '</label>'
                 ])
             left.AddCellInfo(left.GetCurrentRowIndex(), 0, colspan=2)
             btns = hacky_radio_buttons(
@@ -517,10 +531,11 @@ def show_helds_overview(mlist, form, ssort=SSENDER):
             left.AddCellInfo(left.GetCurrentRowIndex(), 0, colspan=2)
             if sender not in mlist.ban_list:
                 left.AddRow([
+                    '<label>' +
                     CheckBox('senderbanp-' + qsender, 1).Format() +
                     '&nbsp;' +
                     _("""Ban <b>%(esender)s</b> from ever subscribing to this
-                    mailing list""")])
+                    mailing list""") + '</label>'])
                 left.AddCellInfo(left.GetCurrentRowIndex(), 0, colspan=2)
         right = Table(border=0)
         right.AddRow([
@@ -656,13 +671,11 @@ def show_post_requests(mlist, id, info, total, count, form):
     for line in email.Iterators.body_line_iterator(msg, decode=True):
         lines.append(line)
         chars += len(line)
-        if chars > limit > 0:
+        if chars >= limit > 0:
             break
-    # Negative values mean display the entire message, regardless of size
-    if limit > 0:
-        body = EMPTYSTRING.join(lines)[:mm_cfg.ADMINDB_PAGE_TEXT_LIMIT]
-    else:
-        body = EMPTYSTRING.join(lines)
+    # We may have gone over the limit on the last line, but keep the full line
+    # anyway to avoid losing part of a multibyte character.
+    body = EMPTYSTRING.join(lines)
     # Get message charset and try encode in list charset
     # We get it from the first text part.
     # We need to replace invalid characters here or we can throw an uncaught
@@ -677,7 +690,7 @@ def show_post_requests(mlist, id, info, total, count, form):
     lcset = Utils.GetCharSet(mlist.preferred_language)
     if mcset <> lcset:
         try:
-            body = unicode(body, mcset).encode(lcset, 'replace')
+            body = unicode(body, mcset, 'replace').encode(lcset, 'replace')
         except (LookupError, UnicodeError, ValueError):
             pass
     hdrtxt = NL.join(['%s: %s' % (k, v) for k, v in msg.items()])
@@ -710,12 +723,16 @@ def show_post_requests(mlist, id, info, total, count, form):
     t.AddRow([Bold(_('Action:')), buttons])
     t.AddCellInfo(row+3, col-1, align='right')
     t.AddRow(['&nbsp;',
+              '<label>' +
               CheckBox('preserve-%d' % id, 'on', 0).Format() +
-              '&nbsp;' + _('Preserve message for site administrator')
+              '&nbsp;' + _('Preserve message for site administrator') +
+              '</label>'
               ])
     t.AddRow(['&nbsp;',
+              '<label>' +
               CheckBox('forward-%d' % id, 'on', 0).Format() +
               '&nbsp;' + _('Additionally, forward this message to: ') +
+              '</label>' +
               TextBox('forward-addr-%d' % id, size=47,
                       value=mlist.GetOwnerEmail()).Format()
               ])

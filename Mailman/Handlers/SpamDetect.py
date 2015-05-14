@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,11 +29,12 @@ import re
 
 from email.Errors import HeaderParseError
 from email.Header import decode_header
+from email.Utils import parseaddr
 
 from Mailman import mm_cfg
 from Mailman import Errors
 from Mailman import i18n
-from Mailman.Utils import GetCharSet
+from Mailman import Utils
 from Mailman.Handlers.Hold import hold_for_approval
 
 try:
@@ -76,13 +77,51 @@ def getDecodedHeaders(msg, cset='utf-8'):
         for frag, cs in v:
             if not cs:
                 cs = 'us-ascii'
-            uvalue += unicode(frag, cs, 'replace')
+            try:
+                uvalue += unicode(frag, cs, 'replace')
+            except LookupError:
+                # The encoding charset is unknown.  At this point, frag
+                # has been QP or base64 decoded into a byte string whose
+                # charset we don't know how to handle.  We will try to
+                # unicode it as iso-8859-1 which may result in a garbled
+                # mess, but we have to do something.
+                uvalue += unicode(frag, 'iso-8859-1', 'replace')
         headers += '%s: %s\n' % (h, uvalue.encode(cset, 'replace'))
     return headers
 
 
 
 def process(mlist, msg, msgdata):
+    # Before anything else, check DMARC if necessary.  We do this as early
+    # as possible so reject/discard actions trump other holds/approvals and
+    # wrap/munge actions get flagged even for approved messages.
+    # But not for owner mail which should not be subject to DMARC reject or
+    # discard actions.
+    if not msgdata.get('toowner'):
+        msgdata['from_is_list'] = 0
+        dn, addr = parseaddr(msg.get('from'))
+        if addr and mlist.dmarc_moderation_action > 0:
+            if Utils.IsDMARCProhibited(mlist, addr):
+                # Note that for dmarc_moderation_action, 0 = Accept, 
+                #    1 = Munge, 2 = Wrap, 3 = Reject, 4 = Discard
+                if mlist.dmarc_moderation_action == 1:
+                    msgdata['from_is_list'] = 1
+                elif mlist.dmarc_moderation_action == 2:
+                    msgdata['from_is_list'] = 2
+                elif mlist.dmarc_moderation_action == 3:
+                    # Reject
+                    text = mlist.dmarc_moderation_notice
+                    if text:
+                        text = Utils.wrap(text)
+                    else:
+                        text = Utils.wrap(_(
+"""You are not allowed to post to this mailing list From: a domain which
+publishes a DMARC policy of reject or quarantine, and your message has been
+automatically rejected.  If you think that your messages are being rejected in
+error, contact the mailing list owner at %(listowner)s."""))
+                    raise Errors.RejectMessage, text
+                elif mlist.dmarc_moderation_action == 4:
+                    raise Errors.DiscardMessage
     if msgdata.get('approved'):
         return
     # First do site hard coded header spam checks
@@ -98,7 +137,7 @@ def process(mlist, msg, msgdata):
     # extension may be a clue to possible virus/spam.
     headers = ''
     # Get the character set of the lists preferred language for headers
-    lcset = GetCharSet(mlist.preferred_language)
+    lcset = Utils.GetCharSet(mlist.preferred_language)
     for p in msg.walk():
         headers += getDecodedHeaders(p, lcset)
     for patterns, action, empty in mlist.header_filter_rules:
