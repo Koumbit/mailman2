@@ -152,6 +152,10 @@ binary-arch:	build
 	install -m 0755 debian/contrib/postfix-to-mailman.py debian/mailman/usr/share/mailman
 	dh_link etc/mailman/postfix-to-mailman.py usr/lib/mailman/bin/postfix-to-mailman.py
 
+# postfix-to-mailman.py
+	install -m 0755 build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman
+	dh_link etc/mailman/qmail-to-mailman.py usr/lib/mailman/bin/qmail-to-mailman.py
+
 # apache default config
 	install -m 0644 debian/contrib/apache.conf debian/mailman/etc/mailman
 
@@ -160,11 +164,9 @@ binary-arch:	build
 
 # Move templates
 	mv `find debian/mailman/etc/mailman -mindepth 1 -maxdepth 1 -type d` debian/mailman/usr/share/mailman
-	cp build/contrib/qmail-to-mailman.py debian/mailman/usr/share/mailman
 
 	find debian/mailman/usr/share/mailman -type f -printf '/etc/mailman/%P\n' > debian/ucffiles
 
-	dh_link etc/mailman/qmail-to-mailman.py usr/lib/mailman/bin/qmail-to-mailman.py
 
 
 # Fix permissions
