@@ -1,6 +1,6 @@
 mailman (1:2.1.20-1) UNRELEASED; urgency=medium
 
-  * New upstream release.
+  * New upstream release. (Closes: #779911)
     - Drop obsolete patches:
       92_CVE-2015-2775.patch
   * Checked for policy 3.9.6, no changes.
@@ -11,6 +11,7 @@ mailman (1:2.1.20-1) UNRELEASED; urgency=medium
   * Make package build reproducibly by using install instead of cp
     for installing qmail-to-mailman.py. Patch by Jérémy Bobbio.
     (Closes: #783151)
+  * Update example apache.conf for Apache 2.4.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 May 2015 14:09:42 +0000
 
