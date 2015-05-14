@@ -12,6 +12,7 @@ mailman (1:2.1.20-1) UNRELEASED; urgency=medium
     for installing qmail-to-mailman.py. Patch by Jérémy Bobbio.
     (Closes: #783151)
   * Update example apache.conf for Apache 2.4.
+  * Add cron-daemon as dependency alternative to cron. (Closes: #785193)
 
  -- Thijs Kinkhorst <thijs@debian.org>  Thu, 14 May 2015 14:09:42 +0000
 
