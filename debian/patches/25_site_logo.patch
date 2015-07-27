@@ -1,6 +1,6 @@
 Author: Paul Wise <pabs@debian.org>
 Description: Allow each mailman site to have a custom text, link and logo. Also fix existing logo linkage.
-Bug-Debian: http://bugs.debian.org/267243
+Bug-Debian: https://bugs.debian.org/267243
 Forwarded: http://sf.net/support/tracker.php?aid=1615748
 
 Index: b/Mailman/Defaults.py.in
@@ -14,7 +14,7 @@ Index: b/Mailman/Defaults.py.in
 +# The site logo/text presence, site text, site url and site logo
 +SITE_LINK = Yes
 +SITE_TEXT = 'Debian Powered'
-+SITE_URL = 'http://www.debian.org/'
++SITE_URL = 'https://www.debian.org/'
 +SITE_LOGO = '/images/mailman/debianpowered.png'
 +
  # Mailman needs to know about (at least) two fully-qualified domain names
