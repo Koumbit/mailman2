@@ -8,7 +8,7 @@
 
 if [ "$1" = "failed-upgrade" ] ; then
   if [ -x "/etc/init.d/mailman" ]; then
-    if [ -x /usr/sbin/invoke-rc.d ] ; then
+    if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
       invoke-rc.d mailman stop || true
     else
       /etc/init.d/mailman stop || true
