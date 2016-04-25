@@ -3,10 +3,8 @@ Description: update is called from the Debian maintainer scripts and
  prints non-appropriate output.  Change that.
 Forwarded: not-needed
 
-Index: b/bin/update
-===================================================================
---- a/bin/update	2012-05-20 14:21:35.710868234 +0200
-+++ b/bin/update	2012-05-20 14:21:40.194890466 +0200
+--- mailman-2.1.22.orig/bin/update	2016-04-17 18:52:38.000000000 +0000
++++ mailman-2.1.22/bin/update	2016-04-25 17:03:01.748003143 +0000
 @@ -334,37 +334,6 @@
      # BAW: Is this still necessary?!
      mlist.Save()
@@ -27,7 +25,7 @@ Index: b/bin/update
 -        b4_tmpl_dir = os.path.join(tmpl_dir, mlist._internal_name)
 -        new_tmpl_dir = os.path.join(list_dir, mlist._internal_name)
 -        if os.path.exists(b4_tmpl_dir):
--            print _("""\
+-            print C_("""\
 -- This list looks like it might have <= b4 list templates around""")
 -            for f in os.listdir(b4_tmpl_dir):
 -                o_tmpl = os.path.join(b4_tmpl_dir, f)
@@ -35,12 +33,12 @@ Index: b/bin/update
 -                if os.path.exists(o_tmpl):
 -                    if not os.path.exists(n_tmpl):
 -                        os.rename(o_tmpl, n_tmpl)
--                        print _('- moved %(o_tmpl)s to %(n_tmpl)s')
+-                        print C_('- moved %(o_tmpl)s to %(n_tmpl)s')
 -                    else:
--                        print _("""\
+-                        print C_("""\
 -- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched""")
 -                else:
--                    print _("""\
+-                    print C_("""\
 -- %(o_tmpl)s doesn't exist, leaving untouched""")
      #
      # Move all the templates to the en language subdirectory as required for
@@ -55,8 +53,8 @@ Index: b/bin/update
          remove_old_sources(mod)
      listnames = Utils.list_names()
      if not listnames:
--        print _('no lists == nothing to do, exiting')
-+#        print _('no lists == nothing to do, exiting')
+-        print C_('no lists == nothing to do, exiting')
++#        print C_('no lists == nothing to do, exiting')
          return
      #
      # for people with web archiving, make sure the directories
