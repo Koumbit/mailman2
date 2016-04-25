@@ -386,6 +386,10 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                                        mm_cfg.DEFAULT_DEFAULT_MEMBER_MODERATION
         # Emergency moderation bit
         self.emergency = 0
+        self.member_verbosity_threshold = (
+            mm_cfg.DEFAULT_MEMBER_VERBOSITY_THRESHOLD)
+        self.member_verbosity_interval = (
+            mm_cfg.DEFAULT_MEMBER_VERBOSITY_INTERVAL)
         # This really ought to default to mm_cfg.HOLD, but that doesn't work
         # with the current GUI description model.  So, 0==Hold, 1==Reject,
         # 2==Discard
@@ -394,6 +398,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.dmarc_moderation_action = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
         self.dmarc_quarantine_moderation_action = (
             mm_cfg.DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION)
+        self.dmarc_none_moderation_action = (
+            mm_cfg.DEFAULT_DMARC_NONE_MODERATION_ACTION)
         self.dmarc_moderation_notice = ''
         self.dmarc_wrapped_message_text = (
             mm_cfg.DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT)
@@ -883,8 +889,12 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # Is the subscribing address banned from this list?
         pattern = self.GetBannedPattern(email)
         if pattern:
-            syslog('vette', '%s banned subscription: %s (matched: %s)',
-                   realname, email, pattern)
+            if remote:
+                whence = ' from %s' % remote
+            else:
+                whence = ''
+            syslog('vette', '%s banned subscription: %s%s (matched: %s)',
+                   realname, email, whence, pattern)
             raise Errors.MembershipIsBanned, pattern
         # Sanity check the digest flag
         if digest and not self.digestable:
@@ -1564,7 +1574,9 @@ bad regexp in bounce_matching_header line: %s
         """Returns matched entry in ban_list if email matches.
         Otherwise returns None.
         """
-        return self.GetPattern(email, self.ban_list)
+        return (self.GetPattern(email, self.ban_list) or
+                self.GetPattern(email, mm_cfg.GLOBAL_BAN_LIST)
+               )
 
     def HasAutoApprovedSender(self, sender):
         """Returns True and logs if sender matches address or pattern
@@ -1572,17 +1584,29 @@ bad regexp in bounce_matching_header line: %s
         Otherwise returns False.
         """
         auto_approve = False
-        if self.GetPattern(sender, self.subscribe_auto_approval, at_list=True):
+        if self.GetPattern(sender,
+                           self.subscribe_auto_approval,
+                           at_list='subscribe_auto_approval'
+                          ):
             auto_approve = True
             syslog('vette', '%s: auto approved subscribe from %s',
                    self.internal_name(), sender)
         return auto_approve
 
-    def GetPattern(self, email, pattern_list, at_list=False):
+    def GetPattern(self, email, pattern_list, at_list=None):
         """Returns matched entry in pattern_list if email matches.
-        Otherwise returns None.
+        Otherwise returns None.  The at_list argument, if "true",
+        says process the @listname syntax and provides the name of
+        the list attribute for log messages.
         """
         matched = None
+        # First strip out all the regular expressions and listnames because
+        # documentation says we do non-regexp first (Why?).
+        plainaddrs = [x.strip() for x in pattern_list if x.strip() and not
+                         (x.startswith('^') or x.startswith('@'))]
+        addrdict = Utils.List2Dict(plainaddrs, foldcase=1)
+        if addrdict.has_key(email.lower()):
+            return email
         for pattern in pattern_list:
             if pattern.startswith('^'):
                 # This is a regular expression match
@@ -1590,9 +1614,19 @@ bad regexp in bounce_matching_header line: %s
                     if re.search(pattern, email, re.IGNORECASE):
                         matched = pattern
                         break
-                except re.error:
+                except re.error, e:
                     # BAW: we should probably remove this pattern
-                    pass
+                    # The GUI won't add a bad regexp, but at least log it.
+                    # The following kludge works because the ban_list stuff
+                    # is the only caller with no at_list.
+                    attr_name = at_list or 'ban_list'
+                    syslog('error',
+                           '%s in %s has bad regexp "%s": %s',
+                           attr_name,
+                           self.internal_name(),
+                           pattern,
+                           str(e)
+                          )
             elif at_list and pattern.startswith('@'):
                 # XXX Needs to be reviewed for list@domain names.
                 # this refers to the members of another list in this
@@ -1601,22 +1635,21 @@ bad regexp in bounce_matching_header line: %s
                 if mname == self.internal_name():
                     # don't reference your own list
                     syslog('error',
-                        'subscribe_auto_approval in %s references own list',
+                        '%s in %s references own list',
+                        at_list,
                         self.internal_name())
                     continue
                 try:
                     mother = MailList(mname, lock = False)
                 except Errors.MMUnknownListError:
                     syslog('error',
-              'subscribe_auto_approval in %s references non-existent list %s',
-                        self.internal_name(), mname)
+                           '%s in %s references non-existent list %s',
+                           at_list,
+                           self.internal_name(),
+                           mname
+                          )
                     continue
                 if mother.isMember(email.lower()):
-                    matched = pattern
-                    break
-            else:
-                # Do the comparison case insensitively
-                if pattern.lower() == email.lower():
                     matched = pattern
                     break
         return matched

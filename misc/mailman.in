@@ -31,7 +31,7 @@
 #              on GNU Mailman see http://www.list.org
 # processname: mailmanctl
 # config: @prefix@/Mailman/mm_cfg.py
-# pidfile: @prefix@/data/master-qrunner.pid
+# pidfile: @VAR_PREFIX@/data/master-qrunner.pid
 
 PYTHON=@PYTHON@
 MAILMANHOME=@prefix@

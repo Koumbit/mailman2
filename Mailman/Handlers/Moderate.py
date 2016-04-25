@@ -97,15 +97,27 @@ def process(mlist, msg, msgdata):
         sender = msg.get_sender()
     # From here on out, we're dealing with non-members.
     listname = mlist.internal_name()
-    if matches_p(sender, mlist.accept_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.accept_these_nonmembers,
+                        at_list='accept_these_nonmembers'
+                       ):
         return
-    if matches_p(sender, mlist.hold_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.hold_these_nonmembers,
+                        at_list='hold_these_nonmembers'
+                       ):
         Hold.hold_for_approval(mlist, msg, msgdata, Hold.NonMemberPost)
         # No return
-    if matches_p(sender, mlist.reject_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.reject_these_nonmembers,
+                        at_list='reject_these_nonmembers'
+                       ):
         do_reject(mlist)
         # No return
-    if matches_p(sender, mlist.discard_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.discard_these_nonmembers,
+                        at_list='discard_these_nonmembers'
+                       ):
         do_discard(mlist, msg)
         # No return
     # Okay, so the sender wasn't specified explicitly by any of the non-member
@@ -121,43 +133,6 @@ def process(mlist, msg, msgdata):
         do_reject(mlist)
     elif mlist.generic_nonmember_action == 3:
         do_discard(mlist, msg)
-
-
-
-def matches_p(sender, nonmembers, listname):
-    # First strip out all the regular expressions and listnames
-    plainaddrs = [addr for addr in nonmembers if not (addr.startswith('^')
-                                                 or addr.startswith('@'))]
-    addrdict = Utils.List2Dict(plainaddrs, foldcase=1)
-    if addrdict.has_key(sender):
-        return 1
-    # Now do the regular expression matches
-    for are in nonmembers:
-        if are.startswith('^'):
-            try:
-                cre = re.compile(are, re.IGNORECASE)
-            except re.error:
-                continue
-            if cre.search(sender):
-                return 1
-        elif are.startswith('@'):
-            # XXX Needs to be reviewed for list@domain names.
-            try:
-                mname = are[1:].lower().strip()
-                if mname == listname:
-                    # don't reference your own list
-                    syslog('error',
-                        '*_these_nonmembers in %s references own list',
-                        listname)
-                else:
-                    mother = MailList(mname, lock=0)
-                    if mother.isMember(sender):
-                        return 1
-            except Errors.MMUnknownListError:
-                syslog('error',
-                  '*_these_nonmembers in %s references non-existent list %s',
-                  listname, mname)
-    return 0
 
 
 

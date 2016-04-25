@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -50,7 +50,7 @@ from Mailman import mm_cfg
 from Mailman import MailList
 from Mailman import Utils
 from Mailman import Errors
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 program = sys.argv[0]
 
@@ -59,7 +59,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -110,18 +110,18 @@ def main():
         longest = max(len(mlist.real_name), longest)
 
     if not mlists and not bare:
-        print _('No matching mailing lists found')
+        print C_('No matching mailing lists found')
         return
 
     if not bare:
-        print len(mlists), _('matching mailing lists found:')
+        print len(mlists), C_('matching mailing lists found:')
 
     format = '%%%ds - %%.%ds' % (longest, 77 - longest)
     for mlist in mlists:
         if bare:
             print mlist.internal_name()
         else:
-            description = mlist.description or _('[no description available]')
+            description = mlist.description or C_('[no description available]')
             print '   ', format % (mlist.real_name, description)
 
 

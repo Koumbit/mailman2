@@ -1,28 +1,28 @@
-Vostede, ou alguén que se fai pasar por vostede, solicitou que se lle
-lembre o contrasinal con que está subscrito á rolda de distribución 
-%(fqdn_lname)s. Este contrasinal é necesario para poder cambiar calquera
-opción de subscrición (por exemplo, se desexa a entrega
-regular ou diferida en compilacións) así como para anular a súa subscrición (non
-precisa depender de ninguén para darse de baixa).
+Vostede, ou alguÃ©n que se fai pasar por vostede, solicitou que se lle
+lembre o contrasinal con que estÃ¡ subscrito Ã¡ rolda de distribuciÃ³n 
+%(fqdn_lname)s. Este contrasinal Ã© necesario para poder cambiar calquera
+opciÃ³n de subscriciÃ³n (por exemplo, se desexa a entrega
+regular ou diferida en compilaciÃ³ns) asÃ­ como para anular a sÃºa subscriciÃ³n (non
+precisa depender de ninguÃ©n para darse de baixa).
 
-O enderezo con que está subscrito a rolda é o seguinte:
+O enderezo con que estÃ¡ subscrito a rolda Ã© o seguinte:
 %(user)s
 
-O contrasinal para %(listname)s é %(password)s
+O contrasinal para %(listname)s Ã© %(password)s
 
-Para efectuar calquera cambio na súa subscrición, debe visitar a páxina web de
-opcións:
+Para efectuar calquera cambio na sÃºa subscriciÃ³n, debe visitar a pÃ¡xina web de
+opciÃ³ns:
 
     %(options_url)s
 
-Tamén pode realizar estes cambios por correo electrónico se envía
+TamÃ©n pode realizar estes cambios por correo electrÃ³nico se envÃ­a
 unha mensaxe a:
 
     %(requestaddr)s
 
 co texto "help" no asunto (subject) ou no corpo da mensaxe.
-A mensaxe automática que se lle enviará ten unha información máis detallada.
+A mensaxe automÃ¡tica que se lle enviarÃ¡ ten unha informaciÃ³n mÃ¡is detallada.
 
-Se ten algunha pregunta ou algún comentario, envíello ao
+Se ten algunha pregunta ou algÃºn comentario, envÃ­ello ao
 administrador da rolda %(listname)s ao
-enderezo de correo electrónico %(owneraddr)s
+enderezo de correo electrÃ³nico %(owneraddr)s

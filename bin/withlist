@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -128,7 +128,7 @@ import paths
 from Mailman import Errors
 from Mailman import MailList
 from Mailman import Utils
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 try:
     True, False
@@ -154,7 +154,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -172,11 +172,11 @@ def atexit():
     if m.Locked():
         if VERBOSE:
             listname = m.internal_name()
-            print >> sys.stderr, _(
+            print >> sys.stderr, C_(
                 'Unlocking (but not saving) list: %(listname)s')
         m.Unlock()
     if VERBOSE:
-        print >> sys.stderr, _('Finalizing')
+        print >> sys.stderr, C_('Finalizing')
     del m
 
 
@@ -185,16 +185,16 @@ def do_list(listname, args, func):
     global m
     # first try to open mailing list
     if VERBOSE:
-        print >> sys.stderr, _('Loading list %(listname)s'),
+        print >> sys.stderr, C_('Loading list %(listname)s'),
         if LOCK:
-            print >> sys.stderr, _('(locked)')
+            print >> sys.stderr, C_('(locked)')
         else:
-            print >> sys.stderr, _('(unlocked)')
+            print >> sys.stderr, C_('(unlocked)')
 
     try:
         m = MailList.MailList(listname, lock=LOCK)
     except Errors.MMUnknownListError:
-        print >> sys.stderr, _('Unknown list: %(listname)s')
+        print >> sys.stderr, C_('Unknown list: %(listname)s')
         m = None
 
     # try to import the module and run the callable
@@ -234,7 +234,7 @@ def main():
             all = True
 
     if len(args) < 1 and not all:
-        warning = _('No list name supplied.')
+        warning = C_('No list name supplied.')
         if interact:
             # Let them keep going
             print warning
@@ -243,7 +243,7 @@ def main():
             usage(1, warning)
 
     if all and not run:
-        usage(1, _('--all requires --run'))
+        usage(1, C_('--all requires --run'))
 
     # The default for interact is 1 unless -r was given
     if interact is None:
@@ -263,11 +263,11 @@ def main():
             module = run[:i]
             callable = run[i+1:]
         if VERBOSE:
-            print >> sys.stderr, _('Importing %(module)s...')
+            print >> sys.stderr, C_('Importing %(module)s...')
         __import__(module)
         mod = sys.modules[module]
         if VERBOSE:
-            print >> sys.stderr, _('Running %(module)s.%(callable)s()...')
+            print >> sys.stderr, C_('Running %(module)s.%(callable)s()...')
         func = getattr(mod, callable)
 
     if all:
@@ -288,7 +288,7 @@ def main():
         namespace = globals().copy()
         namespace.update(locals())
         if dolist:
-            ban = _("The variable `m' is the %(listname)s MailList instance")
+            ban = C_("The variable `m' is the %(listname)s MailList instance")
         else:
             ban = None
         code.InteractiveConsole(namespace).interact(ban)

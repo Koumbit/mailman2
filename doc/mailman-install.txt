@@ -11,7 +11,7 @@ GNU Mailman - Installation Manual
    barry (at) list dot org
 
    Release 2.1
-   March 7, 2015
+   April 14, 2016
 
                                   Front Matter
 
@@ -368,7 +368,7 @@ GNU Mailman - Installation Manual
 
    Mailman should work pretty much out of the box with a standard Postfix
    installation. It has been tested with various Postfix versions up to
-   and including Postfix 2.1.5.
+   and including Postfix 2.11.3 (as of April 2016).
 
    In order to support Mailman's optional VERP delivery, you will want to
    disable luser_relay (the default) and you will want to set
@@ -1559,7 +1559,7 @@ tar xvf MailmanStartup.tar
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, March 7, 2015, Release 2.1
+   GNU Mailman - Installation Manual, April 14, 2016, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1613,4 +1613,4 @@ tar xvf MailmanStartup.tar
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
      __________________________________________________________________
 
-   Release 2.1, documentation updated on March 7, 2015.
+   Release 2.1, documentation updated on April 14, 2016.

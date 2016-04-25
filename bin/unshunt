@@ -1,6 +1,6 @@
 #! @PYTHON@
 
-# Copyright (C) 2002-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ import getopt
 import paths
 from Mailman import mm_cfg
 from Mailman.Queue.sbcache import get_switchboard
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 
 
@@ -47,7 +47,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -82,7 +82,7 @@ def main():
         except Exception, e:
             # If there are any unshunting errors, log them and continue trying
             # other shunted messages.
-            print >> sys.stderr, _(
+            print >> sys.stderr, C_(
                 'Cannot unshunt message %(filebase)s, skipping:\n%(e)s')
         else:
             # Unlink the .bak file left by dequeue()

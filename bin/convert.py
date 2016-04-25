@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@ This script is intended to be run as a bin/withlist script, i.e.
 
 import paths
 from Mailman import Utils
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 def convert(mlist):
     for attr in ('msg_header', 'msg_footer', 'digest_header', 'digest_footer',
@@ -35,10 +35,10 @@ def convert(mlist):
         t = Utils.to_dollar(s)
         setattr(mlist, attr, t)
     mlist.use_dollar_strings = 1
-    print _('Saving list')
+    print C_('Saving list')
     mlist.Save()
 
 
 
 if __name__ == '__main__':
-    print _(__doc__.replace('%', '%%'))
+    print C_(__doc__.replace('%', '%%'))

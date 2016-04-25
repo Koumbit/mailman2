@@ -1,13 +1,13 @@
-Como administrador, é necesaria a súa autorización para enviar unha mensaxe
-á seguinte rolda de distribución:
+Como administrador, Ã© necesaria a sÃºa autorizaciÃ³n para enviar unha mensaxe
+Ã¡ seguinte rolda de distribuciÃ³n:
 
     Rolda:               %(listname)s@%(hostname)s
     Remitente:             %(sender)s
     Asunto:                %(subject)s
-    Razón para a reter:     %(reason)s
+    RazÃ³n para a reter:     %(reason)s
 
-Cando puider, acceda á páxina:
+Cando puider, acceda Ã¡ pÃ¡xina:
 
     %(admindb_url)s
         
-para aprobar ou denegar o envío
+para aprobar ou denegar o envÃ­o

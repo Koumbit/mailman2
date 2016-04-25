@@ -1,9 +1,215 @@
 -*- coding: iso-8859-1 -*-
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
+
+2.1.22 (17-Apr-2016)
+
+  i18n
+
+    - Fixed a typo in the German options.html template.  (LP: #1562408)
+
+    - An error in the Brazilian Portugese translation of Quarterly has been
+      fixed thanks to Kleber A. Benatti.
+
+    - The Brazilian Portugese translation has been updated by Emerson Ribeiro
+      de Mello.
+
+  Bug fixes and other patches
+
+    - All addresses in data/virtual-mailman are now properly appended with
+      VIRTUAL_MAILMAN_LOCAL_DOMAIN and duplicates are not generated if the
+      site list is in a virtual domain.  (LP: #1570630)
+
+    - DMARC mitigations will now find the From: domain to the right of the
+      rightmost '@' rather than the leftmost '@'.  (LP: #1568445)
+
+    - DMARC mitigations for a sub-domain of an organizational domain will now
+      use the organizational domain's sp= policy if any.  (LP: #1568398)
+
+    - Modified NewsRunner.py to ensure that messages gated to Usenet have a
+      non-blank Subject: header and when munging the Message-ID to add the
+      original to References: to help with threading.  (LP: #557955)
+
+    - Fixed the pipermail archiver to do a better job of figuring the date of
+      a post when its Date: header is missing, unparseable or has an obviously
+      out of range date.  This should only affect bin/arch as ArchRunner has
+      code to fix dates at least if ARCHIVER_CLOBBER_DATE_POLICY has not been
+      set to 0 in mm_cfg.py.  If posts have been added in the past to a list's
+      archive using bin/arch and an imported mbox, running bin/arch again could
+      result is some of those posts being archived with a different date.
+      (LP: #1555798)
+
+    - Fixed an issue with CommandRunner shunting a malformed message with a
+      null byte in the body.  (LP: #1553888)
+
+    - Don't collapse multipart with a single sub-part inside multipart/signed
+      parts.  (LP: #1551075)
+
+2.1.21 (28-Feb-2016)
+
+  New Features
+
+    - There is a new dmarc_none_moderation_action list setting and a
+      DEFAULT_DMARC_NONE_MODERATION_ACTION mm_cfg.py setting to optionally
+      apply Munge From or Wrap Message actions to posts From: domains that
+      publish DMARC p=none.  The intent is to eliminate failure reports to
+      the domain owner for messages that would be munged or wrapped if the
+      domain published a stronger DMARC policy.  See the descriptions in
+      Defaults.py, the web UI and the bug report for more.  (LP: #1539384)
+
+    - Thanks to Jim Popovitch there is now a feature to automatically turn
+      on moderation for a malicious list member who attempts to flood a list
+      with spam.  See the details for the Privacy options ... -> Sender
+      filters -> member_verbosity_threshold and member_verbosity_interval
+      settings in the web admin UI and the documentation in Defaults.py for
+      the DEFAULT_MEMBER_VERBOSITY_* and VERBOSE_CLEAN_LIMIT settings for
+      information.
+
+    - bin/list_members now has options to display all moderated or all
+      non-moderated members.
+
+    - There is now a mm_cfg.py setting GLOBAL_BAN_LIST which is like the
+      individual list's ban_list but applies globally to all subscribe
+      requests.  See the description in Defaults.py for more details.
+
+  i18n
+
+    - The Japanese translation has been updated by Yasuhito FUTATSUKI.
+
+    - Also thanks to Miloslav Trmac and Yasuhito FUTATSUKI, the l10n for
+      Mailman's bin/ commands has been fixed to display using the character
+      set of the user's work station even when Mailman's character set for
+      the language is different.  Because this has not been tested over a
+      wide set of locales, there is an mm_cfg.py switch
+      DISABLE_COMMAND_LOCALE_CSET to disable it if it causes problems.
+      (LP: #558167)
+
+    - The Polish translation has been updated by Stefan Plewako.
+
+    - The German translation has been updated by Mirian Margiani and
+      Bernhard Schmidt.
+
+    - The Russian translation has been updated by Danil Smirnov.
+
+    - Several Galician templates that were improperly encoded as iso-8859-1
+      have been fixed.  (LP: #1532504)
+
+    - The Brazilian Portugese translation has been updated by Emerson Ribeiro
+      de Mello.
+
+  Bug fixes and other patches
+
+    - If DMARC lookup fails to find a policy, also try the Organizational
+      Domain.  Associated with this is a new mm_cfg.py setting
+      DMARC_ORGANIZATIONAL_DOMAIN_DATA_URL which sets the URL used to
+      retrieve the data for the algorithm that computes the Organizational
+      Domain.  See https://publicsuffix.org/list/ for info.  (LP: #1549420)
+
+    - Modified contrib/mmdsr to correctly report No such list names that
+      contain ".
+
+    - User's "Acknowledge" option will now be honored for posts to anonymous
+      lists.  (LP: #1546679)
+
+    - Fixed a typo in the Non-digest options regular_exclude_ignore
+      description thanks to Yasuhito FUTATSUKI.
+
+    - DEFAULT_PASS_MIME_TYPES has been changed to accept text/plain sub-parts
+      from message/rfc822 parts and multipart parts other than mixed and
+      alternative and also accept pgp signatures.  This only applies to newly
+      created lists and other than pgp signatures, still only accepts
+      text/plain.  (LP: #1517446)
+
+    - Modified contrib/mmdsr to report held and banned subscriptions and DMARC
+      lookups in their own categories.
+
+    - Fixed a bug that could create a garbled From: header with certain DMARC
+      mitigation actions.  (LP: #1536816)
+
+    - Treat a poster's address which matches an equivalent_domains address as
+      a list member for the regular_exclude_ignore check.  (LP: #1526550)
+
+    - Fixed an issue that sometimes left no white space following
+      subject_prefix.  (LP: #1525954)
+
+    - Vette log entries for banned subscriptions now include the source of
+      the request if available.  (LP: #1525733)
+
+    - Submitting the user options form for a user who was asynchronously
+      unsubscribed would throw an uncaught NotAMemberError.  (LP: #1523273)
+
+    - It was possible under some circumstances for a message to be shunted
+      after a handler rejected or discarded it, and the handler would be
+      skipped upon unshunting and the message accepted.  (LP: #1519062)
+
+    - Posts gated to usenet will no longer have other than the target group
+      in the Newsgroups: header.  (LP: #1512866)
+
+    - Invalid regexps in *_these_nonmembers, subscribe_auto_approval and
+      ban_list are now logged.  (LP: #1507241)
+
+    - Refactored the GetPattern list method to simplify extending @listname
+      syntax to new attributes in the future.  Changed Moderate.py to use the
+      GetPattern method to process the *_these_nonmembers lists.
+
+    - Changed CookHeaders to default to using space rather than tab as
+      continuation_ws when folding headers.  (LP: #1505878)
+
+    - Fixed the 'pidfile' path in the sample init.d script.  (LP: # 1503422)
+
+    - Subject prefixing could fail to collapse multiple 'Re:' in an incomming
+      message if they all came after the list's subject_prefix.  This is now
+      fixed.  (LP: #1496620)
+
+    - Defended against a user submitting URLs with query fragments or POST
+      data containing multiple occurrences of the same variable.
+      (LP: #1496632)
+
+    - Fixed bin/mailmanctl to check its effective rather than real uid.
+      (LP: #1491187)
+
+    - Fixed cron/gate_news to catch EOFError on opening the newsgroup.
+      (LP: #1486263)
+
+    - Fixed a bug where a delayed probe bounce can throw an AttributeError.
+      (LP: #1482940)
+
+    - If a list is not digestable an the user is not currently set to
+      receive digests, the digest options will not be shown on the user's
+      options page.  (LP: #1476298)
+
+    - Improved identification of remote clients for logging and subscribe
+      form checking in cases where access is via a proxy server.  Thanks to
+      Jim Popovitch.  Also updated contrib/mmdsr for log change.
+
+    - Fixed an issue with shunted messages on a list where the charset for
+      the list's preferred_language had been changed from iso-8859-1 to
+      utf-8 without recoding the list's description.  (LP: #1462755)
+
+    - Mailman-Postfix integration will now add mailman@domain entries in
+      data/virtual-mailman for each domain in POSTFIX_STYLE_VIRTUAL_DOMAINS
+      which is a host_name of a list.  This is so the addresses which are
+      exposed on admin and listinfo overview pages of virtual domains will
+      be deliverable.  (LP: #1459236)
+
+    - The vette log entry for DMARC policy hits now contains the list name.
+      (LP: #1450826)
+
+    - If SUBSCRIBE_FORM_SECRET is enabled and a user's network has a load
+      balancer or similar in use the POSTing IP might not exactly match the
+      GETting IP.  This is now accounted for by not requiring the last
+      octet (16 bits for ipV6) to match.  (LP: #1447445)
+
+    - DKIM-Signature:, DomainKey-Signature: and Authentication-Results:
+      headers are now removed by default from posts to anonymous lists.
+      (LP: #1444673)
+
+    - The list admin web UI Mambership List search function often doesn't
+      return correct results for search strings (regexps) that contain
+      non-ascii characters.  This is partially fixed.  (LP: #1442298)
 
 2.1.20 (31-Mar-2015)
 

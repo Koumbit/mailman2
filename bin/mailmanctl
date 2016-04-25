@@ -1,6 +1,6 @@
 #! @PYTHON@
 
-# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -108,7 +108,7 @@ from Mailman import Utils
 from Mailman import LockFile
 from Mailman import Errors
 from Mailman.MailList import MailList
-from Mailman.i18n import _
+from Mailman.i18n import C_
 from Mailman.Logging.Syslog import syslog
 from Mailman.Logging.Utils import LogStdErr
 
@@ -133,7 +133,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -149,17 +149,17 @@ def kill_watcher(sig):
     except (IOError, ValueError), e:
         # For i18n convenience
         pidfile = mm_cfg.PIDFILE
-        print >> sys.stderr, _('PID unreadable in: %(pidfile)s')
+        print >> sys.stderr, C_('PID unreadable in: %(pidfile)s')
         print >> sys.stderr, e
-        print >> sys.stderr, _('Is qrunner even running?')
+        print >> sys.stderr, C_('Is qrunner even running?')
         return
     try:
         os.kill(pid, sig)
     except OSError, e:
         if e.errno <> errno.ESRCH: raise
-        print >> sys.stderr, _('No child with pid: %(pid)s')
+        print >> sys.stderr, C_('No child with pid: %(pid)s')
         print >> sys.stderr, e
-        print >> sys.stderr, _('Stale pid file removed.')
+        print >> sys.stderr, C_('Stale pid file removed.')
         os.unlink(mm_cfg.PIDFILE)
 
 
@@ -218,19 +218,19 @@ def acquire_lock(force):
         status = qrunner_state()
         if status == 1:
             # host matches and proc exists
-            print >> sys.stderr, _("""\
+            print >> sys.stderr, C_("""\
 The master qrunner lock could not be acquired because it appears as if another
 master qrunner is already running.
 """)
         elif status == 0:
             # host matches but no proc
-            print >> sys.stderr, _("""\
+            print >> sys.stderr, C_("""\
 The master qrunner lock could not be acquired.  It appears as though there is
 a stale master qrunner lock.  Try re-running mailmanctl with the -s flag.
 """)
         else:
             # host doesn't even match
-            print >> sys.stderr, _("""\
+            print >> sys.stderr, C_("""\
 The master qrunner lock could not be acquired, because it appears as if some
 process on some other host may have acquired it.  We can't test for stale
 locks across host boundaries, so you'll have to do this manually.  Or, if you
@@ -277,7 +277,7 @@ def check_for_site_list():
     try:
         sitelist = MailList(sitelistname, lock=0)
     except Errors.MMUnknownListError:
-        print >> sys.stderr, _('Site list is missing: %(sitelistname)s')
+        print >> sys.stderr, C_('Site list is missing: %(sitelistname)s')
         syslog('error', 'Site list is missing: %s', mm_cfg.MAILMAN_SITE_LIST)
         sys.exit(1)
 
@@ -288,7 +288,7 @@ def check_privs():
     # the uid/gid.
     gid = grp.getgrnam(mm_cfg.MAILMAN_GROUP)[2]
     uid = pwd.getpwnam(mm_cfg.MAILMAN_USER)[2]
-    myuid = os.getuid()
+    myuid = os.geteuid()
     if myuid == 0:
         # Set the process's supplimental groups.
         groups = [x[2] for x in grp.getgrall() if mm_cfg.MAILMAN_USER in x[3]]
@@ -302,7 +302,7 @@ def check_privs():
         os.setuid(uid)
     elif myuid <> uid:
         name = mm_cfg.MAILMAN_USER
-        usage(1, _(
+        usage(1, C_(
             'Run this program as root or as the %(name)s user, or use -u.'))
 
 
@@ -333,15 +333,15 @@ def main():
             quiet = 1
 
     if len(args) < 1:
-        usage(1, _('No command given.'))
+        usage(1, C_('No command given.'))
     elif len(args) > 1:
         command = COMMASPACE.join(args)
-        usage(1, _('Bad command: %(command)s'))
+        usage(1, C_('Bad command: %(command)s'))
 
     if checkprivs:
         check_privs()
     else:
-        print _('Warning!  You may encounter permission problems.')
+        print C_('Warning!  You may encounter permission problems.')
 
     # Handle the commands
     command = args[0].lower()
@@ -350,18 +350,18 @@ def main():
         # giving cron/qrunner a ctrl-c or KeyboardInterrupt.  This will
         # effectively shut everything down.
         if not quiet:
-            print _("Shutting down Mailman's master qrunner")
+            print C_("Shutting down Mailman's master qrunner")
         kill_watcher(signal.SIGTERM)
     elif command == 'restart':
         # Sent the master qrunner process a SIGHUP.  This will cause the
         # master qrunner to kill and restart all the worker qrunners, and to
         # close and re-open its log files.
         if not quiet:
-            print _("Restarting Mailman's master qrunner")
+            print C_("Restarting Mailman's master qrunner")
         kill_watcher(signal.SIGINT)
     elif command == 'reopen':
         if not quiet:
-            print _('Re-opening all log files')
+            print C_('Re-opening all log files')
         kill_watcher(signal.SIGHUP)
     elif command == 'start':
         # First, complain loudly if there's no site list.
@@ -397,7 +397,7 @@ def main():
         if pid:
             # parent
             if not quiet:
-                print _("Starting Mailman's master qrunner.")
+                print C_("Starting Mailman's master qrunner.")
             # Give up the lock "ownership".  This just means the foreground
             # process won't close/unlock the lock when it finalizes this lock
             # instance.  We'll let the mater watcher subproc own the lock.

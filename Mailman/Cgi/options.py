@@ -17,6 +17,7 @@
 
 """Produce and handle the member options."""
 
+import re
 import sys
 import os
 import cgi
@@ -36,6 +37,9 @@ from Mailman.Logging.Syslog import syslog
 OR = '|'
 SLASH = '/'
 SETLANGUAGE = -1
+DIGRE = re.compile(
+    '<!--Start-Digests-Delete-->.*<!--End-Digests-Delete-->',
+     re.DOTALL)
 
 # Set up i18n
 _ = i18n._
@@ -125,6 +129,14 @@ def main():
             return
     else:
         user = Utils.LCDomain(Utils.UnobscureEmail(SLASH.join(parts[1:])))
+    # If a user submits a form or URL with post data or query fragments
+    # with multiple occurrences of the same variable, we can get a list
+    # here.  Be as careful as possible.
+    if isinstance(user, list) or isinstance(user, tuple):
+        if len(user) == 0:
+            user = ''
+        else:
+            user = user[-1]
 
     # Avoid cross-site scripting attacks
     safeuser = Utils.websafe(user)
@@ -193,7 +205,10 @@ def main():
                     mlist.HoldUnsubscription(user)
                     doc.addError(msga, tag='')
                 else:
-                    ip = os.environ.get('REMOTE_ADDR')
+                    ip = os.environ.get('HTTP_FORWARDED_FOR',
+                         os.environ.get('HTTP_X_FORWARDED_FOR',
+                         os.environ.get('REMOTE_ADDR',
+                                        'unidentified origin')))
                     mlist.ConfirmUnsubscription(user, userlang, remote=ip)
                     doc.addError(msgc, tag='')
                 mlist.Save()
@@ -264,9 +279,13 @@ def main():
             # So as not to allow membership leakage, prompt for the email
             # address and the password here.
             if mlist.private_roster <> 0:
+                remote = os.environ.get('HTTP_FORWARDED_FOR',
+                         os.environ.get('HTTP_X_FORWARDED_FOR',
+                         os.environ.get('REMOTE_ADDR',
+                                        'unidentified origin')))
                 syslog('mischief',
-                       'Login failure with private rosters: %s',
-                       user)
+                       'Login failure with private rosters: %s from %s',
+                       user, remote)
                 user = None
             # give an HTTP 401 for authentication failure
             print 'Status: 401 Unauthorized'
@@ -277,6 +296,14 @@ def main():
     # From here on out, the user is okay to view and modify their membership
     # options.  The first set of checks does not require the list to be
     # locked.
+
+    # However, if a form is submitted for a user who has been asynchronously
+    # unsubscribed, uncaught NotAMemberError exceptions can be thrown.
+
+    if not mlist.isMember(user):
+        loginpage(mlist, doc, user, language)
+        print doc.Format()
+        return
 
     if cgidata.has_key('logout'):
         print mlist.ZapCookie(mm_cfg.AuthUser, user)
@@ -866,8 +893,10 @@ You are subscribed to this list with the case-preserved address
     else:
         replacements['<mm-case-preserved-user>'] = ''
 
-    doc.AddItem(mlist.ParseTags('options.html', replacements, userlang))
-
+    page_text = mlist.ParseTags('options.html', replacements, userlang)
+    if not (mlist.digestable or mlist.getMemberOption(user, mm_cfg.Digests)):
+        page_text = DIGRE.sub('', page_text)
+    doc.AddItem(page_text)
 
 
 def loginpage(mlist, doc, user, lang):

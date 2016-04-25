@@ -10,7 +10,7 @@ GNU Mailman - List Administration Manual
    Barry A. Warsaw
 
    Release 2.1
-   March 2, 2015
+   November 28, 2015
 
                                   Front Matter
 
@@ -1344,7 +1344,8 @@ Just add another \section{}, but don't say \appendix again.
 
                             About this document ...
 
-   GNU Mailman - List Administration Manual, March 2, 2015, Release 2.1
+   GNU Mailman - List Administration Manual, November 28, 2015, Release
+   2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1389,4 +1390,4 @@ Just add another \section{}, but don't say \appendix again.
                                                      Manual
      __________________________________________________________________
 
-   Release 2.1, documentation updated on March 2, 2015.
+   Release 2.1, documentation updated on November 28, 2015.

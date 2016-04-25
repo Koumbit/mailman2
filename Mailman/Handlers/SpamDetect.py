@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -122,6 +122,21 @@ error, contact the mailing list owner at %(listowner)s."""))
                     raise Errors.RejectMessage, text
                 elif mlist.dmarc_moderation_action == 4:
                     raise Errors.DiscardMessage
+
+        # Get member address if any.
+        for sender in msg.get_senders():
+            if mlist.isMember(sender):
+                break
+        else:
+            sender = msg.get_sender()
+        if (mlist.member_verbosity_threshold > 0 and
+            Utils.IsVerboseMember(mlist, sender)
+           ):
+             mlist.setMemberOption(sender, mm_cfg.Moderate, 1)
+             syslog('vette',
+                    '%s: Automatically Moderated %s for verbose postings.',
+                     mlist.real_name, sender) 
+
     if msgdata.get('approved'):
         return
     # First do site hard coded header spam checks

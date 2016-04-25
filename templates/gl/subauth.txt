@@ -1,4 +1,4 @@
-É necesaria a súa autorización para unha solicitude de subscrición á rolda de distribución:
+Ã‰ necesaria a sÃºa autorizaciÃ³n para unha solicitude de subscriciÃ³n Ã¡ rolda de distribuciÃ³n:
 
     Solicitante:		%(username)s
     Rolda:	%(listname)s@%(hostname)s

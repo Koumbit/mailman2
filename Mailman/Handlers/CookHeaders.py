@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -34,7 +34,7 @@ from Mailman import Utils
 from Mailman.i18n import _
 from Mailman.Logging.Syslog import syslog
 
-CONTINUATION = ',\n\t'
+CONTINUATION = ',\n '
 COMMASPACE = ', '
 MAXLINELEN = 78
 
@@ -52,7 +52,7 @@ def _isunicode(s):
 
 nonascii = re.compile('[^\s!-~]')
 
-def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
+def uheader(mlist, s, header_name=None, continuation_ws=' ', maxlinelen=None):
     # Get the charset to encode the string in. Then search if there is any
     # non-ascii character is in the string. If there is and the charset is
     # us-ascii then we use iso-8859-1 instead. If the string is ascii only
@@ -65,7 +65,12 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     else:
         # there is no nonascii so ...
         charset = 'us-ascii'
-    return Header(s, charset, maxlinelen, header_name, continuation_ws)
+    try:
+        return Header(s, charset, maxlinelen, header_name, continuation_ws)
+    except UnicodeError:
+        syslog('error', 'list: %s: can\'t decode "%s" as %s',
+               mlist.internal_name(), s, charset)
+        return Header('', charset, maxlinelen, header_name, continuation_ws)
 
 def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
     if ((msgdata.get('from_is_list') == 2 or
@@ -93,7 +98,9 @@ def process(mlist, msg, msgdata):
     # message, we want to save some of the information in the msgdata
     # dictionary for later.  Specifically, the sender header will get waxed,
     # but we need it for the Acknowledge module later.
-    msgdata['original_sender'] = msg.get_sender()
+    # We may have already saved it; if so, don't clobber it here.
+    if 'original_sender' not in msgdata:
+        msgdata['original_sender'] = msg.get_sender()
     # VirginRunner sets _fasttrack for internally crafted messages.
     fasttrack = msgdata.get('_fasttrack')
     if not msgdata.get('isdigest') and not fasttrack:
@@ -147,8 +154,11 @@ def process(mlist, msg, msgdata):
                 realname = email
         # Remove domain from realname if it looks like an email address
         realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
+        # RFC 2047 encode realname if necessary.
+        realname = str(uheader(mlist, realname))
+        lrn = mlist.real_name
         change_header('From',
-                      formataddr(('%s via %s' % (realname, mlist.real_name),
+                      formataddr((_('%(realname)s via %(lrn)s'),
                                  mlist.GetListEmail())),
                       mlist, msg, msgdata)
     else:
@@ -345,7 +355,7 @@ def prefix_subject(mlist, msg, msgdata):
         lines = str(subject).splitlines()
     else:
         lines = subject.splitlines()
-    ws = '\t'
+    ws = ' '
     if len(lines) > 1 and lines[1] and lines[1][0] in ' \t':
         ws = lines[1][0]
     msgdata['origsubj'] = subject
@@ -375,7 +385,13 @@ def prefix_subject(mlist, msg, msgdata):
     else:
         old_style = mm_cfg.OLD_STYLE_PREFIXING
     subject = re.sub(prefix_pattern, '', subject)
-    rematch = re.match('((RE|AW|SV|VS)\s*(\[\d+\])?\s*:\s*)+', subject, re.I)
+    # Previously the following re didn't have the first \s*. It would fail
+    # if the incoming Subject: was like '[prefix] Re: Re: Re:' because of the
+    # leading space after stripping the prefix. It is not known what MUA would
+    # create such a Subject:, but the issue was reported.
+    rematch = re.match(
+                       '(\s*(RE|AW|SV|VS)\s*(\[\d+\])?\s*:\s*)+',
+                        subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
         recolon = 'Re:'
@@ -414,6 +430,11 @@ def prefix_subject(mlist, msg, msgdata):
         except UnicodeError:
             pass
     # Get the header as a Header instance, with proper unicode conversion
+    # Because of rfc2047 encoding, spaces between encoded words can be
+    # insignificant, so we need to append a space to prefix but only when
+    # we have Re:.
+    if recolon:
+        prefix += ' '
     if old_style:
         h = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
         h.append(prefix)

@@ -1,3 +1,3 @@
-%(member)s anulou a súa subscrición de %(listname)s.
+%(member)s anulou a sÃºa subscriciÃ³n de %(listname)s.
 
 

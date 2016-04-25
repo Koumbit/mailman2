@@ -1,7 +1,7 @@
 #! @PYTHON@
 #
 # transcheck - (c) 2002 by Simone Piunno <pioppo@ferrara.linux.it>
-# Copyright (C) 2002-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the version 2.0 of the GNU General Public License as
@@ -36,7 +36,7 @@ import os
 import getopt
 
 import paths
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 program = sys.argv[0]
 
@@ -47,7 +47,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)

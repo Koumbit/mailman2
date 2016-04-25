@@ -1,8 +1,8 @@
-A rolda de distribución %(real_name)s@%(host_name)s ten
+A rolda de distribuciÃ³n %(real_name)s@%(host_name)s ten
 %(count)d solicitude(s) pendente(s) para que as revisar na
-páxina seguinte:
+pÃ¡xina seguinte:
 
 	%(adminDB)s
 	
-Por favor, aténdaas tan axiña como lle for posíbel. Enviaráselle
-esta notificación todos os días. 
+Por favor, atÃ©ndaas tan axiÃ±a como lle for posÃ­bel. EnviarÃ¡selle
+esta notificaciÃ³n todos os dÃ­as. 

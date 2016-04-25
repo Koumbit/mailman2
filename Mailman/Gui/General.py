@@ -255,7 +255,7 @@ class General(GUIBase):
              their own <tt>Reply-To:</tt> settings to convey their valid
              return address.  Another is that modifying <tt>Reply-To:</tt>
              makes it much more difficult to send private replies.  See <a
-             href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
+             href="http://marc.merlins.org/netrants/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
              href="http://marc.merlins.org/netrants/reply-to-useful.html">
@@ -283,7 +283,7 @@ class General(GUIBase):
              their own <tt>Reply-To:</tt> settings to convey their valid
              return address.  Another is that modifying <tt>Reply-To:</tt>
              makes it much more difficult to send private replies.  See <a
-             href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
+             href="http://marc.merlins.org/netrants/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
              href="http://marc.merlins.org/netrants/reply-to-useful.html">

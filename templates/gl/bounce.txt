@@ -1,12 +1,12 @@
-Isto é un aviso de devolución de correo dunha rolda do Mailman.
+Isto Ã© un aviso de devoluciÃ³n de correo dunha rolda do Mailman.
 
     Rolda:     %(listname)s
     Membro:      %(addr)s
-    Acción:      Subscrición %(negative)s%(did)s.
-    Razón:       devolucións excesivas ou fatais.
+    AcciÃ³n:      SubscriciÃ³n %(negative)s%(did)s.
+    RazÃ³n:       devoluciÃ³ns excesivas ou fatais.
     %(but)s
 
 %(reenable)s
-Achégase abaixo a mensaxe de devolución que provocou o aviso.
+AchÃ©gase abaixo a mensaxe de devoluciÃ³n que provocou o aviso.
 
-Se tiver algunha cuestión, póñase en contacto co administrador do Mailman en %(owneraddr)s.
+Se tiver algunha cuestiÃ³n, pÃ³Ã±ase en contacto co administrador do Mailman en %(owneraddr)s.

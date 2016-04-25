@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2004 by the Free Software Foundation, Inc.
+# Copyright (C) 2004-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ import getopt
 
 import paths
 from Mailman import Utils
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 
 try:
@@ -54,7 +54,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__.replace('%', '%%'))
+    print >> fd, C_(__doc__.replace('%', '%%'))
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -74,13 +74,13 @@ def reset_pw(mlist, *args):
 
     listname = mlist.internal_name()
     if verbose:
-        print _('Changing passwords for list: %(listname)s')
+        print C_('Changing passwords for list: %(listname)s')
 
     for member in mlist.getMembers():
         randompw = Utils.MakeRandomPassword()
         mlist.setMemberPassword(member, randompw)
         if verbose:
-            print _('New password for member %(member)40s: %(randompw)s')
+            print C_('New password for member %(member)40s: %(randompw)s')
 
     mlist.Save()
 

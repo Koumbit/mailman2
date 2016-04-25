@@ -160,7 +160,7 @@ and footers:
              siblings.""")),
 
             ('regular_exclude_ignore', mm_cfg.Toggle, (_('No'), _('Yes')), 0,
-             _("""Ignore regular_exlude_lists of which the poster is not a
+             _("""Ignore regular_exclude_lists of which the poster is not a
              member."""),
              _("""If a post is addressed to this list and to one or more of
              the exclude lists, regular members of those lists will not be

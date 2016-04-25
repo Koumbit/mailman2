@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -911,6 +911,15 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     all.sort(lambda x, y: cmp(x.lower(), y.lower()))
     # See if the query has a regular expression
     regexp = cgidata.getvalue('findmember', '').strip()
+    try:
+        regexp = regexp.decode(Utils.GetCharSet(mlist.preferred_language))
+    except UnicodeDecodeError:
+        # This is probably a non-ascii character and an English language
+        # (ascii) list.  Even if we didn't throw the UnicodeDecodeError,
+        # the input may have contained mnemonic or numeric HTML entites mixed
+        # with other characters.  Trying to grok the real meaning out of that
+        # is complex and error prone, so we don't try.
+        pass
     if regexp:
         try:
             cre = re.compile(regexp, re.IGNORECASE)

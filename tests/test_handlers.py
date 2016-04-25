@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -838,10 +838,10 @@ From: aperson@dom.ain
         eq(msg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
         eq(msg['list-unsubscribe'],
            '<http://www.dom.ain/mailman/options/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=unsubscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=unsubscribe>')
         eq(msg['list-subscribe'],
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=subscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=subscribe>')
         eq(msg['list-post'], '<mailto:_xtest@dom.ain>')
         eq(msg['list-archive'], '<http://www.dom.ain/pipermail/_xtest/>')
 
@@ -858,10 +858,10 @@ From: aperson@dom.ain
         eq(msg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
         eq(msg['list-unsubscribe'],
            '<http://www.dom.ain/mailman/options/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=unsubscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=unsubscribe>')
         eq(msg['list-subscribe'],
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=subscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=subscribe>')
         eq(msg['list-post'], '<mailto:_xtest@dom.ain>')
 
 
@@ -1771,7 +1771,7 @@ class TestReplybot(TestBase):
 class TestSpamDetect(TestBase):
     def test_short_circuit(self):
         msgdata = {'approved': 1}
-        msg = email.message_from_string('')
+        msg = email.message_from_string('', Message.Message)
         rtn = SpamDetect.process(self._mlist, msg, msgdata)
         # Not really a great test, but there's little else to assert
         self.assertEqual(rtn, None)
@@ -1781,12 +1781,12 @@ class TestSpamDetect(TestBase):
 From: aperson@dom.ain
 
 A message.
-""")
+""", Message.Message)
         msg2 = email.message_from_string("""\
 To: xlist@dom.ain
 
 A message.
-""")
+""", Message.Message)
         spammers = mm_cfg.KNOWN_SPAMMERS[:]
         try:
             mm_cfg.KNOWN_SPAMMERS.append(('from', '.?person'))

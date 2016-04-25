@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -45,7 +45,7 @@ import getopt
 import paths
 from Mailman import MailList, Utils
 from Mailman import Errors
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 COMMASPACE = ', '
 
@@ -58,7 +58,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -87,14 +87,14 @@ def main():
        try:
            mlist = MailList.MailList(listname, lock=0)
        except Errors.MMListError, e:
-           print _('No such list: %(listname)s')
+           print C_('No such list: %(listname)s')
            continue
 
        if vhost and vhost <> mlist.host_name:
            continue
 
        owners = COMMASPACE.join(mlist.owner)
-       print _('List: %(listname)s, \tOwners: %(owners)s')
+       print C_('List: %(listname)s, \tOwners: %(owners)s')
 
 
 

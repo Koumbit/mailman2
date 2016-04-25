@@ -1,4 +1,4 @@
-# Copyright (C) 2000-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 2000-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """NNTP queue runner."""
 
@@ -109,22 +110,18 @@ def prepare_message(mlist, msg, msgdata):
                        or msgdata.get('origsubj')
     if not mlist.news_prefix_subject_too and stripped_subject is not None:
         del msg['subject']
-        msg['subject'] = stripped_subject
+        msg['Subject'] = stripped_subject
+    # Make sure we have a non-blank subject.
+    if not msg.get('subject', ''):
+        del msg['subject']
+        msg['Subject'] = '(no subject)'
     # Add the appropriate Newsgroups: header
-    ngheader = msg['newsgroups']
-    if ngheader is not None:
-        # See if the Newsgroups: header already contains our linked_newsgroup.
-        # If so, don't add it again.  If not, append our linked_newsgroup to
-        # the end of the header list
-        ngroups = [s.strip() for s in ngheader.split(',')]
-        if mlist.linked_newsgroup not in ngroups:
-            ngroups.append(mlist.linked_newsgroup)
-            # Subtitute our new header for the old one.
-            del msg['newsgroups']
-            msg['Newsgroups'] = COMMASPACE.join(ngroups)
-    else:
-        # Newsgroups: isn't in the message
-        msg['Newsgroups'] = mlist.linked_newsgroup
+    if msg['newsgroups'] is not None:
+        # This message is gated from our list to it's associated usnet group.
+        # If it has a Newsgroups: header mentioning other groups, it's not
+        # up to us to post it to those groups.
+        del msg['newsgroups']
+    msg['Newsgroups'] = mlist.linked_newsgroup
     # Note: We need to be sure two messages aren't ever sent to the same list
     # in the same process, since message ids need to be unique.  Further, if
     # messages are crossposted to two Usenet-gated mailing lists, they each
@@ -132,6 +129,9 @@ def prepare_message(mlist, msg, msgdata):
     # them.  The solution here is to substitute any existing message-id that
     # isn't ours with one of ours, so we need to parse it to be sure we're not
     # looping.
+    #
+    # We also add the original Message-ID: to References: to try to help with
+    # threading issues and create another header for documentation.
     #
     # Our Message-ID format is <mailman.secs.pid.listname@hostname>
     msgid = msg['message-id']
@@ -145,6 +145,18 @@ def prepare_message(mlist, msg, msgdata):
     if hackmsgid:
         del msg['message-id']
         msg['Message-ID'] = Utils.unique_message_id(mlist)
+        if msgid:
+            msg['X-Mailman-Original-Message-ID'] = msgid
+            refs = msg['references']
+            del msg['references']
+            if not refs:
+                refs = msg.get('in-reply-to', '')
+            else:
+                msg['X-Mailman-Original-References'] = refs
+            if refs:
+                msg['References'] = '\n '.join([refs, msgid])
+            else:
+                msg['References'] = msgid
     # Lines: is useful
     if msg['Lines'] is None:
         # BAW: is there a better way?

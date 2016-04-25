@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -37,7 +37,7 @@ import getopt
 from cPickle import load
 
 import paths
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 try:
     True, False
@@ -52,7 +52,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)

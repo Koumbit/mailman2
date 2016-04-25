@@ -1,7 +1,7 @@
-A súa mensaxe co asunto seguinte:
+A sÃºa mensaxe co asunto seguinte:
 
     %(subject)s
 
-distribuíuse satisfactoriamente na rolda %(listname)s.
+distribuÃ­use satisfactoriamente na rolda %(listname)s.
 
-Páxina de información da rolda: %(listinfo_url)s
+PÃ¡xina de informaciÃ³n da rolda: %(listinfo_url)s

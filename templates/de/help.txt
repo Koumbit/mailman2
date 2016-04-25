@@ -1,4 +1,4 @@
-Hilfetext zur Mailingliste %(listname)s:
+Hilfetext zur Mailingliste %(listname)s
 
 Sie lesen den Hilfetext für E-Mail-Befehle des Mailinglistenservers
 "Mailman", Version %(version)s. Im Folgenden werden Befehle beschrieben,
@@ -14,12 +14,12 @@ zugegriffen werden, das Sie unter
 finden. Insbesondere können Sie über das Webinterface veranlassen, dass
 Ihnen Ihr Passwort an die Abonnementadresse geschickt wird.
 
-Listenspezifische Befehle (subscribe, who, usw.) sollten an die *-request
-Adresse der Liste geschickt werden, für die 'mailman' Liste zB würde diese
-'mailman-request@...' lauten.
+Listenspezifische Befehle (subscribe, who, usw.) sollten an die
+"*-request"-Adresse der Liste geschickt werden, für die Liste "mailman" würde
+diese bspw. "mailman-request@example.org" lauten.
 
-Noch kurz zu den Beschreibungen: Worte in "<>" (spitzen Klammern) sind
-ERFORDERLICHE Angaben, Worte in "[]" (eckigen Klammern) sind OPTIONALE
+Noch kurz zu den Beschreibungen: Worte in spitzen Klammern (<, >) sind
+ERFORDERLICHE Angaben, Worte in eckigen Klammern ([, ]) sind OPTIONALE
 Angaben. Die Klammern "<>" oder "[]" gehören NICHT zu den Befehlen.
 
 Die folgenden Befehle sind gültig:
@@ -31,6 +31,7 @@ Alle Befehle sollten an
     %(requestaddr)s
 
 gesendet werden.
+
 Fragen und Anliegen, die eines menschlichen Wesens bedürfen, sollten an
 
     %(adminaddr)s

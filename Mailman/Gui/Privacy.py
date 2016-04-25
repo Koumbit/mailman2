@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -61,7 +61,7 @@ class Privacy(GUIBase):
                             _('Confirm and approve')),
                            0,
                            _('What steps are required for subscription?<br>'),
-                           _('''None - no verification steps (<em>Not
+                           _("""None - no verification steps (<em>Not
                            Recommended </em>)<br>
                            Confirm (*) - email confirmation step required <br>
                            Require approval - require list administrator
@@ -75,7 +75,7 @@ class Privacy(GUIBase):
 
                            This prevents mischievous (or malicious) people
                            from creating subscriptions for others without
-                           their consent.'''))
+                           their consent."""))
         else:
             sub_cfentry = ('subscribe_policy', mm_cfg.Radio,
                            # choices
@@ -84,7 +84,7 @@ class Privacy(GUIBase):
                             _('Confirm and approve')),
                            1,
                            _('What steps are required for subscription?<br>'),
-                           _('''Confirm (*) - email confirmation required <br>
+                           _("""Confirm (*) - email confirmation required <br>
                            Require approval - require list administrator
                            approval for subscriptions <br>
                            Confirm and approve - both confirm and approve
@@ -94,7 +94,7 @@ class Privacy(GUIBase):
                            subscription request number that they must reply to
                            in order to subscribe.<br> This prevents
                            mischievous (or malicious) people from creating
-                           subscriptions for others without their consent.'''))
+                           subscriptions for others without their consent."""))
 
         # some helpful values
         admin = mlist.GetScriptURL('admin')
@@ -108,8 +108,8 @@ class Privacy(GUIBase):
 
             _('Subscribing'),
             ('advertised', mm_cfg.Radio, (_('No'), _('Yes')), 0,
-             _('''Advertise this list when people ask what lists are on this
-             machine?''')),
+             _("""Advertise this list when people ask what lists are on this
+             machine?""")),
 
             sub_cfentry,
 
@@ -155,8 +155,8 @@ class Privacy(GUIBase):
              (_('Anyone'), _('List members'), _('List admin only')), 0,
              _('Who can view subscription list?'),
 
-             _('''When set, the list of subscribers is protected by member or
-             admin password authentication.''')),
+             _("""When set, the list of subscribers is protected by member or
+             admin password authentication.""")),
 
             ('obscure_addresses', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Show member addresses so they're not directly recognizable
@@ -229,6 +229,37 @@ class Privacy(GUIBase):
              <a href="%(adminurl)s/members">membership management
              screens</a>.""")),
 
+            ('member_verbosity_threshold', mm_cfg.Number, 5, 0,
+             _("""Ceiling on acceptable number of member posts, per interval,
+               before automatic moderation."""),
+
+             _("""If a member posts this many times, within a period of time
+               the member is automatically moderated.  Use 0 to disable.  See
+               <a href="?VARHELP=privacy/sender/member_verbosity_interval"
+               >member_verbosity_interval</a> for details on the time period.
+
+               <p>This is intended to stop people who join a list or lists and
+               then use a bot to send many spam messages in a short interval.
+
+               <p>Be careful when using this setting.  If it is set too low,
+               this can be triggered by a single post cross-posted to
+               multiple lists or by a single post to an umbrella list.""")),
+
+            ('member_verbosity_interval', mm_cfg.Number, 5, 0,
+             _("""Number of seconds to remember posts to this list to determine
+               member_verbosity_threshold for automatic moderation of a
+               member."""),
+
+             _("""If a member's total posts to all lists in this installation
+               with member_verbosity_threshold enabled reaches this list's
+               member_verbosity_threshold, the member is automatically
+               moderated on this list.
+
+               <p>Posts which are counted towards this list's
+               member_verbosity_threshold are all posts to any list with
+               member_verbosity_threshold enabled that arrived within that
+               list's member_verbosity_interval.""")),
+
             ('member_moderation_action', mm_cfg.Radio,
              (_('Hold'), _('Reject'), _('Discard')), 0,
              _("""Action to take when a moderated member posts to the
@@ -297,6 +328,25 @@ class Privacy(GUIBase):
                and dmarc_moderation_action is not applied (this set to No)
                the message will likely not bounce, but will be delivered to
                recipients' spam folders or other hard to find places.""")),
+
+            ('dmarc_none_moderation_action', mm_cfg.Radio,
+             (_('No'), _('Yes')), 0,
+             _("""Shall the above dmarc_moderation_action apply to messages
+               From: domains with DMARC p=none as well as p=quarantine and
+               p=reject"""),
+
+             _("""<ul><li><b>No</b> -- this applies dmarc_moderation_action to
+               only those posts From: a domain with DMARC p=reject and
+               possibly p=quarantine depending on the setting of
+               dmarc_quarantine_moderation_action.
+               <p><li><b>Yes</b> -- this applies dmarc_moderation_action to
+               posts From: a domain with DMARC p=none if
+               dmarc_moderation_action is Munge From or Wrap Message and
+               dmarc_quarantine_moderation_action is Yes.
+               <p>The intent of this setting is to eliminate failure reports
+               to the owner of a domain that publishes DMARC p=none by applying
+               the message transformations that would be applied if the
+               domain's DMARC policy were stronger.""")),
 
             ('dmarc_moderation_notice', mm_cfg.Text, (10, WIDTH), 1,
              _("""Text to include in any
@@ -484,8 +534,8 @@ class Privacy(GUIBase):
             ('max_num_recipients', mm_cfg.Number, 5, 0,
              _('Ceiling on acceptable number of recipients for a posting.'),
 
-             _('''If a posting has this number, or more, of recipients, it is
-             held for admin approval.  Use 0 for no ceiling.''')),
+             _("""If a posting has this number, or more, of recipients, it is
+             held for admin approval.  Use 0 for no ceiling.""")),
             ]
 
         spam_rtn = [

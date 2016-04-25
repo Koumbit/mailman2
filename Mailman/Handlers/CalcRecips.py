@@ -184,6 +184,12 @@ def do_exclude(mlist, msg, msgdata, recips):
             for sender in msg.get_senders():
                 if slist.isMember(sender):
                     break
+                for sender in Utils.check_eq_domains(sender,
+                                  slist.equivalent_domains):
+                    if slist.isMember(sender):
+                        break
+                if slist.isMember(sender):
+                    break
             else:
                 continue
         srecips = set([slist.getMemberCPAddress(m)

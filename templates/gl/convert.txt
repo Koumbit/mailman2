@@ -1,38 +1,38 @@
-A rolda de distribuciÛn %(listname)s acaba de sufrir un cambio
-importante. Agora est· xestionado por un novo paquete de roldas de
-distribuciÛn chamado "Mailman". Agardamos que isto mellore o
-servizo e a administraciÛn da rolda.
+A rolda de distribuci√≥n %(listname)s acaba de sufrir un cambio
+importante. Agora est√° xestionado por un novo paquete de roldas de
+distribuci√≥n chamado "Mailman". Agardamos que isto mellore o
+servizo e a administraci√≥n da rolda.
 
 
 Como lle afecta isto?
 
-1) As mensaxes de correo dirixidas Û listado deben enviarse a:
+1) As mensaxes de correo dirixidas √≥ listado deben enviarse a:
 
      %(listaddr)s
 
-2) AsignÛuselle unha clave aleatoria para impedir que outros
-anulen a s˙a suscripciÛn sen que vostede o saiba. A clave enviar·selle
-noutra mensaxe de correo electrÛnico, que pode que xa reccibira. Non
-se preocupe se se lle esquece esta clave, tÛdolos
-meses recibir· unha lembranza por correo electronico.
+2) Asign√≥uselle unha clave aleatoria para impedir que outros
+anulen a s√∫a suscripci√≥n sen que vostede o saiba. A clave enviar√°selle
+noutra mensaxe de correo electr√≥nico, que pode que xa reccibira. Non
+se preocupe se se lle esquece esta clave, t√≥dolos
+meses recibir√° unha lembranza por correo electronico.
 
-3) Se dispÛn de acceso WEB, pÛdeo empregar para anular a s˙a 
-suscripciÛn a este listado, para trocar a forma de recepciÛn
-das mensaxes, etc. O enderezo È: 
+3) Se disp√≥n de acceso WEB, p√≥deo empregar para anular a s√∫a 
+suscripci√≥n a este listado, para trocar a forma de recepci√≥n
+das mensaxes, etc. O enderezo √©: 
 
     %(listinfo_url)s
 
-4) Se non dispÛn de acceso WEB, pode realizar estas mesmas
-operaciÛns por correo electrÛnico.  EnvÌe unha mensaxe a
+4) Se non disp√≥n de acceso WEB, pode realizar estas mesmas
+operaci√≥ns por correo electr√≥nico.  Env√≠e unha mensaxe a
 %(requestaddr)s coa verba 'help' no asunto (subject) ou
-no corpo da mensaje e recibir· unha resposta autom·tica con
-instrucciÛns.
+no corpo da mensaje e recibir√° unha resposta autom√°tica con
+instrucci√≥ns.
 
-Por favor, dirÌxase Û seguinte enderezo se ten algunha
-pregunta ou problema con esta nova configuraciÛn: 
+Por favor, dir√≠xase √≥ seguinte enderezo se ten algunha
+pregunta ou problema con esta nova configuraci√≥n: 
 
     %(adminaddr)s.
 
 Esta mensaxe foi xenerada automaticamente por Mailman %(version)s.
-Para obter m·is informaciÛn sobre Mailman, visite a p·xina principal
+Para obter m√°is informaci√≥n sobre Mailman, visite a p√°xina principal
 en http://www.list.org/

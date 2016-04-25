@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -60,6 +60,9 @@ def process(mlist, msg, msgdata):
     del msg['x-approve']
     # Also remove this header since it can contain a password
     del msg['urgent']
+    # If we're anonymizing, we need to save the sender here, and we may as
+    # well do it for all.
+    msgdata['original_sender'] = msg.get_sender()
     # We remove other headers from anonymous lists
     if mlist.anonymous_list:
         syslog('post', 'post to %s from %s anonymized',

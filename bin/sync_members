@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -86,7 +86,7 @@ from Mailman import MailList
 from Mailman import Errors
 from Mailman import Utils
 from Mailman.UserDesc import UserDesc
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 
 
@@ -97,7 +97,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -112,7 +112,7 @@ def yesno(opt):
     elif yesno in ('n', 'no'):
         return 0
     else:
-        usage(1, _('Bad choice: %(yesno)s'))
+        usage(1, C_('Bad choice: %(yesno)s'))
         # no return
 
 
@@ -135,7 +135,7 @@ def main():
         elif opt in ('-n', '--no-change'):
             dryrun = 1
             i += 1
-            print _('Dry run mode')
+            print C_('Dry run mode')
         elif opt in ('-d', '--digest'):
             digest = 1
             i += 1
@@ -156,11 +156,11 @@ def main():
             i += 1
         elif opt in ('-f', '--file'):
             if filename is not None:
-                usage(1, _('Only one -f switch allowed'))
+                usage(1, C_('Only one -f switch allowed'))
             try:
                 filename = sys.argv[i+1]
             except IndexError:
-                usage(1, _('No argument to -f given'))
+                usage(1, C_('No argument to -f given'))
             i += 2
         elif opt in ('-a', '--notifyadmin'):
             notifyadmin = 1
@@ -169,17 +169,17 @@ def main():
             notifyadmin = yesno(opt)
             i += 1
         elif opt[0] == '-':
-            usage(1, _('Illegal option: %(opt)s'))
+            usage(1, C_('Illegal option: %(opt)s'))
         else:
             try:
                 listname = sys.argv[i].lower()
                 i += 1
             except IndexError:
-                usage(1, _('No listname given'))
+                usage(1, C_('No listname given'))
             break
 
     if listname is None or filename is None:
-        usage(1, _('Must have a listname and a filename'))
+        usage(1, C_('Must have a listname and a filename'))
 
     # read the list of addresses to sync to from the file
     if filename == '-':
@@ -188,7 +188,7 @@ def main():
         try:
             fp = open(filename)
         except IOError, (code, msg):
-            usage(1, _('Cannot read address file: %(filename)s: %(msg)s'))
+            usage(1, C_('Cannot read address file: %(filename)s: %(msg)s'))
         try:
             filemembers = fp.readlines()
         finally:
@@ -200,7 +200,7 @@ def main():
         addr = filemembers[i].strip()
         if addr == '' or addr[:1] == '#':
             del filemembers[i]
-            print _('Ignore  :  %(addr)30s')
+            print C_('Ignore  :  %(addr)30s')
 
     # first filter out any invalid addresses
     filemembers = email.Utils.getaddresses(filemembers)
@@ -209,17 +209,17 @@ def main():
         try:
             Utils.ValidateEmail(addr)
         except Errors.EmailAddressError:
-            print _('Invalid :  %(addr)30s')
+            print C_('Invalid :  %(addr)30s')
             invalid = 1
     if invalid:
-        print _('You must fix the preceding invalid addresses first.')
+        print C_('You must fix the preceding invalid addresses first.')
         sys.exit(1)
 
     # get the locked list object
     try:
         mlist = MailList.MailList(listname)
     except Errors.MMListError, e:
-        print _('No such list: %(listname)s')
+        print C_('No such list: %(listname)s')
         sys.exit(1)
 
     try:
@@ -241,7 +241,7 @@ def main():
                 needsadding[laddr] = (name, addr)
 
         if not needsadding and not addrs:
-            print _('Nothing to do.')
+            print C_('Nothing to do.')
             sys.exit(0)
 
         enc = sys.getdefaultencoding()
@@ -261,11 +261,12 @@ def main():
                     name = unicode(name, errors='replace')
                 name = name.encode(enc, 'replace')
                 s = email.Utils.formataddr((name, addr)).encode(enc, 'replace')
-                print _('Added  : %(s)s')
+                print C_('Added  : %(s)s')
             except Errors.MMAlreadyAMember:
                 pass
             except Errors.MembershipIsBanned, pattern:
-                print ('%s:' % addr), _('Banned address (matched %(pattern)s)')
+                print ('%s:' % addr), C_(
+                                      'Banned address (matched %(pattern)s)')
 
         for laddr, addr in addrs.items():
             # Should be a member, otherwise our test above is broken
@@ -285,7 +286,7 @@ def main():
                 name = unicode(name, errors='replace')
             name = name.encode(enc, 'replace')
             s = email.Utils.formataddr((name, addr)).encode(enc, 'replace')
-            print _('Removed: %(s)s')
+            print C_('Removed: %(s)s')
 
         mlist.Save()
     finally:

@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -46,7 +46,7 @@ import paths
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import MailList
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 try:
     True, False
@@ -61,7 +61,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -70,15 +70,15 @@ def usage(code, msg=''):
 
 def remove_it(listname, filename, msg):
     if os.path.islink(filename):
-        print _('Removing %(msg)s')
+        print C_('Removing %(msg)s')
         os.unlink(filename)
     elif os.path.isdir(filename):
-        print _('Removing %(msg)s')
+        print C_('Removing %(msg)s')
         shutil.rmtree(filename)
     elif os.path.isfile(filename):
         os.unlink(filename)
     else:
-        print _('%(listname)s %(msg)s not found as %(filename)s')
+        print C_('%(listname)s %(msg)s not found as %(filename)s')
 
 
 
@@ -102,13 +102,14 @@ def main():
 
     if not Utils.list_exists(listname):
         if not removeArchives:
-            usage(1, _('No such list (or list already deleted): %(listname)s'))
+            usage(1, C_(
+                     'No such list (or list already deleted): %(listname)s'))
         else:
-            print _(
+            print C_(
                 'No such list: %(listname)s.  Removing its residual archives.')
 
     if not removeArchives:
-        print _('Not removing archives.  Reinvoke with -a to remove them.')
+        print C_('Not removing archives.  Reinvoke with -a to remove them.')
 
 
     REMOVABLES = []
@@ -122,7 +123,7 @@ def main():
             sys.modules[modname].remove(mlist)
 
         REMOVABLES = [
-            (os.path.join(mm_cfg.LIST_DATA_DIR, listname), _('list info')),
+            (os.path.join(mm_cfg.LIST_DATA_DIR, listname), C_('list info')),
             ]
 
     # Remove any stale locks associated with the list
@@ -130,7 +131,7 @@ def main():
         fn_listname = filename.split('.')[0]
         if fn_listname == listname:
             REMOVABLES.append((os.path.join(mm_cfg.LOCK_DIR, filename),
-                               _('stale lock file')))
+                               C_('stale lock file')))
 
     # Remove any held messages for this list
     for filename in os.listdir(mm_cfg.DATA_DIR):
@@ -138,18 +139,18 @@ def main():
                          re.IGNORECASE)
         if cre.match(filename):
             REMOVABLES.append((os.path.join(mm_cfg.DATA_DIR, filename),
-                               _('held message file')))
+                               C_('held message file')))
 
     if removeArchives:
         REMOVABLES.extend([
             (os.path.join(mm_cfg.PRIVATE_ARCHIVE_FILE_DIR, listname),
-             _('private archives')),
+             C_('private archives')),
             (os.path.join(mm_cfg.PRIVATE_ARCHIVE_FILE_DIR, listname + '.mbox'),
-             _('private archives')),
+             C_('private archives')),
             (os.path.join(mm_cfg.PUBLIC_ARCHIVE_FILE_DIR, listname),
-             _('public archives')),
+             C_('public archives')),
             (os.path.join(mm_cfg.PUBLIC_ARCHIVE_FILE_DIR, listname + '.mbox'),
-             _('public archives')),
+             C_('public archives')),
             ])
 
     for dir, msg in REMOVABLES:

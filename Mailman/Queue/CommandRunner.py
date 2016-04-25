@@ -134,7 +134,8 @@ class Results:
             handler = sys.modules[modname]
         # ValueError can be raised if cmd has dots in it.
         # and KeyError if cmd is otherwise good but ends with a dot.
-        except (ImportError, ValueError, KeyError):
+        # and TypeError if cmd has a null byte.
+        except (ImportError, ValueError, KeyError, TypeError):
             # If we're on line zero, it was the Subject: header that didn't
             # contain a command.  It's possible there's a Re: prefix (or
             # localized version thereof) on the Subject: line that's messing

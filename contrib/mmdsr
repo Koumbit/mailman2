@@ -38,10 +38,10 @@
 ###############################################################################
 # Version history
 ###############################################################################
-# 0.0.1		Initial creation by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.1		Initial creation by Brad Knowles <brad@shub-internet.org>
 #		Created on: Tue Feb 15 04:01:20 PST 2005
 #
-# 0.0.2         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.2         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Wed Feb 16 18:55:52 CET 2005
 #               Feedback from Tom G. Christensen (tgc99):
 #               > The current UID grab command doesn't work on Solaris 
@@ -53,48 +53,48 @@
 #               > This is tested and works on RH 6.2, RH 7.3, RHEL 2.1,
 #               > RHEL3, FC3, FreeBSD 4.9, Solaris 2.6, 8.
 #
-# 0.0.3         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.3         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Sun Mar 13 01:15:24 CET 2005
 #               Noted errors from grep when trying to search a nonexistant
 #               file.  Added "-s" option to compensate, and extra code to
 #		notify the admin if the log file doesn't exist.
 #
-# 0.0.4         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.4         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Sun Mar 13 01:58:37 CET 2005
 #               Eliminate some extra cruft from the "fromusenet" logs.
 #
-# 0.0.5         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.5         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Wed Apr 13 00:54:42 CEST 2005
 #		Eliminate a lot of extra cruft from the "error" & "vette" logs.
 #               Eliminate more cruft from the "fromusenet" logs.
 #
-# 0.0.6         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.6         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Thu Apr 14 03:07:08 CEST 2005
 #               Eliminate even more cruft from the "fromusenet" logs.
 #               Eliminate more cruft from the "vette" logs.
 #               Eliminate cruft from the "mischief" logs.
 #
-# 0.0.7         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.7         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Sun May  1 22:29:13 CEST 2005   [guess]
 #		The "error" log "no such list" errors didn't need to be
 #		quite so "compressed", open them up to be more readable.
 #		Also eliminate all use of "xargs", use "fmt -w 75" instead.
 #
-# 0.0.8         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.8         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Sun May  1 23:09:13 CEST 2005
 #		Clean up code for queue subdirectories to check.
 #
-# 0.0.9         Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.9         Update by Brad Knowles <brad@shub-internet.org>
 #               Updated on: Wed May 11 01:23:40 CEST 2005
 #		Eliminate date/time stamps from the rest of the logs,
 #		then pipe through `sort | uniq -c | sort -nr`
 #		so that all possible duplicates are eliminated.
 #
-# 0.0.10	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.10	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Tue Jul 12 16:53:49 CDT 2005
 #		Add code to do summary of normal list activity
 #
-# 0.0.11	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.11	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Tue Sep  6 15:44:19 CEST 2005
 #		Tweaked display of Mailman/qfiles subdirectories
 #		so as to avoid displaying more than $MAX_LINES
@@ -103,7 +103,7 @@
 #		Also slightly tweaked display of fromusenet logs
 #		to split summary from errors.
 #
-# 0.0.12	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.12	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Thu Sep 22 22:37:35 CEST 2005
 #		Bugs found by Mark Sapiro and Adrian Wells.
 #		Mark suggested splitting the Mailman log directory
@@ -113,7 +113,7 @@
 #		change between Mailman 2.1.5 and 2.1.6, which broke
 #		hourly statistics.
 #
-# 0.0.13	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.13	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Mon Dec 26 05:54:27 CET 2005
 #		Bugs found by Tom G. Christensen (tgc99):
 #		> ps output on solaris is full of whitespace but a further
@@ -128,12 +128,12 @@
 #		> individually under "Other Errors:". The following patch
 #		> (watch out for wrapped lines) summarizes them by list instead.
 #
-# 0.0.14	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.14	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Thu Dec 29 08:17:38 CET 2005
 #		Added code to check /usr/local/mailman/data for
 #		moderation hold queue
 #
-# 0.0.15	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.15	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Thu Jan 26 02:39:38 CET 2006
 #		Tweaked display of summary data in the "smtp-failure" log,
 #		and "other" category in the "vette" log, so as to reduce
@@ -145,7 +145,7 @@
 #		the files in the middle if there are too many -- now we
 #		know how many are being skipped.
 #
-# 0.0.16	Update by Brad Knowles <brad@stop.mail-abuse.org>
+# 0.0.16	Update by Brad Knowles <brad@shub-internet.org>
 #		Updated on: Sun Jan 29 11:45:58 CET 2006
 #		Mark found a couple of typos that I somehow let slip
 #		through.  Thanks!
@@ -181,6 +181,27 @@
 #               Updated on: Fri Mar 21 19:47:19 PDT 2014
 #               Updated the "No such list" error report to include the newly
 #               added name of the CGI module.
+#
+# 0.0.23        Update by Mark Sapiro <mark@msapiro.net>
+#               Updated on: Sat Jul 25 07:52:55 PDT 2015
+#               Updated "Login failure with private rosters" report to
+#               account for newly added IP in log message.
+#
+# 0.0.24        Update by Mark Sapiro <mark@msapiro.net>
+#               Updated on: Thu Oct  1 15:15:39 PDT 2015
+#               Report vette log held and banned subscriptions as their
+#               own categories instead of in other errors.
+#               Replaced s/\+\d+@/+<digits>@/ in vette log
+#               banned subscription messages due to flood of such.
+#
+# 0.0.25        Update by Mark Sapiro <mark@msapiro.net>
+#               Updated on: Sun Jan 31 07:13:47 PST 2016
+#               Report vette log DMARC lookups as their own
+#               category instead of in other errors.
+#
+# 0.0.26        Update by Mark Sapiro <mark@msapiro.net>
+#               Updated on: Sat Feb 20 21:17:14 PST 2016
+#               Properly display No such list names that contain ".
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -431,7 +452,7 @@ do
 	    echo "" >> $TMP
 	    echo "No Such List:" >> $TMP
 	    echo "------------------------------" >> $TMP
-	    $GREP 'No such list' $TMPLOG | $SED -e 's/^[^)]*) //' -e 's/No such list "//' -e 's/".*$//' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+	    $GREP 'No such list' $TMPLOG | $SED -e 's/^[^)]*) //' -e 's/No such list "//' -e 's/"[^"]*$//' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 
 	    CNT=`$GREP -i 'shunting' $TMPLOG | $WC -l`
 	    if [ "${CNT}x" != "x" ] ; then
@@ -456,7 +477,7 @@ do
 	    echo "" >> $TMP
 	    echo "Login failure with private rosters (by user):" >> $TMP
 	    echo "------------------------------" >> $TMP
-	    $GREP -i 'Login failure with private rosters' $TMPLOG | $AWK '{ print $NF }' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+	    $GREP -i 'Login failure with private rosters' $TMPLOG | $AWK '{ print $(NF-2) " " $(NF-1) " " $NF }' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 
 	    echo "" >> $TMP
 	    echo "Unsub attempt of non-member (by user):" >> $TMP
@@ -515,9 +536,24 @@ do
 	    $GREP -i 'Post to moderated list' $TMPLOG | $AWK '{ print $6 }' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 
 	    echo "" >> $TMP
+	    echo "Held Subscriptions" >> $TMP
+	    echo "------------------------------" >> $TMP
+	    $GREP -i 'held subscription request' $TMPLOG | $AWK '{ print $6 " " $11 }' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+
+	    echo "" >> $TMP
+	    echo "Banned Subscriptions" >> $TMP
+	    echo "------------------------------" >> $TMP
+	    $GREP -i 'banned subscription' $TMPLOG | $AWK '{ print $6 " " $9 }' | $SED -e 's/\+[0-9][0-9]*@/+<digits>@/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+
+	    echo "" >> $TMP
+	    echo "DMARC lookups" >> $TMP
+	    echo "------------------------------" >> $TMP
+	    $GREP -i "DMARC lookup for" $TMPLOG | $AWK '{ print $6 " " $10 " " $13 }' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+
+	    echo "" >> $TMP
 	    echo "Other Errors:" >> $TMP
 	    echo "------------------------------" >> $TMP
-	    $EGREP -vi '(Post by non-member|suspicious header|message approved|Discarded posting|bulk message discarded|junk message discarded|Message has implicit destination|Posting to a moderated newsgroup|Post to moderated list|Message discarded, msgid)' $TMPLOG | $SED -e 's/^.* ([0-9]*) //' -e 's/, message-id=<[^> ]*>:/:/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP 
+	    $EGREP -vi '(Post by non-member|suspicious header|message approved|Discarded posting|bulk message discarded|junk message discarded|Message has implicit destination|Posting to a moderated newsgroup|Post to moderated list|Message discarded, msgid|held subscription request|banned subscription|dmarc lookup for)' $TMPLOG | $SED -e 's/^.* ([0-9]*) //' -e 's/, message-id=<[^> ]*>:/:/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP 
 
 	elif [ "${LOG}" = "smtp-failure" ] ; then
 

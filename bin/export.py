@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2006-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -35,7 +35,7 @@ from Mailman import MemberAdaptor
 from Mailman import Utils
 from Mailman import mm_cfg
 from Mailman.MailList import MailList
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 __i18n_templates__ = True
 
@@ -268,7 +268,7 @@ class XMLDumper(object):
             try:
                 mlist = MailList(listname, lock=False)
             except Errors.MMUnknownListError:
-                print >> sys.stderr, _('No such list: %(listname)s')
+                print >> sys.stderr, C_('No such list: %(listname)s')
                 continue
             self._dump_list(mlist, password_scheme)
         self._pop_element('mailman')
@@ -316,39 +316,39 @@ else:
 
 def parseargs():
     parser = optparse.OptionParser(version=mm_cfg.VERSION,
-                                   usage=_("""\
+                                   usage=C_("""\
 %%prog [options]
 
 Export the configuration and members of a mailing list in XML format."""))
     parser.add_option('-o', '--outputfile',
                       metavar='FILENAME', default=None, type='string',
-                      help=_("""\
+                      help=C_("""\
 Output XML to FILENAME.  If not given, or if FILENAME is '-', standard out is
 used."""))
     parser.add_option('-p', '--password-scheme',
-                      default='none', type='string', help=_("""\
+                      default='none', type='string', help=C_("""\
 Specify the RFC 2307 style hashing scheme for passwords included in the
 output.  Use -P to get a list of supported schemes, which are
 case-insensitive."""))
     parser.add_option('-P', '--list-hash-schemes',
-                      default=False, action='store_true', help=_("""\
+                      default=False, action='store_true', help=C_("""\
 List the supported password hashing schemes and exit.  The scheme labels are
 case-insensitive."""))
     parser.add_option('-l', '--listname',
                       default=[], action='append', type='string',
-                      metavar='LISTNAME', dest='listnames', help=_("""\
+                      metavar='LISTNAME', dest='listnames', help=C_("""\
 The list to include in the output.  If not given, then all mailing lists are
 included in the XML output.  Multiple -l flags may be given."""))
     opts, args = parser.parse_args()
     if args:
         parser.print_help()
-        parser.error(_('Unexpected arguments'))
+        parser.error(C_('Unexpected arguments'))
     if opts.list_hash_schemes:
         for label in SCHEMES:
             print label.upper()
         sys.exit(0)
     if opts.password_scheme.lower() not in SCHEMES:
-        parser.error(_('Invalid password scheme'))
+        parser.error(C_('Invalid password scheme'))
     return parser, opts, args
 
 

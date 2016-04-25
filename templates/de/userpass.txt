@@ -1,25 +1,24 @@
 Sie oder jemand, der sich für Sie ausgibt, hat die Zusendung einer
-Passwort-Erinnerungsmail fuer Ihre Mitgliedschaft auf der Liste
-%(fqdn_lname)s angefordert. Sie benoetigen dieses Passwort, um Ihre
-persoenlichen Einstellungen zu aendern, bzw. um sich aus der Liste
+Passwort-Erinnerungsmail für Ihre Mitgliedschaft auf der Liste
+%(fqdn_lname)s angefordert. Sie benötigen dieses Passwort, um Ihre
+persönlichen Einstellungen zu ändern, bzw. um sich aus der Liste
 auszutragen.
 
-Ihr Passwort fuer die Liste %(listname)s ist: %(password)s
+Ihr Passwort für die Liste %(listname)s ist: %(password)s
 
 Die hier eingetragene Mailadresse lautet: %(user)s
 
-Um Ihre persoenlichen Einstellungen zu aendern, loggen Sie sich bitte ein
-und besuchen die Seite:
+Um Ihre persönlichen Einstellungen zu ändern, besuchen Sie bitte die folgende
+Seite, auf der Sie sich einloggen müssen:
 
-%(options_url)s
+    %(options_url)s
 
-Sie koennen allerdings auch Aenderunge via E-Mail machen, indem Sie eine
-E-Mail an die Adresse:
+Sie können allerdings auch Änderunge via E-Mail machen, indem Sie eine
+E-Mail, die das Wort "help" in der Betreffzeile enthält, senden:
 
-%(requestaddr)s
+    %(requestaddr)s
 
-schicken, die das Wort "help" im Subject/Betreff oder im Text der Nachricht
-enthaelt. Die automatische Antwort enthaelt dann detaillierte Instruktionen.
+Die automatische Antwort enthält dann detaillierte Instruktionen.
 
-Fragen oder Kommentare? Bitte senden Sie diese an den Listen-Administrator
-der Liste %(listname)s unter der Adresse %(owneraddr)s.
+Fragen oder Kommentare senden bitte an den Administrator der Liste
+%(listname)s unter der Adresse %(owneraddr)s.

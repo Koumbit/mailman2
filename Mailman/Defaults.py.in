@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -131,6 +131,14 @@ SUBSCRIBE_FORM_SECRET = None
 # test.
 SUBSCRIBE_FORM_MIN_TIME = seconds(5)
 
+# Installation wide ban list.  This is a list of email addresses and regexp
+# patterns (beginning with ^) which are not allowed to subscribe to any lists
+# in the installation.  This supplements the individual list's ban_list.
+# For example, to ban xxx@aol.com and any @gmail.com address beginning with
+# yyy, set
+# GLOBAL_BAN_LIST = ['xxx@aol.com', '^yyy.*@gmail\.com$']
+GLOBAL_BAN_LIST = []
+
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
 # name of the temporary file that the program should operate on.
@@ -144,6 +152,13 @@ ACCEPTABLE_LISTNAME_CHARACTERS = '[-+_.=a-z0-9]'
 # Shall the user's real names be displayed along with their email addresses
 # in list rosters?  Defaults to No to preserve prior behavior.
 ROSTER_DISPLAY_REALNAME = No
+
+# Beginning in Mailman 2.1.21, localized help and some other output from
+# Mailman's bin/ commands is converted to the character set of the user's
+# workstation (LC_CTYPE) if different from the character set of the language.
+# This is not well tested over a wide range of locales, so if it causes
+# problems, it can be disabled by setting the following to Yes.
+DISABLE_COMMAND_LOCALE_CSET = No
 
 
 
@@ -1097,6 +1112,18 @@ DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION = Yes
 # 4 = Discard
 DEFAULT_DMARC_MODERATION_ACTION = 0
 
+# Domain owners can publish DMARC p=none policy in order to request that
+# reports of DMARC failures be sent but special action not be taken on
+# messages From: their domain that fail DMARC.  This can result in over
+# estimation of the number of messages that would be quarantined or rejected
+# with a stronger DMARC policy if such a policy would result in message
+# modification because dmarc_moderation_action is 1 or 2.  Thus, there is
+# a list setting to apply dmarc_moderaction_action of 1 or 2 to messages
+# From: domains with DMARC p=none.  Setting this to Yes is only effective if 
+# dmarc_quarantine_moderaction_action is also Yes.  The following is the
+# default for this setting for new lists.
+DEFAULT_DMARC_NONE_MODERATION_ACTION = No
+
 # Default for text to be added to a separate text/plain part preceding the
 # message/rfc822 part containing the original message when
 # dmarc_moderation_action is Wrap Message.
@@ -1109,6 +1136,32 @@ DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT = ''
 DMARC_RESOLVER_TIMEOUT = seconds(3)
 # The total time to spend trying to get an answer to the question.
 DMARC_RESOLVER_LIFETIME = seconds(5)
+
+# A URL from which to retrieve the data for the algorithm that computes
+# Organizational Domains for DMARC policy lookup purposes.  This can be
+# anything handled by the Python urllib2.urlopen function.  See
+# https://publicsuffix.org/list/ for info.
+DMARC_ORGANIZATIONAL_DOMAIN_DATA_URL = \
+'https://publicsuffix.org/list/public_suffix_list.dat'
+
+# Should the list server auto-moderate members who post too frequently
+# This is intended to stop people who join a list and then use a bot to
+# send many spam messages in a short interval.  These are default settings
+# for new lists.  See the web admin Privacy options -> Sender filters page
+# and the Details for member_verbosity_threshold and member_verbosity_interval
+# links for more information.
+# DEFAULT_MEMBER_VERBOSITY_INTERVAL = number of seconds to track posts
+# DEFAULT_MEMBER_VERBOSITY_THRESHOLD = number of allowed posts per interval
+#                                     (0 to disable).
+DEFAULT_MEMBER_VERBOSITY_INTERVAL = 300
+DEFAULT_MEMBER_VERBOSITY_THRESHOLD = 0
+ 
+# This controls how often to clean old post time entries from the dictionary
+# used to implement the member verbosity feature. This is a compromise between
+# using resources for cleaning and allowing the dictionary to grow very large.
+# The setting is the number of passes through the code before the dictionary
+# is cleaned.
+VERBOSE_CLEAN_LIMIT = 1000
 
 # What domains should be considered equivalent when testing list membership
 # for posting/moderation.
@@ -1266,9 +1319,11 @@ DEFAULT_FILTER_MIME_TYPES = []
 
 # DEFAULT_PASS_MIME_TYPES is a list of MIME types to be passed through.
 # Format is the same as DEFAULT_FILTER_MIME_TYPES
-DEFAULT_PASS_MIME_TYPES = ['multipart/mixed',
-                           'multipart/alternative',
-                           'text/plain']
+DEFAULT_PASS_MIME_TYPES = ['multipart',
+                           'message/rfc822',
+                           'application/pgp-signature',
+                           'text/plain',
+                          ]
 
 # DEFAULT_FILTER_FILENAME_EXTENSIONS is a list of filename extensions to be
 # removed. It is useful because many viruses fake their content-type as

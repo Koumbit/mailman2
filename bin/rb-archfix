@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2003-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -52,7 +52,7 @@ import cPickle as pickle
 
 # Required to get the right classes for unpickling
 import paths
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 PROGRAM = sys.argv[0]
 
@@ -63,7 +63,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)

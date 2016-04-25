@@ -1,15 +1,15 @@
-A mensaxe que enviou · rolda '%(listname)s' e que ten o asunto seguinte:
+A mensaxe que enviou √° rolda '%(listname)s' e que ten o asunto seguinte:
 
     %(subject)s
 
-foi retida para agardar a revisiÛn e mais a aprobaciÛn do moderador.
+foi retida para agardar a revisi√≥n e mais a aprobaci√≥n do moderador.
 
-O motivo polo que se retivo a mensaxe È o seguinte:
+O motivo polo que se retivo a mensaxe √© o seguinte:
 
     %(reason)s
 
-Logo deste paso, enviarase a mensaxe · rolda ou recibir· unha notificaciÛn
-coa decisiÛn do moderador. Se desexa cancelar este envÌo, pode
-facelo a travÈs do seguinte URL:
+Logo deste paso, enviarase a mensaxe √° rolda ou recibir√° unha notificaci√≥n
+coa decisi√≥n do moderador. Se desexa cancelar este env√≠o, pode
+facelo a trav√©s do seguinte URL:
 
     %(confirmurl)s
