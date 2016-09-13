@@ -12056,7 +12056,6 @@ msgid ""
 "\n"
 "This script is provided for convenience purposes only.  It isn't supported.\n"
 msgstr ""
-"\n"
 "Reduce el espacio usado en disco de los archivos de pipermail.\n"
 "\n"
 "Sintaxis: %(PROGRAM)s [opciones] fichero ...\n"
@@ -12082,7 +12081,7 @@ msgstr ""
 "guión cuando esté satisfecho con los resultados.\n"
 "\n"
 "Este guión se suministra únicamente por motivos de conveniencia. No\n"
-"está soportado."
+"está soportado.\n"
 
 #: bin/remove_members:20
 #, fuzzy
@@ -12226,7 +12225,7 @@ msgstr ""
 "\n"
 "Opciones:\n"
 "    -v / --verbose\n"
-"         Muestra que es lo que está haciendo el guión."
+"         Muestra que es lo que está haciendo el guión.\n"
 
 #: bin/reset_pw.py:77
 msgid "Changing passwords for list: %(listname)s"
@@ -12346,7 +12345,7 @@ msgstr ""
 "     -h / --help\n"
 "        Muestra este texto y termina.\n"
 "\n"
-"Ejemplo: show_qfiles qfiles/shunt/*.pck"
+"Ejemplo: show_qfiles qfiles/shunt/*.pck\n"
 
 #: bin/sync_members:19
 msgid ""

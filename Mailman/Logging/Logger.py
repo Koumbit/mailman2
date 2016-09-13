@@ -28,7 +28,7 @@ from Mailman.Logging.Utils import _logexc
 # Set this to the encoding to be used for your log file output.  If set to
 # None, then it uses your system's default encoding.  Otherwise, it must be an
 # encoding string appropriate for codecs.open().
-LOG_ENCODING = 'iso-8859-1'
+LOG_ENCODING = 'utf-8'
 
 
 

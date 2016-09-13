@@ -60,12 +60,61 @@ INSTALL_PROGRAM=$(INSTALL) -m $(EXEMODE)
 all:
 
 install:
+	# charsets taken from Mailman/Defaults.py.in (all calls to add_language)
+	# except gl which pretends to be utf-8 but isn’t (except one file which we patch)
+	CHARSET_ar=utf-8; \
+	CHARSET_ast=iso-8859-1; \
+	CHARSET_ca=utf-8; \
+	CHARSET_cs=iso-8859-2; \
+	CHARSET_da=iso-8859-1; \
+	CHARSET_de=iso-8859-1; \
+	CHARSET_en=us-ascii; \
+	CHARSET_es=iso-8859-1; \
+	CHARSET_et=iso-8859-15; \
+	CHARSET_eu=iso-8859-15; \
+	CHARSET_fa=utf-8; \
+	CHARSET_fi=iso-8859-1; \
+	CHARSET_fr=iso-8859-1; \
+	CHARSET_gl=iso-8859-1; \
+	CHARSET_el=iso-8859-7; \
+	CHARSET_he=utf-8; \
+	CHARSET_hr=iso-8859-2; \
+	CHARSET_hu=iso-8859-2; \
+	CHARSET_ia=iso-8859-15; \
+	CHARSET_it=iso-8859-1; \
+	CHARSET_ja=euc-jp; \
+	CHARSET_ko=euc-kr; \
+	CHARSET_lt=iso-8859-13; \
+	CHARSET_nl=iso-8859-1; \
+	CHARSET_no=iso-8859-1; \
+	CHARSET_pl=iso-8859-2; \
+	CHARSET_pt=iso-8859-1; \
+	CHARSET_pt_BR=iso-8859-1; \
+	CHARSET_ro=iso-8859-2; \
+	CHARSET_ru=koi8-r; \
+	CHARSET_sk=utf-8; \
+	CHARSET_sl=iso-8859-2; \
+	CHARSET_sr=utf-8; \
+	CHARSET_sv=iso-8859-1; \
+	CHARSET_tr=iso-8859-9; \
+	CHARSET_uk=utf-8; \
+	CHARSET_vi=utf-8; \
+	CHARSET_zh_CN=utf-8; \
+	CHARSET_zh_TW=utf-8; \
 	for d in $(LANGUAGES); \
 	do \
+	    eval cs='$$CHARSET_'$$d; \
+	    test -n "$$cs" || cs=cp1252; \
 	    $(srcdir)/../mkinstalldirs $(DESTDIR)$(TEMPLATEDIR)/$$d; \
 	    for f in $(srcdir)/$$d/*.html $(srcdir)/$$d/*.txt; \
 	    do \
-	    	$(INSTALL) -m $(FILEMODE) $$f $(DESTDIR)$(TEMPLATEDIR)/$$d; \
+		bn=$$(basename $$f); \
+		if ! iconv -f $$cs -t utf-8 <$$f; then \
+			echo >&2 Warning: broken encoding in $$f; \
+			iconv -c -f cp1252 -t utf-8 <$$f; \
+		fi >$$f.utf-8; \
+	    	$(INSTALL) -m $(FILEMODE) $$f.utf-8 $(DESTDIR)$(TEMPLATEDIR)/$$d/$$bn; \
+		rm -f $$f.utf-8; \
 	    done; \
 	done
 

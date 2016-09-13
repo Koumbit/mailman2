@@ -68,7 +68,7 @@ PROG=		@PYTHON@ build/bin/pygettext.py
 
 .SUFFIXES:	.po .mo
 .po.mo:
-	-$(MSGFMT) -o $@ $<
+	-msgconv -t utf-8 $< | tee $<.utf-8 | msgfmt -o $@ -
 
 # Rules
 
@@ -107,7 +107,7 @@ doinstall: mofiles
 	    po=$(srcdir)/$$d/LC_MESSAGES/mailman.po; \
 	    mo=$(srcdir)/$$d/LC_MESSAGES/mailman.mo; \
 	    dir=$(DESTDIR)$(prefix)/messages/$$d/LC_MESSAGES; \
-	    $(INSTALL) -m $(FILEMODE) $$po $$dir; \
+	    $(INSTALL) -m $(FILEMODE) $$po.utf-8 $$dir/mailman.po; \
  	    $(INSTALL) -m $(FILEMODE) $$mo $$dir; \
 	done
 
@@ -117,6 +117,7 @@ finish:
 
 clean:
 	-rm -f */LC_MESSAGES/mailman.mo
+	-rm -f */LC_MESSAGES/mailman.po.utf-8
 
 fileclean:
 	-rm -f marked.files docstring.files

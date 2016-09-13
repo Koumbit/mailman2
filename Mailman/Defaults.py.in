@@ -23,6 +23,9 @@
 # mm_cfg.py instead, in the designated area.  See the comments in that file
 # for details.
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 import os
 
@@ -450,7 +453,7 @@ ARCHIVER_OBSCURES_EMAILADDRS = Yes
 # is used in MIME to refer to a method of converting a sequence of
 # octets into a sequence of characters.  If you change the default
 # charset, you might need to add it to VERBATIM_ENCODING below.
-DEFAULT_CHARSET = None
+DEFAULT_CHARSET = 'utf-8'
 
 # Most character set encodings require special HTML entity characters to be
 # quoted, otherwise they won't look right in the Pipermail archives.  However
@@ -459,7 +462,7 @@ DEFAULT_CHARSET = None
 # encodings where the octet 0x26 does not always represent the & character.
 # This variable contains a list of such characters sets which are not
 # HTML-quoted in the archives.
-VERBATIM_ENCODING = ['iso-2022-jp']
+VERBATIM_ENCODING = ['utf-8', 'iso-2022-jp']
 
 # When the archive is public, should Mailman also make the raw Unix mbox file
 # publically available?
@@ -1721,7 +1724,7 @@ def _(s):
 LC_DESCRIPTIONS = {}
 
 def add_language(code, description, charset, direction='ltr'):
-    LC_DESCRIPTIONS[code] = (description, charset, direction)
+    LC_DESCRIPTIONS[code] = (description, 'utf-8', direction)
 
 add_language('ar',    _('Arabic'),              'utf-8',       'rtl')
 add_language('ast',   _('Asturian'),            'iso-8859-1',  'ltr')

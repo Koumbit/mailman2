@@ -4835,7 +4835,7 @@ msgstr ""
 msgid ""
 "Remove message attachments that have a matching content\n"
 "             type."
-msgstr "Ukloni privitke poruka koji se podudaraju s tipovima sadr¾aja.\n"
+msgstr "Ukloni privitke poruka koji se podudaraju s tipovima sadr¾aja."
 
 #: Mailman/Gui/ContentFilter.py:82
 msgid ""
