@@ -2,9 +2,10 @@ Author: Thorsten Glaser <tg@debian.org>
 Description: Fix bugs in translation files
 Forwarded: no
 
---- a/messages/es/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/es/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -11652,7 +11652,6 @@
+diff -ur mailman-2.1.23.orig/messages/es/LC_MESSAGES/mailman.po mailman-2.1.23/messages/es/LC_MESSAGES/mailman.po
+--- mailman-2.1.23.orig/messages/es/LC_MESSAGES/mailman.po	2016-08-27 13:04:42.000000000 +0000
++++ mailman-2.1.23/messages/es/LC_MESSAGES/mailman.po	2016-09-13 16:17:56.660109046 +0000
+@@ -12056,7 +12056,6 @@
  "\n"
  "This script is provided for convenience purposes only.  It isn't supported.\n"
  msgstr ""
@@ -12,7 +13,7 @@ Forwarded: no
  "Reduce el espacio usado en disco de los archivos de pipermail.\n"
  "\n"
  "Sintaxis: %(PROGRAM)s [opciones] fichero ...\n"
-@@ -11678,7 +11677,7 @@
+@@ -12082,7 +12081,7 @@
  "guión cuando esté satisfecho con los resultados.\n"
  "\n"
  "Este guión se suministra únicamente por motivos de conveniencia. No\n"
@@ -21,7 +22,7 @@ Forwarded: no
  
  #: bin/remove_members:20
  #, fuzzy
-@@ -11822,7 +11821,7 @@
+@@ -12226,7 +12225,7 @@
  "\n"
  "Opciones:\n"
  "    -v / --verbose\n"
@@ -30,7 +31,7 @@ Forwarded: no
  
  #: bin/reset_pw.py:77
  msgid "Changing passwords for list: %(listname)s"
-@@ -11942,7 +11941,7 @@
+@@ -12346,7 +12345,7 @@
  "     -h / --help\n"
  "        Muestra este texto y termina.\n"
  "\n"
@@ -39,9 +40,11 @@ Forwarded: no
  
  #: bin/sync_members:19
  msgid ""
---- a/messages/hr/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/hr/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -4639,7 +4639,7 @@
+Only in mailman-2.1.23/messages/es/LC_MESSAGES: mailman.po.orig
+diff -ur mailman-2.1.23.orig/messages/hr/LC_MESSAGES/mailman.po mailman-2.1.23/messages/hr/LC_MESSAGES/mailman.po
+--- mailman-2.1.23.orig/messages/hr/LC_MESSAGES/mailman.po	2016-08-27 13:04:42.000000000 +0000
++++ mailman-2.1.23/messages/hr/LC_MESSAGES/mailman.po	2016-09-13 16:17:56.664109179 +0000
+@@ -4835,7 +4835,7 @@
  msgid ""
  "Remove message attachments that have a matching content\n"
  "             type."
@@ -50,27 +53,20 @@ Forwarded: no
  
  #: Mailman/Gui/ContentFilter.py:82
  msgid ""
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ b/messages/checkpo.sh	2014-07-10 20:00:53.000000000 +0200
-@@ -0,0 +1,6 @@
-+#!/bin/sh
-+rv=0
-+for x in */LC_MESSAGES/*.po; do
-+	msgfmt -o - "$x" >/dev/null || rv=1
-+done
-+exit $rv
---- a/messages/ja/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/ja/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -2173,7 +2173,7 @@
+Only in mailman-2.1.23/messages/hr/LC_MESSAGES: mailman.po.orig
+diff -ur mailman-2.1.23.orig/messages/ja/LC_MESSAGES/mailman.po mailman-2.1.23/messages/ja/LC_MESSAGES/mailman.po
+--- mailman-2.1.23.orig/messages/ja/LC_MESSAGES/mailman.po	2016-08-27 13:04:42.000000000 +0000
++++ mailman-2.1.23/messages/ja/LC_MESSAGES/mailman.po	2016-09-13 16:17:56.668109312 +0000
+@@ -2339,7 +2339,7 @@
  "¤¢¤Ê¤¿¤¬ÊÝÂ¸¤·¤¿¥Ú¡¼¥¸¤Ë¤Ï, ¥æ¡¼¥¶¤ò¥¯¥í¥¹¥µ¥¤¥È¥¹¥¯¥ê¥×¥È¹¶·â¤Ë\n"
  "¤µ¤é¤¹¤è¤¦¤Êµ¿¤ï¤·¤¤ HTML¥³¡¼¥É¤¬´Þ¤Þ¤ì¤Æ¤¤¤Þ¤¹.¤½¤Î¤¿¤á, ÊÑ¹¹¤ÏµÑ²¼¤·¤Þ¤·"
  "¤¿. ¤â¤·, ¤É¤¦¤·¤Æ¤âÊÑ¹¹¤¬É¬Í×¤Ç¤¢¤ì¤Ð, \n"
 -"Mailman ¥µ¡¼¥Ð¤Ë¥·¥§¥ë¥¢¥¯¥»¥¹¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó.\n"
 +"Mailman ¥µ¡¼¥Ð¤Ë¥·¥§¥ë¥¢¥¯¥»¥¹¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó."
  
- #: Mailman/Cgi/edithtml.py:172
+ #: Mailman/Cgi/edithtml.py:214
  msgid "See "
-@@ -5584,7 +5584,7 @@
+@@ -5846,7 +5846,7 @@
  "°ìÊý¤Ç¤¢¤ë¥á¡¼¥ë¥ê¡¼¥À¤Ï¤³¤Î¥Ø¥Ã¥À¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¤È´üÂÔ¤Ï¤º¤ì¤ÎÆ°ºî¤ò¤¹¤ë.\n"
  "(Îã¤¨¤Ð, Å¾Á÷¤·¤¿¤È¤­¤Ë¥¢¥É¥ì¥¹¤¬¶õÇò¤Ë¤Ê¤ë¤È¤«, ¡ÖÁ´°÷¤ËÊÖ¿®¡×¤·¤¿¤È¤­¤Ë\n"
  "¤³¤Î¥¨¥é¡¼ÄÌÃÎ¥¢¥É¥ì¥¹¤Ë¤âÁ÷¿®¤¹¤ë¤È¤«) ½¾¤Ã¤Æ, ¤³¤³¤ÇÌµ¸ú¤Ë¤Ç¤­¤ë¤è¤¦¤Ë¤·"
@@ -79,7 +75,7 @@ Forwarded: no
  
  #: Mailman/Gui/General.py:511
  msgid ""
-@@ -5621,7 +5621,7 @@
+@@ -5883,7 +5883,7 @@
  "¤¿. ¤â¤·, ¤É¤¦¤·¤Æ¤âÊÑ¹¹¤¬É¬Í×¤Ç¤¢¤ì¤Ð, \n"
  "Mailman ¥µ¡¼¥Ð¤Ë¥·¥§¥ë¥¢¥¯¥»¥¹¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó.\n"
  "ÊÑ¹¹¤Ë¤Ï bin/withlist Ëô¤Ï bin/config_list ¤ò»È¤Ã¤Æ\n"
@@ -88,7 +84,7 @@ Forwarded: no
  
  #: Mailman/Gui/General.py:560
  msgid ""
-@@ -8751,7 +8751,7 @@
+@@ -9300,7 +9300,7 @@
  "·Ù¹ð: ¸ÂÄê¸ø³«ÊÝÂ¸½ñ¸Ë¥Ç¥£¥ì¥¯¥È¥ê¤¬ other-executable (o+x) ¤Ë\n"
  "      ¤Ê¤Ã¤Æ¤¤¤Þ¤¹. ¤¢¤Ê¤¿¤Î¥·¥¹¥Æ¥à¤Î¥·¥§¥ë¥æ¡¼¥¶¤¬¤³¤ÎÊÝÂ¸½ñ¸Ë\n"
  "      ¤òÆÉ¤à¤³¤È¤¬¤Ç¤­¤Þ¤¹. ¥¤¥ó¥¹¥È¡¼¥ë¥Þ¥Ë¥å¥¢¥ë¤Ë¤Ï, ¤³¤ì¤ò\n"
@@ -97,17 +93,19 @@ Forwarded: no
  
  #: bin/check_perms:240
  msgid "mbox file must be at least 0660:"
---- a/messages/nl/LC_MESSAGES/mailman.po	2014-07-10 19:27:22.000000000 +0200
-+++ b/messages/nl/LC_MESSAGES/mailman.po	2014-07-10 20:00:53.000000000 +0200
-@@ -2268,6 +2268,7 @@
+Only in mailman-2.1.23/messages/ja/LC_MESSAGES: mailman.po.orig
+diff -ur mailman-2.1.23.orig/messages/nl/LC_MESSAGES/mailman.po mailman-2.1.23/messages/nl/LC_MESSAGES/mailman.po
+--- mailman-2.1.23.orig/messages/nl/LC_MESSAGES/mailman.po	2016-08-27 13:04:42.000000000 +0000
++++ mailman-2.1.23/messages/nl/LC_MESSAGES/mailman.po	2016-09-13 16:17:56.672109353 +0000
+@@ -2434,6 +2434,7 @@
  "wijziging\n"
  "is daarom geweigerd.  Als u toch deze wijzigingen wilt aanbrengen, heeft u\n"
  "shell access nodig voor uw Mailman server.\n"
 +"             "
  
- #: Mailman/Cgi/edithtml.py:172
+ #: Mailman/Cgi/edithtml.py:214
  msgid "See "
-@@ -3782,7 +3783,7 @@
+@@ -3962,7 +3963,7 @@
  "        en zonder aanhalingstekens!) uw lidmaatschapsadres. Als u het \n"
  "        wachtwoord van de lijstbeheerder of moderator opgeeft, zullen ook "
  "de\n"
@@ -116,7 +114,7 @@ Forwarded: no
  
  #: Mailman/Commands/cmd_who.py:46
  msgid ""
-@@ -6070,6 +6071,7 @@
+@@ -6271,6 +6272,7 @@
  "Deze wijziiging kan gemaakt worden met bin/withlist of met bin/config_list "
  "door het\n"
  "instellen van mlist.info.\n"
@@ -124,3 +122,5 @@ Forwarded: no
  
  #: Mailman/Gui/General.py:560
  msgid ""
+
+
