@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -302,7 +302,8 @@ class Document(Container):
         charset = 'us-ascii'
         if self.language and Utils.IsLanguage(self.language):
             charset = Utils.GetCharSet(self.language)
-        output = ['Content-Type: text/html; charset=%s\n' % charset]
+        output = ['Content-Type: text/html; charset=%s' % charset]
+        output.append('Cache-control: no-cache\n')
         if not self.suppress_head:
             kws.setdefault('bgcolor', self.bgcolor)
             tab = ' ' * indent
@@ -407,13 +408,14 @@ class Center(StdContainer):
 
 class Form(Container):
     def __init__(self, action='', method='POST', encoding=None, 
-                       mlist=None, contexts=None, *items):
+                       mlist=None, contexts=None, user=None, *items):
         apply(Container.__init__, (self,) +  items)
         self.action = action
         self.method = method
         self.encoding = encoding
         self.mlist = mlist
         self.contexts = contexts
+        self.user = user
 
     def set_action(self, action):
         self.action = action
@@ -428,7 +430,7 @@ class Form(Container):
         if self.mlist:
             output = output + \
                 '<input type="hidden" name="csrf_token" value="%s">\n' \
-                % csrf_token(self.mlist, self.contexts)
+                % csrf_token(self.mlist, self.contexts, self.user)
         output = output + Container.Format(self, indent+2)
         output = '%s\n%s</FORM>\n' % (output, spaces)
         return output
@@ -453,7 +455,7 @@ class InputObj:
         output.append('>')
         ret = SPACE.join(output)
         if self.type == 'TEXT' and isinstance(ret, unicode):
-            ret = ret.encode(charset, 'replace')
+            ret = ret.encode(charset, 'xmlcharrefreplace')
         return ret
 
 
@@ -504,7 +506,7 @@ class TextArea:
             output += ' READONLY'
         output += '>%s</TEXTAREA>' % self.text
         if isinstance(output, unicode):
-            output = output.encode(charset, 'replace')
+            output = output.encode(charset, 'xmlcharrefreplace')
         return output
 
 class FileUpload(InputObj):
@@ -642,24 +644,33 @@ GNU_HEAD = 'gnu-head-tiny.jpg'
 
 def MailmanLogo():
     t = Table(border=0, width='100%')
+
+    version = mm_cfg.VERSION
+    mmlink = _("Delivered by Mailman")
+    pylink = _("Python Powered")
+    gnulink = _("GNU's Not Unix")
+    if mm_cfg.SITE_LINK:
+        sitelink = mm_cfg.SITE_TEXT
+
     if mm_cfg.IMAGE_LOGOS:
-        def logo(file):
-            return mm_cfg.IMAGE_LOGOS + file
-        mmlink = '<img src="%s" alt="Delivered by Mailman" border=0>' \
-                 '<br>version %s' % (logo(DELIVERED_BY), mm_cfg.VERSION)
-        pylink = '<img src="%s" alt="Python Powered" border=0>' % \
-                 logo(PYTHON_POWERED)
-        gnulink = '<img src="%s" alt="GNU\'s Not Unix" border=0>' % \
-                  logo(GNU_HEAD)
-        t.AddRow([mmlink, pylink, gnulink])
-    else:
-        # use only textual links
-        version = mm_cfg.VERSION
-        mmlink = Link(MAILMAN_URL,
-                      _('Delivered by Mailman<br>version %(version)s'))
-        pylink = Link(PYTHON_URL, _('Python Powered'))
-        gnulink = Link(GNU_URL, _("Gnu's Not Unix"))
-        t.AddRow([mmlink, pylink, gnulink])
+        def logo(file, alt, base=mm_cfg.IMAGE_LOGOS):
+            return '<img src="%s" alt="%s" border="0" />' % \
+              (base + file, alt)
+        mmlink = logo(DELIVERED_BY, mmlink)
+        pylink = logo(PYTHON_POWERED, pylink)
+        gnulink = logo(GNU_HEAD, gnulink)
+        if mm_cfg.SITE_LINK:
+            sitelink = logo(mm_cfg.SITE_LOGO, sitelink, "")
+
+    mmlink = Link(MAILMAN_URL, mmlink + _('<br>version %(version)s'))
+    pylink = Link(PYTHON_URL, pylink)
+    gnulink = Link(GNU_URL, gnulink)
+    links = [mmlink, pylink, gnulink]
+    if mm_cfg.SITE_LINK:
+        if mm_cfg.SITE_URL:
+            sitelink = Link(mm_cfg.SITE_URL, sitelink)
+        links.append(sitelink)
+    t.AddRow(links)
     return t
 
 

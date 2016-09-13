@@ -1,4 +1,4 @@
-# Copyright (C) 2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2000-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,6 +19,7 @@
 import time
 from email.Utils import parsedate_tz, mktime_tz, formatdate
 
+from Mailman import i18n
 from Mailman import mm_cfg
 from Mailman import LockFile
 from Mailman.Queue.Runner import Runner
@@ -70,6 +71,9 @@ class ArchRunner(Runner):
             # oh well, try again later
             return 1
         try:
+            # Archiving should be done in the list's preferred language, not
+            # the sender's language.
+            i18n.set_language(mlist.preferred_language)
             mlist.ArchiveMail(msg)
             mlist.Save()
         finally:

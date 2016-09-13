@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -73,7 +73,17 @@ def main():
 
     # Get the form data to see if this is a second-step confirmation
     cgidata = cgi.FieldStorage(keep_blank_values=1)
-    cookie = cgidata.getvalue('cookie')
+    try:
+        cookie = cgidata.getvalue('cookie')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     if cookie == '':
         ask_for_cookie(mlist, doc, _('Confirmation string was empty.'))
         return

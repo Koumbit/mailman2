@@ -17,6 +17,7 @@
 
 """MailList mixin class managing the privacy options."""
 
+import os
 import re
 
 from Mailman import mm_cfg
@@ -658,9 +659,20 @@ class Privacy(GUIBase):
                 doc.addError(_("""Header filter rules require a pattern.
                 Incomplete filter rules will be ignored."""))
                 continue
-            # Make sure the pattern was a legal regular expression
+            # Make sure the pattern was a legal regular expression.
+            # Convert it to unicode if necessary.
+            mo = re.match('.*charset=([-_a-z0-9]+)',
+                          os.environ.get('CONTENT_TYPE', ''),
+                          re.IGNORECASE
+                         )
+            if mo:
+                cset = mo.group(1)
+            else:
+                cset = Utils.GetCharSet(mlist.preferred_language)
             try:
-                re.compile(pattern)
+                upattern = Utils.xml_to_unicode(pattern, cset)
+                re.compile(upattern)
+                pattern = upattern
             except (re.error, TypeError):
                 safepattern = Utils.websafe(pattern)
                 doc.addError(_("""The header filter rule pattern

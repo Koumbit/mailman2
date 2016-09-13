@@ -5,6 +5,104 @@ Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.23 (27-Aug-2016)
+
+  Security
+
+    - CSRF protection has been extended to the user options page.  This was
+      actually fixed by Tokio Kikuchi as part of the fix for LP: #775294 and
+      intended for Mailman 2.1.15, but that fix wasn't completely merged at the
+      time.  The full fix also addresses the admindb, and edithtml pages as
+      well as the user options page and the previously fixed admin pages.
+      Thanks to Nishant Agarwala for reporting the issue.  CVE-2016-6893
+      (LP: #1614841)
+ 
+  New Features
+
+    - For header_filter_rules matching, RFC 2047 encoded headers, non-encoded
+      headers and header_filter_rules patterns are now all decoded to unicode.
+      Both XML character references of the form &#nnnn; and unicode escapes
+      of the form \Uxxxx in patterns are converted to unicodes as well.  Both
+      headers and patterns are normalized to 'NFKC' normal form before
+      matching, but the normalization form can be set via a new NORMALIZE_FORM
+      mm_cfg setting.  Also, the web UI has been updated to encode characters
+      in text fields that are invalid in the character set of the page's
+      language as XML character references instead of '?'.  This should help
+      with entering header_filter_rules patterns to match 'odd' characters.
+      This feature is experimental and is problematic for some cases where it
+      is desired to have a header_filter_rules pattern with characters not in
+      the character set of the list's preferred language.  For patterns
+      without such characters, the only change in behavior should be because
+      of unicode normalization which should improve matching.  For other
+      situations such as trying to match a Subject: with CJK characters (range
+      U+4E00..U+9FFF) on an English language (ascii) list, one can enter a
+      pattern like '^subject:.*[&#19968;-&#40959;]' or
+      '^subject:.*[\u4e00;-\u9fff;]' to match a Subject with any character in
+      the range, and it will work, but depending on the actual characters and
+      the browser, submitting another, even unrelated change can garble the
+      original entry although this usually occurs only with ascii pages and
+      characters in the range \u0080-\u00ff.  The \Uxxxx unicode escapes must
+      have exactly 4 hex digits, but they are case insensitive.  (LP: #558155)
+
+    - Thanks to Jim Popovitch REMOVE_DKIM_HEADERS can now be set to 3 to
+      preserve the original headers as X-Mailman-Original-... before removing
+      them.
+
+    - Several additional templates have been added to those that can be edited
+      via the web admin GUI.  (LP: #1583387)
+
+    - SMTPDirect.py can now do SASL authentication and STARTTLS security when
+      connecting to the outgoiung MTA. Associated with this are new
+      Defaults.py/mm_cfg.py settings SMTP_AUTH, SMTP_USER, SMTP_PASSWD and
+      SMTP_USE_TLS.  (LP: #558281)
+
+    - There is a new Defaults.py/mm_cfg.py setting SMTPLIB_DEBUG_LEVEL which
+      can be set to 1 to enable verbose smtplib debugging to Mailman's error
+      log to help with debugging 'low level smtp failures'.  (LP: #1573074)
+
+    - A list's nonmember_rejection_notice attribute will now be the default
+      rejection reason for a held non-member post in addition to it's prior
+      role as the reson for an automatically rejected non-member post.
+      (LP: #1572330)
+
+  i18n
+
+    - The French translation of 'Dutch' is changed from 'Hollandais' to
+      'Néerlandais' per Francis Jorissen.
+
+    - Some German language templates that were incorrectly utf-8 encoded have
+      been recoded as iso-8859-1.  (LP: #1602779)
+
+    - Japanese translation and documentation in messages/ja has been updated by
+      Yasuhito FUTATSUKI.
+
+  Bug fixes and other patches
+
+    - The admin Membership List letter links could be incorrectly rendered as
+      Unicode strings following a search.  (LP: #1604544)
+
+    - We no longer throw an uncaught TypeError with certain defective crafted
+      POST requests to Mailman's CGIs.  (LP: #1602608)
+
+    - Scrubber links in archives are now in the list's preferred_language
+      rather than the poster's language.  (LP: #1586505)
+
+    - Improved logging of banned subscription and address change attempts.
+      (LP: #1582856)
+
+    - In rare circumstances a list can be removed while the admin or listinfo
+      CGI or bin/list_lists is running causing an uncaught MMUnknownListError
+      to be thrown.  The exception is now caught and handled.  (LP: #1582532)
+
+    - Set the Date: header in the wrapper message when from_is_list or
+      dmarc_moderation_action is Wrap Message.  (LP: #1581215)
+
+    - A site can now set DMARC_ORGANIZATIONAL_DOMAIN_DATA_URL to None or the
+      null string if it wants to avoid using this.  (LP: #1578450)
+ 
+    - The white space to the left of the admindb Logout link is no longer
+      part of the link.  (LP: #1573623)
+
 2.1.22 (17-Apr-2016)
 
   i18n
@@ -158,7 +256,7 @@ Here is a history of user visible changes to Mailman.
     - Changed CookHeaders to default to using space rather than tab as
       continuation_ws when folding headers.  (LP: #1505878)
 
-    - Fixed the 'pidfile' path in the sample init.d script.  (LP: # 1503422)
+    - Fixed the 'pidfile' path in the sample init.d script.  (LP: #1503422)
 
     - Subject prefixing could fail to collapse multiple 'Re:' in an incomming
       message if they all came after the list's subject_prefix.  This is now

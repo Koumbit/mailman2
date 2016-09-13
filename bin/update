@@ -121,7 +121,7 @@ def move_language_templates(mlist):
     #
     # First, get rid of any lists/<list> template or lists/<list>/en template
     # that is identical to the global templates/* default.
-    for gtemplate in os.listdir(os.path.join(mm_cfg.TEMPLATE_DIR, 'en')):
+    for gtemplate in os.listdir(os.path.join(mm_cfg.TEMPLATE_DIR, mm_cfg.DEFAULT_SERVER_LANGUAGE)):
         # BAW: get rid of old templates, e.g. admlogin.txt and
         # handle_opts.html
         try:
@@ -155,14 +155,14 @@ def move_language_templates(mlist):
                 os.unlink(os.path.join(mlist.fullpath(), gtemplate + '.prev'))
         # Match against the lists/<list>/en/* templates
         try:
-            fp = open(os.path.join(mlist.fullpath(), 'en', gtemplate))
+            fp = open(os.path.join(mlist.fullpath(), mm_cfg.DEFAULT_SERVER_LANGUAGE, gtemplate))
         except IOError, e:
             if e.errno <> errno.ENOENT: raise
         else:
             tcksum = Utils.md5_new(fp.read()).digest()
             fp.close()
             if gcksum == tcksum:
-                os.unlink(os.path.join(mlist.fullpath(), 'en', gtemplate))
+                os.unlink(os.path.join(mlist.fullpath(), mm_cfg.DEFAULT_SERVER_LANGUAGE, gtemplate))
         # Match against the templates/* template
         try:
             fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
@@ -334,37 +334,6 @@ script.
     # BAW: Is this still necessary?!
     mlist.Save()
     #
-    # check to see if pre-b4 list-specific templates are around
-    # and move them to the new place if there's not already
-    # a new one there
-    #
-    # There is a problem with the following if the list name is equal
-    # to a language code. All the templates get moved from templates/xx
-    # to lists/xx. To avoid this, test the list name, and if it is 'en'
-    # or matches a name in the messages directory, just skip this step.
-    if (mlist._internal_name <> 'en' and
-        mlist._internal_name not in os.listdir(mm_cfg.MESSAGES_DIR)):
-        # It's okay to move the templates.
-        tmpl_dir = os.path.join(mm_cfg.PREFIX, "templates")
-        list_dir = mm_cfg.LIST_DATA_DIR
-        b4_tmpl_dir = os.path.join(tmpl_dir, mlist._internal_name)
-        new_tmpl_dir = os.path.join(list_dir, mlist._internal_name)
-        if os.path.exists(b4_tmpl_dir):
-            print C_("""\
-- This list looks like it might have <= b4 list templates around""")
-            for f in os.listdir(b4_tmpl_dir):
-                o_tmpl = os.path.join(b4_tmpl_dir, f)
-                n_tmpl = os.path.join(new_tmpl_dir, f)
-                if os.path.exists(o_tmpl):
-                    if not os.path.exists(n_tmpl):
-                        os.rename(o_tmpl, n_tmpl)
-                        print C_('- moved %(o_tmpl)s to %(n_tmpl)s')
-                    else:
-                        print C_("""\
-- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched""")
-                else:
-                    print C_("""\
-- %(o_tmpl)s doesn't exist, leaving untouched""")
     #
     # Move all the templates to the en language subdirectory as required for
     # Mailman 2.1
@@ -669,12 +638,12 @@ def main():
                 'Mailman/HyperDatabase.py', 'Mailman/pipermail.py',
                 'Mailman/smtplib.py', 'Mailman/Cookie.py',
                 'bin/update_to_10b6', 'scripts/mailcmd',
-                'scripts/mailowner', 'mail/wrapper', 'Mailman/pythonlib',
+                'scripts/mailowner', 'Mailman/pythonlib',
                 'cgi-bin/archives', 'Mailman/MailCommandHandler'):
         remove_old_sources(mod)
     listnames = Utils.list_names()
     if not listnames:
-        print C_('no lists == nothing to do, exiting')
+#        print C_('no lists == nothing to do, exiting')
         return
     #
     # for people with web archiving, make sure the directories

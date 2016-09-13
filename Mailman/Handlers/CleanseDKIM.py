@@ -1,4 +1,4 @@
-# Copyright (C) 2006-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,6 +43,13 @@ def process(mlist, msg, msgdata):
            )
        ):
         return
+    if (mm_cfg.REMOVE_DKIM_HEADERS == 3):
+        for value in msg.get_all('domainkey-signature', []):
+            msg['X-Mailman-Original-DomainKey-Signature'] = value
+        for value in msg.get_all('dkim-signature', []):
+            msg['X-Mailman-Original-DKIM-Signature'] = value
+        for value in msg.get_all('authentication-results', []):
+            msg['X-Mailman-Original-Authentication-Results'] = value
     del msg['domainkey-signature']
     del msg['dkim-signature']
     del msg['authentication-results']

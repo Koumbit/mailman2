@@ -97,7 +97,11 @@ def main():
     mlists = []
     longest = 0
     for n in names:
-        mlist = MailList.MailList(n, lock=0)
+        try:
+            mlist = MailList.MailList(n, lock=0)
+        except Errors.MMUnknownListError:
+            # The list could have been deleted by another process.
+            continue
         if advertised and not mlist.advertised:
             continue
         if public and mlist.archive_private:

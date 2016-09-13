@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -118,7 +118,16 @@ def main():
     doc.set_language(mlist.preferred_language)
 
     cgidata = cgi.FieldStorage()
-    username = cgidata.getvalue('username', '')
+    try:
+        username = cgidata.getvalue('username', '')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
     password = cgidata.getvalue('password', '')
 
     is_auth = 0

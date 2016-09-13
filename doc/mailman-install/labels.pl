@@ -2,36 +2,20 @@
 # Associate labels original text with physical files.
 
 
-$key = q/qmail-issues/;
-$external_labels{$key} = "$URL/" . q|node35.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/mail-server/;
-$external_labels{$key} = "$URL/" . q|node11.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/exim3-transport/;
-$external_labels{$key} = "$URL/" . q|node19.html|; 
-$noresave{$key} = "$nosave";
-
 $key = q/building/;
 $external_labels{$key} = "$URL/" . q|node6.html|; 
 $noresave{$key} = "$nosave";
 
-$key = q/postfix-integration/;
-$external_labels{$key} = "$URL/" . q|node13.html|; 
+$key = q/site-list/;
+$external_labels{$key} = "$URL/" . q|node40.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/qmail-issues/;
+$external_labels{$key} = "$URL/" . q|node35.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/about/;
 $external_labels{$key} = "$URL/" . q|node51.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/front/;
-$external_labels{$key} = "$URL/" . q|node1.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/bsd-issues/;
-$external_labels{$key} = "$URL/" . q|node49.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/customizing/;
@@ -46,12 +30,28 @@ $key = q/postfix-virtual/;
 $external_labels{$key} = "$URL/" . q|node14.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/postfix-integration/;
+$external_labels{$key} = "$URL/" . q|node13.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/front/;
+$external_labels{$key} = "$URL/" . q|node1.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/mail-server/;
+$external_labels{$key} = "$URL/" . q|node11.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/bsd-issues/;
+$external_labels{$key} = "$URL/" . q|node49.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/troubleshooting/;
 $external_labels{$key} = "$URL/" . q|node46.html|; 
 $noresave{$key} = "$nosave";
 
-$key = q/site-list/;
-$external_labels{$key} = "$URL/" . q|node40.html|; 
+$key = q/exim3-transport/;
+$external_labels{$key} = "$URL/" . q|node19.html|; 
 $noresave{$key} = "$nosave";
 
 1;
@@ -61,14 +61,6 @@ $noresave{$key} = "$nosave";
 # labels from external_latex_labels array.
 
 
-$key = q/bsd-issues/;
-$external_latex_labels{$key} = q|15.2|; 
-$noresave{$key} = "$nosave";
-
-$key = q/postfix-virtual/;
-$external_latex_labels{$key} = q|6.1|; 
-$noresave{$key} = "$nosave";
-
 $key = q/create-install-dir/;
 $external_latex_labels{$key} = q|2.2|; 
 $noresave{$key} = "$nosave";
@@ -77,8 +69,12 @@ $key = q/customizing/;
 $external_latex_labels{$key} = q|7|; 
 $noresave{$key} = "$nosave";
 
-$key = q/troubleshooting/;
-$external_latex_labels{$key} = q|14|; 
+$key = q/building/;
+$external_latex_labels{$key} = q|3|; 
+$noresave{$key} = "$nosave";
+
+$key = q/qmail-issues/;
+$external_latex_labels{$key} = q|6.4|; 
 $noresave{$key} = "$nosave";
 
 $key = q/site-list/;
@@ -89,20 +85,24 @@ $key = q/exim3-transport/;
 $external_latex_labels{$key} = q|6.2|; 
 $noresave{$key} = "$nosave";
 
-$key = q/mail-server/;
-$external_latex_labels{$key} = q|6|; 
-$noresave{$key} = "$nosave";
-
-$key = q/qmail-issues/;
-$external_latex_labels{$key} = q|6.4|; 
-$noresave{$key} = "$nosave";
-
-$key = q/building/;
-$external_latex_labels{$key} = q|3|; 
+$key = q/postfix-virtual/;
+$external_latex_labels{$key} = q|6.1|; 
 $noresave{$key} = "$nosave";
 
 $key = q/postfix-integration/;
 $external_latex_labels{$key} = q|6.1|; 
+$noresave{$key} = "$nosave";
+
+$key = q/troubleshooting/;
+$external_latex_labels{$key} = q|14|; 
+$noresave{$key} = "$nosave";
+
+$key = q/mail-server/;
+$external_latex_labels{$key} = q|6|; 
+$noresave{$key} = "$nosave";
+
+$key = q/bsd-issues/;
+$external_latex_labels{$key} = q|15.2|; 
 $noresave{$key} = "$nosave";
 
 1;

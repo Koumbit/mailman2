@@ -97,6 +97,39 @@ older version of Postfix which doesn't have the <var>virtual_alias_maps</var>
 variable, use the <var>virtual_maps</var> variable instead.
 
 <p>
+The default mappings in <span class="file">virtual-mailman</span> map list addresses in virtual
+domains to unqualified local names as in:
+
+<p>
+<div class="verbatim"><pre>
+    mylist@dom.ain         mylist
+    mylist-request@dom.ain mylist-request
+    # and so on...
+</pre></div>
+
+<p>
+In some Postfix configurations it may be necessary to qualify those local
+names as for example:
+
+<p>
+<div class="verbatim"><pre>
+    mylist@dom.ain         mylist@localhost
+    mylist-request@dom.ain mylist-request@localhost
+    # and so on...
+</pre></div>
+
+<p>
+If this is the case, you can include
+
+<p>
+<div class="verbatim"><pre>
+    VIRTUAL_MAILMAN_LOCAL_DOMAIN = 'localhost'
+</pre></div>
+
+<p>
+or whatever qualification is needed in <span class="file">mm_cfg.py</span>.
+
+<p>
 Next, in your <span class="file">mm_cfg.py</span> file, you will want to set the variable
 <var>POSTFIX_STYLE_VIRTUAL_DOMAINS</var> to the list of virtual domains that Mailman
 should update.  This may not be all of the virtual alias domains that your
@@ -105,9 +138,11 @@ against the <var>host_name</var> attribute of mailing lists objects, and must be
 exact match.
 
 <p>
-Here's an example.  Say that Postfix is configured to handle the virtual
-domains <code>dom1.ain</code>, <code>dom2.ain</code>, and <code>dom3.ain</code>, and further
-that in your <span class="file">main.cf</span> file you've got the following settings:
+Here's an example.  Note that this example describes an unusual configuration.
+A more usual configuration is described next.  Say that Postfix is configured
+to handle the virtual domains <code>dom1.ain</code>, <code>dom2.ain</code>, and
+<code>dom3.ain</code>, and further that in your <span class="file">main.cf</span> file you've got the
+following settings:
 
 <p>
 <div class="verbatim"><pre>
@@ -163,9 +198,32 @@ Now, any list that Mailman creates in either of those two domains, will have
 the correct entries written to <span class="file">/usr/local/mailman/data/virtual-mailman</span>.
 
 <p>
-As above with the <span class="file">data/aliases*</span> files, you want to make sure that both
-<span class="file">data/virtual-mailman</span> and <span class="file">data/virtual-mailman.db</span> are user and
-group owned by <code>mailman</code>.
+In a more usual configuration, <code>dom1.ain</code> would not be a virtual domain
+at all as in the following:
+
+<p>
+<div class="verbatim"><pre>
+    myhostname = mail.dom1.ain
+    mydomain = dom1.ain
+    mydestination = $myhostname, $mydomain localhost.$mydomain
+    virtual_alias_maps =
+        hash:/some/path/to/virtual-dom2,
+        hash:/some/path/to/virtual-dom2
+</pre></div>
+
+<p>
+In this case too, you would include <code>dom2.ain</code> and <code>dom3.ain</code> in
+<span class="file">mm_cfg.py</span>:
+
+<p>
+<div class="verbatim"><pre>
+    POSTFIX_STYLE_VIRTUAL_DOMAINS = ['dom2.ain', 'dom3.ain']
+</pre></div>
+
+<p>
+As in the previous section with the <span class="file">data/aliases*</span> files, you want to
+make sure that both <span class="file">data/virtual-mailman</span> and
+<span class="file">data/virtual-mailman.db</span> are user and group owned by <code>mailman</code>.
 
 <p>
 
@@ -201,7 +259,7 @@ group owned by <code>mailman</code>.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on April 14, 2016.</span>
+<span class="release-info">Release 2.1, documentation updated on August 26, 2016.</span>
 </div>
 <!--End of Navigation Panel-->
 

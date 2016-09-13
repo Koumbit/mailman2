@@ -1,3 +1,10 @@
+mailman (1:2.1.23-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fixes CSRF in user options (CVE-2016-6893, closes: #835970).
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 13 Sep 2016 16:01:59 +0000
+
 mailman (1:2.1.22-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #821367)

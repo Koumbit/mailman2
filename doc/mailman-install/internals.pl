@@ -1,49 +1,45 @@
-# LaTeX2HTML 2008 (1.71)
+# LaTeX2HTML 2002-2-1 (1.71)
 # Associate internals original text with physical files.
 
 
-$key = q/qmail-issues/;
-$ref_files{$key} = "$dir".q|node35.html|; 
+$key = q/postfix-integration/;
+$ref_files{$key} = "$dir".q|node13.html|; 
 $noresave{$key} = "$nosave";
 
-$key = q/exim3-transport/;
-$ref_files{$key} = "$dir".q|node19.html|; 
+$key = q/bsd-issues/;
+$ref_files{$key} = "$dir".q|node49.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/mail-server/;
 $ref_files{$key} = "$dir".q|node11.html|; 
 $noresave{$key} = "$nosave";
 
-$key = q/postfix-integration/;
-$ref_files{$key} = "$dir".q|node13.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/about/;
-$ref_files{$key} = "$dir".q|node51.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/building/;
-$ref_files{$key} = "$dir".q|node6.html|; 
-$noresave{$key} = "$nosave";
-
 $key = q/create-install-dir/;
 $ref_files{$key} = "$dir".q|node5.html|; 
-$noresave{$key} = "$nosave";
-
-$key = q/customizing/;
-$ref_files{$key} = "$dir".q|node39.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/postfix-virtual/;
 $ref_files{$key} = "$dir".q|node14.html|; 
 $noresave{$key} = "$nosave";
 
-$key = q/front/;
-$ref_files{$key} = "$dir".q|node1.html|; 
+$key = q/qmail-issues/;
+$ref_files{$key} = "$dir".q|node35.html|; 
 $noresave{$key} = "$nosave";
 
-$key = q/bsd-issues/;
-$ref_files{$key} = "$dir".q|node49.html|; 
+$key = q/building/;
+$ref_files{$key} = "$dir".q|node6.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/about/;
+$ref_files{$key} = "$dir".q|node51.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/exim3-transport/;
+$ref_files{$key} = "$dir".q|node19.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/customizing/;
+$ref_files{$key} = "$dir".q|node39.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/site-list/;
@@ -52,6 +48,10 @@ $noresave{$key} = "$nosave";
 
 $key = q/troubleshooting/;
 $ref_files{$key} = "$dir".q|node46.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/front/;
+$ref_files{$key} = "$dir".q|node1.html|; 
 $noresave{$key} = "$nosave";
 
 1;

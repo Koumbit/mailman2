@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -809,6 +809,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # check for banned address
         pattern = self.GetBannedPattern(invitee)
         if pattern:
+            syslog('vette', '%s banned invitation: %s (matched: %s)',
+                   self.real_name, invitee, pattern)
             raise Errors.MembershipIsBanned, pattern
         # Hack alert!  Squirrel away a flag that only invitations have, so
         # that we can do something slightly different when an invitation
@@ -1011,6 +1013,12 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # and confirmations.
         pattern = self.GetBannedPattern(email)
         if pattern:
+            if whence:
+                source = ' from %s' % whence
+            else:
+                source = ''
+            syslog('vette', '%s banned subscription: %s%s (matched: %s)',
+                   self.real_name, email, source, pattern)
             raise Errors.MembershipIsBanned, pattern
         # Do the actual addition
         self.addNewMember(email, realname=name, digest=digest,
@@ -1175,6 +1183,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # exception.
         pattern = self.GetBannedPattern(newaddr)
         if pattern:
+            syslog('vette',
+                   '%s banned address change: %s -> %s (matched: %s)',
+                   self.real_name, oldaddr, newaddr, pattern)
             raise Errors.MembershipIsBanned, pattern
         # It's possible they were a member of this list, but choose to change
         # their membership globally.  In that case, we simply remove the old

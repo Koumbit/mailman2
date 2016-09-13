@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -39,6 +39,7 @@ from Mailman.ListAdmin import readMessage
 from Mailman.Cgi import Auth
 from Mailman.htmlformat import *
 from Mailman.Logging.Syslog import syslog
+from Mailman.CSRFcheck import csrf_check
 
 EMPTYSTRING = ''
 NL = '\n'
@@ -57,6 +58,9 @@ if mm_cfg.DISPLAY_HELD_SUMMARY_SORT_BUTTONS in (SSENDERTIME, STIME):
     ssort = mm_cfg.DISPLAY_HELD_SUMMARY_SORT_BUTTONS
 else:
     ssort = SSENDER
+
+AUTH_CONTEXTS = (mm_cfg.AuthListAdmin, mm_cfg.AuthSiteAdmin,
+                 mm_cfg.AuthListModerator)
 
 
 
@@ -122,6 +126,30 @@ def main():
 
     # Make sure the user is authorized to see this page.
     cgidata = cgi.FieldStorage(keep_blank_values=1)
+    try:
+        cgidata.getvalue('adminpw', '')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc = Document()
+        doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
+    # CSRF check
+    safe_params = ['adminpw', 'admlogin', 'msgid', 'sender', 'details']
+    params = cgidata.keys()
+    if set(params) - set(safe_params):
+        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+    else:
+        csrf_checked = True
+    # if password is present, void cookie to force password authentication.
+    if cgidata.getvalue('adminpw'):
+        os.environ['HTTP_COOKIE'] = ''
+        csrf_checked = True
 
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthListModerator,
@@ -200,7 +228,11 @@ def main():
         elif not details:
             # This is a form submission
             doc.SetTitle(_('%(realname)s Administrative Database Results'))
-            process_form(mlist, doc, cgidata)
+            if csrf_checked:
+                process_form(mlist, doc, cgidata)
+            else:
+                doc.addError(
+                    _('The form lifetime has expired. (request forgery check)'))
         # Now print the results and we're done.  Short circuit for when there
         # are no pending requests, but be sure to save the results!
         admindburl = mlist.GetScriptURL('admindb', absolute=1)
@@ -213,15 +245,16 @@ def main():
             doc.AddItem(Link(admindburl,
                              _('Click here to reload this page.')))
             # Put 'Logout' link before the footer
+            doc.AddItem('\n<div align="right"><font size="+2">')
             doc.AddItem(Link('%s/logout' % admindburl,
-                '<div align="right"><font size="+2"><b>%s</b></font></div>' %
-                _('Logout')))
+                '<b>%s</b>' % _('Logout')))
+            doc.AddItem('</font></div>\n')
             doc.AddItem(mlist.GetMailmanFooter())
             print doc.Format()
             mlist.Save()
             return
 
-        form = Form(admindburl)
+        form = Form(admindburl, mlist=mlist, contexts=AUTH_CONTEXTS)
         # Add the instructions template
         if details == 'instructions':
             doc.AddItem(Header(
@@ -294,9 +327,10 @@ def main():
                     ))
             form.AddItem(Center(SubmitButton('submit', _('Submit All Data'))))
         # Put 'Logout' link before the footer
+        doc.AddItem('\n<div align="right"><font size="+2">')
         doc.AddItem(Link('%s/logout' % admindburl,
-            '<div align="right"><font size="+2"><b>%s</b></font></div>' %
-            _('Logout')))
+            '<b>%s</b>' % _('Logout')))
+        doc.AddItem('</font></div>\n')
         doc.AddItem(mlist.GetMailmanFooter())
         print doc.Format()
         # Commit all changes

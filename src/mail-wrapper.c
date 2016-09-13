@@ -74,7 +74,8 @@ main(int argc, char** argv, char** env)
                 fatal(logident, MAIL_ILLEGAL_COMMAND,
                       "Illegal command: %s", argv[1]);
 
-        check_caller(logident, parentgroup);
+        if (getgid() >= 100 && getgid() != 65534)
+                check_caller(logident, parentgroup);
 
         /* If we got here, everything must be OK */
         status = run_script(argv[1], argc, argv, env);

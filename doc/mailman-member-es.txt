@@ -1,8 +1,8 @@
    #GNU Mailman Manual del Suscriptor de Listas Contents About this
    document... About this document...
 
-    Previous Page Up one Level Next Page           GNU Mailman
-                                         Manual del Suscriptor de Listas
+              Previous Page Up one Level Next Page GNU Mailman
+                       Manual del Suscriptor de Listas
      __________________________________________________________________
 
 GNU Mailman Manual del Suscriptor de Listas
@@ -12,7 +12,7 @@ GNU Mailman Manual del Suscriptor de Listas
    terri(en)zone12.com
 
    Release 2.1
-   2 de marzo 2015
+   26 de agosto 2016
 
                                     Prefacio
 
@@ -1470,7 +1470,7 @@ hide)
 
                             Sobre este documento...
 
-   GNU Mailman Manual del Suscriptor de Listas, 2 de marzo 2015, Release
+   GNU Mailman Manual del Suscriptor de Listas, 26 de agosto 2016, Release
    2.1
 
    This document was generated using the LaTeX2HTML translator.
@@ -1485,8 +1485,8 @@ hide)
    contributed by Christopher Petrilli.
      __________________________________________________________________
 
-    Previous Page Up one Level Next Page           GNU Mailman
-                                         Manual del Suscriptor de Listas
+              Previous Page Up one Level Next Page GNU Mailman
+                       Manual del Suscriptor de Listas
      __________________________________________________________________
 
-   Release 2.1, documentation updated on 2 de marzo 2015.
+   Release 2.1, documentation updated on 26 de agosto 2016.

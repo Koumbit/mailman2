@@ -54,7 +54,7 @@ No = no = Off = off = False
 # disable Mailman's logo footer altogther, hack
 # Mailman/htmlformat.py:MailmanLogo(), which also contains the hardcoded links
 # and image names.
-IMAGE_LOGOS = '/icons/'
+IMAGE_LOGOS = '/doc/mailman/images/'
 
 # The name of the Mailman favicon
 SHORTCUT_ICON = 'mm-icon.png'
@@ -63,6 +63,12 @@ SHORTCUT_ICON = 'mm-icon.png'
 MAILMAN_URL = 'http://www.gnu.org/software/mailman/index.html'
 #MAILMAN_URL = 'http://www.list.org/'
 #MAILMAN_URL = 'http://mailman.sf.net/'
+
+# The site logo/text presence, site text, site url and site logo
+SITE_LINK = Yes
+SITE_TEXT = 'Debian Powered'
+SITE_URL = 'https://www.debian.org/'
+SITE_LOGO = '/images/mailman/debianpowered.png'
 
 # Mailman needs to know about (at least) two fully-qualified domain names
 # (fqdn); 1) the hostname used in your urls, and 2) the hostname used in email
@@ -85,7 +91,7 @@ MAILMAN_URL = 'http://www.gnu.org/software/mailman/index.html'
 # because otherwise the default mappings won't be correct.
 DEFAULT_EMAIL_HOST = '@MAILHOST@'
 DEFAULT_URL_HOST = '@URLHOST@'
-DEFAULT_URL_PATTERN = 'http://%s/mailman/'
+DEFAULT_URL_PATTERN = 'http://%s/cgi-bin/mailman/'
 
 # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
 # sites may have the former in their mm_cfg.py files.  If so, we'll believe
@@ -218,6 +224,13 @@ add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 # -owners address, unless the message is explicitly approved.
 KNOWN_SPAMMERS = []
 
+# The header_filter_rules in Privacy options... -> Spam filters are matched as
+# normalized unicodes against normalized unicode headers.  This setting
+# determines the normalization form.  It is one of 'NFC', 'NFD', 'NFKC' or
+# 'NFKD'.  See
+# https://docs.python.org/2/library/unicodedata.html#unicodedata.normalize
+NORMALIZE_FORM = 'NFKC'
+
 
 
 #####
@@ -306,7 +319,7 @@ DEFAULT_SUBSCRIBE_OR_INVITE = No
 # interpolate the name of the list into this.  You can also include a
 # "%(hostname)s" in the string, into which Mailman will interpolate
 # the host name (usually DEFAULT_URL_HOST).
-PUBLIC_ARCHIVE_URL = 'http://%(hostname)s/pipermail/%(listname)s'
+PUBLIC_ARCHIVE_URL = 'http://%(hostname)s/pipermail/%(listname)s/'
 
 # Are archives on or off by default?
 DEFAULT_ARCHIVE = On
@@ -469,6 +482,12 @@ PUBLIC_MBOX = No
 #DELIVERY_MODULE = 'Sendmail'
 DELIVERY_MODULE = 'SMTPDirect'
 
+# Sometimes there are 'low level' smtplib failures that are difficult to
+# debug.  To enable very verbose debugging info from smtplib to Mailman's
+# error log, set the following to 1.  This will only work if
+# DELIVERY_MODULE = 'SMTPDirect' and Python is >= 2.4.
+SMTPLIB_DEBUG_LEVEL = 0
+
 # MTA should name a module in Mailman/MTA which provides the MTA specific
 # functionality for creating and removing lists.  Some MTAs like Exim can be
 # configured to automatically recognize new lists, in which case the MTA
@@ -556,6 +575,22 @@ SMTPPORT = 0                                      # default from smtplib
 # when DELIVERY_MODULE is 'Sendmail'.
 SENDMAIL_CMD = '/usr/lib/sendmail'
 
+# SMTP authentication for DELIVERY_MODULE = 'SMTPDirect'.  To enable SASL
+# authentication for SMTPDirect, set SMTP_AUTH = Yes and provide appropriate
+# settings for SMTP_USER and SMTP_PASSWD.
+SMTP_AUTH = No
+SMTP_USER = ''
+SMTP_PASSWD = ''
+
+# If using SASL authentication (SMTP_AUTH = Yes), set the following to Yes
+# to also use TLS. This has no effect if SMTP_AUTH = No.
+SMTP_USE_TLS = No
+
+# When using TLS the following should be set to the hostname that should be
+# used in order to identify Mailman to the SMTP server.  By default, it
+# uses DEFAULT_URL_HOST. Normally, you should not change this.
+SMTP_HELO_HOST = DEFAULT_URL_HOST
+
 # Set these variables if you need to authenticate to your NNTP server for
 # Usenet posting or reading.  If no authentication is necessary, specify None
 # for both variables.
@@ -594,8 +629,10 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # broken and even if the outgoing message is resigned.  However, some sites
 # may wish to remove these headers.  Possible values and meanings are:
 # No, 0, False -> do not remove headers.
-# Yes, 1, True -> remove headers only if the list's from_is_list setting is 1.
+# Yes, 1, True -> remove headers only if we are munging the from header due
+#                 to from_is_list or dmarc_moderation_action.
 # 2 -> always remove headers.
+# 3 -> always remove, rename and preserve original DKIM headers.
 REMOVE_DKIM_HEADERS = No
 
 # All `normal' messages which are delivered to the entire list membership go
@@ -1665,7 +1702,7 @@ RETRYQUEUE_DIR  = os.path.join(QUEUE_DIR, 'retry')
 MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
 
 # Other useful files
-PIDFILE = os.path.join(DATA_DIR, 'master-qrunner.pid')
+PIDFILE = "/var/run/mailman/mailman.pid"
 SITE_PW_FILE = os.path.join(DATA_DIR, 'adm.pw')
 LISTCREATOR_PW_FILE = os.path.join(DATA_DIR, 'creator.pw')
 

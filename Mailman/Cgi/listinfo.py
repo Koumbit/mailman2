@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -58,7 +58,19 @@ def main():
 
     # See if the user want to see this page in other language
     cgidata = cgi.FieldStorage()
-    language = cgidata.getvalue('language')
+    try:
+        language = cgidata.getvalue('language')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc = Document()
+        doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     if not Utils.IsLanguage(language):
         language = mlist.preferred_language
     i18n.set_language(language)
@@ -88,7 +100,11 @@ def listinfo_overview(msg=''):
     listnames.sort()
 
     for name in listnames:
-        mlist = MailList.MailList(name, lock=0)
+        try:
+            mlist = MailList.MailList(name, lock=0)
+        except Errors.MMUnknownListError:
+            # The list could have been deleted by another process.
+            continue
         if mlist.advertised:
             if mm_cfg.VIRTUAL_HOST_OVERVIEW and (
                    mlist.web_page_url.find('/%s/' % hostname) == -1 and

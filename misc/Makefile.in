@@ -57,7 +57,10 @@ EMAILPKG=	@EMAILPKG@
 JACODECSPKG=	@JACODECSPKG@
 KOCODECSPKG=	@KOCODECSPKG@
 
-PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
+#Debian note (LEM): we take the Japanese and Korean codecs from other
+#Debian packages, but not email because the one in Python 2.4 doesn't work
+#with Mailman; when Mailman upgrades to email 3.0.x, we can try again.
+PACKAGES= $(EMAILPKG)
 
 # Modes for directories and executables created by the install
 # process.  Default to group-writable directories but

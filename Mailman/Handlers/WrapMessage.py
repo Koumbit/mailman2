@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 2013-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -34,6 +34,7 @@ KEEPERS = ('to',
            'in-reply-to',
            'references',
            'x-mailman-approved-at',
+           'date',
           )
 
 

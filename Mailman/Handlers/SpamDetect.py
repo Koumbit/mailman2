@@ -27,6 +27,7 @@ TBD: This needs to be made more configurable and robust.
 
 import re
 
+from unicodedata import normalize
 from email.Errors import HeaderParseError
 from email.Header import decode_header
 from email.Utils import parseaddr
@@ -36,6 +37,7 @@ from Mailman import Errors
 from Mailman import i18n
 from Mailman import Utils
 from Mailman.Handlers.Hold import hold_for_approval
+from Mailman.Logging.Syslog import syslog
 
 try:
     True, False
@@ -63,11 +65,11 @@ _ = i18n._
 
 
 def getDecodedHeaders(msg, cset='utf-8'):
-    """Returns a string containing all the headers of msg, unfolded and
-    RFC 2047 decoded and encoded in cset.
+    """Returns a unicode containing all the headers of msg, unfolded and
+    RFC 2047 decoded, normalized and separated by new lines.
     """
 
-    headers = ''
+    headers = u''
     for h, v in msg.items():
         uvalue = u''
         try:
@@ -86,7 +88,8 @@ def getDecodedHeaders(msg, cset='utf-8'):
                 # unicode it as iso-8859-1 which may result in a garbled
                 # mess, but we have to do something.
                 uvalue += unicode(frag, 'iso-8859-1', 'replace')
-        headers += '%s: %s\n' % (h, uvalue.encode(cset, 'replace'))
+        uhdr = h.decode('us-ascii', 'replace')
+        headers += u'%s: %s\n' % (h, normalize(mm_cfg.NORMALIZE_FORM, uvalue))
     return headers
 
 
@@ -150,7 +153,7 @@ error, contact the mailing list owner at %(listowner)s."""))
     # Now do header_filter_rules
     # TK: Collect headers in sub-parts because attachment filename
     # extension may be a clue to possible virus/spam.
-    headers = ''
+    headers = u''
     # Get the character set of the lists preferred language for headers
     lcset = Utils.GetCharSet(mlist.preferred_language)
     for p in msg.walk():
@@ -164,7 +167,17 @@ error, contact the mailing list owner at %(listowner)s."""))
             # ignore 'empty' patterns
             if not pattern.strip():
                 continue
-            if re.search(pattern, headers, re.IGNORECASE|re.MULTILINE):
+            pattern = Utils.xml_to_unicode(pattern, lcset)
+            pattern = normalize(mm_cfg.NORMALIZE_FORM, pattern)
+            try:
+                mo = re.search(pattern,
+                               headers,
+                               re.IGNORECASE|re.MULTILINE|re.UNICODE)
+            except (re.error, TypeError):
+                syslog('error',
+                       'ignoring header_filter_rules invalid pattern: %s',
+                       pattern)
+            if mo:
                 if action == mm_cfg.DISCARD:
                     raise Errors.DiscardMessage
                 if action == mm_cfg.REJECT:
