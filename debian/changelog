@@ -1,3 +1,10 @@
+mailman (1:2.1.15-1+deb7u2) wheezy-security; urgency=high
+
+  * CVE-2016-6893: Fix CSRF vulnerability associated in the user options page
+    which could allow an attacker to obtain a user's password. (Closes: #835970)
+
+ -- Chris Lamb <lamby@debian.org>  Thu, 01 Sep 2016 19:51:15 +0100
+
 mailman (1:2.1.15-1+deb7u1) wheezy-security; urgency=high
 
   * Fix security issue: path traversal through local_part.
