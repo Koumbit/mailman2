@@ -11,3 +11,4 @@
 90_gettext_errors.patch
 91_utf8.patch
 92_CVE-2015-2775.patch
+93_CVE-2016-6893.patch
