@@ -188,6 +188,10 @@ PATTERNS = [
     (_c('A message that you sent was rejected'),
      _c('This is a copy of your message'),
      _c('\s(?P<addr>[^\s@]+@[^\s@]+)')),
+    # MailEnable
+    (_c('Message could not be delivered to some recipients.'),
+     _c('Message headers follow'),
+     _c('Recipient: \[SMTP:(?P<addr>[^\s@]+@[^\s@]+)\]')),
     # Next one goes here...
     ]
 

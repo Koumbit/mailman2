@@ -35,6 +35,8 @@ def _get_ctype_charset():
 
 if not mm_cfg.DISABLE_COMMAND_LOCALE_CSET:
     _ctype_charset = _get_ctype_charset()
+else:
+    _ctype_charset = None
 
 
 
@@ -108,7 +110,7 @@ def _(s, frame=1):
 
 def tolocale(s):
     global _ctype_charset
-    if isinstance(s, UnicodeType):
+    if isinstance(s, UnicodeType) or _ctype_charset is None:
         return s
     source = _translation.charset ()
     if not source:

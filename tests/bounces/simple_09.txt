@@ -22,6 +22,6 @@ A message that you sent could not be delivered to one or more of
 its recipients. This is a permanent error. The following addresses
 failed:
 
-RobotMail@auto-walther.de:
+userx@example.de:
   quota exceeded
 

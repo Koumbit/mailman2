@@ -18,10 +18,10 @@ X-Songbird-From: dsicspiibs.spi-internet@socgen.com
 
 ***********************************************
 Votre message n'a pas pu etre delivre a
-duke@ald.socgen.com
+userx@example.com
 
 ***********************************************
 Your message could not be delivered to
-duke@ald.socgen.com
+userx@example.com
 
 ***********************************************

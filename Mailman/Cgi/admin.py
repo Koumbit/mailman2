@@ -1188,8 +1188,12 @@ def membership_options(mlist, subcat, cgidata, doc, form):
                 continue
             start = chunkmembers[i*chunksz]
             end = chunkmembers[min((i+1)*chunksz, last)-1]
-            link = Link(url + 'chunk=%d' % i + findfrag,
-                        _('from %(start)s to %(end)s'))
+            thisurl = url + 'chunk=%d' % i + findfrag
+            if isinstance(thisurl, unicode):
+                thisurl = thisurl.encode(
+                                 Utils.GetCharSet(mlist.preferred_language),
+                                 errors='ignore')
+            link = Link(thisurl, _('from %(start)s to %(end)s'))
             buttons.append(link)
         buttons = UnorderedList(*buttons)
         container.AddItem(footer + buttons.Format() + '<p>')
@@ -1211,7 +1215,7 @@ def mass_subscribe(mlist, container):
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
     table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
     table.AddRow([
-        Label(_('Send welcome messages to new subscribees?')),
+        Label(_('Send welcome messages to new subscribers?')),
         RadioButtonArray('send_welcome_msg_to_this_batch',
                          (_('No'), _('Yes')),
                          mlist.send_welcome_msg,

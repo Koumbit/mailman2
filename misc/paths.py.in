@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -61,6 +61,11 @@ sys.path.insert(0, os.path.join(prefix, 'pythonlib'))
 sitedir = os.path.join(sys.prefix, 'lib', 'python'+sys.version[:3],
                        'site-packages')
 sys.path.append(sitedir)
+
+# Include Python's dist-packages directory.
+distdir = os.path.join(sys.prefix, 'lib', 'python'+sys.version[:3],
+                       'dist-packages')
+sys.path.append(distdir)
 
 
 # In a normal interactive Python environment, the japanese.pth and korean.pth

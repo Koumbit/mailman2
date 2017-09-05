@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -51,8 +51,14 @@ class TestSentMessage1(EmailBase):
         msgid = qmsg['message-id']
         unless(msgid.startswith('<mailman.'))
         unless(msgid.endswith('._xtest@dom.ain>'))
-        eq(qmsg['sender'], '_xtest-bounces@dom.ain')
-        eq(qmsg['errors-to'], '_xtest-bounces@dom.ain')
+        # The Sender: header is optional and addresses can be VERPed
+        if self._mlist.include_sender_header:
+            sender = qmsg['sender']
+            unless(sender.startswith('"_xtest" <_xtest-bounces'))
+            unless(sender.endswith('@dom.ain>'))
+        eto = qmsg['errors-to']
+        unless(eto.startswith('_xtest-bounces'))
+        unless(eto.endswith('@dom.ain'))
         eq(qmsg['x-beenthere'], '_xtest@dom.ain')
         eq(qmsg['x-mailman-version'], Version.VERSION)
         eq(qmsg['precedence'], 'bulk')

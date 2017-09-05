@@ -11,7 +11,7 @@ GNU Mailman - List Member Manual
    terri(at)zone12.com
 
    Release 2.1
-   August 26, 2016
+   June 2, 2017
 
                                   Front Matter
 
@@ -1270,7 +1270,7 @@ option)
 
                             About this document ...
 
-   GNU Mailman - List Member Manual, August 26, 2016, Release 2.1
+   GNU Mailman - List Member Manual, June 2, 2017, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1287,4 +1287,4 @@ option)
     Previous Page Up one Level Next Page GNU Mailman - List Member Manual
      __________________________________________________________________
 
-   Release 2.1, documentation updated on August 26, 2016.
+   Release 2.1, documentation updated on June 2, 2017.

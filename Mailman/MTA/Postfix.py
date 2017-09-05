@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -131,13 +131,21 @@ def _addvirtual(mlist, fp):
     # And the site list posting address.
     siteaddr = Utils.get_site_email(mlist.host_name)
     sitedest = Utils.ParseEmail(siteaddr)[0]
+    # And the site list -owner address.
+    siteowneraddr = Utils.get_site_email(mlist.host_name, extra='owner')
+    siteownerdest = Utils.ParseEmail(siteowneraddr)[0]
     if mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN:
         loopdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
         sitedest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
-    # If the site list's host_name is a virtual domain, adding it to the
-    # SITE ADDRESSES will duplicate the list posting entry, so comment it.
-    if _isvirtual(MailList(mm_cfg.MAILMAN_SITE_LIST, lock=False)):
+        siteownerdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
+    # If the site list's host_name is a virtual domain, adding the list and
+    # owner addresses to the SITE ADDRESSES will duplicate the entries in the
+    # stanza for the list.  Postfix doesn't like dups so we try to comment them
+    # here, but only for the actual site list domain.
+    if (MailList(mm_cfg.MAILMAN_SITE_LIST, lock=False).host_name.lower() ==
+            hostname.lower()):
         siteaddr = '#' + siteaddr
+        siteowneraddr = '#' + siteowneraddr
     # Seek to the end of the text file, but if it's empty write the standard
     # disclaimer, and the loop catch address and site address.
     fp.seek(0, 2)
@@ -156,11 +164,14 @@ def _addvirtual(mlist, fp):
 # LOOP ADDRESSES END
 
 # We also add the site list address in each virtual domain as that address
-# is exposed on admin and listinfo overviews.
+# is exposed on admin and listinfo overviews, and we add the site list-owner
+# address as it is exposed in the list created email notice.
+
 # SITE ADDRESSES START
 %s\t%s
+%s\t%s
 # SITE ADDRESSES END
-""" % (loopaddr, loopdest, siteaddr, sitedest)
+""" % (loopaddr, loopdest, siteaddr, sitedest, siteowneraddr, siteownerdest)
     # The text file entries get a little extra info
     print >> fp, '# STANZA START:', listname
     print >> fp, '# CREATED:', time.ctime(time.time())
@@ -185,9 +196,20 @@ def _check_for_virtual_loopaddr(mlist, filename):
     loopdest = Utils.ParseEmail(loopaddr)[0]
     siteaddr = Utils.get_site_email(mlist.host_name)
     sitedest = Utils.ParseEmail(siteaddr)[0]
+    siteowneraddr = Utils.get_site_email(mlist.host_name, extra='owner')
+    siteownerdest = Utils.ParseEmail(siteowneraddr)[0]
     if mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN:
         loopdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
         sitedest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
+        siteownerdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
+    # If the site list's host_name is a virtual domain, adding the list and
+    # owner addresses to the SITE ADDRESSES will duplicate the entries in the
+    # stanza for the list.  Postfix doesn't like dups so we try to comment them
+    # here, but only for the actual site list domain.
+    if (MailList(mm_cfg.MAILMAN_SITE_LIST, lock=False).host_name.lower() ==
+            mlist.host_name.lower()):
+        siteaddr = '#' + siteaddr
+        siteowneraddr = '#' + siteowneraddr
     infp = open(filename)
     omask = os.umask(007)
     try:
@@ -237,6 +259,7 @@ def _check_for_virtual_loopaddr(mlist, filename):
             if line.startswith('# SITE ADDRESSES END'):
                 # It hasn't
                 print >> outfp, '%s\t%s' % (siteaddr, sitedest)
+                print >> outfp, '%s\t%s' % (siteowneraddr, siteownerdest)
                 outfp.write(line)
                 break
             elif line.startswith(siteaddr) or line.startswith('#' + siteaddr):

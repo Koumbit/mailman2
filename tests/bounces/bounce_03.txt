@@ -18,14 +18,14 @@ This message was created automatically by mail delivery
 software. A message that you sent could not be delivered
 to all of its recipients.
 
-The following message, addressed to 'james@jeborall.demon.co.uk',
+The following message, addressed to 'userx@example.uk',
 failed because it has not been collected after 30 days
 
 Here is a copy of the first part of the message, including
 all headers.
 
 ---- START OF RETURNED MESSAGE ----
-Received: from punt-2.mail.demon.net by mailstore for james@jeborall.demon.co.uk
+Received: from punt-2.mail.demon.net by mailstore for userx@example.uk
           id 1035738253:20:01723:229; Sun, 27 Oct 2002 17:04:13 GMT
 Received: from mail.python.org ([12.155.117.29]) by punt-2.mail.demon.net
            id aa2004462; 27 Oct 2002 17:02 GMT
@@ -80,20 +80,6 @@ Content-description: Today's Topics (14 msgs)
 
 Today's Topics:
 
-   1. RELEASED Mailman 2.1 beta 4 (Barry A. Warsaw)
-   2. bin/arch not working (Aparajita Fishman)
-   3. Can't receive mail (Aparajita Fishman)
-   4. I have the same problem with the list not sending mail..but
-       getting confirmations... (jared sanders)
-   5. Re: RELEASED Mailman 2.1 beta 4 (Jeremy Portzer)
-   6. Re: I have the same problem with the list not sending mail..but getting confirmations... (Aparajita Fishman)
-   7. 2.1b4 problem (Fuzzy)
-   8. inetd doesn't start mailman...? (Nick Arnett)
-   9. Re: rejecting non-subscriber postings (G. Armour Van Horn)
-  10. Re: No public lists? (Armando Soto Baeza)
-  11. Re: No public lists? (Armando Soto Baeza)
-  12. Re: I have the same problem with the list not sending mail..but getting confirmations... (Armando Soto Baeza)
-  13. Re: Can't subscribe via web (Armando Soto Baeza)
 
 --10.0.11.1.506.27298.1035738004.364.17787
 Content-type: multipart/digest; boundary="__--__--"

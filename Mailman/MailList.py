@@ -634,6 +634,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             if e.errno <> errno.ENOENT: raise
             # The file doesn't exist yet
             return None, e
+        now = int(time.time())
         try:
             try:
                 dict = loadfunc(fp)
@@ -645,8 +646,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         finally:
             fp.close()
         # Update the timestamp.  We use current time here rather than mtime
-        # so the test above might succeed the next time.
-        self.__timestamp = int(time.time())
+        # so the test above might succeed the next time.  And we get the time
+        # before unpickling in case it takes more than a second.  (LP: #266464)
+        self.__timestamp = now
         return dict, None
 
     def Load(self, check_version=True):

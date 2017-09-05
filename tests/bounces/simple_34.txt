@@ -10,7 +10,7 @@ Message-ID: <A6B3019F-262A-4C49-9ACF-E05543110CA6@mailcluster.fastdnsservers.com
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 From: <mailer-daemon@mailcluster.fastdnsservers.com>
-To: <news-bounces@lists.xxx.com>
+To: <news-bounces@lists.example.com>
 
 Your message did not reach some or all of the intended recipients.
 
@@ -19,11 +19,11 @@ Your message did not reach some or all of the intended recipients.
 
 The following recipient(s) could not be reached:
 
-roland@xxx.com
+roland@example.com
    Error Type: SMTP
    Remote server (216.122.20.147) issued an error.
-   hMailServer sent: RCPT TO:<roland@xxx.com>
-   Remote server replied: 550 5.1.1 <roland@xxx.com>... User unknown
+   hMailServer sent: RCPT TO:<roland@example.com>
+   Remote server replied: 550 5.1.1 <roland@example.com>... User unknown
 
 
 

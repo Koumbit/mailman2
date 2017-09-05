@@ -67,7 +67,7 @@ This is an automatically generated Delivery Status Notification.
 
 Delivery to the following recipients failed.
 
-       horu@ccc-ces.com
+       userx@example.com
 
 
 
@@ -79,7 +79,7 @@ Reporting-MTA: dns;cccclyna01.ccc.coopcam.com
 Received-From-MTA: dns;cccclyvw01.ccc.coopcam.com
 Arrival-Date: Sun, 4 Jun 2006 21:43:21 -0500
 
-Final-Recipient: rfc822;horu@ccc-ces.com
+Final-Recipient: rfc822;userx@example.com
 Action: failed
 Status: 5.1.1
 
@@ -94,10 +94,10 @@ Received: from sb7.songbird.com ([208.184.79.137]) by
 	Sun, 04 Jun 2006 21:43:20 -0500
 Received: from sb7.songbird.com (sb7.songbird.com [127.0.0.1])by 
 	sb7.songbird.com (8.12.11.20060308/8.12.11) with ESMTP id
-	k552hf0f018557for <horu@ccc-ces.com>; Sun, 4 Jun 2006 19:43:41 -0700
+	k552hf0f018557for <userx@example.com>; Sun, 4 Jun 2006 19:43:41 -0700
 Subject: The results of your email commands
 From: gpc-talk-bounces@grizz.org
-To: horu@ccc-ces.com
+To: userx@example.com
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
 	boundary="===============1628420505=="
@@ -133,127 +133,15 @@ original message.
 
 - Results:
     Ignoring non-text/plain MIME parts
-    horu@ccc-ces.com is not a member of the GPC-talk mailing list
+    userx@example.com is not a member of the GPC-talk mailing list
 
-- Unprocessed:
-    test hym
-    Hi,
-    V " A G R A
-    S 0 M &
-    P R 0 Z & C
-    V A L " U M
-    C " A L i S
-    L E V " T R A
-    A M B " E N
-    M E R " D i A
-    X & N A X
-    all 50 % off - http://www.serromocca.com
-      _____ =20
-    undamaged; and the dragon was dead. What that meant they had not yet=20
-    realized. They gathered in mournful crowds upon the western shores,=20
-    shivering in the cold wind, and their first complaints and anger were=20
-    against the Master, who had left the town so soon, while some were still
-    willing to defend it. He may have a good head for business-especially=20
-    his own business, some murmured, but he is no good when anything=20
-
-- Done.
 
 
 --===============1628420505==
 Content-Type: message/rfc822
 MIME-Version: 1.0
 
-Return-Path: <horu@ccc-ces.com>
-Received: from comparinc.com (124.106.152.68.pldt.net [124.106.152.68] (may be
-	forged)) by sb7.songbird.com (8.12.11.20060308/8.12.11) with SMTP id
-	k552hT6b018480
-	for <gpc-talk-unsubscribe@grizz.org>; Sun, 4 Jun 2006 19:43:33 -0700
-Message-ID: <000001c68849$b775f930$a3b9a8c0@now68>
-Reply-To: "Jodene Horn" <horu@ccc-ces.com>
-From: "Jodene Horn" <horu@ccc-ces.com>
-To: gpc-talk-unsubscribe@grizz.org
-Subject: test hym
-Date: Sun, 4 Jun 2006 19:42:41 -0700
-MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_000_0001_01C6880F.0B172130"
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1106
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1106
-X-SongbirdInformation: support@songbird.com for more information
-X-Songbird: Clean
-X-Songbird-From: horu@ccc-ces.com
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0001_01C6880F.0B172130
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-V " A G R A
-S 0 M &
-P R 0 Z & C
-V A L " U M
-C " A L i S
-L E V " T R A
-A M B " E N
-M E R " D i A
-X & N A X
-
-all 50 % off - http://www.serromocca.com
-
-
-  _____ =20
-
-undamaged; and the dragon was dead. What that meant they had not yet=20
-realized. They gathered in mournful crowds upon the western shores,=20
-shivering in the cold wind, and their first complaints and anger were=20
-against the Master, who had left the town so soon, while some were still
-willing to defend it. He may have a good head for business-especially=20
-his own business, some murmured, but he is no good when anything=20
-
-
-------=_NextPart_000_0001_01C6880F.0B172130
-Content-Type: text/html;
-	charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML><HEAD>
-<META http-equiv=3DContent-Type content=3D"text/html; =
-charset=3Dus-ascii">
-<META content=3D"MSHTML 6.00.2800.1106" name=3DGENERATOR>
-<STYLE></STYLE>
-</HEAD>
-<BODY bgColor=3D#ffffff>
-<DIV>Hi,<BR>
-<BR>
-<B>V " A G R A</B><BR>
-S 0 M &<BR>
-P R 0 Z & C<BR>
-<STRONG>V A L " U M</STRONG><BR>
-<B>C " A L i S</B><BR>
-L E V " T R A<BR>
-A M B " E N<BR>
-M E R " D i A<BR>
-X & N A X<BR>
-<BR>
-all 50 % off - <A =
-href=3D"http://www.serromocca.com">http://www.serromocca.com</A><BR>
-<BR>
-</DIV>
-<HR>
-<DIV>undamaged; and the dragon was dead. What that meant they had not =
-yet <BR>realized. They gathered in mournful crowds upon the western =
-shores, <BR>shivering in the cold wind, and their first complaints and =
-anger were <BR>against the Master, who had left the town so soon, while =
-some were still <BR>willing to defend it. He may have a good head for =
-business-especially <BR>his own business, some murmured, but he is no =
-good when anything <BR></DIV></BODY></HTML>
+Message removed
 ------=_NextPart_000_0001_01C6880F.0B172130--
 
 --===============1628420505==--

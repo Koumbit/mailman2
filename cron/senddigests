@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,7 +28,12 @@ Options:
     -l listname
     --listname=listname
         Send the digest for the given list only, otherwise the digests for all
-        lists are sent out.
+        lists are sent out.  May be repeated to do multiple lists.
+
+    -e listname
+    --exceptlist listname
+        Don't send the digest for the given list.  May be repeated to skip
+        multiple lists.
 """
 
 import os
@@ -63,22 +68,31 @@ def usage(code, msg=''):
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'hl:', ['help', 'listname='])
+        opts, args = getopt.getopt(sys.argv[1:], 'hl:e:',
+                                   ['help', 'listname=', 'exceptlist='])
     except getopt.error, msg:
         usage(1, msg)
 
     if args:
         usage(1)
 
+    exceptlists = []
     listnames = []
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             usage(0)
         elif opt in ('-l', '--listname'):
             listnames.append(arg)
+        elif opt in ('-e', '--exceptlist'):
+            exceptlists.append(arg)
 
     if not listnames:
         listnames = Utils.list_names()
+    for listname in exceptlists:
+        try:
+            listnames.remove(listname)
+        except ValueError:
+            pass
 
     for listname in listnames:
         mlist = MailList.MailList(listname, lock=0)

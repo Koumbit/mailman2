@@ -5,6 +5,105 @@ Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.24 (02-Jun-2017)
+
+  Security
+
+    - A most likely unexploitable XSS attach that relies on the Mailman web
+      server passing a crafted Host: header to the CGI environment has been
+      fixed.  Apache for one is not vulnerable.  Thanks to Alqnas Eslam.
+
+  New Features
+
+    - There is a new RCPT_BASE64_HEADER_NAME setting.  If this is set to a
+      non-empty string, that string is the name of a header that will be added
+      to personalized and VERPed deliveries with value equal to the base64
+      encoding of the recipient's email address.  This is intended to enable
+      identification of the recipient otherwise redacted from "spam report"
+      feedback loop messages.
+
+    - cron/senddigests has a new -e/--exceptlist option to send pending
+      digests for all but a named list.  (LP: #1619770)
+
+    - The values for DEFAULT_DIGEST_FOOTER and DEFAULT_MSG_FOOTER have been
+      changed to use a standard signature separator for DEFAULT_MSG_FOOTER
+      and to remove the unneded line of underscores from DEFAULT_DIGEST_FOOTER.
+      (LP: #266269)
+
+  i18n
+
+    - The Polish html templates have been recoded to use html entities
+      instead of non-ascii characters.
+
+    - The Basque (Euskara) translation has been updated by Gari Araolaza.
+
+    - The German "details for personalize" page has been updated by
+      Christian F Buser.
+
+    - The Japanese translation has been updated by Yasuhito FUTATSUKI.
+
+  Bug fixes and other patches
+
+    - The list-owner@virtual.domain addresses are now added to virtual-mailman
+      as they are exposed in 'list created' emails.  (LP: 1694384)
+
+    - The 'list run by' addresses in web page footers are now just the
+      list-owner address.  (LP: #1694384)
+
+    - Changed member_verbosity_threshold from a >= test to a strictly > test
+      to avoid the issue of moderating every post when the threshold = 1.
+      (LP: #1693366)
+
+    - Subject prefixing has been improved to always have a space between
+      the prefix and the subject even with non-ascii in the prefix.  This
+      will sometimes result in two spaces when the prefix is non-ascii but
+      the subject is ascii, but this is the lesser evil.  (LP: #1525954)
+
+    - Treat message and digest headers and footers as empty if they contain
+      only whitespace.  (LP: #1673307)
+
+    - Ensured that added message and digest headers and footers always have
+      a terminating new-line.  (LP: #1670033)
+
+    - Fixed an uncaught TypeError in the subscribe CGI.  (LP: #1667215)
+
+    - Added recognition for a newly seen mailEnable bounce.
+
+    - Fixed an uncaught NotAMemberError when a member is removed before a
+      probe bounce for the member is returned.  (LP: #1664729)
+
+    - Fixed a TypeError thrown in the roster CGI when called with a listname
+      containing a % character.  (LP: #1661810)
+
+    - Fixed a NameError issue in bin/add_members with
+      DISABLE_COMMAND_LOCALE_CSET = yes.  (LP: #1647450)
+
+    - The CleanseDKIM handler has been removed from OWNER_PIPELINE.  It isn't
+      needed there and has adverse DMARC implications for messages to -owner
+      of an anonymous list.  (LP: #1645901)
+
+    - Fixed an issue with properly RFC 2047 encoding the display name in the
+      From: header for messages with DMARC mitigations.  (LP: #1643210)
+
+    - Fixed an issue causing UnicodeError in sending digests following a
+      change of a list's preferred_language.  (LP: #1644356)
+
+    - Enhanced the fix for race conditions in MailList().Load().  (LP: #266464)
+
+    - Fixed a typo in Utils.py that could have resulted in a NameError in
+      logging an unlikely occurrence.  (LP: #1637745)
+
+    - Fixed a bug which created incorrect "view more members" links at the
+      bottom of the admin Membership List pages.  (LP: #1637061)
+
+    - The 2.1.23 fix for LP: #1604544 only fixed the letter links at the top
+      of the Membership List.  The links at the bottom have now been fixed.
+
+    - paths.py now adds dist-packages as well as site-packages to sys.path.
+      (LP: #1621172)
+
+    - INIT INFO has been added to the sample init.d script.  (LP: #1620121)
+
 2.1.23 (27-Aug-2016)
 
   Security

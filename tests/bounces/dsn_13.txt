@@ -40,7 +40,7 @@ This is an automatically generated Delivery Status Notification.
 
 Delivery to the following recipients failed.
 
-       marcooherbst@cardinal.com
+       userx@example.com
 
 
 
@@ -53,7 +53,7 @@ Reporting-MTA: dns;DUBCONN01.cahapps.net
 Received-From-MTA: dns;smtp.cardhealth.com
 Arrival-Date: Wed, 22 Mar 2006 15:43:26 -0500
 
-Final-Recipient: rfc822;marcooherbst@cardinal.com
+Final-Recipient: rfc822;userx@example.com
 Action: failed
 Status: 5.1.1
 
@@ -78,10 +78,10 @@ X-IronPort-AV: i="4.03,119,1141621200"; d="scan'208,217";
 	a="85180828:sNHT33494874"
 Received: from sb7.songbird.com (sb7.songbird.com [127.0.0.1]) by
 	sb7.songbird.com (8.12.11/8.12.11) with ESMTP id k2MKhO3d010225
-	for <marcooherbst@cardinal.com>; Wed, 22 Mar 2006 12:43:24 -0800
+	for <userx@example.com>; Wed, 22 Mar 2006 12:43:24 -0800
 Subject: Re: Duhod86 news
 From: <wed_ride-owner@grizz.org>
-To: <marcooherbst@cardinal.com>
+To: <userx@example.com>
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
 	boundary="===============0094818700=="
@@ -120,192 +120,9 @@ Content-Transfer-Encoding: 7bit
 Content-Type: message/rfc822
 MIME-Version: 1.0
 
-Return-Path: <marcooherbst@cardinal.com>
-Received: from cardinal.com (co-217-129-109-80.netvisao.pt [217.129.109.80]
-	(may be forged))
-	by sb7.songbird.com (8.12.11/8.12.11) with SMTP id k2MKhEj4010189
-	for <wed_ride@grizz.org>; Wed, 22 Mar 2006 12:43:15 -0800
-Message-ID: <000001c64df1$1d48df90$4eb2a8c0@pzi68>
-Reply-To: "Marco Herbst" <marcooherbst@cardinal.com>
-From: "Marco Herbst" <marcooherbst@cardinal.com>
-To: wed_ride@grizz.org
-Subject: Re: Duhod86 news
-Date: Wed, 22 Mar 2006 15:42:20 -0500
-MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_000_0001_01C64DC7.3472D790"
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1106
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1106
-X-SongbirdInformation: support@songbird.com for more information
-X-Songbird: Clean
-X-Songbird-From: marcooherbst@cardinal.com
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0001_01C64DC7.3472D790
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-=20
-d C w I w A g L u I d S
-z V l A l L b I w U b M
-e V x I n A x G w R u A
-=20
-B qb uy your z M d e r d f i w c u a t t b i r o w n o sh nline at half
-r p c r y i a c p e http://www.seterekever.com
-<http://www.seterekever.com>=20
-
-------=_NextPart_000_0001_01C64DC7.3472D790
-Content-Type: text/html;
-	charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML><HEAD>
-<META http-equiv=3DContent-Type content=3D"text/html; =
-charset=3Dus-ascii">
-<META content=3D"MSHTML 6.00.2800.1106" name=3DGENERATOR>
-<STYLE></STYLE>
-</HEAD>
-<BODY bgColor=3D#ffffff>
-<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
-<DIV><FONT face=3DArial size=3D2><SPAN style=3D"
-float
-:right
-"> d </SPAN>C<SPAN style=3D"
-float
-:right
-"> w </SPAN>I<SPAN style=3D"
-float
-:right
-"> w </SPAN>A<SPAN style=3D"
-float
-:right
-"> g </SPAN>L<SPAN style=3D"
-float
-:right
-"> u </SPAN>I<SPAN style=3D"
-float
-:right
-"> d </SPAN>S</FONT></DIV>
-<DIV><FONT face=3DArial size=3D2><SPAN style=3D"
-float
-:right
-"> z </SPAN>V<SPAN style=3D"
-float
-:right
-"> l </SPAN>A<SPAN style=3D"
-float
-:right
-"> l </SPAN>L<SPAN style=3D"
-float
-:right
-"> b </SPAN>I<SPAN style=3D"
-float
-:right
-"> w </SPAN>U<SPAN style=3D"
-float
-:right
-"> b </SPAN>M</FONT></DIV>
-<DIV><FONT face=3DArial size=3D2><SPAN style=3D"
-float
-:right
-"> e </SPAN>V<SPAN style=3D"
-float
-:right
-"> x </SPAN>I<SPAN style=3D"
-float
-:right
-"> n </SPAN>A<SPAN style=3D"
-float
-:right
-"> x </SPAN>G<SPAN style=3D"
-float
-:right
-"> w </SPAN>R<SPAN style=3D"
-float
-:right
-"> u </SPAN>A</FONT></DIV>
-<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
-<DIV><FONT face=3DArial size=3D2>B<SPAN style=3D"
-float
-:right
-"> qb </SPAN>uy your <SPAN style=3D"
-float
-:right
-"> z </SPAN>M<SPAN style=3D"
-float
-:right
-"> d </SPAN>e<SPAN style=3D"
-float
-:right
-"> r </SPAN>d<SPAN style=3D"
-float
-:right
-"> f </SPAN>i<SPAN style=3D"
-float
-:right
-"> w </SPAN>c<SPAN style=3D"
-float
-:right
-"> u </SPAN>a<SPAN style=3D"
-float
-:right
-"> t </SPAN>t<SPAN style=3D"
-float
-:right
-"> b </SPAN>i<SPAN style=3D"
-float
-:right
-"> r </SPAN>o<SPAN style=3D"
-float
-:right
-"> w </SPAN>n o<SPAN style=3D"
-float
-:right
-"> sh </SPAN>nline at half <SPAN style=3D"
-float
-:right
-"> r </SPAN>p<SPAN style=3D"
-float
-:right
-"> c </SPAN>r<SPAN style=3D"
-float
-:right
-"> y </SPAN>i<SPAN style=3D"
-float
-:right
-"> a </SPAN>c<SPAN style=3D"
-float
-:right
-"> p </SPAN>e <A href=3D"http://www.seterekever.com"><FONT face=3DArial =
-size=3D2>http://www.seterekever.com</FONT></A></FONT></DIV></BODY></HTML>
-------=_NextPart_000_0001_01C64DC7.3472D790--
-
-
-
-
+Message Removed
 --===============0094818700==--
 
 
 --9B095B5ADSN=_01C62FAF9E9AB60F0001694BDUBCONN01.cahapp--
---54yQd.43vjuhqdb.1v2/Po.1DfUMdh
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-
-
-Working together.  For life.(sm)
-_________________________________________________
-
-This message is for the designated recipient only and may contain privilege=
-d, proprietary, or otherwise private information. If you have received it i=
-n error, please notify the sender immediately and delete the original. Any =
-other use of the email by you is prohibited.
-
-Dansk - Deutsch - Espanol - Francais - Italiano - Japanese - Nederlands - N=
-orsk - Portuguese - Svenska: www.cardinalhealth.com/legal/email
 --54yQd.43vjuhqdb.1v2/Po.1DfUMdh--

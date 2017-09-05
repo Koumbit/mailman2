@@ -1,11 +1,11 @@
-Received: from localhost (k298r.balpol.tudelft.nl) [127.0.0.1] 
+Received: from localhost (k298r.balpol.example.nl) [127.0.0.1] 
         by stereo.rotzorg.org with esmtp (Exim 2.05 #1 (Debian))
         id 11SrFm-000595-00; Mon, 20 Sep 1999 02:24:22 +0200
 Received: from mail by stereo.rotzorg.org with local (Exim 2.05 #1 (Debian))
         id 11SrFM-00058o-00; Mon, 20 Sep 1999 02:23:56 +0200
-X-Failed-Recipients: delangen@its.tudelft.nl
+X-Failed-Recipients: userx@its.example.nl
 From: Mail Delivery System <Mailer-Daemon@rotzorg.org>
-To: lanparty-helden-admin@rotzorg.org
+To: user@rotzorg.org
 Subject: Mail delivery failed: returning message to sender
 Message-Id: <E11SrFM-00058o-00@stereo.rotzorg.org>
 Date: Mon, 20 Sep 1999 02:23:56 +0200
@@ -18,17 +18,17 @@ This message was created automatically by mail delivery software.
 A message that you sent could not be delivered to all of its recipients. The
 following address(es) failed:
 
-  delangen@its.tudelft.nl:
+  userx@its.example.nl:
     SMTP error from remote mailer after RCPT TO:
-    <delangen@its.tudelft.nl>:
-    host mailhost1.et.tudelft.nl [130.161.33.163]:
+    <userx@its.example.nl>:
+    host mailhost1.et.example.nl [130.161.33.163]:
     553 5.1.1 unknown or illegal user:
-    delangen@its.tudelft.nl
+    userx@its.example.nl
 
 ----- This is a copy of the message, including all the headers. ------
 
 Return-path: <lanparty-helden-admin@rotzorg.org>
-Received: from localhost (k298r.balpol.tudelft.nl) [127.0.0.1] 
+Received: from localhost (k298r.balpol.example.nl) [127.0.0.1] 
         by stereo.rotzorg.org with esmtp (Exim 2.05 #1 (Debian))
         id 11SrFJ-00058j-00; Mon, 20 Sep 1999 02:23:53 +0200
 Received: from sgr by stereo.rotzorg.org with local (Exim 2.05 #1 (Debian))

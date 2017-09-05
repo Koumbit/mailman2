@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -141,8 +141,8 @@ def error_page(errmsg):
     print doc.Format()
 
 
-def error_page_doc(doc, errmsg, *args):
+def error_page_doc(doc, errmsg):
     # Produce a simple error-message page on stdout and exit.
     doc.SetTitle(_("Error"))
     doc.AddItem(Header(2, _("Error")))
-    doc.AddItem(Bold(errmsg % args))
+    doc.AddItem(Bold(errmsg))

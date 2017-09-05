@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -210,7 +210,11 @@ def process(mlist, msg, msgdata):
 
 def decorate(mlist, template, what, extradict=None):
     # `what' is just a descriptive phrase used in the log message
-    #
+    
+    # If template is only whitespace, ignore it.
+    if len(re.sub('\s', '', template)) == 0:
+        return ''
+
     # BAW: We've found too many situations where Python can be fooled into
     # interpolating too much revealing data into a format string.  For
     # example, a footer of "% silly %(real_name)s" would give a header
@@ -240,4 +244,7 @@ def decorate(mlist, template, what, extradict=None):
     except (ValueError, TypeError), e:
         syslog('error', 'Exception while calculating %s:\n%s', what, e)
         text = template
+    # Ensure text ends with new-line
+    if not text.endswith('\n'):
+        text += '\n'
     return text

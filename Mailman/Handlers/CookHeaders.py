@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@ from email.Header import Header, decode_header, make_header
 from email.Utils import parseaddr, formataddr, getaddresses
 from email.Errors import HeaderParseError
 
+from Mailman import i18n
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman.i18n import _
@@ -154,12 +155,37 @@ def process(mlist, msg, msgdata):
                 realname = email
         # Remove domain from realname if it looks like an email address
         realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
-        # RFC 2047 encode realname if necessary.
-        realname = str(uheader(mlist, realname))
-        lrn = mlist.real_name
+        # Make a display name and RFC 2047 encode it if necessary.  This is
+        # difficult and kludgy. If the realname came from From: it should be
+        # ascii or RFC 2047 encoded. If it came from the list, it should be
+        # in the charset of the list's preferred language or possibly unicode.
+        # if it's from the email address, it should be ascii. In any case,
+        # make it a unicode.
+        if isinstance(realname, unicode):
+            urn = realname
+        else:
+            rn, cs = ch_oneline(realname)
+            urn = unicode(rn, cs, errors='replace')
+        # likewise, the list's real_name which should be ascii, but use the
+        # charset of the list's preferred_language which should be a superset.
+        lcs = Utils.GetCharSet(mlist.preferred_language)
+        ulrn = unicode(mlist.real_name, lcs, errors='replace')
+        # get translated 'via' with dummy replacements
+        realname = '%(realname)s'
+        lrn = '%(lrn)s'
+        # We want the i18n context to be the list's preferred_language.  It
+        # could be the poster's.
+        otrans = i18n.get_translation()
+        i18n.set_language(mlist.preferred_language)
+        via = _('%(realname)s via %(lrn)s')
+        i18n.set_translation(otrans)
+        uvia = unicode(via, lcs, errors='replace')
+        # Replace the dummy replacements.
+        uvia = re.sub(u'%\(lrn\)s', ulrn, re.sub(u'%\(realname\)s', urn, uvia))
+        # And get an RFC 2047 encoded header string.
+        dn = str(Header(uvia, lcs))
         change_header('From',
-                      formataddr((_('%(realname)s via %(lrn)s'),
-                                 mlist.GetListEmail())),
+                      formataddr((dn, mlist.GetListEmail())),
                       mlist, msg, msgdata)
     else:
         # Use this as a flag
@@ -397,10 +423,17 @@ def prefix_subject(mlist, msg, msgdata):
         recolon = 'Re:'
     else:
         recolon = ''
+    # Strip leading and trailing whitespace from subject.
+    subject = subject.strip()
     # At this point, subject may become null if someone post mail with
-    # subject: [subject prefix]
-    if subject.strip() == '':
+    # Subject: [subject prefix]
+    if subject == '':
+        # We want the i18n context to be the list's preferred_language.  It
+        # could be the poster's.
+        otrans = i18n.get_translation()
+        i18n.set_language(mlist.preferred_language)
         subject = _('(no subject)')
+        i18n.set_translation(otrans)
         cset = Utils.GetCharSet(mlist.preferred_language)
         subject = unicode(subject, cset)
     # and substitute %d in prefix with post_id
@@ -431,10 +464,10 @@ def prefix_subject(mlist, msg, msgdata):
             pass
     # Get the header as a Header instance, with proper unicode conversion
     # Because of rfc2047 encoding, spaces between encoded words can be
-    # insignificant, so we need to append a space to prefix but only when
-    # we have Re:.
+    # insignificant, so we need to append spaces to our encoded stuff.
+    prefix += ' '
     if recolon:
-        prefix += ' '
+        recolon += ' '
     if old_style:
         h = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
         h.append(prefix)

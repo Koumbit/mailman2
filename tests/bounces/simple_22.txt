@@ -16,7 +16,7 @@ X-Songbird-From: symantec_antivirus_for_smtp_gateways@csri.org
 Your message with Subject: Re: [GPC] Bike lost and found.... 
 could not be delivered to the following recipients:
 
-RLipton@prev.org
+User@example.org
 
 Please do not resend your original message.
 

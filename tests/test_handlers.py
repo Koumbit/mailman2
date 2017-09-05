@@ -886,7 +886,8 @@ Here is a message.
         self.assertEqual(msg.get_payload(), """\
 header
 Here is a message.
-footer""")
+footer
+""")
 
     def test_no_multipart_template(self):
         mlist = self._mlist
@@ -902,7 +903,8 @@ Here is a message.
         self.assertEqual(msg.get_payload(), """\
 XTest header
 Here is a message.
-XTest footer""")
+XTest footer
+""")
 
     def test_no_multipart_type_error(self):
         mlist = self._mlist
@@ -918,7 +920,8 @@ Here is a message.
         self.assertEqual(msg.get_payload(), """\
 %(real_name) header
 Here is a message.
-%(real_name) footer""")
+%(real_name) footer
+""")
 
     def test_no_multipart_value_error(self):
         mlist = self._mlist
@@ -935,7 +938,8 @@ Here is a message.
         self.assertEqual(msg.get_payload(), """\
 %(real_name)p header
 Here is a message.
-%(real_name)p footer""")
+%(real_name)p footer
+""")
 
     def test_no_multipart_missing_key(self):
         mlist = self._mlist
@@ -950,7 +954,8 @@ Here is a message.
         self.assertEqual(msg.get_payload(), """\
 %(spooge)s header
 Here is a message.
-%(spooge)s footer""")
+%(spooge)s footer
+""")
 
     def test_multipart(self):
         eq = self.ndiffAssertEqual
@@ -984,6 +989,7 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 header
+
 --BOUNDARY
 From: aperson@dom.ain
 
@@ -1001,6 +1007,7 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 footer
+
 --BOUNDARY--
 """)
 

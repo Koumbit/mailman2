@@ -34,7 +34,7 @@ delete your own text from the attached returned message.
 
                    The mail system
 
-<kb3543.50@be37.mail.saunalahti.fi> (expanded from
+<xxx@example.fi> (expanded from
     <kb3543@be37.mail.saunalahti.fi>): temporary failure. Command output:
 Quota
     exceeded message delivery failed to /mail/mbx/p/5/kb3543/INBOX
@@ -51,8 +51,8 @@ X-Postfix-Queue-ID: ED106133145
 X-Postfix-Sender: rfc822; pray4-team-bounces@strategicnetwork.org
 Arrival-Date: Sun,  4 May 2008 05:51:07 +0300 (EEST)
 
-Final-Recipient: rfc822; kb3543.50@be37.mail.saunalahti.fi
-Original-Recipient: rfc822;christine.barsas@sivarikeskus.fi
+Final-Recipient: rfc822; xxx@example.fi
+Original-Recipient: rfc822;userx@example.fi
 Action: delayed
 Status: 4.3.0
 Diagnostic-Code: x-unix; Quota exceeded message delivery failed to
@@ -74,17 +74,17 @@ Received: from emh07.mail.saunalahti.fi (emh07.mail.saunalahti.fi =
 Received: from strategicnetwork.org (strategicnetwork.org =
 [66.35.39.241])
 	by emh07.mail.saunalahti.fi (Postfix) with ESMTP id D3C661C639E
-	for <christine.barsas@sivarikeskus.fi>; Sun,  4 May 2008 05:51:06 +0300 =
+	for <userx@example.fi>; Sun,  4 May 2008 05:51:06 +0300 =
 (EEST)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
 	by strategicnetwork.org (Postfix) with ESMTP id 27DF4734B75
-	for <christine.barsas@sivarikeskus.fi>; Sat,  3 May 2008 20:51:05 -0600 =
+	for <userx@example.fi>; Sat,  3 May 2008 20:51:05 -0600 =
 (MDT)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=3D"us-ascii"
 Content-Transfer-Encoding: 7bit
 From: pray4-team-request@strategicnetwork.org
-To: christine.barsas@sivarikeskus.fi
+To: userx@example.fi
 Subject: confirm d35a398026f31a7462cc90622a1e6180cd63ba60
 Reply-To: pray4-team-request@strategicnetwork.org
 Message-ID: =

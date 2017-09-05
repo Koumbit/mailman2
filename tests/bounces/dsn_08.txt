@@ -59,7 +59,7 @@ For further assistance, please send mail to <postmaster>
 
 			The Postfix program
 
-<news-list.zope@localhost.bln.innominate.de>: temporary failure. Command
+<userx@example.de>: temporary failure. Command
     output: avpcheck: unable to connect to avp daemon: Connection refused
 
 --A216D2D16B.1002185128/mate.bln.innominate.de
@@ -69,7 +69,7 @@ Content-Type: message/delivery-status
 Reporting-MTA: dns; mate.bln.innominate.de
 Arrival-Date: Thu,  4 Oct 2001 10:20:46 +0200 (CEST)
 
-Final-Recipient: rfc822; news-list.zope@localhost.bln.innominate.de
+Final-Recipient: rfc822; userx@example.de
 Action: delayed
 Status: 4.0.0
 Diagnostic-Code: X-Postfix; temporary failure. Command output: avpcheck: unable
@@ -96,9 +96,9 @@ Received: from [65.32.1.43] (helo=smtp-server6.tampabay.rr.com)
 Received: from tlc2 (242850hfc162.tampabay.rr.com [24.28.50.162])
 	by smtp-server6.tampabay.rr.com (8.11.2/8.11.2) with SMTP id f943dcd28305;
 	Wed, 3 Oct 2001 23:39:42 -0400 (EDT)
-From: "Trevor Toenjes" <zope@toenjes.com>
-To: "Martijn Pieters" <mj@zope.com>,
-	"Trevor Toenjes" <zope@toenjes.com>
+From: "Trevor Toenjes" <user@example.com>
+To: "Martijn Pieters" <user@example.com>,
+	"Trevor Toenjes" <user@example.com>
 Cc: <zope@zope.org>
 Subject: RE: [Zope] what is error_message and how do I alter it??
 Message-ID: <NEBBLDPBKLOKNHPAEECGAENDCIAA.zope@toenjes.com>

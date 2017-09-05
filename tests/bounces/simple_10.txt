@@ -40,6 +40,6 @@ This is an automatically generated Delivery Status Notification.
 
 Delivery to the following recipients failed.
 
-       sais@thehartford.com
+       userx@example.com
 
 

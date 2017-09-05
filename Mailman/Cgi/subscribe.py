@@ -185,7 +185,7 @@ def process_form(mlist, doc, cgidata, lang):
     if digestflag:
         try:
             digest = int(digestflag)
-        except ValueError:
+        except (TypeError, ValueError):
             digest = 0
     else:
         digest = mlist.digest_is_default

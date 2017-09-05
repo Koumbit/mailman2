@@ -39,7 +39,7 @@ This message was created automatically by mail delivery software.
 A message that you sent could not be delivered to one or more of
 its recipients. The following addresses failed:
 
-  <severin.XXX@t-online.de>
+  <userx@example.de>
 
 SMTP error from remote server after RCPT command:
 host mailin02.sul.t-online.de[194.25.134.9]:
@@ -48,34 +48,5 @@ host mailin02.sul.t-online.de[194.25.134.9]:
 
 --- The header of the original message is following. ---
 
-Received: from [84.154.27.78] (helo=mailsrv.mycompanysname.lan)
-	by mrelayeu.kundenserver.de (node=mrelayeu5) with ESMTP (Nemesis),
-	id 0ML25U-1FE8V12M9j-0006lD; Tue, 28 Feb 2006 18:18:59 +0100
-Received: from localhost (localhost [127.0.0.1])
-	by mailsrv.mycompanysname.lan (mycompanysname mail service) with ESMTP id EA2CD100A954
-	for <severin.XXX@t-online.de>; Tue, 28 Feb 2006 18:18:58 +0100 (CET)
-Received: from mailsrv.mycompanysname.lan ([127.0.0.1])
- by localhost (mydomain.de [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 31861-10 for <severin.XXX@t-online.de>;
- Tue, 28 Feb 2006 18:18:58 +0100 (CET)
-Received: from mailsrv.mycompanysname.lan (localhost [127.0.0.1])
-	by mailsrv.mycompanysname.lan (mycompanysname mail service) with ESMTP id BB6BD100A308
-	for <severin.XXX@t-online.de>; Tue, 28 Feb 2006 18:18:58 +0100 (CET)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Subject: =?iso-8859-1?q?Sie_haben_die_Mailingliste_=22newsletter=22_ab?=
- =?iso-8859-1?q?bestellt?=
-From: newsletter-bounces@mydomain.de
-Message-ID: <mailman.0.1141147137.31940.newsletter@mydomain.de>
-Date: Tue, 28 Feb 2006 18:18:57 +0100
-Precedence: bulk
-X-BeenThere: newsletter@mydomain.de
-X-Mailman-Version: 2.1.6
-List-Id: newsletter <newsletter.mydomain.de>
-X-List-Administrivia: yes
-To: severin.XXX@t-online.de
-Sender: newsletter-bounces@mydomain.de
-Errors-To: newsletter-bounces@mydomain.de
-X-Virus-Scanned: amavisd-new at mydomain.de
-X-Provags-ID: kundenserver.de abuse@kundenserver.de login:50f36a15497f230366e1019f5ac05f49
+Message removed
+

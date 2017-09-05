@@ -19,29 +19,11 @@ X-MDaemon-Deliver-To: bbbsss@turbosport.com
 Message from  yahoo.com.
 Unable to deliver message to the following address(es).
 
-<subscribe.motorcycles@listsociety.com>:
+<userx@example.com>:
 Sorry, I wasn't able to establish an SMTP connection. (#4.4.1)
 I'm not going to try again; this message has been in the queue too long.
 
 --- Original message follows.
 
-Return-Path: <aaaaa@yahoo.com>
-Received: from c58148.upc-c.chello.nl (HELO localhost) (212.187.58.148)
-  by smtp.mail.vip.sc5.yahoo.com with SMTP; 11 Feb 2001 01:15:27 -0000
-X-Apparently-From: <aaaaa?20@yahoo.com>
-X-Sender: aaaaa@yahoo.com
-From: Albert Ttttt <aaaaa@yahoo.com>
-To: subscribe.motorcycles@listsociety.com
-Date: Sun, 11 Feb 2001 02:14:40 +0100
-Subject: Subscribe
-Reply-To: aaaaa@yahoo.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 7bit
-
-
-
-_________________________________________________________
-Do You Yahoo!?
-Get your free @yahoo.com address at http://mail.yahoo.com
+Message removed
 

@@ -30,6 +30,7 @@ import copy
 import time
 import socket
 import smtplib
+from base64 import b64encode
 from types import UnicodeType
 
 from Mailman import mm_cfg
@@ -371,6 +372,10 @@ def verpdeliver(mlist, msg, msgdata, envsender, failures, conn):
         del msgcopy['x-mailman-copy']
         if msgdata.get('add-dup-header', {}).has_key(recip):
             msgcopy['X-Mailman-Copy'] = 'yes'
+        # If desired, add the RCPT_BASE64_HEADER_NAME header
+        if len(mm_cfg.RCPT_BASE64_HEADER_NAME) > 0:
+            del msgcopy[mm_cfg.RCPT_BASE64_HEADER_NAME]
+            msgcopy[mm_cfg.RCPT_BASE64_HEADER_NAME] = b64encode(recip)
         # For the final delivery stage, we can just bulk deliver to a party of
         # one. ;)
         bulkdeliver(mlist, msgcopy, msgdata, envsender, failures, conn)

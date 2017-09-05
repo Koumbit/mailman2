@@ -1,7 +1,7 @@
 # -*- python -*-
 # -*- coding: euc-jp -*-
 
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,9 +18,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-# [訳註] このファイルは、Mailman 2.1.22 配布物に含まれる
+# [訳註] このファイルは、Mailman 2.1.23 配布物に含まれる
 #   Mailman/Defaults.py.in (launchpad.net での Bazaar リビジョンは
-#   1664) のコメント部分を日本語 (共通語) に翻訳したものです。
+#   1696) のコメント部分を日本語 (共通語) に翻訳したものです。
 #   配布等の条件は原文と同様、GNU 一般公衆利用許諾契約書 (GNU
 #   General Public License) に従います (上記も参照ください)。内容の
 #   正確な理解のためには、配布物に含まれる原文を参照されることを
@@ -31,8 +31,8 @@
 
 """配布時点の Mailman の重要な設定変数の初期設定値。"""
 
-# サイト固有の設定のためにこのファイルを変更しては***いけません***。
-# かわりにそうしたことは、かならず mm_cfg.py の指定された範囲に
+# サイト固有の設定を行うのを目的としてこのファイルを変更しては
+# ***いけません***。そうするかわりに mm_cfg.py の指定された範囲に
 # 書くようにしてください。詳しくは mm_cfg.py のコメントを見てください。
 
 import os
@@ -58,12 +58,12 @@ No = no = Off = off = False
 # システム全般の初期設定値
 #####
 
-# 画像のロゴを使うかどうか。0 に設定すると「我々の後援者」の画像のロゴ
-# を無効にし、テキストのリンクを張るだけになります (これはショートカットの
+# ロゴ画像を使うかどうか。0 に設定すると「我々の後援者」のロゴ画像を
+# 無効にし、テキストのリンクを張るだけになります (これはショートカットの
 # 「favicon」も無効にします)。 または、ここはロゴ画像の URL のベースパスに
 # しなければいけません。(最後のスラッシュを含める必要があります)。
-# けない).  Mailman のロゴ入りページフッタまでも無効にしたいのであれば、
-# Mailman/htmlformat.py: MailmanLogo() をいじってください。リンクと
+# Mailman のロゴ入りページフッタまでも無効にしたいのであれば、
+# Mailman/htmlformat.py: MailmanLogo() を修正してください。リンクと
 # 画像の名前はそこに埋め込んであります。
 IMAGE_LOGOS = '/icons/'
 
@@ -76,9 +76,9 @@ MAILMAN_URL = 'http://www.gnu.org/software/mailman/index.html'
 #MAILMAN_URL = 'http://www.list.org/'
 #MAILMAN_URL = 'http://mailman.sf.net/'
 
-# Mailman に (少なくとも) 二つの完全修飾ドメイン名(FQDN)、1) あなたの
-# URL に使うホスト名と、 2) あなたのドメインの電子メールアドレスに使う
-# ホスト名の二つを教える必要があります。たとえば、Mailman システムに 
+# Mailman に (少なくとも) 二つの完全修飾ドメイン名(FQDN)を設定する
+# 必要があります。1) あなたのURL に使うホスト名、 2) あなたのドメインの
+# 電子メールアドレスに使うホスト名です。たとえば、Mailman システムに 
 # "http://www.example.org/mailman" でアクセスさせるのであれば、
 # あなたの URL に使う FQDN は "www.exapmle.org" になります。 また、あなたの
 # システムにメールを送るのに "yourlist@example.org" 宛にするのであれば、
@@ -93,9 +93,10 @@ MAILMAN_URL = 'http://www.gnu.org/software/mailman/index.html'
 # (URLのFQDN を"urlfqdn"、電子メールのFQDNを"emailfqdn"とした場合)
 #
 # mm_cfg.py で DEFAULT_EMAIL_HOST と DEFAULT_URL_HOST を変更する必要が
-# ないのであれば、準備は終っています; 既定のホスト名のマッピングは
-# 自動的に追加されます。しかし、mm_cfg.py でいずれかの変数値を変えたので
-# あれば、以下の設定も mm_cfg.py に追加してあるのを確認してください。
+# ないのであれば、これに関しては特に追加の設定は不要です; 既定のホスト名の
+# マッピングは自動的に追加されます。しかし、mm_cfg.py でいずれかの変数値を
+# 変えたのであれば、以下の設定も mm_cfg.py に追加してあるのを確認して
+# ください。
 #
 #     add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 #
@@ -104,9 +105,10 @@ DEFAULT_EMAIL_HOST = '@MAILHOST@'
 DEFAULT_URL_HOST = '@URLHOST@'
 DEFAULT_URL_PATTERN = 'http://%s/mailman/'
 
-# DEFALUT_HOST_NAME は DEFAULT_EMAIL_HOST へと変更されましたが、mm_cfg.py に
-# 前の DEFAULT_HOST_NAME の記述が残っているサイトもあります。そのような場合
-# にはその記述を信用しますが、そうでない場合には DEFAULT_EMAIL_HOST の方を
+# かつての設定変数である DEFALUT_HOST_NAME は DEFAULT_EMAIL_HOST へと
+# 変数名が変更されましたが、mm_cfg.py に前の DEFAULT_HOST_NAME の記述が
+# 残っているサイトもあります。そのような場合にはその記述を信用しますが、
+# DEFAULT_HOST_NAME が設定されていない場合には DEFAULT_EMAIL_HOST を
 # 信用します。DEFAULT_URL についても同様です。
 DEFAULT_HOST_NAME = None
 DEFAULT_URL = None
@@ -115,10 +117,10 @@ HOME_PAGE         = 'index.html'
 MAILMAN_SITE_LIST = 'mailman'
 
 # サイト管理者がウェブページ上でサイトパスワードを用いて認証を行う場合、
-# 通常はリスト管理者として認証されたことを示すクッキーを与えられます。
-# サイト認証のクッキーを発行することについては、そのクッキーがクラックされたり
-# 盗まれたりしたときに攻撃者がすべてのリストにアクセスができるようになるという
-# 不安があります。一方、サイト上のリスト毎に再度認証を行わずにすむのはとても
+# 通常はリスト管理者として認証されたことを示すクッキーが与えられます。
+# サイト認証のクッキーを発行すると、そのクッキーがクラックされたり
+# 盗まれたりしたときに攻撃者がすべてのリストにアクセスができるようになる
+# 恐れがあります。一方、サイト上のリスト毎に再度認証を行わずにすむのはとても
 # 便利ではあります。この値を"Yes"に設定することで、サイト管理者のクッキーの
 # 発行を許可します。
 # [訳註] 2.1.7 での仕様変更: リスト管理者は、会員オプション画面で「全部
@@ -217,7 +219,7 @@ VIRTUAL_HOST_OVERVIEW = On
 # 暗黙の値として用います。たとえば、
 #
 # add_virtualhost('www.example.org')
-# VIRTUAL_HOST['www.example.org']
+# VIRTUAL_HOSTS['www.example.org']
 # ==> 'example.org'
 #
 def add_virtualhost(urlhost, emailhost=None):
@@ -748,7 +750,6 @@ GLOBAL_PIPELINE = [
 OWNER_PIPELINE = [
     'SpamDetect',
     'Replybot',
-    'CleanseDKIM',
     'OwnerRecips',
     'ToOutgoing',
     ]

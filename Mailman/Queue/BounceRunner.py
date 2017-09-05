@@ -29,6 +29,7 @@ from email.Utils import parseaddr
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import LockFile
+from Mailman.Errors import NotAMemberError
 from Mailman.Message import UserNotification
 from Mailman.Bouncer import _BounceInfo
 from Mailman.Bouncers import BouncerAPI
@@ -151,19 +152,26 @@ class BounceMixin:
             mlist.Lock()
         try:
             op, addr, bmsg = mlist.pend_confirm(token)
-            info = mlist.getBounceInfo(addr)
-            if not info:
-                # info was deleted before probe bounce was received.
-                # Just create a new info.
-                info = _BounceInfo(addr,
-                                   0.0,
-                                   time.localtime()[:3],
-                                   mlist.bounce_you_are_disabled_warnings
-                                   )
-            mlist.disableBouncingMember(addr, info, bmsg)
-            # Only save the list if we're unlocking it
-            if not locked:
-                mlist.Save()
+            # For Python 2.4 compatibility we need an inner try because
+            # try: ... except: ... finally: requires Python 2.5+
+            try:
+                info = mlist.getBounceInfo(addr)
+                if not info:
+                    # info was deleted before probe bounce was received.
+                    # Just create a new info.
+                    info = _BounceInfo(addr,
+                                       0.0,
+                                       time.localtime()[:3],
+                                       mlist.bounce_you_are_disabled_warnings
+                                       )
+                mlist.disableBouncingMember(addr, info, bmsg)
+                # Only save the list if we're unlocking it
+                if not locked:
+                    mlist.Save()
+            except NotAMemberError:
+                # Member was removed before probe bounce returned.
+                # Just ignore it.
+                pass
         finally:
             if not locked:
                 mlist.Unlock()

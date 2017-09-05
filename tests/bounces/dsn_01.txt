@@ -56,14 +56,14 @@ This report relates to a message you sent with the following header fields:
 
   Message-id: <F1218V8zDv60gxapzha000001ae@hotmail.com>
   Date: Tue, 03 Oct 2000 19:28:29 +0000 (GMT)
-  From: heiho1@hotmail.com
-  To: thaank@nl.packardbell.org, jpython-interest@python.org
+  From: heiho1@example.com
+  To: thaank@nl.example.org, jpython-interest@python.org
   Subject: [JPython] Re: JPython testing framework
 
 Your message cannot be delivered to the following recipients:
 
-  Recipient address: JimmyMcEgypt@sims-ms-daemon
-  Original address: JimmyMcEgypt@go.com
+  Recipient address: userx@sims-ms-daemon
+  Original address: userx@example.com
   Reason: recipient reached disk quota
 
 
@@ -74,8 +74,8 @@ Reporting-MTA: dns;msg00.seamail.go.com
 
 Action: failed
 Status: 5.0.0 (recipient reached disk quota)
-Original-recipient: rfc822;JimmyMcEgypt@go.com
-Final-recipient: rfc822;JimmyMcEgypt@sims-ms-daemon
+Original-recipient: rfc822;userx@example.com
+Final-recipient: rfc822;userx@sims-ms-daemon
 
 --Boundary_(ID_+h6gzBCYzjhP3wCVCkWTrg)
 Content-type: MESSAGE/RFC822
@@ -105,7 +105,7 @@ Received: from mail pickup service by hotmail.com with Microsoft SMTPSVC; Tue,
 Received: from 206.41.27.49 by pv1fd.pav1.hotmail.msn.com with HTTP; Tue,
  03 Oct 2000 19:28:29 +0000 (GMT)
 Date: Tue, 03 Oct 2000 19:28:29 +0000 (GMT)
-From: heiho1@hotmail.com
+From: heiho1@example.com
 Subject: [JPython] Re: JPython testing framework
 X-Originating-IP: [206.41.27.49]
 Sender: jpython-interest-admin@python.org
@@ -135,82 +135,6 @@ Otto,
 
 Thanks for the reply.  I remembered hearing of this PyUnit but had lost 
 track of it for a while.  I just visited the sourceforge homepage:
-
-http://pyunit.sourceforge.net/pyunit.html
-
-I'm pretty sure that PyUnit [as its coded to Python 1.5.2] should be 
-workable with JPython, but the web page says:
-
-"""
-PyUnit cannot be used with JPython, the users of which should probably use 
-JUnit and create JPython subclasses of its TestCase class. I haven't tried 
-doing this.
-"""
-
-Now, I don't see why this would be the case, so I'm going to download PyUnit 
-and sniff around.  Are any of these modifications you mentioned to get 
-PyUnit running under JPython published on the Web anywhere?  I'd like to 
-take a look, as they would probably save me some time.
-
-Thanks again,
-
-James
-
->
->James,
->
->I'm using PyUnit from within JPython to drive unit tests that test a Java 
->applications. Some minor changes had to be made to PyUnit to make it work 
->with JPython, and the testrunner only works textually. But nevertheless, 
->it's a much better option than using JUnit from within JPython.
->
->-Otto Perdeck
->
->
->Hello all,
->
->I've used JPython for close to two years and I find the language to be
->indispensable.  The recent, protracted silence regarding the "official"
->status of JPython has concerned me quite a bit as I didn't want this
->language to die out when it shows such promise.
->
->I hope that BeOpen and CNRI can come to an agreement that will benefit the
->community as a whole.
->
->Regardless, my major use of JPython [due to the status of the 1.1 release
->and its errata (not an attack on Finn Bock, just an engineer not willing to
->deploy certain software on "unofficial" patches)] has been to facilitate
->prototyping and [almost ;)] XP style repetitive testing.  My interest is if
->a JPython testing framework exists?  Something that is a JUnit for JPython,
->but with functional level testing as well [similar to what Inline-Standard
->provides: http://www.inline-software.com/products/datasheet.html but not
->restricted to EJBs].
->
->If not, what is the interest of the JPython mailing list on collaborating 
->to
->produce such an entity [maybe sourceforge.net]?
->
->Also, has anybody played around with AspectJ [ www.aspectj.org very cool
->stuff ;)] and JPython?  It seems that AOP and JPython could be a pretty 
->good
->one-two punch for knocking out larger scale Java problems.
->
->James Richards
->Java Software Engineer
->
->
->- Tjitske Haank & Otto Perdeck
-
-_________________________________________________________________________
-Get Your Private, Free E-mail from MSN Hotmail at http://www.hotmail.com.
-
-Share information about yourself, create your own public profile at 
-http://profiles.msn.com.
-
-
-_______________________________________________
-JPython-Interest maillist  -  JPython-Interest@python.org
-http://www.python.org/mailman/listinfo/jpython-interest
 
 --Boundary_(ID_+h6gzBCYzjhP3wCVCkWTrg)--
 

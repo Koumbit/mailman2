@@ -38,7 +38,7 @@ List-Archive: <http://www.python.org/pipermail/python-list/>
 From: postmaster@hud.ac.uk
 Sender: python-list-owner@python.org
 To: python-list-admin@python.org
-Subject: Delivery Report (failure) for zzzzz@zeus.hud.ac.uk
+Subject: Delivery Report (failure) for zzzzz@example.uk
 Date: Tue, 26 Dec 2000 21:47:28 +0000
 X-BeenThere: python-list@python.org
 X-Mailman-Version: 2.0
@@ -54,7 +54,7 @@ Subject: RE: A Q concerning map (a comparison to Maple V),
 of Tue, 26 Dec 2000 21:47:27 +0000
 
 Your message was not delivered to:
-	zzzzz@zeus.hud.ac.uk
+	zzzzz@example.uk
 for the following reason:
 Diagnostic was Unable to transfer, Message timed out
 Information Message timed out
@@ -76,8 +76,8 @@ X400-Content-Correlator: Subject: RE: A Q concerning map (a comparison to Maple 
 	Message-ID: <LNBBLJKPBEHFEDALKOLCMEEDIFAA.tim.one@home.com>,
 	To: <python-list@python.org>
 
-Original-Recipient: rfc822; zzzzz@zeus.hud.ac.uk
-Final-Recipient: x400; /S=zzzzz/OU=zeus/O=hud/PRMD=UK.AC/ADMD= /C=GB/
+Original-Recipient: rfc822; zzzzz@example.uk
+Final-Recipient: x400; /S=zzzzz/OU=example/PRMD=UK.AC/ADMD= /C=GB/
 X400-Originally-Specified-Recipient-Number: 1
 Action: failed
 Diagnostic-Code: Reason 1 (Unable-To-Transfer); Diagnostic 5 (Maximum-Time-Expired)

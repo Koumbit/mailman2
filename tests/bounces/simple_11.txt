@@ -21,7 +21,7 @@ Received: from lifesmtp2.hartfordlife.com (AD2HFDLGT002) by
 	<T76d2e1782bac1e545baa4@ad2simmsw006.ad2.prod> for
 	<gpc-talk-bounces@grizz.org>; Sat, 4 Mar 2006 18:15:32 -0500
 MIME-Version: 1.0
-Subject: DELIVERY FAILURE: User carlosr73 (carlosr73@hartfordlife.com) not
+Subject: DELIVERY FAILURE: User carlosr73 (userx@example.com) not
 	listed in Domino Directory
 To: gpc-talk-bounces@grizz.org
 Date: Sat, 04 Mar 2006 15:15:47 -0800
@@ -58,11 +58,11 @@ Your message
 
 was not delivered to:
 
-  carlosr73@hartfordlife.com
+  userx@example.com
 
 because:
 
-  User carlosr73 (carlosr73@hartfordlife.com) not listed in Domino Directory
+  User carlosr73 (userx@example.com) not listed in Domino Directory
 
 
 

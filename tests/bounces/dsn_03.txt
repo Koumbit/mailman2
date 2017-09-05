@@ -17,13 +17,13 @@ Received: from localhost.localdomain ([127.0.0.1] helo=mail.python.org)
 	by mail.python.org with esmtp (Exim 3.21 #1)
 	id 14QqF1-0002hJ-00
 	for yyyyy@digicool.com; Thu, 08 Feb 2001 07:32:03 -0500
-Received: from [194.78.23.194] (helo=pigeon.advalvas.be)
+Received: from [194.78.23.194] (helo=pigeon.example.be)
 	by mail.python.org with esmtp (Exim 3.21 #1)
 	id 14QqCJ-0002UN-00
 	for python-list-admin@python.org; Thu, 08 Feb 2001 07:29:15 -0500
-Message-Id: <12334670553230@pigeon.advalvas.be>
+Message-Id: <12334670553230@pigeon.example.be>
 Mime-Version: 1.0
-Content-Type: multipart/report; report-type=delivery-status; boundary="==_12334670553231@pigeon.advalvas.be==_"
+Content-Type: multipart/report; report-type=delivery-status; boundary="==_12334670553231@pigeon.example.be==_"
 Precedence: bulk
 List-Help: <mailto:python-list-request@python.org?subject=help>
 List-Post: <mailto:python-list@python.org>
@@ -33,7 +33,7 @@ List-Id: General discussion list for the Python programming language <python-lis
 List-Unsubscribe: <http://mail.python.org/mailman/listinfo/python-list>,
 	<mailto:python-list-request@python.org?subject=unsubscribe>
 List-Archive: <http://mail.python.org/pipermail/python-list/>
-From: "postmaster@advalvas.be" <postmaster@advalvas.be>
+From: "postmaster@example.be" <postmaster@advalvas.be>
 Sender: python-list-owner@python.org
 To: "python-list-admin@python.org" <python-list-admin@python.org>
 Subject: Failed mail: exceeded maximum incoming message size
@@ -46,31 +46,31 @@ X-Mailman-Version: 2.0.1 (101270)
 
 This is a MIME-encapsulated message
 
---==_12334670553231@pigeon.advalvas.be==_
+--==_12334670553231@pigeon.example.be==_
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 Your message was not delivered to
  
-    ddd.kkk@advalvas.be
+    userx@example.be
  
 This mail message has exceeded the maximum incoming message size.
 
 
---==_12334670553231@pigeon.advalvas.be==_
+--==_12334670553231@pigeon.example.be==_
 Content-Type: message/delivery-status
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 Reporting-MTA: dns;pigeon.net7.be
  
-Final-Recipient: rfc822;ddd.kkk@advalvas.be
+Final-Recipient: rfc822;userx@example.be
 Action: failure
 Status: 553 Exceeded maximum inbound message size
 
 
---==_12334670553231@pigeon.advalvas.be==_
+--==_12334670553231@pigeon.example.be==_
 Content-Type: message/rfc822
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
@@ -139,6 +139,5 @@ accept liability for statements made which are clearly the senders own.
 -- 
 http://mail.python.org/mailman/listinfo/python-list
 
---==_12334670553231@pigeon.advalvas.be==_--
 
 

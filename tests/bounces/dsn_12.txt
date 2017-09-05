@@ -23,7 +23,7 @@ X-Songbird-From:
 Content-Type: text/plain; charset=us-ascii
 
    ----- The following addresses have delivery notifications -----
-<auaauqdgrdz@jtc-con.co.jp> (failed: Bad destination mailbox address)
+<userx@example.jp> (failed: Bad destination mailbox address)
 
 --12006021214472475
 Content-Type: message/delivery-status
@@ -31,8 +31,8 @@ Content-Type: message/delivery-status
 Reporting-MTA: SV-03.jtc-con.local (TeamWARE Connector for MIME v5.x)
 Original-Envelope-Id: mailman.6301.1139723231.1568.wed_ride@grizz.org
 
-Original-Recipient: rfc822;auaauqdgrdz@jtc-con.co.jp
-Final-Recipient: rfc822;auaauqdgrdz@jtc-con.co.jp
+Original-Recipient: rfc822;userx@example.jp
+Final-Recipient: rfc822;userx@example.jp
 Action: failed (Bad destination mailbox address)
 Status: 5.1.1
 

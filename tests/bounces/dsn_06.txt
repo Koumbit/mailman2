@@ -3,23 +3,23 @@ X-VM-v5-Data: ([nil nil nil nil nil nil nil nil nil]
 	[nil "Sunday" "1" "July" "2001" "16:07:50" "+0200" "Mail Delivery Service" "mailadm@thales-is.com" nil "72" "Delivery Status Notification (Mail Delivery Delayed)" "^From:" nil nil "7" nil nil nil nil nil]
 	nil)
 Return-Path: <python-list-admin@python.org>
-Delivered-To: barry@wooz.org
-Received: from digicool.com (unknown [63.100.190.15])
-	by mail.wooz.org (Postfix) with ESMTP id 1F5FED36EC
-	for <barry@wooz.org>; Sun,  1 Jul 2001 10:07:00 -0400 (EDT)
+Delivered-To: usery@example.org
+Received: from example.com (unknown [63.100.190.15])
+	by mail.example.org (Postfix) with ESMTP id 1F5FED36EC
+	for <usery@example.org>; Sun,  1 Jul 2001 10:07:00 -0400 (EDT)
 Received: from <python-list-admin@python.org>
-  by digicool.com (CommuniGate Pro RULES 3.4)
+  by example.com (CommuniGate Pro RULES 3.4)
   with RULES id 2125237; Sun, 01 Jul 2001 10:08:57 -0400
-Received: from ns2.digicool.com ([63.100.190.2] verified)
-  by digicool.com (CommuniGate Pro SMTP 3.4)
-  with ESMTP id 2125244 for barry@mail.digicool.com; Sun, 01 Jul 2001 10:08:57 -0400
+Received: from ns2.example.com ([63.100.190.2] verified)
+  by example.com (CommuniGate Pro SMTP 3.4)
+  with ESMTP id 2125244 for usery@mail.example.com; Sun, 01 Jul 2001 10:08:57 -0400
 Received: from mail.python.org (mail.python.org [63.102.49.29])
-	by ns2.digicool.com (8.9.3/8.9.3) with ESMTP id KAA26383
-	for <barry@digicool.com>; Sun, 1 Jul 2001 10:07:00 -0400
+	by ns2.example.com (8.9.3/8.9.3) with ESMTP id KAA26383
+	for <usery@example.com>; Sun, 1 Jul 2001 10:07:00 -0400
 Received: from localhost.localdomain ([127.0.0.1] helo=mail.python.org)
 	by mail.python.org with esmtp (Exim 3.21 #1)
 	id 15GhsL-0001Ey-00
-	for barry@digicool.com; Sun, 01 Jul 2001 10:07:01 -0400
+	for usery@example.com; Sun, 01 Jul 2001 10:07:01 -0400
 Received: from [195.101.39.226] (helo=gwsmtp.thomson-csf.com)
 	by mail.python.org with esmtp (Exim 3.21 #1)
 	id 15GhrZ-0001D4-00
@@ -59,7 +59,7 @@ Content-Type: text/plain; charset=us-ascii
  - There is no need to resend your message at this time.
  - The following recipients have not yet received your message:
 
-hao-nghi.au@fr.thalesgroup.com; Action: Delayed
+userx@example.com; Action: Delayed
 
  - The server will continue trying for up to 21 hours.
 
@@ -71,7 +71,7 @@ Reporting-MTA: dns; gwsmtp.thomson-csf.com
 Received-from-MTA: dns; mail.python.org (63.102.49.29)
 Arrival-Date: Sun, 1 Jul 2001 13:07:44 +0200
 
-Final-Recipient: rfc822; hao-nghi.au@fr.thalesgroup.com
+Final-Recipient: rfc822; userx@example.com
 Action: Delayed
 Status: 4.4.0 (other or undefined network or routing status)
 Will-Retry-Until: Mon, 2 Jul 2001 13:07:44 +0200
@@ -81,12 +81,12 @@ Content-Type: Text/RFC822-headers
 
 Return-Path: <python-list-admin@python.org>
 Received: from mail.python.org (63.102.49.29) by gwsmtp.thomson-csf.com (NPlex 5.1.053)
-        id 3B3CE20D00004815 for hao-nghi.au@fr.thalesgroup.com; Sun, 1 Jul 2001 13:07:44 +0200
+        id 3B3CE20D00004815 for userx@example.com; Sun, 1 Jul 2001 13:07:44 +0200
 Received: from localhost.localdomain ([127.0.0.1] helo=mail.python.org)
 	by mail.python.org with esmtp (Exim 3.21 #1)
 	id 15Gf3C-0005ft-00; Sun, 01 Jul 2001 07:06:02 -0400
 Path: news.baymountain.net!uunet!ash.uu.net!dca.uu.net!feed2.onemain.com!feed1.onemain.com!news-spur1.maxwell.syr.edu!news.maxwell.syr.edu!newsfeed00.sul.t-online.de!newsfeed01.sul.t-online.de!t-online.de!fu-berlin.de!hahn.informatik.hu-berlin.de!not-for-mail
-From: Martin von Loewis <loewis@informatik.hu-berlin.de>
+From: Martin von Loewis <user@example.de>
 Newsgroups: comp.lang.python
 Subject: Re: GCC 3.0, Standard ABI & C++/Python Integration
 Organization: Humboldt University Berlin, Department of Computer Science

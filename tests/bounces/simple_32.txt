@@ -29,13 +29,13 @@ Content-Transfer-Encoding: 8bit
 
 Delevery to the following recipients was aborted after 5.0 hour(s):
 
-  * teteyn@agence-forbin.com
+  * userx@example.com
 
 
 ============================================================================
                              Technical details:                             
 
-Routing: Could not find a gateway for teteyn@agence-forbin.com
+Routing: Could not find a gateway for userx@example.com
 
 
 ============================================================================
@@ -47,31 +47,7 @@ Content-Transfer-Encoding: 8bit
 Content-Disposition: attachment
 
 
-Received: from sb7.songbird.com ([208.184.79.137])
-	by av2.amenworld.com with AMEN
-	id c6tn1V00i2xlHa80000000
-	for teteyn@agence-forbin.com; Thu, 19 Oct 2006 08:53:57 +0200
-Received: from sb7.songbird.com (sb7.songbird.com [127.0.0.1])
-	by sb7.songbird.com (8.12.11.20060308/8.12.11) with ESMTP id k9J6rxFD032578
-	for <teteyn@agence-forbin.com>; Wed, 18 Oct 2006 23:53:59 -0700
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Subject: Your message to GPC-talk awaits moderator approval
-From: gpc-talk-bounces@grizz.org
-To: teteyn@agence-forbin.com
-Message-ID: <mailman.27302.1161240838.1568.gpc-talk@grizz.org>
-Date: Wed, 18 Oct 2006 23:53:58 -0700
-Precedence: bulk
-X-BeenThere: gpc-talk@grizz.org
-X-Mailman-Version: 2.1.5
-List-Id: Grizzly Peak Cyclists general discussion list <gpc-talk.grizz.org>
-X-List-Administrivia: yes
-Sender: gpc-talk-bounces@grizz.org
-Errors-To: gpc-talk-bounces@grizz.org
-X-SongbirdInformation: support@songbird.com for more information
-X-Songbird: Clean
-X-Songbird-From: gpc-talk-bounces@grizz.org
+Message removed
 
 --------------I305M09060309060P_160911612849850--
 

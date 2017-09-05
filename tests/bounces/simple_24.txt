@@ -8,7 +8,7 @@ Received: from mail pickup service by sl.gomaps.com with Microsoft SMTPSVC;
 Message-ID: <SLND200605030009223890@gomaps.com>
 From: Postmaster <>
 To: gpc-talk-bounces@grizz.org
-Subject: Undeliverable: liberty@gomaps.com
+Subject: Undeliverable: userx@example.com
 Date: Wed, 3 May 2006 00:09:22
 MIME-Version: 1.0
 X-Mailer: SpamLion (E 1.60.205)
@@ -23,11 +23,11 @@ X-Songbird-From:
 --------------------------------------------------------------------------------
 Your Message
 
-To:      <liberty@gomaps.com>
+To:      <userx@example.com>
 
 Subject: The results of your email commands
 
 Date:    Tue, 02 May 2006 22:09:32 -0700
 
-Did not reach the following recipient: liberty@gomaps.com
+Did not reach the following recipient: userx@example.com
 

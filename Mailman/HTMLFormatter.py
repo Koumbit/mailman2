@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -40,8 +40,7 @@ COMMASPACE = ', '
 
 class HTMLFormatter:
     def GetMailmanFooter(self):
-        ownertext = COMMASPACE.join([Utils.ObscureEmail(a, 1)
-                                     for a in self.owner])
+        ownertext = Utils.ObscureEmail(self.GetOwnerEmail(), 1)
         # Remove the .Format() when htmlformat conversion is done.
         realname = self.real_name
         hostname = self.host_name

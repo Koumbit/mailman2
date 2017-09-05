@@ -36,44 +36,11 @@ YOU DO NOT NEED TO RESEND YOUR MESSAGE.
 
 Delivery to the following recipient has been delayed:
 
-     luis.hiam@gmail.com
+     userx@example.com
 
 Message will be retried for 2 more day(s)
 
    ----- Message header follows -----
 
-Received: by 10.86.26.1 with SMTP id 1mr4665798fgz.49.1213394647106;
-        Fri, 13 Jun 2008 15:04:07 -0700 (PDT)
-Return-Path: <spip-commit-bounces@rezo.net>
-Received: from alan.rezo.net (alan.rezo.net [217.24.84.2])
-        by mx.google.com with ESMTP id 4si6055077fgg.9.2008.06.13.15.03.59;
-        Fri, 13 Jun 2008 15:04:07 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of spip-commit-bounces@rezo.net designates 217.24.84.2 as permitted sender) client-ip=217.24.84.2;
-Authentication-Results: mx.google.com; spf=pass (google.com: best guess record for domain of spip-commit-bounces@rezo.net designates 217.24.84.2 as permitted sender) smtp.mail=spip-commit-bounces@rezo.net
-Received: from alan.rezo.net (localhost.rezo.net [127.0.0.1])
-	by alan.rezo.net (Postfix) with ESMTP id 6A8E131CC54;
-	Sat, 14 Jun 2008 00:00:49 +0200 (CEST)
-Received: by alan.rezo.net (Postfix, from userid 1001)
-	id 17BCA31C00A; Sat, 14 Jun 2008 00:00:04 +0200 (CEST)
-To: spip-commit@rezo.net
-From: webdiff tracspip <spip-commit@rezo.net>
-Message-Id: <20080613220004.17BCA31C00A@alan.rezo.net>
-Date: Sat, 14 Jun 2008 00:00:04 +0200 (CEST)
-Subject: [spip-commit] webdiff tracspip 14.06.2008
-X-BeenThere: spip-commit@rezo.net
-X-Mailman-Version: 2.1.6b2
-Precedence: list
-List-Id: "SPIP : toutes les modifs du code" <spip-commit.rezo.net>
-List-Unsubscribe: <http://listes.rezo.net/mailman/listinfo/spip-commit>,
-	<mailto:spip-commit-request@rezo.net?subject=unsubscribe>
-List-Archive: <http://listes.rezo.net/archives/spip-commit>
-List-Post: <mailto:spip-commit@rezo.net>
-List-Help: <mailto:spip-commit-request@rezo.net?subject=help>
-List-Subscribe: <http://listes.rezo.net/mailman/listinfo/spip-commit>,
-	<mailto:spip-commit-request@rezo.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0262606712=="
-Sender: spip-commit-bounces@rezo.net
-Errors-To: spip-commit-bounces@rezo.net
-
-   ----- Message body suppressed -----
+Message removed
 

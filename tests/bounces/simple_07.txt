@@ -15,7 +15,7 @@ X-SongbirdInformation: support@songbird.com for more information
 X-Songbird: Found to be clean
 X-Songbird-From: mailer-daemon@prodigy.net
 
-User's mailbox is full: <william.xxxx@sbcglobal.net>
+User's mailbox is full: <userx@example.net>
 Unable to deliver mail.
 
 
