@@ -1,3 +1,11 @@
+mailman (1:2.1.24-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * Fixed broken dependencies in SpamAssassin.py (Closes: #838288).
+    Thanks Stephen Rothwell for the patch.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 05 Sep 2017 14:31:54 +0000
+
 mailman (1:2.1.23-1) unstable; urgency=medium
 
   * New upstream release.

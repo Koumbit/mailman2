@@ -28,7 +28,6 @@ from Mailman import mm_cfg
 from Mailman import Errors
 from Mailman.Logging.Syslog import syslog
 from Mailman.Handlers import Hold
-from Mailman.Handlers.Moderate import matches_p
 
 SPAMD_HOST    = getattr(mm_cfg, 'SPAMASSASSIN_HOST', '')
 DISCARD_SCORE = getattr(mm_cfg, 'SPAMASSASSIN_DISCARD_SCORE', 10)
@@ -78,7 +77,7 @@ def process(mlist, msg, msgdata):
     if MEMBER_BONUS != 0:
         for sender in msg.get_senders():
             if mlist.isMember(sender) or \
-                   matches_p(sender, mlist.accept_these_nonmembers, mlist.internal_name()):
+                   mlist.GetPattern(sender, mlist.accept_these_nonmembers, at_list='accept_these_nonmembers'):
                 score -= MEMBER_BONUS
                 break
 
