@@ -2,14 +2,13 @@ Source: mailman
 Section: mail
 Priority: optional
 Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
-Uploaders: Lionel Elie Mamane <lmamane@debian.org>,
- Thijs Kinkhorst <thijs@debian.org>,
- Hector Garcia <hector@debian.org>
-Build-Depends: debhelper (>= 9), autoconf, python-dev (>= 2.6.6-3~), gettext, python-dnspython, dh-python
+Uploaders: Thijs Kinkhorst <thijs@debian.org>,
+Build-Depends: debhelper (>= 9), autoconf, python-dev,
+ gettext, python-dnspython, dh-python
 Standards-Version: 3.9.8
 Homepage: http://www.list.org/
-Vcs-Svn: svn://anonscm.debian.org/pkg-mailman/trunk
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-mailman/trunk/
+Vcs-Git: https://salsa.debian.org/mailman-team/mailman2.git
+Vcs-Browser: https://salsa.debian.org/mailman-team/mailman2
 X-Python-Version: >= 2.4
 XS-Testsuite: autopkgtest
 
@@ -17,7 +16,7 @@ Package: mailman
 Architecture: any
 Pre-Depends: debconf | debconf-2.0
 Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
- logrotate (>= 3.8.0), ucf, lsb-base, apache2 | httpd,
+ logrotate, ucf, lsb-base, apache2 | httpd,
  cron | cron-daemon,
  python-dnspython
 Recommends: default-mta | mail-transport-agent
