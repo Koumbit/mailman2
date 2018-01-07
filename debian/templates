@@ -35,7 +35,7 @@ _Description: Missing site list
  .
  To create the list, run "newlist mailman" and follow the instructions
  on-screen.  Note that you also need to start mailman after that,
- using /etc/init.d/mailman start.
+ using "service mailman start".
 
 Template: mailman/default_server_language
 Type: select
@@ -58,11 +58,11 @@ _Description: Old queue files present
  The directory /var/lib/mailman/qfiles contains files. It needs to be
  empty for the upgrade to work properly. You can try to handle them by:
   - Stop new messages from coming in (at the MTA level).
-  - Start a mailman queue runner: /etc/init.d/mailman start
+  - Start a mailman queue runner: "service mailman start"
   - Let it run until all messages are handled.
     If they don't all get handled in a timely manner, look at the logs
     to try to understand why and solve the cause.
-  - Stop it: /etc/init.d/mailman stop
+  - Stop it: "service mailman stop"
   - Retry the upgrade.
   - Let messages come in again.
  You can also decide to simply remove the files, which will make
