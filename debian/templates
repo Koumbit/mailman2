@@ -1,5 +1,3 @@
-# $URL$
-# $Id$
 Template: mailman/site_languages
 Type: multiselect
 __Choices: ar (Arabic), ca (Catalan), cs (Czech), da (Danish), de (German), en (English), es (Spanish), et (Estonian), eu (Basque), fi (Finnish), fr (French), hr (Croatian), hu (Hungarian), ia (Interlingua), it (Italian), ja (Japanese), ko (Korean), lt (Lithuanian), nl (Dutch), no (Norwegian), pl (Polish), pt (Portuguese), pt_BR (Brasilian Portuguese), ro (Romanian), ru (Russian), sl (Slovenian), sr (Serbian), sv (Swedish), tr (Turkish), uk (Ukrainian), vi (Vietnamese), zh_CN (Chinese - China), zh_TW (Chinese - Taiwan)

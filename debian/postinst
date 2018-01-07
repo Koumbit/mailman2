@@ -6,10 +6,6 @@
 # mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
 # Other modifications 2004-2007 by other maintainers of the Debian package:
 #      Lionel Elie Mamane, Thijs Kinkhorst, Riccardo Setti, Matej Vela, Hector Garcia, László Böszörményi, Bernd S. Brentrup, ...
-#
-# $URL$
-# $Id$
-#
 . /usr/share/debconf/confmodule
 
 PACKAGE=mailman

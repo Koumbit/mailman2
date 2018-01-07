@@ -1,8 +1,5 @@
 #! /usr/bin/env python
 
-# $URL: svn+bsb://svn.winnegan.de/svn/adm/trunk/mailman/postfix-to-mailman.py $
-# $Id: postfix-to-mailman.py 38 2004-04-15 19:11:32Z bsb $
-#
 # Interface mailman to a postfix with a mailman transport. Does not require
 # the creation of _any_ aliases to connect lists to your mail system.
 #
