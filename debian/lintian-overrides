@@ -21,3 +21,6 @@ non-standard-dir-perm var/lib/mailman/spam/ 2775 != 0755
 non-standard-dir-perm var/lib/mailman/qfiles/ 2775 != 0755
 symlink-should-be-relative var/lib/mailman/locks /var/lock/mailman
 symlink-should-be-relative var/lib/mailman/logs /var/log/mailman
+# This is the legacy Mailman 2.x branch which is for Python 2,
+# the (separately packaged) 3.x branch has Python 3 support.
+dependency-on-python-version-marked-for-end-of-life (Depends: python)
