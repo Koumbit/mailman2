@@ -1,0 +1,3 @@
+# path              mode uid  gid
+d /run/mailman      0755 list list
+d /run/lock/mailman 2775 root list

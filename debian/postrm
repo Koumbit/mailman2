@@ -2,7 +2,9 @@
 
 #DEBHELPER#
 
-find /usr/lib/mailman -name *.pyc -print0 | xargs -0 rm -f
+if [ -d /usr/lib/mailman ]; then
+  find /usr/lib/mailman -name *.pyc -print0 | xargs -0 rm -f
+fi
 
 if [ "$1" = purge ]; then
   # HACK: At present there is no way to ask ucf for registered files

@@ -3,6 +3,10 @@ mailman (1:2.1.24-2) UNRELEASED; urgency=medium
   * Checked for policy 4.1.3: removed init.d invocation from
     prerm and also from user instructions.
   * Upgraded to debhelper compat level 11.
+  * Repace init script with systemd service files. Thanks
+    Thanks a lot to Stefan Bühler for the helpful suggestion!
+    This also should improve robustness against log rotation.
+    (Closes: #881329, #733475, #505638)
   * Packaging cleanups.
 
  -- Thijs Kinkhorst <thijs@debian.org>  Sun, 07 Jan 2018 18:22:51 +0000
