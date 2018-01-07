@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the mailman package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: mailman\n"
 "Report-Msgid-Bugs-To: mailman@packages.debian.org\n"
-"POT-Creation-Date: 2011-10-08 15:13+0000\n"
+"POT-Creation-Date: 2018-01-07 18:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,8 +286,8 @@ msgstr ""
 #: ../templates:3001
 msgid ""
 "To create the list, run \"newlist mailman\" and follow the instructions on-"
-"screen.  Note that you also need to start mailman after that, using "
-"service mailman start."
+"screen.  Note that you also need to start mailman after that, using service "
+"mailman start."
 msgstr ""
 
 #. Type: select
