@@ -64,7 +64,7 @@ def main():
 
     # messages in form should go in selected language (if any...)
     try:
-        lang = cgidata.getvalue('language')
+        lang = cgidata.getfirst('language')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc = Document()
@@ -85,8 +85,8 @@ def main():
     # "admin"-only, then we try to cookie authenticate the user, and failing
     # that, we check roster-email and roster-pw fields for a valid password.
     # (also allowed: the list moderator, the list admin, and the site admin).
-    password = cgidata.getvalue('roster-pw', '').strip()
-    addr = cgidata.getvalue('roster-email', '').strip()
+    password = cgidata.getfirst('roster-pw', '').strip()
+    addr = cgidata.getfirst('roster-email', '').strip()
     list_hidden = (not mlist.WebAuthenticate((mm_cfg.AuthUser,),
                                              password, addr)
                    and mlist.WebAuthenticate((mm_cfg.AuthListModerator,

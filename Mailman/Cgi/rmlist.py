@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -42,7 +42,7 @@ def main():
 
     cgidata = cgi.FieldStorage()
     try:
-        cgidata.getvalue('password', '')
+        cgidata.getfirst('password', '')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc.AddItem(Header(2, _("Error")))
@@ -113,9 +113,9 @@ def main():
 
 
 def process_request(doc, cgidata, mlist):
-    password = cgidata.getvalue('password', '').strip()
+    password = cgidata.getfirst('password', '').strip()
     try:
-        delarchives = int(cgidata.getvalue('delarchives', '0'))
+        delarchives = int(cgidata.getfirst('delarchives', '0'))
     except ValueError:
         delarchives = 0
 

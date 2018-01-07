@@ -162,20 +162,36 @@ check_caller(const char* ident, const char* parentgroup)
 
 
 
-/* list of environment variables which are removed from the given
+/* list of environment variables which are kept in the given
  * environment.  Some may or may not be hand crafted and passed into
  * the execv'd environment.
  *
  * TBD: The logic of this should be inverted.  IOW, we should audit the
  * Mailman CGI code for those environment variables that are used, and
- * specifically white list them, removing all other variables.  John Viega
+ * specifically white list them, removing all other variables.
+ * MAS: This is now done.
+ *
+ * John Viega
  * also suggests imposing a maximum size just in case Python doesn't handle
  * them right (which it should because Python strings have no hard limits).
  */
-static char* killenvars[] = {
-        "PYTHONPATH=",
-        "PYTHONHOME=",
-        "PATH=",
+static char* keepenvars[] = {
+        "CONTENT_TYPE=",
+        "HOST=",
+        "HTTP_COOKIE=",
+        "HTTP_FORWARDED_FOR=",
+        "HTTP_HOST=",
+        "HTTP_X_FORWARDED_FOR=",
+        "LOGNAME=",
+        "PATH_INFO=",
+        "QUERY_STRING=",
+        "REMOTE_ADDR=",
+        "REQUEST_METHOD=",
+        "REQUEST_URI=",
+        "SCRIPT_NAME=",
+        "SERVER_NAME=",
+        "SERVER_PORT=",
+        "USER=",
         NULL
 };
 
@@ -232,11 +248,11 @@ run_script(const char* script, int argc, char** argv, char** env)
 
         /* filter out any troublesome environment variables */
         for (i = 0, j = 0; i < envcnt; i++) {
-                char** k = &killenvars[0];
-                int keep = 1;
+                char** k = &keepenvars[0];
+                int keep = 0;
                 while (*k) {
                         if (!strncmp(*k, env[i], strlen(*k))) {
-                                keep = 0;
+                                keep = 1;
                                 break;
                         }
                         *k++;

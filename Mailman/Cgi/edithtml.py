@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -97,7 +97,7 @@ def main():
     # Must be authenticated to get any farther
     cgidata = cgi.FieldStorage()
     try:
-        cgidata.getvalue('adminpw', '')
+        cgidata.getfirst('adminpw', '')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc.AddItem(Header(2, _("Error")))
@@ -111,18 +111,18 @@ def main():
     safe_params = ['VARHELP', 'adminpw', 'admlogin']
     params = cgidata.keys()
     if set(params) - set(safe_params):
-        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+        csrf_checked = csrf_check(mlist, cgidata.getfirst('csrf_token'))
     else:
         csrf_checked = True
     # if password is present, void cookie to force password authentication.
-    if cgidata.getvalue('adminpw'):
+    if cgidata.getfirst('adminpw'):
         os.environ['HTTP_COOKIE'] = ''
         csrf_checked = True
 
     # Editing the html for a list is limited to the list admin and site admin.
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthSiteAdmin),
-                                 cgidata.getvalue('adminpw', '')):
+                                 cgidata.getfirst('adminpw', '')):
         if cgidata.has_key('admlogin'):
             # This is a re-authorization attempt
             msg = Bold(FontSize('+1', _('Authorization failed.'))).Format()

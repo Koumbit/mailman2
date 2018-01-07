@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -74,7 +74,7 @@ def main():
     # Get the form data to see if this is a second-step confirmation
     cgidata = cgi.FieldStorage(keep_blank_values=1)
     try:
-        cookie = cgidata.getvalue('cookie')
+        cookie = cgidata.getfirst('cookie')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc.AddItem(Header(2, _("Error")))
@@ -124,17 +124,17 @@ def main():
 
     try:
         if content[0] == Pending.SUBSCRIPTION:
-            if cgidata.getvalue('cancel'):
+            if cgidata.getfirst('cancel'):
                 subscription_cancel(mlist, doc, cookie)
-            elif cgidata.getvalue('submit'):
+            elif cgidata.getfirst('submit'):
                 subscription_confirm(mlist, doc, cookie, cgidata)
             else:
                 subscription_prompt(mlist, doc, cookie, content[1])
         elif content[0] == Pending.UNSUBSCRIPTION:
             try:
-                if cgidata.getvalue('cancel'):
+                if cgidata.getfirst('cancel'):
                     unsubscription_cancel(mlist, doc, cookie)
-                elif cgidata.getvalue('submit'):
+                elif cgidata.getfirst('submit'):
                     unsubscription_confirm(mlist, doc, cookie)
                 else:
                     unsubscription_prompt(mlist, doc, cookie, *content[1:])
@@ -145,9 +145,9 @@ def main():
                 # Expunge this record from the pending database.
                 expunge(mlist, cookie)
         elif content[0] == Pending.CHANGE_OF_ADDRESS:
-            if cgidata.getvalue('cancel'):
+            if cgidata.getfirst('cancel'):
                 addrchange_cancel(mlist, doc, cookie)
-            elif cgidata.getvalue('submit'):
+            elif cgidata.getfirst('submit'):
                 addrchange_confirm(mlist, doc, cookie)
             else:
                 # Watch out for users who have unsubscribed themselves in the
@@ -161,16 +161,16 @@ def main():
                     # Expunge this record from the pending database.
                     expunge(mlist, cookie)
         elif content[0] == Pending.HELD_MESSAGE:
-            if cgidata.getvalue('cancel'):
+            if cgidata.getfirst('cancel'):
                 heldmsg_cancel(mlist, doc, cookie)
-            elif cgidata.getvalue('submit'):
+            elif cgidata.getfirst('submit'):
                 heldmsg_confirm(mlist, doc, cookie)
             else:
                 heldmsg_prompt(mlist, doc, cookie, *content[1:])
         elif content[0] == Pending.RE_ENABLE:
-            if cgidata.getvalue('cancel'):
+            if cgidata.getfirst('cancel'):
                 reenable_cancel(mlist, doc, cookie)
-            elif cgidata.getvalue('submit'):
+            elif cgidata.getfirst('submit'):
                 reenable_confirm(mlist, doc, cookie)
             else:
                 reenable_prompt(mlist, doc, cookie, *content[1:])
@@ -349,20 +349,20 @@ def subscription_confirm(mlist, doc, cookie, cgidata):
         try:
             # Some pending values may be overridden in the form.  email of
             # course is hardcoded. ;)
-            lang = cgidata.getvalue('language')
+            lang = cgidata.getfirst('language')
             if not Utils.IsLanguage(lang):
                 lang = mlist.preferred_language
             i18n.set_language(lang)
             doc.set_language(lang)
             if cgidata.has_key('digests'):
                 try:
-                    digest = int(cgidata.getvalue('digests'))
+                    digest = int(cgidata.getfirst('digests'))
                 except ValueError:
                     digest = None
             else:
                 digest = None
             userdesc = mlist.pend_confirm(cookie, expunge=False)[1]
-            fullname = cgidata.getvalue('realname', None)
+            fullname = cgidata.getfirst('realname', None)
             if fullname is not None:
                 fullname = Utils.canonstr(fullname, lang)
             overrides = UserDesc(fullname=fullname, digest=digest, lang=lang)

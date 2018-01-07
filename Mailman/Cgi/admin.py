@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -87,7 +87,7 @@ def main():
     # If the user is not authenticated, we're done.
     cgidata = cgi.FieldStorage(keep_blank_values=1)
     try:
-        cgidata.getvalue('csrf_token', '')
+        cgidata.getfirst('csrf_token', '')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc = Document()
@@ -105,17 +105,17 @@ def main():
                    'legend']
     params = cgidata.keys()
     if set(params) - set(safe_params):
-        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+        csrf_checked = csrf_check(mlist, cgidata.getfirst('csrf_token'))
     else:
         csrf_checked = True
     # if password is present, void cookie to force password authentication.
-    if cgidata.getvalue('adminpw'):
+    if cgidata.getfirst('adminpw'):
         os.environ['HTTP_COOKIE'] = ''
         csrf_checked = True
 
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthSiteAdmin),
-                                 cgidata.getvalue('adminpw', '')):
+                                 cgidata.getfirst('adminpw', '')):
         if cgidata.has_key('adminpw'):
             # This is a re-authorization attempt
             msg = Bold(FontSize('+1', _('Authorization failed.'))).Format()
@@ -155,7 +155,7 @@ def main():
     if qsenviron:
         parsedqs = cgi.parse_qs(qsenviron)
     if cgidata.has_key('VARHELP'):
-        varhelp = cgidata.getvalue('VARHELP')
+        varhelp = cgidata.getfirst('VARHELP')
     elif parsedqs:
         # POST methods, even if their actions have a query string, don't get
         # put into FieldStorage's keys :-(
@@ -913,7 +913,7 @@ def membership_options(mlist, subcat, cgidata, doc, form):
                 _('(help)')).Format()
     table.AddRow([Label(_('Find member %(link)s:')),
                   TextBox('findmember',
-                          value=cgidata.getvalue('findmember', '')),
+                          value=cgidata.getfirst('findmember', '')),
                   SubmitButton('findmember_btn', _('Search...'))])
     container.AddItem(table)
     container.AddItem('<hr><p>')
@@ -926,7 +926,7 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     all = [_m.encode() for _m in mlist.getMembers()]
     all.sort(lambda x, y: cmp(x.lower(), y.lower()))
     # See if the query has a regular expression
-    regexp = cgidata.getvalue('findmember', '').strip()
+    regexp = cgidata.getfirst('findmember', '').strip()
     try:
         regexp = regexp.decode(Utils.GetCharSet(mlist.preferred_language))
     except UnicodeDecodeError:
@@ -1055,7 +1055,8 @@ def membership_options(mlist, subcat, cgidata, doc, form):
         fullname = Utils.uncanonstr(mlist.getMemberName(addr),
                                     mlist.preferred_language)
         name = TextBox(qaddr + '_realname', fullname, size=longest).Format()
-        cells = [Center(CheckBox(qaddr + '_unsub', 'off', 0).Format()),
+        cells = [Center(CheckBox(qaddr + '_unsub', 'off', 0).Format()
+                        + '<div class="hidden">' + _('unsub') + '</div>'),
                  link.Format() + '<br>' +
                  name +
                  Hidden('user', qaddr).Format(),
@@ -1068,9 +1069,12 @@ def membership_options(mlist, subcat, cgidata, doc, form):
             value = 'off'
             checked = 0
         box = CheckBox('%s_mod' % qaddr, value, checked)
-        cells.append(Center(box).Format())
+        cells.append(Center(box.Format()
+            + '<div class="hidden">' + _('mod') + '</div>'))
+        # Kluge, get these translated.
+        (_('hide'), _('nomail'), _('ack'), _('notmetoo'), _('nodupes'))
         for opt in ('hide', 'nomail', 'ack', 'notmetoo', 'nodupes'):
-            extra = ''
+            extra = '<div class="hidden">' + _(opt) + '</div>'
             if opt == 'nomail':
                 status = mlist.getDeliveryStatus(addr)
                 if status == MemberAdaptor.ENABLED:
@@ -1079,7 +1083,7 @@ def membership_options(mlist, subcat, cgidata, doc, form):
                 else:
                     value = 'on'
                     checked = 1
-                    extra = '[%s]' % ds_abbrevs[status]
+                    extra = '[%s]' % ds_abbrevs[status] + extra
             elif mlist.getMemberOption(addr, mm_cfg.OPTINFO[opt]):
                 value = 'on'
                 checked = 1
@@ -1092,17 +1096,22 @@ def membership_options(mlist, subcat, cgidata, doc, form):
         # the underlying dictionary attribute.  This version is slower and
         # less memory efficient.  It points to a new MemberAdaptor interface
         # method.
+        extra = '<div class="hidden">' + _('digest') + '</div>'
         if addr in mlist.getRegularMemberKeys():
-            cells.append(Center(CheckBox(qaddr + '_digest', 'off', 0).Format()))
+            cells.append(Center(CheckBox(qaddr + '_digest', 'off', 0).Format()
+                                + extra))
         else:
-            cells.append(Center(CheckBox(qaddr + '_digest', 'on', 1).Format()))
+            cells.append(Center(CheckBox(qaddr + '_digest', 'on', 1).Format()
+                                + extra))
         if mlist.getMemberOption(addr, mm_cfg.OPTINFO['plain']):
             value = 'on'
             checked = 1
         else:
             value = 'off'
             checked = 0
-        cells.append(Center(CheckBox('%s_plain' % qaddr, value, checked)))
+        cells.append(Center(CheckBox(
+                            '%s_plain' % qaddr, value, checked).Format()
+                            + '<div class="hidden">' + _('plain') + '</div>'))
         # User's preferred language
         langpref = mlist.getMemberLanguage(addr)
         langs = mlist.GetAvailableLanguages()
@@ -1385,14 +1394,14 @@ def submit_button(name='submit'):
 def change_options(mlist, category, subcat, cgidata, doc):
     def safeint(formvar, defaultval=None):
         try:
-            return int(cgidata.getvalue(formvar))
+            return int(cgidata.getfirst(formvar))
         except (ValueError, TypeError):
             return defaultval
     confirmed = 0
     # Handle changes to the list moderator password.  Do this before checking
     # the new admin password, since the latter will force a reauthentication.
-    new = cgidata.getvalue('newmodpw', '').strip()
-    confirm = cgidata.getvalue('confirmmodpw', '').strip()
+    new = cgidata.getfirst('newmodpw', '').strip()
+    confirm = cgidata.getfirst('confirmmodpw', '').strip()
     if new or confirm:
         if new == confirm:
             mlist.mod_password = sha_new(new).hexdigest()
@@ -1402,8 +1411,8 @@ def change_options(mlist, category, subcat, cgidata, doc):
             doc.addError(_('Moderator passwords did not match'))
     # Handle changes to the list poster password.  Do this before checking
     # the new admin password, since the latter will force a reauthentication.
-    new = cgidata.getvalue('newpostpw', '').strip()
-    confirm = cgidata.getvalue('confirmpostpw', '').strip()
+    new = cgidata.getfirst('newpostpw', '').strip()
+    confirm = cgidata.getfirst('confirmpostpw', '').strip()
     if new or confirm:
         if new == confirm:
             mlist.post_password = sha_new(new).hexdigest()
@@ -1412,8 +1421,8 @@ def change_options(mlist, category, subcat, cgidata, doc):
         else:
             doc.addError(_('Poster passwords did not match'))
     # Handle changes to the list administrator password
-    new = cgidata.getvalue('newpw', '').strip()
-    confirm = cgidata.getvalue('confirmpw', '').strip()
+    new = cgidata.getfirst('newpw', '').strip()
+    confirm = cgidata.getfirst('confirmpw', '').strip()
     if new or confirm:
         if new == confirm:
             mlist.password = sha_new(new).hexdigest()
@@ -1429,8 +1438,8 @@ def change_options(mlist, category, subcat, cgidata, doc):
         gui.handleForm(mlist, category, subcat, cgidata, doc)
     # mass subscription, removal processing for members category
     subscribers = ''
-    subscribers += cgidata.getvalue('subscribees', '')
-    subscribers += cgidata.getvalue('subscribees_upload', '')
+    subscribers += cgidata.getfirst('subscribees', '')
+    subscribers += cgidata.getfirst('subscribees_upload', '')
     if subscribers:
         entries = filter(None, [n.strip() for n in subscribers.splitlines()])
         send_welcome_msg = safeint('send_welcome_msg_to_this_batch',
@@ -1439,7 +1448,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
                                    mlist.admin_notify_mchanges)
         # Default is to subscribe
         subscribe_or_invite = safeint('subscribe_or_invite', 0)
-        invitation = cgidata.getvalue('invitation', '')
+        invitation = cgidata.getfirst('invitation', '')
         digest = mlist.digest_is_default
         if not mlist.digestable:
             digest = 0
@@ -1540,8 +1549,8 @@ def change_options(mlist, category, subcat, cgidata, doc):
             doc.AddItem('<p>')
     # Address Changes
     if cgidata.has_key('change_from'):
-        change_from = cgidata.getvalue('change_from', '')
-        change_to = cgidata.getvalue('change_to', '')
+        change_from = cgidata.getfirst('change_from', '')
+        change_to = cgidata.getfirst('change_to', '')
         schange_from = Utils.websafe(change_from)
         schange_to = Utils.websafe(change_to)
         success = False
@@ -1585,7 +1594,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
 """))
         subject = _('%(list_name)s address change notice.')
         i18n.set_translation(otrans)
-        if success and cgidata.getvalue('notice_old', '') == 'yes':
+        if success and cgidata.getfirst('notice_old', '') == 'yes':
             # Send notice to old address.
             msg = Message.UserNotification(change_from,
                 mlist.GetOwnerEmail(),
@@ -1595,7 +1604,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
                 )
             msg.send(mlist)
             doc.AddItem(Header(3, _('Notification sent to %(schange_from)s.')))
-        if success and cgidata.getvalue('notice_new', '') == 'yes':
+        if success and cgidata.getfirst('notice_new', '') == 'yes':
             # Send notice to new address.
             msg = Message.UserNotification(change_to,
                 mlist.GetOwnerEmail(),
@@ -1648,16 +1657,16 @@ def change_options(mlist, category, subcat, cgidata, doc):
                 # BAW: Hmm...
                 pass
 
-            newname = cgidata.getvalue(quser+'_realname', '')
+            newname = cgidata.getfirst(quser+'_realname', '')
             newname = Utils.canonstr(newname, mlist.preferred_language)
             mlist.setMemberName(user, newname)
 
-            newlang = cgidata.getvalue(quser+'_language')
+            newlang = cgidata.getfirst(quser+'_language')
             oldlang = mlist.getMemberLanguage(user)
             if Utils.IsLanguage(newlang) and newlang <> oldlang:
                 mlist.setMemberLanguage(user, newlang)
 
-            moderate = not not cgidata.getvalue(quser+'_mod')
+            moderate = not not cgidata.getfirst(quser+'_mod')
             mlist.setMemberOption(user, mm_cfg.Moderate, moderate)
 
             # Set the `nomail' flag, but only if the user isn't already

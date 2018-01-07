@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -110,22 +110,8 @@ def main():
     # CSRF check
     safe_params = ['displang-button', 'language', 'email', 'password', 'login',
                    'login-unsub', 'login-remind', 'VARHELP', 'UserOptions']
-    params = cgidata.keys()
-    if set(params) - set(safe_params):
-        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
-    else:
-        csrf_checked = True
-    # if password is present, void cookie to force password authentication.
-    if cgidata.getvalue('password'):
-        os.environ['HTTP_COOKIE'] = ''
-        csrf_checked = True
-
-    # Set the language for the page.  If we're coming from the listinfo cgi,
-    # we might have a 'language' key in the cgi data.  That was an explicit
-    # preference to view the page in, so we should honor that here.  If that's
-    # not available, use the list's default language.
     try:
-        language = cgidata.getvalue('language')
+        params = cgidata.keys()
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc.AddItem(Header(2, _("Error")))
@@ -135,20 +121,34 @@ def main():
         print doc.Format()
         return
 
+    if set(params) - set(safe_params):
+        csrf_checked = csrf_check(mlist, cgidata.getfirst('csrf_token'))
+    else:
+        csrf_checked = True
+    # if password is present, void cookie to force password authentication.
+    if cgidata.getfirst('password'):
+        os.environ['HTTP_COOKIE'] = ''
+        csrf_checked = True
+
+    # Set the language for the page.  If we're coming from the listinfo cgi,
+    # we might have a 'language' key in the cgi data.  That was an explicit
+    # preference to view the page in, so we should honor that here.  If that's
+    # not available, use the list's default language.
+    language = cgidata.getfirst('language')
     if not Utils.IsLanguage(language):
         language = mlist.preferred_language
     i18n.set_language(language)
     doc.set_language(language)
 
     if lenparts < 2:
-        user = cgidata.getvalue('email')
+        user = cgidata.getfirst('email')
         if not user:
             # If we're coming from the listinfo page and we left the email
             # address field blank, it's not an error.  Likewise if we're
             # coming from anywhere else. Only issue the error if we came
             # via one of our buttons.
-            if (cgidata.getvalue('login') or cgidata.getvalue('login-unsub')
-                    or cgidata.getvalue('login-remind')):
+            if (cgidata.getfirst('login') or cgidata.getfirst('login-unsub')
+                    or cgidata.getfirst('login-remind')):
                 doc.addError(_('No address given'))
             loginpage(mlist, doc, None, language)
             print doc.Format()
@@ -194,7 +194,7 @@ def main():
     # And now we know the user making the request, so set things up to for the
     # user's stored preferred language, overridden by any form settings for
     # their new language preference.
-    userlang = cgidata.getvalue('language')
+    userlang = cgidata.getfirst('language')
     if not Utils.IsLanguage(userlang):
         userlang = mlist.getMemberLanguage(user)
     doc.set_language(userlang)
@@ -279,7 +279,7 @@ def main():
         return
 
     # Get the password from the form.
-    password = cgidata.getvalue('password', '').strip()
+    password = cgidata.getfirst('password', '').strip()
     # Check authentication.  We need to know if the credentials match the user
     # or the site admin, because they are the only ones who are allowed to
     # change things globally.  Specifically, the list admin may not change
@@ -391,18 +391,18 @@ def main():
     if cgidata.has_key('change-of-address'):
         # We could be changing the user's full name, email address, or both.
         # Watch out for non-ASCII characters in the member's name.
-        membername = cgidata.getvalue('fullname')
+        membername = cgidata.getfirst('fullname')
         # Canonicalize the member's name
         membername = Utils.canonstr(membername, language)
-        newaddr = cgidata.getvalue('new-address')
-        confirmaddr = cgidata.getvalue('confirm-address')
+        newaddr = cgidata.getfirst('new-address')
+        confirmaddr = cgidata.getfirst('confirm-address')
 
         oldname = mlist.getMemberName(user)
         set_address = set_membername = 0
 
         # See if the user wants to change their email address globally.  The
         # list admin is /not/ allowed to make global changes.
-        globally = cgidata.getvalue('changeaddr-globally')
+        globally = cgidata.getfirst('changeaddr-globally')
         if globally and not is_user_or_siteadmin:
             doc.addError(_("""The list administrator may not change the names
             or addresses for this user's other subscriptions.  However, the
@@ -515,8 +515,8 @@ address.  Upon confirmation, any other mailing list containing the address
             options_page(mlist, doc, user, cpuser, userlang)
             print doc.Format()
             return
-        newpw = cgidata.getvalue('newpw', '').strip()
-        confirmpw = cgidata.getvalue('confpw', '').strip()
+        newpw = cgidata.getfirst('newpw', '').strip()
+        confirmpw = cgidata.getfirst('confpw', '').strip()
         if not newpw or not confirmpw:
             options_page(mlist, doc, user, cpuser, userlang,
                          _('Passwords may not be blank'))
@@ -530,7 +530,7 @@ address.  Upon confirmation, any other mailing list containing the address
 
         # See if the user wants to change their passwords globally, however
         # the list admin is /not/ allowed to change passwords globally.
-        pw_globally = cgidata.getvalue('pw-globally')
+        pw_globally = cgidata.getfirst('pw-globally')
         if pw_globally and not is_user_or_siteadmin:
             doc.addError(_("""The list administrator may not change the
             password for this user's other subscriptions.  However, the
@@ -555,7 +555,7 @@ address.  Upon confirmation, any other mailing list containing the address
 
     if cgidata.has_key('unsub'):
         # Was the confirming check box turned on?
-        if not cgidata.getvalue('unsubconfirm'):
+        if not cgidata.getfirst('unsubconfirm'):
             options_page(
                 mlist, doc, user, cpuser, userlang,
                 _('''You must confirm your unsubscription request by turning
@@ -635,7 +635,7 @@ address.  Upon confirmation, any other mailing list containing the address
                            ('nodupes',     mm_cfg.DontReceiveDuplicates),
                            ):
             try:
-                newval = int(cgidata.getvalue(item))
+                newval = int(cgidata.getfirst(item))
             except (TypeError, ValueError):
                 newval = None
 
@@ -725,7 +725,7 @@ address.  Upon confirmation, any other mailing list containing the address
 
         # The enable/disable option and the password remind option may have
         # their global flags sets.
-        if cgidata.getvalue('deliver-globally'):
+        if cgidata.getfirst('deliver-globally'):
             # Yes, this is inefficient, but the list is so small it shouldn't
             # make much of a difference.
             for flag, newval in newvals:
@@ -733,19 +733,19 @@ address.  Upon confirmation, any other mailing list containing the address
                     globalopts.enable = newval
                     break
 
-        if cgidata.getvalue('remind-globally'):
+        if cgidata.getfirst('remind-globally'):
             for flag, newval in newvals:
                 if flag == mm_cfg.SuppressPasswordReminder:
                     globalopts.remind = newval
                     break
 
-        if cgidata.getvalue('nodupes-globally'):
+        if cgidata.getfirst('nodupes-globally'):
             for flag, newval in newvals:
                 if flag == mm_cfg.DontReceiveDuplicates:
                     globalopts.nodupes = newval
                     break
 
-        if cgidata.getvalue('mime-globally'):
+        if cgidata.getfirst('mime-globally'):
             for flag, newval in newvals:
                 if flag == mm_cfg.DisableMime:
                     globalopts.mime = newval

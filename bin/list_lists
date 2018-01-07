@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -42,6 +42,7 @@ Where:
 
 """
 
+import re
 import sys
 import getopt
 import paths
@@ -106,9 +107,10 @@ def main():
             continue
         if public and mlist.archive_private:
             continue
-        if vhost and mm_cfg.VIRTUAL_HOST_OVERVIEW and \
-               vhost.find(mlist.web_page_url) == -1 and \
-               mlist.web_page_url.find(vhost) == -1:
+        if (vhost and mm_cfg.VIRTUAL_HOST_OVERVIEW and
+               not re.search('://%s/' % re.escape(vhost),
+                   mlist.web_page_url,
+                   re.IGNORECASE)):
             continue
         mlists.append(mlist)
         longest = max(len(mlist.real_name), longest)

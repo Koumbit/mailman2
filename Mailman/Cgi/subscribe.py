@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -71,7 +71,7 @@ def main():
     # for the results.  If not, use the list's preferred language.
     cgidata = cgi.FieldStorage()
     try:
-        language = cgidata.getvalue('language', '')
+        language = cgidata.getfirst('language', '')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc.AddItem(Header(2, _("Error")))
@@ -119,11 +119,11 @@ def process_form(mlist, doc, cgidata, lang):
     results = []
 
     # The email address being subscribed, required
-    email = cgidata.getvalue('email', '').strip()
+    email = cgidata.getfirst('email', '').strip()
     if not email:
         results.append(_('You must supply a valid email address.'))
 
-    fullname = cgidata.getvalue('fullname', '')
+    fullname = cgidata.getfirst('fullname', '')
     # Canonicalize the full name
     fullname = Utils.canonstr(fullname, lang)
     # Who was doing the subscribing?
@@ -144,7 +144,7 @@ def process_form(mlist, doc, cgidata, lang):
             #        for our hash so it doesn't matter.
             remote1 = remote.rsplit(':', 1)[0]
         try:
-            ftime, fhash = cgidata.getvalue('sub_form_token', '').split(':')
+            ftime, fhash = cgidata.getfirst('sub_form_token', '').split(':')
             then = int(ftime)
         except ValueError:
             ftime = fhash = ''
@@ -170,8 +170,8 @@ def process_form(mlist, doc, cgidata, lang):
         syslog('mischief', 'Attempt to self subscribe %s: %s', email, remote)
         results.append(_('You may not subscribe a list to itself!'))
     # If the user did not supply a password, generate one for him
-    password = cgidata.getvalue('pw', '').strip()
-    confirmed = cgidata.getvalue('pw-conf', '').strip()
+    password = cgidata.getfirst('pw', '').strip()
+    confirmed = cgidata.getfirst('pw-conf', '').strip()
 
     if not password and not confirmed:
         password = Utils.MakeRandomPassword()
@@ -181,7 +181,7 @@ def process_form(mlist, doc, cgidata, lang):
         results.append(_('Your passwords did not match.'))
 
     # Get the digest option for the subscription.
-    digestflag = cgidata.getvalue('digest')
+    digestflag = cgidata.getfirst('digest')
     if digestflag:
         try:
             digest = int(digestflag)

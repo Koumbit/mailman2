@@ -35,6 +35,9 @@ from Mailman.Logging.Syslog import syslog
 LOCKFILE = os.path.join(mm_cfg.LOCK_DIR, 'creator')
 ALIASFILE = os.path.join(mm_cfg.DATA_DIR, 'aliases')
 VIRTFILE = os.path.join(mm_cfg.DATA_DIR, 'virtual-mailman')
+# Desired mode for aliases(.db) and virtual-mailman(.db) for both creation
+# and check_perms.
+targetmode = S_IFREG | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH
 
 try:
     True, False
@@ -45,6 +48,22 @@ except NameError:
 
 
 def _update_maps():
+    # Helper function to fix owner and mode.
+    def fixom(file):
+        # It's not necessary for the non-db file to be S_IROTH, but for
+        # simplicity and compatibility with check_perms, we set it.
+        stat = os.stat(file)
+        if (stat[ST_MODE] & targetmode) <> targetmode:
+            os.chmod(file, stat[ST_MODE] | targetmode)
+        dbfile = file + '.db'
+        stat = os.stat(dbfile)
+        if (stat[ST_MODE] & targetmode) <> targetmode:
+            os.chmod(dbfile, stat[ST_MODE] | targetmode)
+        user = mm_cfg.MAILMAN_USER
+        if stat[ST_UID] != pwd.getpwnam(user)[2]:
+            uid = pwd.getpwnam(user)[2]
+            gid = grp.getgrnam(mm_cfg.MAILMAN_GROUP)[2]
+            os.chown(dbfile, uid, gid)
     msg = 'command failed: %s (status: %s, %s)'
     acmd = mm_cfg.POSTFIX_ALIAS_CMD + ' ' + ALIASFILE
     status = (os.system(acmd) >> 8) & 0xff
@@ -52,6 +71,8 @@ def _update_maps():
         errstr = os.strerror(status)
         syslog('error', msg, acmd, status, errstr)
         raise RuntimeError, msg % (acmd, status, errstr)
+    # Fix owner and mode of .db if needed.
+    fixom(ALIASFILE)
     if os.path.exists(VIRTFILE):
         vcmd = mm_cfg.POSTFIX_MAP_CMD + ' ' + VIRTFILE
         status = (os.system(vcmd) >> 8) & 0xff
@@ -59,6 +80,8 @@ def _update_maps():
             errstr = os.strerror(status)
             syslog('error', msg, vcmd, status, errstr)
             raise RuntimeError, msg % (vcmd, status, errstr)
+        # Fix owner and mode of .db if needed.
+        fixom(VIRTFILE)
 
 
 
@@ -387,7 +410,6 @@ def remove(mlist, cgi=False):
 
 
 def checkperms(state):
-    targetmode = S_IFREG | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP
     for file in ALIASFILE, VIRTFILE:
         if state.VERBOSE:
             print C_('checking permissions on %(file)s')
@@ -400,7 +422,7 @@ def checkperms(state):
         if stat and (stat[ST_MODE] & targetmode) <> targetmode:
             state.ERRORS += 1
             octmode = oct(stat[ST_MODE])
-            print C_('%(file)s permissions must be 066x (got %(octmode)s)'),
+            print C_('%(file)s permissions must be 0664 (got %(octmode)s)'),
             if state.FIX:
                 print C_('(fixing)')
                 os.chmod(file, stat[ST_MODE] | targetmode)
@@ -439,7 +461,7 @@ def checkperms(state):
         if stat and (stat[ST_MODE] & targetmode) <> targetmode:
             state.ERRORS += 1
             octmode = oct(stat[ST_MODE])
-            print C_('%(dbfile)s permissions must be 066x (got %(octmode)s)'),
+            print C_('%(dbfile)s permissions must be 0664 (got %(octmode)s)'),
             if state.FIX:
                 print C_('(fixing)')
                 os.chmod(dbfile, stat[ST_MODE] | targetmode)

@@ -87,6 +87,7 @@ class HTMLFormatter:
         for person in people:
             id = Utils.ObscureEmail(person)
             url = self.GetOptionsURL(person, obscure=obscure)
+            person = self.getMemberCPAddress(person)
             if obscure:
                 showing = Utils.ObscureEmail(person, for_text=1)
             else:

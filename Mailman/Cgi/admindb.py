@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -95,8 +95,9 @@ def hacky_radio_buttons(btnname, labels, values, defaults, spacing=3):
     space = '&nbsp;' * spacing
     btns = Table(cellspacing='5', cellpadding='0')
     btns.AddRow([space + text + space for text in labels])
-    btns.AddRow([Center(RadioButton(btnname, value, default))
-                 for value, default in zip(values, defaults)])
+    btns.AddRow([Center(RadioButton(btnname, value, default).Format()
+                     + '<div class=hidden>' + label + '</div>')
+                 for label, value, default in zip(labels, values, defaults)])
     return btns
 
 
@@ -127,7 +128,7 @@ def main():
     # Make sure the user is authorized to see this page.
     cgidata = cgi.FieldStorage(keep_blank_values=1)
     try:
-        cgidata.getvalue('adminpw', '')
+        cgidata.getfirst('adminpw', '')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc = Document()
@@ -143,18 +144,18 @@ def main():
     safe_params = ['adminpw', 'admlogin', 'msgid', 'sender', 'details']
     params = cgidata.keys()
     if set(params) - set(safe_params):
-        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+        csrf_checked = csrf_check(mlist, cgidata.getfirst('csrf_token'))
     else:
         csrf_checked = True
     # if password is present, void cookie to force password authentication.
-    if cgidata.getvalue('adminpw'):
+    if cgidata.getfirst('adminpw'):
         os.environ['HTTP_COOKIE'] = ''
         csrf_checked = True
 
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthListModerator,
                                   mm_cfg.AuthSiteAdmin),
-                                 cgidata.getvalue('adminpw', '')):
+                                 cgidata.getfirst('adminpw', '')):
         if cgidata.has_key('adminpw'):
             # This is a re-authorization attempt
             msg = Bold(FontSize('+1', _('Authorization failed.'))).Format()
@@ -366,7 +367,7 @@ def show_pending_subs(mlist, form):
     form.AddItem('<hr>')
     form.AddItem(Center(Header(2, _('Subscription Requests'))))
     table = Table(border=2)
-    table.AddRow([Center(Bold(_('Address/name'))),
+    table.AddRow([Center(Bold(_('Address/name/time'))),
                   Center(Bold(_('Your decision'))),
                   Center(Bold(_('Reason for refusal')))
                   ])
@@ -379,12 +380,14 @@ def show_pending_subs(mlist, form):
     addrs.sort()
     num = 0
     for addr, ids in addrs:
-        # Eliminate duplicates
-        for id in ids[1:]:
+        # Eliminate duplicates.
+        # The list ws returned sorted ascending.  Keep the last.
+        for id in ids[:-1]:
             mlist.HandleRequest(id, mm_cfg.DISCARD)
-        id = ids[0]
-        time, addr, fullname, passwd, digest, lang = mlist.GetRecord(id)
+        id = ids[-1]
+        stime, addr, fullname, passwd, digest, lang = mlist.GetRecord(id)
         fullname = Utils.uncanonstr(fullname, mlist.preferred_language)
+        displaytime = time.ctime(stime)
         radio = RadioButtonArray(id, (_('Defer'),
                                       _('Approve'),
                                       _('Reject'),
@@ -401,7 +404,9 @@ def show_pending_subs(mlist, form):
                      '</label>')
         # While the address may be a unicode, it must be ascii
         paddr = addr.encode('us-ascii', 'replace')
-        table.AddRow(['%s<br><em>%s</em>' % (paddr, Utils.websafe(fullname)),
+        table.AddRow(['%s<br><em>%s</em><br>%s' % (paddr,
+                                                   Utils.websafe(fullname),
+                                                   displaytime),
                       radio,
                       TextBox('comment-%d' % id, size=40)
                       ])
@@ -433,6 +438,7 @@ def show_pending_unsubs(mlist, form):
     num = 0
     for addr, ids in addrs:
         # Eliminate duplicates
+        # Here the order doesn't matter as the data is just the address.
         for id in ids[1:]:
             mlist.HandleRequest(id, mm_cfg.DISCARD)
         id = ids[0]
@@ -742,20 +748,14 @@ def show_post_requests(mlist, id, info, total, count, form):
     when = msgdata.get('received_time')
     if when:
         t.AddRow([Bold(_('Received:')), time.ctime(when)])
-        t.AddCellInfo(row+2, col-1, align='right')
-    # We can't use a RadioButtonArray here because horizontal placement can be
-    # confusing to the user and vertical placement takes up too much
-    # real-estate.  This is a hack!
-    buttons = Table(cellspacing="5", cellpadding="0")
-    buttons.AddRow(map(lambda x, s='&nbsp;'*5: s+x+s,
-                       (_('Defer'), _('Approve'), _('Reject'), _('Discard'))))
-    buttons.AddRow([Center(RadioButton(id, mm_cfg.DEFER, 1)),
-                    Center(RadioButton(id, mm_cfg.APPROVE, 0)),
-                    Center(RadioButton(id, mm_cfg.REJECT, 0)),
-                    Center(RadioButton(id, mm_cfg.DISCARD, 0)),
-                    ])
+        t.AddCellInfo(row+3, col-1, align='right')
+    buttons = hacky_radio_buttons(id,
+                (_('Defer'), _('Approve'), _('Reject'), _('Discard')),
+                (mm_cfg.DEFER, mm_cfg.APPROVE, mm_cfg.REJECT, mm_cfg.DISCARD),
+                (1, 0, 0, 0),
+                spacing=5)
     t.AddRow([Bold(_('Action:')), buttons])
-    t.AddCellInfo(row+3, col-1, align='right')
+    t.AddCellInfo(t.GetCurrentRowIndex(), col-1, align='right')
     t.AddRow(['&nbsp;',
               '<label>' +
               CheckBox('preserve-%d' % id, 'on', 0).Format() +
@@ -805,18 +805,18 @@ def process_form(mlist, doc, cgidata):
                 action = k[:len(prefix)-1]
                 qsender = k[len(prefix):]
                 sender = unquote_plus(qsender)
-                value = cgidata.getvalue(k)
+                value = cgidata.getfirst(k)
                 senderactions.setdefault(sender, {})[action] = value
                 for id in cgidata.getlist(qsender):
                     senderactions[sender].setdefault('message_ids',
                                                      []).append(int(id))
     # discard-all-defers
     try:
-        discardalldefersp = cgidata.getvalue('discardalldefersp', 0)
+        discardalldefersp = cgidata.getfirst('discardalldefersp', 0)
     except ValueError:
         discardalldefersp = 0
     # Get the summary sequence
-    ssort = int(cgidata.getvalue('summary_sort', SSENDER))
+    ssort = int(cgidata.getfirst('summary_sort', SSENDER))
     for sender in senderactions.keys():
         actions = senderactions[sender]
         # Handle what to do about all this sender's held messages
@@ -935,7 +935,7 @@ def process_form(mlist, doc, cgidata):
             forwardaddr = cgidata[forwardaddrkey].value
         # Should we ban this address?  Do this check before handling the
         # request id because that will evict the record.
-        if cgidata.getvalue(bankey):
+        if cgidata.getfirst(bankey):
             sender = mlist.GetRecord(request_id)[1]
             if sender not in mlist.ban_list:
                 # We don't need to validate the sender.  An invalid address

@@ -117,6 +117,7 @@ def process(mlist, msg, msgdata):
                     if text:
                         text = Utils.wrap(text)
                     else:
+                        listowner = mlist.GetOwnerEmail()
                         text = Utils.wrap(_(
 """You are not allowed to post to this mailing list From: a domain which
 publishes a DMARC policy of reject or quarantine, and your message has been

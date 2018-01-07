@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -59,7 +59,7 @@ def main():
     # See if the user want to see this page in other language
     cgidata = cgi.FieldStorage()
     try:
-        language = cgidata.getvalue('language')
+        language = cgidata.getfirst('language')
     except TypeError:
         # Someone crafted a POST with a bad Content-Type:.
         doc = Document()

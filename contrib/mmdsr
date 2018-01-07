@@ -202,6 +202,11 @@
 # 0.0.26        Update by Mark Sapiro <mark@msapiro.net>
 #               Updated on: Sat Feb 20 21:17:14 PST 2016
 #               Properly display No such list names that contain ".
+#
+# 0.0.27	Update by Mark Sapiro <mark@msapiro.net>
+#		Updated on: Sun Jun  4 17:12:54 PDT 2017
+#		Added -a to default (e)grep to account for logs that may
+#		have non-ascii and be seen as binary.
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -212,9 +217,9 @@ AWK="/usr/bin/awk"
 BASENAME="/usr/bin/basename"
 CAT="/bin/cat"
 DATE="/bin/date"
-EGREP="/bin/egrep"
+EGREP="/bin/egrep -a"
 FMT="/usr/bin/fmt"
-GREP="/bin/grep"
+GREP="/bin/grep -a"
 HEAD="/usr/bin/head"
 LS="/bin/ls"
 MKTEMP="/bin/mktemp"

@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -114,9 +114,9 @@ class Topics(GUIBase):
             if cgidata.has_key(deltag):
                 continue
             # Get the data for the current box
-            name  = cgidata.getvalue(boxtag)
-            pattern = cgidata.getvalue(reboxtag)
-            desc  = cgidata.getvalue(desctag)
+            name  = cgidata.getfirst(boxtag)
+            pattern = cgidata.getfirst(reboxtag)
+            desc  = cgidata.getfirst(desctag)
             if name is None:
                 # We came to the end of the boxes
                 break
@@ -138,7 +138,7 @@ class Topics(GUIBase):
             # Was this an add item?
             if cgidata.has_key(addtag):
                 # Where should the new one be added?
-                where = cgidata.getvalue(wheretag)
+                where = cgidata.getfirst(wheretag)
                 if where == 'before':
                     # Add a new empty topics box before the current one
                     topics.append(('', '', '', True))
@@ -154,14 +154,14 @@ class Topics(GUIBase):
         # options.
         mlist.topics = topics
         try:
-            mlist.topics_enabled = int(cgidata.getvalue(
+            mlist.topics_enabled = int(cgidata.getfirst(
                 'topics_enabled',
                 mlist.topics_enabled))
         except ValueError:
             # BAW: should really print a warning
             pass
         try:
-            mlist.topics_bodylines_limit = int(cgidata.getvalue(
+            mlist.topics_bodylines_limit = int(cgidata.getfirst(
                 'topics_bodylines_limit',
                 mlist.topics_bodylines_limit))
         except ValueError:

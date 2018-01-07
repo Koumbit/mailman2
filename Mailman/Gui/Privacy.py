@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -641,9 +641,9 @@ class Privacy(GUIBase):
             if cgidata.has_key(deltag):
                 continue
             # Get the data for the current box
-            pattern = cgidata.getvalue(reboxtag)
+            pattern = cgidata.getfirst(reboxtag)
             try:
-                action  = int(cgidata.getvalue(actiontag))
+                action  = int(cgidata.getfirst(actiontag))
                 # We'll get a TypeError when the actiontag is missing and the
                 # .getvalue() call returns None.
             except (ValueError, TypeError):
@@ -682,7 +682,7 @@ class Privacy(GUIBase):
             # Was this an add item?
             if cgidata.has_key(addtag):
                 # Where should the new one be added?
-                where = cgidata.getvalue(wheretag)
+                where = cgidata.getfirst(wheretag)
                 if where == 'before':
                     # Add a new empty rule box before the current one
                     rules.append(('', mm_cfg.DEFER, True))

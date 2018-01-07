@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -319,6 +319,19 @@ class Document(Container):
                           'content="text/html; charset=%s">' % charset)
             if self.title:
                 output.append('%s<TITLE>%s</TITLE>' % (tab, self.title))
+            # Add CSS to visually hide some labeling text but allow screen
+            # readers to read it.
+            output.append("""\
+<style type="text/css">
+    div.hidden
+        {position:absolute;
+        left:-10000px;
+        top:auto;
+        width:1px;
+        height:1px;
+        overflow:hidden;}
+</style>
+""")
             if mm_cfg.WEB_HEAD_ADD:
                 output.append(mm_cfg.WEB_HEAD_ADD)
             output.append('%s</HEAD>' % tab)
