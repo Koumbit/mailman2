@@ -1,19 +1,6 @@
 #!/bin/sh -e
-# $URL$
-# $Id$
 
 . /usr/share/debconf/confmodule
-
-# If we encounter a cron.d file that was originally installed by this package,
-# we remove it here so it will be replaced by a properly managed one after
-# the package upgrade.
-# This can be removed after wheezy's release.
-if [ -e /etc/cron.d/mailman ] && dpkg --compare-versions "$2" le "1:2.1.14-3"; then
-	md5sum="$(md5sum /etc/cron.d/mailman | sed -e 's/ .*//')"
-	if [ "$md5sum" = "06648bbab6cf2c5c1f542b31a51d8338" ]; then
-		rm /etc/cron.d/mailman
-	fi
-fi
 
 #DEBHELPER#
 
