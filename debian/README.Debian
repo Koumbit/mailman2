@@ -1,6 +1,21 @@
 Notes for the debian mailman package.
 =====================================
 
+This is the legacy Mailman release
+----------------------------------
+
+This package contains the legacy 2.x branch of Mailman. Development
+happens in the Mailman 3 suite, available since Debian 10 'Buster'
+via the 'mailman3' metapackage.
+
+For new installations we recommend to start from the mailman3 package.
+If you have an existing installation of Mailman 2.x, you can migrate
+at your own pace.
+
+This mailman (2.x) package will be kept in working order for the
+foreseeable future, but will not see any major changes or improvements.
+It will be removed from the first Debian release after Mailman upstream
+has stopped support for this branch.
 
 Getting started
 ---------------
@@ -58,5 +73,3 @@ documentation about how to configure SpamAssassin and Mailman together at
 http://www.daa.com.au/~james/articles/mailman-spamassassin/
 The current version of this handler used in this package is released on
 2003 May 6 by James Henstridge <james@daa.com.au>.
-
- -- Lionel Elie Mamane <lmamane@debian.org>, dim, 27 aoû 2006 19:08:42 +0200

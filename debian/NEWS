@@ -1,3 +1,17 @@
+mailman (1:2.1.26-1) unstable; urgency=medium
+
+  This package contains the legacy 2.x branch of Mailman. Development
+  happens in the Mailman 3 suite, available in Debian since this release
+  via the 'mailman3' metapackage.
+
+  They are both available in this release, so you can migrate at your own
+  pace. This mailman (2.x) package will be kept in working order for the
+  foreseeable future, but will not see any major changes or improvements.
+  It will be removed from the first Debian release after Mailman upstream
+  has stopped support for this branch.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Sat, 03 Feb 2018 09:30:22 +0000
+
 mailman (1:2.1.16-1exp1) experimental; urgency=low
 
   This version has changed the encoding of most strings, templates

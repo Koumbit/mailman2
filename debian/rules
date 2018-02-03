@@ -136,6 +136,8 @@ binary-arch:	build
 
 	# make lintian happy
 	install -m 0644 debian/lintian-overrides debian/mailman/usr/share/lintian/overrides/mailman
+	# reportbug text to discourage wishlist reports for legacy package
+	install -m 0644 debian/presubj debian/mailman/usr/share/bug/mailman/
 
 # Spamassassin plugin
 	install -m 0644 debian/contrib/SpamAssassin.py debian/mailman/usr/lib/$(package)/Mailman/Handlers
@@ -183,7 +185,6 @@ binary-arch:	build
 
 	install -d debian/mailman/usr/share/python/runtime.d
 	install debian/mailman.rtupdate debian/mailman/usr/share/python/runtime.d
-
 
 	egrep -rslZ '^#!(.*)python' debian/mailman/usr/lib/mailman | xargs -0 chmod a+x --
 	find debian/mailman/usr/share/doc/mailman -name "*.html" -exec chmod -x {} \;

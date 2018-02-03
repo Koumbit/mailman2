@@ -19,16 +19,20 @@ Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends},
  cron | cron-daemon,
  python-dnspython
 Recommends: default-mta | mail-transport-agent
-Suggests: spamassassin, lynx, listadmin
-Description: Powerful, web-based mailing list manager
- The GNU Mailing List Manager, which manages email discussion lists
- much like Majordomo and Smartmail. Unlike most similar products,
+Suggests: mailman3,
+ spamassassin, lynx, listadmin
+Description: Web-based mailing list manager (legacy branch)
+ The GNU Mailing List Manager, which manages email discussion lists.
  Mailman gives each mailing list a web page, and allows users to
- subscribe, unsubscribe, etc. over the web.  Even the list manager can
+ subscribe, unsubscribe, etc. over the web. The list manager can
  administer his or her list entirely from the web.
  .
  Mailman also integrates most things people want to do with mailing
- lists, including archiving, mail <-> news gateways, and so on.  It
+ lists, including archiving, mail <-> news gateways, and so on. It
  has all of the features you expect from such a product, plus
  integrated support for the web (including web based archiving),
  automated bounce handling and integrated spam prevention.
+ .
+ Note that this package contains the legacy (2.x) branch of Mailman.
+ All new development happens in the Mailman 3 suite, available in
+ Debian via the mailman3 metapackage.

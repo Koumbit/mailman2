@@ -1,5 +1,6 @@
 usr/lib/mailman
 usr/sbin
+usr/share/bug/mailman
 usr/share/lintian/overrides
 usr/share/mailman
 usr/share/images/mailman

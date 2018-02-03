@@ -1,0 +1,10 @@
+This package 'mailman' contains the legacy 2.x branch of Mailman.
+Development happens in the Mailman 3 suite, available in Debian via
+the 'mailman3' metapackage.
+
+The 'mailmam' 2.x package is in maintenance mode. It will be kept in
+(minimal) working order for the foreseeable future, but will not see
+any major changes or improvements.
+
+Therefore it's likely not useful to file wishlist bugs, feature
+requests or items requiring major changes to the packaging.
