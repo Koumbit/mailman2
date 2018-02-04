@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2018 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,6 +22,9 @@ import os
 import cgi
 import time
 import signal
+import urllib
+import urllib2
+import json
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -35,6 +38,7 @@ from Mailman.Logging.Syslog import syslog
 
 SLASH = '/'
 ERRORSEP = '\n\n<p>'
+COMMASPACE = ', '
 
 # Set up i18n
 _ = i18n._
@@ -131,6 +135,26 @@ def process_form(mlist, doc, cgidata, lang):
              os.environ.get('HTTP_X_FORWARDED_FOR',
              os.environ.get('REMOTE_ADDR',
                             'unidentified origin')))
+
+    # Check reCAPTCHA submission, if enabled
+    if mm_cfg.RECAPTCHA_SECRET_KEY:
+        request = urllib2.Request(
+            url = 'https://www.google.com/recaptcha/api/siteverify',
+            data = urllib.urlencode({
+                'secret': mm_cfg.RECAPTCHA_SECRET_KEY,
+                'response': cgidata.getvalue('g-recaptcha-response', ''),
+                'remoteip': remote}))
+        try:
+            httpresp = urllib2.urlopen(request)
+            captcha_response = json.load(httpresp)
+            httpresp.close()
+            if not captcha_response['success']:
+                e_codes = COMMASPACE.join(captcha_response['error-codes'])
+                results.append(_('reCAPTCHA validation failed: %(e_codes)s'))
+        except urllib2.URLError as e:
+            e_reason = e.reason
+            results.append(_('reCAPTCHA could not be validated: %(e_reason)s'))
+
     # Are we checking the hidden data?
     if mm_cfg.SUBSCRIBE_FORM_SECRET:
         now = int(time.time())

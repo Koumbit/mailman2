@@ -192,6 +192,12 @@ static char* keepenvars[] = {
         "SERVER_NAME=",
         "SERVER_PORT=",
         "USER=",
+        "CONTENT_LENGTH=",
+        "DOCUMENT_ROOT=",
+        "SERVER_PROTOCOL=",
+        "REQUEST_SCHEME=",
+        "HTTPS=",
+        "REMOTE_PORT=",
         NULL
 };
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1.5\n"
-"POT-Creation-Date: Thu Oct 26 13:25:53 2017\n"
+"POT-Creation-Date: Tue Jan 30 08:13:26 2018\n"
 "PO-Revision-Date: 2005-05-07 23:27+0200\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
 "Language-Team: Norwegian <i18n-no@lister.ping.uio.no>\n"
@@ -245,29 +245,29 @@ msgid "Administrator"
 msgstr "Administrator"
 
 #: Mailman/Cgi/admin.py:80 Mailman/Cgi/admindb.py:121 Mailman/Cgi/confirm.py:62
-#: Mailman/Cgi/edithtml.py:86 Mailman/Cgi/listinfo.py:55
+#: Mailman/Cgi/edithtml.py:86 Mailman/Cgi/listinfo.py:56
 #: Mailman/Cgi/options.py:98 Mailman/Cgi/private.py:108
 #: Mailman/Cgi/rmlist.py:75 Mailman/Cgi/roster.py:59
-#: Mailman/Cgi/subscribe.py:63
+#: Mailman/Cgi/subscribe.py:67
 msgid "No such list <em>%(safelistname)s</em>"
 msgstr "Listen finnes ikke: <em>%(safelistname)s</em>"
 
 #: Mailman/Cgi/admin.py:95 Mailman/Cgi/admindb.py:136 Mailman/Cgi/confirm.py:80
 #: Mailman/Cgi/create.py:50 Mailman/Cgi/edithtml.py:103
-#: Mailman/Cgi/listinfo.py:67 Mailman/Cgi/options.py:117
+#: Mailman/Cgi/listinfo.py:68 Mailman/Cgi/options.py:117
 #: Mailman/Cgi/private.py:125 Mailman/Cgi/rmlist.py:48 Mailman/Cgi/roster.py:72
 #: Mailman/Cgi/roster.py:146 Mailman/Cgi/roster.py:147
-#: Mailman/Cgi/subscribe.py:51 Mailman/Cgi/subscribe.py:62
-#: Mailman/Cgi/subscribe.py:77
+#: Mailman/Cgi/subscribe.py:55 Mailman/Cgi/subscribe.py:66
+#: Mailman/Cgi/subscribe.py:81
 msgid "Error"
 msgstr "Feil"
 
 #: Mailman/Cgi/admin.py:96 Mailman/Cgi/admindb.py:137 Mailman/Cgi/confirm.py:81
 #: Mailman/Cgi/create.py:51 Mailman/Cgi/edithtml.py:104
-#: Mailman/Cgi/listinfo.py:68 Mailman/Cgi/options.py:81
+#: Mailman/Cgi/listinfo.py:69 Mailman/Cgi/options.py:81
 #: Mailman/Cgi/options.py:118 Mailman/Cgi/private.py:126
 #: Mailman/Cgi/rmlist.py:49 Mailman/Cgi/roster.py:73
-#: Mailman/Cgi/subscribe.py:78
+#: Mailman/Cgi/subscribe.py:82
 msgid "Invalid options to CGI script."
 msgstr "Ugyldige parametre til CGI skriptet."
 
@@ -324,11 +324,11 @@ msgstr ""
 msgid "%(hostname)s mailing lists - Admin Links"
 msgstr "Epostlister p&aring; %(hostname)s - Administrativ tilgang"
 
-#: Mailman/Cgi/admin.py:294 Mailman/Cgi/listinfo.py:121
+#: Mailman/Cgi/admin.py:294 Mailman/Cgi/listinfo.py:122
 msgid "Welcome!"
 msgstr "Velkommen!"
 
-#: Mailman/Cgi/admin.py:297 Mailman/Cgi/listinfo.py:124
+#: Mailman/Cgi/admin.py:297 Mailman/Cgi/listinfo.py:125
 msgid "Mailman"
 msgstr "Mailman"
 
@@ -382,16 +382,16 @@ msgstr "oversikt over epostlister"
 msgid "<p>(Send questions and comments to "
 msgstr "<p>(Send sp&oslash;rsm&aring;l og kommentarer til "
 
-#: Mailman/Cgi/admin.py:335 Mailman/Cgi/listinfo.py:156 cron/mailpasswds:216
+#: Mailman/Cgi/admin.py:335 Mailman/Cgi/listinfo.py:157 cron/mailpasswds:216
 msgid "List"
 msgstr "Liste"
 
 #: Mailman/Cgi/admin.py:336 Mailman/Cgi/admin.py:604
-#: Mailman/Cgi/listinfo.py:157
+#: Mailman/Cgi/listinfo.py:158
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: Mailman/Cgi/admin.py:342 Mailman/Cgi/listinfo.py:163 bin/list_lists:130
+#: Mailman/Cgi/admin.py:342 Mailman/Cgi/listinfo.py:164 bin/list_lists:130
 msgid "[no description available]"
 msgstr "[ingen beskrivelse tilgjengelig]"
 
@@ -873,7 +873,7 @@ msgstr "Melde på disse adressene umiddelbart, eller invitere dem?"
 msgid "Invite"
 msgstr "Invitér"
 
-#: Mailman/Cgi/admin.py:1220 Mailman/Cgi/listinfo.py:199
+#: Mailman/Cgi/admin.py:1220 Mailman/Cgi/listinfo.py:200
 msgid "Subscribe"
 msgstr "Meld p&aring;"
 
@@ -2455,11 +2455,11 @@ msgstr "Ingen endringer i HTML-koden."
 msgid "HTML successfully updated."
 msgstr "HTML-koden er oppdatert."
 
-#: Mailman/Cgi/listinfo.py:89
+#: Mailman/Cgi/listinfo.py:90
 msgid "%(hostname)s Mailing Lists"
 msgstr "Epostlister p&aring; %(hostname)s"
 
-#: Mailman/Cgi/listinfo.py:127
+#: Mailman/Cgi/listinfo.py:128
 msgid ""
 "<p>There currently are no publicly-advertised\n"
 "            %(mailmanlink)s mailing lists on %(hostname)s."
@@ -2467,7 +2467,7 @@ msgstr ""
 "<p>Det er for tiden ingen %(mailmanlink)s epostlister offentlig tilgjengelig "
 "p&aring; %(hostname)s."
 
-#: Mailman/Cgi/listinfo.py:131
+#: Mailman/Cgi/listinfo.py:132
 msgid ""
 "<p>Below is a listing of all the public mailing lists on\n"
 "            %(hostname)s.  Click on a list name to get more information "
@@ -2482,11 +2482,11 @@ msgstr ""
 "&aring; melde deg p&aring;, melde deg av, eller\n"
 "endre dine personlige innstillinger for listen."
 
-#: Mailman/Cgi/listinfo.py:137
+#: Mailman/Cgi/listinfo.py:138
 msgid "right"
 msgstr "riktige"
 
-#: Mailman/Cgi/listinfo.py:140
+#: Mailman/Cgi/listinfo.py:141
 msgid ""
 " To visit the general information page for an unadvertised list,\n"
 "        open a URL similar to this one, but with a '/' and the %(adj)s\n"
@@ -2499,11 +2499,11 @@ msgstr ""
 "websiden.\n"
 "<p>Listeadministratorer kan benytte "
 
-#: Mailman/Cgi/listinfo.py:145
+#: Mailman/Cgi/listinfo.py:146
 msgid "the list admin overview page"
 msgstr "administrasjonssiden"
 
-#: Mailman/Cgi/listinfo.py:146
+#: Mailman/Cgi/listinfo.py:147
 msgid ""
 " to find the management interface for your list.\n"
 "         <p>If you are having trouble using the lists, please contact "
@@ -2511,11 +2511,11 @@ msgstr ""
 " for &aring; administrere en liste.\n"
 "<p>Har du problemer med &aring; benytte listene, kontakt "
 
-#: Mailman/Cgi/listinfo.py:235
+#: Mailman/Cgi/listinfo.py:236
 msgid "Edit Options"
 msgstr "Endre Innstillinger"
 
-#: Mailman/Cgi/listinfo.py:242 Mailman/Cgi/options.py:961
+#: Mailman/Cgi/listinfo.py:243 Mailman/Cgi/options.py:961
 #: Mailman/Cgi/roster.py:130
 msgid "View this page in"
 msgstr "Se denne siden p&aring;"
@@ -3073,7 +3073,7 @@ msgstr "<b>Avbryt</b> og g&aring; tilbake til administrasjon av listen"
 msgid "Delete this list"
 msgstr "Slette denne listen"
 
-#: Mailman/Cgi/roster.py:48 Mailman/Cgi/subscribe.py:52
+#: Mailman/Cgi/roster.py:48 Mailman/Cgi/subscribe.py:56
 msgid "Invalid options to CGI script"
 msgstr "Ugyldige parametre til CGI skriptet"
 
@@ -3081,45 +3081,53 @@ msgstr "Ugyldige parametre til CGI skriptet"
 msgid "%(realname)s roster authentication failed."
 msgstr "Tilgang til %(realname)s feilet."
 
-#: Mailman/Cgi/subscribe.py:124
+#: Mailman/Cgi/subscribe.py:128
 msgid "You must supply a valid email address."
 msgstr "Du m&aring; oppgi en gyldig epostadresse."
 
-#: Mailman/Cgi/subscribe.py:157
+#: Mailman/Cgi/subscribe.py:153
+msgid "reCAPTCHA validation failed: %(e_codes)s"
+msgstr ""
+
+#: Mailman/Cgi/subscribe.py:156
+msgid "reCAPTCHA could not be validated: %(e_reason)s"
+msgstr ""
+
+#: Mailman/Cgi/subscribe.py:181
 msgid "The form is too old.  Please GET it again."
 msgstr ""
 
-#: Mailman/Cgi/subscribe.py:160
+#: Mailman/Cgi/subscribe.py:184
 msgid "Please take a few seconds to fill out the form before submitting it."
 msgstr ""
 
-#: Mailman/Cgi/subscribe.py:163
+#: Mailman/Cgi/subscribe.py:187
 msgid "The hidden token didn't match.  Did your IP change?"
 msgstr ""
 
-#: Mailman/Cgi/subscribe.py:166
+#: Mailman/Cgi/subscribe.py:190
 msgid "There was no hidden token in your submission or it was corrupted."
 msgstr ""
 
-#: Mailman/Cgi/subscribe.py:167
+#: Mailman/Cgi/subscribe.py:191
 msgid "You must GET the form before submitting it."
 msgstr ""
 
-#: Mailman/Cgi/subscribe.py:171
+#: Mailman/Cgi/subscribe.py:195
 msgid "You may not subscribe a list to itself!"
 msgstr "Du kan ikke melde en liste p&aring; seg selv!"
 
-#: Mailman/Cgi/subscribe.py:179
+#: Mailman/Cgi/subscribe.py:203
 msgid "If you supply a password, you must confirm it."
 msgstr ""
 "Velger du et passord selv, m&aring; du bekrefte det ved &aring; fylle inn "
 "begge passordfeltene."
 
-#: Mailman/Cgi/subscribe.py:181
+#: Mailman/Cgi/subscribe.py:205
 msgid "Your passwords did not match."
 msgstr "Passordene er ikke like."
 
-#: Mailman/Cgi/subscribe.py:215
+#: Mailman/Cgi/subscribe.py:239
 msgid ""
 "Your subscription request has been received, and will soon be acted upon.\n"
 "Depending on the configuration of this mailing list, your subscription "
@@ -3137,7 +3145,7 @@ msgstr ""
 "motta\n"
 "en epost med n&aelig;rmere instruksjoner."
 
-#: Mailman/Cgi/subscribe.py:229
+#: Mailman/Cgi/subscribe.py:253
 msgid ""
 "The email address you supplied is banned from this\n"
 "        mailing list.  If you think this restriction is erroneous, please\n"
@@ -3146,7 +3154,7 @@ msgstr ""
 "Epostadressen du oppga er utestengt fra denne epostlisten.\n"
 "Dersom du tror dette kan være en feil, kontakt listens eier på %(listowner)s."
 
-#: Mailman/Cgi/subscribe.py:233
+#: Mailman/Cgi/subscribe.py:257
 msgid ""
 "The email address you supplied is not valid.  (E.g. it must contain an\n"
 "`@'.)"
@@ -3154,7 +3162,7 @@ msgstr ""
 "Epostadressen du har oppgitt er ikke gyldig.\n"
 "(Den m&aring; f.eks. inneholde en '@'.)"
 
-#: Mailman/Cgi/subscribe.py:237
+#: Mailman/Cgi/subscribe.py:261
 msgid ""
 "Your subscription is not allowed because the email address you gave is\n"
 "insecure."
@@ -3162,7 +3170,7 @@ msgstr ""
 "P&aring;meldingen din tillates ikke fordi du har oppgitt en usikker "
 "epostadresse."
 
-#: Mailman/Cgi/subscribe.py:245
+#: Mailman/Cgi/subscribe.py:269
 msgid ""
 "Confirmation from your email address is required, to prevent anyone from\n"
 "subscribing you without permission.  Instructions are being sent to you at\n"
@@ -3175,7 +3183,7 @@ msgstr ""
 "med p&aring; listen f&oslash;r du har fulgt disse instruksjonene og "
 "bekreftet at du vil v&aelig;re med p&aring; listen."
 
-#: Mailman/Cgi/subscribe.py:257
+#: Mailman/Cgi/subscribe.py:281
 msgid ""
 "Your subscription request was deferred because %(x)s.  Your request has "
 "been\n"
@@ -3188,15 +3196,15 @@ msgstr ""
 "Du vil motta en epost med moderatorens avgj&oslash;relse s&aring; snart han/"
 "hun har tatt en beslutning."
 
-#: Mailman/Cgi/subscribe.py:264 Mailman/Commands/cmd_confirm.py:61
+#: Mailman/Cgi/subscribe.py:288 Mailman/Commands/cmd_confirm.py:61
 msgid "You are already subscribed."
 msgstr "Du er allerede medlem av listen."
 
-#: Mailman/Cgi/subscribe.py:278
+#: Mailman/Cgi/subscribe.py:302
 msgid "Mailman privacy alert"
 msgstr "Sikkerhetsmelding fra Mailman"
 
-#: Mailman/Cgi/subscribe.py:279
+#: Mailman/Cgi/subscribe.py:303
 msgid ""
 "An attempt was made to subscribe your address to the mailing list\n"
 "%(listaddr)s.  You are already subscribed to this mailing list.\n"
@@ -3231,15 +3239,15 @@ msgstr ""
 "føler deg usikker på beskyttelse av opplysninger om deg, sende gjerne en\n"
 "melding til listeadministratoren på adressen %(listowner)s.\n"
 
-#: Mailman/Cgi/subscribe.py:298
+#: Mailman/Cgi/subscribe.py:322
 msgid "This list does not support digest delivery."
 msgstr "Denne listen st&oslash;tter ikke sammendrag-modus."
 
-#: Mailman/Cgi/subscribe.py:300
+#: Mailman/Cgi/subscribe.py:324
 msgid "This list only supports digest delivery."
 msgstr "Denne listen st&oslash;tter kun sammendrag-modus."
 
-#: Mailman/Cgi/subscribe.py:307
+#: Mailman/Cgi/subscribe.py:331
 msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Du er n&aring; meldt p&aring; epostlisten %(realname)s."
 
@@ -3969,162 +3977,162 @@ msgstr "Medlemmer i normal-modus:"
 msgid "Digest members:"
 msgstr "Medlemmer i sammendrag-modus:"
 
-#: Mailman/Defaults.py:1733
+#: Mailman/Defaults.py:1742
 msgid "Arabic"
 msgstr ""
 
-#: Mailman/Defaults.py:1734
+#: Mailman/Defaults.py:1743
 #, fuzzy
 msgid "Asturian"
 msgstr "Estisk"
 
-#: Mailman/Defaults.py:1735
+#: Mailman/Defaults.py:1744
 msgid "Catalan"
 msgstr "Katalansk"
 
-#: Mailman/Defaults.py:1736
+#: Mailman/Defaults.py:1745
 msgid "Czech"
 msgstr "Tsjekkisk"
 
-#: Mailman/Defaults.py:1737
+#: Mailman/Defaults.py:1746
 msgid "Danish"
 msgstr "Dansk"
 
-#: Mailman/Defaults.py:1738
+#: Mailman/Defaults.py:1747
 msgid "German"
 msgstr "Tysk"
 
-#: Mailman/Defaults.py:1739
+#: Mailman/Defaults.py:1748
 msgid "English (USA)"
 msgstr "Engelsk (USA)"
 
-#: Mailman/Defaults.py:1740
+#: Mailman/Defaults.py:1749
 msgid "Spanish (Spain)"
 msgstr "Spansk (Spania)"
 
-#: Mailman/Defaults.py:1741
+#: Mailman/Defaults.py:1750
 msgid "Estonian"
 msgstr "Estisk"
 
-#: Mailman/Defaults.py:1742
+#: Mailman/Defaults.py:1751
 msgid "Euskara"
 msgstr "Baskisk"
 
-#: Mailman/Defaults.py:1743
+#: Mailman/Defaults.py:1752
 msgid "Persian"
 msgstr ""
 
-#: Mailman/Defaults.py:1744
+#: Mailman/Defaults.py:1753
 msgid "Finnish"
 msgstr "Finsk"
 
-#: Mailman/Defaults.py:1745
+#: Mailman/Defaults.py:1754
 msgid "French"
 msgstr "Fransk"
 
-#: Mailman/Defaults.py:1746
+#: Mailman/Defaults.py:1755
 #, fuzzy
 msgid "Galician"
 msgstr "Italiensk"
 
-#: Mailman/Defaults.py:1747
+#: Mailman/Defaults.py:1756
 msgid "Greek"
 msgstr ""
 
-#: Mailman/Defaults.py:1748
+#: Mailman/Defaults.py:1757
 msgid "Hebrew"
 msgstr ""
 
-#: Mailman/Defaults.py:1749
+#: Mailman/Defaults.py:1758
 msgid "Croatian"
 msgstr "Kroatisk"
 
-#: Mailman/Defaults.py:1750
+#: Mailman/Defaults.py:1759
 msgid "Hungarian"
 msgstr "Ungarsk"
 
-#: Mailman/Defaults.py:1751
+#: Mailman/Defaults.py:1760
 msgid "Interlingua"
 msgstr ""
 
-#: Mailman/Defaults.py:1752
+#: Mailman/Defaults.py:1761
 msgid "Italian"
 msgstr "Italiensk"
 
-#: Mailman/Defaults.py:1753
+#: Mailman/Defaults.py:1762
 msgid "Japanese"
 msgstr "Japansk"
 
-#: Mailman/Defaults.py:1754
+#: Mailman/Defaults.py:1763
 msgid "Korean"
 msgstr "Koreansk"
 
-#: Mailman/Defaults.py:1755
+#: Mailman/Defaults.py:1764
 msgid "Lithuanian"
 msgstr "Litauisk"
 
-#: Mailman/Defaults.py:1756
+#: Mailman/Defaults.py:1765
 msgid "Dutch"
 msgstr "Nederlandsk"
 
-#: Mailman/Defaults.py:1757
+#: Mailman/Defaults.py:1766
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: Mailman/Defaults.py:1758
+#: Mailman/Defaults.py:1767
 msgid "Polish"
 msgstr "Polsk"
 
-#: Mailman/Defaults.py:1759
+#: Mailman/Defaults.py:1768
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: Mailman/Defaults.py:1760
+#: Mailman/Defaults.py:1769
 msgid "Portuguese (Brazil)"
 msgstr "Portugisisk (Brasil)"
 
-#: Mailman/Defaults.py:1761
+#: Mailman/Defaults.py:1770
 msgid "Romanian"
 msgstr "Rumensk"
 
-#: Mailman/Defaults.py:1762
+#: Mailman/Defaults.py:1771
 msgid "Russian"
 msgstr "Russisk"
 
-#: Mailman/Defaults.py:1763
+#: Mailman/Defaults.py:1772
 #, fuzzy
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: Mailman/Defaults.py:1764
+#: Mailman/Defaults.py:1773
 msgid "Slovenian"
 msgstr "Slovakisk"
 
-#: Mailman/Defaults.py:1765
+#: Mailman/Defaults.py:1774
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: Mailman/Defaults.py:1766
+#: Mailman/Defaults.py:1775
 msgid "Swedish"
 msgstr "Svensk"
 
-#: Mailman/Defaults.py:1767
+#: Mailman/Defaults.py:1776
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: Mailman/Defaults.py:1768
+#: Mailman/Defaults.py:1777
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
-#: Mailman/Defaults.py:1769
+#: Mailman/Defaults.py:1778
 msgid "Vietnamese"
 msgstr ""
 
-#: Mailman/Defaults.py:1770
+#: Mailman/Defaults.py:1779
 msgid "Chinese (China)"
 msgstr "Kinesisk (Kina)"
 
-#: Mailman/Defaults.py:1771
+#: Mailman/Defaults.py:1780
 msgid "Chinese (Taiwan)"
 msgstr "Kinesisk (Taiwan)"
 
@@ -8573,11 +8581,11 @@ msgstr "Hopper over innhold av typen %(partctype)s\n"
 msgid "-------------- next part --------------\n"
 msgstr "-------------- neste del --------------\n"
 
-#: Mailman/Handlers/SpamDetect.py:59
-msgid "The message headers matched a filter rule"
-msgstr "Meldingshodet passer med et filter"
+#: Mailman/Handlers/SpamDetect.py:64
+msgid "Header matched regexp: %(pattern)s"
+msgstr ""
 
-#: Mailman/Handlers/SpamDetect.py:121
+#: Mailman/Handlers/SpamDetect.py:126
 #, fuzzy
 msgid ""
 "You are not allowed to post to this mailing list From: a domain which\n"
@@ -8592,7 +8600,7 @@ msgstr ""
 "kontakt\n"
 "epostlistens eier på %(listowner)s."
 
-#: Mailman/Handlers/SpamDetect.py:191
+#: Mailman/Handlers/SpamDetect.py:196
 msgid "Message rejected by filter rule match"
 msgstr "Meldingen ble avvist av et filter"
 
@@ -8739,16 +8747,16 @@ msgstr ""
 msgid "Mailing list removal request for list %(listname)s"
 msgstr "Forespørsel om å fjerne epostlisten %(listname)s"
 
-#: Mailman/MTA/Postfix.py:415
+#: Mailman/MTA/Postfix.py:420
 msgid "checking permissions on %(file)s"
 msgstr "kontrollerer rettigheter for %(file)s"
 
-#: Mailman/MTA/Postfix.py:425
+#: Mailman/MTA/Postfix.py:430
 msgid "%(file)s permissions must be 0664 (got %(octmode)s)"
 msgstr "rettighetene på %(file)s må være 0664 (men er %(octmode)s)"
 
-#: Mailman/MTA/Postfix.py:427 Mailman/MTA/Postfix.py:455
-#: Mailman/MTA/Postfix.py:466 bin/check_perms:125 bin/check_perms:153
+#: Mailman/MTA/Postfix.py:432 Mailman/MTA/Postfix.py:460
+#: Mailman/MTA/Postfix.py:471 bin/check_perms:125 bin/check_perms:153
 #: bin/check_perms:163 bin/check_perms:174 bin/check_perms:199
 #: bin/check_perms:216 bin/check_perms:242 bin/check_perms:265
 #: bin/check_perms:284 bin/check_perms:298 bin/check_perms:318
@@ -8756,15 +8764,15 @@ msgstr "rettighetene på %(file)s må være 0664 (men er %(octmode)s)"
 msgid "(fixing)"
 msgstr "(fixer)"
 
-#: Mailman/MTA/Postfix.py:443
+#: Mailman/MTA/Postfix.py:448
 msgid "checking ownership of %(dbfile)s"
 msgstr "undersøker eierskap på filen %(dbfile)s"
 
-#: Mailman/MTA/Postfix.py:451
+#: Mailman/MTA/Postfix.py:456
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "Filen %(dbfile)s eies av %(owner)s (må eies av %(user)s)"
 
-#: Mailman/MTA/Postfix.py:464
+#: Mailman/MTA/Postfix.py:469
 msgid "%(dbfile)s permissions must be 0664 (got %(octmode)s)"
 msgstr "rettighetene på %(dbfile)s må være 0664 (men er %(octmode)s)"
 
@@ -10724,6 +10732,12 @@ msgstr ""
 "        spesifiseres. Dersom ingen liste er angitt, vil eiere av alle "
 "lister\n"
 "        vises.\n"
+
+#: bin/mailman-config:22
+msgid ""
+"Show basic statistics about, and build options for this\n"
+"installation of Mailman. Requires python 2."
+msgstr ""
 
 #: bin/mailmanctl:20
 msgid ""
@@ -12783,6 +12797,9 @@ msgstr ""
 "    --listname=listenavn\n"
 "        Send samle-epost kun fra den angitte listen. Hvis ikke dette valget\n"
 "        benyttes, vil det sendes ut fra alle aktuelle lister.\n"
+
+#~ msgid "The message headers matched a filter rule"
+#~ msgstr "Meldingshodet passer med et filter"
 
 #, fuzzy
 #~ msgid ""

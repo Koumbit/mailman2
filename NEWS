@@ -1,9 +1,62 @@
 -*- coding: iso-8859-1 -*-
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2018 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
+
+2.1.26 (04-Feb-2018)
+
+  Security
+
+    - An XSS vulnerability in the user options CGI could allow a crafted URL
+      to execute arbitrary javascript in a user's browser.  A related issue
+      could expose information on a user's options page without requiring
+      login.  These are fixed.  Thanks to Calum Hutton for the report.
+      CVE-2018-5950  (LP: #1747209)
+
+  New Features
+
+    - Thanks to David Siebörger who adapted an existing patch by Andrea
+      Veri to use Google reCAPTCHA v2 there is now the ability to add
+      reCAPTCHA to the listinfo subscribe form.  There are two new mm_cfg.py
+      settings for RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY, the values
+      for which you obtain for your domain(s) from Google at
+      <https://www.google.com/recaptcha/admin>.
+
+    - Thanks to Lindsay Haisley, there is a new bin/mailman-config command
+      to display various information about this Mailman version and how it
+      was configured.
+
+  i18n
+
+    - The Japanese message catalog has been updated for added strings by
+      Yasuhito FUTATSUKI.
+
+    - The German translation of a couple of templates has been updated by
+      Thomas Hochstein.
+
+    - The Japanese translation of Defaults.py.in has been updated by
+      Yasuhito FUTATSUKI.
+
+  Bug fixes and other patches
+
+    - Fixed an i18n bug in the reCAPTCHA feature.  (LP: #1746189)
+
+    - Added a few more environment variables to the list of those passed
+      to CGIs to support an nginx/uwsgi configuration.  (LP #1744739)
+
+    - Mailman 2.1.22 introduced a Python 2.7 dependency that could affect
+      bin/arch processing a message without a valid Date: header.  The
+      dependency has been removed.  (LP: #1740543)
+
+    - Messages held for header_filter_rules now show the matched regexp in
+      the hold reason.  (LP: #1737371)
+
+    - When updating the group and mode of a .db file with Mailman's Postfix
+      integration, a missing file is ignored.  (LP: #1734162)
+
+    - The DELIVERY_RETRY_WAIT setting is now effective.  (LP: #1729472)
 
 2.1.25 (26-Oct-2017)
 

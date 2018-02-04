@@ -26,6 +26,7 @@ bin/export.py
 bin/remove_members
 bin/fix_url.py
 bin/newlist
+bin/mailman-config
 bin/dumpdb
 bin/list_owners
 bin/discard

@@ -1,7 +1,7 @@
 # -*- python -*-
 # -*- coding: euc-jp -*-
 
-# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2018 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,9 +18,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-# [訳註] このファイルは、Mailman 2.1.23 配布物に含まれる
+# [訳註] このファイルは、Mailman 2.1.25 配布物に含まれる
 #   Mailman/Defaults.py.in (launchpad.net での Bazaar リビジョンは
-#   1696) のコメント部分を日本語 (共通語) に翻訳したものです。
+#   1738) のコメント部分を日本語 (共通語) に翻訳したものです。
 #   配布等の条件は原文と同様、GNU 一般公衆利用許諾契約書 (GNU
 #   General Public License) に従います (上記も参照ください)。内容の
 #   正確な理解のためには、配布物に含まれる原文を参照されることを
@@ -158,6 +158,12 @@ SUBSCRIBE_FORM_SECRET = None
 # 取得してから内容を送信してくるまで経過していなければいけない時間の
 # 最小値になります。0 を設定するとこのテストは行いません。
 SUBSCRIBE_FORM_MIN_TIME = seconds(5)
+
+# 購読用フォームをスパムボットから守るために Google reCAPTCHA を使用します。
+# 以下には https://www.google.com/recaptcha/admin で発行される reCAPTHA
+# サービス用の鍵ペアを設定する必要があります。
+RECAPTCHA_SITE_KEY = None
+RECAPTCHA_SECRET_KEY = None
 
 # インストール環境全体でのBANリスト。このインストール環境全体のすべての
 # リストで購読を禁止する電子メールアドレスおよび正規表現パターン(先頭文字
@@ -713,6 +719,17 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 #      保存します。
 REMOVE_DKIM_HEADERS = No
 
+# 空でない文字列を以下に設定すると、個人別配送で VERP を使用した配送(訳註:
+# VERPについては後に説明があります)を行う時に、その文字列を名前のヘッダに
+# 受信者のメールアドレスを base64 エンコードしたものをセットします。
+# これは「迷惑メール報告」フィードバックループのメッセージから取り出すのとは
+# 別の方法で受信者を特定することを可能にするためのものです。例として
+# RCPT_BASE64_HEADER_NAME = 'X-Mailman-R-Data'
+# としたとき、user@example.com に送られるメッセージには
+# X-Mailman-R-Data: dXNlckBleGFtcGxlLmNvbQo=
+# のようなヘッダが含められます。
+RCPT_BASE64_HEADER_NAME = ''
+
 # リストメンバー全体に配送される「通常の」メッセージはすべてこのハンドラ
 # モジュールのパイプラインを通って行きます。各リストはそれぞれ「pipeline」
 # 属性を定義することでこのグローバルパイプラインを上書きすることができます。
@@ -1207,7 +1224,7 @@ DEFAULT_MAX_MESSAGE_SIZE = 40           # KB
 DEFAULT_SUBJECT_PREFIX  = "[%(real_name)s] "
 # DEFAULT_SUBJECT_PREFIX = "[%(real_name)s %%d]" # 付番する場合
 DEFAULT_MSG_HEADER = ""
-DEFAULT_MSG_FOOTER = """_______________________________________________
+DEFAULT_MSG_FOOTER = """-- 
 %(real_name)s mailing list
 %(real_name)s@%(host_name)s
 %(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s
@@ -1462,7 +1479,7 @@ DEFAULT_OBSCURE_ADDRESSES = Yes
 # 使用しないリストでは(関係するヘッダは)抑止されます)
 ALLOW_RFC2369_OVERRIDES = Yes
 
-# RFC 2822 では Mailman が実際の点層に責任を持つエージェントであるときに
+# RFC 2822 では Mailman が実際の転送に責任を持つエージェントであるときに
 # Sender ヘッダを付与しないのは RFC に違反することを示唆しています。
 # しかし、MUA の中には From ヘッダの詳細の代わりに Sender ヘッダを表示
 # しようとするものがあり(有名なものは Outlookです)、これがユーザを混乱させ、
@@ -1532,7 +1549,10 @@ DEFAULT_NONDIGESTABLE = Yes
 # リストをまとめ読みで利用できるようにしますか?
 DEFAULT_DIGESTABLE = Yes
 DEFAULT_DIGEST_HEADER = ""
-DEFAULT_DIGEST_FOOTER = DEFAULT_MSG_FOOTER
+DEFAULT_DIGEST_FOOTER = """%(real_name)s mailing list
+%(real_name)s@%(host_name)s
+%(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s
+"""
 
 DEFAULT_DIGEST_IS_DEFAULT = No
 DEFAULT_MIME_IS_DEFAULT_DIGEST = No
@@ -1652,6 +1672,8 @@ PENDING_REQUEST_LIFE = days(3)
 DELIVERY_RETRY_PERIOD = days(5)
 
 # 一時的な配送失敗の際に再送を試みるまでにどれだけの時間待ちますか?
+# RetryRunner はキューの処理と処理の間に15分スリープしますので、ここで
+# 指定した値は実際には15分の倍数に切り上げられます。
 DELIVERY_RETRY_WAIT = hours(1)
 
 

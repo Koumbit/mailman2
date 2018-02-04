@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2018 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -243,6 +243,17 @@ def list_listinfo(mlist, lang):
     replacements['<mm-displang-box>'] = displang
     replacements['<mm-lang-form-start>'] = mlist.FormatFormStart('listinfo')
     replacements['<mm-fullname-box>'] = mlist.FormatBox('fullname', size=30)
+    # If reCAPTCHA is enabled, display its user interface
+    if mm_cfg.RECAPTCHA_SITE_KEY:
+        replacements['<mm-recaptcha-ui>'] = (
+            """<tr><td>&nbsp;</td><td>
+            <script src="https://www.google.com/recaptcha/api.js?hl=%s">
+            </script>
+            <div class="g-recaptcha" data-sitekey="%s"></div>
+            </td></tr>"""
+            % (lang, mm_cfg.RECAPTCHA_SITE_KEY))
+    else:
+        replacements['<mm-recaptcha-ui>'] = ''
 
     # Do the expansion.
     doc.AddItem(mlist.ParseTags('listinfo.html', replacements, lang))

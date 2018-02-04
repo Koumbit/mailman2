@@ -249,8 +249,8 @@ class Article:
         if date is None:
             date = floatdate(message.get('x-list-received-date'))
         if date is None:
-            date = floatdate(re.sub(r'^.*;\s*', '',
-                                    message.get('received', ''), flags=re.S))
+            rec_re = re.compile(r'^.*;\s*', re.DOTALL)
+            date = floatdate(rec_re.sub('', message.get('received', '')))
         if date is None:
             date = floatdate(re.sub(r'From \s*\S+\s+', '',
                                     message.get_unixfrom() or '' ))

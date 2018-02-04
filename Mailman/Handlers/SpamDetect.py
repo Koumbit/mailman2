@@ -56,7 +56,12 @@ class SpamDetected(Errors.DiscardMessage):
     """The message contains known spam"""
 
 class HeaderMatchHold(Errors.HoldMessage):
-    reason = _('The message headers matched a filter rule')
+    def __init__(self, pattern):
+        self.__pattern = pattern
+
+    def reason_notice(self):
+        pattern = self.__pattern
+        return _('Header matched regexp: %(pattern)s')
 
 
 # And reset the translator
@@ -195,6 +200,7 @@ error, contact the mailing list owner at %(listowner)s."""))
                         # pass it here but list-owner can set this to be
                         # discarded on the GUI if he wants.
                         return
-                    hold_for_approval(mlist, msg, msgdata, HeaderMatchHold)
+                    hold_for_approval(
+                        mlist, msg, msgdata, HeaderMatchHold(pattern))
                 if action == mm_cfg.ACCEPT:
                     return

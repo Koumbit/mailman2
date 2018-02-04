@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2017 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2018 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -139,6 +139,12 @@ SUBSCRIBE_FORM_SECRET = None
 # take after retrieving the form before submitting it.  Set to 0 to skip this
 # test.
 SUBSCRIBE_FORM_MIN_TIME = seconds(5)
+
+# Use Google reCAPTCHA to protect the subscription form from spam bots.  The
+# following must be set to a pair of keys issued by the reCAPTCHA service at
+# https://www.google.com/recaptcha/admin
+RECAPTCHA_SITE_KEY = None
+RECAPTCHA_SECRET_KEY = None
 
 # Installation wide ban list.  This is a list of email addresses and regexp
 # patterns (beginning with ^) which are not allowed to subscribe to any lists
@@ -1531,6 +1537,9 @@ PENDING_REQUEST_LIFE = days(3)
 DELIVERY_RETRY_PERIOD = days(5)
 
 # How long should we wait before we retry a temporary delivery failure?
+# Because RetryRunner sleeps for 15 minutes between processes of its queue,
+# whatever is put here is effectively rounded up to the next integer multiple
+# of 15 minutes.
 DELIVERY_RETRY_WAIT = hours(1)
 
 

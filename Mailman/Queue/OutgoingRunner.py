@@ -1,4 +1,4 @@
-# Copyright (C) 2000-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 2000-2017 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -122,6 +122,9 @@ class OutgoingRunner(Runner, BounceMixin):
                         # disposition?
                         if now > deliver_until:
                             return False
+                        # We're going to retry, but not too soon.
+                        deliver_after = now + mm_cfg.DELIVERY_RETRY_WAIT
+                        msgdata['deliver_after'] = deliver_after
                     else:
                         # Keep trying to delivery this message for a while
                         deliver_until = now + mm_cfg.DELIVERY_RETRY_PERIOD
