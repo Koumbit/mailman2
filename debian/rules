@@ -6,7 +6,7 @@ package=mailman
 
 binaries=list_lists find_member config_list mmsitepass newlist rmlist	\
 	add_members list_members remove_members arch clone_member	\
-	sync_members check_db check_perms list_admins withlist
+	sync_members check_db check_perms list_admins withlist mailman-config
 
 SHELL=/bin/bash
 
