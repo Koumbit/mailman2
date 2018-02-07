@@ -1,9 +1,11 @@
-mailman (1:2.1.25-2) UNRELEASED; urgency=medium
+mailman (1:2.1.26-1) unstable; urgency=medium
 
+  * New upstream release.
+    - Fixes XSS in user options CGI (CVE-2018-5950, closes: #888201)
   * Document that this is the legacy branch of Mailman and that all
     major development is focused on Mailman 3 (package mailman3).
 
- -- Thijs Kinkhorst <thijs@debian.org>  Sat, 03 Feb 2018 09:54:50 +0000
+ -- Thijs Kinkhorst <thijs@debian.org>  Sun, 04 Feb 2018 18:23:18 +0000
 
 mailman (1:2.1.25-1) unstable; urgency=medium
 
