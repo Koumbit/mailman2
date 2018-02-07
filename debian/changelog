@@ -1,3 +1,10 @@
+mailman (1:2.1.26-2) UNRELEASED; urgency=medium
+
+  * Run dh_autoreconf to make build reproducble (closes: 889637).
+    Thanks Chris Lamb for the patch.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Wed, 07 Feb 2018 08:25:03 +0000
+
 mailman (1:2.1.26-1) unstable; urgency=medium
 
   * New upstream release.

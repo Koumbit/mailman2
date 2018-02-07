@@ -33,6 +33,7 @@ debian/po/templates.pot: debian/templates
 	@debconf-updatepo
 
 Makefile:
+	dh_autoreconf
 	./configure --prefix=/var/lib/$(package) --with-username=list \
 		--with-groupname=list \
 		--with-mail-gid=daemon --with-cgi-gid=www-data \
@@ -46,6 +47,7 @@ clean:
 	rm -rf build-stamp Makefile debian/ucffiles debian/mailman.postinst.ucf
 	rm -f debian/mailman.postrm.ucf
 	rm -f debian/preinst
+	dh_autoreconf_clean
 	dh_clean
 	chmod +x debian/{prerm,postinst}
 
