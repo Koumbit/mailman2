@@ -1,0 +1,15 @@
+Description: Make the build reproducible
+Author: Chris Lamb <lamby@debian.org>
+Last-Update: 2018-02-05
+
+--- mailman-2.1.26.orig/configure.in
++++ mailman-2.1.26/configure.in
+@@ -25,7 +25,7 @@ AC_PREFIX_DEFAULT(/usr/local/mailman)
+ 
+ CONFIGURE_OPTS=`echo $@`
+ AC_SUBST(CONFIGURE_OPTS)
+-BUILD_DATE=`date`
++BUILD_DATE=`LC_ALL=C date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}"`
+ AC_SUBST(BUILD_DATE)
+ 
+ # Check for Python!  Better be found on $PATH
