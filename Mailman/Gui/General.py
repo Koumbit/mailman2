@@ -516,7 +516,7 @@ class General(GUIBase):
 
     def _setValue(self, mlist, property, val, doc):
         if property == 'real_name' and \
-               val.lower() <> mlist.internal_name().lower():
+               val.lower() <> mlist.real_name.lower():
             # These values can't differ by other than case
             doc.addError(_("""<b>real_name</b> attribute not
             changed!  It must differ from the list's name by case

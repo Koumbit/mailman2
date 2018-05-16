@@ -186,9 +186,14 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         return self._full_path
 
     def getListAddress(self, extra=None):
+        posting_addr = self.internal_name()
+        try:
+            posting_addr = self.real_name.lower()
+        except:
+            pass
         if extra is None:
-            return '%s@%s' % (self.internal_name(), self.host_name)
-        return '%s-%s@%s' % (self.internal_name(), extra, self.host_name)
+            return '%s@%s' % (posting_addr, self.host_name)
+        return '%s-%s@%s' % (posting_addr, extra, self.host_name)
 
     # For backwards compatibility
     def GetBouncesEmail(self):
@@ -508,11 +513,20 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # the admin's email address, so transform the exception.
         if emailhost is None:
             emailhost = mm_cfg.DEFAULT_EMAIL_HOST
-        postingaddr = '%s@%s' % (name, emailhost)
+        # default, for when no domain is given
+        firstname = name
+        # we set a special name for virtual hosted lists
+        if '@' in name:
+            firstname, emailhost = name.split('@', 1)
+            name = "%s-%s" % (firstname, emailhost)
+        # but we keep a sensible posting address
+        postingaddr = '%s@%s' % (firstname, emailhost)
         try:
             Utils.ValidateEmail(postingaddr)
         except Errors.EmailAddressError:
             raise Errors.BadListNameError, postingaddr
+        if Utils.list_exists(name):
+            raise Errors.MMListAlreadyExistsError, name
         # Validate the admin's email address
         Utils.ValidateEmail(admin)
         self._internal_name = name
@@ -521,6 +535,10 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.__lock.lock()
         self.InitVars(name, admin, crypted_password, urlhost=urlhost)
         self.CheckValues()
+        # this is for getListAddress
+        self.list_address = postingaddr
+        self.real_name = firstname
+        self.subject_prefix = mm_cfg.DEFAULT_SUBJECT_PREFIX % self.__dict__
         if langs is None:
             self.available_languages = [self.preferred_language]
         else:
@@ -1435,7 +1453,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         addresses in the recipient headers.
         """
         # This is the list's full address.
-        listfullname = '%s@%s' % (self.internal_name(), self.host_name)
+        listfullname = self.getListAddress()
         recips = []
         # Check all recipient addresses against the list's explicit addresses,
         # specifically To: Cc: and Resent-to:
@@ -1450,7 +1468,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             addr = addr.lower()
             localpart = addr.split('@')[0]
             if (# TBD: backwards compatibility: deprecated
-                    localpart == self.internal_name() or
+                    localpart == self.real_name.lower() or
                     # exact match against the complete list address
                     addr == listfullname):
                 return True

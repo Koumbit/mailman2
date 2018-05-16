@@ -10,3 +10,4 @@
 79_archiver_slash.patch
 90_gettext_errors.patch
 91_utf8.patch
+kt_mailman_virtual_01.patch

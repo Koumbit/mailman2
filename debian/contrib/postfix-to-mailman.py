@@ -120,7 +120,7 @@ def main():
         sys.exit(0)
 
     # Assume normal posting to a mailing list
-    mlist, func = local, 'post'
+    mlist, func = '%s-%s' % (local, domain), 'post'
 
     # Let Mailman decide if a list exists.
     from Mailman.Utils import list_exists
@@ -142,7 +142,7 @@ def main():
                 '-unsubscribe',
                 ):
         if local.endswith(ext):
-            mlist = local[:-len(ext)]
+            mlist = '%s-%s' % (local[:-len(ext)], domain)
             func  = ext[1:]
             break
 

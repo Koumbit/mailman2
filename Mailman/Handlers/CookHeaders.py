@@ -295,7 +295,9 @@ def process(mlist, msg, msgdata):
     if msgdata.get('_nolist') or not mlist.include_rfc2369_headers:
         return
     # This will act like an email address for purposes of formataddr()
-    listid = '%s.%s' % (mlist.internal_name(), mlist.host_name)
+    #listid = '%s.%s' % (mlist.internal_name(), mlist.host_name)
+    # internal_name already contains the hostname with the vhost patch
+    listid = mlist.internal_name()
     cset = Utils.GetCharSet(mlist.preferred_language)
     if mlist.description:
         # Don't wrap the header since here we just want to get it properly RFC

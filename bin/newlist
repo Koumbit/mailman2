@@ -169,7 +169,7 @@ def main():
 
     if '@' in listname:
         # note that --urlhost and --emailhost have precedence
-        listname, domain = listname.split('@', 1)
+        firstname, domain = listname.split('@', 1)
         urlhost = urlhost or domain
         emailhost = emailhost or mm_cfg.VIRTUAL_HOSTS.get(domain, domain)
 

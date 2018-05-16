@@ -93,6 +93,11 @@ def main():
         usage(1)
     listname = args[0].lower().strip()
 
+    if '@' in listname:
+        # note that --urlhost and --emailhost have precedence
+        firstname, domain = listname.split('@', 1)
+        listname = '%s-%s' % ( firstname, domain )
+
     removeArchives = False
     for opt, arg in opts:
         if opt in ('-a', '--archives'):
