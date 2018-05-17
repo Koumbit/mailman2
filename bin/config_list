@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -76,6 +76,7 @@ from Mailman import Errors
 from Mailman import i18n
 
 _ = i18n._
+C_ = i18n.C_
 
 NL = '\n'
 nonasciipat = re.compile(r'[\x80-\xff]')
@@ -87,7 +88,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -106,7 +107,7 @@ def do_output(listname, outfile):
         try:
             mlist = MailList.MailList(listname, lock=0)
         except Errors.MMListError:
-            usage(1, _('No such list: %(listname)s'))
+            usage(1, C_('No such list: %(listname)s'))
         # Preamble for the config info. PEP263 charset and capture time.
         language = mlist.preferred_language
         charset = Utils.GetCharSet(language)
@@ -114,7 +115,7 @@ def do_output(listname, outfile):
         if not charset:
             charset = 'us-ascii'
         when = time.ctime(time.time())
-        print >> outfp, _('''\
+        print >> outfp, C_('''\
 # -*- python -*-
 # -*- coding: %(charset)s -*-
 ## "%(listname)s" mailing list configuration settings
@@ -140,7 +141,7 @@ def do_list_categories(mlist, k, subcat, outfp):
     if info is None:
         return
     charset = Utils.GetCharSet(mlist.preferred_language)
-    print >> outfp, '##', k.capitalize(), _('options')
+    print >> outfp, '##', k.capitalize(), C_('options')
     print >> outfp, '#'
     # First, massage the descripton text, which could have obnoxious
     # leading whitespace on second and subsequent lines due to
@@ -199,7 +200,7 @@ def do_list_categories(mlist, k, subcat, outfp):
                     outfp.write('"""\n')
         elif vtype in (mm_cfg.Radio, mm_cfg.Toggle):
             print >> outfp, '#'
-            print >> outfp, '#', _('legal values are:')
+            print >> outfp, '#', C_('legal values are:')
             # TBD: This is disgusting, but it's special cased
             # everywhere else anyway...
             if varname == 'subscribe_policy' and \
@@ -253,7 +254,7 @@ def do_input(listname, infile, checkonly, verbose):
     try:
         mlist = MailList.MailList(listname, lock=not checkonly)
     except Errors.MMListError, e:
-        usage(1, _('No such list "%(listname)s"\n%(e)s'))
+        usage(1, C_('No such list "%(listname)s"\n%(e)s'))
     savelist = 0
     guibyprop = getPropertyMap(mlist)
     try:
@@ -266,16 +267,17 @@ def do_input(listname, infile, checkonly, verbose):
             if k in ('mlist', '__builtins__'):
                 continue
             if not hasattr(mlist, k):
-                print >> sys.stderr, _('attribute "%(k)s" ignored')
+                print >> sys.stderr, C_('attribute "%(k)s" ignored')
                 continue
             if verbose:
-                print >> sys.stderr, _('attribute "%(k)s" changed')
+                print >> sys.stderr, C_('attribute "%(k)s" changed')
             missing = []
             gui, wtype = guibyprop.get(k, (missing, missing))
             if gui is missing:
                 # This isn't an official property of the list, but that's
                 # okay, we'll just restore it the old fashioned way
-                print >> sys.stderr, _('Non-standard property restored: %(k)s')
+                print >> sys.stderr, C_(
+                                     'Non-standard property restored: %(k)s')
                 setattr(mlist, k, v)
             else:
                 # BAW: This uses non-public methods.  This logic taken from
@@ -283,9 +285,10 @@ def do_input(listname, infile, checkonly, verbose):
                 try:
                     validval = gui._getValidValue(mlist, k, wtype, v)
                 except ValueError:
-                    print >> sys.stderr, _('Invalid value for property: %(k)s')
+                    print >> sys.stderr, C_(
+                                         'Invalid value for property: %(k)s')
                 except Errors.EmailAddressError:
-                    print >> sys.stderr, _(
+                    print >> sys.stderr, C_(
                         'Bad email address for option %(k)s: %(v)s')
                 else:
                     # BAW: Horrible hack, but then this is special cased
@@ -342,13 +345,13 @@ def main():
 
     # sanity check
     if infile is not None and outfile is not None:
-        usage(1, _('Only one of -i or -o is allowed'))
+        usage(1, C_('Only one of -i or -o is allowed'))
     if infile is None and outfile is None:
-        usage(1, _('One of -i or -o is required'))
+        usage(1, C_('One of -i or -o is required'))
 
     # get the list name
     if len(args) <> 1:
-        usage(1, _('List name is required'))
+        usage(1, C_('List name is required'))
     listname = args[0].lower().strip()
 
     if outfile:

@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -104,6 +104,41 @@ MAILMAN_SITE_LIST = 'mailman'
 # the site.  Set this value to Yes to allow site admin cookies.
 ALLOW_SITE_ADMIN_COOKIES = No
 
+# If the following is set to a non-zero value, web authentication cookies will
+# expire that many seconds following their last use.
+AUTHENTICATION_COOKIE_LIFETIME = 0
+
+# Form lifetime is set against Cross Site Request Forgery.
+FORM_LIFETIME = hours(1)
+
+# If the following is set to a non-empty string, this string in combination
+# with the time, list name and the IP address of the requestor is used to
+# create a hidden hash as part of the subscribe form on the listinfo page.
+# This hash is checked upon form submission and the subscribe fails if it
+# doesn't match.  I.e. the form posted must be first retrieved from the
+# listinfo CGI by the same IP that posts it.  The subscribe also fails if
+# the time the form was retrieved is more than the above FORM_LIFETIME or less
+# than the below SUBSCRIBE_FORM_MIN_TIME before submission.
+# Important: If you have any static subscribe forms on your web site, setting
+# this option will break them.  With this option set, subscribe forms must be
+# dynamically generated to include the hidden data.  See the code block
+# beginning with "if mm_cfg.SUBSCRIBE_FORM_SECRET:" in Mailman/Cgi/listinfo.py
+# for the details of the hidden data.
+SUBSCRIBE_FORM_SECRET = None
+
+# If SUBSCRIBE_FORM_SECRET is not None, this is the minimum time the user must
+# take after retrieving the form before submitting it.  Set to 0 to skip this
+# test.
+SUBSCRIBE_FORM_MIN_TIME = seconds(5)
+
+# Installation wide ban list.  This is a list of email addresses and regexp
+# patterns (beginning with ^) which are not allowed to subscribe to any lists
+# in the installation.  This supplements the individual list's ban_list.
+# For example, to ban xxx@aol.com and any @gmail.com address beginning with
+# yyy, set
+# GLOBAL_BAN_LIST = ['xxx@aol.com', '^yyy.*@gmail\.com$']
+GLOBAL_BAN_LIST = []
+
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
 # name of the temporary file that the program should operate on.
@@ -111,8 +146,19 @@ HTML_TO_PLAIN_TEXT_COMMAND = '/usr/bin/lynx -dump %(filename)s'
 
 # A Python regular expression character class which defines the characters
 # allowed in list names.  Lists cannot be created with names containing any
-# character that doesn't match this class.
+# character that doesn't match this class.  Do not include '/' in this list.
 ACCEPTABLE_LISTNAME_CHARACTERS = '[-+_.=a-z0-9]'
+
+# Shall the user's real names be displayed along with their email addresses
+# in list rosters?  Defaults to No to preserve prior behavior.
+ROSTER_DISPLAY_REALNAME = No
+
+# Beginning in Mailman 2.1.21, localized help and some other output from
+# Mailman's bin/ commands is converted to the character set of the user's
+# workstation (LC_CTYPE) if different from the character set of the language.
+# This is not well tested over a wide range of locales, so if it causes
+# problems, it can be disabled by setting the following to Yes.
+DISABLE_COMMAND_LOCALE_CSET = No
 
 
 
@@ -172,6 +218,13 @@ add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 # -owners address, unless the message is explicitly approved.
 KNOWN_SPAMMERS = []
 
+# The header_filter_rules in Privacy options... -> Spam filters are matched as
+# normalized unicodes against normalized unicode headers.  This setting
+# determines the normalization form.  It is one of 'NFC', 'NFD', 'NFKC' or
+# 'NFKD'.  See
+# https://docs.python.org/2/library/unicodedata.html#unicodedata.normalize
+NORMALIZE_FORM = 'NFKC'
+
 
 
 #####
@@ -196,6 +249,56 @@ WEB_ALINK_COLOR = ''                              # If true, forces ALINK=
 WEB_VLINK_COLOR = ''                              # If true, forces VLINK=
 WEB_HIGHLIGHT_COLOR = '#dddddd'                   # If true, alternating rows
                                                   # in listinfo & admin display
+
+# If you wish to include extra elements in the <HEAD> section of Mailman's
+# web pages, e.g. style information or a link to a style sheet, you can set
+# the following.  For example, to include a css style sheet reference, you
+# can put in mm_cfg.py
+# WEB_HEAD_ADD = """<LINK REL=stylesheet
+#                TYPE="text/css"
+#                HREF="path or URL"
+#                >"""
+# You can specify anything that is allowed in the <HEAD> section.  The default
+# is to not add anything.  This only applies to internally generated pages.
+# For pages built from templates you can create custom templates containing
+# this information.
+WEB_HEAD_ADD = None
+
+# User entered data is escaped for redisplay in web responses to avoid Cross
+# Site Scripting (XSS) attacks. The normal escaping replaces the characters
+# <, >, & and " with the respective HTML entities &lt;, &gt;, &amp; and
+# &quot;.  There are apparently some older, broken browsers that misinterpret
+# certain non-ascii characters as <, > or ".  The following two settings
+# control whether additional characters are escaped, and what characters are
+# replaced with what.  Note that in character sets that represent some
+# characters as multi-byte sequences, enabling the escaping of additional
+# characters can replace part of a multi-byte sequence with an HTML entity,
+# thus breaking an otherwise harmless character.
+#
+# Enable the replacement of additional characters when escaping strings for
+# the web.
+BROKEN_BROWSER_WORKAROUND = No
+#
+# If the above setting is Yes, the following dictionary definition determines
+# what additional characters are replaced with what.
+BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
+                               '\x9b': '&#8250;',  # single right angle quote
+                               '\xbc': '&#188;',   # < plus high order bit
+                               '\xbe': '&#190;',   # > plus high order bit
+                               '\xa2': '&#162;',   # " plus high order bit
+                              }
+#
+# Shall the admindb held message summary display the grouping and sorting
+# option radio buttons?  Set this in mm_cfg.py to one of the following:
+# SSENDER -> Default to grouped and sorted by sender.
+# SSENDERTIME -> Default to grouped by sender and sorted by time.
+# STIME -> Default to ungrouped and sorted by time.
+DISPLAY_HELD_SUMMARY_SORT_BUTTONS = No
+#
+# Shall the default for the admin Mass Subscription function be Invite rather
+# than Subscribe?  Set to Yes in mm_cfg.py to make the default be Invite.
+DEFAULT_SUBSCRIBE_OR_INVITE = No
+
 
 
 #####
@@ -373,6 +476,12 @@ PUBLIC_MBOX = No
 #DELIVERY_MODULE = 'Sendmail'
 DELIVERY_MODULE = 'SMTPDirect'
 
+# Sometimes there are 'low level' smtplib failures that are difficult to
+# debug.  To enable very verbose debugging info from smtplib to Mailman's
+# error log, set the following to 1.  This will only work if
+# DELIVERY_MODULE = 'SMTPDirect' and Python is >= 2.4.
+SMTPLIB_DEBUG_LEVEL = 0
+
 # MTA should name a module in Mailman/MTA which provides the MTA specific
 # functionality for creating and removing lists.  Some MTAs like Exim can be
 # configured to automatically recognize new lists, in which case the MTA
@@ -460,6 +569,22 @@ SMTPPORT = 0                                      # default from smtplib
 # when DELIVERY_MODULE is 'Sendmail'.
 SENDMAIL_CMD = '/usr/lib/sendmail'
 
+# SMTP authentication for DELIVERY_MODULE = 'SMTPDirect'.  To enable SASL
+# authentication for SMTPDirect, set SMTP_AUTH = Yes and provide appropriate
+# settings for SMTP_USER and SMTP_PASSWD.
+SMTP_AUTH = No
+SMTP_USER = ''
+SMTP_PASSWD = ''
+
+# If using SASL authentication (SMTP_AUTH = Yes), set the following to Yes
+# to also use TLS. This has no effect if SMTP_AUTH = No.
+SMTP_USE_TLS = No
+
+# When using TLS the following should be set to the hostname that should be
+# used in order to identify Mailman to the SMTP server.  By default, it
+# uses DEFAULT_URL_HOST. Normally, you should not change this.
+SMTP_HELO_HOST = DEFAULT_URL_HOST
+
 # Set these variables if you need to authenticate to your NNTP server for
 # Usenet posting or reading.  If no authentication is necessary, specify None
 # for both variables.
@@ -496,7 +621,12 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # footer or scrubbing attachments or even reply-to munging can break these
 # signatures.  It is generally felt that these signatures have value, even if
 # broken and even if the outgoing message is resigned.  However, some sites
-# may wish to remove these headers by setting this to Yes.
+# may wish to remove these headers.  Possible values and meanings are:
+# No, 0, False -> do not remove headers.
+# Yes, 1, True -> remove headers only if we are munging the from header due
+#                 to from_is_list or dmarc_moderation_action.
+# 2 -> always remove headers.
+# 3 -> always remove, rename and preserve original DKIM headers.
 REMOVE_DKIM_HEADERS = No
 
 # All `normal' messages which are delivered to the entire list membership go
@@ -528,6 +658,7 @@ GLOBAL_PIPELINE = [
     # (outgoing) path, finally leaving the message in the outgoing queue.
     'AfterDelivery',
     'Acknowledge',
+    'WrapMessage',
     'ToOutgoing',
     ]
 
@@ -690,7 +821,7 @@ VERP_CONFIRM_FORMAT = '%(addr)s+%(cookie)s'
 # To: "local_part@host" <local_part@host>
 # and may even fold the header when replying, so we skip everything up to '<'
 # if any and include ($s) so dot will match the newline in a folded header.
-VERP_CONFIRM_REGEXP = r'(?s)^(.*<)?(?P<addr>.+)\+(?P<cookie>[^@+]+)@.*$'
+VERP_CONFIRM_REGEXP = r'(?s)^(.*<)?(?P<addr>.+)\+(?P<cookie>[0-9a-f]{40})@.*$'
 
 # Set this to Yes to enable VERP-like (more user friendly) confirmations
 VERP_CONFIRMATIONS = No
@@ -703,6 +834,36 @@ VERP_CONFIRMATIONS = No
 # be set fairly high.  Set to 0 for no limit (probably useful only for
 # debugging).
 MAX_AUTORESPONSES_PER_DAY = 10
+
+
+
+#####
+# Backscatter mitigation
+#####
+
+# This controls whether a message to the -request address without any
+# commands or a message to -confirm whose To: address doesn't match
+# VERP_CONFIRM_REGEXP above is responded to or just logged.
+DISCARD_MESSAGE_WITH_NO_COMMAND = Yes
+
+# This controls how much of the original message is included in automatic
+# responses to email commands.  The values are:
+# 0 - Do not include any unprocessed or ignored commands.  Do not include
+#     the original message.
+# 1 - Do not include any unprocessed or ignored commands.  Include only the
+#     headers from the original message.
+# 2 - Include unprocessed and ignored commands.  Include the complete original
+#     message.
+#
+# In order to minimize the effect of backscatter due to spam sent to
+# administrative addresses, it is recommended to set this to 0, however the
+# default is 2 for backwards compatibility.
+RESPONSE_INCLUDE_LEVEL = 2
+
+# This sets the default for respond_to_post_requests for new lists.  It is
+# set to Yes for backwards compatibility, but it is recommended that serious
+# consideration be given to setting it to No.
+DEFAULT_RESPOND_TO_POST_REQUESTS = Yes
 
 
 
@@ -781,6 +942,12 @@ BAD_SHUNT_ARCHIVE_DIRECTORY = None
 # avoiding data loss, it may be a performance killer.  Note that this flag
 # affects both message pickles and MailList config.pck files.
 SYNC_AFTER_WRITE = No
+
+# This is the name used for the mailmanctl master lock file. In a clustered
+# load sharing environment with a shared 'locks' directory, it is desirable
+# to have separate locks for each host mailmanctl. This can be used to enable
+# that.
+MASTER_LOCK_FILE = 'master-qrunner'
 
 
 
@@ -880,6 +1047,27 @@ USER_FRIENDLY_PASSWORDS = Yes
 MEMBER_PASSWORD_LENGTH = 8
 ADMIN_PASSWORD_LENGTH = 10
 
+# The following headers are always removed from posts to anonymous lists as
+# they can reveal the identity of the poster or at least the poster's domain.
+#
+# From:, Reply-To:, Sender:, Return-Path:, X-Originating-Email:, Received:,
+# Message-ID: and X-Envelope-From:.
+#
+# In addition, Return-Receipt-To:, Disposition-Notification-To:,
+# X-Confirm-Reading-To: and X-Pmrqc: headers are removed from all posts as
+# they can be used to fish for list membership in addition to possibly
+# revealing sender information.
+#
+# In addition to the above removals, all other headers except those matching
+# regular expressions in the following setting are also removed. The default
+# setting below keeps all non X- headers, those X- headers added by Mailman
+# and any X-Spam- headers.
+ANONYMOUS_LIST_KEEP_HEADERS = ['^(?!x-)', '^x-mailman-',
+                               '^x-content-filtered-by:', '^x-topics:',
+                               '^x-ack:', '^x-beenthere:',
+                               '^x-list-administrivia:', '^x-spam-',
+                              ]
+
 
 
 #####
@@ -940,7 +1128,94 @@ DEFAULT_DEFAULT_MEMBER_MODERATION = No
 # moderators?
 DEFAULT_FORWARD_AUTO_DISCARDS = Yes
 
-# What shold happen to non-member posts which are do not match explicit
+# Shall dmarc_moderation_action be applied to messages From: domains with
+# a DMARC policy of quarantine as well as reject?  This sets the default for
+# the list setting that controls it.
+DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION = Yes
+
+# Default action for posts whose From: address domain has a DMARC policy of
+# reject or quarantine.  See DEFAULT_FROM_IS_LIST below.  Whatever is set as
+# the default here precludes the list owner from setting a lower value.
+# 0 = Accept
+# 1 = Munge From
+# 2 = Wrap Message
+# 3 = Reject
+# 4 = Discard
+DEFAULT_DMARC_MODERATION_ACTION = 0
+
+# Domain owners can publish DMARC p=none policy in order to request that
+# reports of DMARC failures be sent but special action not be taken on
+# messages From: their domain that fail DMARC.  This can result in over
+# estimation of the number of messages that would be quarantined or rejected
+# with a stronger DMARC policy if such a policy would result in message
+# modification because dmarc_moderation_action is 1 or 2.  Thus, there is
+# a list setting to apply dmarc_moderaction_action of 1 or 2 to messages
+# From: domains with DMARC p=none.  Setting this to Yes is only effective if 
+# dmarc_quarantine_moderaction_action is also Yes.  The following is the
+# default for this setting for new lists.
+DEFAULT_DMARC_NONE_MODERATION_ACTION = No
+
+# Default for text to be added to a separate text/plain part preceding the
+# message/rfc822 part containing the original message when
+# dmarc_moderation_action is Wrap Message.
+DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT = ''
+
+# Parameters for DMARC DNS lookups. If you are seeing 'DNSException:
+# Unable to query DMARC policy ...' entries in your error log, you may need
+# to adjust these.
+# The time to wait for a response from a name server before timeout.
+DMARC_RESOLVER_TIMEOUT = seconds(3)
+# The total time to spend trying to get an answer to the question.
+DMARC_RESOLVER_LIFETIME = seconds(5)
+
+# A URL from which to retrieve the data for the algorithm that computes
+# Organizational Domains for DMARC policy lookup purposes.  This can be
+# anything handled by the Python urllib2.urlopen function.  See
+# https://publicsuffix.org/list/ for info.
+DMARC_ORGANIZATIONAL_DOMAIN_DATA_URL = \
+'https://publicsuffix.org/list/public_suffix_list.dat'
+
+# Should the list server auto-moderate members who post too frequently
+# This is intended to stop people who join a list and then use a bot to
+# send many spam messages in a short interval.  These are default settings
+# for new lists.  See the web admin Privacy options -> Sender filters page
+# and the Details for member_verbosity_threshold and member_verbosity_interval
+# links for more information.
+# DEFAULT_MEMBER_VERBOSITY_INTERVAL = number of seconds to track posts
+# DEFAULT_MEMBER_VERBOSITY_THRESHOLD = number of allowed posts per interval
+#                                     (0 to disable).
+DEFAULT_MEMBER_VERBOSITY_INTERVAL = 300
+DEFAULT_MEMBER_VERBOSITY_THRESHOLD = 0
+ 
+# This controls how often to clean old post time entries from the dictionary
+# used to implement the member verbosity feature. This is a compromise between
+# using resources for cleaning and allowing the dictionary to grow very large.
+# The setting is the number of passes through the code before the dictionary
+# is cleaned.
+VERBOSE_CLEAN_LIMIT = 1000
+
+# What domains should be considered equivalent when testing list membership
+# for posting/moderation.
+# If two poster addresses with the same local part but
+# different domains are to be considered equivalents for list
+# membership tests, the domains are put in the list's equivalent_domains.
+# This provides a default value for new lists.
+# The format is one or more groups of equivalent domains.  Within a group,
+# the domains are separated by commas and multiple groups are
+# separated by semicolons. White space is ignored.
+# For example:
+#
+#    'example.com,mail.example.com;mac.com,me.com,icloud.com'
+#
+# In this example, if user@example.com is a list member,
+# a post from user@mail.example.com will be treated as if it is
+# from user@example.com for list membership/moderation purposes,
+# and likewise, if user@me.com is a list member, posts from
+# user@mac.com or user@icloud.com will be treated as if from
+# user@me.com.
+DEFAULT_EQUIVALENT_DOMAINS = ''
+
+# What should happen to non-member posts which are do not match explicit
 # non-member actions?
 # 0 = Accept
 # 1 = Hold
@@ -965,6 +1240,7 @@ DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX = "-owner"
 # Exclude/include (sibling) lists for non-digest delivery.
 DEFAULT_REGULAR_EXCLUDE_LISTS = []
 DEFAULT_REGULAR_INCLUDE_LISTS = []
+DEFAULT_REGULAR_EXCLUDE_IGNORE = True
 ALLOW_CROSS_DOMAIN_SIBLING = False
 
 # This variable controls whether monthly password reminders are sent.
@@ -975,6 +1251,16 @@ DEFAULT_SEND_WELCOME_MSG = Yes
 
 # Send goodbye messages to unsubscribed members?
 DEFAULT_SEND_GOODBYE_MSG = Yes
+
+# The following is a three way setting.  It sets the default for the list's
+# from_is_list policy which is applied to all posts except those for which a
+# dmarc_moderation_action other than accept applies.
+# 0 -> Do not rewrite the From: or wrap the message.
+# 1 -> Rewrite the From: header of posts replacing the posters address with
+#      that of the list.  Also see REMOVE_DKIM_HEADERS above.
+# 2 -> Do not modify the From: of the message, but wrap the message in an outer
+#      message From the list address.
+DEFAULT_FROM_IS_LIST = 0
 
 # Wipe sender information, and make it look like the list-admin
 # address sends all messages
@@ -1015,6 +1301,10 @@ DEFAULT_SUBSCRIBE_POLICY = 1
 
 # Does this site allow completely unchecked subscriptions?
 ALLOW_OPEN_SUBSCRIBE = No
+
+# This is the default list of addresses and regular expressions (beginning
+# with ^) that are exempt from approval if SUBSCRIBE_POLICY is 2 or 3.
+DEFAULT_SUBSCRIBE_AUTO_APPROVAL = []
 
 # The default policy for unsubscriptions.  0 (unmoderated unsubscribes) is
 # highly recommended!
@@ -1060,9 +1350,11 @@ DEFAULT_FILTER_MIME_TYPES = []
 
 # DEFAULT_PASS_MIME_TYPES is a list of MIME types to be passed through.
 # Format is the same as DEFAULT_FILTER_MIME_TYPES
-DEFAULT_PASS_MIME_TYPES = ['multipart/mixed',
-                           'multipart/alternative',
-                           'text/plain']
+DEFAULT_PASS_MIME_TYPES = ['multipart',
+                           'message/rfc822',
+                           'application/pgp-signature',
+                           'text/plain',
+                          ]
 
 # DEFAULT_FILTER_FILENAME_EXTENSIONS is a list of filename extensions to be
 # removed. It is useful because many viruses fake their content-type as
@@ -1190,6 +1482,10 @@ DEFAULT_BOUNCE_YOU_ARE_DISABLED_WARNINGS_INTERVAL = days(7)
 # failed to match by the bounce detector?
 DEFAULT_BOUNCE_UNRECOGNIZED_GOES_TO_LIST_OWNER = Yes
 
+# Does the list owner get a copy of every recognized bounce that increments
+# the score for a list member but doesn't result in a disable or probe?
+DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT = No
+
 # Notifications on bounce actions.  The first specifies whether the list owner
 # should get a notification when a member is disabled due to bouncing, while
 # the second specifies whether the owner should get one when the member is
@@ -1307,6 +1603,11 @@ UNSUBSCRIBE = 5
 ACCEPT = 6
 HOLD = 7
 
+# admindb summary sort button settings.  All must evaluate to True.
+SSENDER = 1
+SSENDERTIME = 2
+STIME = 3
+
 # Standard text field width
 TEXTFIELDWIDTH = 40
 
@@ -1330,6 +1631,9 @@ OPTINFO = {'hide'    : ConcealSubscription,
            'notmetoo': DontReceiveOwnPosts,
            'digest'  : 0,
            'plain'   : DisableMime,
+           'noremind': SuppressPasswordReminder,
+           'nmtopics': ReceiveNonmatchingTopics,
+           'mod'     : Moderate,
            'nodupes' : DontReceiveDuplicates
            }
 
@@ -1341,6 +1645,11 @@ OPTINFO = {'hide'    : ConcealSubscription,
 #   option settings
 # - List creator, someone who can create and delete lists, but cannot
 #   (necessarily) configure the list.
+# - List poster, someone who can pre-approve her/his own posts to the list by
+#   including an Approved: or X-Approved: header or first body line pseudo-
+#   header containing the poster password. The list admin and moderator
+#   passwords can also be used for this purpose, but the poster password can
+#   only be used for this and nothing else.
 # - List moderator, someone who can tend to pending requests such as
 #   subscription requests, or held messages
 # - List administrator, someone who has total control over a list, can
@@ -1356,6 +1665,7 @@ AuthCreator = 2       # List Creator / Destroyer
 AuthListAdmin = 3     # List Administrator (total control over list)
 AuthListModerator = 4 # List Moderator (can only handle held requests)
 AuthSiteAdmin = 5     # Site Administrator (total control over everything)
+AuthListPoster = 6    # List poster (Approved: <pw> header in posts only)
 
 # Useful directories
 LIST_DATA_DIR   = os.path.join(VAR_PREFIX, 'lists')
@@ -1417,9 +1727,11 @@ add_language('en',    _('English (USA)'),       'us-ascii',    'ltr')
 add_language('es',    _('Spanish (Spain)'),     'iso-8859-1',  'ltr')
 add_language('et',    _('Estonian'),            'iso-8859-15', 'ltr')
 add_language('eu',    _('Euskara'),             'iso-8859-15', 'ltr') # Basque
+add_language('fa',    _('Persian'),             'utf-8',       'rtl')
 add_language('fi',    _('Finnish'),             'iso-8859-1',  'ltr')
 add_language('fr',    _('French'),              'iso-8859-1',  'ltr')
 add_language('gl',    _('Galician'),            'utf-8',       'ltr')
+add_language('el',    _('Greek'),               'iso-8859-7',  'ltr')
 add_language('he',    _('Hebrew'),              'utf-8',       'rtl')
 add_language('hr',    _('Croatian'),            'iso-8859-2',  'ltr')
 add_language('hu',    _('Hungarian'),           'iso-8859-2',  'ltr')
@@ -1433,8 +1745,8 @@ add_language('no',    _('Norwegian'),           'iso-8859-1',  'ltr')
 add_language('pl',    _('Polish'),              'iso-8859-2',  'ltr')
 add_language('pt',    _('Portuguese'),          'iso-8859-1',  'ltr')
 add_language('pt_BR', _('Portuguese (Brazil)'), 'iso-8859-1',  'ltr')
-add_language('ro',    _('Romanian'),            'iso-8859-2',  'ltr')
-add_language('ru',    _('Russian'),             'koi8-r',      'ltr')
+add_language('ro',    _('Romanian'),            'utf-8',       'ltr')
+add_language('ru',    _('Russian'),             'utf-8',       'ltr')
 add_language('sk',    _('Slovak'),              'utf-8',       'ltr')
 add_language('sl',    _('Slovenian'),           'iso-8859-2',  'ltr')
 add_language('sr',    _('Serbian'),             'utf-8',       'ltr')

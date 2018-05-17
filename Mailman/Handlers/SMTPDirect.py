@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -61,7 +61,38 @@ class Connection:
 
     def __connect(self):
         self.__conn = smtplib.SMTP()
+        self.__conn.set_debuglevel(mm_cfg.SMTPLIB_DEBUG_LEVEL)
         self.__conn.connect(mm_cfg.SMTPHOST, mm_cfg.SMTPPORT)
+        if mm_cfg.SMTP_AUTH:
+            if mm_cfg.SMTP_USE_TLS:
+                try:
+                    self.__conn.starttls()
+                except SMTPException, e:
+                    syslog('smtp-failure', 'SMTP TLS error: %s', e)
+                    self.quit()
+                    raise
+                try:
+                    self.__conn.ehlo(mm_cfg.SMTP_HELO_HOST)
+                except SMTPException, e:
+                    syslog('smtp-failure', 'SMTP EHLO error: %s', e)
+                    self.quit()
+                    raise
+            try:
+                self.__conn.login(mm_cfg.SMTP_USER, mm_cfg.SMTP_PASSWD)
+            except smtplib.SMTPHeloError, e:
+                syslog('smtp-failure', 'SMTP HELO error: %s', e)
+                self.quit()
+                raise
+            except smtplib.SMTPAuthenticationError, e:
+                syslog('smtp-failure', 'SMTP AUTH error: %s', e)
+                self.quit()
+                raise
+            except smtplib.SMTPException, e:
+                syslog('smtp-failure',
+                       'SMTP - no suitable authentication method found: %s', e)
+                self.quit()
+                raise
+
         self.__numsessions = mm_cfg.SMTP_MAX_SESSIONS_PER_CONNECTION
 
     def sendmail(self, envsender, recips, msgtext):
@@ -363,7 +394,8 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     # lists, depending on how often they accidentally reply to it.  Also, when
     # forwarding mail inline, the sender is replaced with the string "Full 
     # Name (on behalf bounce@addr.ess)", essentially losing the original
-    # sender address.
+    # sender address.  To partially mitigate this, we add the list name as a
+    # display-name in the Sender: header that we add.
     # 
     # The drawback of not touching the Sender: header is that some MTAs might
     # still send bounces to it, so by not trapping it, we can miss bounces.
@@ -374,7 +406,7 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     msg['Errors-To'] = envsender
     if mlist.include_sender_header:
         del msg['sender']
-        msg['Sender'] = envsender
+        msg['Sender'] = '"%s" <%s>' % (mlist.real_name, envsender)
     # Get the plain, flattened text of the message, sans unixfrom
     # using our as_string() method to not mangle From_ and not fold
     # sub-part headers possibly breaking signatures.

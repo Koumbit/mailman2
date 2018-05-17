@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,8 +23,13 @@ import email.Errors
 import email.Iterators
 import email.Parser
 
-from Mailman.Logging.Syslog import syslog
+from email.Header import decode_header
 
+from Mailman import Utils
+from Mailman.Logging.Syslog import syslog
+from Mailman.Handlers.CookHeaders import change_header
+
+OR = '|'
 CRNL = '\r\n'
 EMPTYSTRING = ''
 NLTAB = '\n\t'
@@ -34,10 +39,16 @@ NLTAB = '\n\t'
 def process(mlist, msg, msgdata):
     if not mlist.topics_enabled:
         return
+    # Helper function.  Return RFC 2047 decoded header as a string in the
+    # charset of the list's preferred language.
+    def _decode(h):
+        if not h:
+            return h
+        return Utils.oneline(h, Utils.GetCharSet(mlist.preferred_language))
     # Extract the Subject:, Keywords:, and possibly body text
     matchlines = []
-    matchlines.append(msg.get('subject', None))
-    matchlines.append(msg.get('keywords', None))
+    matchlines.append(_decode(msg.get('subject', None)))
+    matchlines.append(_decode(msg.get('keywords', None)))
     if mlist.topics_bodylines_limit == 0:
         # Don't scan any body lines
         pass
@@ -53,15 +64,17 @@ def process(mlist, msg, msgdata):
     # added to the specific topics bucket.
     hits = {}
     for name, pattern, desc, emptyflag in mlist.topics:
-        cre = re.compile(pattern, re.IGNORECASE | re.VERBOSE)
+        pattern = OR.join(pattern.splitlines())
+        cre = re.compile(pattern, re.IGNORECASE)
         for line in matchlines:
             if cre.search(line):
                 hits[name] = 1
                 break
     if hits:
         msgdata['topichits'] = hits.keys()
-        msg['X-Topics'] = NLTAB.join(hits.keys())
-    
+        change_header('X-Topics', NLTAB.join(hits.keys()),
+                      mlist, msg, msgdata, delete=False)
+
 
 
 def scanbody(msg, numlines=None):
@@ -84,7 +97,7 @@ def scanbody(msg, numlines=None):
     # the first numlines of body text.
     lines = []
     lineno = 0
-    reader = list(email.Iterators.body_line_iterator(msg))
+    reader = list(email.Iterators.body_line_iterator(msg, decode=True))
     while numlines is None or lineno < numlines:
         try:
             line = reader.pop(0)

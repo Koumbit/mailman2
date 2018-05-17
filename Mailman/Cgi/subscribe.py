@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,6 +20,7 @@
 import sys
 import os
 import cgi
+import time
 import signal
 
 from Mailman import mm_cfg
@@ -63,13 +64,22 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s\n', listname, e)
+        syslog('error', 'subscribe: No such list "%s": %s\n', listname, e)
         return
 
     # See if the form data has a preferred language set, in which case, use it
     # for the results.  If not, use the list's preferred language.
     cgidata = cgi.FieldStorage()
-    language = cgidata.getvalue('language')
+    try:
+        language = cgidata.getvalue('language', '')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
     if not Utils.IsLanguage(language):
         language = mlist.preferred_language
     i18n.set_language(language)
@@ -109,7 +119,7 @@ def process_form(mlist, doc, cgidata, lang):
     results = []
 
     # The email address being subscribed, required
-    email = cgidata.getvalue('email', '')
+    email = cgidata.getvalue('email', '').strip()
     if not email:
         results.append(_('You must supply a valid email address.'))
 
@@ -117,20 +127,55 @@ def process_form(mlist, doc, cgidata, lang):
     # Canonicalize the full name
     fullname = Utils.canonstr(fullname, lang)
     # Who was doing the subscribing?
-    remote = os.environ.get('REMOTE_HOST',
-                            os.environ.get('REMOTE_ADDR',
-                                           'unidentified origin'))
+    remote = os.environ.get('HTTP_FORWARDED_FOR',
+             os.environ.get('HTTP_X_FORWARDED_FOR',
+             os.environ.get('REMOTE_ADDR',
+                            'unidentified origin')))
+    # Are we checking the hidden data?
+    if mm_cfg.SUBSCRIBE_FORM_SECRET:
+        now = int(time.time())
+        # Try to accept a range in case of load balancers, etc.  (LP: #1447445)
+        if remote.find('.') >= 0:
+            # ipv4 - drop last octet
+            remote1 = remote.rsplit('.', 1)[0]
+        else:
+            # ipv6 - drop last 16 (could end with :: in which case we just
+            #        drop one : resulting in an invalid format, but it's only
+            #        for our hash so it doesn't matter.
+            remote1 = remote.rsplit(':', 1)[0]
+        try:
+            ftime, fhash = cgidata.getvalue('sub_form_token', '').split(':')
+            then = int(ftime)
+        except ValueError:
+            ftime = fhash = ''
+            then = 0
+        token = Utils.sha_new(mm_cfg.SUBSCRIBE_FORM_SECRET +
+                              ftime +
+                              mlist.internal_name() +
+                              remote1).hexdigest()
+        if ftime and now - then > mm_cfg.FORM_LIFETIME:
+            results.append(_('The form is too old.  Please GET it again.'))
+        if ftime and now - then < mm_cfg.SUBSCRIBE_FORM_MIN_TIME:
+            results.append(
+    _('Please take a few seconds to fill out the form before submitting it.'))
+        if ftime and token != fhash:
+            results.append(
+                _("The hidden token didn't match.  Did your IP change?"))
+        if not ftime:
+            results.append(
+    _('There was no hidden token in your submission or it was corrupted.'))
+            results.append(_('You must GET the form before submitting it.'))
     # Was an attempt made to subscribe the list to itself?
     if email == mlist.GetListEmail():
         syslog('mischief', 'Attempt to self subscribe %s: %s', email, remote)
         results.append(_('You may not subscribe a list to itself!'))
     # If the user did not supply a password, generate one for him
-    password = cgidata.getvalue('pw')
-    confirmed = cgidata.getvalue('pw-conf')
+    password = cgidata.getvalue('pw', '').strip()
+    confirmed = cgidata.getvalue('pw-conf', '').strip()
 
-    if password is None and confirmed is None:
+    if not password and not confirmed:
         password = Utils.MakeRandomPassword()
-    elif password is None or confirmed is None:
+    elif not password or not confirmed:
         results.append(_('If you supply a password, you must confirm it.'))
     elif password <> confirmed:
         results.append(_('Your passwords did not match.'))

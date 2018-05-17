@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,6 +17,7 @@
 
 """Produce and handle the member options."""
 
+import re
 import sys
 import os
 import cgi
@@ -32,9 +33,14 @@ from Mailman import MemberAdaptor
 from Mailman import i18n
 from Mailman.htmlformat import *
 from Mailman.Logging.Syslog import syslog
+from Mailman.CSRFcheck import csrf_check
 
+OR = '|'
 SLASH = '/'
 SETLANGUAGE = -1
+DIGRE = re.compile(
+    '<!--Start-Digests-Delete-->.*<!--End-Digests-Delete-->',
+     re.DOTALL)
 
 # Set up i18n
 _ = i18n._
@@ -46,11 +52,25 @@ except NameError:
     True = 1
     False = 0
 
+AUTH_CONTEXTS = (mm_cfg.AuthListAdmin, mm_cfg.AuthSiteAdmin,
+                 mm_cfg.AuthListModerator, mm_cfg.AuthUser)
 
 
 def main():
     doc = Document()
     doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
+
+    method = Utils.GetRequestMethod()
+    if method.lower() not in ('get', 'post'):
+        title = _('CGI script error')
+        doc.SetTitle(title)
+        doc.AddItem(Header(2, title))
+        doc.addError(_('Invalid request method: %(method)s'))
+        doc.AddItem('<hr>')
+        doc.AddItem(MailmanLogo())
+        print 'Status: 405 Method Not Allowed'
+        print doc.Format()
+        return
 
     parts = Utils.GetPathPieces()
     lenparts = parts and len(parts)
@@ -81,17 +101,40 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s\n', listname, e)
+        syslog('error', 'options: No such list "%s": %s\n', listname, e)
         return
 
     # The total contents of the user's response
     cgidata = cgi.FieldStorage(keep_blank_values=1)
 
+    # CSRF check
+    safe_params = ['displang-button', 'language', 'email', 'password', 'login',
+                   'login-unsub', 'login-remind', 'VARHELP', 'UserOptions']
+    params = cgidata.keys()
+    if set(params) - set(safe_params):
+        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+    else:
+        csrf_checked = True
+    # if password is present, void cookie to force password authentication.
+    if cgidata.getvalue('password'):
+        os.environ['HTTP_COOKIE'] = ''
+        csrf_checked = True
+
     # Set the language for the page.  If we're coming from the listinfo cgi,
     # we might have a 'language' key in the cgi data.  That was an explicit
     # preference to view the page in, so we should honor that here.  If that's
     # not available, use the list's default language.
-    language = cgidata.getvalue('language')
+    try:
+        language = cgidata.getvalue('language')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     if not Utils.IsLanguage(language):
         language = mlist.preferred_language
     i18n.set_language(language)
@@ -112,6 +155,14 @@ def main():
             return
     else:
         user = Utils.LCDomain(Utils.UnobscureEmail(SLASH.join(parts[1:])))
+    # If a user submits a form or URL with post data or query fragments
+    # with multiple occurrences of the same variable, we can get a list
+    # here.  Be as careful as possible.
+    if isinstance(user, list) or isinstance(user, tuple):
+        if len(user) == 0:
+            user = ''
+        else:
+            user = user[-1]
 
     # Avoid cross-site scripting attacks
     safeuser = Utils.websafe(user)
@@ -164,6 +215,9 @@ def main():
         return
 
     # Are we processing an unsubscription request from the login screen?
+    msgc = _('If you are a list member, a confirmation email has been sent.')
+    msga = _("""If you are a list member, your unsubscription request has been
+             forwarded to the list administrator for approval.""")
     if cgidata.has_key('login-unsub'):
         # Because they can't supply a password for unsubscribing, we'll need
         # to do the confirmation dance.
@@ -175,14 +229,14 @@ def main():
                 # be held.  Otherwise, send a confirmation.
                 if mlist.unsubscribe_policy:
                     mlist.HoldUnsubscription(user)
-                    doc.addError(_("""Your unsubscription request has been
-                    forwarded to the list administrator for approval."""),
-                                 tag='')
+                    doc.addError(msga, tag='')
                 else:
-                    ip = os.environ.get('REMOTE_ADDR')
+                    ip = os.environ.get('HTTP_FORWARDED_FOR',
+                         os.environ.get('HTTP_X_FORWARDED_FOR',
+                         os.environ.get('REMOTE_ADDR',
+                                        'unidentified origin')))
                     mlist.ConfirmUnsubscription(user, userlang, remote=ip)
-                    doc.addError(_('The confirmation email has been sent.'),
-                                 tag='')
+                    doc.addError(msgc, tag='')
                 mlist.Save()
             finally:
                 mlist.Unlock()
@@ -195,19 +249,21 @@ def main():
                 syslog('mischief',
                        'Unsub attempt of non-member w/ private rosters: %s',
                        user)
-                doc.addError(_('The confirmation email has been sent.'),
-                             tag='')
+                if mlist.unsubscribe_policy:
+                    doc.addError(msga, tag='')
+                else:
+                    doc.addError(msgc, tag='')
         loginpage(mlist, doc, user, language)
         print doc.Format()
         return
 
     # Are we processing a password reminder from the login screen?
+    msg = _("""If you are a list member,
+            your password has been emailed to you.""")
     if cgidata.has_key('login-remind'):
         if mlist.isMember(user):
             mlist.MailUserPassword(user)
-            doc.addError(
-                _('A reminder of your password has been emailed to you.'),
-                tag='')
+            doc.addError(msg, tag='')
         else:
             # Not a member
             if mlist.private_roster == 0:
@@ -217,9 +273,7 @@ def main():
                 syslog('mischief',
                        'Reminder attempt of non-member w/ private rosters: %s',
                        user)
-                doc.addError(
-                    _('A reminder of your password has been emailed to you.'),
-                    tag='')
+                doc.addError(msg, tag='')
         loginpage(mlist, doc, user, language)
         print doc.Format()
         return
@@ -251,9 +305,13 @@ def main():
             # So as not to allow membership leakage, prompt for the email
             # address and the password here.
             if mlist.private_roster <> 0:
+                remote = os.environ.get('HTTP_FORWARDED_FOR',
+                         os.environ.get('HTTP_X_FORWARDED_FOR',
+                         os.environ.get('REMOTE_ADDR',
+                                        'unidentified origin')))
                 syslog('mischief',
-                       'Login failure with private rosters: %s',
-                       user)
+                       'Login failure with private rosters: %s from %s',
+                       user, remote)
                 user = None
             # give an HTTP 401 for authentication failure
             print 'Status: 401 Unauthorized'
@@ -264,6 +322,23 @@ def main():
     # From here on out, the user is okay to view and modify their membership
     # options.  The first set of checks does not require the list to be
     # locked.
+
+    # However, if a form is submitted for a user who has been asynchronously
+    # unsubscribed, uncaught NotAMemberError exceptions can be thrown.
+
+    if not mlist.isMember(user):
+        loginpage(mlist, doc, user, language)
+        print doc.Format()
+        return
+
+    # Before going further, get the result of CSRF check and do nothing 
+    # if it has failed.
+    if csrf_checked == False:
+        doc.addError(
+            _('The form lifetime has expired. (request forgery check)'))
+        options_page(mlist, doc, user, cpuser, userlang)
+        print doc.Format()
+        return
 
     if cgidata.has_key('logout'):
         print mlist.ZapCookie(mm_cfg.AuthUser, user)
@@ -298,8 +373,14 @@ def main():
         # the user is a member.  If so, add it to the list.
         onlists = []
         for gmlist in lists_of_member(mlist, user) + [mlist]:
+            extra = ''
             url = gmlist.GetOptionsURL(user)
             link = Link(url, gmlist.real_name)
+            if gmlist.getDeliveryStatus(user) <> MemberAdaptor.ENABLED:
+                extra += ', ' + _('nomail')
+            if user in gmlist.getDigestMemberKeys():
+                extra += ', ' + _('digest')
+            link = HTMLFormatObject(link, 0) + extra
             onlists.append((gmlist.real_name, link))
         onlists.sort()
         items = OrderedList(*[link for name, link in onlists])
@@ -434,8 +515,8 @@ address.  Upon confirmation, any other mailing list containing the address
             options_page(mlist, doc, user, cpuser, userlang)
             print doc.Format()
             return
-        newpw = cgidata.getvalue('newpw')
-        confirmpw = cgidata.getvalue('confpw')
+        newpw = cgidata.getvalue('newpw', '').strip()
+        confirmpw = cgidata.getvalue('confpw', '').strip()
         if not newpw or not confirmpw:
             options_page(mlist, doc, user, cpuser, userlang,
                          _('Passwords may not be blank'))
@@ -500,6 +581,13 @@ address.  Upon confirmation, any other mailing list containing the address
                     user, 'via the member options page', userack=1)
             except Errors.MMNeedApproval:
                 needapproval = True
+            except Errors.NotAMemberError:
+                # MAS This except should really be in the outer try so we
+                # don't save the list redundantly, but except and finally in
+                # the same try requires Python >= 2.5.
+                # Setting a switch and making the Save() conditional doesn't
+                # seem worth it as the Save() won't change anything.
+                pass
             mlist.Save()
         finally:
             mlist.Unlock()
@@ -769,7 +857,8 @@ def options_page(mlist, doc, user, cpuser, userlang, message=''):
         mlist.FormatButton('othersubs',
                            _('List my other subscriptions')))
     replacements['<mm-form-start>'] = (
-        mlist.FormatFormStart('options', user))
+        mlist.FormatFormStart('options', user, mlist=mlist, 
+            contexts=AUTH_CONTEXTS, user=user))
     replacements['<mm-user>'] = user
     replacements['<mm-presentable-user>'] = presentable_user
     replacements['<mm-email-my-pw>'] = mlist.FormatButton(
@@ -840,8 +929,10 @@ You are subscribed to this list with the case-preserved address
     else:
         replacements['<mm-case-preserved-user>'] = ''
 
-    doc.AddItem(mlist.ParseTags('options.html', replacements, userlang))
-
+    page_text = mlist.ParseTags('options.html', replacements, userlang)
+    if not (mlist.digestable or mlist.getMemberOption(user, mm_cfg.Digests)):
+        page_text = DIGRE.sub('', page_text)
+    doc.AddItem(page_text)
 
 
 def loginpage(mlist, doc, user, lang):
@@ -1043,7 +1134,8 @@ def topic_details(mlist, doc, user, cpuser, userlang, varhelp):
     table.AddRow([Bold(Label(_('Name:'))),
                   Utils.websafe(name)])
     table.AddRow([Bold(Label(_('Pattern (as regexp):'))),
-                  '<pre>' + Utils.websafe(pattern) + '</pre>'])
+                  '<pre>' + Utils.websafe(OR.join(pattern.splitlines()))
+                   + '</pre>'])
     table.AddRow([Bold(Label(_('Description:'))),
                   Utils.websafe(description)])
     # Make colors look nice

@@ -7,7 +7,7 @@ wurde an den Besitzer der Mailingliste weitergeleitet.
 Das liegt wahrscheinlich daran, dass Sie eine sogenannte "geschlossene"
 Liste abonnieren möchten.
 
-Sie werden eine Benachrichtigungs-Email mit der Entscheidung des
+Sie werden eine E-Mail zur Benachrichtigung mit der Entscheidung des
 Listenverwalters über Ihren Abonnementswunsch erhalten.
 
 Bei Fragen können Sie sich an den Besitzer der Liste wenden:

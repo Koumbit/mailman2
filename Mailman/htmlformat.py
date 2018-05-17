@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,7 +32,9 @@ import types
 
 from Mailman import mm_cfg
 from Mailman import Utils
-from Mailman.i18n import _
+from Mailman.i18n import _, get_translation
+
+from Mailman.CSRFcheck import csrf_token
 
 SPACE = ' '
 EMPTYSTRING = ''
@@ -298,7 +300,7 @@ class Document(Container):
 
     def Format(self, indent=0, **kws):
         charset = 'us-ascii'
-        if self.language:
+        if self.language and Utils.IsLanguage(self.language):
             charset = Utils.GetCharSet(self.language)
         output = ['Content-Type: text/html; charset=%s\n' % charset]
         if not self.suppress_head:
@@ -316,6 +318,8 @@ class Document(Container):
                           'content="text/html; charset=%s">' % charset)
             if self.title:
                 output.append('%s<TITLE>%s</TITLE>' % (tab, self.title))
+            if mm_cfg.WEB_HEAD_ADD:
+                output.append(mm_cfg.WEB_HEAD_ADD)
             output.append('%s</HEAD>' % tab)
             quals = []
             # Default link colors
@@ -402,11 +406,15 @@ class Center(StdContainer):
     tag = 'center'
 
 class Form(Container):
-    def __init__(self, action='', method='POST', encoding=None, *items):
+    def __init__(self, action='', method='POST', encoding=None, 
+                       mlist=None, contexts=None, user=None, *items):
         apply(Container.__init__, (self,) +  items)
         self.action = action
         self.method = method
         self.encoding = encoding
+        self.mlist = mlist
+        self.contexts = contexts
+        self.user = user
 
     def set_action(self, action):
         self.action = action
@@ -418,6 +426,10 @@ class Form(Container):
             encoding = 'enctype="%s"' % self.encoding
         output = '\n%s<FORM action="%s" method="%s" %s>\n' % (
             spaces, self.action, self.method, encoding)
+        if self.mlist:
+            output = output + \
+                '<input type="hidden" name="csrf_token" value="%s">\n' \
+                % csrf_token(self.mlist, self.contexts, self.user)
         output = output + Container.Format(self, indent+2)
         output = '%s\n%s</FORM>\n' % (output, spaces)
         return output
@@ -432,6 +444,7 @@ class InputObj:
         self.kws = kws
 
     def Format(self, indent=0):
+        charset = get_translation().charset() or 'us-ascii'
         output = ['<INPUT name="%s" type="%s" value="%s"' %
                   (self.name, self.type, self.value)]
         for item in self.kws.items():
@@ -439,7 +452,10 @@ class InputObj:
         if self.checked:
             output.append('CHECKED')
         output.append('>')
-        return SPACE.join(output)
+        ret = SPACE.join(output)
+        if self.type == 'TEXT' and isinstance(ret, unicode):
+            ret = ret.encode(charset, 'xmlcharrefreplace')
+        return ret
 
 
 class SubmitButton(InputObj):
@@ -477,6 +493,7 @@ class TextArea:
         self.readonly = readonly
 
     def Format(self, indent=0):
+        charset = get_translation().charset() or 'us-ascii'
         output = '<TEXTAREA NAME=%s' % self.name
         if self.rows:
             output += ' ROWS=%s' % self.rows
@@ -487,6 +504,8 @@ class TextArea:
         if self.readonly:
             output += ' READONLY'
         output += '>%s</TEXTAREA>' % self.text
+        if isinstance(output, unicode):
+            output = output.encode(charset, 'xmlcharrefreplace')
         return output
 
 class FileUpload(InputObj):
@@ -531,7 +550,9 @@ class WidgetArray:
                                   self.button_names,
                                   self.values):
             ischecked = (self.ischecked(i))
-            item = self.Widget(self.name, value, ischecked).Format() + name
+            item = ('<label>' +
+                    self.Widget(self.name, value, ischecked).Format() +
+                    name + '</label>')
             items.append(item)
             if not self.horizontal:
                 t.AddRow(items)

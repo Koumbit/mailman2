@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 
@@ -29,6 +29,28 @@ UPGRADING FROM PREVIOUS VERSIONS
       your web server documentation for details.
 
 
+UPGRADING PYTHON
+
+    If you are replacing Python with a newer version in the same location,
+    you don't need to do anything special for Mailman.
+
+    If you are installing a Python upgrade to be used by Mailman along side
+    an existing Python, you will need to configure Mailman with the
+    --with-python option to point to your new Python and you will need to
+    check Mailman's crontab and any /etc/init.d/ script and manually fix any
+    python commands as needed.
+
+
+UPGRADING FROM 2.1.5+ to 2.1.18+
+
+    Mailman 2.1.18 introduced a new Python dependency to support the
+    dmarc_moderation_action feature. This requires that the dnspython package
+    be available in the configured Python.  ./configure will quit with an
+    error message if it doesn't find dnspython.  The package can be downloaded
+    from <http://www.dnspython.org/> or from the CheeseShop
+    <https://pypi.python.org/pypi/dnspython/> or installed with pip.
+
+
 UPGRADING FROM 2.1.4 to 2.1.5
 
     In Mailman 2.1.5, some significant changes have been made to the file
@@ -45,7 +67,7 @@ UPGRADING FROM 2.1.4 to 2.1.5
     message and metadata.  This should make MM2.1.5 half as hostile to the
     file system.
 
-    The bin/upgrade script, which is run automatically when you upgrade,
+    The bin/update script, which is run automatically when you upgrade,
     should convert all the old style qfiles to the new style qfiles.  Note
     that this could take a long time if you have a lot of files in your qfiles
     subdirectories.  Pay particular attention to files you might have in

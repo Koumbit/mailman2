@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,6 +17,7 @@
 
 """MailList mixin class managing the privacy options."""
 
+import os
 import re
 
 from Mailman import mm_cfg
@@ -61,7 +62,7 @@ class Privacy(GUIBase):
                             _('Confirm and approve')),
                            0,
                            _('What steps are required for subscription?<br>'),
-                           _('''None - no verification steps (<em>Not
+                           _("""None - no verification steps (<em>Not
                            Recommended </em>)<br>
                            Confirm (*) - email confirmation step required <br>
                            Require approval - require list administrator
@@ -75,7 +76,7 @@ class Privacy(GUIBase):
 
                            This prevents mischievous (or malicious) people
                            from creating subscriptions for others without
-                           their consent.'''))
+                           their consent."""))
         else:
             sub_cfentry = ('subscribe_policy', mm_cfg.Radio,
                            # choices
@@ -84,7 +85,7 @@ class Privacy(GUIBase):
                             _('Confirm and approve')),
                            1,
                            _('What steps are required for subscription?<br>'),
-                           _('''Confirm (*) - email confirmation required <br>
+                           _("""Confirm (*) - email confirmation required <br>
                            Require approval - require list administrator
                            approval for subscriptions <br>
                            Confirm and approve - both confirm and approve
@@ -94,7 +95,7 @@ class Privacy(GUIBase):
                            subscription request number that they must reply to
                            in order to subscribe.<br> This prevents
                            mischievous (or malicious) people from creating
-                           subscriptions for others without their consent.'''))
+                           subscriptions for others without their consent."""))
 
         # some helpful values
         admin = mlist.GetScriptURL('admin')
@@ -108,10 +109,22 @@ class Privacy(GUIBase):
 
             _('Subscribing'),
             ('advertised', mm_cfg.Radio, (_('No'), _('Yes')), 0,
-             _('''Advertise this list when people ask what lists are on this
-             machine?''')),
+             _("""Advertise this list when people ask what lists are on this
+             machine?""")),
 
             sub_cfentry,
+
+            ('subscribe_auto_approval', mm_cfg.EmailListEx, (10, WIDTH), 1,
+             _("""List of addresses (or regexps) whose subscriptions do not
+             require approval."""),
+
+             (_("""When subscription requires approval, addresses in this list
+             are allowed to subscribe without administrator approval. Add
+             addresses one per line. You may begin a line with a ^ character
+             to designate a (case insensitive) regular expression match.""")
+             + ' ' +
+             _("""You may also use the @listname notation to designate the
+             members of another list in this installation."""))),
 
             ('unsubscribe_policy', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Is the list moderator's approval required for unsubscription
@@ -143,8 +156,8 @@ class Privacy(GUIBase):
              (_('Anyone'), _('List members'), _('List admin only')), 0,
              _('Who can view subscription list?'),
 
-             _('''When set, the list of subscribers is protected by member or
-             admin password authentication.''')),
+             _("""When set, the list of subscribers is protected by member or
+             admin password authentication.""")),
 
             ('obscure_addresses', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Show member addresses so they're not directly recognizable
@@ -158,6 +171,11 @@ class Privacy(GUIBase):
             ]
 
         adminurl = mlist.GetScriptURL('admin', absolute=1)
+    
+        if mlist.dmarc_quarantine_moderation_action:
+            quarantine = _('/Quarantine')
+        else:
+            quarantine = ''
         sender_rtn = [
             _("""When a message is posted to the list, a series of
             moderation steps are taken to decide whether a moderator must
@@ -212,6 +230,37 @@ class Privacy(GUIBase):
              <a href="%(adminurl)s/members">membership management
              screens</a>.""")),
 
+            ('member_verbosity_threshold', mm_cfg.Number, 5, 0,
+             _("""Ceiling on acceptable number of member posts, per interval,
+               before automatic moderation."""),
+
+             _("""If a member posts this many times, within a period of time
+               the member is automatically moderated.  Use 0 to disable.  See
+               <a href="?VARHELP=privacy/sender/member_verbosity_interval"
+               >member_verbosity_interval</a> for details on the time period.
+
+               <p>This is intended to stop people who join a list or lists and
+               then use a bot to send many spam messages in a short interval.
+
+               <p>Be careful when using this setting.  If it is set too low,
+               this can be triggered by a single post cross-posted to
+               multiple lists or by a single post to an umbrella list.""")),
+
+            ('member_verbosity_interval', mm_cfg.Number, 5, 0,
+             _("""Number of seconds to remember posts to this list to determine
+               member_verbosity_threshold for automatic moderation of a
+               member."""),
+
+             _("""If a member's total posts to all lists in this installation
+               with member_verbosity_threshold enabled reaches this list's
+               member_verbosity_threshold, the member is automatically
+               moderated on this list.
+
+               <p>Posts which are counted towards this list's
+               member_verbosity_threshold are all posts to any list with
+               member_verbosity_threshold enabled that arrived within that
+               list's member_verbosity_interval.""")),
+
             ('member_moderation_action', mm_cfg.Radio,
              (_('Hold'), _('Reject'), _('Discard')), 0,
              _("""Action to take when a moderated member posts to the
@@ -234,6 +283,119 @@ class Privacy(GUIBase):
              <a href="?VARHELP/privacy/sender/member_moderation_action"
              >rejection notice</a> to
              be sent to moderated members who post to this list.""")),
+
+            ('dmarc_moderation_action', mm_cfg.Radio,
+             (_('Accept'), _('Munge From'), _('Wrap Message'), _('Reject'),
+                 _('Discard')), 0,
+             _("""Action to take when anyone posts to the
+             list from a domain with a DMARC Reject%(quarantine)s Policy."""),
+
+             _("""<ul><li><b>Munge From</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is_list Munge From</a>
+             transformation to these messages.
+
+             <p><li><b>Wrap Message</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is_list Wrap
+             Message</a> transformation to these messages.
+
+             <p><li><b>Reject</b> -- this automatically rejects the message by
+             sending a bounce notice to the post's author.  The text of the
+             bounce notice can be <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_notice"
+             >configured by you</a>.
+
+             <p><li><b>Discard</b> -- this simply discards the message, with
+             no notice sent to the post's author.
+             </ul>
+
+             <p>This setting takes precedence over the <a
+             href="?VARHELP=general/from_is_list"> from_is_list</a> setting
+             if the message is From: an affected domain and the setting is
+             other than Accept.""")),
+
+            ('dmarc_quarantine_moderation_action', mm_cfg.Radio,
+             (_('No'), _('Yes')), 0,
+             _("""Shall the above dmarc_moderation_action apply to messages
+               From: domains with DMARC p=quarantine as well as p=reject"""),
+
+             _("""<ul><li><b>No</b> -- this applies dmarc_moderation_action to
+               only those posts From: a domain with DMARC p=reject.  This is
+               appropriate if you are concerned about bounced messages, but
+               want to apply dmarc_moderation_action to as few messages as
+               possible.
+               <p><li><b>Yes</b> -- this applies dmarc_moderation_action to
+               posts From: a domain with DMARC p=reject or p=quarantine.
+               </ul><p>If a message is From: a domain with DMARC p=quarantine
+               and dmarc_moderation_action is not applied (this set to No)
+               the message will likely not bounce, but will be delivered to
+               recipients' spam folders or other hard to find places.""")),
+
+            ('dmarc_none_moderation_action', mm_cfg.Radio,
+             (_('No'), _('Yes')), 0,
+             _("""Shall the above dmarc_moderation_action apply to messages
+               From: domains with DMARC p=none as well as p=quarantine and
+               p=reject"""),
+
+             _("""<ul><li><b>No</b> -- this applies dmarc_moderation_action to
+               only those posts From: a domain with DMARC p=reject and
+               possibly p=quarantine depending on the setting of
+               dmarc_quarantine_moderation_action.
+               <p><li><b>Yes</b> -- this applies dmarc_moderation_action to
+               posts From: a domain with DMARC p=none if
+               dmarc_moderation_action is Munge From or Wrap Message and
+               dmarc_quarantine_moderation_action is Yes.
+               <p>The intent of this setting is to eliminate failure reports
+               to the owner of a domain that publishes DMARC p=none by applying
+               the message transformations that would be applied if the
+               domain's DMARC policy were stronger.""")),
+
+            ('dmarc_moderation_notice', mm_cfg.Text, (10, WIDTH), 1,
+             _("""Text to include in any
+             <a href="?VARHELP=privacy/sender/dmarc_moderation_action"
+             >rejection notice</a> to
+             be sent to anyone who posts to this list from a domain
+             with a DMARC Reject%(quarantine)s Policy.""")),
+             
+            ('dmarc_wrapped_message_text', mm_cfg.Text, (10, WIDTH), 1,
+             _("""If dmarc_moderation_action applies and is Wrap Message,
+             and this text is provided, the text will be placed in a
+             separate text/plain MIME part preceding the original message
+             part in the wrapped message."""),
+             
+             _("""A wrapped message will either be a multipart/mixed message
+             with up to four sub-parts; a text/plain part containing
+             msg_header, a text/plain part containing 
+             dmarc_wrapped_message_text, a message/rfc822 part containing the
+             original message and a text/plain part containing msg_footer, or
+             a message/rfc822 message containing only the original message if
+             none of the other parts are applicable.""")),
+
+            ('equivalent_domains', mm_cfg.Text, (10, WIDTH), 1,
+             _("""A 'two dimensional' list of email address domains which are
+               considered equivalent when checking if a post is from a list
+               member."""),
+
+             _("""If two poster addresses with the same local part but
+               different domains are to be considered equivalents for list
+               membership tests, the domains are put here.  The format is
+               one or more groups of equivalent domains.  Within a group,
+               the domains are separated by commas and multiple groups are
+               separated by semicolons. White space is ignored.
+               <p>For example:<pre>
+               example.com,mail.example.com;mac.com,me.com,icloud.com
+               </pre>
+               <p>In this example, if user@example.com is a list member,
+               a post from user@mail.example.com will be treated as if it is
+               from user@example.com for list membership/moderation purposes,
+               and likewise, if user@me.com is a list member, posts from
+               user@mac.com or user@icloud.com will be treated as if from
+               user@me.com.
+               <p>Note that the poster's address is first tested for list
+               membership, and the equivalent domain addresses are only tested
+               if the poster's address is not that of a member.
+               <p>Also note that moderation of the equivalent domain address
+               will apply to the post, but other options such as 'ack' or
+               'not&nbsp;metoo' will not.""")),
 
             _('Non-member filters'),
 
@@ -373,8 +535,8 @@ class Privacy(GUIBase):
             ('max_num_recipients', mm_cfg.Number, 5, 0,
              _('Ceiling on acceptable number of recipients for a posting.'),
 
-             _('''If a posting has this number, or more, of recipients, it is
-             held for admin approval.  Use 0 for no ceiling.''')),
+             _("""If a posting has this number, or more, of recipients, it is
+             held for admin approval.  Use 0 for no ceiling.""")),
             ]
 
         spam_rtn = [
@@ -399,7 +561,7 @@ class Privacy(GUIBase):
              case, each rule is matched in turn, with processing stopped after
              the first match.
 
-             Note that headers are collected from all the attachments 
+             Note that headers are collected from all the attachments
              (except for the mailman administrivia message) and
              matched against the regular expressions. With this feature,
              you can effectively sort out messages with dangerous file
@@ -442,6 +604,11 @@ class Privacy(GUIBase):
         # an option.
         if property == 'subscribe_policy' and not mm_cfg.ALLOW_OPEN_SUBSCRIBE:
             val += 1
+        if (property == 'dmarc_moderation_action' and
+                val < mm_cfg.DEFAULT_DMARC_MODERATION_ACTION):
+            doc.addError(_("""dmarc_moderation_action must be >= the configured
+                           default value."""))
+            val = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
         setattr(mlist, property, val)
 
     # We need to handle the header_filter_rules widgets specially, but
@@ -492,9 +659,20 @@ class Privacy(GUIBase):
                 doc.addError(_("""Header filter rules require a pattern.
                 Incomplete filter rules will be ignored."""))
                 continue
-            # Make sure the pattern was a legal regular expression
+            # Make sure the pattern was a legal regular expression.
+            # Convert it to unicode if necessary.
+            mo = re.match('.*charset=([-_a-z0-9]+)',
+                          os.environ.get('CONTENT_TYPE', ''),
+                          re.IGNORECASE
+                         )
+            if mo:
+                cset = mo.group(1)
+            else:
+                cset = Utils.GetCharSet(mlist.preferred_language)
             try:
-                re.compile(pattern)
+                upattern = Utils.xml_to_unicode(pattern, cset)
+                re.compile(upattern)
+                pattern = upattern
             except (re.error, TypeError):
                 safepattern = Utils.websafe(pattern)
                 doc.addError(_("""The header filter rule pattern

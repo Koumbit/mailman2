@@ -1,8 +1,1170 @@
+-*- coding: iso-8859-1 -*-
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
+
+2.1.23 (27-Aug-2016)
+
+  Security
+
+    - CSRF protection has been extended to the user options page.  This was
+      actually fixed by Tokio Kikuchi as part of the fix for LP: #775294 and
+      intended for Mailman 2.1.15, but that fix wasn't completely merged at the
+      time.  The full fix also addresses the admindb, and edithtml pages as
+      well as the user options page and the previously fixed admin pages.
+      Thanks to Nishant Agarwala for reporting the issue.  CVE-2016-6893
+      (LP: #1614841)
+ 
+  New Features
+
+    - For header_filter_rules matching, RFC 2047 encoded headers, non-encoded
+      headers and header_filter_rules patterns are now all decoded to unicode.
+      Both XML character references of the form &#nnnn; and unicode escapes
+      of the form \Uxxxx in patterns are converted to unicodes as well.  Both
+      headers and patterns are normalized to 'NFKC' normal form before
+      matching, but the normalization form can be set via a new NORMALIZE_FORM
+      mm_cfg setting.  Also, the web UI has been updated to encode characters
+      in text fields that are invalid in the character set of the page's
+      language as XML character references instead of '?'.  This should help
+      with entering header_filter_rules patterns to match 'odd' characters.
+      This feature is experimental and is problematic for some cases where it
+      is desired to have a header_filter_rules pattern with characters not in
+      the character set of the list's preferred language.  For patterns
+      without such characters, the only change in behavior should be because
+      of unicode normalization which should improve matching.  For other
+      situations such as trying to match a Subject: with CJK characters (range
+      U+4E00..U+9FFF) on an English language (ascii) list, one can enter a
+      pattern like '^subject:.*[&#19968;-&#40959;]' or
+      '^subject:.*[\u4e00;-\u9fff;]' to match a Subject with any character in
+      the range, and it will work, but depending on the actual characters and
+      the browser, submitting another, even unrelated change can garble the
+      original entry although this usually occurs only with ascii pages and
+      characters in the range \u0080-\u00ff.  The \Uxxxx unicode escapes must
+      have exactly 4 hex digits, but they are case insensitive.  (LP: #558155)
+
+    - Thanks to Jim Popovitch REMOVE_DKIM_HEADERS can now be set to 3 to
+      preserve the original headers as X-Mailman-Original-... before removing
+      them.
+
+    - Several additional templates have been added to those that can be edited
+      via the web admin GUI.  (LP: #1583387)
+
+    - SMTPDirect.py can now do SASL authentication and STARTTLS security when
+      connecting to the outgoiung MTA. Associated with this are new
+      Defaults.py/mm_cfg.py settings SMTP_AUTH, SMTP_USER, SMTP_PASSWD and
+      SMTP_USE_TLS.  (LP: #558281)
+
+    - There is a new Defaults.py/mm_cfg.py setting SMTPLIB_DEBUG_LEVEL which
+      can be set to 1 to enable verbose smtplib debugging to Mailman's error
+      log to help with debugging 'low level smtp failures'.  (LP: #1573074)
+
+    - A list's nonmember_rejection_notice attribute will now be the default
+      rejection reason for a held non-member post in addition to it's prior
+      role as the reson for an automatically rejected non-member post.
+      (LP: #1572330)
+
+  i18n
+
+    - The French translation of 'Dutch' is changed from 'Hollandais' to
+      'Néerlandais' per Francis Jorissen.
+
+    - Some German language templates that were incorrectly utf-8 encoded have
+      been recoded as iso-8859-1.  (LP: #1602779)
+
+    - Japanese translation and documentation in messages/ja has been updated by
+      Yasuhito FUTATSUKI.
+
+  Bug fixes and other patches
+
+    - The admin Membership List letter links could be incorrectly rendered as
+      Unicode strings following a search.  (LP: #1604544)
+
+    - We no longer throw an uncaught TypeError with certain defective crafted
+      POST requests to Mailman's CGIs.  (LP: #1602608)
+
+    - Scrubber links in archives are now in the list's preferred_language
+      rather than the poster's language.  (LP: #1586505)
+
+    - Improved logging of banned subscription and address change attempts.
+      (LP: #1582856)
+
+    - In rare circumstances a list can be removed while the admin or listinfo
+      CGI or bin/list_lists is running causing an uncaught MMUnknownListError
+      to be thrown.  The exception is now caught and handled.  (LP: #1582532)
+
+    - Set the Date: header in the wrapper message when from_is_list or
+      dmarc_moderation_action is Wrap Message.  (LP: #1581215)
+
+    - A site can now set DMARC_ORGANIZATIONAL_DOMAIN_DATA_URL to None or the
+      null string if it wants to avoid using this.  (LP: #1578450)
+ 
+    - The white space to the left of the admindb Logout link is no longer
+      part of the link.  (LP: #1573623)
+
+2.1.22 (17-Apr-2016)
+
+  i18n
+
+    - Fixed a typo in the German options.html template.  (LP: #1562408)
+
+    - An error in the Brazilian Portugese translation of Quarterly has been
+      fixed thanks to Kleber A. Benatti.
+
+    - The Brazilian Portugese translation has been updated by Emerson Ribeiro
+      de Mello.
+
+  Bug fixes and other patches
+
+    - All addresses in data/virtual-mailman are now properly appended with
+      VIRTUAL_MAILMAN_LOCAL_DOMAIN and duplicates are not generated if the
+      site list is in a virtual domain.  (LP: #1570630)
+
+    - DMARC mitigations will now find the From: domain to the right of the
+      rightmost '@' rather than the leftmost '@'.  (LP: #1568445)
+
+    - DMARC mitigations for a sub-domain of an organizational domain will now
+      use the organizational domain's sp= policy if any.  (LP: #1568398)
+
+    - Modified NewsRunner.py to ensure that messages gated to Usenet have a
+      non-blank Subject: header and when munging the Message-ID to add the
+      original to References: to help with threading.  (LP: #557955)
+
+    - Fixed the pipermail archiver to do a better job of figuring the date of
+      a post when its Date: header is missing, unparseable or has an obviously
+      out of range date.  This should only affect bin/arch as ArchRunner has
+      code to fix dates at least if ARCHIVER_CLOBBER_DATE_POLICY has not been
+      set to 0 in mm_cfg.py.  If posts have been added in the past to a list's
+      archive using bin/arch and an imported mbox, running bin/arch again could
+      result is some of those posts being archived with a different date.
+      (LP: #1555798)
+
+    - Fixed an issue with CommandRunner shunting a malformed message with a
+      null byte in the body.  (LP: #1553888)
+
+    - Don't collapse multipart with a single sub-part inside multipart/signed
+      parts.  (LP: #1551075)
+
+2.1.21 (28-Feb-2016)
+
+  New Features
+
+    - There is a new dmarc_none_moderation_action list setting and a
+      DEFAULT_DMARC_NONE_MODERATION_ACTION mm_cfg.py setting to optionally
+      apply Munge From or Wrap Message actions to posts From: domains that
+      publish DMARC p=none.  The intent is to eliminate failure reports to
+      the domain owner for messages that would be munged or wrapped if the
+      domain published a stronger DMARC policy.  See the descriptions in
+      Defaults.py, the web UI and the bug report for more.  (LP: #1539384)
+
+    - Thanks to Jim Popovitch there is now a feature to automatically turn
+      on moderation for a malicious list member who attempts to flood a list
+      with spam.  See the details for the Privacy options ... -> Sender
+      filters -> member_verbosity_threshold and member_verbosity_interval
+      settings in the web admin UI and the documentation in Defaults.py for
+      the DEFAULT_MEMBER_VERBOSITY_* and VERBOSE_CLEAN_LIMIT settings for
+      information.
+
+    - bin/list_members now has options to display all moderated or all
+      non-moderated members.
+
+    - There is now a mm_cfg.py setting GLOBAL_BAN_LIST which is like the
+      individual list's ban_list but applies globally to all subscribe
+      requests.  See the description in Defaults.py for more details.
+
+  i18n
+
+    - The Japanese translation has been updated by Yasuhito FUTATSUKI.
+
+    - Also thanks to Miloslav Trmac and Yasuhito FUTATSUKI, the l10n for
+      Mailman's bin/ commands has been fixed to display using the character
+      set of the user's work station even when Mailman's character set for
+      the language is different.  Because this has not been tested over a
+      wide set of locales, there is an mm_cfg.py switch
+      DISABLE_COMMAND_LOCALE_CSET to disable it if it causes problems.
+      (LP: #558167)
+
+    - The Polish translation has been updated by Stefan Plewako.
+
+    - The German translation has been updated by Mirian Margiani and
+      Bernhard Schmidt.
+
+    - The Russian translation has been updated by Danil Smirnov.
+
+    - Several Galician templates that were improperly encoded as iso-8859-1
+      have been fixed.  (LP: #1532504)
+
+    - The Brazilian Portugese translation has been updated by Emerson Ribeiro
+      de Mello.
+
+  Bug fixes and other patches
+
+    - If DMARC lookup fails to find a policy, also try the Organizational
+      Domain.  Associated with this is a new mm_cfg.py setting
+      DMARC_ORGANIZATIONAL_DOMAIN_DATA_URL which sets the URL used to
+      retrieve the data for the algorithm that computes the Organizational
+      Domain.  See https://publicsuffix.org/list/ for info.  (LP: #1549420)
+
+    - Modified contrib/mmdsr to correctly report No such list names that
+      contain ".
+
+    - User's "Acknowledge" option will now be honored for posts to anonymous
+      lists.  (LP: #1546679)
+
+    - Fixed a typo in the Non-digest options regular_exclude_ignore
+      description thanks to Yasuhito FUTATSUKI.
+
+    - DEFAULT_PASS_MIME_TYPES has been changed to accept text/plain sub-parts
+      from message/rfc822 parts and multipart parts other than mixed and
+      alternative and also accept pgp signatures.  This only applies to newly
+      created lists and other than pgp signatures, still only accepts
+      text/plain.  (LP: #1517446)
+
+    - Modified contrib/mmdsr to report held and banned subscriptions and DMARC
+      lookups in their own categories.
+
+    - Fixed a bug that could create a garbled From: header with certain DMARC
+      mitigation actions.  (LP: #1536816)
+
+    - Treat a poster's address which matches an equivalent_domains address as
+      a list member for the regular_exclude_ignore check.  (LP: #1526550)
+
+    - Fixed an issue that sometimes left no white space following
+      subject_prefix.  (LP: #1525954)
+
+    - Vette log entries for banned subscriptions now include the source of
+      the request if available.  (LP: #1525733)
+
+    - Submitting the user options form for a user who was asynchronously
+      unsubscribed would throw an uncaught NotAMemberError.  (LP: #1523273)
+
+    - It was possible under some circumstances for a message to be shunted
+      after a handler rejected or discarded it, and the handler would be
+      skipped upon unshunting and the message accepted.  (LP: #1519062)
+
+    - Posts gated to usenet will no longer have other than the target group
+      in the Newsgroups: header.  (LP: #1512866)
+
+    - Invalid regexps in *_these_nonmembers, subscribe_auto_approval and
+      ban_list are now logged.  (LP: #1507241)
+
+    - Refactored the GetPattern list method to simplify extending @listname
+      syntax to new attributes in the future.  Changed Moderate.py to use the
+      GetPattern method to process the *_these_nonmembers lists.
+
+    - Changed CookHeaders to default to using space rather than tab as
+      continuation_ws when folding headers.  (LP: #1505878)
+
+    - Fixed the 'pidfile' path in the sample init.d script.  (LP: #1503422)
+
+    - Subject prefixing could fail to collapse multiple 'Re:' in an incomming
+      message if they all came after the list's subject_prefix.  This is now
+      fixed.  (LP: #1496620)
+
+    - Defended against a user submitting URLs with query fragments or POST
+      data containing multiple occurrences of the same variable.
+      (LP: #1496632)
+
+    - Fixed bin/mailmanctl to check its effective rather than real uid.
+      (LP: #1491187)
+
+    - Fixed cron/gate_news to catch EOFError on opening the newsgroup.
+      (LP: #1486263)
+
+    - Fixed a bug where a delayed probe bounce can throw an AttributeError.
+      (LP: #1482940)
+
+    - If a list is not digestable an the user is not currently set to
+      receive digests, the digest options will not be shown on the user's
+      options page.  (LP: #1476298)
+
+    - Improved identification of remote clients for logging and subscribe
+      form checking in cases where access is via a proxy server.  Thanks to
+      Jim Popovitch.  Also updated contrib/mmdsr for log change.
+
+    - Fixed an issue with shunted messages on a list where the charset for
+      the list's preferred_language had been changed from iso-8859-1 to
+      utf-8 without recoding the list's description.  (LP: #1462755)
+
+    - Mailman-Postfix integration will now add mailman@domain entries in
+      data/virtual-mailman for each domain in POSTFIX_STYLE_VIRTUAL_DOMAINS
+      which is a host_name of a list.  This is so the addresses which are
+      exposed on admin and listinfo overview pages of virtual domains will
+      be deliverable.  (LP: #1459236)
+
+    - The vette log entry for DMARC policy hits now contains the list name.
+      (LP: #1450826)
+
+    - If SUBSCRIBE_FORM_SECRET is enabled and a user's network has a load
+      balancer or similar in use the POSTing IP might not exactly match the
+      GETting IP.  This is now accounted for by not requiring the last
+      octet (16 bits for ipV6) to match.  (LP: #1447445)
+
+    - DKIM-Signature:, DomainKey-Signature: and Authentication-Results:
+      headers are now removed by default from posts to anonymous lists.
+      (LP: #1444673)
+
+    - The list admin web UI Mambership List search function often doesn't
+      return correct results for search strings (regexps) that contain
+      non-ascii characters.  This is partially fixed.  (LP: #1442298)
+
+2.1.20 (31-Mar-2015)
+
+  Security
+
+    - A path traversal vulnerability has been discovered and fixed.  This
+      vulnerability is only exploitable by a local user on a Mailman server
+      where the suggested Exim transport, the Postfix postfix_to_mailman.py
+      transport or some other programmatic MTA delivery not using aliases
+      is employed.  CVE-2015-2775  (LP: #1437145)
+
+  New Features
+
+    - There is a new Address Change sub-section in the web admin Membership
+      Management section to allow a list admin to change a list member's
+      address in one step rather than adding the new address, copying settings
+      and deleting the old address.  (LP: #266809)
+
+  i18n
+ 
+    - The Russian translation has been updated by Danil Smirnov.
+
+    - The Polish translation has been updated by Stefan Plewako.
+ 
+  Bug fixes and other patches
+
+    - A LookupError in SpamDetect on a message with RFC 2047 encoded headers
+      in an unknown character set is fixed.  (LP: #1427389)
+
+    - Fixed a bug in CommandRunner that could process the second word of a
+      body line as a command word and a case sensitivity in commands in
+      Subject: with an Re: prefix.  (LP: #1426829)
+
+    - Fixed a bug in CommandRunner that threw an uncaught KeyError if
+      the input to the list-request address contained a command word
+      terminated by a period.  (LP: #1426825)
+
+2.2 Branch Backports (released in conjunction with 2.1.19)
+
+  The following New Features and Bug Fixes have been in an "unofficial,
+  never to be released" Mailman 2.2 branch for several years. Until now,
+  they were never implemented on the official 2.1 branch because of their
+  i18n impacts.  Given that there have been a number of i18n impacting
+  changes due to DMARC mitigations in the last few releases, it has been
+  decided to backport these as well.
+
+  All of these changes have been running in production on several lists
+  for years without problems other than untranslated strings, so they should
+  be reasonably "bug free".
+
+  New Features
+
+    - There is a new list attribute 'subscribe_auto_approval' which is a list
+      of email addresses and regular expressions matching email addresses
+      whose subscriptions are exempt from admin approval.  (LP: #266609)
+
+    - Confirmed member change of address is logged in the 'subscribe' log,
+      and if admin_notify_mchanges is true, a notice is sent to the list
+      owner using a new adminaddrchgack.txt template.
+
+    - Added an 'automate' option to bin/newlist to send the notice to the
+      admin without the prompt.
+
+    - The processing of Topics regular expressions has changed. Previously the
+      Topics regexp was compiled in verbose mode but not documented as such
+      which caused some confusion.  Also, the documentation indicated that
+      topic keywords could be entered one per line, but these entries were not
+      handled properly.  Topics regexps are now compiled in non-verbose mode
+      and multi-line entries are 'ored'.  Existing Topics regexps will be
+      converted when the list is updated so they will continue to work.
+
+    - Added real name display to the web roster.  (LP: #266754)
+
+
+  Bug fixes and other patches
+
+    - Changed the response to an invalid confirmation to be more generic.
+      Not all confirmations are subscription requests.
+
+    - Changed the default nonmember_rejection_notice to be more user friendly.
+      (LP: #418728)
+
+    - Added "If you are a list member" qualification to some messages from the
+      options login page.  (LP: #266442)
+
+    - Changed the 'Approve' wording in the admindbdetails.html template to
+      'Accept/Approve' for better agreement with the button labels.
+
+    - Added '(by thread)' to the previous and next message links in the
+      archive to emphasize that even if you got to the message from a
+      subject, date or author index, previous and next are still by thread.
+
+2.1.19 (28-Feb-2015)
+
+  New Features
+
+    - The subscribe_auto_approval feature backported from the 2.2 branch and
+      described above has been enhanced to accept entries of the form
+      @listname to auto approve members of another list.  (LP: #1417093)
+
+    - There is a new list attribute dmarc_wrapped_message_text and a
+      DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT setting to set the default for new
+      lists.  This text is added to a message which is wrapped because of
+      dmarc_moderation_action in a separate text/plain part that precedes the
+      message/rfc822 part containing the original message.  It can be used to
+      provide an explanation of why the message was wrapped or similar info.
+
+    - There is a new list attribute equivalent_domains and a
+      DEFAULT_EQUIVALENT_DOMAINS setting to set the default for new lists which
+      in turn defaults to the empty string.  This provides a way to specify one
+      or more groups of domains, e.g., mac.com, me.com, icloud.com, which are
+      considered equivalent for validating list membership for posting and
+      moderation purposes.
+
+    - There is a new WEB_HEAD_ADD setting to specify text to be added to the
+      <HEAD> section of Mailman's internally generated web pages.  This doesn't
+      apply to pages built from templates, but in those cases, custom templates
+      can be created.  (LP: #1409396)
+
+    - There is a new DEFAULT_SUBSCRIBE_OR_INVITE setting.  Set this to Yes
+      to make the default selection on the admin Mass Subscriptions page
+      Invite rather than Subscribe.  (LP: #1404511)
+
+    - There is a new list attribute in the Bounce processing section.
+      bounce_notify_owner_on_bounce_increment if set to Yes will cause
+      Mailman to notify the list owner on every bounce that increments a
+      list member's score but doesn't result in a probe or disable.  There
+      is a new configuration setting setting
+      DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT to set the default
+      for new lists.  This in turn defaults to No.  (LP: #1382150)
+
+  Changed behavior
+
+    - Mailman's log files, request.pck files and heldmsg-* files are no
+      longer created world readable to protect against access by untrusted
+      local users.  Note that permissions on existing log files won't be
+      changed so if you are concerned about this and don't rotate logs or
+      have a logrotate process that creates new log files instead of letting
+      Mailman create them, you will need to address that.  (LP: #1327404)
+
+  Other changes
+
+    - The Python Powered logo image has been replaced in the misc/ directory
+      in the source distribution.  Depending on how you've installed these
+      images, you may need to copy PythonPowered.png from the misc/ directory
+      in the source or from the $prefix/icons/ installed directory to another
+      location for your web server.  (LP: #1408575)
+
+  i18n
+
+    - The Polish translation has been updated by Stefan Plewako.
+
+    - The Interlingua translation has been updated by Martijn Dekker.
+
+    - The Japanese message catalog has been updated by SATOH Fumiyasu.
+
+    - Mailman's character set for Romanian has been changed from iso-8859-2
+      to utf-8 and the templates and messages recoded.  This change will
+      require running 'bin/arch --wipe' on any existing Romanian language
+      lists in order to recode the list's archives, and will require recoding
+      any edited templates in lists/LISTNAME/ro/*, templates/DOMAIN/ro/* and
+      templates/site/ro/*.  It may also require recoding any existing
+      iso-8859-2 text in list attributes.  (LP: #1418735)
+
+    - Mailman's character set for Russian has been changed from koi8-r to
+      utf-8 and the templates and messages recoded.  This change will
+      require running 'bin/arch --wipe' on any existing Russian language
+      lists in order to recode the list's archives, and will require recoding
+      any edited templates in lists/LISTNAME/ru/*, templates/DOMAIN/ru/* and
+      templates/site/ru/*.  It may also require recoding any existing koi8-r
+      text in list attributes.  (LP: #1418448)
+
+    - Mailman's versions.py has been augmented to help with the above two
+      character set changes.  The first time a list with preferred_language
+      of Romanian or Russian is accessed or upon upgrade to this release,
+      any list attributes which have string values such as description, info,
+      welcome_msg, etc. that appear to be in the old character set will be
+      converted to utf-8.  This is done recursively for the values (but not
+      the keys) of dictionary attributes and the elements of list and tuple
+      attributes.
+
+    - The Russian message catalog and templates have been further updated by
+      Danil Smirnov.
+
+    - The Romanian message catalog has been updated.  (LP: #1415489)
+
+    - The Russian templates have been updated by Danil Smirnov.  (LP: #1403462)
+
+    - The Japanese translation has been updated by SATOH Fumiyasu.
+      (LP: #1402989)
+
+    - A minor change in the French translation of a listinfo subscribe form
+      message has been made.  (LP: #1331194)
+
+  Bug fixes and other patches
+
+    - Because of privacy concerns with the 2.2 backport adding real name to
+      list rosters, this is controlled by a new ROSTER_DISPLAY_REALNAME
+      setting that defaults to No.  You may wish to set this to Yes in
+      mm_cfg.py.
+
+    - Organization: headers are now unconditionally removed from posts to
+      anonymous lists.  Regexps in ANONYMOUS_LIST_KEEP_HEADERS weren't kept
+      if the regexp included the trailing ':'.  This is fixed too.
+      (LP: #1419132)
+
+    - The admindb interface has been fixed so the the detail message body
+      display doesn't lose part of a multi-byte character, and characters which
+      are invalid in the message's charset are replaced rather than the whole
+      body not being converted to the display charset.  (LP: #1415406)
+
+    - Fixed a bug in bin/rmlist that would throw an exception or just fail to
+      remove held message files for a list with regexp special characters in
+      its name.  (LP:#1414864)
+
+    - When applying DMARC mitigations, CookHeaders now adds the original From:
+      to Cc: rather than Reply-To: in some cases to make MUA 'reply' and
+      'reply all' more consistent with the non-DMARC cases.  (LP: #1407098)
+
+    - The Subject: of the list welcome message wasn't always in the user's
+      preferred language.  Fixed.  (LP: #1400988)
+
+    - Accept email command in Subject: prefixed with Re: or similar with no
+      intervening space.  (LP: #1400200)
+
+    - Fixed a UnicodeDecodeError that could occur in the web admin interface
+      if 'text' valued attributes have unicode values.  (LP: #1397170)
+
+    - We now catch the NotAMemberError exception thrown if an authenticated
+      unsubscribe is submitted from the user options page for a nonmember.
+      (LP: #1390653)
+
+    - Fixed an archiving bug that would cause messages with 'Subject: Re:'
+      only to be indexed in the archives without a link to the message.
+      (LP: #1388614)
+
+    - The vette log entry for a message discarded by a handler now includes
+      the list name and the name of the handler.  (LP: #558096)
+
+    - The options CGI now rejects all but HTTP GET and POST requests.
+      (LP: #1372199)
+
+    - A list's poster password will now be accepted on an Urgent: header.
+      (LP: #1371678)
+
+    - Fixed a bug which caused a setting of 2 for REMOVE_DKIM_HEADERS to be
+      ignored.  (LP: #1363278)
+
+    - Renamed messages/sr/readme.sr to README.sr.  (LP: #1360616)
+
+    - Moved the dmarc_moderation_action checks from the Moderate handler to
+      the SpamDetect handler so that the Reject and Discard actions will be
+      done before the message might be held by header_filter_rules, and the
+      Wrap Message and Munge From actions will be done on messages held by
+      header_filter_rules if the message is approved.  (LP: #1334450)
+
+    - <label> tags have been added around most check boxes and radio buttons
+      and their text labels in the admin and admindb web GUI so they can be
+      (de)selected by clicking the text.  (LP: #266391)
+
+    - If checking DNS for dmarc_moderation_action and DNS lookup is not
+      available, log it.  (LP: #1324541)
+ 
+    - Handle missing From: header addresses for DMARC mitigation actions.
+      (LP: #1318025)
+
+2.1.18-1 (06-May-2014)
+
+  Bug fixes and other patches
+
+    - A critical incompatibility between the DMARC Wrap Message action and
+      Python versions older than 2.6.x for some x <= 5 existed and caused
+      Wrapped message to be shunted.  This is fixed.  (LP: #1316682)
+
+    - Sender: headers are no longer removed in from_is_list Munge From
+      actions.  (LP: #1315970)
+
+2.1.18 (03-May-2014)
+
+  Acknowledgements
+
+    - Thanks to Jim Popovitch and Phil Pennock for the branch that formed the
+      basis of the dmarc_moderation_action feature.
+
+    - Thanks to Franck Martin et al for the branch that formed the basis of
+      the from_is_list feature.
+
+  Dependencies
+
+    - There is a new dependency associated with the new Privacy options ->
+      Sender filters -> dmarc_moderation_action feature discussed below.
+      This requires that the dnspython <http://www.dnspython.org/> package
+      be available in Python.  This package can be downloaded from the above
+      site or from the CheeseShop <https://pypi.python.org/pypi/dnspython/>
+      or installed with pip.
+
+  New Features
+
+    - The from_is_list feature introduced in 2.1.16 is now unconditionally
+      available to list owners.  There is also, a new Privacy options ->
+      Sender filters -> dmarc_moderation_action feature which applies to list
+      messages where the From: address is in a domain which publishes a DMARC
+      policy of reject or possibly quarantine.  This is a list setting with
+      values of Accept, Wrap Message, Munge From, Reject or Discard. There is
+      a new DEFAULT_DMARC_MODERATION_ACTION configuration setting to set the
+      default for this, and the list admin UI is not able to set an action
+      which is 'less' than the default.  The prior ALLOW_FROM_IS_LIST setting
+      has been removed and is effectively always Yes. There is a new
+      dmarc_quarantine_moderation_action list setting with default set by a
+      new DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION configuration setting
+      which in turn defaults to Yes.  The list setting can be set to No to
+      exclude domains with DMARC policy of quarantine from
+      dmarc_moderation_action.
+
+      dmarc_moderation_action and from_is_list interact in the following way.
+      If the message is From: a domain to which dmarc_moderation_action applies
+      and if dmarc_moderation_action is other than Accept,
+      dmarc_moderation_action applies to that message.  Otherwise the
+      from_is_list action applies.
+
+      Also associated with dmarc_moderation_action are configuration settings
+      DMARC_RESOLVER_TIMEOUT and DMARC_RESOLVER_LIFETIME. These are described
+      in more detail in Defaults.py.  There are also new vette log entries
+      written when dmarc_moderation_action is found to apply to a post.
+
+  i18n
+
+    - Added missing <mm-digest-question-start> tag to French listinfo template.
+      (LP: #1275964)
+
+  Bug Fixes and other patches
+
+    - Removed HTML tags from the title of a couple of rmlist.py pages because
+      browsers don't render tags in the title.  (LP: #265848)
+
+    - Most Mailman generated notices to list owners and moderators are now
+      sent as Precedence: list instead of bulk.  (LP: #1313146)
+
+    - The Reply-To: munging options weren't honored if there was no
+      from_is_list action.  (LP: #1313010)
+
+    - Changed from_is_list actions to insert the list address in Cc: if the
+      list is fully personalized.  Otherwise, the list address is only in
+      From: and Reply-To: overrides it.  (LP: #1312970)
+
+    - Fixed the Munge From action to only Munge the From: and/or Reply-To: in
+      the outgoing message and not in archives, digests and messages sent via
+      the usenet gateway.  (LP: #1311431)
+
+    - Fixed a long standing issue in which a notice sent to a user whose
+      language is other than that of the list can cause subsequent things
+      which should be in the list's language to be in the user's language
+      instead.  (LP: #1308655)
+
+    - Fixed the admin Membership List so a search string if any is not lost
+      when visiting subsequent fragments of a chunked list.  (LP: #1307454)
+
+    - For from_is_list feature, use email address from original From: if
+      original From: has no display name and strip domain part from resultant
+      names that look like email addresses.  (LP: #1304511)
+
+    - Added the list name to the vette log "held message approved" entry.
+      (LP: 1295875)
+
+    - Added the CGI module name to various "No such list" error log entries.
+      (LP: 1295875)
+
+    - Modified contrib/mmdsr to report module name if present in "No such list
+      error log entries.
+
+    - Fixed a NameError exception in cron/nightly_gzip when it tries to print
+      the usage message.  (LP: #1291038)
+
+    - Fixed a bug in ListAdmin._handlepost that would crash when trying to
+      preserve a held message for the site admin if HOLD_MESSAGES_AS_PICKLES
+      is False.  (LP: #1282365)
+
+    - The from_is_list header munging feature introduced in Mailman 2.1.16 is
+      no longer erroneously applied to Mailman generated notices.
+      (LP: #1279667)
+
+    - Changed the message from the confirm CGI to not indicate approval is
+      required for an acceptance of an invitation.  (LP: #1277744)
+
+    - Fixed POSTFIX_STYLE_VIRTUAL_DOMAINS to be case-insensitiive.
+      (LP: #1267003)
+
+    - Added recognition for another simple warning to bounce processing.
+      (LP: #1263247)
+
+    - Fixed a few failing tests in tests/test_handlers.py.  (LP: #1262950)
+
+    - Fixed bin/arch to not create scrubbed attachments for messages skipped
+      when processing the --start= option.  (LP: #1260883)
+
+    - Fixed email address validation to do a bit better in obscure cases.
+      (LP: #1258703)
+
+    - Fixed a bug which caused some authentication cookies to expire too soon
+      if AUTHENTICATION_COOKIE_LIFETIME is non-zero.  (LP: #1257112)
+
+    - Fixed a possible TypeError in bin/sync_members introduced in 2.1.17.
+      (LP: #1243343)
+
+  Miscellaneous
+
+    - Added to the contrib directory, a script from Alain Williams to count
+      posts in a list's archive.
+
+2.1.17 (23-Nov-2013)
+
+  New Features
+
+    - Handling of posts gated from usenet to a list via the Mail <-> News
+      gateway is changed.  Formerly, no list membership, moderation or
+      *_these_nonmembers checks were done.  Now, if the sender of the usenet
+      post is a moderated member or a nonmember matching a *_these_nonmembers
+      filter, those checks will be done and actions applied.  Nonmember posts
+      from senders not matching a *_these_nonmembers filter are still accepted
+      as before.  (LP: #1252575)
+
+    - There is a new mm_cfg.py setting ANONYMOUS_LIST_KEEP_HEADERS.  Since it
+      is not possible to know which non-standard headers in a message might
+      reveal sender information, we now remove all headers from incoming posts
+      to anonymous lists except those which match regular expressions in this
+      list. The default setting keeps non X- headers except those known to
+      reveal sender information, Mailman added X- headers and x-Spam- headers.
+      See the description in Defaults.py for more information.  (LP: #1246039)
+
+  i18n
+
+    - The Japanese message catalog has been updated by SATOH Fumiyasu.
+      (LP: #1248855)
+
+  Bug Fixes and other patches
+
+    - Added a reopen command to the sample init.d script in misc/mailman.in.
+      (LP: #1251917)
+
+    - Fixed a misspelling in Tagger.py causing an "unexpected keyword argument
+      'Delete'" exception.  (LP: #1251495)
+
+    - Fixed contrib/qmail-to-mailman.py to work with a user other than
+      'mailman' and to recognize more listname-* addresses.  (LP: #412293)
+
+    - Fixed a possible UnicodeDecodeError in bin/sync_members.  (LP: #1243343)
+
+    - Fixed Makefile to not include $DESTDIR in paths compiled into .pyc
+      files for traceback purposes.  (LP: #1241770)
+
+2.1.16 (16-Oct-2013)
+
+  New Features
+
+    - There is a new list attribute from_is_list to either rewrite the From:
+      header of posts replacing the posters address with that of the list or
+      wrap the message in an outer message From: the list for compatability
+      with DMARC and or ADSP.  There is a new mm_cfg.py setting
+      DEFAULT_FROM_IS_LIST to control the default for new lists, and the
+      existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
+      those headers only for certain from_is_list lists.  This feature must
+      be enabled by setting ALLOW_FROM_IS_LIST to Yes in mm_cfg.py.  See the
+      description of these settings in Defaults.py for more detail.  This
+      feature is experimental in 2.1.16, and it is subject to change or to
+      become just one of the two methods in a subsequent release. People
+      interested in this feature are encouraged to try it and report their
+      experiences to the mailman-users@python.org list.
+
+    - There is a new DISPLAY_HELD_SUMMARY_SORT_BUTTONS setting which if set
+      in mm_cfg.py will display a set of radio buttons in the admindb held
+      message summary to select how the held messages are sorted and grouped
+      for display. The exact setting determines the default grouping and
+      sorting.  See the description in Defaults.py for details.
+
+    - Setting digest_size_threshhold to zero now means no digests will be
+      sent based on size instead of a digest being sent with every post.
+      (LP: #558274)
+
+    - There is a new mm_cfg.py setting SUBSCRIBE_FORM_SECRET which will put
+      a dynamically generated, hidden hash in the listinfo subscribe form and
+      check it upon submission.  Setting this will prevent automated processes
+      (bots) from successfully POSTing web subscribes without first retrieving
+      and parsing the form from the listinfo page.  The form must also be
+      submitted no later than FORM_LIFETIME nor no earlier than
+      SUBSCRIBE_FORM_MIN_TIME after retrieval.  Note that enabling this will
+      break any static subscribe forms on your site.  See the description in
+      Defaults.py for more info.  (LP: #1082746)
+
+    - add_members now has an option to add members with mail delivery disabled
+      by admin.  (LP: #1070574)
+
+    - IncomingRunner now logs rejected messages to the vette log.
+      (LP: #1068837)
+
+    - The name of the mailmanctl master lock file is now congigurable via the
+      mm_cfg.py setting MASTER_LOCK_FILE.  (LP: #1082308)
+
+    - list_lists now has an option to list only lists with public archives.
+      (LP: #1082711)
+
+  Contributed programs
+
+    - A new import_majordomo_into_mailman.pl script has been contributed by
+      Geoff Mayes.  (LP: #1129742)
+
+    - A new "sitemap" bash script has been contributed by Tomasz Chmielewski
+      <mangoo@wpkg.org> to generate a sitemap.xml file of an installation's
+      public archives for submission to search engines.
+
+  i18n
+
+    - The Danish translation has been updated thanks to Tom Christensen.
+
+    - Fixed a string in the Czech message catalog.  (LP: #1234567)
+
+    - A Farsi (Persian) translation has been added thanks to Javad Hoseini and
+      Mahyar Moghimi.
+
+    - Fixed several misspelled or garbled string replacements in the Spanish
+      message catalog.  (LP: #1160138)
+
+    - pt_BR message catalog has two new and an updated message per Hugo Koji
+      Kobayashi.  (LP: #1138578)
+
+    - German message catalog has been updated per Ralf Hildebrandt.
+
+    - Corrected typo in templates/it/private.html.
+
+  Bug Fixes and other patches
+
+    - Fixed a crash in SpamDetect.py which caused messages with unparseable
+      RFC 2047 encoded headers to be shunted.  (LP: #1235101)
+
+    - Fixed cron/disabled to send a fresh cookie when notifying disabled
+      members.  (LP: #1203200)
+
+    - Added "message_id" to the interpolation dictionary for the Article.html
+      template.  (LP: #725498)
+
+    - Changed the admin GUI to report only the bad entries in a list of email
+      addresses if any are bad.  (LP: #558253)
+
+    - Added logging for template errors in HyperArch.py.  (LP: #558254)
+
+    - Added more explanation to the bad owner address message from
+      bin/newlist.  (LP: #1200763)
+
+    - Fixed a bug causing the admin web interface to fail CSRF checking if
+      the list name contains a '+' character.  (LP: #1190802)
+
+    - Fixed bin/mailmanctl -s to not remove the master lock if it can't be
+      determined to be truly stale.  (LP: #1189558)
+
+    - It is no longer possible to add 'invalid' addresses to the ban_list
+      and the *_these_nonmembers filters from the check boxes on the admindb
+      interface.  (LP: #1187201)
+
+    - Backported recognition for mail.ru DSNs and minor bug fixes from
+      lp:flufl.bounce.  (LP: #1074592, LP: #1079249 and #1079254)
+
+    - Defended against buggy web servers that don't include an empty
+      QUERY_STRING in the CGI environment.  (LP: #1160647)
+
+    - The Switchboard.finish() method now logs the text of the exception when
+      it fails to unlink/preserve a .bak file.  (LP: #1165589)
+
+    - The pending (un)subscriptions waiting approval are now sorted by email
+      address in the admindb interface as intended.  (LP: #1164160)
+
+    - The subscribe log entry for a bin/add_members subscribe now identifies
+      bin/add_members as the source.  (LP: #1161642)
+
+    - Fixed a bug where the Subject: of the user notification of a
+      bin/remove_members unsubscribe was not in the user's language.
+      (LP: #1161445)
+
+    - Fixed a bug where BounceRunner could create and leave behind zero length
+      bounce-events files.  (LP: #1161610)
+
+    - Added recognition for another Yahoo bounce format.  (LP: #1157961)
+
+    - Changed configure's method for getting Python's include directory from
+      distutils.sysconfig.get_config_var('CONFINCLUDEPY') to
+      distutils.sysconfig.get_python_inc().  (LP: #1098162)
+
+    - Added an Auto-Generated: header to password reminders.  (LP: #558240)
+
+    - Fixed a bug where non-ascii characters in the real name in a subscription
+      request could throw a UnicodeEncodeError upon subscription approval and
+      perhaps in other situations too.  (LP: #1047100)
+
+    - The query fragments send_unsub_notifications_to_list_owner and
+      send_unsub_ack_to_this_batch will now assume default values if not set
+      in mass unsubscribe URLs.  (LP: #1032378)
+
+    - Replaced utf-8 encoded characters in newly added German templates with
+      HTML entities. (LP: #1018208)
+
+2.1.15 (13-Jun-2012)
+
+  Security
+
+    - Strengthened the validation of email addresses.
+
+    - An XSS vulnerability, CVE-2011-0707, has been fixed.
+
+    - The web admin interface has been hardened against CSRF attacks by adding
+      a hidden, encrypted token with a time stamp to form submissions and not
+      accepting authentication by cookie if the token is missing, invalid or
+      older than the new mm_cfg.py setting FORM_LIFETIME which defaults to one
+      hour.  Posthumous thanks go to Tokio Kikuchi for this implementation
+      which is only one of his many contributions to Mailman prior to his
+      death from cancer on 14 January 2012.
+
+  New Features
+
+    - Added a password reminder button to the private archive login page.
+      Backported from the 2.2 branch.
+
+    - There is a new list attribute regular_exclude_ignore set from mm_cfg.py
+      DEFAULT_REGULAR_EXCLUDE_IGNORE.  This defaults to True even though the
+      prior behavior is equivalent to False.  A True setting will ignore an
+      exclude list if the poster is not a member of that list.  The False
+      setting can result in list members not receiving posts if the nonmember
+      post is not accepted by the exclude list.  Backported from 2.2 branch.
+
+    - Eliminated the list cache from the qrunners.  Indirect self-references
+      caused lists to never be dropped from the cache which in turn caused
+      the qrunners to grow very large in installations with many lists or
+      multiple large lists.  Bug #862683.
+
+    - The user options 'list my other subscriptions' page now indicates for
+      each list if the subscription is 'nomail' or 'digest'.  Bug #793669.
+
+    - A new list poster password has been implemented.  This password may only
+      be used in Approved: or X-Approved: headers for pre-approving posts.
+      Using this password for that purpose precludes compromise of a more
+      valuable password sent in plain text email.  Bug #770581.
+
+    - A new mm_cfg.py setting AUTHENTICATION_COOKIE_LIFETIME has been added.
+      If this is set to a non-zero value, web authentication cookies will
+      expire that many seconds following their last use.  Its default value is
+      zero to preserve current behavior.
+
+    - A new mm_cfg.py setting RESPONSE_INCLUDE_LEVEL has been added to control
+      how much of the original message is included in automatic responses to
+      email commands.  The default is 2 to preserve the prior behavior of
+      including the full message.  Setting this to 1 in mm_cfg.py will include
+      only the original headers, and 0 will include none of the original.  It
+      is recommended to set this to 0 in mm_cfg.py to minimize the effects of
+      backscatter.  Bug #265835.
+
+    - A new mm_cfg.py setting DEFAULT_RESPOND_TO_POST_REQUESTS has been added
+      to control the default for respond_to_post_requests for new lists.  It is
+      set to Yes for backwards compatibility, but it is recommended that
+      serious consideration be given to setting it to No.  Bug #266051.
+
+    - A new mm_cfg.py setting DISCARD_MESSAGE_WITH_NO_COMMAND has been added to
+      control whether a message to the -request address without any commands or
+      a message to -confirm whose To: address doesn't match VERP_CONFIRM_REGEXP
+      is responded to or just logged.  It defaults to Yes which is different
+      from prior behavior.  Bug #410236.
+
+    - Two new mm_cfg.py settings, BROKEN_BROWSER_WORKAROUND and
+      BROKEN_BROWSER_REPLACEMENTS, have been added to control escaping of
+      additional characters beyond the standard <, >, &, and " in the web UI.
+      See the documentation of these settings in Defaults.py.  The default
+      values for these settings result in no change from the prior release.
+      Bug #774588.
+
+  i18n
+
+    - Added some missing German templates from Egon Frerich.
+
+    - Added Greek translation from Antonis Limperis.
+
+    - A few errors in the Basque translation are fixed.  Bug #836861.
+
+    - Fixed a misspelling in the German invite.txt template.  Bug #815444.
+
+    - Fixed a missing format character in the Spanish translation.
+      Bug #670988.
+
+    - Thanks go to the following for updating translations for the changes in
+      this release.
+        Thijs Kinkhorst
+        Stefan Förster
+        Fabian Wenk
+
+  Bug Fixes and other patches
+
+    - Fixed a bug that could send an admin notice of a held subscription with
+      the subject in the user's preferred language instead of the list's
+      preferred language and possibly not properly RFC 2047 encoded.
+      (LP: #998949)
+
+    - Fixed a possible CPU bound loop in OutgoingRunner if the attempt to
+      Connect to the SMTP server throws a socket.error.  (LP: #966531)
+
+    - Fixed a potential crash in the web UI if a language is removed from the
+      LC_DESCRIPTIONS dictionary.  (LP: #966565)
+
+    - Added an Auto-Submitted: header to invitations and (un)subscription
+      confirmation requests to reduce the possibility of an autoresponder
+      confirming the request.  (LP: #265831)
+
+    - Added javascript to the private.html and admlogin.html templates to
+      focus the cursor on the entry field.  (LP: #266054)
+
+    - Added CPPFLAGS and LDFLAGS to src/Makefile to support their use.
+      (LP: #637652)
+
+    - Stopped removing the trailing slash from the List-Archive: header URL.
+      (LP: #964190)
+
+    - A configured version of contrib/courier-to-mailman.py is now created in
+      build/contrib/courier-to-mailman.py.  (LP: #999250)
+
+    - Subscription disabled warnings are now sent without a Precedence:
+      header.  Bug #808821.
+
+    - Backported 2.2 branch fix for a problem in SpamDetect.py that could
+      cause header_filter_rules to fail to match RFC 2047 encoded headers.
+
+    - Fix for bug #629738 could cause a crash in the admindb details display
+      if the decoded message body contained characters not in the character
+      set of the list's preferred language.  Fixed.  Bug #910440.
+
+    - Added recognition for another Qmail bounce format.
+
+    - Fixed an erroneous seek in the Mailman.Mailbox.Mailbox.AppendMessage
+      method that could cause a corrupt mailbox for files opened 'w+'.
+      Bug #901957.
+
+    - A held message with a null sender caused a crash in the admindb
+      interface.  This is fixed by changing the sender to <missing>.
+      Bug #897103.
+
+    - Changed subject prefixing to allow for possible whitespace between an
+      'Re' and the following colon when determining how to add the prefix.
+      Bug #893290.
+
+    - Fixed a problem where topics regexps would not match RFC 2047 encoded
+      Keywords: and/or Subject: headers.  Bug #891676.
+
+    - Fixed misleading response to an email approval of a held message.
+      Bug #889968.
+
+    - Added masthead.txt to the list of templates that can be edited via the
+      web admin interface.  Bug #266805.
+
+    - Changed the way digest_footer is added to the RFC 1153 (plain) format
+      digest for RFC compliance.  Bug #887610.
+
+    - Fixed cron/checkdbs to report unsubscriptions waiting approval.
+      Bug #873821.
+
+    - The fix for BUG #266220 (sf1181161) has been enhanced so that if there
+      is a pathological HTML part such that the Approved: password text isn't
+      found, but it is found after stripping out HTML tags, the post is
+      rejected with an informative message.
+
+    - A bug that would cause reset of any new_member_options bits other than
+      the four displayed as checkboxes on the list admin General Options page
+      whenever the page was updated or bin/config_list attempted to update
+      new_member_options has been fixed.  Bug #865825.
+
+    - A problem with the logic avoiding unnecessarily reloading a current list
+      object from the config.pck arises if the list is updated by another
+      process within the same second that it was last read/written.  That can
+      cause the reading of latest version of the list to be skipped.  This has
+      been fixed.  Bug #862675.
+
+    - Fixed bin/export.py to accept case insensitive password schemes.
+      Bug #833134.
+
+    - Added Tokio Kikuchi's icons to the misc/ and installed icons/
+      directories.  Bug #782474.
+
+    - Fixed a problem which could result in raw, undecoded message bodies
+      appearing in plain digests and archives.  Bug #787790.
+
+    - Fixed a problem in admindb.py where the character set for the display of
+      the message body excerpt was not correctly determined.  Bug #779751.
+
+    - Prevented setting user passwords with leading/trailing whitespace.
+      Bug #778088.
+
+    - Mailman now sets the 'secure' flag in cookies set via https URLs.
+      Bug #770377.
+
+    - Added a logout link to the admindb interface and made both admin and
+      admindb logout effective for a site admin cookie if allowed.
+      Bug #769318.
+
+    - Replaced the old Mailman logos and icon that install to Mailman's icons
+      directory with the new ones.  If you copy these elsewhere on your
+      server, please copy these new ones.
+
+    - Changed bin/genaliases to only call the POSTFIX_*_CMD commands once when
+      MTA = 'Postfix'.  Bug #266408.
+
+    - Added a report of the affected members to the warnings issued when
+      setting a list with digest members digestable=No and when setting a list
+      with non-digest members nondigestable=no.  Bug #761232.
+
+    - Fixed a problem where content filtering could remove the headers from
+      an attached message/rfc822 part if the message in that part is
+      multipart/alternative and collapse_alternatives is Yes.  Bug #757062.
+
+    - Changed the subscribe CGI to strip leading and trailing whitespace from
+      the supplied email address.  Bug #745432.
+
+    - Changed the maximum number of arguments for the who command to be
+      considered administrivia from 2 to 1 to help avoid false positives.
+      Bug #739524.
+
+    - Added the list name as 'display-name' in added Sender: headers to help
+      mitigate Outlook et al 'on behalf of' displays.  Bug #736849.
+
+    - Fixed a typo in the usage() definition cron/gate_news.  Bug #721015.
+
+    - Fixed an uncaught KeyError when poster tries to cancel a post which was
+      already handled.  Bug #266224.
+
+    - Held message user notifications now come From: list-owner instead of
+      list-bounces.  Bug #714424.
+
+    - Issue an HTTP 404 status for private archive file not found.
+
+    - @listname entries in *_these_nonmembers are no longer case sensitive.
+      Bug #705715.
+
+    - Changed bin/rmlist to also remove heldmsg files for the removed list and
+      fixed a problem with removal of stale locks for the list.  Bug #700528.
+
+    - Fixed a bug where content filtering could leave a multipart message or
+      part with just one sub-part. These should be recast to just the sub-part.
+      Bug #701558.
+
+    - Fixed a bug that could erroneously handle posts from addresses in
+      *_these_nonmembers and send held/rejected notices to bogus addresses when
+      The From or other sender header is RFC 2047 encoded.  Bug #702516.
+
+    - Updated contrib/mm-handler-2.1.10 to better handle lists with names that
+      look like admin addresses.  Bug #697161.
+
+    - Added bounce recognition for a bogus Dovecot MDN.  Bug #693134.
+
+    - Fixed a problem where an emailed command in the Subject: header with a
+      non-ascii l10n of an 'Re:' prefix is ignored.  Bug #685261.
+
+    - Fixed a problem with approving a post by email when the body of the
+      approval mail is base64 encoded.  Bug #677115.
+
+    - Fixed the host name in the From: address of the owner notification from
+      bin/add_members.  Bug #666181.
 
 2.1.14 (20-Sep-2010)
 

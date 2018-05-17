@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -15,7 +15,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-"""Cook a message's Subject header."""
+"""Cook a message's Subject header.
+Also do other manipulations of From:, Reply-To: and Cc: depending on
+list configuration.
+"""
 
 from __future__ import nested_scopes
 import re
@@ -31,7 +34,7 @@ from Mailman import Utils
 from Mailman.i18n import _
 from Mailman.Logging.Syslog import syslog
 
-CONTINUATION = ',\n\t'
+CONTINUATION = ',\n '
 COMMASPACE = ', '
 MAXLINELEN = 78
 
@@ -49,7 +52,7 @@ def _isunicode(s):
 
 nonascii = re.compile('[^\s!-~]')
 
-def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
+def uheader(mlist, s, header_name=None, continuation_ws=' ', maxlinelen=None):
     # Get the charset to encode the string in. Then search if there is any
     # non-ascii character is in the string. If there is and the charset is
     # us-ascii then we use iso-8859-1 instead. If the string is ascii only
@@ -62,20 +65,42 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     else:
         # there is no nonascii so ...
         charset = 'us-ascii'
-    return Header(s, charset, maxlinelen, header_name, continuation_ws)
+    try:
+        return Header(s, charset, maxlinelen, header_name, continuation_ws)
+    except UnicodeError:
+        syslog('error', 'list: %s: can\'t decode "%s" as %s',
+               mlist.internal_name(), s, charset)
+        return Header('', charset, maxlinelen, header_name, continuation_ws)
+
+def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
+    if ((msgdata.get('from_is_list') == 2 or
+        (msgdata.get('from_is_list') == 0 and mlist.from_is_list == 2)) and 
+        not msgdata.get('_fasttrack')
+       ) or name.lower() in ('from', 'reply-to', 'cc'):
+        # The or name.lower() in ... above is because when we are munging
+        # the From:, we want to defer the resultant changes to From:,
+        # Reply-To:, and/or Cc: until after the message passes through
+        # ToDigest, ToArchive and ToUsenet.  Thus, we put them in
+        # msgdata[add_header] here and apply them in WrapMessage.
+        msgdata.setdefault('add_header', {})[name] = value
+    elif repl or not msg.has_key(name):
+        if delete:
+            del msg[name]
+        msg[name] = value
 
 
 
 def process(mlist, msg, msgdata):
     # Set the "X-Ack: no" header if noack flag is set.
     if msgdata.get('noack'):
-        del msg['x-ack']
-        msg['X-Ack'] = 'no'
+        change_header('X-Ack', 'no', mlist, msg, msgdata)
     # Because we're going to modify various important headers in the email
     # message, we want to save some of the information in the msgdata
     # dictionary for later.  Specifically, the sender header will get waxed,
     # but we need it for the Acknowledge module later.
-    msgdata['original_sender'] = msg.get_sender()
+    # We may have already saved it; if so, don't clobber it here.
+    if 'original_sender' not in msgdata:
+        msgdata['original_sender'] = msg.get_sender()
     # VirginRunner sets _fasttrack for internally crafted messages.
     fasttrack = msgdata.get('_fasttrack')
     if not msgdata.get('isdigest') and not fasttrack:
@@ -87,7 +112,8 @@ def process(mlist, msg, msgdata):
             pass
     # Mark message so we know we've been here, but leave any existing
     # X-BeenThere's intact.
-    msg['X-BeenThere'] = mlist.GetListEmail()
+    change_header('X-BeenThere', mlist.GetListEmail(),
+                  mlist, msg, msgdata, delete=False)
     # Add Precedence: and other useful headers.  None of these are standard
     # and finding information on some of them are fairly difficult.  Some are
     # just common practice, and we'll add more here as they become necessary.
@@ -101,12 +127,43 @@ def process(mlist, msg, msgdata):
     # known exploits in a particular version of Mailman and we know a site is
     # using such an old version, they may be vulnerable.  It's too easy to
     # edit the code to add a configuration variable to handle this.
-    if not msg.has_key('x-mailman-version'):
-        msg['X-Mailman-Version'] = mm_cfg.VERSION
+    change_header('X-Mailman-Version', mm_cfg.VERSION,
+                  mlist, msg, msgdata, repl=False)
     # We set "Precedence: list" because this is the recommendation from the
     # sendmail docs, the most authoritative source of this header's semantics.
-    if not msg.has_key('precedence'):
-        msg['Precedence'] = 'list'
+    change_header('Precedence', 'list',
+                  mlist, msg, msgdata, repl=False)
+    # Do we change the from so the list takes ownership of the email
+    if (msgdata.get('from_is_list') or mlist.from_is_list) and not fasttrack:
+        # Be as robust as possible here.
+        faddrs = getaddresses(msg.get_all('from', []))
+        # Strip the nulls and bad emails.
+        faddrs = [x for x in faddrs if x[1].find('@') > 0]
+        if len(faddrs) == 1:
+            realname, email = o_from = faddrs[0]
+        else:
+            # No From: or multiple addresses.  Just punt and take
+            # the get_sender result.
+            realname = ''
+            email = msgdata['original_sender']
+            o_from = (realname, email)
+        if not realname:
+            if mlist.isMember(email):
+                realname = mlist.getMemberName(email) or email
+            else:
+                realname = email
+        # Remove domain from realname if it looks like an email address
+        realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
+        # RFC 2047 encode realname if necessary.
+        realname = str(uheader(mlist, realname))
+        lrn = mlist.real_name
+        change_header('From',
+                      formataddr((_('%(realname)s via %(lrn)s'),
+                                 mlist.GetListEmail())),
+                      mlist, msg, msgdata)
+    else:
+        # Use this as a flag
+        o_from = None
     # Reply-To: munging.  Do not do this if the message is "fast tracked",
     # meaning it is internally crafted and delivered to a specific user.  BAW:
     # Yuck, I really hate this feature but I've caved under the sheer pressure
@@ -115,6 +172,23 @@ def process(mlist, msg, msgdata):
     # augment it.  RFC 2822 allows max one Reply-To: header so collapse them
     # if we're adding a value, otherwise don't touch it.  (Should we collapse
     # in all cases?)
+    # MAS: We need to do some things with the original From: if we've munged
+    # it for DMARC mitigation.  We have goals for this process which are
+    # not completely compatible, so we do the best we can.  Our goals are:
+    # 1) as long as the list is not anonymous, the original From: address
+    #    should be obviously exposed, i.e. not just in a header that MUAs
+    #    don't display.
+    # 2) the original From: address should not be in a comment or display
+    #    name in the new From: because it is claimed that multiple domains
+    #    in any fields in From: are indicative of spamminess.  This means
+    #    it should be in Reply-To: or Cc:.
+    # 3) the behavior of an MUA doing a 'reply' or 'reply all' should be
+    #    consistent regardless of whether or not the From: is munged.
+    # Goal 3) implies sometimes the original From: should be in Reply-To:
+    # and sometimes in Cc:, and even so, this goal won't be achieved in
+    # all cases with all MUAs.  In cases of conflict, the above ordering of
+    # goals is priority order.
+
     if not fasttrack:
         # A convenience function, requires nested scopes.  pair is (name, addr)
         new = []
@@ -132,22 +206,43 @@ def process(mlist, msg, msgdata):
         # the original Reply-To:'s to the list we're building up.  In both
         # cases we'll zap the existing field because RFC 2822 says max one is
         # allowed.
+        o_rt = False
         if not mlist.first_strip_reply_to:
             orig = msg.get_all('reply-to', [])
             for pair in getaddresses(orig):
+                # There's an original Reply-To: and we're not removing it.
                 add(pair)
+                o_rt = True
+        # We also need to put the old From: in Reply-To: in all cases where
+        # it is not going in Cc:.  This is when reply_goes_to_list == 0 and
+        # either there was no original Reply-To: or we stripped it.
+        # However, if there was an original Reply-To:, unstripped, and it
+        # contained the original From: address we need to flag that it's
+        # there so we don't add the original From: to Cc:
+        if o_from and mlist.reply_goes_to_list == 0:
+            if o_rt:
+                if d.has_key(o_from[1].lower()):
+                    # Original From: address is in original Reply-To:.
+                    # Pretend we added it.
+                    o_from = None
+            else:
+                add(o_from)
+                # Flag that we added it.
+                o_from = None
         # Set Reply-To: header to point back to this list.  Add this last
         # because some folks think that some MUAs make it easier to delete
         # addresses from the right than from the left.
         if mlist.reply_goes_to_list == 1:
             i18ndesc = uheader(mlist, mlist.description, 'Reply-To')
             add((str(i18ndesc), mlist.GetListEmail()))
-        del msg['reply-to']
         # Don't put Reply-To: back if there's nothing to add!
         if new:
             # Preserve order
-            msg['Reply-To'] = COMMASPACE.join(
-                [formataddr(pair) for pair in new])
+            change_header('Reply-To', 
+                          COMMASPACE.join([formataddr(pair) for pair in new]),
+                          mlist, msg, msgdata)
+        else:
+            del msg['reply-to']
         # The To field normally contains the list posting address.  However
         # when messages are fully personalized, that header will get
         # overwritten with the address of the recipient.  We need to get the
@@ -158,18 +253,38 @@ def process(mlist, msg, msgdata):
         # above code?
         # Also skip Cc if this is an anonymous list as list posting address
         # is already in From and Reply-To in this case.
-        if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list:
+        # We do add the Cc in cases where From: header munging is being done
+        # because even though the list address is in From:, the Reply-To:
+        # poster will override it. Brain dead MUAs may then address the list
+        # twice on a 'reply all', but reasonable MUAs should do the right
+        # thing.  We also add the original From: to Cc: if it wasn't added
+        # to Reply-To:
+        add_list = (mlist.personalize == 2 and
+                    mlist.reply_goes_to_list <> 1 and
+                    not mlist.anonymous_list)
+        if add_list or o_from:
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
             d = {}
-            for pair in getaddresses(msg.get_all('cc', [])):
-                add(pair)
-            i18ndesc = uheader(mlist, mlist.description, 'Cc')
-            add((str(i18ndesc), mlist.GetListEmail()))
-            del msg['Cc']
-            msg['Cc'] = COMMASPACE.join([formataddr(pair) for pair in new])
+            # If we're adding the original From:, add it first.
+            if o_from:
+                add(o_from)
+            # AvoidDuplicates may have set a new Cc: in msgdata.add_header,
+            # so check that.
+            if (msgdata.has_key('add_header') and
+                    msgdata['add_header'].has_key('Cc')):
+                for pair in getaddresses([msgdata['add_header']['Cc']]):
+                    add(pair)
+            else:
+                for pair in getaddresses(msg.get_all('cc', [])):
+                    add(pair)
+            if add_list:
+                i18ndesc = uheader(mlist, mlist.description, 'Cc')
+                add((str(i18ndesc), mlist.GetListEmail()))
+            change_header('Cc',
+                          COMMASPACE.join([formataddr(pair) for pair in new]),
+                          mlist, msg, msgdata)
     # Add list-specific headers as defined in RFC 2369 and RFC 2919, but only
     # if the message is being crafted for a specific list (e.g. not for the
     # password reminders).
@@ -191,8 +306,7 @@ def process(mlist, msg, msgdata):
         # without desc we need to ensure the MUST brackets
         listid_h = '<%s>' % listid
     # We always add a List-ID: header.
-    del msg['list-id']
-    msg['List-Id'] = listid_h
+    change_header('List-Id', listid_h, mlist, msg, msgdata)
     # For internally crafted messages, we also add a (nonstandard),
     # "X-List-Administrivia: yes" header.  For all others (i.e. those coming
     # from list posts), we add a bunch of other RFC 2369 headers.
@@ -215,19 +329,16 @@ def process(mlist, msg, msgdata):
         # Add this header if we're archiving
         if mlist.archive:
             archiveurl = mlist.GetBaseArchiveURL()
-            if archiveurl.endswith('/'):
-                archiveurl = archiveurl[:-1]
             headers['List-Archive'] = '<%s>' % archiveurl
     # First we delete any pre-existing headers because the RFC permits only
     # one copy of each, and we want to be sure it's ours.
     for h, v in headers.items():
-        del msg[h]
         # Wrap these lines if they are too long.  78 character width probably
         # shouldn't be hardcoded, but is at least text-MUA friendly.  The
         # adding of 2 is for the colon-space separator.
         if len(h) + 2 + len(v) > 78:
             v = CONTINUATION.join(v.split(', '))
-        msg[h] = v
+        change_header(h, v, mlist, msg, msgdata)
 
 
 
@@ -244,7 +355,7 @@ def prefix_subject(mlist, msg, msgdata):
         lines = str(subject).splitlines()
     else:
         lines = subject.splitlines()
-    ws = '\t'
+    ws = ' '
     if len(lines) > 1 and lines[1] and lines[1][0] in ' \t':
         ws = lines[1][0]
     msgdata['origsubj'] = subject
@@ -274,7 +385,13 @@ def prefix_subject(mlist, msg, msgdata):
     else:
         old_style = mm_cfg.OLD_STYLE_PREFIXING
     subject = re.sub(prefix_pattern, '', subject)
-    rematch = re.match('((RE|AW|SV|VS)(\[\d+\])?:\s*)+', subject, re.I)
+    # Previously the following re didn't have the first \s*. It would fail
+    # if the incoming Subject: was like '[prefix] Re: Re: Re:' because of the
+    # leading space after stripping the prefix. It is not known what MUA would
+    # create such a Subject:, but the issue was reported.
+    rematch = re.match(
+                       '(\s*(RE|AW|SV|VS)\s*(\[\d+\])?\s*:\s*)+',
+                        subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
         recolon = 'Re:'
@@ -304,8 +421,7 @@ def prefix_subject(mlist, msg, msgdata):
                     h = u' '.join([prefix, subject])
             h = h.encode('us-ascii')
             h = uheader(mlist, h, 'Subject', continuation_ws=ws)
-            del msg['subject']
-            msg['Subject'] = h
+            change_header('Subject', h, mlist, msg, msgdata)
             ss = u' '.join([recolon, subject])
             ss = ss.encode('us-ascii')
             ss = uheader(mlist, ss, 'Subject', continuation_ws=ws)
@@ -314,6 +430,11 @@ def prefix_subject(mlist, msg, msgdata):
         except UnicodeError:
             pass
     # Get the header as a Header instance, with proper unicode conversion
+    # Because of rfc2047 encoding, spaces between encoded words can be
+    # insignificant, so we need to append a space to prefix but only when
+    # we have Re:.
+    if recolon:
+        prefix += ' '
     if old_style:
         h = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
         h.append(prefix)
@@ -323,8 +444,7 @@ def prefix_subject(mlist, msg, msgdata):
     # TK: Subject is concatenated and unicode string.
     subject = subject.encode(cset, 'replace')
     h.append(subject, cset)
-    del msg['subject']
-    msg['Subject'] = h
+    change_header('Subject', h, mlist, msg, msgdata)
     ss = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
     ss.append(subject, cset)
     msgdata['stripped_subject'] = ss

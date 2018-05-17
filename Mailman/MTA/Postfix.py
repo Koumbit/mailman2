@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -27,7 +27,8 @@ from stat import *
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import LockFile
-from Mailman.i18n import _
+from Mailman.i18n import C_
+from Mailman.MailList import MailList
 from Mailman.MTA.Utils import makealiases
 from Mailman.Logging.Syslog import syslog
 
@@ -116,6 +117,10 @@ def _addlist(mlist, fp):
 
 
 
+def _isvirtual(mlist):
+    return (mlist and mlist.host_name.lower() in
+            [d.lower() for d in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS])
+
 def _addvirtual(mlist, fp):
     listname = mlist.internal_name()
     fieldsz = len(listname) + len('-unsubscribe')
@@ -123,10 +128,18 @@ def _addvirtual(mlist, fp):
     # Set up the mailman-loop address
     loopaddr = Utils.get_site_email(mlist.host_name, extra='loop')
     loopdest = Utils.ParseEmail(loopaddr)[0]
+    # And the site list posting address.
+    siteaddr = Utils.get_site_email(mlist.host_name)
+    sitedest = Utils.ParseEmail(siteaddr)[0]
     if mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN:
         loopdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
+        sitedest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
+    # If the site list's host_name is a virtual domain, adding it to the
+    # SITE ADDRESSES will duplicate the list posting entry, so comment it.
+    if _isvirtual(MailList(mm_cfg.MAILMAN_SITE_LIST, lock=False)):
+        siteaddr = '#' + siteaddr
     # Seek to the end of the text file, but if it's empty write the standard
-    # disclaimer, and the loop catch address.
+    # disclaimer, and the loop catch address and site address.
     fp.seek(0, 2)
     if not fp.tell():
         print >> fp, """\
@@ -141,7 +154,13 @@ def _addvirtual(mlist, fp):
 # LOOP ADDRESSES START
 %s\t%s
 # LOOP ADDRESSES END
-""" % (loopaddr, loopdest)
+
+# We also add the site list address in each virtual domain as that address
+# is exposed on admin and listinfo overviews.
+# SITE ADDRESSES START
+%s\t%s
+# SITE ADDRESSES END
+""" % (loopaddr, loopdest, siteaddr, sitedest)
     # The text file entries get a little extra info
     print >> fp, '# STANZA START:', listname
     print >> fp, '# CREATED:', time.ctime(time.time())
@@ -164,6 +183,11 @@ def _addvirtual(mlist, fp):
 def _check_for_virtual_loopaddr(mlist, filename):
     loopaddr = Utils.get_site_email(mlist.host_name, extra='loop')
     loopdest = Utils.ParseEmail(loopaddr)[0]
+    siteaddr = Utils.get_site_email(mlist.host_name)
+    sitedest = Utils.ParseEmail(siteaddr)[0]
+    if mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN:
+        loopdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
+        sitedest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
     infp = open(filename)
     omask = os.umask(007)
     try:
@@ -190,6 +214,32 @@ def _check_for_virtual_loopaddr(mlist, filename):
                 outfp.write(line)
                 break
             elif line.startswith(loopaddr):
+                # We just found it
+                outfp.write(line)
+                break
+            else:
+                # This isn't our loop address, so spit it out and continue
+                outfp.write(line)
+        # Now do it all again for the site list address. It must follow the
+        # loop addresses.
+        while True:
+            line = infp.readline()
+            if not line:
+                break
+            outfp.write(line)
+            if line.startswith('# SITE ADDRESSES START'):
+                break
+        # Now see if our domain has already been written
+        while True:
+            line = infp.readline()
+            if not line:
+                break
+            if line.startswith('# SITE ADDRESSES END'):
+                # It hasn't
+                print >> outfp, '%s\t%s' % (siteaddr, sitedest)
+                outfp.write(line)
+                break
+            elif line.startswith(siteaddr) or line.startswith('#' + siteaddr):
                 # We just found it
                 outfp.write(line)
                 break
@@ -233,9 +283,12 @@ def create(mlist, cgi=False, nolock=False, quiet=False):
     # Do the aliases file, which need to be done in any case
     try:
         _do_create(mlist, ALIASFILE, _addlist)
-        if mlist and mlist.host_name in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS:
+        if _isvirtual(mlist):
             _do_create(mlist, VIRTFILE, _addvirtual)
-        _update_maps()
+        # bin/genaliases is the only one that calls create with nolock = True.
+        # Use that to only update the maps at the end of genaliases.
+        if not nolock:
+            _update_maps()
     finally:
         if lock:
             lock.unlock(unconditionally=True)
@@ -301,7 +354,7 @@ def remove(mlist, cgi=False):
     lock.lock()
     try:
         _do_remove(mlist, ALIASFILE, False)
-        if mlist.host_name in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS:
+        if _isvirtual(mlist):
             _do_remove(mlist, VIRTFILE, True)
         # Regenerate the alias and map files
         _update_maps()
@@ -314,7 +367,7 @@ def checkperms(state):
     targetmode = S_IFREG | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP
     for file in ALIASFILE, VIRTFILE:
         if state.VERBOSE:
-            print _('checking permissions on %(file)s')
+            print C_('checking permissions on %(file)s')
         stat = None
         try:
             stat = os.stat(file)
@@ -324,9 +377,9 @@ def checkperms(state):
         if stat and (stat[ST_MODE] & targetmode) <> targetmode:
             state.ERRORS += 1
             octmode = oct(stat[ST_MODE])
-            print _('%(file)s permissions must be 066x (got %(octmode)s)'),
+            print C_('%(file)s permissions must be 066x (got %(octmode)s)'),
             if state.FIX:
-                print _('(fixing)')
+                print C_('(fixing)')
                 os.chmod(file, stat[ST_MODE] | targetmode)
             else:
                 print
@@ -342,7 +395,7 @@ def checkperms(state):
                 raise
             continue
         if state.VERBOSE:
-            print _('checking ownership of %(dbfile)s')
+            print C_('checking ownership of %(dbfile)s')
         user = mm_cfg.MAILMAN_USER
         ownerok = stat[ST_UID] == pwd.getpwnam(user)[2]
         if not ownerok:
@@ -350,10 +403,11 @@ def checkperms(state):
                 owner = pwd.getpwuid(stat[ST_UID])[0]
             except KeyError:
                 owner = 'uid %d' % stat[ST_UID]
-            print _('%(dbfile)s owned by %(owner)s (must be owned by %(user)s'),
+            print C_(
+                '%(dbfile)s owned by %(owner)s (must be owned by %(user)s'),
             state.ERRORS += 1
             if state.FIX:
-                print _('(fixing)')
+                print C_('(fixing)')
                 uid = pwd.getpwnam(user)[2]
                 gid = grp.getgrnam(mm_cfg.MAILMAN_GROUP)[2]
                 os.chown(dbfile, uid, gid)
@@ -362,9 +416,9 @@ def checkperms(state):
         if stat and (stat[ST_MODE] & targetmode) <> targetmode:
             state.ERRORS += 1
             octmode = oct(stat[ST_MODE])
-            print _('%(dbfile)s permissions must be 066x (got %(octmode)s)'),
+            print C_('%(dbfile)s permissions must be 066x (got %(octmode)s)'),
             if state.FIX:
-                print _('(fixing)')
+                print C_('(fixing)')
                 os.chmod(dbfile, stat[ST_MODE] | targetmode)
             else:
                 print

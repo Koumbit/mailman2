@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """-request robot command queue runner."""
 
@@ -46,6 +47,10 @@ from email.MIMEText import MIMEText
 from email.MIMEMessage import MIMEMessage
 
 NL = '\n'
+CONTINUE = 0
+STOP = 1
+BADCMD = 2
+BADSUBJ = 3
 
 try:
     True, False
@@ -76,7 +81,8 @@ class Results:
         try:
             subj = make_header(decode_header(subj)).__unicode__()
             # TK: Currently we don't allow 8bit or multibyte in mail command.
-            subj = subj.encode('us-ascii')
+            # MAS: However, an l10n 'Re:' may contain non-ascii so ignore it.
+            subj = subj.encode('us-ascii', 'ignore')
             # Always process the Subject: header first
             self.commands.append(subj)
         except (HeaderParseError, UnicodeError, LookupError):
@@ -104,15 +110,19 @@ class Results:
     def process(self):
         # Now, process each line until we find an error.  The first
         # non-command line found stops processing.
-        stop = False
+        found = BADCMD
+        ret = CONTINUE
         for line in self.commands:
             if line and line.strip():
                 args = line.split()
                 cmd = args.pop(0).lower()
-                stop = self.do_command(cmd, args)
+                ret = self.do_command(cmd, args)
+                if ret == STOP or ret == CONTINUE:
+                    found = ret
             self.lineno += 1
-            if stop:
+            if ret == STOP or ret == BADCMD:
                 break
+        return found
 
     def do_command(self, cmd, args=None):
         if args is None:
@@ -123,20 +133,39 @@ class Results:
             __import__(modname)
             handler = sys.modules[modname]
         # ValueError can be raised if cmd has dots in it.
-        except (ImportError, ValueError):
+        # and KeyError if cmd is otherwise good but ends with a dot.
+        # and TypeError if cmd has a null byte.
+        except (ImportError, ValueError, KeyError, TypeError):
             # If we're on line zero, it was the Subject: header that didn't
             # contain a command.  It's possible there's a Re: prefix (or
             # localized version thereof) on the Subject: line that's messing
             # things up.  Pop the prefix off and try again... once.
             #
+            # At least one MUA (163.com web mail) has been observed that
+            # inserts 'Re:' with no following space, so try to account for
+            # that too.
+            #
             # If that still didn't work it isn't enough to stop processing.
             # BAW: should we include a message that the Subject: was ignored?
-            if not self.subjcmdretried and args:
+            #
+            # But first, be sure we're looking at the Subject: and not past
+            # it already.
+            if self.lineno != 0:
+                return BADCMD
+            if self.subjcmdretried < 1:
                 self.subjcmdretried += 1
-                cmd = args.pop(0)
+                if re.search('^.*:.+', cmd):
+                    cmd = re.sub('.*:', '', cmd).lower()
+                    return self.do_command(cmd, args)
+            if self.subjcmdretried < 2 and args:
+                self.subjcmdretried += 1
+                cmd = args.pop(0).lower()
                 return self.do_command(cmd, args)
-            return self.lineno <> 0
-        return handler.process(self, args)
+            return BADSUBJ
+        if handler.process(self, args):
+            return STOP
+        else:
+            return CONTINUE
 
     def send_response(self):
         # Helper
@@ -155,7 +184,7 @@ Attached is your original message.
         # Ignore empty lines
         unprocessed = [line for line in self.commands[self.lineno:]
                        if line and line.strip()]
-        if unprocessed:
+        if unprocessed and mm_cfg.RESPONSE_INCLUDE_LEVEL >= 2:
             resp.append(_('\n- Unprocessed:'))
             resp.extend(indent(unprocessed))
         if not unprocessed and not self.results:
@@ -164,7 +193,7 @@ Attached is your original message.
 No commands were found in this message.
 To obtain instructions, send a message containing just the word "help".
 """)))
-        if self.ignored:
+        if self.ignored and mm_cfg.RESPONSE_INCLUDE_LEVEL >= 2:
             resp.append(_('\n- Ignored:'))
             resp.extend(indent(self.ignored))
         resp.append(_('\n- Done.\n\n'))
@@ -195,7 +224,15 @@ To obtain instructions, send a message containing just the word "help".
             lang=self.msgdata['lang'])
         msg.set_type('multipart/mixed')
         msg.attach(results)
-        orig = MIMEMessage(self.msg)
+        if mm_cfg.RESPONSE_INCLUDE_LEVEL == 1:
+            self.msg.set_payload(
+                _('Message body suppressed by Mailman site configuration\n'))
+        if mm_cfg.RESPONSE_INCLUDE_LEVEL == 0:
+            orig = MIMEText(_(
+                'Original message suppressed by Mailman site configuration\n'
+                ), _charset=charset)
+        else:
+            orig = MIMEMessage(self.msg)
         msg.attach(orig)
         msg.send(self.mlist)
 
@@ -235,17 +272,23 @@ class CommandRunner(Runner):
         # mylist-join, or mylist-leave, and the message metadata will contain
         # a key to which one was used.
         try:
+            ret = BADCMD
             if msgdata.get('torequest'):
-                res.process()
+                ret = res.process()
             elif msgdata.get('tojoin'):
-                res.do_command('join')
+                ret = res.do_command('join')
             elif msgdata.get('toleave'):
-                res.do_command('leave')
+                ret = res.do_command('leave')
             elif msgdata.get('toconfirm'):
                 mo = re.match(mm_cfg.VERP_CONFIRM_REGEXP, msg.get('to', ''))
                 if mo:
-                    res.do_command('confirm', (mo.group('cookie'),))
-            res.send_response()
-            mlist.Save()
+                    ret = res.do_command('confirm', (mo.group('cookie'),))
+            if ret == BADCMD and mm_cfg.DISCARD_MESSAGE_WITH_NO_COMMAND:
+                syslog('vette',
+                       'No command, message discarded, msgid: %s',
+                       msg.get('message-id', 'n/a'))
+            else:
+                res.send_response()
+                mlist.Save()
         finally:
             mlist.Unlock()

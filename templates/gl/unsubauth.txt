@@ -1,5 +1,5 @@
-É necesaria a súa autorización para que un subscritor poida darse de baixa
-dunha rolda de distribución.
+Ã‰ necesaria a sÃºa autorizaciÃ³n para que un subscritor poida darse de baixa
+dunha rolda de distribuciÃ³n.
 
     Remitente:   %(username)s
     A: %(listname)s@%(hostname)s

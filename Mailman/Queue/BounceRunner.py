@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -30,6 +30,7 @@ from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import LockFile
 from Mailman.Message import UserNotification
+from Mailman.Bouncer import _BounceInfo
 from Mailman.Bouncers import BouncerAPI
 from Mailman.Queue.Runner import Runner
 from Mailman.Queue.sbcache import get_switchboard
@@ -151,6 +152,14 @@ class BounceMixin:
         try:
             op, addr, bmsg = mlist.pend_confirm(token)
             info = mlist.getBounceInfo(addr)
+            if not info:
+                # info was deleted before probe bounce was received.
+                # Just create a new info.
+                info = _BounceInfo(addr,
+                                   0.0,
+                                   time.localtime()[:3],
+                                   mlist.bounce_you_are_disabled_warnings
+                                   )
             mlist.disableBouncingMember(addr, info, bmsg)
             # Only save the list if we're unlocking it
             if not locked:
@@ -244,6 +253,7 @@ class BounceRunner(Runner, BounceMixin):
                 return
         # If that still didn't return us any useful addresses, then send it on
         # or discard it.
+        addrs = filter(None, addrs)
         if not addrs:
             syslog('bounce',
                    '%s: bounce message w/no discernable addresses: %s',
@@ -254,7 +264,8 @@ class BounceRunner(Runner, BounceMixin):
         # BAW: It's possible that there are None's in the list of addresses,
         # although I'm unsure how that could happen.  Possibly ScanMessages()
         # can let None's sneak through.  In any event, this will kill them.
-        addrs = filter(None, addrs)
+        # addrs = filter(None, addrs)
+        # MAS above filter moved up so we don't try to queue an empty list.
         self._queue_bounces(mlist.internal_name(), addrs, msg)
 
     _doperiodic = BounceMixin._doperiodic

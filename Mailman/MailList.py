@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -74,6 +74,7 @@ from Mailman.Logging.Syslog import syslog
 _ = i18n._
 
 EMPTYSTRING = ''
+OR = '|'
 
 try:
     True, False
@@ -314,7 +315,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.new_member_options = mm_cfg.DEFAULT_NEW_MEMBER_OPTIONS
 
         # This stuff is configurable
-        self.respond_to_post_requests = 1
+        self.respond_to_post_requests = mm_cfg.DEFAULT_RESPOND_TO_POST_REQUESTS
         self.advertised = mm_cfg.DEFAULT_LIST_ADVERTISED
         self.max_num_recipients = mm_cfg.DEFAULT_MAX_NUM_RECIPIENTS
         self.max_message_size = mm_cfg.DEFAULT_MAX_MESSAGE_SIZE
@@ -339,6 +340,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.umbrella_member_suffix = \
                 mm_cfg.DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX
         self.regular_exclude_lists = mm_cfg.DEFAULT_REGULAR_EXCLUDE_LISTS
+        self.regular_exclude_ignore = mm_cfg.DEFAULT_REGULAR_EXCLUDE_IGNORE
         self.regular_include_lists = mm_cfg.DEFAULT_REGULAR_INCLUDE_LISTS
         self.send_reminders = mm_cfg.DEFAULT_SEND_REMINDERS
         self.send_welcome_msg = mm_cfg.DEFAULT_SEND_WELCOME_MSG
@@ -346,6 +348,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.bounce_matching_headers = \
                 mm_cfg.DEFAULT_BOUNCE_MATCHING_HEADERS
         self.header_filter_rules = []
+        self.from_is_list = mm_cfg.DEFAULT_FROM_IS_LIST
         self.anonymous_list = mm_cfg.DEFAULT_ANONYMOUS_LIST
         internalname = self.internal_name()
         self.real_name = internalname[0].upper() + internalname[1:]
@@ -354,6 +357,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.welcome_msg = ''
         self.goodbye_msg = ''
         self.subscribe_policy = mm_cfg.DEFAULT_SUBSCRIBE_POLICY
+        self.subscribe_auto_approval = mm_cfg.DEFAULT_SUBSCRIBE_AUTO_APPROVAL
         self.unsubscribe_policy = mm_cfg.DEFAULT_UNSUBSCRIBE_POLICY
         self.private_roster = mm_cfg.DEFAULT_PRIVATE_ROSTER
         self.obscure_addresses = mm_cfg.DEFAULT_OBSCURE_ADDRESSES
@@ -382,11 +386,25 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                                        mm_cfg.DEFAULT_DEFAULT_MEMBER_MODERATION
         # Emergency moderation bit
         self.emergency = 0
+        self.member_verbosity_threshold = (
+            mm_cfg.DEFAULT_MEMBER_VERBOSITY_THRESHOLD)
+        self.member_verbosity_interval = (
+            mm_cfg.DEFAULT_MEMBER_VERBOSITY_INTERVAL)
         # This really ought to default to mm_cfg.HOLD, but that doesn't work
         # with the current GUI description model.  So, 0==Hold, 1==Reject,
         # 2==Discard
         self.member_moderation_action = 0
         self.member_moderation_notice = ''
+        self.dmarc_moderation_action = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
+        self.dmarc_quarantine_moderation_action = (
+            mm_cfg.DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION)
+        self.dmarc_none_moderation_action = (
+            mm_cfg.DEFAULT_DMARC_NONE_MODERATION_ACTION)
+        self.dmarc_moderation_notice = ''
+        self.dmarc_wrapped_message_text = (
+            mm_cfg.DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT)
+        self.equivalent_domains = (
+            mm_cfg.DEFAULT_EQUIVALENT_DOMAINS)
         self.accept_these_nonmembers = []
         self.hold_these_nonmembers = []
         self.reject_these_nonmembers = []
@@ -599,8 +617,16 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             # file doesn't exist, we'll get an EnvironmentError with errno set
             # to ENOENT (EnvironmentError is the base class of IOError and
             # OSError).
+            # We test strictly less than here because the resolution is whole
+            # seconds and we have seen cases of the file being updated by
+            # another process in the same second.
+            # Even this is not sufficient in shared file system environments
+            # if there is time skew between servers.  In those cases, the test
+            # could be
+            # if mtime + MAX_SKEW < self.__timestamp:
+            # or the "if ...: return" just deleted.
             mtime = os.path.getmtime(dbfile)
-            if mtime <= self.__timestamp:
+            if mtime < self.__timestamp:
                 # File is not newer
                 return None, None
             fp = open(dbfile)
@@ -618,8 +644,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 return None, e
         finally:
             fp.close()
-        # Update timestamp
-        self.__timestamp = mtime
+        # Update the timestamp.  We use current time here rather than mtime
+        # so the test above might succeed the next time.
+        self.__timestamp = int(time.time())
         return dict, None
 
     def Load(self, check_version=True):
@@ -758,10 +785,11 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         goodtopics = []
         for name, pattern, desc, emptyflag in self.topics:
             try:
-                re.compile(pattern)
+                orpattern = OR.join(pattern.splitlines())
+                re.compile(orpattern)
             except (re.error, TypeError):
                 syslog('error', 'Bad topic pattern "%s" for list: %s',
-                       pattern, self.internal_name())
+                       orpattern, self.internal_name())
             else:
                 goodtopics.append((name, pattern, desc, emptyflag))
         self.topics = goodtopics
@@ -781,6 +809,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # check for banned address
         pattern = self.GetBannedPattern(invitee)
         if pattern:
+            syslog('vette', '%s banned invitation: %s (matched: %s)',
+                   self.real_name, invitee, pattern)
             raise Errors.MembershipIsBanned, pattern
         # Hack alert!  Squirrel away a flag that only invitations have, so
         # that we can do something slightly different when an invitation
@@ -810,6 +840,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         subj = self.GetConfirmJoinSubject(listname, cookie)
         del msg['subject']
         msg['Subject'] = subj
+        del msg['auto-submitted']
+        msg['Auto-Submitted'] = 'auto-generated'
         msg.send(self)
 
     def AddMember(self, userdesc, remote=None):
@@ -859,8 +891,12 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # Is the subscribing address banned from this list?
         pattern = self.GetBannedPattern(email)
         if pattern:
-            syslog('vette', '%s banned subscription: %s (matched: %s)',
-                   realname, email, pattern)
+            if remote:
+                whence = ' from %s' % remote
+            else:
+                whence = ''
+            syslog('vette', '%s banned subscription: %s%s (matched: %s)',
+                   realname, email, whence, pattern)
             raise Errors.MembershipIsBanned, pattern
         # Sanity check the digest flag
         if digest and not self.digestable:
@@ -911,11 +947,22 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             del msg['subject']
             msg['Subject'] = self.GetConfirmJoinSubject(realname, cookie)
             msg['Reply-To'] = self.GetRequestEmail(cookie)
+            # Is this confirmation a reply to an email subscribe from this
+            # address?
+            if remote.lower().endswith(email.lower()):
+                autosub = 'auto-replied'
+            else:
+                autosub = 'auto-generated'
+            del msg['auto-submitted']
+            msg['Auto-Submitted'] = autosub
             msg.send(self)
             who = formataddr((name, email))
             syslog('subscribe', '%s: pending %s %s',
                    self.internal_name(), who, by)
             raise Errors.MMSubscribeNeedsConfirmation
+        elif self.HasAutoApprovedSender(email):
+            # no approval necessary:
+            self.ApprovedAddMember(userdesc)
         else:
             # Subscription approval is required.  Add this entry to the admin
             # requests database.  BAW: this should probably take a userdesc
@@ -966,6 +1013,12 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # and confirmations.
         pattern = self.GetBannedPattern(email)
         if pattern:
+            if whence:
+                source = ' from %s' % whence
+            else:
+                source = ''
+            syslog('vette', '%s banned subscription: %s%s (matched: %s)',
+                   self.real_name, email, source, pattern)
             raise Errors.MembershipIsBanned, pattern
         # Do the actual addition
         self.addNewMember(email, realname=name, digest=digest,
@@ -1026,7 +1079,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # And send an acknowledgement to the user...
         if userack:
             self.SendUnsubscribeAck(emailaddr, userlang)
-        # ...and to the administrator
+        # ...and to the administrator in the correct language.  (LP: #1308655)
+        i18n.set_language(self.preferred_language)
         if admin_notif:
             realname = self.real_name
             subject = _('%(realname)s unsubscribe notification')
@@ -1129,6 +1183,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # exception.
         pattern = self.GetBannedPattern(newaddr)
         if pattern:
+            syslog('vette',
+                   '%s banned address change: %s -> %s (matched: %s)',
+                   self.real_name, oldaddr, newaddr, pattern)
             raise Errors.MembershipIsBanned, pattern
         # It's possible they were a member of this list, but choose to change
         # their membership globally.  In that case, we simply remove the old
@@ -1138,12 +1195,14 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # CP address of a member, then if the old address yields a different
         # CP address, we can simply remove the old address, otherwise we can
         # do nothing.
+        cpoldaddr = self.getMemberCPAddress(oldaddr)
         if self.isMember(newaddr) and (self.getMemberCPAddress(newaddr) ==
                 newaddr):
-            if self.getMemberCPAddress(oldaddr) <> newaddr:
+            if cpoldaddr <> newaddr:
                 self.removeMember(oldaddr)
         else:
             self.changeMemberAddress(oldaddr, newaddr)
+            self.log_and_notify_admin(cpoldaddr, newaddr)
         # If globally is true, then we also include every list for which
         # oldaddr is a member.
         if not globally:
@@ -1163,15 +1222,45 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             mlist.Lock()
             try:
                 # Same logic as above, re newaddr is already a member
+                cpoldaddr = mlist.getMemberCPAddress(oldaddr)
                 if mlist.isMember(newaddr) and (
                         mlist.getMemberCPAddress(newaddr) == newaddr):
-                    if mlist.getMemberCPAddress(oldaddr) <> newaddr:
+                    if cpoldaddr <> newaddr:
                         mlist.removeMember(oldaddr)
                 else:
                     mlist.changeMemberAddress(oldaddr, newaddr)
+                    mlist.log_and_notify_admin(cpoldaddr, newaddr)
                 mlist.Save()
             finally:
                 mlist.Unlock()
+
+    def log_and_notify_admin(self, oldaddr, newaddr):
+        """Log member address change and notify admin if requested."""
+        syslog('subscribe', '%s: changed member address from %s to %s',
+               self.internal_name(), oldaddr, newaddr)
+        if self.admin_notify_mchanges:
+            lang = self.preferred_language
+            otrans = i18n.get_translation()
+            i18n.set_language(lang)
+            try:
+                realname = self.real_name
+                subject = _('%(realname)s address change notification')
+            finally:
+                i18n.set_translation(otrans)
+            name = self.getMemberName(newaddr)
+            if name is None:
+                name = ''
+            if isinstance(name, UnicodeType):
+                name = name.encode(Utils.GetCharSet(lang), 'replace')
+            text = Utils.maketext(
+                'adminaddrchgack.txt',
+                {'name'    : name,
+                 'oldaddr' : oldaddr,
+                 'newaddr' : newaddr,
+                 'listname': self.real_name,
+                 }, mlist=self)
+            msg = Message.OwnerNotification(self, subject, text)
+            msg.send(self)
 
 
     #
@@ -1216,7 +1305,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                     # list administrators.
                     self.SendHostileSubscriptionNotice(invitation, addr)
                     raise Errors.HostileSubscriptionError
-            elif self.subscribe_policy in (2, 3):
+            elif self.subscribe_policy in (2, 3) and \
+                    not self.HasAutoApprovedSender(addr):
                 self.HoldSubscription(addr, fullname, password, digest, lang)
                 name = self.real_name
                 raise Errors.MMNeedApproval, _(
@@ -1258,7 +1348,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                     except IndexError:
                         subpart = None
                     if subpart:
-                        s = StringIO(subpart.get_payload())
+                        s = StringIO(subpart.get_payload(decode=True))
                         while True:
                             line = s.readline()
                             if not line:
@@ -1267,8 +1357,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                                 continue
                             i = line.find(':')
                             if i > 0:
-                                if (line[:i].lower() == 'approve' or
-                                    line[:i].lower() == 'approved'):
+                                if (line[:i].strip().lower() == 'approve' or
+                                    line[:i].strip().lower() == 'approved'):
                                     # then
                                     approved = line[i+1:].strip()
                             break
@@ -1293,7 +1383,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 # Most likely because the message has already been disposed of
                 # via the admindb page.
                 syslog('error', 'Could not process HELD_MESSAGE: %s', id)
-            return (op,)
+            return op, action
         elif op == Pending.RE_ENABLE:
             member = data[1]
             self.setDeliveryStatus(member, MemberAdaptor.ENABLED)
@@ -1332,6 +1422,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         del msg['subject']
         msg['Subject'] = self.GetConfirmLeaveSubject(realname, cookie)
         msg['Reply-To'] = self.GetRequestEmail(cookie)
+        del msg['auto-submitted']
+        msg['Auto-Submitted'] = 'auto-generated'
         msg.send(self)
 
 
@@ -1493,26 +1585,85 @@ bad regexp in bounce_matching_header line: %s
         """Returns matched entry in ban_list if email matches.
         Otherwise returns None.
         """
-        ban = False
-        for pattern in self.ban_list:
+        return (self.GetPattern(email, self.ban_list) or
+                self.GetPattern(email, mm_cfg.GLOBAL_BAN_LIST)
+               )
+
+    def HasAutoApprovedSender(self, sender):
+        """Returns True and logs if sender matches address or pattern
+        or is a member of a referenced list in subscribe_auto_approval.
+        Otherwise returns False.
+        """
+        auto_approve = False
+        if self.GetPattern(sender,
+                           self.subscribe_auto_approval,
+                           at_list='subscribe_auto_approval'
+                          ):
+            auto_approve = True
+            syslog('vette', '%s: auto approved subscribe from %s',
+                   self.internal_name(), sender)
+        return auto_approve
+
+    def GetPattern(self, email, pattern_list, at_list=None):
+        """Returns matched entry in pattern_list if email matches.
+        Otherwise returns None.  The at_list argument, if "true",
+        says process the @listname syntax and provides the name of
+        the list attribute for log messages.
+        """
+        matched = None
+        # First strip out all the regular expressions and listnames because
+        # documentation says we do non-regexp first (Why?).
+        plainaddrs = [x.strip() for x in pattern_list if x.strip() and not
+                         (x.startswith('^') or x.startswith('@'))]
+        addrdict = Utils.List2Dict(plainaddrs, foldcase=1)
+        if addrdict.has_key(email.lower()):
+            return email
+        for pattern in pattern_list:
             if pattern.startswith('^'):
                 # This is a regular expression match
                 try:
                     if re.search(pattern, email, re.IGNORECASE):
-                        ban = True
+                        matched = pattern
                         break
-                except re.error:
+                except re.error, e:
                     # BAW: we should probably remove this pattern
-                    pass
-            else:
-                # Do the comparison case insensitively
-                if pattern.lower() == email.lower():
-                    ban = True
+                    # The GUI won't add a bad regexp, but at least log it.
+                    # The following kludge works because the ban_list stuff
+                    # is the only caller with no at_list.
+                    attr_name = at_list or 'ban_list'
+                    syslog('error',
+                           '%s in %s has bad regexp "%s": %s',
+                           attr_name,
+                           self.internal_name(),
+                           pattern,
+                           str(e)
+                          )
+            elif at_list and pattern.startswith('@'):
+                # XXX Needs to be reviewed for list@domain names.
+                # this refers to the members of another list in this
+                # installation.
+                mname = pattern[1:].lower().strip()
+                if mname == self.internal_name():
+                    # don't reference your own list
+                    syslog('error',
+                        '%s in %s references own list',
+                        at_list,
+                        self.internal_name())
+                    continue
+                try:
+                    mother = MailList(mname, lock = False)
+                except Errors.MMUnknownListError:
+                    syslog('error',
+                           '%s in %s references non-existent list %s',
+                           at_list,
+                           self.internal_name(),
+                           mname
+                          )
+                    continue
+                if mother.isMember(email.lower()):
+                    matched = pattern
                     break
-        if ban:
-            return pattern
-        else:
-            return None
+        return matched
 
 
 

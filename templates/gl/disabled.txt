@@ -1,24 +1,24 @@
-A súa subscrición á rolda de distribución %(listname)s inhabilitouse
-%(reason)s.  Non recibirá ningunha mensaxe máis desta rolda até que volva activar a súa
-subscrición.  Recibirá %(noticesleft)s lembranzas como esta antes de que a súa
-subscrición se eliminar.
+A sÃºa subscriciÃ³n Ã¡ rolda de distribuciÃ³n %(listname)s inhabilitouse
+%(reason)s.  Non recibirÃ¡ ningunha mensaxe mÃ¡is desta rolda atÃ© que volva activar a sÃºa
+subscriciÃ³n.  RecibirÃ¡ %(noticesleft)s lembranzas como esta antes de que a sÃºa
+subscriciÃ³n se eliminar.
 
-Para volver a activar a súa subscrición, só ten que responder esta mensaxe
-(coa liña correspondente ao asunto intacta) ou visite a páxina de
-confirmación en
+Para volver a activar a sÃºa subscriciÃ³n, sÃ³ ten que responder esta mensaxe
+(coa liÃ±a correspondente ao asunto intacta) ou visite a pÃ¡xina de
+confirmaciÃ³n en
 
     %(confirmurl)s
 
-Tamén pode visitar a páxina das súas opcións en
+TamÃ©n pode visitar a pÃ¡xina das sÃºas opciÃ³ns en
 
     %(optionsurl)s
 
-Nesta páxina poderá mudar distintos aspectos
-referentes á recepción de mensaxes desta rolda tal como o
-enderezo de correo electrónico ou se desexa recibir as mensaxes da rolda en
-recompilacións ou non. 
-Por último, e para a súa información, a chave que ten asociada á súa
-subscrición é a seguinte
+Nesta pÃ¡xina poderÃ¡ mudar distintos aspectos
+referentes Ã¡ recepciÃ³n de mensaxes desta rolda tal como o
+enderezo de correo electrÃ³nico ou se desexa recibir as mensaxes da rolda en
+recompilaciÃ³ns ou non. 
+Por Ãºltimo, e para a sÃºa informaciÃ³n, a chave que ten asociada Ã¡ sÃºa
+subscriciÃ³n Ã© a seguinte
 
     %(password)s
 

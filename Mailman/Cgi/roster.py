@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -57,13 +57,25 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         error_page(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'roster: no such list "%s": %s', listname, e)
+        syslog('error', 'roster: No such list "%s": %s', listname, e)
         return
 
     cgidata = cgi.FieldStorage()
 
     # messages in form should go in selected language (if any...)
-    lang = cgidata.getvalue('language')
+    try:
+        lang = cgidata.getvalue('language')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc = Document()
+        doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     if not Utils.IsLanguage(lang):
         lang = mlist.preferred_language
     i18n.set_language(lang)
@@ -73,8 +85,8 @@ def main():
     # "admin"-only, then we try to cookie authenticate the user, and failing
     # that, we check roster-email and roster-pw fields for a valid password.
     # (also allowed: the list moderator, the list admin, and the site admin).
-    password = cgidata.getvalue('roster-pw', '')
-    addr = cgidata.getvalue('roster-email', '')
+    password = cgidata.getvalue('roster-pw', '').strip()
+    addr = cgidata.getvalue('roster-email', '').strip()
     list_hidden = (not mlist.WebAuthenticate((mm_cfg.AuthUser,),
                                              password, addr)
                    and mlist.WebAuthenticate((mm_cfg.AuthListModerator,

@@ -1,23 +1,23 @@
-Mensaxe de confirmación para a anulación da subscripción
-á rolda de distribución %(listname)s
+Mensaxe de confirmaciÃ³n para a anulaciÃ³n da subscripciÃ³n
+Ã¡ rolda de distribuciÃ³n %(listname)s
 
 Recibiuse unha solicitude %(remote)s para dar de baixa o seu enderezo de
-correo electrónico "%(email)s" da rolda de distribución %(listaddr)s.
-Para confirmar que desexa darse de baixa desta rolda, só
+correo electrÃ³nico "%(email)s" da rolda de distribuciÃ³n %(listaddr)s.
+Para confirmar que desexa darse de baixa desta rolda, sÃ³
 ten que responder esta mensaxe, coa cabeceira intacta do
-asunto, ou visitar esta páxina web:
+asunto, ou visitar esta pÃ¡xina web:
 
     %(confirmurl)s
 
-Tamén pode facelo se inclúe a liña seguinte (e só a liña seguinte) nunha
+TamÃ©n pode facelo se inclÃºe a liÃ±a seguinte (e sÃ³ a liÃ±a seguinte) nunha
 mensaxe dirixida a  %(requestaddr)s:
 
     confirm %(cookie)s
 
-Responder esta mensaxe debería funcionar coa maioría dos programas
-de correo electrónico, porque normalmente deixan dun xeito válido a
-liña do Asunto (o texto adicional Re: no asunto é correcto)
+Responder esta mensaxe deberÃ­a funcionar coa maiorÃ­a dos programas
+de correo electrÃ³nico, porque normalmente deixan dun xeito vÃ¡lido a
+liÃ±a do Asunto (o texto adicional Re: no asunto Ã© correcto)
 
-Se non desexa darse de baixa desta rolda de distribución, só ten que
-ignorar esta mensaxe. Se pensa que alguén quere dalo de baixa ou se ten calquera outra cuestión, pode enviarllas ao
+Se non desexa darse de baixa desta rolda de distribuciÃ³n, sÃ³ ten que
+ignorar esta mensaxe. Se pensa que alguÃ©n quere dalo de baixa ou se ten calquera outra cuestiÃ³n, pode enviarllas ao
 administrador da rolda ao enderezo %(listadmin)s.

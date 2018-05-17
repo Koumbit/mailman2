@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -41,7 +41,8 @@ class BounceTest(unittest.TestCase):
         # Exim bounces
         ('Exim', 'exim_01.txt', ['delangen@its.tudelft.nl']),
         # SimpleMatch bounces
-        ('SimpleMatch', 'sendmail_01.txt', ['zzzzz@nfg.nl']),
+        ('SimpleMatch', 'sendmail_01.txt', ['zzzzz@shaft.coal.nl',
+                                            'zzzzz@nfg.nl']),
         ('SimpleMatch', 'simple_01.txt', ['bbbsss@turbosport.com']),
         ('SimpleMatch', 'simple_02.txt', ['chris.ggggmmmm@usa.net']),
         ('SimpleMatch', 'simple_04.txt', ['claird@starbase.neosoft.com']),
@@ -78,6 +79,8 @@ class BounceTest(unittest.TestCase):
         ('SimpleMatch', 'simple_34.txt', ['roland@xxx.com']),
         ('SimpleMatch', 'simple_36.txt', ['garyt@xxx.com']),
         ('SimpleMatch', 'simple_37.txt', ['user@uci.edu']),
+        ('SimpleMatch', 'simple_38.txt', ['prueba@domain.com']),
+        ('SimpleMatch', 'simple_39.txt', [b'foo@mail.ru']),
         ('SimpleMatch', 'bounce_02.txt', ['acinsp1@midsouth.rr.com']),
         ('SimpleMatch', 'bounce_03.txt', ['james@jeborall.demon.co.uk']),
         # SimpleWarning
@@ -86,6 +89,7 @@ class BounceTest(unittest.TestCase):
         ('SimpleWarning', 'simple_22.txt', Stop),
         ('SimpleWarning', 'simple_28.txt', Stop),
         ('SimpleWarning', 'simple_35.txt', Stop),
+        ('SimpleWarning', 'simple_40.txt', Stop),
         # GroupWise
         ('GroupWise', 'groupwise_01.txt', ['thoff@MAINEX1.ASU.EDU']),
         # This one really sucks 'cause it's text/html.  Just make sure it
@@ -134,6 +138,8 @@ class BounceTest(unittest.TestCase):
         ('Qmail', 'qmail_04.txt', ['merotiia@tennisnsw.com.au']),
         ('Qmail', 'qmail_05.txt', ['ivokggrrdvc@caixaforte.freeservers.com']),
         ('Qmail', 'qmail_06.txt', ['ntl@xxx.com']),
+        ('Qmail', 'qmail_07.txt', ['user@example.net']),
+        ('Qmail', 'qmail_08.txt', []),
         # LLNL's custom Sendmail
         ('LLNL', 'llnl_01.txt', ['trotts1@llnl.gov']),
         # Netscape's server...
@@ -166,6 +172,7 @@ class BounceTest(unittest.TestCase):
         ('Yahoo', 'yahoo_10.txt', ['jajcchoo@yahoo.com',
                                    'lyons94706@yahoo.com',
                                    'turtle4jne@yahoo.com']),
+        ('Yahoo', 'yahoo_11.txt', ['bad_user@aol.com']),
         # sina.com appears to use their own weird SINAEMAIL MTA
         ('Sina', 'sina_01.txt', ['boboman76@sina.com', 'alan_t18@sina.com']),
         ('AOL', 'aol_01.txt', ['screenname@aol.com']),

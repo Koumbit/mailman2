@@ -16,6 +16,7 @@ __version__ = '0.09 (Mailman edition)'
 VERSION = __version__
 CACHESIZE = 100    # Number of slots in the cache
 
+from Mailman import mm_cfg
 from Mailman import Errors
 from Mailman.Mailbox import ArchiverMailbox
 from Mailman.Logging.Syslog import syslog
@@ -230,21 +231,30 @@ class Article:
         self.body = s.readlines()
 
     def _set_date(self, message):
-        def floatdate(header):
-            missing = []
-            datestr = message.get(header, missing)
-            if datestr is missing:
+        def floatdate(datestr):
+            if not datestr:
                 return None
             date = parsedate_tz(datestr)
             try:
-                return mktime_tz(date)
+                date = mktime_tz(date)
+                if (date < 0 or
+                    date - time.time() >
+                        mm_cfg.ARCHIVER_ALLOWABLE_SANE_DATE_SKEW
+                   ):
+                    return None
+                return date
             except (TypeError, ValueError, OverflowError):
                 return None
-        date = floatdate('date')
+        date = floatdate(message.get('date'))
         if date is None:
-            date = floatdate('x-list-received-date')
+            date = floatdate(message.get('x-list-received-date'))
         if date is None:
-            # What's left to try?
+            date = floatdate(re.sub(r'^.*;\s*', '',
+                                    message.get('received', ''), flags=re.S))
+        if date is None:
+            date = floatdate(re.sub(r'From \s*\S+\s+', '',
+                                    message.get_unixfrom() or '' ))
+        if date is None:
             date = self._last_article_time + 1
         self._last_article_time = date
         self.date = '%011i' % date
@@ -552,6 +562,8 @@ class T:
         if start is None:
             start = 0
         counter = 0
+        if start:
+            mbox.skipping(True)
         while counter < start:
             try:
                 m = mbox.next()
@@ -560,6 +572,8 @@ class T:
             if m is None:
                 return
             counter += 1
+        if start:
+            mbox.skipping(False)
         while 1:
             try:
                 pos = input.tell()

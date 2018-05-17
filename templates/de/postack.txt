@@ -1,4 +1,4 @@
-Ihre E-Mail mit dem Betreff/Subject
+Ihre E-Mail mit dem Betreff
 
     %(subject)s
 

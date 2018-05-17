@@ -1,16 +1,16 @@
-A s鷄 solicitude a %(requestaddr)s:
+A s煤a solicitude a %(requestaddr)s:
 
     %(cmd)s
 
 enviouse ao administrador da rolda.
 
-Probabelmente d閎ese a que tentou subscribirse a unha rolda
+Probabelmente d茅bese a que tentou subscribirse a unha rolda
 'pechada'.
 
-Enviar醩elle unha notificaci髇 por correo electr髇ico da decisi髇
-do administrador da rolda sobre a s鷄 solicitude de subscrici髇.
+Enviar谩selle unha notificaci贸n por correo electr贸nico da decisi贸n
+do administrador da rolda sobre a s煤a solicitude de subscrici贸n.
 
-Debe enviar calquera cuesti髇 que te馻 sobre a pol韙ica de subscrici髇s da rolda 
+Debe enviar calquera cuesti贸n que te帽a sobre a pol铆tica de subscrici贸ns da rolda 
 ao administrador:
 
     %(adminaddr)s

@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2002-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -48,7 +48,7 @@ import paths
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Post
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 
 
@@ -57,7 +57,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -81,14 +81,14 @@ def main():
         elif opt in ('-q', '--queue'):
             qdir = os.path.join(mm_cfg.QUEUE_DIR, arg)
             if not os.path.isdir(qdir):
-                usage(1, _('Bad queue directory: %(qdir)s'))
+                usage(1, C_('Bad queue directory: %(qdir)s'))
         elif opt in ('-l', '--listname'):
             listname = arg.lower()
 
     if listname is None:
-        usage(1, _('A list name is required'))
+        usage(1, C_('A list name is required'))
     elif not Utils.list_exists(listname):
-        usage(1, _('No such list: %(listname)s'))
+        usage(1, C_('No such list: %(listname)s'))
 
     if len(args) == 0:
         # Use standard input

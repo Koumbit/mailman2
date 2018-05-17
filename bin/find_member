@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -64,7 +64,7 @@ import paths
 from Mailman import Utils
 from Mailman import MailList
 from Mailman import Errors
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 AS_MEMBER = 0x01
 AS_OWNER = 0x02
@@ -76,7 +76,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -94,7 +94,7 @@ def scanlists(options):
         try:
             mlist = MailList.MailList(listname, lock=0)
         except Errors.MMListError:
-            print _('No such list: %(listname)s')
+            print C_('No such list: %(listname)s')
             continue
         if options.owners:
             owners = mlist.owner
@@ -156,12 +156,12 @@ def main():
             pass
 
     if not args:
-        usage(1, _('Search regular expression required'))
+        usage(1, C_('Search regular expression required'))
 
     options.regexps = args
 
     if not options.listnames:
-        print _('No lists to search')
+        print C_('No lists to search')
         return
 
     matches = scanlists(options)
@@ -170,13 +170,13 @@ def main():
     for k in addrs:
         hits = matches[k]
         lists = hits.keys()
-        print k, _('found in:')
+        print k, C_('found in:')
         for name in lists:
             aswhat = hits[name]
             if aswhat & AS_MEMBER:
                 print '    ', name
             if aswhat & AS_OWNER:
-                print '    ', name, _('(as owner)')
+                print '    ', name, C_('(as owner)')
 
 
 

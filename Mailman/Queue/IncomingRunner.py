@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -157,14 +157,32 @@ class IncomingRunner(Runner):
                     os._exit(1)
             except Errors.DiscardMessage:
                 # Throw the message away; we need do nothing else with it.
-                syslog('vette', 'Message discarded, msgid: %s',
-                       msg.get('message-id', 'n/a'))
+                # We do need to push the current handler back in the pipeline
+                # just in case the syslog call throws an exception and the
+                # message is shunted.
+                pipeline.insert(0, handler)
+                syslog('vette', """Message discarded, msgid: %s'
+        list: %s,
+        handler: %s""",
+                       msg.get('message-id', 'n/a'),
+                       mlist.real_name, handler)
                 return 0
             except Errors.HoldMessage:
                 # Let the approval process take it from here.  The message no
                 # longer needs to be queued.
                 return 0
             except Errors.RejectMessage, e:
+                # Log this.
+                # We do need to push the current handler back in the pipeline
+                # just in case the syslog call or BounceMessage throws an
+                # exception and the message is shunted.
+                pipeline.insert(0, handler)
+                syslog('vette', """Message rejected, msgid: %s
+        list: %s,
+        handler: %s,
+        reason: %s""",
+                       msg.get('message-id', 'n/a'),
+                       mlist.real_name, handler, e.notice())
                 mlist.BounceMessage(msg, msgdata, e)
                 return 0
             except:

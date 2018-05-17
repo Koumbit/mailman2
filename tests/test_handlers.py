@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -76,6 +76,7 @@ class TestAcknowledge(TestBase):
         # Add a member
         self._mlist.addNewMember('aperson@dom.ain')
         self._mlist.personalize = False
+        self._mlist.dmarc_moderation_action = 0
 
     def tearDown(self):
         for f in os.listdir(mm_cfg.VIRGINQUEUE_DIR):
@@ -591,82 +592,220 @@ Subject: Re: [XTEST] About Mailman...
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 1
+        mlist.from_is_list = 0
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], '_xtest@dom.ain')
-        eq(msg.get_all('reply-to'), ['_xtest@dom.ain'])
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], '_xtest@dom.ain')
+        eq(msg.get_all('reply-to'), None)
+
+    def test_reply_to_list_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 1
+        mlist.from_is_list = 1
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            '_xtest@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), None)
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_list_with_strip(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 1
         mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 0
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], '_xtest@dom.ain')
-        eq(msg.get_all('reply-to'), ['_xtest@dom.ain'])
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], '_xtest@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+
+    def test_reply_to_list_with_strip_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 1
+        mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 1
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            '_xtest@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
+
 
     def test_reply_to_explicit(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 2
+        mlist.from_is_list = 0
         mlist.reply_to_address = 'mlist@dom.ain'
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], 'mlist@dom.ain')
-        eq(msg.get_all('reply-to'), ['mlist@dom.ain'])
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], 'mlist@dom.ain')
+        eq(msg.get_all('reply-to'), None)
+
+    def test_reply_to_explicit_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 2
+        mlist.from_is_list = 1
+        mlist.reply_to_address = 'mlist@dom.ain'
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), None)
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_explicit_with_strip(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 2
         mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 0
         mlist.reply_to_address = 'mlist@dom.ain'
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(self._mlist, msg, {})
-        eq(msg['reply-to'], 'mlist@dom.ain')
-        eq(msg.get_all('reply-to'), ['mlist@dom.ain'])
+        msgdata = {}
+
+        CookHeaders.process(self._mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], 'mlist@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+
+    def test_reply_to_explicit_with_strip_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 2
+        mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 1
+        mlist.reply_to_address = 'mlist@dom.ain'
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+
+        CookHeaders.process(self._mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_extends_to_list(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 1
         mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 0
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], 'bperson@dom.ain, _xtest@dom.ain')
+        msgdata = {}
+
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'bperson@dom.ain, _xtest@dom.ain')
+
+    def test_reply_to_extends_to_list_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 1
+        mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 1
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'bperson@dom.ain, _xtest@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_extends_to_explicit(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 2
         mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 0
         mlist.reply_to_address = 'mlist@dom.ain'
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], 'mlist@dom.ain, bperson@dom.ain')
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain, bperson@dom.ain')
+
+    def test_reply_to_extends_to_explicit_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 2
+        mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 1
+        mlist.reply_to_address = 'mlist@dom.ain'
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain, bperson@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
 
     def test_list_headers_nolist(self):
         eq = self.assertEqual
@@ -699,12 +838,12 @@ From: aperson@dom.ain
         eq(msg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
         eq(msg['list-unsubscribe'],
            '<http://www.dom.ain/mailman/options/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=unsubscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=unsubscribe>')
         eq(msg['list-subscribe'],
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=subscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=subscribe>')
         eq(msg['list-post'], '<mailto:_xtest@dom.ain>')
-        eq(msg['list-archive'], '<http://www.dom.ain/pipermail/_xtest>')
+        eq(msg['list-archive'], '<http://www.dom.ain/pipermail/_xtest/>')
 
     def test_list_headers_with_description(self):
         eq = self.assertEqual
@@ -719,10 +858,10 @@ From: aperson@dom.ain
         eq(msg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
         eq(msg['list-unsubscribe'],
            '<http://www.dom.ain/mailman/options/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=unsubscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=unsubscribe>')
         eq(msg['list-subscribe'],
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
-           '\n\t<mailto:_xtest-request@dom.ain?subject=subscribe>')
+           '\n <mailto:_xtest-request@dom.ain?subject=subscribe>')
         eq(msg['list-post'], '<mailto:_xtest@dom.ain>')
 
 
@@ -862,7 +1001,8 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 footer
---BOUNDARY--""")
+--BOUNDARY--
+""")
 
     def test_image(self):
         eq = self.assertEqual
@@ -1139,6 +1279,7 @@ class TestMimeDel(TestBase):
         self._mlist.filter_mime_types = ['image/jpeg']
         self._mlist.pass_mime_types = []
         self._mlist.convert_html_to_plaintext = 1
+        self._mlist.collapse_alternatives = 1
 
     def test_outer_matches(self):
         msg = email.message_from_string("""\
@@ -1172,10 +1313,9 @@ yyy
 --BOUNDARY--
 """)
         MimeDel.process(self._mlist, msg, {})
-        eq(len(msg.get_payload()), 1)
-        subpart = msg.get_payload(0)
-        eq(subpart.get_content_type(), 'image/gif')
-        eq(subpart.get_payload(), 'yyy')
+        self.assertTrue(not msg.is_multipart())
+        eq(msg.get_content_type(), 'image/gif')
+        eq(msg.get_payload(), 'yyy')
 
     def test_collapse_multipart_alternative(self):
         eq = self.assertEqual
@@ -1204,11 +1344,9 @@ yyy
 --BOUNDARY--
 """)
         MimeDel.process(self._mlist, msg, {})
-        eq(len(msg.get_payload()), 1)
-        eq(msg.get_content_type(), 'multipart/mixed')
-        subpart = msg.get_payload(0)
-        eq(subpart.get_content_type(), 'image/gif')
-        eq(subpart.get_payload(), 'yyy')
+        self.assertTrue(not msg.is_multipart())
+        eq(msg.get_content_type(), 'image/gif')
+        eq(msg.get_payload(), 'yyy')
 
     def test_convert_to_plaintext(self):
         # BAW: This test is dependent on your particular lynx version
@@ -1223,7 +1361,8 @@ MIME-Version: 1.0
 """)
         MimeDel.process(self._mlist, msg, {})
         eq(msg.get_content_type(), 'text/plain')
-        eq(msg.get_payload(), '\n\n\n')
+        #eq(msg.get_payload(), '\n\n\n')
+        eq(msg.get_payload().strip(), '')
 
     def test_deep_structure(self):
         eq = self.assertEqual
@@ -1301,6 +1440,322 @@ This is plain text
         eq(msg.get_content_type(), 'text/plain')
         eq(msg.get_payload(), 'This is plain text')
 
+    def test_recast_multipart(self):
+        eq = self.assertEqual
+        self._mlist.filter_mime_types.append('application/pdf')
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+MIME-Version: 1.0
+Content-type: multipart/mixed;
+ boundary="Boundary_0"
+
+--Boundary_0
+Content-Type: multipart/mixed;
+ boundary="Boundary_1"
+
+--Boundary_1
+Content-type: multipart/mixed;
+ boundary="Boundary_2"
+
+--Boundary_2
+Content-type: multipart/alternative;
+ boundary="Boundary_3"
+
+--Boundary_3
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+Plain text part
+--Boundary_3
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+HTML part
+--Boundary_3--
+
+
+--Boundary_2
+Content-type: application/pdf
+Content-transfer-encoding: 7BIT
+
+PDF part inner 2
+--Boundary_2--
+--Boundary_1
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+second text
+--Boundary_1--
+
+--Boundary_0
+Content-Type: application/pdf
+Content-transfer-encoding: 7BIT
+
+PDF part outer
+--Boundary_0--
+""")
+        MimeDel.process(self._mlist, msg, {})
+        payload = msg.get_payload()
+        eq(len(payload), 2)
+        part1 = msg.get_payload(0)
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Plain text part')
+        part2 = msg.get_payload(1)
+        eq(part2.get_content_type(), 'text/plain')
+        eq(part2.get_payload(), 'second text')
+
+    def test_message_rfc822(self):
+        eq = self.assertEqual
+        msg = email.message_from_string("""\
+Message-ID: <4D9E6AEA.1060802@example.net>
+Date: Thu, 07 Apr 2011 18:54:50 -0700
+From: User <user@example.com>
+MIME-Version: 1.0
+To: Someone <someone@example.net>
+Subject: Message Subject
+Content-Type: multipart/mixed;
+ boundary="------------050603050603060608020908"
+
+This is a multi-part message in MIME format.
+--------------050603050603060608020908
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+Plain body.
+
+--------------050603050603060608020908
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment
+
+Message-ID: <4D9E647F.4050308@example.net>
+Date: Thu, 07 Apr 2011 18:27:27 -0700
+From: User1 <user1@example.com>
+MIME-Version: 1.0
+To: Someone1 <someone1@example.net>
+Content-Type: multipart/mixed; boundary="------------060107040402070208020705"
+Subject: Attached Message 1 Subject
+
+This is a multi-part message in MIME format.
+--------------060107040402070208020705
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+Attached Message 1 body.
+
+--------------060107040402070208020705
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment
+
+From: User2 <user2@example.com>
+To: Someone2 <someone2@example.net>
+Subject: Attached Message 2 Subject
+Date: Thu, 7 Apr 2011 19:09:35 -0500
+Message-ID: <DAE689E1FD1D493BACD15180145B4151@example.net>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0066_01CBF557.56C6F370"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0066_01CBF557.56C6F370
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Attached Message 2 body.
+
+------=_NextPart_000_0066_01CBF557.56C6F370
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment
+
+From: User3 <user3@example.com>
+To: Someone3 <someone3@example.net>
+Subject: Attached Message 3 Subject
+Date: Thu, 7 Apr 2011 17:22:04 -0500
+Message-ID: <BANLkTi=SzfNJo-V7cvrg3nE3uOi9uxXv3g@example.net>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0058_01CBF557.56C48270"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0058_01CBF557.56C48270
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Attached Message 3 plain body.
+
+------=_NextPart_000_0058_01CBF557.56C48270
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+Attached Message 3 html body.
+
+------=_NextPart_000_0058_01CBF557.56C48270--
+
+------=_NextPart_000_0066_01CBF557.56C6F370
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment
+
+From: User4 <user4@example.com>
+To: Someone4 <someone4@example.net>
+Subject: Attached Message 4 Subject
+Date: Thu, 7 Apr 2011 17:24:26 -0500
+Message-ID: <19CC3BDF28CF49AD988FF43B2DBC5F1D@example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0060_01CBF557.56C6F370"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0060_01CBF557.56C6F370
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_0061_01CBF557.56C6F370"
+
+------=_NextPart_001_0061_01CBF557.56C6F370
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Attached Message 4 plain body.
+
+------=_NextPart_001_0061_01CBF557.56C6F370
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Attached Message 4 html body.
+
+------=_NextPart_001_0061_01CBF557.56C6F370--
+
+------=_NextPart_000_0060_01CBF557.56C6F370
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment
+
+From: User5 <user5@example.com>
+To: Someone5 <someone5@example.net>
+Subject: Attached Message 5 Subject
+Date: Thu, 7 Apr 2011 16:24:26 -0500
+Message-ID: <some_id@example>
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_005C_01CBF557.56C6F370"
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_005C_01CBF557.56C6F370
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Attached Message 5 plain body.
+
+------=_NextPart_000_005C_01CBF557.56C6F370
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Attached Message 5 html body.
+
+------=_NextPart_000_005C_01CBF557.56C6F370--
+
+------=_NextPart_000_0060_01CBF557.56C6F370
+Content-Type: text/plain;
+	name="ATT00055.txt"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="ATT00055.txt"
+
+Another plain part.
+
+------=_NextPart_000_0060_01CBF557.56C6F370--
+
+------=_NextPart_000_0066_01CBF557.56C6F370--
+
+--------------060107040402070208020705
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Final plain part.
+
+--------------060107040402070208020705--
+
+--------------050603050603060608020908--
+""")
+        MimeDel.process(self._mlist, msg, {})
+        payload = msg.get_payload()
+        eq(len(payload), 2)
+        part1 = msg.get_payload(0)
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Plain body.\n')
+        part2 = msg.get_payload(1)
+        eq(part2.get_content_type(), 'message/rfc822')
+        payload = part2.get_payload()
+        eq(len(payload), 1)
+        part1 = part2.get_payload(0)
+        eq(part1['subject'], 'Attached Message 1 Subject')
+        eq(part1.get_content_type(), 'multipart/mixed')
+        payload = part1.get_payload()
+        eq(len(payload), 3)
+        part3 = part1.get_payload(2)
+        eq(part3.get_content_type(), 'text/plain')
+        eq(part3.get_payload(), 'Final plain part.\n')
+        part2 = part1.get_payload(1)
+        eq(part2.get_content_type(), 'message/rfc822')
+        part1 = part1.get_payload(0)
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Attached Message 1 body.\n')
+        payload = part2.get_payload()
+        eq(len(payload), 1)
+        part1 = part2.get_payload(0)
+        eq(part1['subject'], 'Attached Message 2 Subject')
+        eq(part1.get_content_type(), 'multipart/mixed')
+        payload = part1.get_payload()
+        eq(len(payload), 3)
+        part3 = part1.get_payload(2)
+        eq(part3.get_content_type(), 'message/rfc822')
+        part2 = part1.get_payload(1)
+        eq(part2.get_content_type(), 'message/rfc822')
+        part1 = part1.get_payload(0)
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Attached Message 2 body.\n')
+        payload = part2.get_payload()
+        eq(len(payload), 1)
+        part1 = part2.get_payload(0)
+        eq(part1['subject'], 'Attached Message 3 Subject')
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Attached Message 3 plain body.\n')
+        payload = part3.get_payload()
+        eq(len(payload), 1)
+        part1 = part3.get_payload(0)
+        eq(part1['subject'], 'Attached Message 4 Subject')
+        eq(part1.get_content_type(), 'multipart/mixed')
+        payload = part1.get_payload()
+        eq(len(payload), 3)
+        part3 = part1.get_payload(2)
+        eq(part3.get_content_type(), 'text/plain')
+        eq(part3.get_filename(), 'ATT00055.txt')
+        eq(part3.get_payload(), 'Another plain part.\n')
+        part2 = part1.get_payload(1)
+        eq(part2.get_content_type(), 'message/rfc822')
+        part1 = part1.get_payload(0)
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Attached Message 4 plain body.\n')
+        payload = part2.get_payload()
+        eq(len(payload), 1)
+        part1 = part2.get_payload(0)
+        eq(part1['subject'], 'Attached Message 5 Subject')
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Attached Message 5 plain body.\n')
 
 
 class TestModerate(TestBase):
@@ -1316,7 +1771,8 @@ class TestReplybot(TestBase):
 class TestSpamDetect(TestBase):
     def test_short_circuit(self):
         msgdata = {'approved': 1}
-        rtn = SpamDetect.process(self._mlist, None, msgdata)
+        msg = email.message_from_string('', Message.Message)
+        rtn = SpamDetect.process(self._mlist, msg, msgdata)
         # Not really a great test, but there's little else to assert
         self.assertEqual(rtn, None)
 
@@ -1325,12 +1781,12 @@ class TestSpamDetect(TestBase):
 From: aperson@dom.ain
 
 A message.
-""")
+""", Message.Message)
         msg2 = email.message_from_string("""\
 To: xlist@dom.ain
 
 A message.
-""")
+""", Message.Message)
         spammers = mm_cfg.KNOWN_SPAMMERS[:]
         try:
             mm_cfg.KNOWN_SPAMMERS.append(('from', '.?person'))
@@ -1564,7 +2020,9 @@ Here is message %(i)d
         mlist = self._mlist
         msg = self._makemsg(99)
         size = os.path.getsize(self._path) + len(str(msg))
-        mlist.digest_size_threshhold = 0
+        # Set digest_size_threshhold to a very small value to force a digest.
+        # Setting to zero no longer works.
+        mlist.digest_size_threshhold = 0.001
         ToDigest.process(mlist, msg, {})
         files = self._sb.files()
         # There should be two files in the queue, one for the MIME digest and

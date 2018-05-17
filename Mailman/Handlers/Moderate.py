@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,6 +21,7 @@
 import re
 from email.MIMEMessage import MIMEMessage
 from email.MIMEText import MIMEText
+from email.Utils import parseaddr
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -47,10 +48,16 @@ class ModeratedMemberPost(Hold.ModeratedPost):
 
 
 def process(mlist, msg, msgdata):
-    if msgdata.get('approved') or msgdata.get('fromusenet'):
+    if msgdata.get('approved'):
         return
-    # First of all, is the poster a member or not?
+    # Is the poster a member or not?
     for sender in msg.get_senders():
+        if mlist.isMember(sender):
+            break
+        for sender in Utils.check_eq_domains(sender,
+                          mlist.equivalent_domains):
+            if mlist.isMember(sender):
+                break
         if mlist.isMember(sender):
             break
     else:
@@ -90,22 +97,34 @@ def process(mlist, msg, msgdata):
         sender = msg.get_sender()
     # From here on out, we're dealing with non-members.
     listname = mlist.internal_name()
-    if matches_p(sender, mlist.accept_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.accept_these_nonmembers,
+                        at_list='accept_these_nonmembers'
+                       ):
         return
-    if matches_p(sender, mlist.hold_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.hold_these_nonmembers,
+                        at_list='hold_these_nonmembers'
+                       ):
         Hold.hold_for_approval(mlist, msg, msgdata, Hold.NonMemberPost)
         # No return
-    if matches_p(sender, mlist.reject_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.reject_these_nonmembers,
+                        at_list='reject_these_nonmembers'
+                       ):
         do_reject(mlist)
         # No return
-    if matches_p(sender, mlist.discard_these_nonmembers, listname):
+    if mlist.GetPattern(sender,
+                        mlist.discard_these_nonmembers,
+                        at_list='discard_these_nonmembers'
+                       ):
         do_discard(mlist, msg)
         # No return
     # Okay, so the sender wasn't specified explicitly by any of the non-member
     # moderation configuration variables.  Handle by way of generic non-member
     # action.
     assert 0 <= mlist.generic_nonmember_action <= 4
-    if mlist.generic_nonmember_action == 0:
+    if mlist.generic_nonmember_action == 0 or msgdata.get('fromusenet'):
         # Accept
         return
     elif mlist.generic_nonmember_action == 1:
@@ -117,42 +136,6 @@ def process(mlist, msg, msgdata):
 
 
 
-def matches_p(sender, nonmembers, listname):
-    # First strip out all the regular expressions and listnames
-    plainaddrs = [addr for addr in nonmembers if not (addr.startswith('^')
-                                                 or addr.startswith('@'))]
-    addrdict = Utils.List2Dict(plainaddrs, foldcase=1)
-    if addrdict.has_key(sender):
-        return 1
-    # Now do the regular expression matches
-    for are in nonmembers:
-        if are.startswith('^'):
-            try:
-                cre = re.compile(are, re.IGNORECASE)
-            except re.error:
-                continue
-            if cre.search(sender):
-                return 1
-        elif are.startswith('@'):
-            # XXX Needs to be reviewed for list@domain names.
-            try:
-                if are[1:] == listname:
-                    # don't reference your own list
-                    syslog('error',
-                        '*_these_nonmembers in %s references own list',
-                        listname)
-                else:
-                    mother = MailList(are[1:], lock=0)
-                    if mother.isMember(sender):
-                        return 1
-            except Errors.MMUnknownListError:
-                syslog('error',
-                  '*_these_nonmembers in %s references non-existent list %s',
-                  listname, are[1:])
-    return 0
-
-
-
 def do_reject(mlist):
     listowner = mlist.GetOwnerEmail()
     if mlist.nonmember_rejection_notice:
@@ -160,9 +143,10 @@ def do_reject(mlist):
               Utils.wrap(_(mlist.nonmember_rejection_notice))
     else:
         raise Errors.RejectMessage, Utils.wrap(_("""\
-You are not allowed to post to this mailing list, and your message has been
-automatically rejected.  If you think that your messages are being rejected in
-error, contact the mailing list owner at %(listowner)s."""))
+Your message has been rejected, probably because you are not subscribed to the
+mailing list and the list's policy is to prohibit non-members from posting to
+it.  If you think that your messages are being rejected in error, contact the
+mailing list owner at %(listowner)s."""))
 
 
 

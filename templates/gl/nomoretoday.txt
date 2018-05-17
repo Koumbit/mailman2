@@ -1,9 +1,9 @@
-Recibiuse unha mensaxe procedente do seu enderezo de correo electrÛnico
-'%(sender)s' en que se solicita unha resposta autom·tica da rolda de
-distribuciÛn %(listname)s. CÛmpre salientar que  hoxe enviou %(num)s mensaxes.  Para evitar problemas como bucles infinitos de mensaxes
-entre robots de correo electrÛnico, hoxe non se lle enviar·n m·is mensaxes.
-TÈnteo unha outra vez maÒ·.
+Recibiuse unha mensaxe procedente do seu enderezo de correo electr√≥nico
+'%(sender)s' en que se solicita unha resposta autom√°tica da rolda de
+distribuci√≥n %(listname)s. C√≥mpre salientar que  hoxe enviou %(num)s mensaxes.  Para evitar problemas como bucles infinitos de mensaxes
+entre robots de correo electr√≥nico, hoxe non se lle enviar√°n m√°is mensaxes.
+T√©nteo unha outra vez ma√±√°.
 
-Se xulga que esta mensaxe est· errada ou se ten calquera outra
-cuestiÛn que facer, pÛÒase en contacto co propietario da
-rolda a travÈs do enderezo %(owneremail)s.
+Se xulga que esta mensaxe est√° errada ou se ten calquera outra
+cuesti√≥n que facer, p√≥√±ase en contacto co propietario da
+rolda a trav√©s do enderezo %(owneremail)s.

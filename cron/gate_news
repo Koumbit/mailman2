@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -75,7 +75,7 @@ except NameError:
 
 
 
-def usage(status, msg=''):
+def usage(code, msg=''):
     if code:
         fd = sys.stderr
     else:
@@ -101,7 +101,7 @@ def open_newsgroup(mlist):
                                 readermode=True,
                                 user=mm_cfg.NNTP_USERNAME,
                                 password=mm_cfg.NNTP_PASSWORD)
-        except (socket.error, nntplib.NNTPError, IOError), e:
+        except (socket.error, nntplib.NNTPError, IOError, EOFError), e:
             syslog('fromusenet',
                    'error opening connection to nntp_host: %s\n%s',
                    mlist.nntp_host, e)
@@ -212,7 +212,7 @@ def process_lists(glock):
         # Open the newsgroup, but let most exceptions percolate up.
         try:
             conn, first, last = open_newsgroup(mlist)
-        except (socket.error, nntplib.NNTPError), e:
+        except (socket.error, nntplib.NNTPError, IOError, EOFError), e:
             syslog('fromusenet',
                    "%s: couldn't open newsgroup %s: skipping\n%s",
                    listname, mlist.linked_newsgroup, e)

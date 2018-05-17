@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -101,7 +101,7 @@ class ListAdmin:
             # should we be as paranoid as for the config.pck file?  Should we
             # use pickle?
             tmpfile = self.__filename + '.tmp'
-            omask = os.umask(002)
+            omask = os.umask(007)
             try:
                 fp = open(tmpfile, 'w')
                 try:
@@ -194,7 +194,7 @@ class ListAdmin:
         else:
             ext = 'txt'
         filename = 'heldmsg-%s-%d.%s' % (self.internal_name(), id, ext)
-        omask = os.umask(002)
+        omask = os.umask(007)
         try:
             fp = open(os.path.join(mm_cfg.DATA_DIR, filename), 'w')
             try:
@@ -221,6 +221,8 @@ class ListAdmin:
         # an additional dictionary of message metadata
         #
         msgsubject = msg.get('subject', _('(no subject)'))
+        if not sender:
+            sender = _('<missing>')
         data = time.time(), sender, msgsubject, reason, filename, msgdata
         self.__db[id] = (HELDMSG, data)
         return id
@@ -241,7 +243,11 @@ class ListAdmin:
                 if e.errno <> errno.ENOENT: raise
                 return LOST
             try:
-                msg = cPickle.load(fp)
+                if path.endswith('.pck'):
+                    msg = cPickle.load(fp)
+                else:
+                    assert path.endswith('.txt'), '%s not .pck or .txt' % path
+                    msg = fp.read()
             finally:
                 fp.close()
             # Save the plain text to a .msg file, not a .pck file
@@ -250,8 +256,11 @@ class ListAdmin:
             outpath = head + '.msg'
             outfp = open(outpath, 'w')
             try:
-                g = Generator(outfp)
-                g.flatten(msg, 1)
+                if path.endswith('.pck'):
+                    g = Generator(outfp)
+                    g.flatten(msg, 1)
+                else:
+                    outfp.write(msg)
             finally:
                 outfp.close()
         # Now handle updates to the database
@@ -283,7 +292,8 @@ class ListAdmin:
             # message directly here can lead to a huge delay in web
             # turnaround.  Log the moderation and add a header.
             msg['X-Mailman-Approved-At'] = email.Utils.formatdate(localtime=1)
-            syslog('vette', 'held message approved, message-id: %s',
+            syslog('vette', '%s: held message approved, message-id: %s',
+                   self.internal_name(),
                    msg.get('message-id', 'n/a'))
             # Stick the message back in the incoming queue for further
             # processing.
@@ -388,6 +398,7 @@ class ListAdmin:
                self.internal_name(), addr)
         # Possibly notify the administrator in default list language
         if self.admin_immed_notify:
+            i18n.set_language(self.preferred_language)
             realname = self.real_name
             subject = _(
                 'New subscription request to list %(realname)s from %(addr)s')
@@ -404,6 +415,8 @@ class ListAdmin:
             msg = Message.UserNotification(owneraddr, owneraddr, subject, text,
                                            self.preferred_language)
             msg.send(self, **{'tomoderators': 1})
+            # Restore the user's preferred language.
+            i18n.set_language(lang)
 
     def __handlesubscription(self, record, value, comment):
         stime, addr, fullname, password, digest, lang = record

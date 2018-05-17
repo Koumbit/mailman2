@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,6 +32,7 @@ from email.Utils import unquote, parseaddr, formataddr
 
 from Mailman import mm_cfg
 from Mailman import Utils
+from Mailman import Message
 from Mailman import MailList
 from Mailman import Errors
 from Mailman import MemberAdaptor
@@ -41,6 +42,7 @@ from Mailman.htmlformat import *
 from Mailman.Cgi import Auth
 from Mailman.Logging.Syslog import syslog
 from Mailman.Utils import sha_new
+from Mailman.CSRFcheck import csrf_check
 
 # Set up i18n
 _ = i18n._
@@ -54,6 +56,8 @@ try:
 except NameError:
     True = 1
     False = 0
+
+AUTH_CONTEXTS = (mm_cfg.AuthListAdmin, mm_cfg.AuthSiteAdmin)
 
 
 
@@ -74,14 +78,40 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         admin_overview(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'admin.py access for non-existent list: %s',
-               listname)
+        syslog('error', 'admin: No such list "%s": %s\n',
+               listname, e)
         return
     # Now that we know what list has been requested, all subsequent admin
     # pages are shown in that list's preferred language.
     i18n.set_language(mlist.preferred_language)
     # If the user is not authenticated, we're done.
     cgidata = cgi.FieldStorage(keep_blank_values=1)
+    try:
+        cgidata.getvalue('csrf_token', '')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc = Document()
+        doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
+    # CSRF check
+    safe_params = ['VARHELP', 'adminpw', 'admlogin',
+                   'letter', 'chunk', 'findmember',
+                   'legend']
+    params = cgidata.keys()
+    if set(params) - set(safe_params):
+        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+    else:
+        csrf_checked = True
+    # if password is present, void cookie to force password authentication.
+    if cgidata.getvalue('adminpw'):
+        os.environ['HTTP_COOKIE'] = ''
+        csrf_checked = True
 
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthSiteAdmin),
@@ -107,6 +137,9 @@ def main():
 
     # Is this a log-out request?
     if category == 'logout':
+        # site-wide admin should also be able to logout.
+        if mlist.AuthContextInfo(mm_cfg.AuthSiteAdmin)[0] == 'site':
+            print mlist.ZapCookie(mm_cfg.AuthSiteAdmin)
         print mlist.ZapCookie(mm_cfg.AuthListAdmin)
         Auth.loginpage(mlist, 'admin', frontpage=1)
         return
@@ -171,8 +204,12 @@ def main():
         signal.signal(signal.SIGTERM, sigterm_handler)
 
         if cgidata.keys():
-            # There are options to change
-            change_options(mlist, category, subcat, cgidata, doc)
+            if csrf_checked:
+                # There are options to change
+                change_options(mlist, category, subcat, cgidata, doc)
+            else:
+                doc.addError(
+                  _('The form lifetime has expired. (request forgery check)'))
             # Let the list sanity check the changed values
             mlist.CheckValues()
         # Additional sanity checks
@@ -184,16 +221,20 @@ def main():
                 non-digest delivery or your mailing list will basically be
                 unusable.'''), tag=_('Warning: '))
 
-        if not mlist.digestable and mlist.getDigestMemberKeys():
+        dm = mlist.getDigestMemberKeys()
+        if not mlist.digestable and dm:
             doc.addError(
                 _('''You have digest members, but digests are turned
-                off. Those people will not receive mail.'''),
+                off. Those people will not receive mail.
+                Affected member(s) %(dm)r.'''),
                 tag=_('Warning: '))
-        if not mlist.nondigestable and mlist.getRegularMemberKeys():
+        rm = mlist.getRegularMemberKeys()
+        if not mlist.nondigestable and rm:
             doc.addError(
                 _('''You have regular list members but non-digestified mail is
                 turned off.  They will receive non-digestified mail until you
-                fix this problem.'''), tag=_('Warning: '))
+                fix this problem. Affected member(s) %(rm)r.'''),
+                tag=_('Warning: '))
         # Glom up the results page and print it out
         show_results(mlist, doc, category, subcat, cgidata)
         print doc.Format()
@@ -231,7 +272,11 @@ def admin_overview(msg=''):
     listnames.sort()
 
     for name in listnames:
-        mlist = MailList.MailList(name, lock=0)
+        try:
+            mlist = MailList.MailList(name, lock=0)
+        except Errors.MMUnknownListError:
+            # The list could have been deleted by another process.
+            continue
         if mlist.advertised:
             if mm_cfg.VIRTUAL_HOST_OVERVIEW and (
                    mlist.web_page_url.find('/%s/' % hostname) == -1 and
@@ -355,7 +400,7 @@ def option_help(mlist, varhelp):
         url = '%s/%s/%s' % (mlist.GetScriptURL('admin'), category, subcat)
     else:
         url = '%s/%s' % (mlist.GetScriptURL('admin'), category)
-    form = Form(url)
+    form = Form(url, mlist=mlist, contexts=AUTH_CONTEXTS)
     valtab = Table(cellspacing=3, cellpadding=4, width='100%')
     add_options_table_item(mlist, category, subcat, valtab, item, detailsp=0)
     form.AddItem(valtab)
@@ -401,9 +446,10 @@ def show_results(mlist, doc, category, subcat, cgidata):
         encoding = 'multipart/form-data'
     if subcat:
         form = Form('%s/%s/%s' % (adminurl, category, subcat),
-                    encoding=encoding)
+                    encoding=encoding, mlist=mlist, contexts=AUTH_CONTEXTS)
     else:
-        form = Form('%s/%s' % (adminurl, category), encoding=encoding)
+        form = Form('%s/%s' % (adminurl, category), 
+                    encoding=encoding, mlist=mlist, contexts=AUTH_CONTEXTS)
     # This holds the two columns of links
     linktable = Table(valign='top', width='100%')
     linktable.AddRow([Center(Bold(_("Configuration Categories"))),
@@ -494,7 +540,7 @@ def show_results(mlist, doc, category, subcat, cgidata):
     if category == 'members':
         # Figure out which subcategory we should display
         subcat = Utils.GetPathPieces()[-1]
-        if subcat not in ('list', 'add', 'remove'):
+        if subcat not in ('list', 'add', 'remove', 'change'):
             subcat = 'list'
         # Add member category specific tables
         form.AddItem(membership_options(mlist, subcat, cgidata, doc, form))
@@ -848,6 +894,13 @@ def membership_options(mlist, subcat, cgidata, doc, form):
         container.AddItem(header)
         mass_remove(mlist, container)
         return container
+    if subcat == 'change':
+        header.AddRow([Center(Header(2, _('Address Change')))])
+        header.AddCellInfo(header.GetCurrentRowIndex(), 0, colspan=2,
+                           bgcolor=mm_cfg.WEB_HEADER_COLOR)
+        container.AddItem(header)
+        address_change(mlist, container)
+        return container
     # Otherwise...
     header.AddRow([Center(Header(2, _('Membership List')))])
     header.AddCellInfo(header.GetCurrentRowIndex(), 0, colspan=2,
@@ -874,6 +927,15 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     all.sort(lambda x, y: cmp(x.lower(), y.lower()))
     # See if the query has a regular expression
     regexp = cgidata.getvalue('findmember', '').strip()
+    try:
+        regexp = regexp.decode(Utils.GetCharSet(mlist.preferred_language))
+    except UnicodeDecodeError:
+        # This is probably a non-ascii character and an English language
+        # (ascii) list.  Even if we didn't throw the UnicodeDecodeError,
+        # the input may have contained mnemonic or numeric HTML entites mixed
+        # with other characters.  Trying to grok the real meaning out of that
+        # is complex and error prone, so we don't try.
+        pass
     if regexp:
         try:
             cre = re.compile(regexp, re.IGNORECASE)
@@ -948,6 +1010,9 @@ def membership_options(mlist, subcat, cgidata, doc, form):
             if regexp:
                 findfrag = '&findmember=' + urllib.quote(regexp)
             url = adminurl + '/members?letter=' + letter + findfrag
+            if isinstance(url, unicode):
+                url = url.encode(Utils.GetCharSet(mlist.preferred_language),
+                                 errors='ignore')
             if letter == bucket:
                 show = Bold('[%s]' % letter.upper()).Format()
             else:
@@ -1123,7 +1188,8 @@ def membership_options(mlist, subcat, cgidata, doc, form):
                 continue
             start = chunkmembers[i*chunksz]
             end = chunkmembers[min((i+1)*chunksz, last)-1]
-            link = Link(url + 'chunk=%d' % i, _('from %(start)s to %(end)s'))
+            link = Link(url + 'chunk=%d' % i + findfrag,
+                        _('from %(start)s to %(end)s'))
             buttons.append(link)
         buttons = UnorderedList(*buttons)
         container.AddItem(footer + buttons.Format() + '<p>')
@@ -1139,7 +1205,8 @@ def mass_subscribe(mlist, container):
         Label(_('Subscribe these users now or invite them?')),
         RadioButtonArray('subscribe_or_invite',
                          (_('Subscribe'), _('Invite')),
-                         0, values=(0, 1))
+                         mm_cfg.DEFAULT_SUBSCRIBE_OR_INVITE,
+                         values=(0, 1))
         ])
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
     table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
@@ -1213,6 +1280,38 @@ def mass_remove(mlist, container):
 
 
 
+def address_change(mlist, container):
+    # ADDRESS CHANGE
+    GREY = mm_cfg.WEB_ADMINITEM_COLOR
+    table = Table(width='90%')
+    table.AddRow([Italic(_("""To change a list member's address, enter the
+    member's current and new addresses below. Use the check boxes to send
+    notice of the change to the old and/or new address(es)."""))])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=3)
+    table.AddRow([
+        Label(_("Member's current address")),
+        TextBox(name='change_from'),
+        CheckBox('notice_old', 'yes', 0).Format() +
+            '&nbsp;' +
+            _('Send notice')
+        ])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 2, bgcolor=GREY)
+    table.AddRow([
+        Label(_('Address to change to')),
+        TextBox(name='change_to'),
+        CheckBox('notice_new', 'yes', 0).Format() +
+            '&nbsp;' +
+            _('Send notice')
+        ])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 2, bgcolor=GREY)
+    container.AddItem(Center(table))
+
+
+
 def password_inputs(mlist):
     adminurl = mlist.GetScriptURL('admin', absolute=1)
     table = Table(cellspacing=3, cellpadding=4)
@@ -1251,6 +1350,22 @@ and also provide the email addresses of the list moderators in the
                    PasswordBox('confirmmodpw', size=20)])
     # Add these tables to the overall password table
     table.AddRow([atable, mtable])
+    table.AddRow([_("""\
+In addition to the above passwords you may specify a password for
+pre-approving posts to the list. Either of the above two passwords can
+be used in an Approved: header or first body line pseudo-header to
+pre-approve a post that would otherwise be held for moderation. In
+addition, the password below, if set, can be used for that purpose and
+no other.""")])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=2)
+    # Set up the post password table
+    ptable = Table(border=0, cellspacing=3, cellpadding=4,
+                   bgcolor=mm_cfg.WEB_ADMINPW_COLOR)
+    ptable.AddRow([Label(_('Enter new poster password:')),
+                   PasswordBox('newpostpw', size=20)])
+    ptable.AddRow([Label(_('Confirm poster password:')),
+                   PasswordBox('confirmpostpw', size=20)])
+    table.AddRow([ptable])
     return table
 
 
@@ -1281,6 +1396,17 @@ def change_options(mlist, category, subcat, cgidata, doc):
             # password doesn't get you into these pages.
         else:
             doc.addError(_('Moderator passwords did not match'))
+    # Handle changes to the list poster password.  Do this before checking
+    # the new admin password, since the latter will force a reauthentication.
+    new = cgidata.getvalue('newpostpw', '').strip()
+    confirm = cgidata.getvalue('confirmpostpw', '').strip()
+    if new or confirm:
+        if new == confirm:
+            mlist.post_password = sha_new(new).hexdigest()
+            # No re-authentication necessary because the poster's
+            # password doesn't get you into these pages.
+        else:
+            doc.addError(_('Poster passwords did not match'))
     # Handle changes to the list administrator password
     new = cgidata.getvalue('newpw', '').strip()
     confirm = cgidata.getvalue('confirmpw', '').strip()
@@ -1381,10 +1507,12 @@ def change_options(mlist, category, subcat, cgidata, doc):
         removals += cgidata['unsubscribees_upload'].value
     if removals:
         names = filter(None, [n.strip() for n in removals.splitlines()])
-        send_unsub_notifications = int(
-            cgidata['send_unsub_notifications_to_list_owner'].value)
-        userack = int(
-            cgidata['send_unsub_ack_to_this_batch'].value)
+        send_unsub_notifications = safeint(
+            'send_unsub_notifications_to_list_owner',
+            mlist.admin_notify_mchanges)
+        userack = safeint(
+            'send_unsub_ack_to_this_batch',
+            mlist.send_goodbye_msg)
         unsubscribe_errors = []
         unsubscribe_success = []
         for addr in names:
@@ -1406,13 +1534,77 @@ def change_options(mlist, category, subcat, cgidata, doc):
                 color='#ff0000', size='+2')).Format()))
             doc.AddItem(UnorderedList(*unsubscribe_errors))
             doc.AddItem('<p>')
+    # Address Changes
+    if cgidata.has_key('change_from'):
+        change_from = cgidata.getvalue('change_from', '')
+        change_to = cgidata.getvalue('change_to', '')
+        schange_from = Utils.websafe(change_from)
+        schange_to = Utils.websafe(change_to)
+        success = False
+        msg = None
+        if not (change_from and change_to):
+            msg = _('You must provide both current and new addresses.')
+        elif change_from == change_to:
+            msg = _('Current and new addresses must be different.')
+        elif mlist.isMember(change_to):
+            # ApprovedChangeMemberAddress will just delete the old address
+            # and we don't want that here.
+            msg = _('%(schange_to)s is already a list member.')
+        else:
+            try:
+                Utils.ValidateEmail(change_to)
+            except (Errors.MMBadEmailError, Errors.MMHostileAddress):
+                msg = _('%(schange_to)s is not a valid email address.')
+        if msg:
+            doc.AddItem(Header(3, msg))
+            doc.AddItem('<p>')
+            return
+        try:
+            mlist.ApprovedChangeMemberAddress(change_from, change_to, False)
+        except Errors.NotAMemberError:
+            msg = _('%(schange_from)s is not a member')
+        except Errors.MMAlreadyAMember:
+            msg = _('%(schange_to)s is already a member')
+        except Errors.MembershipIsBanned, pat:
+            spat = Utils.websafe(str(pat))
+            msg = _('%(schange_to)s matches banned pattern %(spat)s')
+        else:
+            msg = _('Address %(schange_from)s changed to %(schange_to)s')
+            success = True
+        doc.AddItem(Header(3, msg))
+        lang = mlist.getMemberLanguage(change_to)
+        otrans = i18n.get_translation()
+        i18n.set_language(lang)
+        list_name = mlist.getListAddress()
+        text = Utils.wrap(_("""The member address %(change_from)s on the
+%(list_name)s list has been changed to %(change_to)s.
+"""))
+        subject = _('%(list_name)s address change notice.')
+        i18n.set_translation(otrans)
+        if success and cgidata.getvalue('notice_old', '') == 'yes':
+            # Send notice to old address.
+            msg = Message.UserNotification(change_from,
+                mlist.GetOwnerEmail(),
+                text=text,
+                subject=subject,
+                lang=lang
+                )
+            msg.send(mlist)
+            doc.AddItem(Header(3, _('Notification sent to %(schange_from)s.')))
+        if success and cgidata.getvalue('notice_new', '') == 'yes':
+            # Send notice to new address.
+            msg = Message.UserNotification(change_to,
+                mlist.GetOwnerEmail(),
+                text=text,
+                subject=subject,
+                lang=lang
+                )
+            msg.send(mlist)
+            doc.AddItem(Header(3, _('Notification sent to %(schange_to)s.')))
+        doc.AddItem('<p>')
     # See if this was a moderation bit operation
     if cgidata.has_key('allmodbit_btn'):
-        val = cgidata.getvalue('allmodbit_val')
-        try:
-            val = int(val)
-        except VallueError:
-            val = None
+        val = safeint('allmodbit_val')
         if val not in (0, 1):
             doc.addError(_('Bad moderation flag value'))
         else:

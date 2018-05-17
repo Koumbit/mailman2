@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -64,7 +64,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s', listname, e)
+        syslog('error', 'confirm: No such list "%s": %s', listname, e)
         return
 
     # Set the language for the list
@@ -73,7 +73,17 @@ def main():
 
     # Get the form data to see if this is a second-step confirmation
     cgidata = cgi.FieldStorage(keep_blank_values=1)
-    cookie = cgidata.getvalue('cookie')
+    try:
+        cookie = cgidata.getvalue('cookie')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     if cookie == '':
         ask_for_cookie(mlist, doc, _('Confirmation string was empty.'))
         return
@@ -99,8 +109,9 @@ def main():
     %(safecookie)s.
 
     <p>Note that confirmation strings expire approximately
-    %(days)s days after the initial subscription request.  If your
-    confirmation has expired, please try to re-submit your subscription.
+    %(days)s days after the initial request.  They also expire if the
+    request has already been handled in some way.  If your confirmation
+    has expired, please try to re-submit your request.
     Otherwise, <a href="%(confirmurl)s">re-enter</a> your confirmation
     string.''')
 
@@ -258,7 +269,8 @@ def subscription_prompt(mlist, doc, cookie, userdesc):
 
     <p>Or hit <em>Cancel my subscription request</em> if you no longer want to
     subscribe to this list.""") + '<p><hr>'
-    if mlist.subscribe_policy in (2, 3):
+    if (mlist.subscribe_policy in (2, 3) and
+            not getattr(userdesc, 'invitation', False)):
         # Confirmation is required
         result = _("""Your confirmation is required in order to continue with
         the subscription request to the mailing list <em>%(listname)s</em>.
@@ -471,7 +483,7 @@ def unsubscription_prompt(mlist, doc, cookie, addr):
     if fullname is None:
         fullname = _('<em>Not available</em>')
     else:
-        fullname = Utils.uncanonstr(fullname, lang)
+        fullname = Utils.websafe(Utils.uncanonstr(fullname, lang))
     table.AddRow([_("""Your confirmation is required in order to complete the
     unsubscription request from the mailing list <em>%(listname)s</em>.  You
     are currently subscribed with
@@ -573,7 +585,7 @@ def addrchange_prompt(mlist, doc, cookie, oldaddr, newaddr, globally):
     if fullname is None:
         fullname = _('<em>Not available</em>')
     else:
-        fullname = Utils.uncanonstr(fullname, lang)
+        fullname = Utils.websafe(Utils.uncanonstr(fullname, lang))
     if globally:
         globallys = _('globally')
     else:
@@ -634,6 +646,7 @@ def heldmsg_confirm(mlist, doc, cookie):
         try:
             # Do this in two steps so we can get the preferred language for
             # the user who posted the message.
+            subject = 'n/a'
             op, id = mlist.pend_confirm(cookie)
             ign, sender, msgsubject, ign, ign, ign = mlist.GetRecord(id)
             lang = mlist.getMemberLanguage(sender)
@@ -644,7 +657,7 @@ def heldmsg_confirm(mlist, doc, cookie):
             # Discard the message
             mlist.HandleRequest(id, mm_cfg.DISCARD,
                                 _('Sender discarded message via web.'))
-        except Errors.LostHeldMessage:
+        except (Errors.LostHeldMessage, KeyError):
             bad_confirmation(doc, _('''The held message with the Subject:
             header <em>%(subject)s</em> could not be found.  The most likely
             reason for this is that the list moderator has already approved or
@@ -814,7 +827,7 @@ def reenable_prompt(mlist, doc, cookie, list, member):
     if username is None:
         username = _('<em>not available</em>')
     else:
-        username = Utils.uncanonstr(username, lang)
+        username = Utils.websafe(Utils.uncanonstr(username, lang))
 
     table.AddRow([_("""Your membership in the %(realname)s mailing list is
     currently disabled due to excessive bounces.  Your confirmation is

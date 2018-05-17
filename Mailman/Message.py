@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -149,9 +149,11 @@ class Message(email.Message.Message):
             if not fieldval:
                 continue
             # Work around bug in email 2.5.8 (and ?) involving getaddresses()
-            # from multi-line header values.  Note that cset='us-ascii' is OK
-            # since the address itself can't be RFC 2047 encoded.
-            fieldval = Utils.oneline(fieldval, 'us-ascii')
+            # from multi-line header values.
+            # Don't use Utils.oneline() here because the header must not be
+            # decoded before parsing since the decoded header may contain
+            # an unquoted comma or other delimiter in a real name.
+            fieldval = ''.join(fieldval.splitlines())
             addrs = email.Utils.getaddresses([fieldval])
             try:
                 realname, address = addrs[0]
@@ -207,7 +209,7 @@ class Message(email.Message.Message):
                 if fieldvals:
                     # See comment above in get_sender() regarding
                     # getaddresses() and multi-line headers
-                    fieldvals = [Utils.oneline(fv, 'us-ascii')
+                    fieldvals = [''.join(fv.splitlines())
                                  for fv in fieldvals]
                     pairs.extend(email.Utils.getaddresses(fieldvals))
         authors = []
@@ -266,7 +268,7 @@ class UserNotification(Message):
             self['To'] = recip
             self.recips = [recip]
 
-    def send(self, mlist, **_kws):
+    def send(self, mlist, noprecedence=False, **_kws):
         """Sends the message by enqueuing it to the `virgin' queue.
 
         This is used for all internally crafted messages.
@@ -282,8 +284,13 @@ class UserNotification(Message):
         # UserNotifications are typically for admin messages, and for messages
         # other than list explosions.  Send these out as Precedence: bulk, but
         # don't override an existing Precedence: header.
-        if not self.has_key('precedence'):
-            self['Precedence'] = 'bulk'
+        # Also, if the message is To: the list-owner address, set Precedence:
+        # list.  See note below in OwnerNotification.
+        if not (self.has_key('precedence') or noprecedence):
+            if self.get('to') == mlist.GetOwnerEmail():
+                self['Precedence'] = 'list'
+            else:
+                self['Precedence'] = 'bulk'
         self._enqueue(mlist, **_kws)
 
     def _enqueue(self, mlist, **_kws):
@@ -316,6 +323,12 @@ class OwnerNotification(UserNotification):
         del self['to']
         self['To'] = mlist.GetOwnerEmail()
         self._sender = sender
+        # User notifications are normally sent with Precedence: bulk.  This
+        # is appropriate as they can be backscatter of rejected spam.
+        # Owner notifications are not backscatter and are perhaps more
+        # important than 'bulk' so give them Precedence: list by default.
+        # (LP: #1313146)
+        self['Precedence'] = 'list'
 
     def _enqueue(self, mlist, **_kws):
         # Not imported at module scope to avoid import loop

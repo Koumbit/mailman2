@@ -63,7 +63,8 @@ def process(mlist, msg, msgdata):
     missing = []
     password = msg.get('urgent', missing)
     if password is not missing:
-        if mlist.Authenticate((mm_cfg.AuthListModerator,
+        if mlist.Authenticate((mm_cfg.AuthListPoster,
+                               mm_cfg.AuthListModerator,
                                mm_cfg.AuthListAdmin),
                               password):
             recips = mlist.getMemberCPAddresses(mlist.getRegularMemberKeys() +
@@ -179,6 +180,18 @@ def do_exclude(mlist, msg, msgdata, recips):
             syslog('error', 'Exclude list %s is not in the same domain.',
                     listname)
             continue
+        if mlist.regular_exclude_ignore:
+            for sender in msg.get_senders():
+                if slist.isMember(sender):
+                    break
+                for sender in Utils.check_eq_domains(sender,
+                                  slist.equivalent_domains):
+                    if slist.isMember(sender):
+                        break
+                if slist.isMember(sender):
+                    break
+            else:
+                continue
         srecips = set([slist.getMemberCPAddress(m)
                    for m in slist.getRegularMemberKeys()
                    if slist.getDeliveryStatus(m) == ENABLED])

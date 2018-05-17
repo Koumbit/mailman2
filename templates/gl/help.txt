@@ -1,37 +1,37 @@
-Axuda da rolda de distribución %(listname)s:
+Axuda da rolda de distribuciÃ³n %(listname)s:
 
-Esta é a axuda coas ordes que se poden enviar por correo
-electrónico na versión %(version)s do xestor de roldas 'Mailman'.
-A continuación descríbense as ordes que se poden enviar para 
-obter información e controlar a súa subscrición nas roldas 
+Esta Ã© a axuda coas ordes que se poden enviar por correo
+electrÃ³nico na versiÃ³n %(version)s do xestor de roldas 'Mailman'.
+A continuaciÃ³n descrÃ­bense as ordes que se poden enviar para 
+obter informaciÃ³n e controlar a sÃºa subscriciÃ³n nas roldas 
 xestionadas polo 'Mailman'. As ordes poden enviarse no asunto
 ou no corpo da mensaxe.
 
-Cómpre salientar que a maior parte das accións tamén se poden realizar
-a través do WEB na ligazón seguinte:
+CÃ³mpre salientar que a maior parte das acciÃ³ns tamÃ©n se poden realizar
+a travÃ©s do WEB na ligazÃ³n seguinte:
 
     %(listinfo_url)s
 
-En particular, pode usar este sitio WEB para que se lle envíe
-o contrasinal ao correo electrónico.
+En particular, pode usar este sitio WEB para que se lle envÃ­e
+o contrasinal ao correo electrÃ³nico.
 
-As ordes específicas ás roldas (suscribe, who, etc) deben 
+As ordes especÃ­ficas Ã¡s roldas (suscribe, who, etc) deben 
 enviarse ao enderezo *-request para a rolda concreta. Por exemplo,
-para a rolda 'mailman' empregaríase mailman-request@...
+para a rolda 'mailman' empregarÃ­ase mailman-request@...
 
-Na descrición das ordes empréganse as convencións seguintes:
-As palabras indicadas entre os signos '<>' son elementos imprencindíbeis,
+Na descriciÃ³n das ordes emprÃ©ganse as convenciÃ³ns seguintes:
+As palabras indicadas entre os signos '<>' son elementos imprencindÃ­beis,
 mentres que aquelas indicadas entre colchetes '[]' son elementos
-opcionais. Non se debe incluír ningúns dos signos anteriores cando empregar as 
+opcionais. Non se debe incluÃ­r ningÃºns dos signos anteriores cando empregar as 
 ordes.
 
-Ordes válidas:
+Ordes vÃ¡lidas:
 
     %(commands)s
 
 As orden deben enviarse a %(requestaddr)s
 
-As preguntas e mais os comentarios para o responsábel da rolda débense 
+As preguntas e mais os comentarios para o responsÃ¡bel da rolda dÃ©bense 
 enviar ao enderezo seguinte:
 
     %(adminaddr)s

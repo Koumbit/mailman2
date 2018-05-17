@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 INTRODUCTION
@@ -29,15 +29,15 @@ INTRODUCTION
         http://www.gnu.org/software/mailman
         http://mailman.sf.net
 
-    Mailman 2.1 requires Python 2.3 or greater, which can be downloaded from:
+    Mailman 2.1 requires Python 2.4 or greater, which can be downloaded from:
 
         http://www.python.org
 
-    It is recommended that you use Python 2.5.2, the latest release as of this
-    writing (26-Feb-2008).  
+    It is recommended that you use Python 2.7.9, the latest 2.7 patch release
+    as of this writing (10-Feb-2015).
 
-    Mailman 2.1 is not compatible with Python 2.2 or any earlier
-    version.
+    Mailman 2.1 is not compatible with Python 2.2 or any earlier version and
+    not all features may work with Python 2.3.
 
     You will also need an ANSI C compiler to build both Python and Mailman;
     gcc (the GNU C compiler) works just fine.  Mailman currently works only on
@@ -166,11 +166,11 @@ FOR MORE INFORMATION
 
         http://mail.python.org/mailman/listinfo/mailman-checkins
 
-    The Mailman project is coordinated on SourceForge at
+    The Mailman project is coordinated on Launchpad at
 
-        http://sf.net/projects/mailman
+        https://launchpad.net/mailman/
 
-    You should use SourceForge to report bugs and to upload patches.
+    You should use Launchpad to report bugs and to upload patches.
 
 
 

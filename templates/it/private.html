@@ -1,9 +1,10 @@
 <html>
 <head>
 <title>Autenticazione per gli archivi privati di %(realname)s</title>
+<script>function sf(){document.f.username.focus();}</script>
 </head>
-<body bgcolor="#ffffff">
-<FORM METHOD=POST ACTION="%(action)s">
+<body bgcolor="#ffffff" onLoad="sf()">
+<FORM METHOD=POST ACTION="%(action)s" name="f">
 %(message)s
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
     <TR>
@@ -29,7 +30,7 @@
     </tr>
   </TABLE>
   <p><strong><em>Importante:</em></strong>Da questo momento in
-  avanti devi avere i cookie abilitati nel browser oltrimenti dovrai
+  avanti devi avere i cookie abilitati nel browser altrimenti dovrai
   identificarti di nuovo ad ogni operazione.
 
   <p>I cookie di sessione sono usati dall'interfaccia amministrativa
@@ -38,6 +39,22 @@
   automaticamente all'uscita dal tuo browser oppure puoi chiedere
   la cancellazione esplicita visitando la tua pagina delle opzioni e
   cliccando il link <em>Termina sessione</em>.
+      <p>
+    <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+    <TR>
+      <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER">
+	<B><FONT COLOR="#000000" SIZE="+1">Password Reminder</FONT></B>
+      </TD>
+    </TR>
+    <tr>
+      <td>If you don't remember your password, enter your email address
+          above and click the <em>Remind</em> button and your
+          password will be emailed to you.</td>
+    </tr>
+    <tr>
+      <td><center><INPUT name="login-remind" type="SUBMIT" value="Remind" ></center></td>
+    </tr>
+  </TABLE>
 </FORM>
 </body>
 </html>

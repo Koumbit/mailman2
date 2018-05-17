@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -41,6 +41,17 @@ def main():
     doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
 
     cgidata = cgi.FieldStorage()
+    try:
+        cgidata.getvalue('password', '')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     parts = Utils.GetPathPieces()
 
     if not parts:
@@ -62,7 +73,7 @@ def main():
         # Avoid cross-site scripting attacks
         safelistname = Utils.websafe(listname)
         title = _('No such list <em>%(safelistname)s</em>')
-        doc.SetTitle(title)
+        doc.SetTitle(_('No such list %(safelistname)s'))
         doc.AddItem(
             Header(3,
                    Bold(FontAttr(title, color='#ff0000', size='+2'))))
@@ -71,7 +82,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s\n', listname, e)
+        syslog('error', 'rmlist: No such list "%s": %s\n', listname, e)
         return
 
     # Now that we have a valid mailing list, set the language
@@ -188,7 +199,7 @@ def process_request(doc, cgidata, mlist):
 def request_deletion(doc, mlist, errmsg=None):
     realname = mlist.real_name
     title = _('Permanently remove mailing list <em>%(realname)s</em>')
-    doc.SetTitle(title)
+    doc.SetTitle(_('Permanently remove mailing list %(realname)s'))
 
     table = Table(border=0, width='100%')
     table.AddRow([Center(Bold(FontAttr(title, size='+1')))])

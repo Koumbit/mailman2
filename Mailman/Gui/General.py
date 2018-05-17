@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -25,6 +25,7 @@ from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Errors
 from Mailman.i18n import _
+from Mailman.htmlformat import Document
 from Mailman.Gui.GUIBase import GUIBase
 
 OPTIONS = ('hide', 'ack', 'notmetoo', 'nodupes')
@@ -153,6 +154,72 @@ class General(GUIBase):
                             (listname %%05d) -> (listname 00123)
              """)),
 
+            ('from_is_list', mm_cfg.Radio,
+             (_('No'), _('Munge From'), _('Wrap Message')), 0,
+             _("""Replace the From: header address with the list's posting
+             address to mitigate issues stemming from the original From:
+             domain's DMARC or similar policies."""),
+             _("""Several protocols now in wide use attempt to ensure that use
+             of the domain in the author's address (ie, in the From: header
+             field) is authorized by that domain.  These protocols may be
+             incompatible with common list features such as footers, causing
+             participating email services to bounce list traffic merely
+             because of the address in the From: field.  <b>This has resulted
+             in members being unsubscribed despite being perfectly able to
+             receive mail.</b>
+             <p>
+             The following actions are applied to all list messages when
+             selected here.  To apply these actions only to messages where the
+             domain in the From: header is determined to use such a protocol,
+             see the <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_action">
+             dmarc_moderation_action</a> settings under Privacy options...
+             -&gt; Sender filters.
+             <p>Settings:<p>
+             <dl>
+             <dt>No</dt>
+             <dd>Do nothing special.  This is appropriate for anonymous lists.
+             It is appropriate for dedicated announcement lists, unless the
+             From: address of authorized posters might be in a domain with a
+             DMARC or similar policy. It is also appropriate if you choose to
+             use dmarc_moderation_action other than Accept for this list.</dd>
+             <dt>Munge From</dt>
+             <dd>This action replaces the poster's address in the From: header
+             with the list's posting address and adds the poster's address to
+             the addresses in the original Reply-To: header.</dd>
+             <dt>Wrap Message</dt>
+             <dd>Just wrap the message in an outer message with the From:
+             header containing the list's posting address and with the original
+             From: address added to the addresses in the original Reply-To:
+             header and with Content-Type: message/rfc822.  This is effectively
+             a one message MIME format digest.</dd>
+             </dl>
+             <p>The transformations for anonymous_list are applied before
+             any of these actions. It is not useful to apply actions other
+             than No to an anonymous list, and if you do so, the result may
+             be surprising.
+             <p>The Reply-To: header munging actions below interact with these
+             actions as follows:
+             <p> first_strip_reply_to = Yes will remove all the incoming
+             Reply-To: addresses but will still add the poster's address to
+             Reply-To: for all three settings of reply_goes_to_list which
+             respectively will result in just the poster's address, the
+             poster's address and the list posting address or the poster's
+             address and the explicit reply_to_address in the outgoing
+             Reply-To: header. If first_strip_reply_to = No the poster's
+             address in the original From: header, if not already included in
+             the Reply-To:, will be added to any existing Reply-To:
+             address(es).
+             <p>These actions, whether selected here or via <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_action">
+             dmarc_moderation_action</a>, do not apply to messages in digests
+             or archives or sent to usenet via the Mail&lt;-&gt;News gateways.
+             <p>If <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_action">
+             dmarc_moderation_action</a> applies to this message with an
+             action other than Accept, that action rather than this is
+             applied""")),
+
             ('anonymous_list', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Hide the sender of a message, replacing it with the list
              address (Removes From, Sender and Reply-To fields)""")),
@@ -188,11 +255,11 @@ class General(GUIBase):
              their own <tt>Reply-To:</tt> settings to convey their valid
              return address.  Another is that modifying <tt>Reply-To:</tt>
              makes it much more difficult to send private replies.  See <a
-             href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
+             href="http://marc.merlins.org/netrants/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
-             href="http://www.metasystema.net/essays/reply-to.mhtml">Reply-To
-             Munging Considered Useful</a> for a dissenting opinion.
+             href="http://marc.merlins.org/netrants/reply-to-useful.html">
+             Reply-To Munging Considered Useful</a> for a dissenting opinion.
 
              <p>Some mailing lists have restricted posting privileges, with a
              parallel list devoted to discussions.  Examples are `patches' or
@@ -216,11 +283,11 @@ class General(GUIBase):
              their own <tt>Reply-To:</tt> settings to convey their valid
              return address.  Another is that modifying <tt>Reply-To:</tt>
              makes it much more difficult to send private replies.  See <a
-             href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
+             href="http://marc.merlins.org/netrants/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
-             href="http://www.metasystema.net/essays/reply-to.mhtml">Reply-To
-             Munging Considered Useful</a> for a dissenting opinion.
+             href="http://marc.merlins.org/netrants/reply-to-useful.html">
+             Reply-To Munging Considered Useful</a> for a dissenting opinion.
 
              <p>Some mailing lists have restricted posting privileges, with a
              parallel list devoted to discussions.  Examples are `patches' or
@@ -455,11 +522,22 @@ class General(GUIBase):
             changed!  It must differ from the list's name by case
             only."""))
         elif property == 'new_member_options':
-            newopts = 0
-            for opt in OPTIONS:
+            # Get current value because there are valid bits not in OPTIONS.
+            # If we're the admin CGI, we then process the bits in OPTIONS,
+            # turning them on or off as appropriate.  Otherwise we process all
+            # the bits in mm_cfg.OPTINFO so that config_list can set and reset
+            # them.
+            newopts = mlist.new_member_options
+            if isinstance(doc, Document):
+                opts = OPTIONS
+            else:
+                opts = mm_cfg.OPTINFO
+            for opt in opts:
                 bitfield = mm_cfg.OPTINFO[opt]
                 if opt in val:
                     newopts |= bitfield
+                else:
+                    newopts &= ~bitfield
             mlist.new_member_options = newopts
         elif property == 'subject_prefix':
             # Convert any html entities to Unicode

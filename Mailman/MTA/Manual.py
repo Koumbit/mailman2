@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@ from Mailman import mm_cfg
 from Mailman import Message
 from Mailman import Utils
 from Mailman.Queue.sbcache import get_switchboard
-from Mailman.i18n import _
+from Mailman.i18n import _, C_
 from Mailman.MTA.Utils import makealiases
 
 try:
@@ -74,12 +74,12 @@ Here are the entries for the /etc/aliases file:
         outfp = sfp
     else:
         if not quiet:
-            print _("""\
+            print C_("""\
 To finish creating your mailing list, you must edit your /etc/aliases (or
 equivalent) file by adding the following lines, and possibly running the
 `newaliases' program:
 """)
-        print _("""\
+        print C_("""\
 ## %(listname)s mailing list""")
         outfp = sys.stdout
     # Common path
@@ -120,7 +120,7 @@ Here are the entries in the /etc/aliases file that should be removed:
 """)
         outfp = sfp
     else:
-        print _("""
+        print C_("""
 To finish removing your mailing list, you must edit your /etc/aliases (or
 equivalent) file by removing the following lines, and possibly running the
 `newaliases' program:

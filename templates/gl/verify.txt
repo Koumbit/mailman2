@@ -1,26 +1,26 @@
-Mensaxe de confirmación para a subcrición á rolda de distribución
+Mensaxe de confirmaciÃ³n para a subcriciÃ³n Ã¡ rolda de distribuciÃ³n
 %(listname)s
 
-Recibiuse unha solicitude de subscrición do seu enderezo "%(email)s",
-á rolda %(listaddr)s, %(remote)s. Para confirmar que quere ser dado de
-alta nesta rolda, só ten que responder esta mensaxe
-co asunto intacto ou visitar a seguinte páxina web:
+Recibiuse unha solicitude de subscriciÃ³n do seu enderezo "%(email)s",
+Ã¡ rolda %(listaddr)s, %(remote)s. Para confirmar que quere ser dado de
+alta nesta rolda, sÃ³ ten que responder esta mensaxe
+co asunto intacto ou visitar a seguinte pÃ¡xina web:
 
     %(confirmurl)s
 
-Tamén pode confirmar esta solicitude a través do correo electrónico ao enviar
-unha mensaxe que inclúa a liña seguinte (e só a liña seguinte)
+TamÃ©n pode confirmar esta solicitude a travÃ©s do correo electrÃ³nico ao enviar
+unha mensaxe que inclÃºa a liÃ±a seguinte (e sÃ³ a liÃ±a seguinte)
 ao enderezo %(requestaddr)s:
 
     confirm %(cookie)s
 
-Responder esta mensaxe debería funcionar coa maioria dos programas
-de correo electrónico, xa que acostuman deixar o asunto do xeito adecuado (o
-texto adicional "Re:" que acostuman pór no asunto funcionará correctamente)
+Responder esta mensaxe deberÃ­a funcionar coa maioria dos programas
+de correo electrÃ³nico, xa que acostuman deixar o asunto do xeito adecuado (o
+texto adicional "Re:" que acostuman pÃ³r no asunto funcionarÃ¡ correctamente)
 
 Se non desexa subscribirse a esta rolda, ignore esta mensaxe. Se xulga
-que alguén está intentando suscribilo á rolda ou
-se ten algunha outra cuestión, póñase en contacto co seguinte enderezo: 
+que alguÃ©n estÃ¡ intentando suscribilo Ã¡ rolda ou
+se ten algunha outra cuestiÃ³n, pÃ³Ã±ase en contacto co seguinte enderezo: 
 
 %(listadmin)s
 

@@ -1,6 +1,6 @@
 Abonnementsbestätigung für die Mailingliste %(listname)s
 
-Wir haben einen Auftrag %(remote)s zur Aufnahme Ihrer E-Mailadresse
+Wir haben einen Auftrag %(remote)s zur Aufnahme Ihrer E-Mail-Adresse
 "%(email)s" in die Mailingliste %(listaddr)s erhalten.
 
 Um sicherzustellen, dass Sie diese Mailingliste tatsächlich abonnieren
@@ -16,9 +16,9 @@ Zeile! -- in einer E-Mail an %(requestaddr)s zu schicken:
 
     confirm %(cookie)s
 
-Normalerweise reicht eine einfache Antwort auf diese E-Mail voellig aus, da
-das Generieren einer Antwort das "Subject:" bzw. "Betreff:" intakt laesst
-(das zusaetzliche "Re:" im "Subject:" bzw. "Betreff:" ist kein Problem).
+Normalerweise reicht eine einfache Antwort auf diese E-Mail völlig aus, da
+das Generieren einer Antwort das "Subject:" bzw. "Betreff:" nicht verändert
+(das zusätzliche "Re:" im "Subject:" bzw. "Betreff:" ist kein Problem).
 
 Wenn Sie diese Liste nicht abonnieren möchten, ignorieren Sie diese Nachricht
 einfach. Wenn Sie meinen, ungefragterweise auf diese Liste geraten zu sein

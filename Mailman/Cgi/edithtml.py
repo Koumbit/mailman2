@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -30,8 +30,11 @@ from Mailman import Errors
 from Mailman.Cgi import Auth
 from Mailman.Logging.Syslog import syslog
 from Mailman import i18n
+from Mailman.CSRFcheck import csrf_check
 
 _ = i18n._
+
+AUTH_CONTEXTS = (mm_cfg.AuthListAdmin, mm_cfg.AuthSiteAdmin)
 
 
 
@@ -46,6 +49,19 @@ def main():
         ('subscribe.html',   _('Subscribe results page')),
         ('options.html',     _('User specific options page')),
         ('subscribeack.txt', _('Welcome email text file')),
+        ('masthead.txt',     _('Digest masthead')),
+        ('postheld.txt',     _('User notice of held post')),
+        ('approve.txt',      _('User notice of held subscription')),
+        ('refuse.txt',       _('Notice of post refused by moderator')),
+        ('invite.txt',       _('Invitation to join list')),
+        ('verify.txt',       _('Request to confirm subscription')),
+        ('unsub.txt',        _('Request to confirm unsubscription')),
+        ('nomoretoday.txt',  _('User notice of autoresponse limit')),
+        ('postack.txt',      _('User post acknowledgement')),
+        ('disabled.txt',     _('Subscription disabled by bounce warning')),
+        ('admlogin.html',    _('Admin/moderator login page')),
+        ('private.html',     _('Private archive login page')),
+        ('userpass.txt',     _('On demand password reminder')),
         )
 
     _ = i18n._
@@ -71,7 +87,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s', listname, e)
+        syslog('error', 'edithtml: No such list "%s": %s', listname, e)
         return
 
     # Now that we have a valid list, set the language to its default
@@ -80,6 +96,28 @@ def main():
 
     # Must be authenticated to get any farther
     cgidata = cgi.FieldStorage()
+    try:
+        cgidata.getvalue('adminpw', '')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
+    # CSRF check
+    safe_params = ['VARHELP', 'adminpw', 'admlogin']
+    params = cgidata.keys()
+    if set(params) - set(safe_params):
+        csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
+    else:
+        csrf_checked = True
+    # if password is present, void cookie to force password authentication.
+    if cgidata.getvalue('adminpw'):
+        os.environ['HTTP_COOKIE'] = ''
+        csrf_checked = True
 
     # Editing the html for a list is limited to the list admin and site admin.
     if not mlist.WebAuthenticate((mm_cfg.AuthListAdmin,
@@ -125,7 +163,11 @@ def main():
 
     try:
         if cgidata.keys():
-            ChangeHTML(mlist, cgidata, template_name, doc)
+            if csrf_checked:
+                ChangeHTML(mlist, cgidata, template_name, doc)
+            else:
+                doc.addError(
+                  _('The form lifetime has expired. (request forgery check)'))
         FormatHTML(mlist, doc, template_name, template_info)
     finally:
         doc.AddItem(mlist.GetMailmanFooter())
@@ -144,7 +186,8 @@ def FormatHTML(mlist, doc, template_name, template_info):
     doc.AddItem(FontSize("+1", link))
     doc.AddItem('<p>')
     doc.AddItem('<hr>')
-    form = Form(mlist.GetScriptURL('edithtml') + '/' + template_name)
+    form = Form(mlist.GetScriptURL('edithtml') + '/' + template_name,
+               mlist=mlist, contexts=AUTH_CONTEXTS)
     text = Utils.maketext(template_name, raw=1, mlist=mlist)
     # MAS: Don't websafe twice.  TextArea does it.
     form.AddItem(TextArea('html_code', text, rows=40, cols=75))

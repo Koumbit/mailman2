@@ -1,36 +1,36 @@
-Dámoslle a benviada á rolda de distribución %(real_name)s@%(host_name)s
+DÃ¡moslle a benviada Ã¡ rolda de distribuciÃ³n %(real_name)s@%(host_name)s
 %(welcome)s
 
-Para remitir unha mensaxe a esta rolda, envíeo ao enderezo seguinte:
+Para remitir unha mensaxe a esta rolda, envÃ­eo ao enderezo seguinte:
 
    %(emailaddr)s
 
-Para obter unha información xeral sobre a rolda, acceda ao enderezo seguinte:
+Para obter unha informaciÃ³n xeral sobre a rolda, acceda ao enderezo seguinte:
 
    %(listinfo_url)s
 
-Se algunha vez desexa anular a subscrición ou mudar as opcións (como, por exemplo, cambiar ao modo de mensaxes compiladas, cambiar o contrasinal
-etc.), consulte a páxina da súa subscripción no URL seguinte:
+Se algunha vez desexa anular a subscriciÃ³n ou mudar as opciÃ³ns (como, por exemplo, cambiar ao modo de mensaxes compiladas, cambiar o contrasinal
+etc.), consulte a pÃ¡xina da sÃºa subscripciÃ³n no URL seguinte:
 
   %(optionsurl)s
 %(umbrella)s
 
-Tamén pode realizar estes cambios a través do correo electrónico,
-se envía unha mensaxe a:
+TamÃ©n pode realizar estes cambios a travÃ©s do correo electrÃ³nico,
+se envÃ­a unha mensaxe a:
 
   %(real_name)s-request@%(host_name)s
 
-en que deberá incluír a palabra "help" no asunto (non poña as comiñas) ou no
-corpo da mensaxe. Devolveráselle unha mensaxe coas instrucións.
+en que deberÃ¡ incluÃ­r a palabra "help" no asunto (non poÃ±a as comiÃ±as) ou no
+corpo da mensaxe. DevolverÃ¡selle unha mensaxe coas instruciÃ³ns.
 
-É necesario o contrasinal para poder cambiar as opcións (en que se inclúe o
-cambio do propio contrasinal) ou para anular a subscrición. O seu contrasinal é o seguinte:
+Ã‰ necesario o contrasinal para poder cambiar as opciÃ³ns (en que se inclÃºe o
+cambio do propio contrasinal) ou para anular a subscriciÃ³n. O seu contrasinal Ã© o seguinte:
 
   %(password)s
 
-Polo xeral, o Mailman lembraralle mensualmente os contrasinais  que teña
-nas roldas de distribución de %(host_name)s, aínda que se o prefire pode
-desactivar este envío.  A lembranza tamén incluirá
-instrucións sobre como anular a súa subscrición ou como cambiar os
-parámetros. Na páxina de opcións hai un opción para que se lle
-envíe unha mensaxe de correo electrónico co seu contrasinal.
+Polo xeral, o Mailman lembraralle mensualmente os contrasinais  que teÃ±a
+nas roldas de distribuciÃ³n de %(host_name)s, aÃ­nda que se o prefire pode
+desactivar este envÃ­o.  A lembranza tamÃ©n incluirÃ¡
+instruciÃ³ns sobre como anular a sÃºa subscriciÃ³n ou como cambiar os
+parÃ¡metros. Na pÃ¡xina de opciÃ³ns hai un opciÃ³n para que se lle
+envÃ­e unha mensaxe de correo electrÃ³nico co seu contrasinal.

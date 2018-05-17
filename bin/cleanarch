@@ -1,6 +1,6 @@
 #! @PYTHON@
 
-# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -53,7 +53,7 @@ import getopt
 import mailbox
 
 import paths
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 cre = re.compile(mailbox.UnixMailbox._fromlinepattern)
 
@@ -69,7 +69,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -80,7 +80,7 @@ def escape_line(line, lineno, quiet, output):
     if output:
         sys.stdout.write('>' + line)
     if not quiet:
-        print >> sys.stderr, _('Unix-From line changed: %(lineno)d')
+        print >> sys.stderr, C_('Unix-From line changed: %(lineno)d')
         print >> sys.stderr, line[:-1]
 
 
@@ -108,7 +108,7 @@ def main():
             try:
                 status = int(arg)
             except ValueError:
-                usage(1, _('Bad status number: %(arg)s'))
+                usage(1, C_('Bad status number: %(arg)s'))
 
     if args:
         usage(1)
@@ -164,7 +164,7 @@ def main():
                 print >> sys.stderr
                 statuscnt = 0
         prevline = line
-    print >> sys.stderr, _('%(messages)d messages found')
+    print >> sys.stderr, C_('%(messages)d messages found')
 
 
 

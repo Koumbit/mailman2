@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -42,7 +42,7 @@ PATTERNS = [
     # sz-sb.de, corridor.com, nfg.nl
     (_c('the following addresses had'),
      _c('transcript of session follows'),
-     _c(r'<(?P<fulladdr>[^>]*)>|\(expanded from: <?(?P<addr>[^>)]*)>?\)')),
+     _c(r'^ *(\(expanded from: )?<?(?P<addr>[^\s@]+@[^\s@>]+?)>?\)?\s*$')),
     # robanal.demon.co.uk
     (_c('this message was created automatically by mail delivery software'),
      _c('original message follows'),
@@ -178,6 +178,16 @@ PATTERNS = [
     (_c('--------Message not delivered'),
      _c('--------Error Detail'),
      _c('^\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
+    # Dovecot LDA Over quota MDN (bogus - should be DSN).
+    (_c('^Your message'),
+     _c('^Reporting'),
+     _c(
+        'Your message to (?P<addr>[^\s@]+@[^\s@]+) was automatically rejected'
+       )),
+    # mail.ru
+    (_c('A message that you sent was rejected'),
+     _c('This is a copy of your message'),
+     _c('\s(?P<addr>[^\s@]+@[^\s@]+)')),
     # Next one goes here...
     ]
 

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 
 import os
 import cgi
+import time
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -52,12 +53,24 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         listinfo_overview(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'No such list "%s": %s', listname, e)
+        syslog('error', 'listinfo: No such list "%s": %s', listname, e)
         return
 
     # See if the user want to see this page in other language
     cgidata = cgi.FieldStorage()
-    language = cgidata.getvalue('language')
+    try:
+        language = cgidata.getvalue('language')
+    except TypeError:
+        # Someone crafted a POST with a bad Content-Type:.
+        doc = Document()
+        doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
+        doc.AddItem(Header(2, _("Error")))
+        doc.AddItem(Bold(_('Invalid options to CGI script.')))
+        # Send this with a 400 status.
+        print 'Status: 400 Bad Request'
+        print doc.Format()
+        return
+
     if not Utils.IsLanguage(language):
         language = mlist.preferred_language
     i18n.set_language(language)
@@ -87,7 +100,11 @@ def listinfo_overview(msg=''):
     listnames.sort()
 
     for name in listnames:
-        mlist = MailList.MailList(name, lock=0)
+        try:
+            mlist = MailList.MailList(name, lock=0)
+        except Errors.MMUnknownListError:
+            # The list could have been deleted by another process.
+            continue
         if mlist.advertised:
             if mm_cfg.VIRTUAL_HOST_OVERVIEW and (
                    mlist.web_page_url.find('/%s/' % hostname) == -1 and
@@ -184,6 +201,30 @@ def list_listinfo(mlist, lang):
     replacements['<mm-confirm-password>'] = mlist.FormatSecureBox('pw-conf')
     replacements['<mm-subscribe-form-start>'] = mlist.FormatFormStart(
         'subscribe')
+    if mm_cfg.SUBSCRIBE_FORM_SECRET:
+        now = str(int(time.time()))
+        remote = os.environ.get('HTTP_FORWARDED_FOR',
+                 os.environ.get('HTTP_X_FORWARDED_FOR',
+                 os.environ.get('REMOTE_ADDR',
+                                'w.x.y.z')))
+        # Try to accept a range in case of load balancers, etc.  (LP: #1447445)
+        if remote.find('.') >= 0:
+            # ipv4 - drop last octet
+            remote = remote.rsplit('.', 1)[0]
+        else:
+            # ipv6 - drop last 16 (could end with :: in which case we just
+            #        drop one : resulting in an invalid format, but it's only
+            #        for our hash so it doesn't matter.
+            remote = remote.rsplit(':', 1)[0]
+        replacements['<mm-subscribe-form-start>'] += (
+                '<input type="hidden" name="sub_form_token" value="%s:%s">\n'
+                % (now, Utils.sha_new(mm_cfg.SUBSCRIBE_FORM_SECRET +
+                          now +
+                          mlist.internal_name() +
+                          remote
+                          ).hexdigest()
+                    )
+                )
     # Roster form substitutions
     replacements['<mm-roster-form-start>'] = mlist.FormatFormStart('roster')
     replacements['<mm-roster-option>'] = mlist.FormatRosterOptionForUser(lang)

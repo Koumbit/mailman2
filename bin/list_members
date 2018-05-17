@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -48,6 +48,12 @@ Where:
         Output member addresses case preserved the way they were added to the
         list.  Otherwise, addresses are printed in all lowercase.
 
+    --moderated / -m
+        Print just the moderated members.  Ignores -r, -d, -n.
+
+    --non-moderated / -M
+        Print just the non-moderated members.  Ignores -r, -d, -n.
+
     --invalid / -i
         Print only the addresses in the membership list that are invalid.
         Ignores -r, -d, -n.
@@ -62,9 +68,8 @@ Where:
 
     listname is the name of the mailing list to use.
 
-Note that if neither -r or -d is supplied, both regular members are printed
-first, followed by digest members, but no indication is given as to address
-status.
+Note that if neither -r or -d is supplied, regular members are printed first,
+followed by digest members, but no indication is given as to address status.
 """
 
 import sys
@@ -76,7 +81,7 @@ from Mailman import Utils
 from Mailman import MailList
 from Mailman import Errors
 from Mailman import MemberAdaptor
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 from email.Utils import formataddr
 
@@ -104,7 +109,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -154,6 +159,8 @@ def main():
     fullnames = False
     invalidonly = False
     unicodeonly = False
+    moderatedonly = False
+    nonmoderatedonly = False
 
     # Throw away the first (program) argument
     args = sys.argv[1:]
@@ -188,7 +195,7 @@ def main():
             if i >= 0:
                 why = opt[i+1:]
                 if why not in WHYCHOICES.keys():
-                    usage(1, _('Bad --nomail option: %(why)s'))
+                    usage(1, C_('Bad --nomail option: %(why)s'))
         elif opt == '-d':
             digest = True
             if args and args[0] in ('mime', 'plain'):
@@ -199,11 +206,23 @@ def main():
             if i >= 0:
                 kind = opt[i+1:]
                 if kind not in ('mime', 'plain'):
-                    usage(1, _('Bad --digest option: %(kind)s'))
+                    usage(1, C_('Bad --digest option: %(kind)s'))
+        elif opt in ('-m', '--moderated'):
+            moderatedonly = True
+            if nonmoderatedonly or invalidonly or unicodeonly:
+                usage(1, C_('Only one of -m, -M, -i or -u may be specified.'))
+        elif opt in ('-M', '--non-moderated'):
+            nonmoderatedonly = True
+            if moderatedonly or invalidonly or unicodeonly:
+                usage(1, C_('Only one of -m, -M, -i or -u may be specified.'))
         elif opt in ('-i', '--invalid'):
             invalidonly = True
+            if moderatedonly or nonmoderatedonly or unicodeonly:
+                usage(1, C_('Only one of -m, -M, -i or -u may be specified.'))
         elif opt in ('-u', '--unicode'):
             unicodeonly = True
+            if moderatedonly or nonmoderatedonly or invalidonly:
+                usage(1, C_('Only one of -m, -M, -i or -u may be specified.'))
         else:
             # No more options left, push the last one back on the list
             args.insert(0, opt)
@@ -221,7 +240,8 @@ def main():
         try:
             fp = open(outfile, 'w')
         except IOError:
-            print >> sys.stderr, _('Could not open file for writing:'), outfile
+            print >> sys.stderr, C_(
+                                 'Could not open file for writing:'), outfile
             sys.exit(1)
     else:
         fp = sys.stdout
@@ -229,7 +249,7 @@ def main():
     try:
         mlist = MailList.MailList(listname, lock=False)
     except Errors.MMListError, e:
-        print >> sys.stderr, _('No such list: %(listname)s')
+        print >> sys.stderr, C_('No such list: %(listname)s')
         sys.exit(1)
 
     # Get the lowercased member addresses
@@ -241,7 +261,7 @@ def main():
         rmembers = mlist.getMemberCPAddresses(rmembers)
         dmembers = mlist.getMemberCPAddresses(dmembers)
 
-    if invalidonly or unicodeonly:
+    if invalidonly or unicodeonly or moderatedonly or nonmoderatedonly:
         all = rmembers + dmembers
         all.sort()
         for addr in all:
@@ -250,6 +270,11 @@ def main():
             if invalidonly and isinvalid(addr):
                 showit = True
             if unicodeonly and isunicode(addr):
+                showit = True
+            if moderatedonly and mlist.getMemberOption(addr, mm_cfg.Moderate):
+                showit = True
+            if nonmoderatedonly and not mlist.getMemberOption(addr,
+                                                             mm_cfg.Moderate):
                 showit = True
             if showit:
                 print >> fp, formataddr((safe(name), addr))

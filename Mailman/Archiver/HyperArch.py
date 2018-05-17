@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -226,9 +226,9 @@ def quick_maketext(templatefile, dict=None, lang=None, mlist=None):
                                     Utils.GetCharSet(lang),
                                     'replace')
                 text = sdict.interpolate(utemplate)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError), e:
             # The template is really screwed up
-            pass
+            syslog('error', 'broken template: %s\n%s', filepath, e)
     # Make sure the text is in the given character set, or html-ify any bogus
     # characters.
     return Utils.uncanonstr(text, lang)
@@ -271,6 +271,8 @@ class Article(pipermail.Article):
             if result:
                 i = result.end(0)
                 self.subject = self.subject[i:]
+                if self.subject == '':
+                    self.subject = _('No subject')
             else:
                 i = -1
         # Useful to keep around
@@ -471,6 +473,7 @@ class Article(pipermail.Article):
             d["email_html"] = self.quote(self.email)
             d["title"] = self.quote(self.subject)
             d["subject_html"] = self.quote(self.subject)
+            d["message_id"] = self.quote(self._message_id)
             # TK: These two _url variables are used to compose a response
             # from the archive web page.  So, ...
             d["subject_url"] = url_quote('Re: ' + self.subject)
@@ -506,7 +509,7 @@ class Article(pipermail.Article):
             subject = self._get_subject_enc(self.prev)
             prev = ('<LINK REL="Previous"  HREF="%s">'
                     % (url_quote(self.prev.filename)))
-            prev_wsubj = ('<LI>' + _('Previous message:') +
+            prev_wsubj = ('<LI>' + _('Previous message (by thread):') +
                           ' <A HREF="%s">%s\n</A></li>'
                           % (url_quote(self.prev.filename),
                              self.quote(subject)))
@@ -528,7 +531,7 @@ class Article(pipermail.Article):
             subject = self._get_subject_enc(self.next)
             next = ('<LINK REL="Next"  HREF="%s">'
                     % (url_quote(self.next.filename)))
-            next_wsubj = ('<LI>' + _('Next message:') +
+            next_wsubj = ('<LI>' + _('Next message (by thread):') +
                           ' <A HREF="%s">%s\n</A></li>'
                           % (url_quote(self.next.filename),
                              self.quote(subject)))

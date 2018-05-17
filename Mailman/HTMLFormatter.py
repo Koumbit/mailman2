@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -27,6 +27,8 @@ from Mailman import MemberAdaptor
 from Mailman.htmlformat import *
 
 from Mailman.i18n import _
+
+from Mailman.CSRFcheck import csrf_token
 
 
 EMPTYSTRING = ''
@@ -90,6 +92,9 @@ class HTMLFormatter:
                 showing = Utils.ObscureEmail(person, for_text=1)
             else:
                 showing = person
+            realname = Utils.uncanonstr(self.getMemberName(person), lang)
+            if realname and mm_cfg.ROSTER_DISPLAY_REALNAME:
+                showing += " (%s)" % Utils.websafe(realname)
             got = Link(url, showing)
             if self.getDeliveryStatus(person) <> MemberAdaptor.ENABLED:
                 got = Italic('(', got, ')')
@@ -314,12 +319,17 @@ class HTMLFormatter:
             container.AddItem("</center>")
         return container
 
-    def FormatFormStart(self, name, extra=''):
+    def FormatFormStart(self, name, extra='',
+                        mlist=None, contexts=None, user=None):
         base_url = self.GetScriptURL(name)
         if extra:
             full_url = "%s/%s" % (base_url, extra)
         else:
             full_url = base_url
+        if mlist:
+            return ("""<form method="POST" action="%s">
+<input type="hidden" name="csrf_token" value="%s">""" 
+                % (full_url, csrf_token(mlist, contexts, user)))
         return ('<FORM Method=POST ACTION="%s">' % full_url)
 
     def FormatArchiveAnchor(self):

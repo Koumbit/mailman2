@@ -1,18 +1,18 @@
-Envíe as mensaxes para a rolda %(real_name)s a través do enderezo
+EnvÃ­e as mensaxes para a rolda %(real_name)s a travÃ©s do enderezo
 	%(got_list_email)s
 
-Para se subscribir ou para anular a súa subscrición a través da rede, acceda ao enderezo
+Para se subscribir ou para anular a sÃºa subscriciÃ³n a travÃ©s da rede, acceda ao enderezo
 	%(got_listinfo_url)s
 
-Se o desexar, tamén pode facelo por correo electrónico se envía unha mensaxe co texto
+Se o desexar, tamÃ©n pode facelo por correo electrÃ³nico se envÃ­a unha mensaxe co texto
 "help", quer no asunto quer no corpo, a:
 	%(got_request_email)s
 
-Pode contactar co responsábel da rolda no enderezo de correo electrónico:
+Pode contactar co responsÃ¡bel da rolda no enderezo de correo electrÃ³nico:
 	%(got_owner_email)s
 
-Se responder algún contido desta mensaxe, edite
-a liña do asunto para que o texto sexa máis específico
+Se responder algÃºn contido desta mensaxe, edite
+a liÃ±a do asunto para que o texto sexa mÃ¡is especÃ­fico
 que: "Re: Contents of %(real_name)s digest...". Ademais,
-inclúa na resposta só aquelas partes da mensaxe a que 
-está a responder.
+inclÃºa na resposta sÃ³ aquelas partes da mensaxe a que 
+estÃ¡ a responder.

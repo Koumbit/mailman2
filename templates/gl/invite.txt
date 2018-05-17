@@ -1,20 +1,20 @@
-O seu enderezo de correo electrónico "%(email)s" recibiu un convite do administrador para se unir á rolda de distribución %(listname)s de %(hostname)s.
-Pode aceptar este convite con só responder esta mensaxe co
+O seu enderezo de correo electrÃ³nico "%(email)s" recibiu un convite do administrador para se unir Ã¡ rolda de distribuciÃ³n %(listname)s de %(hostname)s.
+Pode aceptar este convite con sÃ³ responder esta mensaxe co
 asunto intacto.
 
-Tamén pode visitar a páxina web:
+TamÃ©n pode visitar a pÃ¡xina web:
 
     %(confirmurl)s
 
-ou pode incluír a liña seguinte (e só a liña seguinte) nunha
+ou pode incluÃ­r a liÃ±a seguinte (e sÃ³ a liÃ±a seguinte) nunha
 mensaxe dirixida a %(requestaddr)s:
 
     confirm %(cookie)s
 
-Cómpre salientar que premer a opción de responder debería funcionar na
-maioría dos programas de correo electrónico.
+CÃ³mpre salientar que premer a opciÃ³n de responder deberÃ­a funcionar na
+maiorÃ­a dos programas de correo electrÃ³nico.
 
-Se quere declinar o convite, só ten que ignorar esta mensaxe.  Se
-ten algunha pregunta que formular, envíea a
+Se quere declinar o convite, sÃ³ ten que ignorar esta mensaxe.  Se
+ten algunha pregunta que formular, envÃ­ea a
 
 %(listowner)s.

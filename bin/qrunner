@@ -1,6 +1,6 @@
 #! @PYTHON@
 
-# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -78,7 +78,7 @@ import signal
 
 import paths
 from Mailman import mm_cfg
-from Mailman.i18n import _
+from Mailman.i18n import C_
 from Mailman.Logging.Syslog import syslog
 from Mailman.Logging.Utils import LogStdErr
 
@@ -95,7 +95,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -175,8 +175,8 @@ def main():
                     name = runnername[:-len('Runner')]
                 else:
                     name = runnername
-                print _('%(name)s runs the %(runnername)s qrunner')
-            print _('All runs all the above qrunners')
+                print C_('%(name)s runs the %(runnername)s qrunner')
+            print C_('All runs all the above qrunners')
             sys.exit(0)
         elif opt in ('-o', '--once'):
             once = 1
@@ -212,7 +212,7 @@ def main():
     if len(args) <> 0:
         usage(1)
     if len(runners) == 0:
-        usage(1, _('No runner name given.'))
+        usage(1, C_('No runner name given.'))
 
     # Before we startup qrunners, we redirect the stderr to mailman syslog.
     # We assume !AS_SUBPROC is running for debugging purpose and don't

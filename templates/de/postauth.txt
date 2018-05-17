@@ -1,4 +1,3 @@
-
 Eine E-Mail an eine Mailingliste wurde nicht verteilt und benötigt
 eine Freigabe durch Sie als Listenmoderator:
 
@@ -9,6 +8,6 @@ eine Freigabe durch Sie als Listenmoderator:
 
 Bitte besuchen Sie bei Gelegenheit
 
-%(admindb_url)s
-        
+    %(admindb_url)s
+
 um die E-Mail zu genehmigen oder abzulehnen.

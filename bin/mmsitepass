@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998,1999,2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2016 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,7 +43,7 @@ import getopt
 
 import paths
 from Mailman import Utils
-from Mailman.i18n import _
+from Mailman.i18n import C_
 
 PROGRAM = sys.argv[0]
 
@@ -54,7 +54,7 @@ def usage(code, msg=''):
         fd = sys.stderr
     else:
         fd = sys.stdout
-    print >> fd, _(__doc__)
+    print >> fd, C_(__doc__)
     if msg:
         print >> fd, msg
     sys.exit(code)
@@ -70,34 +70,34 @@ def main():
 
     # Defaults
     siteadmin = 1
-    pwdesc = _('site')
+    pwdesc = C_('site')
 
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             usage(0)
         elif opt in ('-c', '--listcreator'):
             siteadmin = 0
-            pwdesc = _('list creator')
+            pwdesc = C_('list creator')
 
     if len(args) == 1:
         pw1 = args[0]
     else:
         try:
-            pw1 = getpass.getpass(_('New %(pwdesc)s password: '))
-            pw2 = getpass.getpass(_('Again to confirm password: '))
+            pw1 = getpass.getpass(C_('New %(pwdesc)s password: '))
+            pw2 = getpass.getpass(C_('Again to confirm password: '))
             if pw1 <> pw2:
-                print _('Passwords do not match; no changes made.')
+                print C_('Passwords do not match; no changes made.')
                 sys.exit(1)
         except KeyboardInterrupt:
-            print _('Interrupted...')
+            print C_('Interrupted...')
             sys.exit(0)
     # Set the site password by writing it to a local file.  Make sure the
     # permissions don't allow other+read.
     Utils.set_global_password(pw1, siteadmin)
     if Utils.check_global_password(pw1, siteadmin):
-        print _('Password changed.')
+        print C_('Password changed.')
     else:
-        print _('Password change failed.')
+        print C_('Password change failed.')
 
 
 
